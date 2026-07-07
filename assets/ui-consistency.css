@@ -1,0 +1,105 @@
+/* KBRIDGE unified form controls — loaded last on every page */
+:root{
+  --kb-control-height:38px;
+  --kb-control-font:13.5px;
+  --kb-control-radius:9px;
+  --kb-tab-height:32px;
+}
+
+/* Text inputs and selects use one compact height across all pages. */
+html body input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):not([type="color"]),
+html body select:not([multiple]):not([size]){
+  box-sizing:border-box!important;
+  height:var(--kb-control-height)!important;
+  min-height:var(--kb-control-height)!important;
+  max-height:var(--kb-control-height)!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+  border-radius:var(--kb-control-radius)!important;
+  font-size:var(--kb-control-font)!important;
+  line-height:normal!important;
+}
+html body select:not([multiple]):not([size]){
+  padding-left:11px!important;
+  padding-right:34px!important;
+}
+html body textarea{
+  min-height:88px!important;
+  padding:10px 12px!important;
+  border-radius:var(--kb-control-radius)!important;
+  font-size:var(--kb-control-font)!important;
+  line-height:1.55!important;
+}
+
+/* Search / exchange-rate buttons aligned with the compact fields. */
+.nt-inline-search>.nt-btn,
+.nt-field>.nt-btn,
+.nt-field>div>.nt-btn,
+.field>div>button,
+.actions .btn,
+.nt-actions .nt-btn{
+  min-height:var(--kb-control-height)!important;
+  height:var(--kb-control-height)!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+
+/* Selection tabs and filter chips. */
+.nt-seg button,
+.nt-chip,
+.nt-subtabs button,
+.type-filter button,
+.pallet-toggle button,
+.charge-chip span,
+.route-tabs button,
+.filter-tabs button{
+  height:var(--kb-tab-height)!important;
+  min-height:var(--kb-tab-height)!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:1!important;
+}
+.pallet-toggle{
+  height:var(--kb-control-height)!important;
+  min-height:var(--kb-control-height)!important;
+  padding:3px!important;
+}
+
+/* Duty calculator: stable field placement in both modes. */
+#dutyTool .nt-form{align-items:start}
+#dutyTool .duty-origin{grid-column:1/-1}
+#dutyTool .duty-currency{grid-column:1}
+#dutyTool .duty-rate{grid-column:2}
+#dutyTool.business-mode .duty-origin{grid-column:1}
+#dutyTool.business-mode .duty-incoterm{grid-column:2}
+#dutyTool.business-mode .duty-currency{grid-column:1}
+#dutyTool.business-mode .duty-rate{grid-column:2}
+#dutyTool .duty-rate-control{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:7px;
+  align-items:center;
+}
+#dutyTool .duty-rate-control .nt-btn{white-space:nowrap}
+
+@media(max-width:720px){
+  :root{--kb-control-height:38px;--kb-control-font:14px;--kb-tab-height:32px}
+  #dutyTool .duty-origin,
+  #dutyTool .duty-currency,
+  #dutyTool .duty-rate,
+  #dutyTool.business-mode .duty-origin,
+  #dutyTool.business-mode .duty-incoterm,
+  #dutyTool.business-mode .duty-currency,
+  #dutyTool.business-mode .duty-rate{grid-column:1/-1}
+}
+
+/* HS CODE results: compact top-result layout */
+#hsResults{display:grid!important;gap:8px!important}
+#hsResults .nt-list-item{padding:13px 14px!important;border-radius:10px!important}
+#hsResults .nt-list-item strong{font-size:14px!important;line-height:1.4!important}
+#hsResults .nt-list-item p{margin-top:5px!important;font-size:11.5px!important;line-height:1.55!important}
+#hsResults .nt-result-actions{gap:6px!important}
+#hsResults .nt-link-btn{min-height:30px!important;height:30px!important;padding:0 9px!important;font-size:10.5px!important}

@@ -1,0 +1,232 @@
+/* =========================================================
+   KBRIDGE LOGISTICS TOOLS — UNIFIED CONTENT LAYOUT
+========================================================= */
+
+/* 본문 영역 폭·여백·카드 크기 통일 */
+.tool-shell .shell-body{
+  padding:24px!important;
+  background:#f7f9fc!important;
+}
+.tool-shell .nt-wrap{
+  display:grid!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  gap:18px!important;
+  margin:0!important;
+}
+.tool-shell .nt-card{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:22px!important;
+  border:1px solid #dce4ef!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  box-shadow:0 5px 16px rgba(18,40,74,.035)!important;
+}
+.tool-shell .nt-tool-head{
+  min-height:50px!important;
+  margin-bottom:16px!important;
+  gap:18px!important;
+  align-items:flex-start!important;
+}
+.tool-shell .nt-tool-head h2,
+.tool-shell .nt-card>h2{
+  margin:0!important;
+}
+.tool-shell .nt-tool-head p,
+.tool-shell .nt-card>p{
+  margin-top:7px!important;
+}
+
+/* 실제 표 크기·행 높이·내부 여백 통일 */
+.tool-shell .nt-table-wrap{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin-top:16px!important;
+  border:1px solid #dfe6f0!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+.tool-shell table.nt-table{
+  width:100%!important;
+  min-width:760px!important;
+  margin:0!important;
+  border-collapse:collapse!important;
+  table-layout:auto!important;
+  font-variant-numeric:tabular-nums!important;
+}
+.tool-shell table.nt-table th{
+  height:42px!important;
+  padding:10px 12px!important;
+  background:#f2f5fa!important;
+  border-bottom:1px solid #dfe6f0!important;
+  vertical-align:middle!important;
+  white-space:nowrap!important;
+}
+.tool-shell table.nt-table td{
+  height:44px!important;
+  padding:10px 12px!important;
+  border-bottom:1px solid #e8edf4!important;
+  vertical-align:middle!important;
+}
+.tool-shell table.nt-table tbody tr:last-child td{
+  border-bottom:0!important;
+}
+.tool-shell .nt-grid,
+.tool-shell .nt-results,
+.tool-shell .nt-list,
+.tool-shell .nt-actions{
+  width:100%!important;
+  box-sizing:border-box!important;
+}
+
+/* 다른 물류도구 영역 — 본문과 자연스럽게 분리 */
+.tool-shell .related-tools-card{
+  position:relative!important;
+  margin-top:42px!important;
+  padding:24px!important;
+  border-color:#d8e2ef!important;
+  background:#fbfcfe!important;
+  box-shadow:none!important;
+}
+.tool-shell .related-tools-card::before{
+  content:""!important;
+  position:absolute!important;
+  top:-22px!important;
+  left:0!important;
+  right:0!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent 0%,#d9e2ee 12%,#d9e2ee 88%,transparent 100%)!important;
+}
+.tool-shell .related-tools-card h2{
+  color:#172b49!important;
+  font-size:20px!important;
+  line-height:1.35!important;
+}
+.tool-shell .related-tools-card>p{
+  color:#667890!important;
+  font-size:13px!important;
+  line-height:1.65!important;
+}
+.tool-shell .related-tools-card .tool-nav{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  gap:9px!important;
+  margin-top:18px!important;
+}
+.tool-shell .related-tools-card .tool-nav a{
+  min-height:42px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:9px 11px!important;
+  border:1px solid #dce4ef!important;
+  border-radius:10px!important;
+  background:#fff!important;
+  color:#203653!important;
+  font-size:12px!important;
+  font-weight:800!important;
+  line-height:1.3!important;
+  text-align:center!important;
+  transition:.16s ease!important;
+}
+.tool-shell .related-tools-card .tool-nav a:hover{
+  border-color:#aabde2!important;
+  background:#f3f7ff!important;
+  color:#2454c4!important;
+}
+
+/* CBM 입력 행 간소화 */
+.cbm-page .cbm-row{
+  padding:14px!important;
+}
+.cbm-page .cbm-row-grid{
+  display:grid!important;
+  grid-template-columns:
+    repeat(3,minmax(86px,1fr))
+    78px
+    minmax(104px,1fr)
+    72px
+    96px
+    96px
+    54px!important;
+  gap:8px!important;
+  align-items:end!important;
+}
+.cbm-page .cbm-delete{
+  align-self:end!important;
+  width:54px!important;
+  min-width:54px!important;
+  height:36px!important;
+  padding:0!important;
+}
+.cbm-page .cbm-delete[hidden]{
+  display:none!important;
+}
+.cbm-page .cbm-output{
+  height:56px!important;
+}
+
+/* 태블릿 */
+@media(max-width:1050px){
+  .tool-shell .related-tools-card .tool-nav{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  .cbm-page .cbm-row-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  }
+  .cbm-page .cbm-delete{
+    width:100%!important;
+    min-width:0!important;
+  }
+}
+
+/* 모바일 */
+@media(max-width:760px){
+  .tool-shell .shell-body{
+    padding:13px!important;
+  }
+  .tool-shell .nt-wrap{
+    gap:14px!important;
+  }
+  .tool-shell .nt-card{
+    padding:16px!important;
+    border-radius:12px!important;
+  }
+  .tool-shell .related-tools-card{
+    margin-top:34px!important;
+    padding:18px!important;
+  }
+  .tool-shell .related-tools-card::before{
+    top:-18px!important;
+  }
+  .tool-shell .related-tools-card .tool-nav{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+  .tool-shell .related-tools-card .tool-nav a{
+    min-height:40px!important;
+    font-size:11.5px!important;
+  }
+  .cbm-page .cbm-row-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;
+  }
+  .cbm-page .cbm-delete{
+    grid-column:1 / -1!important;
+    width:100%!important;
+  }
+}
+@media(max-width:430px){
+  .tool-shell .related-tools-card .tool-nav{
+    grid-template-columns:1fr!important;
+  }
+}

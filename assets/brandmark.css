@@ -1,0 +1,40 @@
+
+/* KBRIDGE brand mark */
+.brand-symbol{
+  display:grid!important;
+  place-items:center!important;
+  width:31px!important;
+  height:31px!important;
+  flex:0 0 31px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:9px!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+.brand-symbol::before,.brand-symbol::after{
+  display:none!important;
+  content:none!important;
+}
+.brand-symbol img{
+  display:block!important;
+  width:31px!important;
+  height:31px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  filter:none!important;
+}
+.footer .brand-symbol{
+  width:32px!important;
+  height:32px!important;
+  flex-basis:32px!important;
+}
+.footer .brand-symbol img{
+  width:32px!important;
+  height:32px!important;
+}
+
+/* KBRIDGE inline brand icon: independent of file paths */
+.brand-symbol>svg{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;overflow:visible!important}
+.header .brand-symbol>svg,.footer .brand-symbol>svg{filter:none!important;opacity:1!important;visibility:visible!important}

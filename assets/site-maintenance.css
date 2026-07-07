@@ -1,0 +1,263 @@
+/* KBRIDGE final compatibility and mobile layer — 2026-07-07 */
+html{scroll-padding-top:68px;overflow-x:hidden}
+body{overflow-x:hidden}
+img,svg,video,iframe{max-width:100%}
+.header .brand,.footer .brand{cursor:pointer}
+.header .brand:focus-visible,.footer .brand:focus-visible{outline:3px solid rgba(125,170,255,.45);outline-offset:4px;border-radius:8px}
+.header .header-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;height:36px!important;min-height:36px!important;padding:0 16px!important;line-height:1!important;white-space:nowrap!important;margin-left:auto!important}
+.header .brand-symbol{border-radius:7px!important;overflow:hidden!important}
+.header .brand-symbol img,.footer .brand-symbol img{filter:none!important;object-fit:contain!important}
+.kb-source-date{white-space:nowrap}
+.nt-table-wrap,.table-wrap,.result-table-wrap,.vehicle-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+button,a,input,select,textarea{touch-action:manipulation}
+button,.btn,.nt-btn,.native-btn,.header-btn{min-height:40px}
+dialog{overscroll-behavior:contain}
+dialog::backdrop{background:rgba(6,18,38,.68)}
+
+@media(max-width:1020px){
+  .header .header-btn{display:none!important}
+}
+@media(max-width:760px){
+  :root{--kb-header-height:60px}
+  .container{width:calc(100% - 28px)!important}
+  .header .container.header-inner{width:calc(100% - 28px)!important;gap:14px!important}
+  .header .brand{min-width:0!important}
+  .header .brand-copy strong{font-size:14px!important}
+  .mobile-nav{max-height:calc(100dvh - 60px)!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch}
+  .hero,.tool-hero,.blog-hero{overflow:hidden}
+  .hero-inner,.tool-hero-inner,.blog-hero-inner{min-height:auto!important}
+  .hero h1,.tool-hero h1,.blog-hero h1{font-size:clamp(30px,9vw,38px)!important;line-height:1.22!important;word-break:keep-all}
+  .section{padding-top:48px!important;padding-bottom:58px!important}
+  .section-head{display:block!important}
+  .section-head>p{margin-top:10px!important}
+  .form-grid,.native-grid,.quote-layout,.guide-layout,.footer-grid,.article-layout{grid-template-columns:1fr!important}
+  .field.full{grid-column:auto!important}
+  input:not([type=checkbox]):not([type=radio]),select,textarea{font-size:16px!important}
+  .actions,.result-actions,.hero-actions{flex-wrap:wrap!important}
+  .actions>* ,.result-actions>*{flex:1 1 100%!important;width:100%!important}
+  dialog[open]{width:100vw!important;max-width:none!important;height:100dvh!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important}
+  dialog .quote-dialog{width:100%!important;min-height:100dvh!important;max-height:none!important;border-radius:0!important}
+  dialog .dialog-head{position:sticky!important;top:0!important;z-index:20!important;min-height:64px!important;height:auto!important;padding:12px 16px!important}
+  dialog .dialog-body{max-height:calc(100dvh - 64px)!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;padding:18px 14px 30px!important}
+  dialog .form-card{padding:16px!important;border-radius:14px!important}
+  .blog-controls{grid-template-columns:1fr!important}
+  .category-tabs{overflow-x:auto!important;flex-wrap:nowrap!important;padding-bottom:4px!important;-webkit-overflow-scrolling:touch}
+  .category-tabs button{flex:0 0 auto!important}
+  .blog-grid{grid-template-columns:1fr!important}
+  .footer-bottom{display:block!important}
+  .footer-bottom>div+div{margin-top:10px!important}
+  .top-btn,.kb-top-button{right:14px!important;bottom:14px!important}
+}
+@media(max-width:430px){
+  .container{width:calc(100% - 22px)!important}
+  .header .container.header-inner{width:calc(100% - 22px)!important}
+  .header .brand-symbol,.header .brand-symbol img{width:24px!important;height:24px!important;min-width:24px!important;min-height:24px!important}
+  .header .brand-copy strong{font-size:13.5px!important}
+  .dialog-head h2{font-size:18px!important}
+  .tool-shell,.nt-card,.native-card{border-radius:14px!important}
+}
+
+/* KBRIDGE ENTERPRISE MOTION & DATA TABLES — 2026-07-07 */
+:root{
+  --kb-motion-ease:cubic-bezier(.22,.61,.36,1);
+  --kb-motion-fast:180ms;
+  --kb-motion-base:520ms;
+  --kb-table-line:#dfe6f0;
+  --kb-table-head:#f1f5fb;
+  --kb-table-alt:#fafcff;
+  --kb-table-hover:#f2f6ff;
+}
+
+/* 절제된 기업형 인터랙션 */
+.header,
+.header-btn,.btn,.nt-btn,.native-btn,.promo-cta,.transport-cta,.post-link,.tool-card,.service-card,
+.transport-card,.promo-card,.strength-panel,.guide-card,.route-card,.vehicle-card,.post-card,.nt-card,.native-card{
+  transition-property:transform,box-shadow,border-color,background-color,color,opacity;
+  transition-duration:var(--kb-motion-fast);
+  transition-timing-function:var(--kb-motion-ease);
+}
+.header{transition-duration:240ms}
+body.kb-scrolled .header{box-shadow:0 10px 28px rgba(7,25,52,.13)}
+
+@media (hover:hover) and (pointer:fine){
+  .tool-card:hover,.service-card:hover,.transport-card:hover,.promo-card:hover,
+  .guide-card:hover,.route-card:hover,.vehicle-card:hover,.post-card:hover{
+    border-color:#cad7e9;
+    box-shadow:0 15px 34px rgba(18,38,76,.095);
+  }
+  .header-btn:hover,.btn:hover,.nt-btn:hover,.native-btn:hover,.promo-cta:hover,.transport-cta:hover{
+    box-shadow:0 8px 20px rgba(18,38,76,.10);
+  }
+}
+.brand-symbol{transition:transform var(--kb-motion-fast) var(--kb-motion-ease)}
+
+/* 스크롤 진입 애니메이션: 이동 거리는 작게, 투명도 중심 */
+@media (prefers-reduced-motion:no-preference){
+  html.kb-motion-ready .kb-reveal{
+    opacity:0;
+    transition:opacity 360ms var(--kb-motion-ease);
+    transition-delay:var(--kb-delay,0ms);
+  }
+  html.kb-motion-ready .kb-reveal.is-visible{
+    opacity:1;
+  }
+  .dialog-head,.mobile-nav,.nav-dropdown-menu{transition-timing-function:var(--kb-motion-ease)!important}
+  dialog[open] .quote-dialog{animation:kbDialogIn 260ms var(--kb-motion-ease) both}
+  @keyframes kbDialogIn{
+    from{opacity:0;transform:translateY(5px)}
+    to{opacity:1;transform:none}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* 데이터 표 공통 디자인 */
+.nt-table-wrap,.table-wrap,.result-table-wrap,.vehicle-table-wrap{
+  position:relative;
+  border:1px solid var(--kb-table-line)!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  box-shadow:0 7px 20px rgba(18,38,76,.045);
+  scrollbar-width:thin;
+  scrollbar-color:#bcc9dc #f2f5f9;
+}
+.nt-table-wrap::-webkit-scrollbar,.table-wrap::-webkit-scrollbar,.result-table-wrap::-webkit-scrollbar,.vehicle-table-wrap::-webkit-scrollbar{height:9px;width:9px}
+.nt-table-wrap::-webkit-scrollbar-track,.table-wrap::-webkit-scrollbar-track,.result-table-wrap::-webkit-scrollbar-track,.vehicle-table-wrap::-webkit-scrollbar-track{background:#f2f5f9;border-radius:999px}
+.nt-table-wrap::-webkit-scrollbar-thumb,.table-wrap::-webkit-scrollbar-thumb,.result-table-wrap::-webkit-scrollbar-thumb,.vehicle-table-wrap::-webkit-scrollbar-thumb{background:#bcc9dc;border:2px solid #f2f5f9;border-radius:999px}
+
+.nt-table-wrap table,.table-wrap table,.result-table-wrap table,.vehicle-table-wrap table,
+table.nt-table{
+  width:100%;
+  margin:0!important;
+  border-collapse:separate!important;
+  border-spacing:0!important;
+  color:#34455f;
+  font-variant-numeric:tabular-nums;
+}
+.nt-table-wrap thead th,.table-wrap thead th,.result-table-wrap thead th,.vehicle-table-wrap thead th,
+.nt-table thead th{
+  position:sticky;
+  top:0;
+  z-index:2;
+  padding:12px 14px!important;
+  border:0!important;
+  border-bottom:1px solid #d7e0ec!important;
+  background:var(--kb-table-head)!important;
+  color:#31445f!important;
+  font-size:11px!important;
+  font-weight:850!important;
+  line-height:1.45!important;
+  letter-spacing:-.01em;
+  text-align:left;
+  white-space:nowrap;
+}
+.nt-table-wrap tbody td,.table-wrap tbody td,.result-table-wrap tbody td,.vehicle-table-wrap tbody td,
+.nt-table tbody td{
+  padding:12px 14px!important;
+  border:0!important;
+  border-bottom:1px solid #e8edf4!important;
+  background:#fff;
+  color:#40516b!important;
+  font-size:11.5px!important;
+  line-height:1.55!important;
+  vertical-align:middle!important;
+}
+.nt-table-wrap tbody tr:nth-child(even) td,.table-wrap tbody tr:nth-child(even) td,
+.result-table-wrap tbody tr:nth-child(even) td,.vehicle-table-wrap tbody tr:nth-child(even) td,
+.nt-table tbody tr:nth-child(even) td{background:var(--kb-table-alt)}
+.nt-table-wrap tbody tr:hover td,.table-wrap tbody tr:hover td,.result-table-wrap tbody tr:hover td,
+.vehicle-table-wrap tbody tr:hover td,.nt-table tbody tr:hover td{background:var(--kb-table-hover)!important}
+.nt-table-wrap tbody tr:last-child td,.table-wrap tbody tr:last-child td,.result-table-wrap tbody tr:last-child td,
+.vehicle-table-wrap tbody tr:last-child td,.nt-table tbody tr:last-child td{border-bottom:0!important}
+.nt-table-wrap thead th:last-child,.table-wrap thead th:last-child,.result-table-wrap thead th:last-child,.vehicle-table-wrap thead th:last-child,.nt-table thead th:last-child{text-align:right}
+.nt-table td strong,.nt-table th strong{color:#16284a!important;font-weight:850!important}
+.nt-table .nt-link-btn{white-space:nowrap}
+.nt-input-table input,.nt-input-table select{
+  min-width:82px;
+  border-color:#d5dfec!important;
+  background:#fff!important;
+}
+.nt-list-item .nt-table{min-width:0!important}
+.nt-list-item .nt-table td:first-child{font-weight:700;color:#40516b!important}
+.nt-list-item .nt-table td:last-child{text-align:right;font-weight:800;color:#193761!important;white-space:nowrap}
+
+/* 비교표·수치형 카드도 표와 같은 정보 위계로 정리 */
+.nt-compare{
+  overflow:hidden;
+  border:1px solid var(--kb-table-line);
+  border-radius:12px;
+  background:#fff;
+}
+.nt-compare>div{
+  padding:12px 13px!important;
+  border-color:#e5ebf3!important;
+  line-height:1.5!important;
+}
+.nt-compare>div:nth-child(-n+3){background:var(--kb-table-head)!important;color:#31445f;font-weight:850}
+.nt-results .nt-result,.result-panel,.rate-card,.vehicle-specs{
+  border-color:#dbe4ef!important;
+  box-shadow:0 5px 16px rgba(18,38,76,.035);
+}
+.vehicle-specs{
+  padding:12px!important;
+  border:1px solid #e0e7f0!important;
+  border-radius:12px!important;
+  background:#fafcff!important;
+}
+.vehicle-specs div{padding:3px 5px}
+
+@media(max-width:760px){
+  .nt-table-wrap,.table-wrap,.result-table-wrap,.vehicle-table-wrap{border-radius:12px!important;box-shadow:none}
+  .nt-table-wrap table,.table-wrap table,.result-table-wrap table,.vehicle-table-wrap table,table.nt-table{min-width:620px}
+  .nt-input-table{min-width:760px!important}
+  .nt-list-item .nt-table{min-width:0!important}
+  .nt-table-wrap thead th,.table-wrap thead th,.result-table-wrap thead th,.vehicle-table-wrap thead th,.nt-table thead th{
+    padding:10px 11px!important;
+    font-size:10.5px!important;
+  }
+  .nt-table-wrap tbody td,.table-wrap tbody td,.result-table-wrap tbody td,.vehicle-table-wrap tbody td,.nt-table tbody td{
+    padding:10px 11px!important;
+    font-size:11px!important;
+  }
+  .nt-compare{border-radius:10px}
+}
+
+
+
+/* KBRIDGE TEXT CLARITY — 2026-07-07 */
+html,body{
+  -webkit-font-smoothing:auto!important;
+  -moz-osx-font-smoothing:auto!important;
+  text-rendering:optimizeLegibility!important;
+  font-synthesis:none;
+}
+body,input,button,select,textarea{
+  text-shadow:none!important;
+}
+.header{
+  background:#16284a!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+.kb-reveal.is-visible{
+  transform:none!important;
+  will-change:auto!important;
+}
+.brand,.nav,.header-btn,.mobile-nav,.footer,
+h1,h2,h3,h4,h5,h6,p,span,strong,b,small,label,th,td,input,button,select,textarea{
+  -webkit-font-smoothing:auto!important;
+  -moz-osx-font-smoothing:auto!important;
+}
+@media (hover:hover) and (pointer:fine){
+  .tool-card:hover,.service-card:hover,.transport-card:hover,.promo-card:hover,
+  .guide-card:hover,.route-card:hover,.vehicle-card:hover,.post-card:hover,
+  .header-btn:hover,.btn:hover,.nt-btn:hover,.native-btn:hover,.promo-cta:hover,.transport-cta:hover,
+  .brand:hover .brand-symbol{
+    transform:none!important;
+  }
+}
+
+/* KBRIDGE inline brand icon: independent of file paths */
+.brand-symbol>svg{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;overflow:visible!important}
+.header .brand-symbol>svg,.footer .brand-symbol>svg{filter:none!important;opacity:1!important;visibility:visible!important}

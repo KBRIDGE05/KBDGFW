@@ -1,0 +1,104 @@
+/* =========================================================
+   KBRIDGE BRAND ICON SIZE
+   물류정보 헤더 기준으로 전체 페이지 통일
+========================================================= */
+.header .brand{
+  gap:8px!important;
+}
+.header .brand-symbol,
+.header a.brand .brand-symbol{
+  display:grid!important;
+  place-items:center!important;
+  width:25px!important;
+  height:25px!important;
+  min-width:25px!important;
+  min-height:25px!important;
+  flex:0 0 25px!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+.header .brand-symbol::before,
+.header .brand-symbol::after{
+  display:none!important;
+  content:none!important;
+}
+.header .brand-symbol img,
+.header a.brand .brand-symbol img{
+  display:block!important;
+  width:25px!important;
+  height:25px!important;
+  min-width:25px!important;
+  min-height:25px!important;
+  max-width:25px!important;
+  max-height:25px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  margin:0!important;
+  padding:0!important;
+  filter:none!important;
+  transform:none!important;
+}
+
+/* 푸터도 같은 규격으로 통일 */
+.footer .brand{
+  gap:8px!important;
+}
+.footer .brand-symbol,
+.footer a.brand .brand-symbol{
+  display:grid!important;
+  place-items:center!important;
+  width:25px!important;
+  height:25px!important;
+  min-width:25px!important;
+  min-height:25px!important;
+  flex:0 0 25px!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+.footer .brand-symbol::before,
+.footer .brand-symbol::after{
+  display:none!important;
+  content:none!important;
+}
+.footer .brand-symbol img,
+.footer a.brand .brand-symbol img{
+  display:block!important;
+  width:25px!important;
+  height:25px!important;
+  min-width:25px!important;
+  min-height:25px!important;
+  max-width:25px!important;
+  max-height:25px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  margin:0!important;
+  padding:0!important;
+  filter:none!important;
+  transform:none!important;
+}
+
+/* 모바일에서도 크기 변화 방지 */
+@media(max-width:760px){
+  .header .brand-symbol,
+  .header .brand-symbol img,
+  .footer .brand-symbol,
+  .footer .brand-symbol img{
+    width:25px!important;
+    height:25px!important;
+    min-width:25px!important;
+    min-height:25px!important;
+    max-width:25px!important;
+    max-height:25px!important;
+    flex-basis:25px!important;
+  }
+}

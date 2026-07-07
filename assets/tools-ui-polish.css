@@ -1,0 +1,121 @@
+/* KBRIDGE logistics tools — compact controls and readability polish */
+:root{
+  --kb-tool-control-h:36px;
+  --kb-tool-tab-h:28px;
+  --kb-tool-text:#253650;
+  --kb-tool-muted:#5f6f86;
+  --kb-tool-line:#d8e1ed;
+}
+
+/* Keep this stylesheet scoped to logistics-tool content only. */
+.tool-shell .shell-body{padding:22px!important;background:#f6f8fc!important}
+.tool-shell .nt-wrap{gap:14px!important}
+.tool-shell .nt-card{padding:20px!important;border-color:#dce4ee!important;border-radius:14px!important;box-shadow:0 5px 18px rgba(18,38,76,.04)!important}
+.tool-shell .nt-card h2{color:#172945!important;font-size:19px!important;line-height:1.35!important;letter-spacing:-.025em!important}
+.tool-shell .nt-card h3{color:#223650!important;font-size:15px!important;line-height:1.4!important}
+.tool-shell .nt-card>p,
+.tool-shell .nt-tool-head p,
+.tool-shell .nt-muted{color:var(--kb-tool-muted)!important;font-size:13px!important;line-height:1.68!important}
+.tool-shell .nt-tool-head{align-items:center!important;gap:16px!important;margin-bottom:14px!important}
+
+/* Form density and text contrast. */
+.tool-shell .nt-form{gap:12px!important;margin-top:16px!important}
+.tool-shell .nt-field{gap:5px!important}
+.tool-shell .nt-field label{color:#2b3d59!important;font-size:12px!important;line-height:1.35!important;font-weight:800!important}
+.tool-shell .nt-help{color:#6d7c91!important;font-size:10.8px!important;line-height:1.5!important}
+.tool-shell input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]),
+.tool-shell select:not([multiple]):not([size]){
+  height:var(--kb-tool-control-h)!important;
+  min-height:var(--kb-tool-control-h)!important;
+  max-height:var(--kb-tool-control-h)!important;
+  border-color:var(--kb-tool-line)!important;
+  border-radius:8px!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+  font-size:13px!important;
+  color:#172945!important;
+}
+.tool-shell select:not([multiple]):not([size]){padding-left:10px!important;padding-right:32px!important}
+.tool-shell textarea{min-height:82px!important;border-radius:8px!important;font-size:13px!important;color:#172945!important}
+
+/* Compact selection tabs. */
+.tool-shell .nt-seg{gap:5px!important;align-items:center!important}
+.tool-shell .nt-seg button,
+.tool-shell .nt-chip,
+.tool-shell .nt-subtabs button{
+  height:var(--kb-tool-tab-h)!important;
+  min-height:var(--kb-tool-tab-h)!important;
+  max-height:var(--kb-tool-tab-h)!important;
+  padding:0 10px!important;
+  border-radius:8px!important;
+  font-size:11.5px!important;
+  line-height:1!important;
+  font-weight:780!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  white-space:nowrap!important;
+}
+.tool-shell .nt-seg button:not(.active),
+.tool-shell .nt-chip:not(.active),
+.tool-shell .nt-subtabs button:not(.active){background:#fff!important;color:#53647b!important;border-color:#d5dfeb!important}
+.tool-shell .nt-seg button.active,
+.tool-shell .nt-chip.active,
+.tool-shell .nt-subtabs button.active{background:#e8efff!important;color:#214eb8!important;border-color:#9eb7e9!important}
+.tool-shell .nt-subtabs{gap:5px!important;margin-top:12px!important}
+
+/* Large selectable cards are shortened without shrinking text. */
+.tool-shell .nt-country-grid{gap:7px!important;margin-top:11px!important}
+.tool-shell .nt-country-btn{min-height:44px!important;padding:7px 9px!important;border-radius:9px!important}
+.tool-shell .nt-country-btn b{font-size:11.5px!important;line-height:1.25!important}
+.tool-shell .nt-country-btn span{margin-top:1px!important;font-size:9.8px!important;line-height:1.3!important}
+.tool-shell .nt-class-grid{gap:6px!important}
+.tool-shell .nt-class{padding:8px 5px!important;border-radius:9px!important;font-size:9.8px!important}
+.tool-shell .nt-class b{font-size:15px!important;line-height:1.1!important}
+
+/* Buttons align with compact fields. */
+.tool-shell .nt-btn{
+  height:var(--kb-tool-control-h)!important;
+  min-height:var(--kb-tool-control-h)!important;
+  max-height:var(--kb-tool-control-h)!important;
+  padding:0 15px!important;
+  border-radius:8px!important;
+  font-size:12px!important;
+  line-height:1!important;
+}
+.tool-shell .nt-actions{gap:7px!important;margin-top:15px!important}
+.tool-shell .nt-inline-search{gap:7px!important}
+
+/* Results and lists: larger readable text, less empty vertical space. */
+.tool-shell .nt-results{gap:9px!important;margin-top:14px!important}
+.tool-shell .nt-result{padding:14px!important;border-radius:11px!important}
+.tool-shell .nt-result span{color:#65758c!important;font-size:10.8px!important}
+.tool-shell .nt-result strong{margin-top:4px!important;font-size:18px!important;line-height:1.25!important}
+.tool-shell .nt-result em{font-size:10.5px!important;line-height:1.45!important}
+.tool-shell .nt-list{gap:8px!important}
+.tool-shell .nt-list-item{padding:13px 14px!important;border-radius:10px!important}
+.tool-shell .nt-list-item strong{font-size:13.5px!important;line-height:1.4!important}
+.tool-shell .nt-list-item p{font-size:11.8px!important;line-height:1.6!important;color:#607087!important}
+.tool-shell .nt-notice{padding:12px 14px!important;font-size:11.8px!important;line-height:1.65!important}
+.tool-shell .nt-table th{padding:10px!important;font-size:10.8px!important;color:#354965!important}
+.tool-shell .nt-table td{padding:10px!important;font-size:11.8px!important;line-height:1.5!important}
+.tool-shell .nt-badge{min-height:24px!important;padding:2px 8px!important;font-size:9.8px!important}
+.tool-shell .nt-link-btn{min-height:28px!important;height:28px!important;padding:0 9px!important;font-size:10.5px!important;border-radius:7px!important}
+
+/* Bottom tool navigation should scan quickly. */
+.tool-shell .tool-nav{gap:7px!important;margin-top:14px!important}
+.tool-shell .tool-nav a{min-height:34px!important;padding:7px 8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:11px!important;line-height:1.3!important;border-radius:9px!important}
+
+/* Switch labels are not tabs; keep them compact and easy to read. */
+.tool-shell .nt-switch{gap:6px!important;font-size:11.5px!important;line-height:1.35!important}
+.tool-shell .nt-switch input{width:16px!important;height:16px!important;min-height:16px!important;max-height:16px!important}
+
+@media(max-width:720px){
+  :root{--kb-tool-control-h:38px;--kb-tool-tab-h:30px}
+  .tool-shell .shell-body{padding:14px!important}
+  .tool-shell .nt-card{padding:16px!important}
+  .tool-shell .nt-card h2{font-size:18px!important}
+  .tool-shell .nt-field label{font-size:12px!important}
+  .tool-shell .nt-seg button,.tool-shell .nt-chip,.tool-shell .nt-subtabs button{font-size:11.5px!important;padding:0 9px!important}
+  .tool-shell .nt-country-btn{min-height:46px!important}
+}

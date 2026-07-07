@@ -1,0 +1,82 @@
+/* KBRIDGE header consistency — loaded last on every page */
+:root{--kb-header-height:60px}
+html body .header{
+  height:var(--kb-header-height)!important;
+  min-height:var(--kb-header-height)!important;
+  max-height:var(--kb-header-height)!important;
+  padding:0!important;
+  background:rgba(22,40,74,.98)!important;
+  border-bottom:1px solid rgba(255,255,255,.09)!important;
+}
+html body .header .container.header-inner{
+  width:min(1200px,calc(100% - 48px))!important;
+  max-width:1200px!important;
+  margin:0 auto!important;
+  height:var(--kb-header-height)!important;
+  min-height:var(--kb-header-height)!important;
+  max-height:var(--kb-header-height)!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:26px!important;
+  padding:0!important;
+}
+html body .header .brand{
+  height:var(--kb-header-height)!important;
+  min-height:var(--kb-header-height)!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  flex:0 0 auto!important;
+  line-height:1!important;
+  margin:0!important;
+}
+html body .header .brand-symbol,
+html body .header .brand>img{
+  width:24px!important;
+  height:24px!important;
+  min-width:24px!important;
+  min-height:24px!important;
+  flex:0 0 24px!important;
+  margin:0!important;
+}
+html body .header .brand-symbol{display:grid!important;place-items:center!important;overflow:hidden!important;border-radius:50%!important}
+html body .header .brand-symbol img,
+html body .header .brand>img{width:100%!important;height:100%!important;object-fit:contain!important;filter:none!important;margin:0!important}
+html body .header .brand-copy{display:flex!important;align-items:center!important;line-height:1!important;margin:0!important}
+html body .header .brand-copy strong{font-size:14px!important;line-height:1!important;letter-spacing:-.01em!important;white-space:nowrap!important;margin:0!important}
+html body .header .brand-copy small{display:none!important}
+html body .header .nav{height:var(--kb-header-height)!important;display:flex!important;align-items:center!important;gap:24px!important;line-height:1!important;margin:0!important}
+html body .header .nav>a,
+html body .header .nav-dropdown-toggle{height:var(--kb-header-height)!important;min-height:var(--kb-header-height)!important;display:inline-flex!important;align-items:center!important;padding-top:0!important;padding-bottom:0!important;font-size:13px!important;line-height:1!important;white-space:nowrap!important}
+html body .header .nav-dropdown{height:var(--kb-header-height)!important;min-height:var(--kb-header-height)!important;display:flex!important;align-items:center!important}
+html body .header .header-actions{height:var(--kb-header-height)!important;display:flex!important;align-items:center!important;margin-left:auto!important;gap:10px!important}
+html body .header .header-btn,
+html body .header .header-link{height:36px!important;min-height:36px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding-top:0!important;padding-bottom:0!important;font-size:12.5px!important;line-height:1!important;white-space:nowrap!important;margin-left:auto!important}
+html body .header .header-actions .header-btn,
+html body .header .header-actions .header-link{margin-left:0!important}
+html body .header .menu-btn{width:40px!important;height:40px!important;min-height:40px!important;margin-left:auto!important}
+html body .mobile-nav{top:var(--kb-header-height)!important}
+html body .header .nav-dropdown-menu{top:52px!important}
+@media(max-width:1020px){
+  html body .header .container.header-inner{width:calc(100% - 32px)!important}
+  html body .header .nav{display:none!important}
+  html body .header .header-btn,html body .header .header-link,html body .header .header-actions{display:none!important}
+  html body .header .menu-btn{display:block!important}
+}
+
+/* Prevent top-level active underline from leaking into dropdown items. */
+html body .header .nav-dropdown-menu a::before,
+html body .header .nav-dropdown-menu a::after{
+  content:none!important;
+  display:none!important;
+  position:static!important;
+  width:auto!important;
+  height:auto!important;
+  background:none!important;
+  box-shadow:none!important;
+}
+
+/* Blog content dropdown */
+html body .header .nav-dropdown.active .nav-dropdown-toggle{color:#fff!important}
+html body .header .blog-dropdown-menu{width:290px!important;max-width:calc(100vw - 28px)!important}
+html body .header .blog-dropdown-menu a{white-space:normal!important}
