@@ -80,3 +80,139 @@ html body .header .nav-dropdown-menu a::after{
 html body .header .nav-dropdown.active .nav-dropdown-toggle{color:#fff!important}
 html body .header .blog-dropdown-menu{width:290px!important;max-width:calc(100vw - 28px)!important}
 html body .header .blog-dropdown-menu a{white-space:normal!important}
+
+
+/* 2026-07: standalone quote comparison and warehouse links */
+@media(min-width:1181px){
+  html body .header .container.header-inner{gap:20px!important}
+  html body .header .nav{gap:17px!important}
+}
+@media(max-width:1180px){
+  html body .header .container.header-inner{width:calc(100% - 32px)!important}
+  html body .header .nav{display:none!important}
+  html body .header .header-btn,html body .header .header-link,html body .header .header-actions{display:none!important}
+  html body .header .menu-btn{display:block!important}
+}
+
+/* 2026-07 menu dropdown: match main page text-list style, no icons */
+html body .header .tools-dropdown-menu{width:620px!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px 8px!important;padding:12px!important;max-height:calc(100vh - 82px)!important;overflow:auto!important}
+html body .header .tools-dropdown-menu>small{grid-column:1/-1!important}
+html body .header .blog-dropdown-menu{width:330px!important;padding:12px!important}
+html body .header .nav-dropdown-menu>a{display:block!important;padding:10px 12px!important;border-radius:10px!important;color:#293956!important;font-size:12.5px!important;font-weight:750!important;line-height:1.35!important;white-space:normal!important}
+html body .header .nav-dropdown-menu>a span{display:block!important;margin-top:3px!important;color:#8693a7!important;font-size:10.5px!important;font-weight:500!important;line-height:1.45!important}
+html body .header .nav-dropdown-menu>a:hover,html body .header .nav-dropdown-menu>a.active{background:#eef3fb!important;color:#2b5cdb!important}
+html body .mobile-nav .mobile-nav-label{display:block!important;padding:12px 4px 6px!important;color:#9fb5d6!important;font-size:10px!important;font-weight:900!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+html body .mobile-nav .mobile-nav-group{padding:4px 0 8px!important;border-bottom:1px solid rgba(255,255,255,.1)!important}
+html body .mobile-nav .tools-mobile-group a,html body .mobile-nav .blog-mobile-group a{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;border-bottom:0!important;padding:12px 4px 12px 14px!important;font-size:14px!important;font-weight:650!important}
+@media(max-width:1180px){html body .header .tools-dropdown-menu{width:300px!important;display:block!important}}
+
+/* 2026-07 final fix: subpage dropdowns exactly match main page text-list dropdowns */
+html body .header .nav-dropdown-menu{
+  position:absolute!important;
+  z-index:1200!important;
+  top:58px!important;
+  left:50%!important;
+  width:230px!important;
+  padding:10px!important;
+  border:1px solid rgba(22,40,74,.10)!important;
+  border-radius:15px!important;
+  background:#fff!important;
+  color:#14213a!important;
+  box-shadow:0 22px 52px rgba(8,23,51,.22)!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translate(-50%,10px)!important;
+  transition:opacity .18s ease,transform .18s ease,visibility .18s ease!important;
+}
+html body .header .nav-dropdown:hover .nav-dropdown-menu,
+html body .header .nav-dropdown:focus-within .nav-dropdown-menu{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:translate(-50%,0)!important;
+}
+html body .header .nav-dropdown-menu::before{
+  content:""!important;
+  position:absolute!important;
+  top:-6px!important;
+  left:50%!important;
+  width:12px!important;
+  height:12px!important;
+  background:#fff!important;
+  border-left:1px solid rgba(22,40,74,.10)!important;
+  border-top:1px solid rgba(22,40,74,.10)!important;
+  transform:translateX(-50%) rotate(45deg)!important;
+  display:block!important;
+}
+html body .header .nav-dropdown-menu small{
+  display:block!important;
+  padding:7px 10px 8px!important;
+  color:#8997ab!important;
+  font-size:9.5px!important;
+  font-weight:800!important;
+  letter-spacing:.14em!important;
+}
+html body .header .nav-dropdown-menu>a{
+  position:relative!important;
+  z-index:1!important;
+  display:block!important;
+  padding:12px 13px!important;
+  border-radius:10px!important;
+  color:#293956!important;
+  font-size:13.5px!important;
+  font-weight:700!important;
+  line-height:1.35!important;
+  white-space:normal!important;
+  transition:.18s!important;
+}
+html body .header .nav-dropdown-menu>a span{
+  display:block!important;
+  margin-top:4px!important;
+  color:#8693a7!important;
+  font-size:11px!important;
+  font-weight:500!important;
+  line-height:1.45!important;
+}
+html body .header .nav-dropdown-menu>a:hover,
+html body .header .nav-dropdown-menu>a.active{
+  background:#eef3fb!important;
+  color:#2b5cdb!important;
+}
+html body .header .tools-nav-dropdown .tools-dropdown-menu{
+  width:600px!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:3px!important;
+  padding:12px!important;
+  max-height:calc(100vh - 82px)!important;
+  overflow:auto!important;
+  overscroll-behavior:contain!important;
+}
+html body .header .tools-nav-dropdown .tools-dropdown-menu>small{grid-column:1/-1!important;padding:6px 10px 9px!important}
+html body .header .tools-nav-dropdown .tools-dropdown-menu>a{min-width:0!important;padding:10px 12px!important}
+html body .header .tools-nav-dropdown .tools-dropdown-menu>a span{white-space:normal!important}
+html body .header .blog-nav-dropdown .blog-dropdown-menu{width:330px!important;display:block!important;padding:12px!important}
+@media(max-width:1180px){html body .header .tools-nav-dropdown .tools-dropdown-menu{width:540px!important}}
+@media(max-width:1020px){html body .header .nav{display:none!important}}
+
+/* 2026-07 dropdown arrow mark fix for quote comparison / warehouse pages */
+html body .header .nav-dropdown-toggle::after{
+  content:""!important;
+  display:inline-block!important;
+  flex:0 0 auto!important;
+  width:7px!important;
+  height:7px!important;
+  margin-left:1px!important;
+  border-right:1.5px solid currentColor!important;
+  border-bottom:1.5px solid currentColor!important;
+  transform:rotate(45deg) translateY(-2px)!important;
+  transform-origin:center!important;
+  transition:transform .18s ease!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body .header .nav-dropdown:hover .nav-dropdown-toggle::after,
+html body .header .nav-dropdown:focus-within .nav-dropdown-toggle::after{
+  transform:rotate(225deg) translate(-2px,-2px)!important;
+}
