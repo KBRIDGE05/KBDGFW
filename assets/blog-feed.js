@@ -7,7 +7,7 @@
   const branch = String(cfg.blogRepositoryBranch || 'main').trim();
   const postsRoot = String(cfg.blogPostsRoot || 'blog/posts').replace(/^\/+|\/+$/g, '');
   const cacheMinutes = Math.max(0, Number(cfg.blogFeedCacheMinutes || 2));
-  const cacheKey = `kbridgeBlogHtmlFeed:${owner}/${repo}@${branch}`;
+  const cacheKey = `kbridgeBlogHtmlFeed:v2:${owner}/${repo}@${branch}`;
   const categories = ['info', 'service', 'news', 'insight', 'glossary'];
   const labels = {
     info: '물류 정보',
@@ -47,11 +47,45 @@
     return match ? `${match[1]}-${match[2]}-${match[3]}` : '';
   };
 
+  const normalizeDate = value => {
+    const raw = cleanText(value);
+    if (!raw) return '';
+    const direct = raw.match(/^(20\d{2})[-.\/](\d{1,2})[-.\/](\d{1,2})/);
+    if (direct) return `${direct[1]}-${String(direct[2]).padStart(2, '0')}-${String(direct[3]).padStart(2, '0')}`;
+    const parsed = new Date(raw);
+    if (!Number.isNaN(parsed.getTime())) {
+      const y = parsed.getFullYear();
+      const m = String(parsed.getMonth() + 1).padStart(2, '0');
+      const d = String(parsed.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+    return raw.slice(0, 10);
+  };
+
+  const uploadDateCache = new Map();
+  const uploadDateFromGithub = async path => {
+    if (!owner || !repo || !branch || !path) return '';
+    if (uploadDateCache.has(path)) return uploadDateCache.get(path);
+    let value = '';
+    try {
+      const api = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/commits?sha=${encodeURIComponent(branch)}&path=${encodeURIComponent(path)}&per_page=1`;
+      const response = await fetch(api, { cache: 'no-store', headers: { Accept: 'application/vnd.github+json' } });
+      if (response.ok) {
+        const commits = await response.json();
+        const commitDate = Array.isArray(commits) ? commits[0]?.commit?.committer?.date || commits[0]?.commit?.author?.date : '';
+        value = normalizeDate(commitDate);
+      }
+    } catch (_) {}
+    uploadDateCache.set(path, value);
+    return value;
+  };
+
   const parsePost = async path => {
     const relativePath = path.replace(/^blog\//, '');
     const pageUrl = new URL(relativePath, new URL('blog/', siteRoot)).href;
     const response = await fetch(`${pageUrl}?v=${Date.now()}`, { cache: 'no-store' });
     if (!response.ok) throw new Error(`포스팅 응답 오류 ${response.status}: ${path}`);
+    const lastModifiedDate = normalizeDate(response.headers.get('last-modified') || '');
     const html = await response.text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const pathParts = path.split('/');
@@ -72,11 +106,12 @@
       ''
     );
 
-    const date = cleanText(
+    const metaDate = normalizeDate(
       readMeta(doc, ['blog-date', 'article:published_time', 'date']) ||
       doc.querySelector('time[datetime]')?.getAttribute('datetime') ||
       dateFromFilename(path)
-    ).slice(0, 10);
+    );
+    const date = metaDate || await uploadDateFromGithub(path) || lastModifiedDate;
 
     const thumbnailRaw = readMeta(doc, ['blog-thumbnail', 'og:image', 'twitter:image']);
     const keywordsRaw = readMeta(doc, ['keywords', 'blog-keywords']);
