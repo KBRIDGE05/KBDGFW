@@ -953,7 +953,7 @@ body{font-size:var(--kb-ui-body)!important;line-height:1.7!important}
 .quote-mode-card{padding-bottom:20px!important}
 .quote-mode-tabs{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:10px;
   margin-top:16px;
 }
@@ -1013,6 +1013,53 @@ body{font-size:var(--kb-ui-body)!important;line-height:1.7!important}
 .quote-summary.air-mode .summary-price{
   font-size:24px!important;
   color:#b9d8ff!important;
+}
+.quote-summary.lcl-mode{
+  background:linear-gradient(155deg,#0f2f4f,#17615b);
+}
+.quote-summary.lcl-mode .summary-price{
+  font-size:24px!important;
+  color:#b9f2df!important;
+}
+.lcl-cbm-result{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:16px;
+  padding:15px 16px;
+  border:1px solid #d6e6e2;
+  border-radius:13px;
+  background:#f3fbf8;
+}
+.lcl-cbm-result strong{
+  display:block;
+  color:#113b36;
+  font-size:13px;
+}
+.lcl-cbm-result span{
+  display:block;
+  margin-top:4px;
+  color:#5e746f;
+  font-size:12px;
+  line-height:1.55;
+}
+.lcl-cbm-result a{
+  flex:0 0 auto;
+  color:#146f62;
+  font-size:12px;
+  font-weight:850;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.lcl-quote-notice{
+  border-color:#d6e6e2;
+  background:#f3fbf8;
+}
+.lcl-quote-notice strong{color:#113b36}
+@media(max-width:640px){
+  .lcl-cbm-result{display:block}
+  .lcl-cbm-result a{display:inline-block;margin-top:10px}
 }
 .sea-form-section{
   position:relative;
@@ -1932,10 +1979,10 @@ button.hero-choice-card{width:100%;font:inherit;cursor:pointer}
 </style></head>
 <body><span aria-hidden="true" id="page-top" style="position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;"></span>
 <a class="skip-link" href="#main-content">본문 바로가기</a>
-<header class="header" id="top"><div class="container header-inner"><a aria-label="페이지 최상단으로 이동" class="brand" data-brand-action="top" href="#page-top" title="페이지 최상단으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><nav aria-label="주요 메뉴" class="nav"><a href="#services">즉시견적</a><a href="quote-comparison.html">견적서 비교</a><a href="warehouse-inquiry.html">창고 문의</a><div class="nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button><div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small><a href="domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a></div></div><div class="nav-dropdown tools-nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button><div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a href="duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="food-export-check.html">식품 수출 사전 점검<span>수출 전 준비사항 확인</span></a><a href="hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div></div><div class="nav-dropdown blog-nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button><div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a href="blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div></div></nav><div class="header-actions"><a class="header-link" href="mailto:all@kbridges.co.kr">문의</a><button class="header-btn" data-open="formalDialog" type="button">즉시 견적</button></div><button aria-controls="mobileNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn"><span></span></button></div></header>
-<div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav"><a href="#services">즉시견적 <span>→</span></a><a href="quote-comparison.html">견적서 비교 <span>→</span></a><a href="warehouse-inquiry.html">창고 문의 <span>→</span></a><div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span><a href="domestic.html">국내운송 안내 <span>→</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div><div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="food-export-check.html">식품 수출 사전 점검 <span>→</span></a><a href="hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="lcl-storage.html">LCL 창고료 <span>→</span></a><a href="dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="terminal-info.html">터미널 정보 조회 <span>→</span></a></div><div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="blog/index.html?category=info">물류 정보 <span>→</span></a><a href="blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div><a href="#faq">FAQ <span>→</span></a><button data-open="formalDialog" type="button">정식 견적 접수 <span>→</span></button></div>
+<header class="header" id="top"><div class="container header-inner"><a aria-label="페이지 최상단으로 이동" class="brand" data-brand-action="top" href="#page-top" title="페이지 최상단으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><nav aria-label="주요 메뉴" class="nav"><a href="#services">즉시견적</a><a href="quote-comparison.html">견적서 비교</a><a href="warehouse-inquiry.html">창고 문의</a><div class="nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button><div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small><a href="domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a></div></div><div class="nav-dropdown tools-nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button><div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a href="duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="customs-exchange-rate.html">관세청 고시환율<span>수입신고 기준환율 확인</span></a><a href="surcharge.html">부대비용<span>부대비용 바로 조회</span></a><a href="cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="food-export-check.html">식품 수출 사전 점검<span>수출 전 준비사항 확인</span></a><a href="hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div></div><div class="nav-dropdown blog-nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button><div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a href="blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div></div></nav><div class="header-actions"><a class="header-link" href="mailto:all@kbridges.co.kr">문의</a><button class="header-btn" data-open="formalDialog" type="button">즉시 견적</button></div><button aria-controls="mobileNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn"><span></span></button></div></header>
+<div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav"><a href="#services">즉시견적 <span>→</span></a><a href="quote-comparison.html">견적서 비교 <span>→</span></a><a href="warehouse-inquiry.html">창고 문의 <span>→</span></a><div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span><a href="domestic.html">국내운송 안내 <span>→</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div><div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="surcharge.html">부대비용 <span>→</span></a><a href="cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="food-export-check.html">식품 수출 사전 점검 <span>→</span></a><a href="hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="lcl-storage.html">LCL 창고료 <span>→</span></a><a href="dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="terminal-info.html">터미널 정보 조회 <span>→</span></a></div><div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="blog/index.html?category=info">물류 정보 <span>→</span></a><a href="blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div><a href="#faq">FAQ <span>→</span></a><button data-open="formalDialog" type="button">정식 견적 접수 <span>→</span></button></div>
 <main id="main-content">
-<section class="hero"><div aria-hidden="true" class="hero-bg"></div><div class="container hero-inner"><div class="hero-copy"><div class="eyebrow">KBRIDGE DIGITAL FORWARDING</div><h1>해상·항공·해외특송 견적,<br/><em>케이브릿지에서 바로 시작하세요</em></h1><p class="hero-desc">해상·항공 단일 운송 견적과 통관·국내운송을 포함한 정식 종합 견적을 목적에 맞게 구분해 접수할 수 있습니다.</p><div class="hero-actions"><button class="btn primary" data-open="seaDialog" type="button">해상·항공 견적 받기 →</button><button class="btn glass" data-open="expressDialog" type="button">해외특송 문의하기</button></div><div class="hero-stats"><div class="hero-stat"><strong>FCL · LCL</strong><span>해상운송 견적</span></div><div class="hero-stat"><strong>AIR · EXPRESS</strong><span>항공·해외특송</span></div><div class="hero-stat"><strong>통관 · 국내운송</strong><span>연계 운송 검토</span></div></div><div class="hero-badges"><span>✓ 정식 종합 견적</span><span>✓ 해상·항공 개별 견적</span><span>✓ 통관·국내운송 연계</span></div></div><aside aria-label="운송 서비스 선택" class="hero-choice">
+<section class="hero"><div aria-hidden="true" class="hero-bg"></div><div class="container hero-inner"><div class="hero-copy"><div class="eyebrow">KBRIDGE DIGITAL FORWARDING</div><h1>해상·항공·해외특송 견적,<br/><em>케이브릿지에서 바로 시작하세요</em></h1><p class="hero-desc">해상·항공 단일 운송 견적과 통관·국내운송을 포함한 정식 종합 견적을 목적에 맞게 구분해 접수할 수 있습니다.</p><div class="hero-actions"><button class="btn primary" data-open="seaDialog" type="button">FCL·LCL·항공 견적 받기 →</button><button class="btn glass" data-open="expressDialog" type="button">해외특송 문의하기</button></div><div class="hero-stats"><div class="hero-stat"><strong>FCL · LCL</strong><span>해상운송 견적</span></div><div class="hero-stat"><strong>AIR · EXPRESS</strong><span>항공·해외특송</span></div><div class="hero-stat"><strong>통관 · 국내운송</strong><span>연계 운송 검토</span></div></div><div class="hero-badges"><span>✓ 정식 종합 견적</span><span>✓ 해상·항공 개별 견적</span><span>✓ 통관·국내운송 연계</span></div></div><aside aria-label="운송 서비스 선택" class="hero-choice">
 <div class="hero-choice-head">
 <span>TRANSPORT SERVICE</span>
 <h2>어떤 운송이 필요하세요?</h2>
@@ -2052,10 +2099,10 @@ button.hero-choice-card{width:100%;font:inherit;cursor:pointer}
 <div class="transport-selector reveal">
 <div class="selector-head"><b>3초 선택 가이드</b><span>화물 조건에 가까운 항목을 선택하세요.</span></div>
 <div class="selector-grid">
-<button data-open="seaDialog" data-quote-mode-open="ocean" type="button"><strong>대량·정기 화물</strong><span>FCL · LCL 해상운송</span><em>해상 견적 문의 →</em></button>
+<button data-open="seaDialog" data-quote-mode-open="ocean" type="button"><strong>컨테이너 화물</strong><span>FCL 단독 컨테이너</span><em>FCL 견적 문의 →</em></button>
+<button data-open="seaDialog" data-quote-mode-open="lcl" type="button"><strong>소량 해상화물</strong><span>LCL 박스·팔레트 화물</span><em>LCL 견적 문의 →</em></button>
 <button data-open="seaDialog" data-quote-mode-open="air" type="button"><strong>긴급 기업 화물</strong><span>항공화물 운송</span><em>항공 견적 문의 →</em></button>
 <button data-open="expressDialog" type="button"><strong>샘플·소량 화물</strong><span>해외특송 Door to Door</span><em>특송 접수 →</em></button>
-<button data-open="expressDialog" type="button"><strong>배터리·식품·액체</strong><span>품목 가능 여부 사전 검토</span><em>사전 검토 →</em></button>
 </div>
 </div>
 </div>
@@ -2128,7 +2175,8 @@ button.hero-choice-card{width:100%;font:inherit;cursor:pointer}
 <fieldset class="formal-service-fieldset">
 <legend>필요 서비스</legend>
 <div class="formal-service-grid">
-<label><input name="formalService" type="checkbox" value="해상운송"/><span>해상운송</span></label>
+<label><input name="formalService" type="checkbox" value="FCL 해상운송"/><span>FCL 해상운송</span></label>
+<label><input name="formalService" type="checkbox" value="LCL 소량화물"/><span>LCL 소량화물</span></label>
 <label><input name="formalService" type="checkbox" value="항공운송"/><span>항공운송</span></label>
 <label><input name="formalService" type="checkbox" value="해외특송"/><span>해외특송</span></label>
 <label><input name="formalService" type="checkbox" value="수출입 통관"/><span>수출입 통관</span></label>
@@ -2176,12 +2224,13 @@ button.hero-choice-card{width:100%;font:inherit;cursor:pointer}
 </div>
 </div>
 </dialog>
-<dialog id="seaDialog"><div class="quote-dialog"><div class="dialog-head"><h2>해상·항공 견적 문의</h2><button aria-label="창 닫기" class="dialog-close" data-close="" type="button">×</button></div><div class="dialog-body"><div class="quote-layout"><div>
+<dialog id="seaDialog"><div class="quote-dialog"><div class="dialog-head"><h2>FCL·LCL·항공 견적 문의</h2><button aria-label="창 닫기" class="dialog-close" data-close="" type="button">×</button></div><div class="dialog-body"><div class="quote-layout"><div>
 <section class="form-card quote-mode-card">
 <h3>1. 운송 방식 선택</h3>
-<p>화물 조건에 맞춰 해상운송 또는 항공운송을 선택해 주세요.</p>
+<p>화물 조건에 맞춰 FCL, LCL 또는 항공운송을 선택해 주세요.</p>
 <div aria-label="운송 방식" class="quote-mode-tabs" id="quoteModeTabs" role="tablist">
-<button aria-selected="true" class="active" data-quote-mode="ocean" role="tab" type="button"><strong>해상운송</strong><span>FCL · 컨테이너 화물</span></button>
+<button aria-selected="true" class="active" data-quote-mode="ocean" role="tab" type="button"><strong>FCL 해상운송</strong><span>20FT · 40FT 컨테이너</span></button>
+<button aria-selected="false" data-quote-mode="lcl" role="tab" type="button"><strong>LCL 소량화물</strong><span>박스 · 팔레트 혼재화물</span></button>
 <button aria-selected="false" data-quote-mode="air" role="tab" type="button"><strong>항공운송</strong><span>일반 · 긴급 · 특수화물</span></button>
 </div>
 </section>
@@ -2210,6 +2259,28 @@ button.hero-choice-card{width:100%;font:inherit;cursor:pointer}
 <div aria-live="polite" class="ocean-rate-status" id="oceanRateStatus">운임 파일을 확인하고 있습니다.</div>
 </div>
 </section>
+<section class="form-card quote-panel" data-quote-panel="lcl" hidden="">
+<h3>2. LCL 소량화물 정보</h3>
+<p>박스·팔레트 단위 소량화물의 출발지, 도착지, CBM과 중량을 입력하면 담당자가 해상운임·도착지 비용·픽업 여부를 함께 검토해 회신합니다.</p>
+<div class="form-grid">
+<div class="field"><label for="lclOrigin">출발지</label><select id="lclOrigin"><option>부산</option><option>인천</option></select></div>
+<div class="field"><label for="lclDestination">도착 포트·도시</label><input id="lclDestination" placeholder="예: Los Angeles, Rotterdam, Tokyo"/></div>
+<div class="field"><label for="lclCountry">도착 국가</label><input id="lclCountry" placeholder="예: 미국, 네덜란드, 일본"/></div>
+<div class="field"><label for="lclPackage">포장 형태</label><select id="lclPackage"><option>BOX</option><option>PALLET</option><option>CRATE</option><option>ROLL</option><option>기타</option></select></div>
+<div class="field"><label for="lclPieces">포장 수량</label><input id="lclPieces" min="1" placeholder="예: 8" type="number" value="1"/></div>
+<div class="field"><label for="lclWeight">총 중량</label><input id="lclWeight" min="0" placeholder="예: 850" step="0.1" type="number"/><span class="field-help">단위: KG</span></div>
+<div class="field"><label for="lclLength">가로</label><input id="lclLength" min="0" placeholder="cm" step="0.1" type="number"/></div>
+<div class="field"><label for="lclWidth">세로</label><input id="lclWidth" min="0" placeholder="cm" step="0.1" type="number"/></div>
+<div class="field"><label for="lclHeight">높이</label><input id="lclHeight" min="0" placeholder="cm" step="0.1" type="number"/></div>
+<div class="field"><label for="lclManualCbm">CBM 직접 입력</label><input id="lclManualCbm" min="0" placeholder="예: 4.2" step="0.001" type="number"/><span class="field-help">규격을 모르면 직접 입력</span></div>
+<div class="field"><label for="lclReadyDate">출고 가능일</label><input id="lclReadyDate" type="date"/></div>
+<div class="field"><label for="lclPickup">픽업 필요 여부</label><select id="lclPickup"><option>상담 필요</option><option>픽업 필요</option><option>직접 반입</option></select></div>
+<div class="field"><label for="lclCustoms">통관 필요 여부</label><select id="lclCustoms"><option>상담 필요</option><option>수출통관 필요</option><option>수입통관 필요</option><option>통관 불필요</option></select></div>
+<div class="field"><label for="lclDanger">위험물 여부</label><select id="lclDanger"><option>일반화물</option><option>위험물 검토 필요</option><option>MSDS 확인 필요</option><option>냉장·온도관리</option></select></div>
+</div>
+<div class="lcl-cbm-result" id="lclCbmResult"><div><strong>LCL 예상 부피: 0.000 CBM</strong><span>규격을 입력하면 CBM과 W/M 기준 검토값이 자동 계산됩니다.</span></div><a href="cbm-calculator.html" target="_blank" rel="noopener">CBM 계산기 열기</a></div>
+<div class="air-quote-notice lcl-quote-notice"><strong>LCL은 실견적으로 안내합니다.</strong><span>최소 청구 기준, 도착지 비용, 픽업·통관 여부에 따라 최종 비용이 달라 담당자가 확인 후 회신합니다.</span></div>
+</section>
 <section class="form-card quote-panel" data-quote-panel="air" hidden="">
 <h3>2. 항공 운송 정보</h3>
 <p>출발·도착 공항과 화물 중량을 입력하면 담당자가 항공사별 스케줄과 실운임을 검토해 회신합니다.</p>
@@ -2227,18 +2298,18 @@ button.hero-choice-card{width:100%;font:inherit;cursor:pointer}
 </section>
 <form class="sea-form-section" id="seaForm"><section class="form-card sea-form-card">
 <h3>3. 정식 견적 문의</h3>
-<p>담당자 정보와 품목 정보를 남기면 선택한 운송 방식에 맞춰 검토해 회신드립니다.</p>
+<p>담당자 정보와 품목 정보를 남기면 선택한 운송 방식에 맞춰 검토해 회신드립니다. LCL은 입력한 CBM·중량 기준으로 실견적을 안내합니다.</p>
 <div class="form-grid">
 <div class="field"><label for="seaCompany">회사명</label><input id="seaCompany" placeholder="예: 케이브릿지" required=""/></div>
 <div class="field"><label for="seaName">담당자명</label><input id="seaName" placeholder="예: 홍길동" required=""/></div>
 <div class="field"><label for="seaPhone">연락처</label><input id="seaPhone" placeholder="010-0000-0000" required=""/></div>
 <div class="field"><label for="seaEmail">회신 이메일</label><input id="seaEmail" placeholder="sample@company.com" required="" type="email"/></div>
 <div class="field"><label for="seaCargo">품목</label><input id="seaCargo" placeholder="기계부품, 원단, 전자부품 등" required=""/></div>
-<div class="field"><label for="seaVolume">중량 · 부피 정보</label><input id="seaVolume" placeholder="해상 8 CBM / 항공 320 KG 등"/></div>
+<div class="field"><label for="seaVolume">중량 · 부피 정보</label><input id="seaVolume" placeholder="FCL 1x40FT / LCL 4.2 CBM · 850 KG / 항공 320 KG 등"/></div>
 <div class="field full"><label for="seaMemo">추가 문의 내용</label><textarea id="seaMemo" placeholder="인코텀즈, 출발지·도착지, 위험물 여부, 희망 일정, 통관·내륙운송 필요 여부 등을 입력하세요."></textarea></div>
 </div>
 <div class="attachment"><label for="seaFiles">인보이스 · 패킹리스트 · 제품사진 · MSDS 첨부</label><input accept="image/*,.pdf,application/pdf" id="seaFiles" multiple="" type="file"/><small>이미지·PDF, 최대 6개 / 합계 15MB</small><div class="file-list" id="seaFileList"></div></div>
-<div class="actions"><button class="btn" id="seaCopy" type="button">문의 내용 복사</button><button class="btn primary" id="seaSubmit" type="submit">해상·항공 견적 접수하기</button></div>
+<div class="actions"><button class="btn" id="seaCopy" type="button">문의 내용 복사</button><button class="btn primary" id="seaSubmit" type="submit">FCL·LCL·항공 견적 접수하기</button></div>
 <div aria-live="polite" class="status" id="seaStatus" role="status"></div>
 </section></form>
 </div>
@@ -2305,6 +2376,30 @@ function seaInfo(){
   const qty=Math.max(1,Number($('#seaQty').value)||1);
   return p?{p,mode,qty,price:p[mode]*qty}:null;
 }
+function lclInfo(){
+  const pieces=Math.max(1,Number($('#lclPieces')?.value)||1);
+  const l=Number($('#lclLength')?.value)||0;
+  const w=Number($('#lclWidth')?.value)||0;
+  const h=Number($('#lclHeight')?.value)||0;
+  const manual=Number($('#lclManualCbm')?.value)||0;
+  const calc=l>0&&w>0&&h>0?(l*w*h*pieces/1000000):0;
+  const cbm=manual>0?manual:calc;
+  const kg=Number($('#lclWeight')?.value)||0;
+  const ton=kg/1000;
+  const wm=Math.max(cbm,ton);
+  const destination=val('lclDestination');
+  const route=`${val('lclOrigin')} → ${destination==='-'?'도착 포트·도시':destination}`;
+  return {pieces,cbm,kg,ton,wm,route};
+}
+function updateLclCbmResult(){
+  const info=lclInfo();
+  const box=$('#lclCbmResult');
+  if(!box)return;
+  const strong=box.querySelector('strong');
+  const span=box.querySelector('span');
+  if(strong)strong.textContent=`LCL 예상 부피: ${info.cbm.toFixed(3)} CBM`;
+  if(span)span.textContent=`총중량 ${info.kg?info.kg.toLocaleString():0} KG · W/M 검토 기준 ${info.wm.toFixed(3)} RT`;
+}
 
 function airRouteText(){
   const origin=$('#airOrigin')?.selectedOptions[0]?.textContent||'인천공항 (ICN)';
@@ -2314,6 +2409,7 @@ function airRouteText(){
 
 function updateQuoteSummary(){
   const summary=$('.quote-summary');
+  summary?.classList.remove('air-mode','lcl-mode');
   if(quoteMode==='air'){
     summary?.classList.add('air-mode');
     $('#quoteSummaryLabel').textContent='KBRIDGE AIR FREIGHT';
@@ -2324,13 +2420,24 @@ function updateQuoteSummary(){
     $('#summaryOriginValue').textContent=$('#airOrigin')?.value||'ICN';
     $('#summaryScheduleLabel').textContent='출고 가능일';
     $('#sumWhen').textContent=val('airReadyDate')==='-'?'일정 미정':val('airReadyDate');
+  }else if(quoteMode==='lcl'){
+    summary?.classList.add('lcl-mode');
+    updateLclCbmResult();
+    const info=lclInfo();
+    $('#quoteSummaryLabel').textContent='KBRIDGE LCL FREIGHT';
+    $('#seaSummaryRoute').textContent=info.route;
+    $('#seaSummaryPrice').textContent='실견적 회신';
+    $('#quoteSummaryNote').textContent=`LCL은 ${info.cbm.toFixed(3)} CBM / ${info.kg?info.kg.toLocaleString():0} KG 기준으로 해상운임, 도착지 비용, 픽업 여부를 함께 확인합니다.`;
+    $('#summaryOriginLabel').textContent='출발지';
+    $('#summaryOriginValue').textContent=val('lclOrigin');
+    $('#summaryScheduleLabel').textContent='출고 가능일';
+    $('#sumWhen').textContent=val('lclReadyDate')==='-'?'일정 미정':val('lclReadyDate');
   }else{
-    summary?.classList.remove('air-mode');
     const i=seaInfo();
-    $('#quoteSummaryLabel').textContent='KBRIDGE OCEAN FREIGHT';
+    $('#quoteSummaryLabel').textContent='KBRIDGE FCL OCEAN FREIGHT';
     $('#seaSummaryRoute').textContent=i?`부산 → ${i.p.label} · ${i.mode==='FCL20'?'20FT':'40FT'} × ${i.qty}`:'부산 → 도착 포트';
     $('#seaSummaryPrice').textContent=i?'USD '+i.price.toLocaleString():'USD 0';
-    $('#quoteSummaryNote').textContent='참고용 해상 기본운임입니다. 부대비용과 실제 선적 가능 여부는 화물 확인 후 안내됩니다.';
+    $('#quoteSummaryNote').textContent='참고용 FCL 해상 기본운임입니다. 부대비용과 실제 선적 가능 여부는 화물 확인 후 안내됩니다.';
     $('#summaryOriginLabel').textContent='출발지';
     $('#summaryOriginValue').textContent='부산';
     $('#summaryScheduleLabel').textContent='선적 예정';
@@ -2339,7 +2446,7 @@ function updateQuoteSummary(){
 }
 
 function setQuoteMode(mode){
-  quoteMode=mode==='air'?'air':'ocean';
+  quoteMode=['ocean','lcl','air'].includes(mode)?mode:'ocean';
   $$('[data-quote-mode]').forEach(btn=>{
     const active=btn.dataset.quoteMode===quoteMode;
     btn.classList.toggle('active',active);
@@ -2348,13 +2455,15 @@ function setQuoteMode(mode){
   $$('[data-quote-panel]').forEach(panel=>{
     panel.hidden=panel.dataset.quotePanel!==quoteMode;
   });
-  $('#seaSubmit').textContent=quoteMode==='air'?'항공 견적 접수하기':'해상 견적 접수하기';
+  $('#seaSubmit').textContent=quoteMode==='air'?'항공 견적 접수하기':quoteMode==='lcl'?'LCL 견적 접수하기':'FCL 견적 접수하기';
   updateQuoteSummary();
 }
 
 window.setQuoteMode=setQuoteMode;
 $$('[data-quote-mode]').forEach(btn=>btn.addEventListener('click',()=>setQuoteMode(btn.dataset.quoteMode)));
 ['seaContainer','seaQty','seaWhen'].forEach(id=>$('#'+id)?.addEventListener('change',updateQuoteSummary));
+['lclOrigin','lclDestination','lclCountry','lclPackage','lclPieces','lclWeight','lclLength','lclWidth','lclHeight','lclManualCbm','lclReadyDate','lclPickup','lclCustoms','lclDanger'].forEach(id=>$('#'+id)?.addEventListener('input',updateQuoteSummary));
+['lclOrigin','lclPackage','lclPickup','lclCustoms','lclDanger'].forEach(id=>$('#'+id)?.addEventListener('change',updateQuoteSummary));
 ['airOrigin','airDestination','airCountry','airCargoType','airWeight','airPieces','airDimensions','airReadyDate'].forEach(id=>$('#'+id)?.addEventListener('input',updateQuoteSummary));
 $('#estimateBtn').addEventListener('click',updateQuoteSummary);
 setQuoteMode('ocean');
@@ -2416,15 +2525,44 @@ function seaBody(){
 추가 문의:
 ${val('seaMemo')}`;
   }
-  const i=seaInfo();
-  return `[케이브릿지 해상운송 견적문의]
+  if(quoteMode==='lcl'){
+    const info=lclInfo();
+    return `[케이브릿지 LCL 소량화물 견적문의]
 
 회사명: ${val('seaCompany')}
 담당자명: ${val('seaName')}
 연락처: ${val('seaPhone')}
 회신 이메일: ${val('seaEmail')}
 
-운송 방식: 해상운송
+운송 방식: LCL 소량화물
+구간: ${info.route}
+도착 국가: ${val('lclCountry')}
+포장 형태: ${val('lclPackage')}
+포장 수량: ${val('lclPieces')}
+규격: ${val('lclLength')} x ${val('lclWidth')} x ${val('lclHeight')} CM
+CBM: ${info.cbm.toFixed(3)} CBM
+총 중량: ${val('lclWeight')} KG
+W/M 검토 기준: ${info.wm.toFixed(3)} RT
+출고 가능일: ${val('lclReadyDate')}
+픽업 필요 여부: ${val('lclPickup')}
+통관 필요 여부: ${val('lclCustoms')}
+위험물 여부: ${val('lclDanger')}
+
+품목: ${val('seaCargo')}
+중량·부피 정보: ${val('seaVolume')}
+
+추가 문의:
+${val('seaMemo')}`;
+  }
+  const i=seaInfo();
+  return `[케이브릿지 FCL 해상운송 견적문의]
+
+회사명: ${val('seaCompany')}
+담당자명: ${val('seaName')}
+연락처: ${val('seaPhone')}
+회신 이메일: ${val('seaEmail')}
+
+운송 방식: FCL 해상운송
 구간: 부산 → ${seaPod.selectedOptions[0]?.textContent||'-'}
 컨테이너: ${val('seaContainer')}
 수량: ${val('seaQty')}
@@ -2437,6 +2575,7 @@ ${val('seaMemo')}`;
 추가 문의:
 ${val('seaMemo')}`;
 }
+
 function expressBody(){return `[케이브릿지 해외특송 견적문의]
 
 회사명: ${val('company')}
@@ -2494,16 +2633,18 @@ $('#seaForm').addEventListener('submit',async e=>{
   const files=getSeaFiles();
   const i=seaInfo();
   const isAir=quoteMode==='air';
+  const isLcl=quoteMode==='lcl';
   const company=val('seaCompany');
+  const modeName=isAir?'항공운송':isLcl?'LCL 소량화물':'FCL 해상운송';
   const payload={
-    serviceType:isAir?'air':'ocean',
-    subject:`케이브릿지 ${isAir?'항공운송':'해상운송'} 견적문의_${company}`,
+    serviceType:isAir?'air':isLcl?'lcl':'ocean',
+    subject:`케이브릿지 ${modeName} 견적문의_${company}`,
     body:seaBody(),
     company,
     name:val('seaName'),
     phone:val('seaPhone'),
     email:val('seaEmail'),
-    transportMode:isAir?'항공운송':'해상운송',
+    transportMode:modeName,
     cargo:val('seaCargo'),
     volume:val('seaVolume'),
     memo:val('seaMemo'),
@@ -2522,6 +2663,25 @@ $('#seaForm').addEventListener('submit',async e=>{
       readyDate:val('airReadyDate'),
       route:airRouteText(),
       estimatedPrice:'항공 실견적 회신'
+    });
+  }else if(isLcl){
+    const lcl=lclInfo();
+    Object.assign(payload,{
+      route:lcl.route,
+      origin:val('lclOrigin'),
+      destinationCountry:val('lclCountry'),
+      destination:val('lclDestination'),
+      packageType:val('lclPackage'),
+      pieces:val('lclPieces'),
+      dimensions:`${val('lclLength')} x ${val('lclWidth')} x ${val('lclHeight')} CM`,
+      cbm:lcl.cbm.toFixed(3),
+      weightKg:val('lclWeight'),
+      wmRevenueTon:lcl.wm.toFixed(3),
+      readyDate:val('lclReadyDate'),
+      pickup:val('lclPickup'),
+      customs:val('lclCustoms'),
+      dangerousGoods:val('lclDanger'),
+      estimatedPrice:'LCL 실견적 회신'
     });
   }else{
     Object.assign(payload,{

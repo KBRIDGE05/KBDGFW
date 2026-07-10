@@ -5,7 +5,7 @@
     const p=new URLSearchParams(location.search);
     const query=p.get('quote');
     if(query) return query;
-    const hash=location.hash.match(/^#quote-(formal|sea|air|express)$/)?.[1];
+    const hash=location.hash.match(/^#quote-(formal|sea|lcl|air|express)$/)?.[1];
     if(hash) return hash;
     try{
       const stored=sessionStorage.getItem(STORAGE_KEY);
@@ -19,6 +19,7 @@
     const map={
       formal:{id:'formalDialog'},
       sea:{id:'seaDialog',mode:'ocean'},
+      lcl:{id:'seaDialog',mode:'lcl'},
       air:{id:'seaDialog',mode:'air'},
       express:{id:'expressDialog'}
     };
