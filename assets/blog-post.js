@@ -114,7 +114,7 @@
     return;
   }
 
-  fetch(`../assets/blog-posts.json?v=${Date.now()}`, { cache: 'no-store' })
+  fetch('../assets/blog-posts.json', { cache: 'no-cache' })
     .then(r => r.ok ? r.json() : Promise.reject(new Error('블로그 데이터를 불러오지 못했습니다.')))
     .then(posts => {
       const post = (Array.isArray(posts) ? posts : []).find(item =>
@@ -124,21 +124,28 @@
 
       document.title = `${post.title} - KBRIDGE`;
       titleEl.textContent = post.title;
-      metaEl.textContent = `${labels[post.category] || post.categoryLabel || '물류 정보'} · ${post.date || ''}`;
+      { const detailDate = post.date ? post.date.replace(/^(\d{4})-(\d{2})-(\d{2}).*$/, '$1.$2.$3') : ''; const detailLabel = labels[post.category] || post.categoryLabel || '물류 정보'; metaEl.textContent = detailDate ? `${detailLabel} · ${detailDate}` : detailLabel; }
       leadEl.textContent = post.summary || '';
 
       if (post.thumbnail) {
-        heroEl.src = '../' + post.thumbnail.replace(/^\/+/, '');
+        heroEl.src = /^https?:\/\//i.test(post.thumbnail) ? post.thumbnail : '../' + post.thumbnail.replace(/^\/+/, '');
         heroEl.alt = post.title;
+        heroEl.loading = 'eager';
+        heroEl.decoding = 'async';
+        heroEl.fetchPriority = 'high';
         heroEl.closest('.article-cover')?.removeAttribute('hidden');
       }
 
       const contentPath = post.content || `blog/posts/${post.slug}.md`;
-      return fetch(`../${contentPath.replace(/^\/+/, '')}?v=${Date.now()}`, { cache: 'no-store' });
+      return fetch(`../${contentPath.replace(/^\/+/, '')}`, { cache: 'no-cache' });
     })
     .then(r => r.ok ? r.text() : Promise.reject(new Error('본문 파일을 불러오지 못했습니다.')))
     .then(markdown => {
       bodyEl.innerHTML = markdownToHtml(markdown);
+      bodyEl.querySelectorAll('img').forEach((img, index) => {
+        img.loading = index === 0 ? 'eager' : 'lazy';
+        img.decoding = 'async';
+      });
       bodyEl.hidden = false;
       if (errorEl) errorEl.hidden = true;
     })

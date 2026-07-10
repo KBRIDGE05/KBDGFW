@@ -9,5 +9,7 @@ window.KBRIDGE_CONFIG = {
   "blogRepositoryName": "KBDGFW",
   "blogRepositoryBranch": "main",
   "blogPostsRoot": "blog/posts",
-  "blogFeedCacheMinutes": 2
+  "blogFeedCacheMinutes": 30,
+  "blogAllowRuntimeScan": true,
+  "blogManifestVersion": "20260710-blogperf"
 };
