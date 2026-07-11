@@ -1,4 +1,4 @@
-name: Update blog posts manifest
+name: Update blog, sitemap and RSS
 
 on:
   workflow_dispatch:
@@ -8,14 +8,22 @@ on:
     paths:
       - 'blog/posts/**'
       - 'scripts/build-blog-posts.mjs'
+      - 'scripts/blog-post-utils.mjs'
+      - 'scripts/build-sitemap.mjs'
+      - 'scripts/build-rss.mjs'
       - '.github/workflows/update-blog-posts.yml'
 
 permissions:
   contents: write
 
+concurrency:
+  group: kbridge-blog-seo-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build-blog-posts:
+  build-blog-seo:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,14 +38,33 @@ jobs:
       - name: Generate blog manifest
         run: node scripts/build-blog-posts.mjs
 
-      - name: Commit manifest changes
+      - name: Generate sitemap
+        run: node scripts/build-sitemap.mjs
+
+      - name: Generate RSS
+        run: node scripts/build-rss.mjs
+
+      - name: Validate generated files
+        shell: bash
         run: |
-          if git diff --quiet -- assets/blog-posts.json; then
-            echo "No blog manifest changes."
-            exit 0
-          fi
+          test -s assets/blog-posts.json
+          test -s sitemap.xml
+          test -s rss.xml
+          grep -q '<urlset' sitemap.xml
+          grep -q '<rss version="2.0"' rss.xml
+          grep -q '<channel>' rss.xml
+
+      - name: Commit generated files
+        shell: bash
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/blog-posts.json
-          git commit -m "Update blog posts manifest"
+          git add assets/blog-posts.json sitemap.xml rss.xml
+
+          if git diff --cached --quiet; then
+            echo "No generated file changes."
+            exit 0
+          fi
+
+          git commit -m "Auto-update blog manifest, sitemap and RSS"
           git push
