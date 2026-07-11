@@ -1,1 +1,49 @@
-[]
+[
+  {
+    "slug": "export",
+    "category": "glossary",
+    "categoryLabel": "물류 용어집",
+    "title": "수출 절차 및 서류 - 해외 수출 흐름 한눈에 정리",
+    "summary": "처음 수출을 준비하는 기업을 위해 거래 조건 확인부터 수출서류, 수출신고, 선적, 바이어 서류 전달까지 해외 수출 흐름을 한눈에 정리했습니다.",
+    "date": "2026-07-11",
+    "thumbnail": "blog/posts/glossary/assets/images/thumbnail_export_procedure_documents_1000.webp",
+    "keywords": [
+      "수출 절차",
+      "수출 서류",
+      "해외 수출",
+      "Commercial Invoice",
+      "Packing List",
+      "B/L",
+      "AWB",
+      "수출신고필증",
+      "케이브릿지",
+      "포워딩"
+    ],
+    "url": "blog/posts/glossary/export.html",
+    "published": true,
+    "source": "generated-html"
+  },
+  {
+    "slug": "pl",
+    "category": "info",
+    "categoryLabel": "물류 정보",
+    "title": "패킹리스트(Packing List) 작성방법 & 양식 다운로드",
+    "summary": "수출 시 필요한 패킹리스트(Packing List)의 의미, 작성 항목, 주의사항을 고객이 쉽게 이해할 수 있도록 정리했습니다. 케이브릿지 패킹리스트 양식 다운로드 포함.",
+    "date": "2026-07-10",
+    "thumbnail": "blog/posts/info/assets/images/thumbnail_packing_list_generated_1000.webp",
+    "keywords": [
+      "패킹리스트",
+      "Packing List",
+      "패킹리스트 양식",
+      "수출서류",
+      "수출 패킹리스트",
+      "Commercial Invoice",
+      "수출 포장명세서",
+      "케이브릿지",
+      "포워딩"
+    ],
+    "url": "blog/posts/info/pl.html",
+    "published": true,
+    "source": "generated-html"
+  }
+]
