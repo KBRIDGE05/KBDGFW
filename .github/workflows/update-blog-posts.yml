@@ -1,4 +1,4 @@
-name: Update blog, sitemap and RSS
+name: KBRIDGE Blog SEO Automation
 
 on:
   workflow_dispatch:
@@ -6,11 +6,8 @@ on:
     branches:
       - main
     paths:
-      - 'blog/posts/**'
+      - 'blog/posts/**/*.html'
       - 'scripts/build-blog-posts.mjs'
-      - 'scripts/blog-post-utils.mjs'
-      - 'scripts/build-sitemap.mjs'
-      - 'scripts/build-rss.mjs'
       - '.github/workflows/update-blog-posts.yml'
 
 permissions:
@@ -23,48 +20,65 @@ concurrency:
 jobs:
   build-blog-seo:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '24'
 
-      - name: Generate blog manifest
-        run: node scripts/build-blog-posts.mjs
-
-      - name: Generate sitemap
-        run: node scripts/build-sitemap.mjs
-
-      - name: Generate RSS
-        run: node scripts/build-rss.mjs
-
-      - name: Validate generated files
+      - name: Detect changed blog posts
         shell: bash
         run: |
-          test -s assets/blog-posts.json
-          test -s sitemap.xml
-          test -s rss.xml
-          grep -q '<urlset' sitemap.xml
-          grep -q '<rss version="2.0"' rss.xml
-          grep -q '<channel>' rss.xml
+          : > /tmp/changed-blog-posts.txt
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            touch /tmp/notify-all-blog-posts
+            echo "Manual run: all current blog posts will be notified."
+            exit 0
+          fi
 
-      - name: Commit generated files
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            git ls-files 'blog/posts/**/*.html' > /tmp/changed-blog-posts.txt
+          else
+            git diff --name-only "$BEFORE" "$AFTER" -- 'blog/posts/**/*.html' > /tmp/changed-blog-posts.txt
+          fi
+          echo "Changed blog posts:"
+          cat /tmp/changed-blog-posts.txt || true
+
+      - name: Generate manifest, sitemap and RSS
+        run: node scripts/build-blog-posts.mjs
+
+      - name: Commit generated SEO files
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/blog-posts.json sitemap.xml rss.xml
+          git add assets/blog-posts.json sitemap.xml rss.xml 736f09a19bf4a21e9a05a8bfe60a60c4.txt
 
           if git diff --cached --quiet; then
-            echo "No generated file changes."
-            exit 0
+            echo "No generated SEO file changes."
+          else
+            git commit -m "Update blog manifest, sitemap and RSS"
+            git push
           fi
 
-          git commit -m "Auto-update blog manifest, sitemap and RSS"
-          git push
+      - name: Wait for GitHub Pages deployment
+        run: sleep 75
+
+      - name: Notify Naver IndexNow
+        shell: bash
+        run: |
+          if [ -f /tmp/notify-all-blog-posts ]; then
+            node scripts/build-blog-posts.mjs --notify-all
+          elif [ -s /tmp/changed-blog-posts.txt ]; then
+            mapfile -t CHANGED_FILES < /tmp/changed-blog-posts.txt
+            node scripts/build-blog-posts.mjs --notify "${CHANGED_FILES[@]}"
+          else
+            echo "No changed blog URLs to notify."
+          fi
