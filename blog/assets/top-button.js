@@ -1,1 +1,0 @@
-(()=>{const topButton=document.getElementById("kbTopButton");if(!topButton)return;const updateTopButton=()=>topButton.classList.toggle("is-visible",window.scrollY>320);topButton.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"})),window.addEventListener("scroll",updateTopButton,{passive:!0}),updateTopButton()})();
