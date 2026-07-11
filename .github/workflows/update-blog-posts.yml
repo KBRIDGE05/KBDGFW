@@ -1,0 +1,43 @@
+name: Update blog posts manifest
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'blog/posts/**'
+      - 'scripts/build-blog-posts.mjs'
+      - '.github/workflows/update-blog-posts.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-blog-posts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate blog manifest
+        run: node scripts/build-blog-posts.mjs
+
+      - name: Commit manifest changes
+        run: |
+          if git diff --quiet -- assets/blog-posts.json; then
+            echo "No blog manifest changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/blog-posts.json
+          git commit -m "Update blog posts manifest"
+          git push
