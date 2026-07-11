@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KBRIDGE 케이브릿지 물류 블로그</title>
     <link>https://www.kbexpress.kr/blog/</link>
-    <description>수출입, 해상·항공운송, 통관, 물류 실무 정보를 제공하는 케이브릿지 공식 블로그입니다.</description>
+    <description>수출입, 해상·항공운송, 통관, 물류 서비스와 공급망 인사이트를 제공하는 케이브릿지 공식 블로그입니다.</description>
     <language>ko-KR</language>
+    <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
+    <generator>KBRIDGE Blog SEO Automation</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sat, 11 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2026 12:59:28 GMT</lastBuildDate>
     <ttl>60</ttl>
+
     <item>
-      <title>미국 연말 물량은 왜 벌써 움직였나? 중국발 조기 선적과 하반기 해운 대응</title>
+      <title><![CDATA[미국 연말 물량은 왜 벌써 움직였나? 중국발 조기 선적과 하반기 해운 대응]]></title>
       <link>https://www.kbexpress.kr/blog/posts/insight/cuimport.html</link>
       <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/insight/cuimport.html</guid>
       <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
-      <category>물류 인사이트</category>
-      <description><![CDATA[미국 소매업체들이 중국발 연말 재고 주문을 4~6주 앞당긴 배경과 선복 부족, 해상운임 상승, 3분기 물동량 전망을 케이브릿지 물류 인사이트로 정리했습니다.]]></description>
-      <content:encoded><![CDATA[<div class="article-body">
+      <category><![CDATA[물류 인사이트]]></category>
+      <description><![CDATA[<div class="article-body">
 <figure class="cover"><img src="https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_us_retail_early_orders_1000.webp" alt="미국 연말 쇼핑 시즌 중국발 조기 선적 물류 인사이트 썸네일" width="1000" height="1000" loading="eager" decoding="async" fetchpriority="high"></figure>
 <section class="quick-summary"><div class="summary-card"><p class="summary-title">핵심 요약</p><p>올해 미국 소매업체의 연말 재고 주문은 평년보다 <strong>약 4~6주 빨라졌고</strong>, 5월 미국의 중국발 수입은 전월 대비 <strong>약 35% 증가</strong>했습니다. 다만 이는 소비가 폭발적으로 늘었다기보다 관세 불확실성에 대응한 <strong>재고 선확보와 선사의 공급 조절</strong>이 겹친 결과에 가깝습니다. 따라서 단기 운임 상승과 함께 3분기 물동량 둔화 가능성까지 같이 봐야 합니다.</p></div></section>
 
@@ -42,17 +44,17 @@
 
 <div class="tags"><span class="tag">#미국연말쇼핑</span><span class="tag">#중국발조기선적</span><span class="tag">#프론트로딩</span><span class="tag">#미국수입물동량</span><span class="tag">#해상운임</span><span class="tag">#선복부족</span><span class="tag">#관세리스크</span><span class="tag">#미국향수출</span><span class="tag">#해운시황</span><span class="tag">#케이브릿지</span></div>
 <div class="refs"><h3>참고 자료</h3><p>· <a href="https://www.reuters.com/business/retail-consumer/us-retailers-frontload-china-orders-holiday-season-shipping-firms-say-2026-06-30/" target="_blank" rel="noopener">Reuters, “US retailers frontload China orders for holiday season, shipping firms say”, 2026-06-30</a></p><p>· <a href="https://www.tradlinx.com/blog/market-trend/%EB%AF%B8%EA%B5%AD-%EC%86%8C%EB%A7%A4%EC%97%85%EC%B2%B4%EB%93%A4-%EC%97%B0%EB%A7%90-%EC%87%BC%ED%95%91-%EC%8B%9C%EC%A6%8C-%EC%95%9E%EB%91%90%EA%B3%A0-%EC%A4%91%EA%B5%AD%EB%B0%9C-%EC%A3%BC%EB%AC%B8/" target="_blank" rel="noopener">트레드링스, “미국 소매업체들, 연말 쇼핑 시즌 앞두고 중국발 주문 대거 앞당겨”, 2026-07-02</a></p><p>· <a href="https://www.freightos.com/freight-industry-updates/" target="_blank" rel="noopener">Freightos, 2026년 해상운임·성수기 시장 업데이트</a></p><p>※ 본 글은 공개된 시장 자료를 바탕으로 작성한 일반 정보이며, 실제 운임·관세·선복은 견적 및 통관 시점에 반드시 재확인해야 합니다.</p></div>
-</div>]]></content:encoded>
-      <enclosure url="https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_us_retail_early_orders_1000.webp" type="image/webp" length="0" />
+</div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_us_retail_early_orders_1000.webp" type="image/webp" />
     </item>
+
     <item>
-      <title>수출 절차 및 서류 - 해외 수출 흐름 한눈에 정리</title>
+      <title><![CDATA[수출 절차 및 서류 - 해외 수출 흐름 한눈에 정리]]></title>
       <link>https://www.kbexpress.kr/blog/posts/glossary/export.html</link>
       <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/glossary/export.html</guid>
       <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
-      <category>물류 용어집</category>
-      <description><![CDATA[처음 수출을 준비하는 기업을 위해 거래 조건 확인부터 수출서류, 수출신고, 선적, 바이어 서류 전달까지 해외 수출 흐름을 한눈에 정리했습니다.]]></description>
-      <content:encoded><![CDATA[<div class="article-body">
+      <category><![CDATA[물류 용어집]]></category>
+      <description><![CDATA[<div class="article-body">
 
         <figure class="body-visual cover-thumbnail">
           <img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_export_procedure_documents_1000.webp" alt="KBRIDGE 물류 용어집 수출 절차 및 서류 썸네일" width="1000" height="1000">
@@ -77,18 +79,18 @@
         <section id="faq" class="section section-separated"><h2>자주 묻는 질문</h2><div class="faq"><div class="faq-item"><p class="faq-q">Q. 수출서류는 언제 준비해야 하나요?</p><p class="faq-a">바이어와 거래 조건이 확정되면 바로 준비하는 것이 좋습니다. 선적 직전에 작성하면 일정이 지연될 수 있습니다.</p></div><div class="faq-item"><p class="faq-q">Q. Invoice와 Packing List는 같은 서류인가요?</p><p class="faq-a">다릅니다. Invoice는 거래 금액과 품목 정보를 보여주고, Packing List는 포장 수량, 중량, 규격을 보여줍니다.</p></div><div class="faq-item"><p class="faq-q">Q. B/L과 AWB는 어떤 차이가 있나요?</p><p class="faq-a">B/L은 해상운송에서, AWB는 항공운송에서 발행되는 운송서류입니다.</p></div></div></section>
         <section class="cta" aria-label="케이브릿지 상담 안내"><h2>수출 절차가 처음이라면 케이브릿지와 먼저 확인하세요</h2><p>제품 정보와 목적지만 정리되어도 수출 흐름을 빠르게 검토할 수 있습니다. 해상, 항공, 해외특송, 샘플 발송, 기업 수출 물류까지 필요한 방식으로 상담해드립니다.</p><div class="action-row"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a><a class="btn sub" href="https://www.kbexpress.kr/index.html#quote">즉시견적</a><a class="btn sub" href="https://www.kbexpress.kr/blog/">블로그 목록</a></div></section>
         <div class="tags" aria-label="태그"><span class="tag">#수출절차</span><span class="tag">#수출서류</span><span class="tag">#수출신고</span><span class="tag">#CommercialInvoice</span><span class="tag">#PackingList</span><span class="tag">#BL</span><span class="tag">#AWB</span><span class="tag">#포워딩</span><span class="tag">#케이브릿지</span></div>
-        
-      </div>]]></content:encoded>
-      <enclosure url="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_export_procedure_documents_1000.webp" type="image/webp" length="0" />
+        <aside class="refs"><h3>참고 기준</h3><p>관세청 수출통관 안내: 수출신고 수리 물품의 30일 이내 적재 기준 및 적재기간 연장 안내</p><p>한국무역협회 선적서류 자료: Packing List, Commercial Invoice, B/L 등 수출·운송서류 설명</p></aside>
+      </div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_export_procedure_documents_1000.webp" type="image/webp" />
     </item>
+
     <item>
-      <title>태양광 패널 수입, 보관·소분·운송까지 한 번에</title>
+      <title><![CDATA[태양광 패널 수입, 보관·소분·운송까지 한 번에]]></title>
       <link>https://www.kbexpress.kr/blog/posts/service/solar.html</link>
       <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/service/solar.html</guid>
       <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
-      <category>물류 서비스</category>
-      <description><![CDATA[태양광 패널 수입 후 컨테이너 적출, 창고 보관, 주문·현장별 소분, FLASH DATA와 시리얼 기준 재고관리, 납품지 배차·운송까지 한 번에 제공하는 케이브릿지 물류 서비스입니다.]]></description>
-      <content:encoded><![CDATA[<div class="article-body">
+      <category><![CDATA[물류 서비스]]></category>
+      <description><![CDATA[<div class="article-body">
         <figure class="body-visual cover-thumbnail"><img src="https://www.kbexpress.kr/blog/posts/service/assets/images/thumbnail_solar_panel_logistics_1000.webp" alt="태양광 패널 수입 물류 서비스 썸네일" width="1000" height="1000" loading="eager" decoding="async" fetchpriority="high"></figure>
 
         <section class="quick-summary" aria-label="핵심 요약"><div class="summary-card"><p class="summary-title">핵심 요약</p><p>태양광 패널은 수입 후 바로 전량 출고되지 않는 경우가 많습니다. 케이브릿지는 <strong>컨테이너 적출 → 창고 보관 → 주문·현장별 소분 → FLASH DATA 재고관리 → 납품지 배차</strong>를 한 흐름으로 연결해, 여러 업체에 작업을 나눠 맡길 때 생기는 수량 착오와 출고 지연을 줄입니다.</p></div></section>
@@ -116,17 +118,17 @@
         <section class="cta" aria-label="케이브릿지 태양광 패널 물류 상담"><h2>태양광 패널 수입 물류, 구간별로 나누지 마세요</h2><p>컨테이너 적출, 창고 보관, 소분 작업, FLASH DATA 재고관리, 납품지 배차까지 한 번에 연결해드립니다. 입항 일정과 제품 수량을 알려주시면 필요한 작업 범위를 확인해 안내합니다.</p><div class="action-row"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a><a class="btn sub" href="https://www.kbexpress.kr/index.html#contact">서비스 상담</a><a class="btn sub" href="https://www.kbexpress.kr/blog/">블로그 목록</a></div></section>
 
         <div class="tags" aria-label="태그"><span class="tag">#태양광패널수입</span><span class="tag">#태양광모듈물류</span><span class="tag">#수입창고</span><span class="tag">#컨테이너적출</span><span class="tag">#태양광패널보관</span><span class="tag">#소분작업</span><span class="tag">#FLASHDATA</span><span class="tag">#재고관리</span><span class="tag">#국내운송</span><span class="tag">#케이브릿지</span></div>
-      </div>]]></content:encoded>
-      <enclosure url="https://www.kbexpress.kr/blog/posts/service/assets/images/thumbnail_solar_panel_logistics_1000.webp" type="image/webp" length="0" />
+      </div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/service/assets/images/thumbnail_solar_panel_logistics_1000.webp" type="image/webp" />
     </item>
+
     <item>
-      <title>패킹리스트(Packing List) 작성방법 &amp; 양식 다운로드</title>
+      <title><![CDATA[패킹리스트(Packing List) 작성방법 & 양식 다운로드]]></title>
       <link>https://www.kbexpress.kr/blog/posts/info/pl.html</link>
       <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/info/pl.html</guid>
       <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
-      <category>물류 정보</category>
-      <description><![CDATA[수출 시 필요한 패킹리스트(Packing List)의 의미, 작성 항목, 주의사항을 고객이 쉽게 이해할 수 있도록 정리했습니다. 케이브릿지 패킹리스트 양식 다운로드 포함.]]></description>
-      <content:encoded><![CDATA[<div class="article-body">
+      <category><![CDATA[물류 정보]]></category>
+      <description><![CDATA[<div class="article-body">
         <figure class="body-visual cover-thumbnail"><img src="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_packing_list_generated_1000.webp" alt="패킹리스트 Packing List 작성방법 및 양식 다운로드 썸네일" width="1000" height="1000"></figure>
         
         
@@ -147,9 +149,9 @@
         <section id="faq" class="section section-separated"><h2>자주 묻는 질문</h2><div class="faq"><div class="faq-item"><p class="faq-q">Q. Packing List와 Commercial Invoice는 같은 서류인가요?</p><p class="faq-a">아닙니다. Invoice는 거래 금액과 판매 조건을 보여주는 서류이고, Packing List는 포장 수량, 중량, 규격을 보여주는 서류입니다.</p></div><div class="faq-item"><p class="faq-q">Q. 패킹리스트는 꼭 영어로 작성해야 하나요?</p><p class="faq-a">해외 바이어, 운송사, 도착지 세관에서 확인해야 하므로 일반적으로 영어로 작성합니다. 품목명도 Invoice와 동일한 영어명으로 맞추는 것이 좋습니다.</p></div><div class="faq-item"><p class="faq-q">Q. 박스별 상세 내역도 꼭 적어야 하나요?</p><p class="faq-a">품목이 많거나 박스별 구성이 다른 경우에는 박스별 내역을 적는 것이 좋습니다. 단일 품목이고 박스 구성이 동일하면 전체 합계 중심으로 작성할 수 있습니다.</p></div><div class="faq-item"><p class="faq-q">Q. 양식의 Remarks에는 무엇을 쓰나요?</p><p class="faq-a">바이어 요청사항, 은행 정보, 특이 포장 조건, 기타 참고사항을 적을 수 있습니다. 필요하지 않으면 공란으로 둘 수 있습니다.</p></div></div></section>
         <section class="cta" aria-label="케이브릿지 상담 안내"><h2>수출서류가 헷갈린다면 케이브릿지와 먼저 확인하세요</h2><p>제품 정보, 포장 수량, 목적지만 정리되어도 수출서류와 운송 흐름을 빠르게 검토할 수 있습니다. 해상, 항공, 해외특송, 샘플 발송, 기업 수출 물류까지 필요한 방식으로 상담해드립니다.</p><div class="action-row"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a><a class="btn sub" href="https://www.kbexpress.kr/index.html#quote">즉시견적</a><a class="btn sub" href="https://www.kbexpress.kr/blog/posts/info/assets/files/kbridge_packing_list_template.xlsx" download>패킹리스트 양식</a></div></section>
         <div class="tags" aria-label="태그"><span class="tag">#패킹리스트</span><span class="tag">#PackingList</span><span class="tag">#패킹리스트양식</span><span class="tag">#수출서류</span><span class="tag">#포장명세서</span><span class="tag">#CommercialInvoice</span><span class="tag">#수출통관</span><span class="tag">#포워딩</span><span class="tag">#케이브릿지</span></div>
-        
-      </div>]]></content:encoded>
-      <enclosure url="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_packing_list_generated_1000.webp" type="image/webp" length="0" />
+        <aside class="refs"><h3>자료 기준</h3><p>본 글은 첨부된 PACKING LIST 양식 파일의 항목 구성을 기준으로 작성했습니다.</p><p>실제 제출 서류는 바이어 요청, 품목 특성, 운송 방식, 도착지 통관 기준에 따라 달라질 수 있습니다.</p></aside>
+      </div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_packing_list_generated_1000.webp" type="image/webp" />
     </item>
   </channel>
 </rss>
