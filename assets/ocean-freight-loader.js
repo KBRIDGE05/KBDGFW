@@ -2,6 +2,9 @@
   'use strict';
 
   const DATA_URL = 'data/ocean-freight.xlsx';
+  const DATA_VERSION = '20260711';
+  const XLSX_URL = 'https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js';
+  let xlsxPromise;
   const STORAGE_KEY = 'kbridgeOceanFreightPreviewV1';
   const ADMIN_PARAM = 'rateAdmin';
 
@@ -98,6 +101,20 @@
     return result;
   };
 
+  const ensureXlsx = () => {
+    if (window.XLSX) return Promise.resolve(window.XLSX);
+    if (xlsxPromise) return xlsxPromise;
+    xlsxPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = XLSX_URL;
+      script.async = true;
+      script.onload = () => window.XLSX ? resolve(window.XLSX) : reject(new Error('엑셀 처리 모듈 초기화에 실패했습니다.'));
+      script.onerror = () => reject(new Error('엑셀 처리 모듈을 불러오지 못했습니다.'));
+      document.head.appendChild(script);
+    });
+    return xlsxPromise;
+  };
+
   const workbookToData = arrayBuffer => {
     if (!window.XLSX) throw new Error('엑셀 처리 모듈을 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.');
     const workbook = window.XLSX.read(arrayBuffer, { type: 'array', cellDates: true });
@@ -124,7 +141,8 @@
 
   const loadPublishedFile = async () => {
     try {
-      const response = await fetch(`${DATA_URL}?v=${Date.now()}`, { cache: 'no-store' });
+      await ensureXlsx();
+      const response = await fetch(`${DATA_URL}?v=${DATA_VERSION}`, { cache: 'default' });
       if (!response.ok) throw new Error(`운임 파일 응답 오류 (${response.status})`);
       const result = workbookToData(await response.arrayBuffer());
       applyResult(result, 'published-xlsx');
@@ -137,6 +155,7 @@
   const importPreviewFile = async file => {
     if (!file) return;
     try {
+      await ensureXlsx();
       const result = workbookToData(await file.arrayBuffer());
       applyResult(result, 'admin-preview');
       try {
@@ -174,11 +193,18 @@
     await loadPublishedFile();
   };
 
+  const schedulePublishedLoad = () => {
+    const run = () => loadPublishedFile();
+    if (isAdminPreview()) return run();
+    if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 2200 });
+    else setTimeout(run, 800);
+  };
+
   const init = () => {
     if (isAdminPreview() && adminPanel) adminPanel.hidden = false;
     fileInput?.addEventListener('change', event => importPreviewFile(event.target.files?.[0]));
     resetButton?.addEventListener('click', resetPreview);
-    if (!loadSavedPreview()) loadPublishedFile();
+    if (!loadSavedPreview()) schedulePublishedLoad();
   };
 
   window.KBridgeOceanFreight = {

@@ -32,7 +32,7 @@
   };
 
   const inline = text => esc(text)
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => `<img src="${esc(safeUrl(url))}" alt="${esc(alt)}">`)
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => `<img src="${esc(safeUrl(url))}" alt="${esc(alt)}" loading="lazy" decoding="async">`)
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => `<a href="${esc(safeUrl(url))}" target="_blank" rel="noopener">${label}</a>`)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/`([^`]+)`/g, '<code>$1</code>');
