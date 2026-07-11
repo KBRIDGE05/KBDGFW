@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <rss version="2.0"
      xmlns:atom="http://www.w3.org/2005/Atom">
-=======
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
->>>>>>> 6853ba652815e4715bc8b34a912f3c36a8bace2f
   <channel>
     <title>KBRIDGE 케이브릿지 물류 블로그</title>
     <link>https://www.kbexpress.kr/blog/</link>
     <description>수출입, 해상·항공운송, 통관, 물류 실무 정보를 제공하는 케이브릿지 공식 블로그입니다.</description>
     <language>ko-KR</language>
-<<<<<<< HEAD
     <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
     <generator>KBRIDGE Blog RSS</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
@@ -37,78 +32,6 @@
       <description><![CDATA[
         처음 수출을 준비하는 기업이 먼저 확인해야 할 흐름을 거래 조건, 수출서류, 수출신고, 선적, 바이어 서류 전달 순서로 정리했습니다.
       ]]></description>
-=======
-    <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sat, 11 Jul 2026 00:00:00 GMT</lastBuildDate>
-    <ttl>60</ttl>
-    <item>
-      <title>수출 절차 및 서류 - 해외 수출 흐름 한눈에 정리</title>
-      <link>https://www.kbexpress.kr/blog/posts/glossary/export.html</link>
-      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/glossary/export.html</guid>
-      <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
-      <category>물류 용어집</category>
-      <description><![CDATA[처음 수출을 준비하는 기업을 위해 거래 조건 확인부터 수출서류, 수출신고, 선적, 바이어 서류 전달까지 해외 수출 흐름을 한눈에 정리했습니다.]]></description>
-      <content:encoded><![CDATA[<div class="article-body">
-
-        <figure class="body-visual cover-thumbnail">
-          <img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_export_procedure_documents_1000.webp" alt="KBRIDGE 물류 용어집 수출 절차 및 서류 썸네일" width="1000" height="1000">
-        </figure>
-
-
-        <section class="quick-summary" aria-label="핵심 요약">
-          <div class="summary-card"><p class="summary-title">핵심 요약</p><p>수출은 제품을 보내는 일만으로 끝나지 않습니다. <strong>바이어와 조건</strong>을 정하고, 서류를 맞춘 뒤, <strong>세관 신고와 선적</strong>을 거쳐 도착지 통관 서류를 전달하는 과정입니다.</p></div>
-        </section>
-
-        
-
-
-        <figure class="body-visual">
-          <img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_01_export_process_overview.webp" alt="수출 절차란 거래부터 선적까지 진행하는 해외 수출 흐름" width="1200" height="630">
-        </figure>
-        <section id="flow" class="section section-separated"><h2>수출 절차의 기본 흐름</h2><p>수출 절차는 해외 바이어와 거래가 확정된 뒤 제품 정보 확인, 서류 작성, 수출신고, 선적, 운송서류 발행, 바이어 서류 전달까지 이어지는 흐름입니다.</p><div class="flow-strip" aria-label="수출 기본 흐름"><div class="flow-chip"><span>01</span><strong>거래 조건</strong></div><div class="flow-chip"><span>02</span><strong>서류 작성</strong></div><div class="flow-chip"><span>03</span><strong>수출신고</strong></div><div class="flow-chip"><span>04</span><strong>선적·전달</strong></div></div></section>
-        <section id="steps" class="section section-separated"><h2>해외 수출 8단계</h2><div class="process-list"><div class="process-item"><span class="step-num">1</span><div><h3>거래 조건 확정</h3><p>품명, 수량, 단가, 결제 조건, 인코텀즈 조건, 목적지를 바이어와 확정합니다.</p></div></div><div class="process-item"><span class="step-num">2</span><div><h3>제품 정보 정리</h3><p>HS CODE, 원산지, 수량, 중량, CBM, 위험물 여부, 인증 필요 여부를 확인합니다.</p></div></div><div class="process-item"><span class="step-num">3</span><div><h3>운송 견적 확인</h3><p>출고지, 도착지, 화물 규격, 희망 출고일을 기준으로 해상·항공·특송 중 적합한 방식을 검토합니다.</p></div></div><div class="process-item"><span class="step-num">4</span><div><h3>수출서류 작성</h3><p><strong>Commercial <strong>Invoice와 Packing List</strong></strong>를 기본으로 작성하고, 필요 시 원산지증명서나 인증 자료를 준비합니다.</p></div></div><div class="process-item"><span class="step-num">5</span><div><h3>수출신고</h3><p>수출신고가 수리되면 수출신고필증이 발급됩니다. 수출신고 수리 물품은 원칙적으로 수리일로부터 <strong>30일 이내</strong>에 적재해야 합니다.</p></div></div><div class="process-item"><span class="step-num">6</span><div><h3>화물 입고 및 선적</h3><p>FCL은 컨테이너 작업 후 터미널 반입, LCL은 CFS 창고 입고, 항공은 항공 창고 입고 후 선적됩니다.</p></div></div><div class="process-item"><span class="step-num">7</span><div><h3>B/L 또는 AWB 발행</h3><p>해상운송은 B/L, 항공운송은 AWB가 발행됩니다. Consignee, Notify Party, 품명, 중량, 수량을 확인합니다.</p></div></div><div class="process-item"><span class="step-num">8</span><div><h3>바이어 서류 전달</h3><p>Invoice, Packing List, B/L 또는 AWB, 원산지증명서 등 도착지 통관에 필요한 서류를 전달합니다.</p></div></div></div><p class="note">식품, 화장품, 배터리, 화학제품, 중고 장비는 일반 화물처럼 보여도 추가 서류가 필요할 수 있습니다.</p></section>
-        <section id="documents" class="section section-separated"><h2>필수 수출서류</h2><p>수출서류는 화물 정보와 거래 내용을 세관, 운송사, 바이어에게 전달하기 위한 자료입니다.</p><figure class="body-visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_02_export_documents.webp" alt="수출 서류는 Invoice부터 B/L AWB까지 준비해야 하는 핵심 서류" width="1200" height="630"></figure><div class="doc-table-wrap"><table class="doc-table" aria-label="필수 수출서류 표"><thead><tr><th>서류</th><th>한눈에 보는 역할</th></tr></thead><tbody><tr><td><span class="mini-label">거래</span>Invoice</td><td>품명, 수량, 금액, 거래 조건을 확인하는 기본 서류입니다.</td></tr><tr><td><span class="mini-label">포장</span>Packing List</td><td>박스 수량, 중량, 규격, CBM 등 포장 정보를 확인합니다.</td></tr><tr><td><span class="mini-label">통관</span>수출신고필증</td><td>세관에 수출신고가 수리되었음을 확인하는 증빙입니다.</td></tr><tr><td><span class="mini-label">운송</span>B/L · AWB</td><td>해상 또는 항공 운송 정보와 선적 사실을 확인합니다.</td></tr><tr><td><span class="mini-label">원산지</span>C/O</td><td>원산지를 증명하며, FTA 적용이나 도착지 통관에서 필요할 수 있습니다.</td></tr></tbody></table></div></section>
-        <section id="check" class="section section-separated"><h2>수출 전 체크리스트</h2><p>수출 지연은 대부분 정보 불일치에서 시작됩니다. Invoice와 Packing List의 수량, 중량, 품명, 포장 정보가 맞는지 먼저 확인해야 합니다.</p><figure class="body-visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_03_export_precheck.webp" alt="수출 전 확인사항 HS CODE 인코텀즈 포장 정보 선적 일정 점검" width="1200" height="630"></figure><ul class="checklist"><li>바이어 회사명, 주소, 담당자, 연락처가 정확한지 확인합니다.</li><li>제품명, 용도, 재질, HS CODE를 정리합니다.</li><li>EXW, FOB, CFR, CIF, DAP 등 인코텀즈 조건을 확정합니다.</li><li>박스 수량, 중량, 사이즈, CBM을 실제 포장 기준으로 확인합니다.</li><li>위험물, 배터리, 화학제품, 식품, 화장품 등 추가 서류 대상인지 확인합니다.</li><li>선박 또는 항공 스케줄과 서류 마감, 화물 입고 마감을 확인합니다.</li></ul></section>
-        <section class="section section-separated"><h2>처음 수출이라면 무엇부터 준비해야 하나요?</h2><p>처음 수출을 진행하는 기업은 모든 서류를 한 번에 완성하려고 하기보다, <strong>제품 정보와 목적지</strong>를 먼저 정리하는 것이 좋습니다.</p><figure class="body-visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_04_export_support.webp" alt="처음 수출이라면 케이브릿지가 준비부터 선적까지 함께 확인" width="1200" height="630"></figure><ul class="checklist"><li>수출 품목과 수량</li><li>출고지 주소와 희망 출고일</li><li>도착 국가, 항구 또는 공항</li><li>박스 수량, 중량, 사이즈, CBM</li><li>바이어와 정한 인코텀즈 조건</li><li>해상, 항공, 특송 중 희망 운송 방식</li></ul></section>
-        <section id="faq" class="section section-separated"><h2>자주 묻는 질문</h2><div class="faq"><div class="faq-item"><p class="faq-q">Q. 수출서류는 언제 준비해야 하나요?</p><p class="faq-a">바이어와 거래 조건이 확정되면 바로 준비하는 것이 좋습니다. 선적 직전에 작성하면 일정이 지연될 수 있습니다.</p></div><div class="faq-item"><p class="faq-q">Q. Invoice와 Packing List는 같은 서류인가요?</p><p class="faq-a">다릅니다. Invoice는 거래 금액과 품목 정보를 보여주고, Packing List는 포장 수량, 중량, 규격을 보여줍니다.</p></div><div class="faq-item"><p class="faq-q">Q. B/L과 AWB는 어떤 차이가 있나요?</p><p class="faq-a">B/L은 해상운송에서, AWB는 항공운송에서 발행되는 운송서류입니다.</p></div></div></section>
-        <section class="cta" aria-label="케이브릿지 상담 안내"><h2>수출 절차가 처음이라면 케이브릿지와 먼저 확인하세요</h2><p>제품 정보와 목적지만 정리되어도 수출 흐름을 빠르게 검토할 수 있습니다. 해상, 항공, 해외특송, 샘플 발송, 기업 수출 물류까지 필요한 방식으로 상담해드립니다.</p><div class="action-row"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a><a class="btn sub" href="https://www.kbexpress.kr/index.html#quote">즉시견적</a><a class="btn sub" href="https://www.kbexpress.kr/blog/">블로그 목록</a></div></section>
-        <div class="tags" aria-label="태그"><span class="tag">#수출절차</span><span class="tag">#수출서류</span><span class="tag">#수출신고</span><span class="tag">#CommercialInvoice</span><span class="tag">#PackingList</span><span class="tag">#BL</span><span class="tag">#AWB</span><span class="tag">#포워딩</span><span class="tag">#케이브릿지</span></div>
-        
-      </div>]]></content:encoded>
-      <enclosure url="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_export_procedure_documents_1000.webp" type="image/webp" length="0" />
-    </item>
-    <item>
-      <title>패킹리스트(Packing List) 작성방법 &amp; 양식 다운로드</title>
-      <link>https://www.kbexpress.kr/blog/posts/info/pl.html</link>
-      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/info/pl.html</guid>
-      <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
-      <category>물류 정보</category>
-      <description><![CDATA[수출 시 필요한 패킹리스트(Packing List)의 의미, 작성 항목, 주의사항을 고객이 쉽게 이해할 수 있도록 정리했습니다. 케이브릿지 패킹리스트 양식 다운로드 포함.]]></description>
-      <content:encoded><![CDATA[<div class="article-body">
-        <figure class="body-visual cover-thumbnail"><img src="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_packing_list_generated_1000.webp" alt="패킹리스트 Packing List 작성방법 및 양식 다운로드 썸네일" width="1000" height="1000"></figure>
-        
-        
-        
-        <section class="quick-summary" aria-label="핵심 요약"><div class="summary-card"><p class="summary-title">핵심 요약</p><p><strong>Packing List</strong>는 화물이 어떻게 포장되어 있는지 보여주는 <strong>수출 포장명세서</strong>입니다. Invoice가 거래 금액과 품목을 설명한다면, Packing List는 박스 수량, 제품 수량, 순중량, 총중량, HS CODE 등 실제 포장 정보를 정리합니다.</p></div></section>
-        
-        
-        
-        
-        
-        
-        <section id="meaning" class="section section-separated"><h2>Packing List란?</h2><p>패킹리스트는 수출 화물의 포장 상태를 설명하는 서류입니다. 박스가 몇 개인지, 각 품목이 몇 개 들어 있는지, 순중량과 총중량은 얼마인지, 어떤 HS CODE로 신고할지 등을 정리합니다.</p><figure class="body-visual"><img src="https://www.kbexpress.kr/blog/posts/info/assets/images/visual_01_packing_list_generated_meaning.webp" alt="Packing List는 수출 포장명세서라는 설명 카드" width="1200" height="630"></figure><p>도착지에서는 이 서류를 보고 세관 통관, 창고 입고, 수량 검수, 운송서류 확인을 진행합니다. 따라서 패킹리스트의 숫자가 실제 화물과 다르면 통관 지연이나 추가 확인 요청이 발생할 수 있습니다.</p></section>
-        <section id="download" class="section section-separated"><h2>패킹리스트 양식 다운로드</h2><p>아래 파일은 첨부된 <strong>PACKING LIST 양식</strong>을 기준으로 포함한 다운로드용 엑셀 파일입니다. 수출자, 수입자, 선적 정보, 품목별 수량과 중량을 순서대로 입력할 수 있도록 구성되어 있습니다.</p><div class="download-box"><div><h3>KBRIDGE Packing List 양식</h3><p>파일 형식: XLSX · 구성: PACKING LIST 시트 · 사용 목적: 수출 포장명세서 작성</p></div><a class="download-btn" href="https://www.kbexpress.kr/blog/posts/info/assets/files/kbridge_packing_list_template.xlsx" download>양식 다운로드</a></div><figure class="body-visual"><img src="https://www.kbexpress.kr/blog/posts/info/assets/images/visual_02_packing_list_generated_template_guide.webp" alt="첨부 패킹리스트 양식 기준 작성 위치 안내 카드" width="1200" height="630"></figure><p class="note">양식은 회사·품목·거래 조건에 따라 수정해서 사용할 수 있습니다. 단, 바이어가 별도 양식을 지정한 경우에는 바이어 양식과 포워더 요청 항목을 함께 확인하는 것이 좋습니다.</p></section>
-        <section id="prepare" class="section section-separated"><h2>작성 전 준비사항</h2><p>패킹리스트를 작성하기 전에는 제품 정보와 포장 정보를 먼저 정리해야 합니다. 실제 포장이 끝난 뒤 최종 박스 수량과 중량이 달라지는 경우가 많기 때문에, 임의 숫자로 먼저 작성하지 않는 것이 좋습니다.</p><ul class="checklist"><li>수출자와 수입자의 정확한 회사명, 주소, 담당자 정보를 준비합니다.</li><li>제품명, HS CODE, 수량, 단위를 정리합니다.</li><li>박스 수량, 박스별 제품 수량, 총 PCS를 확인합니다.</li><li>제품 자체 무게인 <strong>Net Weight</strong>와 포장재 포함 무게인 <strong>Gross Weight</strong>를 구분합니다.</li><li>선적항, 도착지, 인코텀즈 조건, 결제 조건을 Invoice와 동일하게 맞춥니다.</li></ul></section>
-        <section id="header" class="section section-separated"><h2>상단 기본정보 작성법</h2><p>첨부 양식의 상단 영역은 거래 당사자와 운송 기본정보를 적는 부분입니다. 이 정보는 Invoice, B/L 또는 AWB와 함께 확인되므로 서로 다르게 작성하지 않도록 주의해야 합니다.</p><figure class="body-visual"><img src="https://www.kbexpress.kr/blog/posts/info/assets/images/visual_03_packing_list_generated_header_fields.webp" alt="패킹리스트 상단 기본정보 작성법 카드" width="1200" height="630"></figure><div class="field-grid"><div class="field-card"><strong>EXPORTER</strong><span>수출자 회사명, 주소, 연락처를 입력합니다.</span></div><div class="field-card"><strong>CONSIGNEE</strong><span>수입자 또는 실제 화물을 받는 수하인 정보를 입력합니다.</span></div><div class="field-card"><strong>NOTIFY</strong><span>도착지에서 통지를 받을 회사를 입력합니다. 동일하면 SAME AS CONSIGNEE로 적을 수 있습니다.</span></div><div class="field-card"><strong>Packing No. / Date</strong><span>서류 관리번호와 작성일을 입력합니다. Invoice No.와 연동해 관리하면 편합니다.</span></div><div class="field-card"><strong>Departure / Vessel · Flight</strong><span>출항 예정일과 선박명 또는 항공편명을 입력합니다. 확정 전이면 예정 기준으로 작성합니다.</span></div><div class="field-card"><strong>Terms of delivery and payment</strong><span>FOB, CIF, DAP 등 인코텀즈 조건과 결제 조건을 Invoice와 동일하게 입력합니다.</span></div></div></section>
-        <section id="items" class="section section-separated"><h2>품목·수량·중량 작성법</h2><p>패킹리스트에서 가장 중요한 부분은 하단 품목표입니다. 실제 포장 기준으로 품목명, HS CODE, 수량, 중량을 작성해야 하며, 전체 합계가 맞는지 확인해야 합니다.</p><figure class="body-visual"><img src="https://www.kbexpress.kr/blog/posts/info/assets/images/visual_04_packing_list_generated_item_table.webp" alt="패킹리스트 품목 수량 중량 작성법 카드" width="1200" height="630"></figure><div class="doc-table-wrap"><table class="doc-table" aria-label="패킹리스트 항목별 작성 방법"><thead><tr><th>항목</th><th>작성 방법</th></tr></thead><tbody><tr><td><span class="mini-label">No.</span>순번</td><td>품목이 여러 개인 경우 1, 2, 3 순서로 구분합니다.</td></tr><tr><td><span class="mini-label">Description</span>제품명</td><td>Invoice와 같은 제품명을 사용합니다. 모델명이나 규격이 중요하면 함께 적습니다.</td></tr><tr><td><span class="mini-label">HS CODE</span>품목분류</td><td>수출신고와 목적지 통관 기준이 되므로 품목에 맞는 코드를 확인합니다.</td></tr><tr><td><span class="mini-label">Quantity</span>수량</td><td>PCS, SET, EA 등 단위를 명확하게 적습니다.</td></tr><tr><td><span class="mini-label">Net Weight</span>순중량</td><td>제품 자체의 무게입니다. 박스, 팔레트, 완충재 무게는 제외합니다.</td></tr><tr><td><span class="mini-label">Gross Weight</span>총중량</td><td>제품과 포장재를 모두 포함한 실제 운송 무게입니다.</td></tr><tr><td><span class="mini-label">BOXES</span>박스 수량</td><td>하단 합계 영역에 전체 박스 수량을 입력합니다.</td></tr></tbody></table></div></section>
-        <section id="mistakes" class="section section-separated"><h2>자주 틀리는 부분</h2><p>패킹리스트는 보기에는 단순한 서류지만, 실제 현장에서는 작은 숫자 차이로 확인 요청이 자주 발생합니다. 아래 항목은 작성 후 반드시 한 번 더 확인해야 합니다.</p><figure class="body-visual"><img src="https://www.kbexpress.kr/blog/posts/info/assets/images/visual_05_packing_list_generated_check_download.webp" alt="패킹리스트 작성 후 체크포인트와 양식 다운로드 안내 카드" width="1200" height="630"></figure><ul class="checklist"><li><strong>Net Weight와 Gross Weight를 반대로 쓰는 경우</strong>가 많습니다. Net은 제품 자체 무게, Gross는 포장재 포함 무게입니다.</li><li><strong>PCS와 BOXES를 혼동</strong>하지 않아야 합니다. PCS는 제품 수량, BOXES는 포장 박스 수량입니다.</li><li>Invoice와 Packing List의 품명, 수량, HS CODE가 다르면 수출신고나 도착지 통관에서 확인 요청이 발생할 수 있습니다.</li><li>실제 포장 전 예상 중량으로 작성한 뒤 최종 중량을 수정하지 않으면 B/L 또는 AWB 정보와 불일치할 수 있습니다.</li><li>식품, 화장품, 배터리, 화학제품, 중고 장비는 품목에 따라 추가 서류가 필요할 수 있습니다.</li></ul></section>
-        <section id="faq" class="section section-separated"><h2>자주 묻는 질문</h2><div class="faq"><div class="faq-item"><p class="faq-q">Q. Packing List와 Commercial Invoice는 같은 서류인가요?</p><p class="faq-a">아닙니다. Invoice는 거래 금액과 판매 조건을 보여주는 서류이고, Packing List는 포장 수량, 중량, 규격을 보여주는 서류입니다.</p></div><div class="faq-item"><p class="faq-q">Q. 패킹리스트는 꼭 영어로 작성해야 하나요?</p><p class="faq-a">해외 바이어, 운송사, 도착지 세관에서 확인해야 하므로 일반적으로 영어로 작성합니다. 품목명도 Invoice와 동일한 영어명으로 맞추는 것이 좋습니다.</p></div><div class="faq-item"><p class="faq-q">Q. 박스별 상세 내역도 꼭 적어야 하나요?</p><p class="faq-a">품목이 많거나 박스별 구성이 다른 경우에는 박스별 내역을 적는 것이 좋습니다. 단일 품목이고 박스 구성이 동일하면 전체 합계 중심으로 작성할 수 있습니다.</p></div><div class="faq-item"><p class="faq-q">Q. 양식의 Remarks에는 무엇을 쓰나요?</p><p class="faq-a">바이어 요청사항, 은행 정보, 특이 포장 조건, 기타 참고사항을 적을 수 있습니다. 필요하지 않으면 공란으로 둘 수 있습니다.</p></div></div></section>
-        <section class="cta" aria-label="케이브릿지 상담 안내"><h2>수출서류가 헷갈린다면 케이브릿지와 먼저 확인하세요</h2><p>제품 정보, 포장 수량, 목적지만 정리되어도 수출서류와 운송 흐름을 빠르게 검토할 수 있습니다. 해상, 항공, 해외특송, 샘플 발송, 기업 수출 물류까지 필요한 방식으로 상담해드립니다.</p><div class="action-row"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a><a class="btn sub" href="https://www.kbexpress.kr/index.html#quote">즉시견적</a><a class="btn sub" href="https://www.kbexpress.kr/blog/posts/info/assets/files/kbridge_packing_list_template.xlsx" download>패킹리스트 양식</a></div></section>
-        <div class="tags" aria-label="태그"><span class="tag">#패킹리스트</span><span class="tag">#PackingList</span><span class="tag">#패킹리스트양식</span><span class="tag">#수출서류</span><span class="tag">#포장명세서</span><span class="tag">#CommercialInvoice</span><span class="tag">#수출통관</span><span class="tag">#포워딩</span><span class="tag">#케이브릿지</span></div>
-        
-      </div>]]></content:encoded>
-      <enclosure url="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_packing_list_generated_1000.webp" type="image/webp" length="0" />
->>>>>>> 6853ba652815e4715bc8b34a912f3c36a8bace2f
     </item>
   </channel>
 </rss>
