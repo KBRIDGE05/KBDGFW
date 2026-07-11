@@ -1,2 +1,389 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><title>관부가세 계산기 - KBRIDGE 물류도구</title><meta content="해외직구·특송 수입 시 예상 관세와 부가세를 현재 웹페이지에서 간편하게 계산합니다." name="description"/><link href="https://www.kbexpress.kr/duty-calculator.html" rel="canonical"/><meta content="website" property="og:type"/><meta content="케이브릿지" property="og:site_name"/><meta content="ko_KR" property="og:locale"/><meta content="관부가세 계산기 - KBRIDGE 물류도구" property="og:title"/><meta content="해외직구·기업수입의 예상 관세, 부가세와 수입비용을 빠르게 계산해 보세요." property="og:description"/><meta content="https://www.kbexpress.kr/duty-calculator.html" property="og:url"/><meta content="https://www.kbexpress.kr/assets/og/og-duty.png" property="og:image"/><meta content="https://www.kbexpress.kr/assets/og/og-duty.png" property="og:image:secure_url"/><meta content="image/png" property="og:image:type"/><meta content="1254" property="og:image:width"/><meta content="1254" property="og:image:height"/><meta content="관부가세 계산기 - KBRIDGE 물류도구" property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="관부가세 계산기 - KBRIDGE 물류도구" name="twitter:title"/><meta content="해외직구·기업수입의 예상 관세, 부가세와 수입비용을 빠르게 계산해 보세요." name="twitter:description"/><meta content="https://www.kbexpress.kr/assets/og/og-duty.png" name="twitter:image"/><meta content="#16284a" name="theme-color"/><link href="kbridge-icon.svg?v=20260708-1" rel="icon" type="image/svg+xml"/><link href="assets/kbridge-icon-32.png?v=20260708-1" rel="icon" sizes="32x32" type="image/png"/><link href="favicon.ico?v=20260708-1" rel="shortcut icon"/><link href="site.webmanifest?v=20260708-1" rel="manifest"/><link href="assets/tool-shell-common.css?v=20260711" rel="stylesheet"/><style>.duty-rate-control{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}.duty-rate-control .nt-btn{min-width:132px;white-space:nowrap}.duty-rate-status{min-height:19px;display:flex;align-items:center;gap:7px;font-weight:700!important}.duty-rate-status::before{content:"";width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#8a98ac}.duty-rate-status.is-loading{color:#355d9d!important}.duty-rate-status.is-loading::before{background:#2b5cdb;box-shadow:0 0 0 4px rgba(43,92,219,.12)}.duty-rate-status.is-success{color:#087f5b!important}.duty-rate-status.is-success::before{background:#12a475;box-shadow:0 0 0 4px rgba(18,164,117,.12)}.duty-rate-status.is-cache{color:#9a6700!important}.duty-rate-status.is-cache::before{background:#e6a100;box-shadow:0 0 0 4px rgba(230,161,0,.12)}.duty-rate-status.is-error{color:#b42318!important}.duty-rate-status.is-error::before{background:#d92d20;box-shadow:0 0 0 4px rgba(217,45,32,.12)}#dRate.rate-applied{border-color:#7bc9ad!important;background:#f3fffa!important;box-shadow:0 0 0 3px rgba(18,164,117,.08)!important}@media(max-width:640px){.duty-rate-control{grid-template-columns:1fr}.duty-rate-control .nt-btn{width:100%;min-width:0}}</style><link href="assets/tool-structure.css?v=20260711" rel="stylesheet"/><link href="assets/tool-finish.css?v=20260711" rel="stylesheet"/><link href="assets/kbridge-icon-180.png?v=20260708-1" rel="apple-touch-icon"><link href="assets/mobile-performance.css?v=20260711-final" rel="stylesheet"/></head><body><a class="skip-link" href="#main-content">본문 바로가기</a><header class="header" id="top"><div class="container header-inner"><a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><nav aria-label="주요 메뉴" class="nav"><a href="index.html#services">즉시견적</a><a href="quote-comparison.html">견적서 비교</a><a href="warehouse-inquiry.html">창고 문의</a><div class="nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button><div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small><a href="domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a></div></div><div class="nav-dropdown tools-nav-dropdown active"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button><div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a class="active" href="duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="customs-exchange-rate.html">관세청 고시환율<span>수입신고 기준환율 확인</span></a><a href="cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div></div><div class="nav-dropdown blog-nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button><div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a href="blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div></div></nav><a class="header-btn" href="index.html#services">견적 받기</a><button aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn"><span></span></button></div></header><div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav"><a href="index.html#services">즉시견적 <span>→</span></a><a href="quote-comparison.html">견적서 비교 <span>→</span></a><a href="warehouse-inquiry.html">창고 문의 <span>→</span></a><div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span><a href="domestic.html">국내운송 안내 <span>→</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div><div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="lcl-storage.html">LCL 창고료 <span>→</span></a><a href="dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="terminal-info.html">터미널 정보 조회 <span>→</span></a></div><div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="blog/index.html?category=info">물류 정보 <span>→</span></a><a href="blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div></div><main id="main-content"><section class="hero"><div class="container hero-inner"><span class="eyebrow">DUTY &amp; TAX CALCULATOR</span><h1>관부가세 계산기</h1><p>해외직구·특송과 기업 수입의 예상 관세·부가세를 페이지 안에서 바로 계산합니다.</p><div class="badges"><span>해외직구</span><span>관세·부가세</span><span>간편 예상</span></div></div></section><section class="section"><div class="container"><div class="tool-shell"><div class="shell-head"><div><small>KBRIDGE LOGISTICS TOOL</small><strong>관부가세 계산기</strong></div><span class="status">페이지 내 바로 조회</span></div><div class="kb-source-strip"><div class="kb-source-main"><span aria-hidden="true" class="kb-source-dot"></span><div class="kb-source-copy"><strong>관세청 기준과 실시간 시장환율을 구분해 표시</strong><span>면세 한도는 관세청 기준, 자동 환율은 시장환율입니다. 신고 전 관세청 주간 과세환율과 품목별 세율을 다시 확인합니다.</span></div></div><div class="kb-source-links"><span class="kb-source-date">기준일 2026.07.07</span><a href="https://www.customs.go.kr/kcs/ad/tax/BuyTaxCalculation.do" rel="noopener" target="_blank">관세청 예상세액</a><a href="https://unipass.customs.go.kr/clip/index.do" rel="noopener" target="_blank">관세율표</a></div></div><div class="shell-body"><div class="nt-wrap" id="dutyTool"><section class="nt-card"><div class="nt-tool-head"><div><h2>수입 유형과 금액 입력</h2><p>해외직구·특송과 기업 수입을 구분해 예상 관세와 부가세를 계산합니다.</p></div><div class="nt-seg" id="dutyMode"><button class="active" data-mode="personal" type="button">해외직구·특송</button><button data-mode="business" type="button">기업 수입</button></div></div><div class="nt-form"><div class="nt-field duty-origin"><label for="dOrigin">발송국가</label><select id="dOrigin"><option value="US">미국</option><option value="CN">중국</option><option value="JP">일본</option><option value="EU">유럽연합</option><option value="GB">영국</option><option value="AU">호주</option><option value="CA">캐나다</option><option value="OTHER">기타 국가</option></select><span class="nt-help" id="dThresholdHelp">자가사용 목록통관: 미국발 USD 200, 그 외 USD 150 기준 참고</span></div><div class="nt-field duty-incoterm business-only nt-hidden"><label for="dIncoterm">거래조건</label><select id="dIncoterm"><option value="FOB">FOB · 운송료/보험료 별도</option><option value="CIF">CIF · 운송료/보험료 포함</option><option value="DAP">DAP · 도착지 운송 포함</option><option value="EXW">EXW · 공장출고</option><option value="CFR">CFR · 보험료 별도</option></select></div><div class="nt-field duty-currency"><label for="dCurrency">통화</label><select id="dCurrency"><option value="USD">USD · 미국 달러</option><option value="CNY">CNY · 중국 위안</option><option value="JPY">JPY · 일본 엔</option><option value="EUR">EUR · 유로</option><option value="GBP">GBP · 영국 파운드</option><option value="AUD">AUD · 호주 달러</option><option value="CAD">CAD · 캐나다 달러</option><option value="HKD">HKD · 홍콩 달러</option><option value="SGD">SGD · 싱가포르 달러</option><option value="CHF">CHF · 스위스 프랑</option><option value="TWD">TWD · 대만 달러</option><option value="THB">THB · 태국 바트</option><option value="VND">VND · 베트남 동</option></select></div><div class="nt-field duty-rate"><label for="dRate">적용 환율 (1 통화 = KRW)</label><div class="duty-rate-control"><input id="dRate" min="0" placeholder="자동 조회 또는 직접 입력" step="0.01" type="number" value=""/><button class="nt-btn ghost" id="dFetchRate" type="button">자동환율 새로고침</button></div><span aria-live="polite" class="nt-help duty-rate-status" id="dRateStatus">통화를 선택하면 시장환율이 자동 적용됩니다.</span></div><div class="nt-field"><label for="dPrice">물품가격 / 인보이스 금액</label><input id="dPrice" min="0" placeholder="예: 500" step="0.01" type="number"/></div><div class="nt-field"><label for="dFreight">배송비·국제운송료</label><input id="dFreight" min="0" step="0.01" type="number" value="0"/></div><div class="nt-field"><label for="dInsurance">보험료</label><input id="dInsurance" min="0" step="0.01" type="number" value="0"/></div><div class="nt-field full nt-hs-duty"><label for="dHsQuery">HS CODE 후보 검색</label><div class="nt-inline-search"><input id="dHsQuery" placeholder="품명·재질·용도 입력 (예: 스테인리스 볼트, 리튬이온 배터리)" type="search"/><button class="nt-btn ghost" id="dHsSearch" type="button">후보 검색</button></div><span class="nt-help">후보를 선택하면 HS CODE와 참고 관세율을 계산기에 반영합니다. 최종 10단위 HSK와 실제 세율은 공식 확인이 필요합니다.</span><div class="nt-hs-selected nt-hidden" id="dHsSelected"></div><div class="nt-hs-candidates nt-hidden" id="dHsCandidates"></div><a class="nt-link" href="hs-code-search.html" id="dHsLink">전체 HS CODE 조회 →</a></div><div class="nt-field"><label for="dPreset">품목 선택</label><select id="dPreset"><option value="8">일반 전자제품 · 8%</option><option value="0">스마트폰·노트북 · 0%</option><option value="13">의류·신발 · 13%</option><option value="8">화장품·생활용품 · 8%</option><option value="20">가방·가죽제품 · 20%</option><option value="custom">직접 입력</option></select></div><div class="nt-field"><label for="dDutyRate">관세율</label><input id="dDutyRate" min="0" step="0.1" type="number" value="8"/><span class="nt-help">선택한 HS 후보가 없거나 세율 정보가 없는 경우 직접 입력하세요.</span></div><div class="nt-field business-only nt-hidden"><label for="dFtaMode">CO/FTA 적용 여부</label><select id="dFtaMode"><option value="none">미적용 · 기본 관세율</option><option value="free">면세 · 협정세율 0%</option><option value="reduced">감세 · 협정세율 직접 입력</option></select><span class="nt-help">원산지증명서와 협정 요건 충족 여부를 함께 확인하세요.</span></div><div class="nt-field business-only nt-hidden"><label for="dFtaRate">협정·감세 관세율</label><input disabled="" id="dFtaRate" min="0" step="0.1" type="number" value="0"/><span class="nt-help">감세 선택 시 실제 협정세율을 입력하세요.</span></div><div class="nt-field"><label for="dVatRate">부가세율</label><input id="dVatRate" min="0" step="0.1" type="number" value="10"/></div></div><div class="nt-actions"><button class="nt-btn" id="dCalc" type="button">예상 관부가세 계산</button><button class="nt-btn secondary" id="dReset" type="button">초기화</button></div></section><section class="nt-card"><div class="nt-tool-head"><div><h2>계산 결과</h2><p id="dResultNote">입력값을 기준으로 예상 세액을 표시합니다.</p></div><span class="nt-badge" id="dStatus">계산 대기</span></div><div class="nt-results"><div class="nt-result"><span>과세가격</span><strong id="dCustoms">0원</strong><em>CIF 환산 기준</em></div><div class="nt-result"><span>예상 관세</span><strong id="dDutyOut">0원</strong><em id="dDutyLabel">관세율 8%</em></div><div class="nt-result"><span>CO/FTA 관세 절감액</span><strong id="dFtaSave">0원</strong><em>기본세율 대비</em></div><div class="nt-result"><span>예상 부가세</span><strong id="dVatOut">0원</strong><em>과세가격 + 관세 기준</em></div><div class="nt-result"><span>총 예상 세금</span><strong id="dTotalTax">0원</strong><em>관세 + 부가세</em></div></div><div class="nt-results"><div class="nt-result"><span>물품·운송 환산금액</span><strong id="dBaseKrw">0원</strong></div><div class="nt-result"><span>세금 포함 예상금액</span><strong id="dGrand">0원</strong></div><div class="nt-result"><span>면세 기준</span><strong id="dThreshold">-</strong></div><div class="nt-result"><span>적용 유형</span><strong id="dModeOut">해외직구</strong></div></div></section><div class="nt-notice"><strong>참고:</strong> 품목별 개별소비세·주세·교육세, 간이세율, 목록통관 제외품목, FTA 원산지 요건과 세관 과세환율은 별도 적용될 수 있습니다. 실제 신고 전 관세사 또는 관세청 기준을 확인하세요.</div></div><div class="nt-card related-tools-card kb-related-tools-unified"><h2>다른 물류도구</h2><p>필요한 계산기와 조회 페이지로 바로 이동할 수 있습니다.</p><div class="tool-nav"><a href="duty-calculator.html">관부가세 계산기</a><a href="customs-exchange-rate.html">관세청 고시환율</a><a href="cbm-calculator.html">CBM 계산기</a><a href="holiday-calendar.html">전세계 공휴일 조회</a><a href="hs-code-search.html">HS CODE 조회</a><a href="incoterms-guide.html">인코텀즈 가이드</a><a href="lcl-storage.html">LCL 창고료</a><a href="dangerous-goods.html">위험물 정보 조회</a><a href="vessel-location.html">실시간 선박 위치</a><a href="terminal-info.html">터미널 정보 조회</a></div></div></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div><a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><p class="footer-desc">케이브릿지가 운영하는 수출입 디지털 포워딩·해외특송·국내운송 서비스입니다.</p></div><div><h4>서비스</h4><ul><li><a href="index.html#services">즉시견적</a></li><li><a href="domestic.html">국내운송</a></li><li><a href="safe-rate.html">안전운임 조회</a></li><li><a href="vehicle-spec.html">차량 제원 조회</a></li></ul></div><div><h4>물류도구</h4><ul><li><a href="convenience.html">전체 도구</a></li><li><a href="duty-calculator.html">관부가세 계산기</a></li><li><a href="customs-exchange-rate.html">관세청 고시환율</a></li><li><a href="cbm-calculator.html">CBM 계산기</a></li><li><a href="lcl-storage.html">LCL 창고료</a></li></ul></div><div><h4>문의</h4><ul><li><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a></li><li><a href="https://pf.kakao.com/_baLgb/chat">카카오톡 문의</a></li><li>평일 09:00–18:00</li></ul></div></div><div class="footer-bottom"><div>케이브릿지 주식회사 · 대표이사 김형진 · 사업자등록번호 548-88-02435<br/>부산광역시 동구 조방로17 5층 501호</div><div>© 2026 KBRIDGE CO., LTD.</div></div></div></footer><button class="top-btn" id="topBtn" type="button">TOP</button><script defer="" src="assets/tools-common.js"></script><script defer="" src="assets/hs-data.js"></script><script defer="" src="assets/hs-search-core.js"></script><script defer="" src="assets/duty-tool.js"></script><script defer="" src="assets/enterprise-motion.js?v=20260708-1"></script></body></html>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><title>관부가세 계산기 - KBRIDGE 물류도구</title><meta content="해외직구·특송 수입 시 예상 관세와 부가세를 현재 웹페이지에서 간편하게 계산합니다." name="description"/><link href="https://www.kbexpress.kr/duty-calculator.html" rel="canonical"/><meta content="website" property="og:type"/><meta content="케이브릿지" property="og:site_name"/><meta content="ko_KR" property="og:locale"/><meta content="관부가세 계산기 - KBRIDGE 물류도구" property="og:title"/><meta content="해외직구·기업수입의 예상 관세, 부가세와 수입비용을 빠르게 계산해 보세요." property="og:description"/><meta content="https://www.kbexpress.kr/duty-calculator.html" property="og:url"/><meta content="https://www.kbexpress.kr/assets/og/og-duty.png" property="og:image"/><meta content="https://www.kbexpress.kr/assets/og/og-duty.png" property="og:image:secure_url"/><meta content="image/png" property="og:image:type"/><meta content="1254" property="og:image:width"/><meta content="1254" property="og:image:height"/><meta content="관부가세 계산기 - KBRIDGE 물류도구" property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="관부가세 계산기 - KBRIDGE 물류도구" name="twitter:title"/><meta content="해외직구·기업수입의 예상 관세, 부가세와 수입비용을 빠르게 계산해 보세요." name="twitter:description"/><meta content="https://www.kbexpress.kr/assets/og/og-duty.png" name="twitter:image"/><meta content="#16284a" name="theme-color"/><link href="kbridge-icon.svg?v=20260708-1" rel="icon" type="image/svg+xml"/><link href="assets/kbridge-icon-32.png?v=20260708-1" rel="icon" sizes="32x32" type="image/png"/><link href="favicon.ico?v=20260708-1" rel="shortcut icon"/><link href="site.webmanifest?v=20260708-1" rel="manifest"/><link href="https://script.google.com" rel="preconnect"/><link href="//script.google.com" rel="dns-prefetch"/><link href="assets/tool-shell-common.css?v=20260711" rel="stylesheet"/><style>.duty-rate-control{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}.duty-rate-control .nt-btn{min-width:132px;white-space:nowrap}.duty-rate-status{min-height:19px;display:flex;align-items:center;gap:7px;font-weight:700!important}.duty-rate-status::before{content:"";width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#8a98ac}.duty-rate-status.is-loading{color:#355d9d!important}.duty-rate-status.is-loading::before{background:#2b5cdb;box-shadow:0 0 0 4px rgba(43,92,219,.12)}.duty-rate-status.is-success{color:#087f5b!important}.duty-rate-status.is-success::before{background:#12a475;box-shadow:0 0 0 4px rgba(18,164,117,.12)}.duty-rate-status.is-cache{color:#9a6700!important}.duty-rate-status.is-cache::before{background:#e6a100;box-shadow:0 0 0 4px rgba(230,161,0,.12)}.duty-rate-status.is-error{color:#b42318!important}.duty-rate-status.is-error::before{background:#d92d20;box-shadow:0 0 0 4px rgba(217,45,32,.12)}#dRate.rate-applied{border-color:#7bc9ad!important;background:#f3fffa!important;box-shadow:0 0 0 3px rgba(18,164,117,.08)!important}@media(max-width:640px){.duty-rate-control{grid-template-columns:1fr}.duty-rate-control .nt-btn{width:100%;min-width:0}}</style><link href="assets/tool-structure.css?v=20260711" rel="stylesheet"/><link href="assets/tool-finish.css?v=20260711" rel="stylesheet"/><link href="assets/kbridge-icon-180.png?v=20260708-1" rel="apple-touch-icon"><link href="assets/mobile-performance.css?v=20260711-final" rel="stylesheet"/></head><body><a class="skip-link" href="#main-content">본문 바로가기</a><header class="header" id="top"><div class="container header-inner"><a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><nav aria-label="주요 메뉴" class="nav"><a href="index.html#services">즉시견적</a><a href="quote-comparison.html">견적서 비교</a><a href="warehouse-inquiry.html">창고 문의</a><div class="nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button><div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small><a href="domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a></div></div><div class="nav-dropdown tools-nav-dropdown active"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button><div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a class="active" href="duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="customs-exchange-rate.html">관세청 고시환율<span>수입신고 기준환율 확인</span></a><a href="cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div></div><div class="nav-dropdown blog-nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button><div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a href="blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div></div></nav><a class="header-btn" href="index.html#services">견적 받기</a><button aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn"><span></span></button></div></header><div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav"><a href="index.html#services">즉시견적 <span>→</span></a><a href="quote-comparison.html">견적서 비교 <span>→</span></a><a href="warehouse-inquiry.html">창고 문의 <span>→</span></a><div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span><a href="domestic.html">국내운송 안내 <span>→</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div><div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="lcl-storage.html">LCL 창고료 <span>→</span></a><a href="dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="terminal-info.html">터미널 정보 조회 <span>→</span></a></div><div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="blog/index.html?category=info">물류 정보 <span>→</span></a><a href="blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div></div><main id="main-content"><section class="hero"><div class="container hero-inner"><span class="eyebrow">DUTY &amp; TAX CALCULATOR</span><h1>관부가세 계산기</h1><p>해외직구·특송과 기업 수입의 예상 관세·부가세를 페이지 안에서 바로 계산합니다.</p><div class="badges"><span>해외직구</span><span>관세·부가세</span><span>간편 예상</span></div></div></section><section class="section"><div class="container"><div class="tool-shell"><div class="shell-head"><div><small>KBRIDGE LOGISTICS TOOL</small><strong>관부가세 계산기</strong></div><span class="status">페이지 내 바로 조회</span></div><div class="kb-source-strip"><div class="kb-source-main"><span aria-hidden="true" class="kb-source-dot"></span><div class="kb-source-copy"><strong>검색 기준일의 관세청 주간 수입환율 자동 적용</strong><span>선택한 기준일이 포함된 주간의 관세청 수입환율을 조회해 관부가세 계산기에 자동 반영합니다.</span></div></div><div class="kb-source-links"><span class="kb-source-date" id="dRatePeriodLabel">적용기간 자동 조회</span><a href="https://www.customs.go.kr/kcs/ad/tax/BuyTaxCalculation.do" rel="noopener" target="_blank">관세청 예상세액</a><a href="https://unipass.customs.go.kr/clip/index.do" rel="noopener" target="_blank">관세율표</a></div></div><div class="shell-body"><div class="nt-wrap" id="dutyTool"><section class="nt-card"><div class="nt-tool-head"><div><h2>수입 유형과 금액 입력</h2><p>해외직구·특송과 기업 수입을 구분해 예상 관세와 부가세를 계산합니다.</p></div><div class="nt-seg" id="dutyMode"><button class="active" data-mode="personal" type="button">해외직구·특송</button><button data-mode="business" type="button">기업 수입</button></div></div><div class="nt-form"><div class="nt-field duty-origin"><label for="dOrigin">발송국가</label><select id="dOrigin"><option value="US">미국</option><option value="CN">중국</option><option value="JP">일본</option><option value="EU">유럽연합</option><option value="GB">영국</option><option value="AU">호주</option><option value="CA">캐나다</option><option value="OTHER">기타 국가</option></select><span class="nt-help" id="dThresholdHelp">자가사용 목록통관: 미국발 USD 200, 그 외 USD 150 기준 참고</span></div><div class="nt-field duty-incoterm business-only nt-hidden"><label for="dIncoterm">거래조건</label><select id="dIncoterm"><option value="FOB">FOB · 운송료/보험료 별도</option><option value="CIF">CIF · 운송료/보험료 포함</option><option value="DAP">DAP · 도착지 운송 포함</option><option value="EXW">EXW · 공장출고</option><option value="CFR">CFR · 보험료 별도</option></select></div><div class="nt-field duty-rate-date"><label for="dRateDate">관세청 환율 기준일</label><input id="dRateDate" type="date"/><span class="nt-help">선택한 날짜가 포함된 일요일~토요일의 관세청 수입환율을 적용합니다.</span></div><div class="nt-field duty-currency"><label for="dCurrency">통화</label><select id="dCurrency"><option value="USD">USD · 미국 달러</option><option value="CNY">CNY · 중국 위안</option><option value="JPY">JPY · 일본 엔</option><option value="EUR">EUR · 유로</option><option value="GBP">GBP · 영국 파운드</option><option value="AUD">AUD · 호주 달러</option><option value="CAD">CAD · 캐나다 달러</option><option value="HKD">HKD · 홍콩 달러</option><option value="SGD">SGD · 싱가포르 달러</option><option value="CHF">CHF · 스위스 프랑</option><option value="TWD">TWD · 대만 달러</option><option value="THB">THB · 태국 바트</option><option value="VND">VND · 베트남 동</option></select></div><div class="nt-field duty-rate"><label for="dRate">적용 환율 (1 통화 = KRW)</label><div class="duty-rate-control"><input id="dRate" min="0" placeholder="자동 조회 또는 직접 입력" step="0.01" type="number" value=""/><button class="nt-btn ghost" id="dFetchRate" type="button">관세청 환율 조회</button></div><span aria-live="polite" class="nt-help duty-rate-status" id="dRateStatus">기준일을 선택하면 관세청 주간 수입환율이 자동 적용됩니다.</span></div><div class="nt-field"><label for="dPrice">물품가격 / 인보이스 금액</label><input id="dPrice" min="0" placeholder="예: 500" step="0.01" type="number"/></div><div class="nt-field"><label for="dFreight">배송비·국제운송료</label><input id="dFreight" min="0" step="0.01" type="number" value="0"/></div><div class="nt-field"><label for="dInsurance">보험료</label><input id="dInsurance" min="0" step="0.01" type="number" value="0"/></div><div class="nt-field full nt-hs-duty"><label for="dHsQuery">HS CODE 후보 검색</label><div class="nt-inline-search"><input id="dHsQuery" placeholder="품명·재질·용도 입력 (예: 스테인리스 볼트, 리튬이온 배터리)" type="search"/><button class="nt-btn ghost" id="dHsSearch" type="button">후보 검색</button></div><span class="nt-help">후보를 선택하면 HS CODE와 참고 관세율을 계산기에 반영합니다. 최종 10단위 HSK와 실제 세율은 공식 확인이 필요합니다.</span><div class="nt-hs-selected nt-hidden" id="dHsSelected"></div><div class="nt-hs-candidates nt-hidden" id="dHsCandidates"></div><a class="nt-link" href="hs-code-search.html" id="dHsLink">전체 HS CODE 조회 →</a></div><div class="nt-field"><label for="dPreset">품목 선택</label><select id="dPreset"><option value="8">일반 전자제품 · 8%</option><option value="0">스마트폰·노트북 · 0%</option><option value="13">의류·신발 · 13%</option><option value="8">화장품·생활용품 · 8%</option><option value="20">가방·가죽제품 · 20%</option><option value="custom">직접 입력</option></select></div><div class="nt-field"><label for="dDutyRate">관세율</label><input id="dDutyRate" min="0" step="0.1" type="number" value="8"/><span class="nt-help">선택한 HS 후보가 없거나 세율 정보가 없는 경우 직접 입력하세요.</span></div><div class="nt-field business-only nt-hidden"><label for="dFtaMode">CO/FTA 적용 여부</label><select id="dFtaMode"><option value="none">미적용 · 기본 관세율</option><option value="free">면세 · 협정세율 0%</option><option value="reduced">감세 · 협정세율 직접 입력</option></select><span class="nt-help">원산지증명서와 협정 요건 충족 여부를 함께 확인하세요.</span></div><div class="nt-field business-only nt-hidden"><label for="dFtaRate">협정·감세 관세율</label><input disabled="" id="dFtaRate" min="0" step="0.1" type="number" value="0"/><span class="nt-help">감세 선택 시 실제 협정세율을 입력하세요.</span></div><div class="nt-field"><label for="dVatRate">부가세율</label><input id="dVatRate" min="0" step="0.1" type="number" value="10"/></div></div><div class="nt-actions"><button class="nt-btn" id="dCalc" type="button">예상 관부가세 계산</button><button class="nt-btn secondary" id="dReset" type="button">초기화</button></div></section><section class="nt-card"><div class="nt-tool-head"><div><h2>계산 결과</h2><p id="dResultNote">입력값을 기준으로 예상 세액을 표시합니다.</p></div><span class="nt-badge" id="dStatus">계산 대기</span></div><div class="nt-results"><div class="nt-result"><span>과세가격</span><strong id="dCustoms">0원</strong><em>CIF 환산 기준</em></div><div class="nt-result"><span>예상 관세</span><strong id="dDutyOut">0원</strong><em id="dDutyLabel">관세율 8%</em></div><div class="nt-result"><span>CO/FTA 관세 절감액</span><strong id="dFtaSave">0원</strong><em>기본세율 대비</em></div><div class="nt-result"><span>예상 부가세</span><strong id="dVatOut">0원</strong><em>과세가격 + 관세 기준</em></div><div class="nt-result"><span>총 예상 세금</span><strong id="dTotalTax">0원</strong><em>관세 + 부가세</em></div></div><div class="nt-results"><div class="nt-result"><span>물품·운송 환산금액</span><strong id="dBaseKrw">0원</strong></div><div class="nt-result"><span>세금 포함 예상금액</span><strong id="dGrand">0원</strong></div><div class="nt-result"><span>면세 기준</span><strong id="dThreshold">-</strong></div><div class="nt-result"><span>적용 유형</span><strong id="dModeOut">해외직구</strong></div></div></section><div class="nt-notice"><strong>참고:</strong> 품목별 개별소비세·주세·교육세, 간이세율, 목록통관 제외품목, FTA 원산지 요건과 세관 과세환율은 별도 적용될 수 있습니다. 실제 신고 전 관세사 또는 관세청 기준을 확인하세요.</div></div><div class="nt-card related-tools-card kb-related-tools-unified"><h2>다른 물류도구</h2><p>필요한 계산기와 조회 페이지로 바로 이동할 수 있습니다.</p><div class="tool-nav"><a href="duty-calculator.html">관부가세 계산기</a><a href="customs-exchange-rate.html">관세청 고시환율</a><a href="cbm-calculator.html">CBM 계산기</a><a href="holiday-calendar.html">전세계 공휴일 조회</a><a href="hs-code-search.html">HS CODE 조회</a><a href="incoterms-guide.html">인코텀즈 가이드</a><a href="lcl-storage.html">LCL 창고료</a><a href="dangerous-goods.html">위험물 정보 조회</a><a href="vessel-location.html">실시간 선박 위치</a><a href="terminal-info.html">터미널 정보 조회</a></div></div></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div><a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><p class="footer-desc">케이브릿지가 운영하는 수출입 디지털 포워딩·해외특송·국내운송 서비스입니다.</p></div><div><h4>서비스</h4><ul><li><a href="index.html#services">즉시견적</a></li><li><a href="domestic.html">국내운송</a></li><li><a href="safe-rate.html">안전운임 조회</a></li><li><a href="vehicle-spec.html">차량 제원 조회</a></li></ul></div><div><h4>물류도구</h4><ul><li><a href="convenience.html">전체 도구</a></li><li><a href="duty-calculator.html">관부가세 계산기</a></li><li><a href="customs-exchange-rate.html">관세청 고시환율</a></li><li><a href="cbm-calculator.html">CBM 계산기</a></li><li><a href="lcl-storage.html">LCL 창고료</a></li></ul></div><div><h4>문의</h4><ul><li><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a></li><li><a href="https://pf.kakao.com/_baLgb/chat">카카오톡 문의</a></li><li>평일 09:00–18:00</li></ul></div></div><div class="footer-bottom"><div>케이브릿지 주식회사 · 대표이사 김형진 · 사업자등록번호 548-88-02435<br/>부산광역시 동구 조방로17 5층 501호</div><div>© 2026 KBRIDGE CO., LTD.</div></div></div></footer><button class="top-btn" id="topBtn" type="button">TOP</button><script defer="" src="assets/tools-common.js"></script><script defer="" src="assets/hs-data.js"></script><script defer="" src="assets/hs-search-core.js"></script><script>
+window.addEventListener("DOMContentLoaded",function(){
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let mode="personal";
+let selectedHs=null;
+let currentUsdKrw=0;
+let rateRequestId=0;
+let manualRateOverride=false;
+
+const CUSTOMS_API="https://script.google.com/macros/s/AKfycbz88Z9znTLG0BcjDSipTrSSH1dxOikNO8g_37_aljVthvg4QR2n5vnv0dlYHA-mbfmY/exec";
+const RATE_CACHE_PREFIX="kbDutyCustomsRateCacheV1:";
+const RATE_CACHE_MAX_AGE=12*60*60*1000;
+const money=n=>new Intl.NumberFormat("ko-KR",{maximumFractionDigits:0}).format(Math.round(n||0))+"원";
+const engine=window.KB_HS_SEARCH;
+const ORIGIN_CURRENCY={US:"USD",CN:"CNY",JP:"JPY",EU:"EUR",GB:"GBP",AU:"AUD",CA:"CAD"};
+const HUNDRED_UNIT_CURRENCIES=new Set(["JPY","VND","IDR"]);
+
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function parseRate(v){const n=Number(String(v??"").replace(/,/g,""));return Number.isFinite(n)&&n>0?n:0}
+function num(id){return Math.max(0,Number($(id)?.value)||0)}
+function pad(n){return String(n).padStart(2,"0")}
+function todayKst(){
+  const p=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"})
+    .formatToParts(new Date());
+  const m=Object.fromEntries(p.map(x=>[x.type,x.value]));
+  return `${m.year}-${m.month}-${m.day}`;
+}
+function parseIso(value){
+  const m=String(value||"").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if(!m)return null;
+  const d=new Date(Date.UTC(Number(m[1]),Number(m[2])-1,Number(m[3])));
+  return Number.isNaN(d.getTime())?null:d;
+}
+function isoDate(d){return `${d.getUTCFullYear()}-${pad(d.getUTCMonth()+1)}-${pad(d.getUTCDate())}`}
+function displayDate(d){return `${d.getUTCFullYear()}.${pad(d.getUTCMonth()+1)}.${pad(d.getUTCDate())}`}
+function weekInfo(value){
+  const base=parseIso(value)||parseIso(todayKst());
+  const start=new Date(base),end=new Date(base);
+  start.setUTCDate(base.getUTCDate()-base.getUTCDay());
+  end.setUTCDate(start.getUTCDate()+6);
+  return {start:isoDate(start),end:isoDate(end),label:`${displayDate(start)} ~ ${displayDate(end)}`};
+}
+function setMode(m){
+  mode=m;
+  const root=$("#dutyTool");
+  root?.classList.toggle("business-mode",m==="business");
+  $$("#dutyMode button").forEach(b=>b.classList.toggle("active",b.dataset.mode===m));
+  $$(".business-only").forEach(x=>x.classList.toggle("nt-hidden",m!=="business"));
+  $("#dModeOut").textContent=m==="business"?"기업 수입":"해외직구";
+  updateThreshold();
+}
+function updateThreshold(){
+  const o=$("#dOrigin").value,t=o==="US"?200:150;
+  $("#dThresholdHelp").textContent=mode==="personal"
+    ?`${o==="US"?"미국발":"미국 외 국가"} 면세 기준 USD ${t} 참고`
+    :"기업 수입은 원칙적으로 면세 한도를 적용하지 않습니다.";
+}
+function setRateStatus(type,text){
+  const st=$("#dRateStatus");
+  if(!st)return;
+  st.classList.remove("is-loading","is-success","is-cache","is-error");
+  if(type)st.classList.add(`is-${type}`);
+  st.textContent=text;
+}
+function formatRate(v,c){
+  if(!Number.isFinite(v)||v<=0)return "";
+  if(c==="VND"||v<1)return v.toFixed(4);
+  return v.toFixed(2);
+}
+function cacheKey(date){return RATE_CACHE_PREFIX+weekInfo(date).start}
+function readPayloadCache(date){
+  try{
+    const row=JSON.parse(localStorage.getItem(cacheKey(date))||"null");
+    if(!row||!row.savedAt||!row.data)return null;
+    return {...row,age:Date.now()-Number(row.savedAt)};
+  }catch{return null}
+}
+function writePayloadCache(date,data){
+  try{localStorage.setItem(cacheKey(date),JSON.stringify({savedAt:Date.now(),data}))}catch{}
+}
+function jsonp(url,timeout=6500){
+  return new Promise((resolve,reject)=>{
+    const cb="kbDutyFxCallback_"+Date.now()+"_"+Math.floor(Math.random()*10000);
+    const script=document.createElement("script");
+    let done=false;
+    const timer=setTimeout(()=>finish(new Error("timeout")),timeout);
+    function cleanup(){
+      clearTimeout(timer);
+      try{delete window[cb]}catch{}
+      script.parentNode&&script.parentNode.removeChild(script);
+    }
+    function finish(err,data){
+      if(done)return;
+      done=true;
+      cleanup();
+      err?reject(err):resolve(data);
+    }
+    window[cb]=data=>finish(null,data);
+    script.onerror=()=>finish(new Error("script load failed"));
+    script.src=url+(url.includes("?")?"&":"?")+"callback="+encodeURIComponent(cb)+"&t="+Date.now();
+    document.body.appendChild(script);
+  });
+}
+async function fetchJson(url,timeout=5500){
+  const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),timeout);
+  try{
+    const res=await fetch(url,{cache:"no-store",signal:ctrl.signal,headers:{Accept:"application/json"}});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  }finally{clearTimeout(timer)}
+}
+async function fetchCustomsPayload(date){
+  const url=`${CUSTOMS_API}?action=fxrate&date=${encodeURIComponent(date)}`;
+  try{return await jsonp(url)}
+  catch{return await fetchJson(url)}
+}
+function normalizeRows(data){
+  const raw=Array.isArray(data)?data:Array.isArray(data?.items)?data.items:Array.isArray(data?.data)?data.data:[];
+  const map=new Map();
+  raw.forEach(r=>{
+    const code=String(r.currencyCode||r.currSgn||r.currency||r.curr||"").trim().toUpperCase();
+    if(!code)return;
+    const row=map.get(code)||{
+      currencyCode:code,
+      importRate:null,
+      exportRate:null,
+      unit:r.unit||r.currencyUnit||r.mtryUt||r.mtryUtNm||""
+    };
+    if(r.importRate!=null)row.importRate=r.importRate;
+    if(r.exportRate!=null)row.exportRate=r.exportRate;
+    const type=String(r.weekFxrtTpcd||r.imexTp||r.imexTpcd||"").trim();
+    if(row.importRate==null&&(type==="2"||/수입/.test(type)))row.importRate=r.rate??r.fxrt;
+    if(row.exportRate==null&&(type==="1"||/수출/.test(type)))row.exportRate=r.rate??r.fxrt;
+    if(row.importRate==null&&row.exportRate==null&&(r.rate!=null||r.fxrt!=null))row.importRate=r.rate??r.fxrt;
+    if(!row.unit)row.unit=r.unit||r.currencyUnit||r.mtryUt||r.mtryUtNm||"";
+    map.set(code,row);
+  });
+  return map;
+}
+function unitDivisor(row,currency){
+  const explicit=Number(String(row?.unit??"").replace(/[^0-9.]/g,""));
+  if(Number.isFinite(explicit)&&explicit>1)return explicit;
+  const text=String(row?.unit||"");
+  if(/100/.test(text))return 100;
+  return HUNDRED_UNIT_CURRENCIES.has(currency)?100:1;
+}
+function customsRate(rows,currency){
+  const row=rows.get(currency);
+  if(!row)throw new Error(`${currency} 환율 없음`);
+  const raw=parseRate(row.importRate);
+  if(!raw)throw new Error(`${currency} 수입환율 없음`);
+  const divisor=unitDivisor(row,currency);
+  return {rateKrw:raw/divisor,rawRate:raw,unit:divisor};
+}
+function applyCustomsRates(payload,date,kind="success"){
+  if(!payload||payload.ok===false)throw new Error(payload?.message||"empty response");
+  const rows=normalizeRows(payload);
+  const currency=$("#dCurrency").value;
+  const selected=customsRate(rows,currency);
+  const usd=customsRate(rows,"USD");
+  const input=$("#dRate");
+  input.value=formatRate(selected.rateKrw,currency);
+  input.classList.add("rate-applied");
+  currentUsdKrw=usd.rateKrw;
+  const week=weekInfo(date);
+  const period=$("#dRatePeriodLabel");
+  if(period)period.textContent=`적용기간 ${week.label}`;
+  if(kind==="cache"){
+    setRateStatus("cache",`저장된 관세청 수입환율 적용 · ${week.label} · 1 ${currency} = ${input.value} KRW`);
+  }else{
+    setRateStatus("success",`관세청 수입환율 적용 완료 · ${week.label} · 1 ${currency} = ${input.value} KRW`);
+  }
+  calc();
+}
+async function fetchRate(options={}){
+  const date=$("#dRateDate")?.value||todayKst();
+  if($("#dRateDate"))$("#dRateDate").value=date;
+  const currency=$("#dCurrency").value;
+  const requestId=++rateRequestId;
+  manualRateOverride=false;
+  const button=$("#dFetchRate");
+  const cached=readPayloadCache(date);
+  const freshCache=cached&&cached.age<=RATE_CACHE_MAX_AGE;
+  if(freshCache){
+    try{applyCustomsRates(cached.data,date,"cache")}catch{}
+  }else{
+    setRateStatus("loading",`${date} 기준 관세청 ${currency} 수입환율을 조회하는 중입니다.`);
+  }
+  if(button){button.disabled=true;button.textContent="조회 중..."}
+  try{
+    const payload=await fetchCustomsPayload(date);
+    if(requestId!==rateRequestId||manualRateOverride)return;
+    if(!payload||payload.ok===false)throw new Error(payload?.message||"조회 결과 없음");
+    writePayloadCache(date,payload);
+    applyCustomsRates(payload,date,"success");
+  }catch(err){
+    if(requestId!==rateRequestId)return;
+    if(cached&&!manualRateOverride){
+      try{
+        applyCustomsRates(cached.data,date,"cache");
+        setRateStatus("cache",`온라인 조회 실패 · 저장된 관세청 환율 적용 · ${weekInfo(date).label}`);
+      }catch{
+        currentUsdKrw=0;
+        $("#dRate").value="";
+        $("#dRate").classList.remove("rate-applied");
+        setRateStatus("error","해당 기준일의 관세청 USD 수입환율을 불러오지 못했습니다.");
+      }
+    }else if(!manualRateOverride){
+      currentUsdKrw=0;
+      $("#dRate").value="";
+      $("#dRate").classList.remove("rate-applied");
+      setRateStatus("error","해당 기준일의 관세청 수입환율을 불러오지 못했습니다. 잠시 후 다시 조회해 주세요.");
+    }
+  }finally{
+    if(requestId===rateRequestId&&button){
+      button.disabled=false;
+      button.textContent="관세청 환율 조회";
+    }
+  }
+}
+function originChanged(){
+  updateThreshold();
+  const mapped=ORIGIN_CURRENCY[$("#dOrigin").value];
+  if(mapped&&$("#dCurrency").value!==mapped)$("#dCurrency").value=mapped;
+  $("#dRate").value="";
+  $("#dRate").classList.remove("rate-applied");
+  currentUsdKrw=0;
+  fetchRate();
+}
+function currencyChanged(){
+  manualRateOverride=false;
+  currentUsdKrw=0;
+  $("#dRate").value="";
+  $("#dRate").classList.remove("rate-applied");
+  fetchRate();
+}
+function ftaChanged(){
+  const m=$("#dFtaMode")?.value||"none";
+  if($("#dFtaRate"))$("#dFtaRate").disabled=m!=="reduced";
+}
+function calc(){
+  const rate=num("#dRate"),price=num("#dPrice"),freight=num("#dFreight"),insurance=num("#dInsurance"),inc=$("#dIncoterm").value;
+  let customsForeign;
+  if(mode==="business"){
+    customsForeign=inc==="CIF"?price:inc==="DAP"?price+insurance:inc==="CFR"?price+insurance:price+freight+insurance;
+  }else customsForeign=price+freight+insurance;
+  const customs=customsForeign*rate,baseRate=num("#dDutyRate"),ftaMode=mode==="business"?($("#dFtaMode")?.value||"none"):"none";
+  let dr=baseRate;
+  if(ftaMode==="free")dr=0;
+  if(ftaMode==="reduced")dr=num("#dFtaRate");
+  const vr=num("#dVatRate"),thresholdUsd=$("#dOrigin").value==="US"?200:150;
+  const usdKrw=currentUsdKrw||($("#dCurrency").value==="USD"?rate:0);
+  const itemValueKrw=price*rate;
+  const exempt=mode==="personal"&&rate>0&&usdKrw>0&&itemValueKrw<=thresholdUsd*usdKrw;
+  const baseDuty=exempt?0:customs*baseRate/100,duty=exempt?0:customs*dr/100;
+  const saving=Math.max(0,baseDuty-duty),vat=exempt?0:(customs+duty)*vr/100,tax=duty+vat,base=(price+freight+insurance)*rate;
+  $("#dCustoms").textContent=money(customs);
+  $("#dDutyOut").textContent=money(duty);
+  $("#dFtaSave").textContent=money(saving);
+  $("#dVatOut").textContent=money(vat);
+  $("#dTotalTax").textContent=money(tax);
+  $("#dBaseKrw").textContent=money(base);
+  $("#dGrand").textContent=money(base+tax);
+  $("#dDutyLabel").textContent=`${selectedHs?`HS ${selectedHs.code} · `:""}적용 관세율 ${dr}%`;
+  $("#dThreshold").textContent=mode==="personal"?`USD ${thresholdUsd}`:"해당 없음";
+  $("#dStatus").textContent=rate<=0?"환율 확인 필요":exempt?"면세 가능":"예상 세액 계산";
+  $("#dResultNote").textContent=rate<=0
+    ?"관세청 환율 기준일을 선택하고 환율을 조회해 주세요."
+    :exempt
+      ?"입력 금액은 일반적인 면세 기준 이내입니다. 품목별 통관 제한은 별도 확인하세요."
+      :ftaMode==="none"
+        ?"선택 기준일의 관세청 수입환율과 기본 관세율을 기준으로 계산했습니다."
+        :`CO/FTA ${ftaMode==="free"?"면세":"감세"} 세율을 반영했습니다.`;
+}
+function showSelected(data){
+  selectedHs=data;
+  const box=$("#dHsSelected");
+  if(!data){box.classList.add("nt-hidden");box.innerHTML="";return}
+  box.classList.remove("nt-hidden");
+  box.innerHTML=`<strong>선택: HS ${esc(data.code)} · ${esc(data.name)}</strong><br>${data.rate===null?"참고 세율 정보 없음 — 관세율을 직접 확인해 입력하세요.":`참고 기본세율 ${data.rate}%가 관세율 입력창에 반영되었습니다.`}`;
+}
+function selectHs(item){
+  const [code,name]=item.row,h=item.hint||engine.rateHint(code);
+  const data={code,name,rate:h.rate,note:h.note};
+  showSelected(data);
+  $("#dHsQuery").value=`${name} (${code})`;
+  $("#dPreset").value="custom";
+  if(h.rate!==null)$("#dDutyRate").value=h.rate;
+  $("#dHsCandidates").classList.add("nt-hidden");
+  localStorage.setItem("kbSelectedHs",JSON.stringify({...data,at:Date.now()}));
+  calc();
+}
+async function searchHs(){
+  const q=$("#dHsQuery").value.trim(),box=$("#dHsCandidates"),btn=$("#dHsSearch");
+  $("#dHsLink").href="hs-code-search.html?q="+encodeURIComponent(q);
+  if(!q){box.classList.add("nt-hidden");box.innerHTML="";return}
+  if(!engine){
+    box.classList.remove("nt-hidden");
+    box.innerHTML='<div class="nt-empty" style="padding:18px 12px">HS CODE 검색 데이터를 불러오지 못했습니다.</div>';
+    return;
+  }
+  box.classList.remove("nt-hidden");
+  box.innerHTML='<div class="nt-empty" style="padding:18px 12px">2026년 전체 HSK 데이터를 불러오는 중입니다.</div>';
+  if(btn){btn.disabled=true;btn.textContent="조회 중"}
+  await engine.ready();
+  const rows=engine.search(q,"",5);
+  box.innerHTML=rows.length
+    ?rows.map((item,i)=>{
+      const r=item.row,h=item.hint,desc=item.source==="local"?"관련 키워드":"영문 품목명";
+      return `<button class="nt-hs-candidate" type="button" data-index="${i}"><span><b><em class="nt-hs-code">HS ${esc(r[0])}</em>${esc(r[1])}</b><span>${desc}: ${esc(r[2]||"-")}</span></span><span class="nt-hs-rate">${h.rate===null?"세율 확인":h.rate+"% 참고"}</span></button>`;
+    }).join("")
+    :'<div class="nt-empty" style="padding:24px 12px">후보가 없습니다. 재질·기능·용도를 나누어 입력해 주세요.</div>';
+  box.querySelectorAll("[data-index]").forEach(b=>b.onclick=()=>selectHs(rows[Number(b.dataset.index)]));
+  if(btn){btn.disabled=false;btn.textContent="후보 검색"}
+}
+function loadSelected(){
+  const p=new URLSearchParams(location.search);
+  let data=null;
+  if(p.get("hs"))data={code:p.get("hs"),name:p.get("name")||"선택 품목",rate:p.has("rate")?Number(p.get("rate")):null,note:"HS 조회에서 선택"};
+  if(!data){
+    try{
+      const saved=JSON.parse(localStorage.getItem("kbSelectedHs")||"null");
+      if(saved&&Date.now()-(saved.at||0)<86400000)data=saved;
+    }catch{}
+  }
+  if(data){
+    showSelected(data);
+    $("#dHsQuery").value=`${data.name} (${data.code})`;
+    $("#dPreset").value="custom";
+    if(data.rate!==null&&Number.isFinite(Number(data.rate)))$("#dDutyRate").value=data.rate;
+  }
+}
+function reset(){
+  mode="personal";
+  selectedHs=null;
+  $("#dOrigin").value="US";
+  $("#dCurrency").value="USD";
+  $("#dRateDate").value=todayKst();
+  $("#dRate").value="";
+  $("#dRate").classList.remove("rate-applied");
+  currentUsdKrw=0;
+  $("#dPrice").value="";
+  $("#dFreight").value=0;
+  $("#dInsurance").value=0;
+  $("#dPreset").selectedIndex=0;
+  $("#dDutyRate").value=8;
+  $("#dHsQuery").value="";
+  $("#dHsCandidates").classList.add("nt-hidden");
+  showSelected(null);
+  if($("#dFtaMode"))$("#dFtaMode").value="none";
+  $("#dFtaRate").value=0;
+  ftaChanged();
+  setMode("personal");
+  calc();
+  fetchRate({force:true});
+}
+
+$$("#dutyMode button").forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
+$("#dOrigin").onchange=originChanged;
+$("#dCurrency").onchange=currencyChanged;
+$("#dRateDate").onchange=()=>{manualRateOverride=false;$("#dRate").value="";$("#dRate").classList.remove("rate-applied");fetchRate()};
+$("#dFetchRate").onclick=()=>fetchRate({force:true});
+$("#dRate").addEventListener("input",()=>{
+  manualRateOverride=true;
+  $("#dRate").classList.remove("rate-applied");
+  setRateStatus("","직접 입력한 환율을 적용합니다. 관세청 주간 수입환율과 일치하는지 확인하세요.");
+  calc();
+});
+$("#dPreset").onchange=e=>{if(e.target.value!=="custom"){$("#dDutyRate").value=e.target.value;showSelected(null)}};
+$("#dFtaMode")?.addEventListener("change",ftaChanged);
+$("#dCalc").onclick=calc;
+$("#dReset").onclick=reset;
+$("#dHsSearch").onclick=searchHs;
+$("#dHsQuery").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();searchHs()}});
+let timer;
+$("#dHsQuery").addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(searchHs,250)});
+
+const params=new URLSearchParams(location.search);
+$("#dRateDate").value=params.get("date")||params.get("datetime")||todayKst();
+setMode("personal");
+ftaChanged();
+loadSelected();
+calc();
+fetchRate();
+})();
+},{once:true});
+</script><script defer="" src="assets/enterprise-motion.js?v=20260708-1"></script></body></html>
