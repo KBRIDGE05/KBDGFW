@@ -113,6 +113,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.kbexpress.kr/blog/posts/service/solar.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.kbexpress.kr/blog/posts/info/pl.html</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>

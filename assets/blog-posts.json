@@ -24,6 +24,29 @@
     "source": "generated-html"
   },
   {
+    "slug": "solar",
+    "category": "service",
+    "categoryLabel": "물류 서비스",
+    "title": "태양광 패널 수입, 보관·소분·운송까지 한 번에",
+    "summary": "태양광 패널 수입 후 컨테이너 적출, 창고 보관, 주문·현장별 소분, FLASH DATA와 시리얼 기준 재고관리, 납품지 배차·운송까지 한 번에 제공하는 케이브릿지 물류 서비스입니다.",
+    "date": "2026-07-11",
+    "thumbnail": "blog/posts/service/assets/images/thumbnail_solar_panel_logistics_1000.webp",
+    "keywords": [
+      "태양광 패널 수입",
+      "태양광 모듈 물류",
+      "태양광 패널 보관",
+      "컨테이너 적출",
+      "소분 작업",
+      "FLASH DATA",
+      "시리얼 재고관리",
+      "태양광 패널 운송",
+      "케이브릿지"
+    ],
+    "url": "blog/posts/service/solar.html",
+    "published": true,
+    "source": "generated-html"
+  },
+  {
     "slug": "pl",
     "category": "info",
     "categoryLabel": "물류 정보",
