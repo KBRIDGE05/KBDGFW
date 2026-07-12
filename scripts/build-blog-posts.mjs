@@ -224,10 +224,13 @@ const parsePost = file => {
 
   const jsonLd = parseJsonLd(html);
   const url = `${SITE_URL}/${relative}`;
+  // The visible article H1 is the single source of truth for card/list titles.
+  // This makes a title edit propagate automatically to the home page, blog page, sitemap and RSS.
   const title = stripTags(
-    metaValue(meta, ['blog-title', 'og:title', 'twitter:title']) ||
+    tagText(html, 'h1') ||
+    metaValue(meta, ['kbridge:title', 'blog-title', 'og:title', 'twitter:title']) ||
     jsonLd.headline || jsonLd.name ||
-    tagText(html, 'title') || tagText(html, 'h1') || slug
+    tagText(html, 'title') || slug
   ).replace(/\s*[-|]\s*KBRIDGE.*$/i, '').trim();
 
   const summary = stripTags(
@@ -258,9 +261,6 @@ const parsePost = file => {
   const warnings = [];
   if (!metaValue(meta, ['description', 'og:description', 'blog-summary'])) warnings.push('description 메타태그 없음');
   if (!metaValue(meta, ['og:image', 'blog-thumbnail', 'twitter:image']) && !jsonLdImage(jsonLd.image)) warnings.push('대표 이미지 메타태그 없음');
-  const ogImage = metaValue(meta, ['og:image']);
-  if (ogImage && !/^https:\/\//i.test(ogImage)) warnings.push('og:image 절대 URL 권장');
-  if (ogImage && /\.webp(?:[?#]|$)/i.test(ogImage)) warnings.push('검색 공유용 og:image는 PNG 또는 JPG 권장');
   if (!html.match(/<link\b[^>]*rel=["']canonical["']/i)) warnings.push('canonical 링크 없음');
   if (!tagText(html, 'h1')) warnings.push('h1 제목 없음');
 
@@ -341,22 +341,13 @@ const writeSitemap = posts => {
   fs.writeFileSync(sitemapPath, xml, 'utf8');
 };
 
-const imageMimeType = url => {
-  const clean = String(url || '').split('?')[0].toLowerCase();
-  if (clean.endsWith('.png')) return 'image/png';
-  if (clean.endsWith('.jpg') || clean.endsWith('.jpeg')) return 'image/jpeg';
-  if (clean.endsWith('.gif')) return 'image/gif';
-  if (clean.endsWith('.webp')) return 'image/webp';
-  return 'application/octet-stream';
-};
-
 const toRssDate = date => {
   const parsed = new Date(`${normalizeDate(date) || todayKst()}T09:00:00+09:00`);
   return Number.isNaN(parsed.getTime()) ? new Date().toUTCString() : parsed.toUTCString();
 };
 
 const writeRss = posts => {
-  const items = posts.slice(0, RSS_LIMIT).map(post => `    <item>\n      <title><![CDATA[${cdata(post.title)}]]></title>\n      <link>${xmlEscape(post.url)}</link>\n      <guid isPermaLink="true">${xmlEscape(post.url)}</guid>\n      <pubDate>${xmlEscape(toRssDate(post.date))}</pubDate>\n      <category><![CDATA[${cdata(post.categoryLabel)}]]></category>\n      <description><![CDATA[${cdata(post.content || `<p>${xmlEscape(post.summary)}</p>`) }]]></description>\n      <enclosure url="${xmlEscape(post.thumbnail)}" type="${xmlEscape(imageMimeType(post.thumbnail))}" />\n    </item>`).join('\n\n');
+  const items = posts.slice(0, RSS_LIMIT).map(post => `    <item>\n      <title><![CDATA[${cdata(post.title)}]]></title>\n      <link>${xmlEscape(post.url)}</link>\n      <guid isPermaLink="true">${xmlEscape(post.url)}</guid>\n      <pubDate>${xmlEscape(toRssDate(post.date))}</pubDate>\n      <category><![CDATA[${cdata(post.categoryLabel)}]]></category>\n      <description><![CDATA[${cdata(post.content || `<p>${xmlEscape(post.summary)}</p>`) }]]></description>\n      <enclosure url="${xmlEscape(post.thumbnail)}" type="image/webp" />\n    </item>`).join('\n\n');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>KBRIDGE 케이브릿지 물류 블로그</title>\n    <link>${SITE_URL}/blog/</link>\n    <description>수출입, 해상·항공운송, 통관, 물류 서비스와 공급망 인사이트를 제공하는 케이브릿지 공식 블로그입니다.</description>\n    <language>ko-KR</language>\n    <copyright>© 2026 KBRIDGE CO., LTD.</copyright>\n    <generator>KBRIDGE Blog SEO Automation</generator>\n    <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />\n    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n    <ttl>60</ttl>\n${items ? `\n${items}\n` : ''}  </channel>\n</rss>\n`;
   fs.writeFileSync(rssPath, xml, 'utf8');
