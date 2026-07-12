@@ -1,0 +1,145 @@
+{
+  "removed_files": [
+    {
+      "path": "ICON-FIX-AUDIT.txt",
+      "bytes": 248
+    },
+    {
+      "path": "assets/safe-rate-data.js",
+      "bytes": 5906434
+    },
+    {
+      "path": "assets/duty-tool.js",
+      "bytes": 12059
+    },
+    {
+      "path": "assets/tools-ui-polish.css",
+      "bytes": 6807
+    },
+    {
+      "path": "assets/kb-wizard-ship.png",
+      "bytes": 113772
+    },
+    {
+      "path": "assets/kb-wizard-truck.png",
+      "bytes": 164968
+    },
+    {
+      "path": "kbridge-icon.png",
+      "bytes": 13835
+    },
+    {
+      "path": "ocean-freight.xlsx",
+      "bytes": 22425
+    }
+  ],
+  "image_optimizations": [
+    {
+      "path": "assets/kbridge-icon-128.png",
+      "before": 3143,
+      "after": 2928
+    },
+    {
+      "path": "assets/kbridge-icon-180.png",
+      "before": 4338,
+      "after": 4042
+    },
+    {
+      "path": "assets/kbridge-icon-192.png",
+      "before": 4751,
+      "after": 4383
+    },
+    {
+      "path": "assets/kbridge-icon-256.png",
+      "before": 6393,
+      "after": 5912
+    },
+    {
+      "path": "assets/kbridge-icon-32.png",
+      "before": 857,
+      "after": 822
+    },
+    {
+      "path": "assets/kbridge-icon-48.png",
+      "before": 1256,
+      "after": 1172
+    },
+    {
+      "path": "assets/kbridge-icon-512.png",
+      "before": 13835,
+      "after": 12746
+    },
+    {
+      "path": "assets/kbridge-icon-64.png",
+      "before": 1654,
+      "after": 1504
+    },
+    {
+      "path": "assets/kbridge-icon-96.png",
+      "before": 2467,
+      "after": 2273
+    },
+    {
+      "path": "assets/kb-wizard-ship.webp",
+      "before": 44202,
+      "after": 41328
+    },
+    {
+      "path": "assets/kb-wizard-truck.webp",
+      "before": 107230,
+      "after": 104280
+    },
+    {
+      "path": "blog/posts/service/assets/images/01_devanning.webp",
+      "before": 78264,
+      "after": 77784
+    },
+    {
+      "path": "blog/posts/service/assets/images/03_storage_inbound.webp",
+      "before": 170910,
+      "after": 167766
+    },
+    {
+      "path": "blog/posts/service/assets/images/04_storage_lot.webp",
+      "before": 221626,
+      "after": 220760
+    },
+    {
+      "path": "blog/posts/service/assets/images/05_storage_zone.webp",
+      "before": 110080,
+      "after": 107736
+    },
+    {
+      "path": "blog/posts/service/assets/images/08_flash_serial.webp",
+      "before": 44454,
+      "after": 38712
+    },
+    {
+      "path": "blog/posts/service/assets/images/09_flash_pallet.webp",
+      "before": 156256,
+      "after": 140958
+    },
+    {
+      "path": "blog/posts/service/assets/images/10_dispatch_loaded.webp",
+      "before": 235816,
+      "after": 230656
+    },
+    {
+      "path": "blog/posts/service/assets/images/11_dispatch_crane.webp",
+      "before": 137138,
+      "after": 133280
+    }
+  ],
+  "index_changes": [
+    "removed obsolete inline style: transport-choice-style",
+    "removed obsolete inline style: transport-choice-horizontal-restore",
+    "updated home-responsive-fixes cache version"
+  ],
+  "before_total_bytes": 41479933,
+  "after_total_bytes": 35187188,
+  "saved_total_bytes": 6292745,
+  "before_non_og_bytes": 17386426,
+  "after_non_og_bytes": 11093681,
+  "saved_non_og_bytes": 6292745,
+  "og_unchanged": true
+}

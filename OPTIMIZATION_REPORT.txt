@@ -1,0 +1,50 @@
+KBRIDGE 웹사이트 최적화 보고서
+
+전체 용량: 39.56 MB → 33.56 MB
+전체 절감: 6.00 MB
+OG 이미지 제외 용량: 16.58 MB → 10.58 MB
+OG 제외 절감: 6.00 MB
+OG 이미지: 파일 및 SHA256 모두 원본 유지
+
+주요 정리
+- 세로형 hero-choice CSS와 임시 가로형 덮어쓰기 CSS를 제거
+- 가로형 카드 스타일을 assets/home-responsive-fixes.css 한 곳으로 통합
+- hero-choice 카드에서 grid-template-rows와 min-height:370px 제거
+- 모바일 FCL·LCL / AIR·EXPRESS 라벨 굵기 900 적용
+- 사용하지 않는 대형 안전운임 단일 파일 삭제(청크 로딩 기능 유지)
+- 중복 XLSX, 중복 아이콘, 미사용 PNG/CSS/JS 제거
+- OG를 제외한 실제 사진·히어로 이미지와 PNG를 최적화
+
+삭제 파일 절감: 5.95 MB
+이미지 재압축 절감: 0.04 MB
+
+삭제 파일
+- ICON-FIX-AUDIT.txt (248 bytes)
+- assets/safe-rate-data.js (5,906,434 bytes)
+- assets/duty-tool.js (12,059 bytes)
+- assets/tools-ui-polish.css (6,807 bytes)
+- assets/kb-wizard-ship.png (113,772 bytes)
+- assets/kb-wizard-truck.png (164,968 bytes)
+- kbridge-icon.png (13,835 bytes)
+- ocean-freight.xlsx (22,425 bytes)
+
+최적화 이미지
+- assets/kbridge-icon-128.png: 3,143 → 2,928 bytes
+- assets/kbridge-icon-180.png: 4,338 → 4,042 bytes
+- assets/kbridge-icon-192.png: 4,751 → 4,383 bytes
+- assets/kbridge-icon-256.png: 6,393 → 5,912 bytes
+- assets/kbridge-icon-32.png: 857 → 822 bytes
+- assets/kbridge-icon-48.png: 1,256 → 1,172 bytes
+- assets/kbridge-icon-512.png: 13,835 → 12,746 bytes
+- assets/kbridge-icon-64.png: 1,654 → 1,504 bytes
+- assets/kbridge-icon-96.png: 2,467 → 2,273 bytes
+- assets/kb-wizard-ship.webp: 44,202 → 41,328 bytes
+- assets/kb-wizard-truck.webp: 107,230 → 104,280 bytes
+- blog/posts/service/assets/images/01_devanning.webp: 78,264 → 77,784 bytes
+- blog/posts/service/assets/images/03_storage_inbound.webp: 170,910 → 167,766 bytes
+- blog/posts/service/assets/images/04_storage_lot.webp: 221,626 → 220,760 bytes
+- blog/posts/service/assets/images/05_storage_zone.webp: 110,080 → 107,736 bytes
+- blog/posts/service/assets/images/08_flash_serial.webp: 44,454 → 38,712 bytes
+- blog/posts/service/assets/images/09_flash_pallet.webp: 156,256 → 140,958 bytes
+- blog/posts/service/assets/images/10_dispatch_loaded.webp: 235,816 → 230,656 bytes
+- blog/posts/service/assets/images/11_dispatch_crane.webp: 137,138 → 133,280 bytes
