@@ -1,0 +1,293 @@
+/* Home layout fixes — 2026-07-12
+   1) Port-Able-inspired horizontal transport banners
+   2) Mobile KPI one-line alignment
+   3) Express flow status overlap prevention
+*/
+
+/* Transport selector: two wide horizontal banners instead of tall portrait cards */
+.hero-choice-grid{
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.hero-choice-card{
+  min-height:206px;
+  padding:20px 150px 18px 22px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:auto auto auto auto auto;
+  align-content:start;
+  border-radius:22px;
+}
+
+.hero-choice-visual{
+  position:absolute;
+  right:20px;
+  top:50%;
+  width:116px;
+  height:116px;
+  margin:0;
+  transform:translateY(-50%);
+  display:grid;
+  place-items:center;
+}
+
+.hero-choice-visual img,
+.hero-choice-card.domestic .hero-choice-visual img{
+  width:108px;
+  height:108px;
+}
+
+.hero-choice-card>strong{
+  min-height:0;
+  margin-top:11px;
+  font-size:21px;
+  line-height:1.28;
+}
+
+.hero-choice-copy{
+  min-height:0;
+  margin-top:7px;
+  font-size:13px;
+  line-height:1.58;
+  text-wrap:pretty;
+  overflow-wrap:anywhere;
+}
+
+.hero-choice-tags{
+  min-height:0;
+  margin-top:10px;
+  gap:6px;
+}
+
+.hero-choice-tags i{
+  padding:4px 8px;
+  font-size:9.5px;
+}
+
+.hero-choice-cta{
+  width:100%;
+  margin-top:12px;
+  padding-top:12px;
+  font-size:12.5px;
+}
+
+/* Express flow: keep the response note in normal document flow */
+.transport-visual.express-board{
+  display:flex;
+  flex-direction:column;
+}
+
+.express-steps{
+  width:100%;
+}
+
+.express-status{
+  position:relative;
+  left:auto;
+  right:auto;
+  bottom:auto;
+  width:100%;
+  flex:0 0 auto;
+  margin-top:18px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.16);
+  line-height:1.45;
+}
+
+.express-status span{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
+@media (max-width:1180px){
+  .hero-choice-card{
+    min-height:200px;
+    padding-right:142px;
+  }
+
+  .hero-choice-visual{
+    right:18px;
+    width:108px;
+    height:108px;
+  }
+
+  .hero-choice-visual img,
+  .hero-choice-card.domestic .hero-choice-visual img{
+    width:100px;
+    height:100px;
+  }
+}
+
+@media (max-width:720px){
+  /* Keep all three service labels on one aligned line */
+  .hero-stats{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px;
+    align-items:stretch;
+  }
+
+  .hero-stat{
+    min-width:0;
+    min-height:88px;
+    padding:12px 3px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .hero-stat strong{
+    width:100%;
+    min-height:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:clamp(11px,3vw,12.5px)!important;
+    line-height:1.2!important;
+    letter-spacing:-.045em;
+    white-space:nowrap;
+  }
+
+  .hero-stat span{
+    width:100%;
+    min-height:28px;
+    margin-top:7px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:9px!important;
+    line-height:1.35;
+    text-align:center;
+    word-break:keep-all;
+  }
+
+  /* Mobile horizontal banner proportions */
+  .hero-choice-grid{
+    gap:12px;
+  }
+
+  .hero-choice-card{
+    min-height:210px;
+    padding:18px 100px 16px 18px;
+    border-radius:20px;
+    grid-template-rows:auto auto auto auto auto;
+  }
+
+  .hero-choice-badge{
+    min-height:24px;
+    font-size:10.5px;
+  }
+
+  .hero-choice-badge em{
+    padding:3px 6px;
+    font-size:8px;
+  }
+
+  .hero-choice-visual{
+    right:12px;
+    top:50%;
+    width:78px;
+    height:78px;
+  }
+
+  .hero-choice-visual img,
+  .hero-choice-card.domestic .hero-choice-visual img{
+    width:76px;
+    height:76px;
+  }
+
+  .hero-choice-card>strong{
+    min-height:0;
+    margin-top:9px;
+    font-size:18px;
+    line-height:1.28;
+  }
+
+  .hero-choice-copy{
+    min-height:0;
+    margin-top:7px;
+    font-size:12px;
+    line-height:1.55;
+  }
+
+  .hero-choice-tags{
+    min-height:0;
+    margin-top:9px;
+    gap:5px;
+  }
+
+  .hero-choice-tags i{
+    padding:4px 7px;
+    font-size:8.5px;
+  }
+
+  .hero-choice-cta{
+    margin-top:11px;
+    padding-top:11px;
+    font-size:12px;
+  }
+
+  /* Give every flow row enough real height; no clipping or overlap */
+  .transport-visual.express-board{
+    min-height:300px;
+    padding:24px 20px;
+  }
+
+  .express-title{
+    margin-top:34px;
+    font-size:23px;
+    line-height:1.25;
+    white-space:nowrap;
+  }
+
+  .express-steps{
+    margin-top:24px;
+    gap:7px;
+  }
+
+  .express-steps div{
+    padding:13px 9px;
+  }
+
+  .express-status{
+    margin-top:16px;
+    padding-top:13px;
+    font-size:10px;
+  }
+
+  .hero-desc,
+  .transport-copy p,
+  .hero-choice-copy{
+    text-wrap:pretty;
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+  }
+}
+
+@media (max-width:370px){
+  .hero-stat strong{
+    font-size:11px!important;
+  }
+
+  .hero-stat span{
+    font-size:8.5px!important;
+  }
+
+  .hero-choice-card{
+    min-height:218px;
+    padding-right:92px;
+  }
+
+  .hero-choice-visual{
+    right:10px;
+    width:72px;
+    height:72px;
+  }
+
+  .hero-choice-visual img,
+  .hero-choice-card.domestic .hero-choice-visual img{
+    width:70px;
+    height:70px;
+  }
+}

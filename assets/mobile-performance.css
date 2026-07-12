@@ -33,3 +33,16 @@ body,html{max-width:100%;overflow-x:clip}canvas,img,svg,video{max-width:100%}img
 /* Final cascade guards for quote dialogs */
 html body .quote-dialog .field select,html body .formal-quote-dialog .field select{height:40px!important;min-height:40px!important}
 html body .quote-dialog .field input:not([type=checkbox]):not([type=radio]):not([type=file]),html body .formal-quote-dialog .field input:not([type=checkbox]):not([type=radio]):not([type=file]){height:42px!important;min-height:42px!important}
+
+/* KBRIDGE FINAL PERFORMANCE & MOBILE GUARDS 2026-07-12 */
+@media(max-width:768px){
+  .quote-dialog .dialog-shell,.formal-quote-dialog .dialog-shell{width:100%;max-width:100%;min-width:0}
+  .quote-dialog .dialog-body,.formal-quote-dialog .dialog-body{overflow-x:hidden;-webkit-overflow-scrolling:touch}
+  .quote-dialog .form-grid,.formal-quote-dialog .form-grid{grid-template-columns:1fr!important}
+  .quote-dialog input,.quote-dialog select,.quote-dialog textarea,.formal-quote-dialog input,.formal-quote-dialog select,.formal-quote-dialog textarea{max-width:100%;min-width:0}
+  .hero-stat strong{font-variant-numeric:tabular-nums}
+}
+@media(max-width:340px){
+  .quote-mode-tabs button strong{font-size:10.25px!important;letter-spacing:-.045em!important}
+  .hero-stat strong{font-size:10.5px!important}
+}
