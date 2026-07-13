@@ -1,27 +1,27 @@
 {
   "meta": {
-    "generated_at": "2026-07-13T12:00:00+09:00",
+    "generated_at": "2026-07-13T16:02:20+09:00",
     "timezone": "Asia/Seoul",
     "source_status": {
       "scfi": {
-        "ok": true,
-        "message": "2026-07-10 3,184.82"
+        "ok": false,
+        "message": "SCFI 발표일을 찾지 못했습니다."
       },
       "kcci": {
         "ok": true,
-        "message": "초기 데이터"
+        "message": "2026-07-13 4,318"
       },
       "korean_air": {
         "ok": true,
-        "message": "초기 데이터"
+        "message": "2026-07-08 FSC 반영"
       },
       "asiana": {
-        "ok": true,
-        "message": "초기 데이터"
+        "ok": false,
+        "message": "아시아나 한국발 FSC 요율을 찾지 못했습니다."
       },
       "bdi": {
         "ok": true,
-        "message": "2026-07-10 2,944"
+        "message": "2026-07-13 3 (bdi)"
       }
     }
   },
@@ -69,6 +69,10 @@
       {
         "date": "2026-07-06",
         "value": 4330
+      },
+      {
+        "date": "2026-07-13",
+        "value": 4318
       }
     ],
     "routes": [
@@ -77,110 +81,110 @@
         "code": "KCCI",
         "route": "종합지수",
         "weight": "100%",
-        "current": 4330,
-        "previous": 3920,
-        "change": 410,
-        "change_pct": 10.46
+        "current": 4318,
+        "previous": 4330,
+        "change": -12,
+        "change_pct": -0.28
       },
       {
         "group": "Mainlane",
         "code": "KUWI",
         "route": "미주 서안",
         "weight": "15%",
-        "current": 6922,
-        "previous": 5969,
-        "change": 953,
-        "change_pct": 15.97
+        "current": 6734,
+        "previous": 6922,
+        "change": -188,
+        "change_pct": -2.72
       },
       {
         "group": "Mainlane",
         "code": "KUEI",
         "route": "미주 동안",
         "weight": "10%",
-        "current": 8421,
-        "previous": 7217,
-        "change": 1204,
-        "change_pct": 16.68
+        "current": 8523,
+        "previous": 8421,
+        "change": 102,
+        "change_pct": 1.21
       },
       {
         "group": "Mainlane",
         "code": "KNEI",
         "route": "북유럽",
         "weight": "10%",
-        "current": 5332,
-        "previous": 4720,
-        "change": 612,
-        "change_pct": 12.97
+        "current": 5426,
+        "previous": 5332,
+        "change": 94,
+        "change_pct": 1.76
       },
       {
         "group": "Mainlane",
         "code": "KMDI",
         "route": "지중해",
         "weight": "5%",
-        "current": 6468,
-        "previous": 5876,
-        "change": 592,
-        "change_pct": 10.07
+        "current": 6569,
+        "previous": 6468,
+        "change": 101,
+        "change_pct": 1.56
       },
       {
         "group": "Non-Mainlane",
         "code": "KMEI",
         "route": "중동",
         "weight": "5%",
-        "current": 7164,
-        "previous": 6783,
-        "change": 381,
-        "change_pct": 5.62
+        "current": 7266,
+        "previous": 7164,
+        "change": 102,
+        "change_pct": 1.42
       },
       {
         "group": "Non-Mainlane",
         "code": "KAUI",
         "route": "호주",
         "weight": "5%",
-        "current": 3574,
-        "previous": 3096,
-        "change": 478,
-        "change_pct": 15.44
+        "current": 3857,
+        "previous": 3574,
+        "change": 283,
+        "change_pct": 7.92
       },
       {
         "group": "Non-Mainlane",
         "code": "KLEI",
         "route": "중남미 동안",
         "weight": "5%",
-        "current": 7854,
+        "current": 7554,
         "previous": 7854,
-        "change": 0,
-        "change_pct": 0
+        "change": -300,
+        "change_pct": -3.82
       },
       {
         "group": "Non-Mainlane",
         "code": "KLWI",
         "route": "중남미 서안",
         "weight": "5%",
-        "current": 5851,
-        "previous": 5840,
-        "change": 11,
-        "change_pct": 0.19
+        "current": 5565,
+        "previous": 5851,
+        "change": -286,
+        "change_pct": -4.89
       },
       {
         "group": "Non-Mainlane",
         "code": "KSAI",
         "route": "남아프리카",
         "weight": "2.5%",
-        "current": 3602,
-        "previous": 3483,
-        "change": 119,
-        "change_pct": 3.42
+        "current": 3636,
+        "previous": 3602,
+        "change": 34,
+        "change_pct": 0.94
       },
       {
         "group": "Non-Mainlane",
         "code": "KWAI",
         "route": "서아프리카",
         "weight": "2.5%",
-        "current": 5419,
-        "previous": 5260,
-        "change": 159,
-        "change_pct": 3.02
+        "current": 5399,
+        "previous": 5419,
+        "change": -20,
+        "change_pct": -0.37
       },
       {
         "group": "Intra Asia",
@@ -188,9 +192,9 @@
         "route": "중국",
         "weight": "15%",
         "current": 57,
-        "previous": 54,
-        "change": 3,
-        "change_pct": 5.56
+        "previous": 57,
+        "change": 0,
+        "change_pct": 0.0
       },
       {
         "group": "Intra Asia",
@@ -198,19 +202,19 @@
         "route": "일본",
         "weight": "10%",
         "current": 239,
-        "previous": 222,
-        "change": 17,
-        "change_pct": 7.66
+        "previous": 239,
+        "change": 0,
+        "change_pct": 0.0
       },
       {
         "group": "Intra Asia",
         "code": "KSEI",
         "route": "동남아",
         "weight": "10%",
-        "current": 1125,
-        "previous": 1098,
-        "change": 27,
-        "change_pct": 2.46
+        "current": 1137,
+        "previous": 1125,
+        "change": 12,
+        "change_pct": 1.07
       }
     ]
   },
@@ -272,7 +276,6 @@
           {
             "start": "2026-06-16",
             "end": "2026-07-15",
-            "mops": 3.6127,
             "short": 1360,
             "medium": 1420,
             "long": 1520,
@@ -385,7 +388,12 @@
       {
         "date": "2026-07-10",
         "value": 2944
+      },
+      {
+        "date": "2026-07-13",
+        "value": 3
       }
-    ]
+    ],
+    "last_data_source": "https://en.stockq.org/index/BDI.php"
   }
 }
