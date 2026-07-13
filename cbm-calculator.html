@@ -1,2 +1,426 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><title>CBM 계산기 - KBRIDGE 물류도구</title><meta content="박스 규격과 수량을 입력해 해상운송 CBM과 항공 부피중량을 바로 계산합니다." name="description"/><link href="https://www.kbexpress.kr/cbm-calculator.html" rel="canonical"/><meta content="#16284a" name="theme-color"/><link href="kbridge-icon.svg?v=20260708-1" rel="icon" type="image/svg+xml"/><link href="assets/kbridge-icon-32.png?v=20260708-1" rel="icon" sizes="32x32" type="image/png"/><link href="favicon.ico?v=20260708-1" rel="shortcut icon"/><link href="site.webmanifest?v=20260708-1" rel="manifest"/><link href="assets/tool-shell-common.css?v=20260711" rel="stylesheet"/><link href="assets/tool-structure.css?v=20260711" rel="stylesheet"/><link href="assets/cbm-page.css" rel="stylesheet"><link href="assets/tool-finish.css?v=20260711" rel="stylesheet"/><link href="assets/kbridge-icon-180.png?v=20260708-1" rel="apple-touch-icon"><link href="assets/mobile-performance.css?v=20260712-opt" rel="stylesheet"/><meta name="robots" content="index,follow,max-image-preview:large"><meta name="naverbot" content="index,follow,max-image-preview:large"><meta name="yeti" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:site_name" content="케이브릿지 KBRIDGE"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="CBM 계산기 - KBRIDGE 물류도구"><meta property="og:description" content="박스 규격과 수량을 입력해 해상운송 CBM과 항공 부피중량을 바로 계산합니다."><meta property="og:url" content="https://www.kbexpress.kr/cbm-calculator.html"><meta property="og:image" content="https://www.kbexpress.kr/assets/og/og-cbm.png"><meta property="og:image:url" content="https://www.kbexpress.kr/assets/og/og-cbm.png"><meta property="og:image:secure_url" content="https://www.kbexpress.kr/assets/og/og-cbm.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1254"><meta property="og:image:height" content="1254"><meta property="og:image:alt" content="CBM 계산기 - KBRIDGE 물류도구"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="CBM 계산기 - KBRIDGE 물류도구"><meta name="twitter:description" content="박스 규격과 수량을 입력해 해상운송 CBM과 항공 부피중량을 바로 계산합니다."><meta name="twitter:image" content="https://www.kbexpress.kr/assets/og/og-cbm.png"><meta name="twitter:image:alt" content="CBM 계산기 - KBRIDGE 물류도구"><link href="assets/readability-2026.css?v=20260712-1" rel="stylesheet"/></head><body class="cbm-page"><a class="skip-link" href="#main-content">본문 바로가기</a><header class="header" id="top"><div class="container header-inner"><a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><nav aria-label="주요 메뉴" class="nav"><a href="index.html#services">즉시견적</a><a href="quote-comparison.html">견적서 비교</a><a href="warehouse-inquiry.html">창고 문의</a><div class="nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button><div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small><a href="domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a></div></div><div class="nav-dropdown tools-nav-dropdown active"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button><div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a href="duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="customs-exchange-rate.html">관세청 고시환율<span>수입신고 기준환율 확인</span></a><a class="active" href="cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div></div><div class="nav-dropdown blog-nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button><div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a href="blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div></div></nav><a class="header-btn" href="index.html#services">견적 받기</a><button aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn"><span></span></button></div></header><div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav"><a href="index.html#services">즉시견적 <span>→</span></a><a href="quote-comparison.html">견적서 비교 <span>→</span></a><a href="warehouse-inquiry.html">창고 문의 <span>→</span></a><div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span><a href="domestic.html">국내운송 안내 <span>→</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div><div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="lcl-storage.html">LCL 창고료 <span>→</span></a><a href="dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="terminal-info.html">터미널 정보 조회 <span>→</span></a></div><div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="blog/index.html?category=info">물류 정보 <span>→</span></a><a href="blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div></div><main id="main-content"><section class="hero"><div class="container hero-inner"><span class="eyebrow">CARGO VOLUME CALCULATOR</span><h1>CBM 계산기</h1><p>박스별 실측 규격과 수량으로 총 CBM과 참고 부피중량을 계산합니다. 항공사별 환산계수는 실제 운송사 기준을 적용하세요.</p><div class="badges"><span>CBM</span><span>부피중량</span><span>모바일 계산</span></div></div></section><section class="section"><div class="container"><div class="tool-shell"><div class="shell-head"><div><small>KBRIDGE LOGISTICS TOOL</small><strong>CBM 계산기</strong></div><span class="status">페이지 내 바로 조회</span></div><div class="kb-source-strip"><div class="kb-source-main"><span aria-hidden="true" class="kb-source-dot"></span><div class="kb-source-copy"><strong>산식 기준 업데이트</strong><span>CBM은 실측 규격 기준이며 항공 부피중량 환산계수는 항공사·서비스별로 달라질 수 있습니다.</span></div></div><div class="kb-source-links"><span class="kb-source-date">기준일 2026.07.07</span></div></div><div class="shell-body"><div class="nt-wrap" id="cbmTool"><section class="nt-card"><div class="nt-tool-head"><div><h2>화물 규격 입력</h2><p>포장 규격·단위·중량·수량만 입력하면 각 규격의 CBM과 전체 결과가 자동 계산됩니다.</p></div><div class="nt-field" style="min-width:170px"><label for="cbmFactor">항공 부피중량 기준</label><select id="cbmFactor"><option value="6000">6,000 · 일반 항공</option><option value="5000">5,000 · 특송·일부 항공</option></select></div></div><div aria-live="polite" class="cbm-row-list" id="cbmRows"></div><div class="nt-actions"><button class="nt-btn ghost" id="cbmAdd" type="button">＋ 규격 추가</button><button class="nt-btn" id="cbmCalc" type="button">계산하기</button><button class="nt-btn secondary" id="cbmReset" type="button">초기화</button></div></section><section class="nt-card"><div class="nt-tool-head"><div><h2>계산 요약</h2><p>총 CBM, 실중량, 항공 C/W와 해상 W/M을 한눈에 확인합니다.</p></div><span class="nt-badge">자동 계산</span></div><div class="nt-results"><div class="nt-result"><span>총 CBM</span><strong id="cbmTotal">0.000 m³</strong></div><div class="nt-result"><span>총 PCS</span><strong id="cbmPcs">0</strong></div><div class="nt-result"><span>총 실중량</span><strong id="cbmWeight">0 kg</strong></div><div class="nt-result"><span>항공 산출중량 C/W</span><strong id="cbmAirCharge">0 kg</strong><em id="cbmAirBreak">실중량 0 · 부피중량 0</em></div></div><div class="nt-results"><div class="nt-result"><span>해상 W/M</span><strong id="cbmWm">0.000 RT</strong><em>CBM·중량톤 중 큰 값</em></div><div class="nt-result"><span>20FT 점유율</span><strong id="cbm20">0%</strong><em>33.2 m³ 기준</em></div><div class="nt-result"><span>40FT 점유율</span><strong id="cbm40ft">0%</strong><em>67.6 m³ 기준</em></div><div class="nt-result"><span>40HC 점유율</span><strong id="cbm40hc">0%</strong><em>76.3 m³ 기준</em></div></div></section><section class="nt-card"><div class="nt-tool-head"><div><h2>컨테이너 규격·도어 통과 확인</h2><p>대표 내부 규격과 입력 화물의 도어 통과 가능성을 함께 비교합니다.</p></div><span class="nt-count" id="cbmFitSummary">입력 대기</span></div><div class="nt-table-wrap"><table class="nt-table"><thead><tr><th>규격</th><th>높이</th><th>Tare</th><th>Payload</th><th>Max Gross</th><th>Door W×H</th><th>내부 L×W×H</th><th>용적</th><th>도어 통과</th></tr></thead><tbody id="cbmContainerRows"></tbody></table></div></section><div class="nt-notice">컨테이너 규격은 선사·장비·제조사별로 일부 차이가 있습니다. 실제 적재 가능 여부는 팔레트, 포장 돌출, 고박, 중량 배분과 현장 작업성을 함께 확인해야 합니다.</div></div><div class="nt-card related-tools-card kb-related-tools-unified"><h2>다른 물류도구</h2><p>필요한 계산기와 조회 페이지로 바로 이동할 수 있습니다.</p><div class="tool-nav"><a href="duty-calculator.html">관부가세 계산기</a><a href="customs-exchange-rate.html">관세청 고시환율</a><a href="cbm-calculator.html">CBM 계산기</a><a href="holiday-calendar.html">전세계 공휴일 조회</a><a href="hs-code-search.html">HS CODE 조회</a><a href="incoterms-guide.html">인코텀즈 가이드</a><a href="lcl-storage.html">LCL 창고료</a><a href="dangerous-goods.html">위험물 정보 조회</a><a href="vessel-location.html">실시간 선박 위치</a><a href="terminal-info.html">터미널 정보 조회</a></div></div></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div><a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><p class="footer-desc">케이브릿지가 운영하는 수출입 디지털 포워딩·해외특송·국내운송 서비스입니다.</p></div><div><h4>서비스</h4><ul><li><a href="index.html#services">즉시견적</a></li><li><a href="domestic.html">국내운송</a></li><li><a href="safe-rate.html">안전운임 조회</a></li><li><a href="vehicle-spec.html">차량 제원 조회</a></li></ul></div><div><h4>물류도구</h4><ul><li><a href="convenience.html">전체 도구</a></li><li><a href="duty-calculator.html">관부가세 계산기</a></li><li><a href="customs-exchange-rate.html">관세청 고시환율</a></li><li><a href="cbm-calculator.html">CBM 계산기</a></li><li><a href="lcl-storage.html">LCL 창고료</a></li></ul></div><div><h4>문의</h4><ul><li><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a></li><li><a href="https://pf.kakao.com/_baLgb/chat">카카오톡 문의</a></li><li>평일 09:00–18:00</li></ul></div></div><div class="footer-bottom"><div>케이브릿지 주식회사 · 대표이사 김형진 · 사업자등록번호 548-88-02435<br/>부산광역시 동구 조방로17 5층 501호</div><div>© 2026 KBRIDGE CO., LTD.</div></div></div></footer><button class="top-btn" id="topBtn" type="button">TOP</button><script defer="" src="assets/tools-common.js"></script><script defer="" src="assets/cbm-tool.js"></script><script defer="" src="assets/enterprise-motion.js?v=20260708-1"></script></body></html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><title>CBM 계산기 - KBRIDGE 물류도구</title><meta content="박스 규격과 수량을 입력해 해상운송 CBM과 항공 부피중량을 바로 계산합니다." name="description"/><link href="https://www.kbexpress.kr/cbm-calculator.html" rel="canonical"/><meta content="#16284a" name="theme-color"/><link href="kbridge-icon.svg?v=20260708-1" rel="icon" type="image/svg+xml"/><link href="assets/kbridge-icon-32.png?v=20260708-1" rel="icon" sizes="32x32" type="image/png"/><link href="favicon.ico?v=20260708-1" rel="shortcut icon"/><link href="site.webmanifest?v=20260708-1" rel="manifest"/><link href="assets/tool-shell-common.css?v=20260711" rel="stylesheet"/><link href="assets/tool-structure.css?v=20260711" rel="stylesheet"/><link href="assets/cbm-page.css" rel="stylesheet"/><link href="assets/tool-finish.css?v=20260711" rel="stylesheet"><link href="assets/kbridge-icon-180.png?v=20260708-1" rel="apple-touch-icon"/><link href="assets/mobile-performance.css?v=20260712-opt" rel="stylesheet"><meta content="index,follow,max-image-preview:large" name="robots"/><meta content="index,follow,max-image-preview:large" name="naverbot"/><meta content="index,follow,max-image-preview:large" name="yeti"/><meta content="website" property="og:type"/><meta content="케이브릿지 KBRIDGE" property="og:site_name"/><meta content="ko_KR" property="og:locale"/><meta content="CBM 계산기 - KBRIDGE 물류도구" property="og:title"/><meta content="박스 규격과 수량을 입력해 해상운송 CBM과 항공 부피중량을 바로 계산합니다." property="og:description"/><meta content="https://www.kbexpress.kr/cbm-calculator.html" property="og:url"/><meta content="https://www.kbexpress.kr/assets/og/og-cbm.png" property="og:image"/><meta content="https://www.kbexpress.kr/assets/og/og-cbm.png" property="og:image:url"/><meta content="https://www.kbexpress.kr/assets/og/og-cbm.png" property="og:image:secure_url"/><meta content="image/png" property="og:image:type"/><meta content="1254" property="og:image:width"/><meta content="1254" property="og:image:height"/><meta content="CBM 계산기 - KBRIDGE 물류도구" property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="CBM 계산기 - KBRIDGE 물류도구" name="twitter:title"/><meta content="박스 규격과 수량을 입력해 해상운송 CBM과 항공 부피중량을 바로 계산합니다." name="twitter:description"/><meta content="https://www.kbexpress.kr/assets/og/og-cbm.png" name="twitter:image"/><meta content="CBM 계산기 - KBRIDGE 물류도구" name="twitter:image:alt"/><link href="assets/readability-2026.css?v=20260712-1" rel="stylesheet"/></link></link><style>
+/* CBM FULL FUNCTION INTEGRATION - 2026-07-13 */
+.cbm-v2{display:grid;gap:16px}
+.cbm-v2-head{align-items:flex-end}
+.cbm-v2-factor{min-width:190px}
+.cbm-v2-factor select{width:100%;height:42px;padding:0 12px;border:1px solid #d7e1ee;border-radius:10px;background:#fff;color:#243651;font:inherit;font-size:12.5px;font-weight:750;outline:0}
+.cbm-v2-factor select:focus{border-color:#2b5cdb;box-shadow:0 0 0 4px rgba(43,92,219,.1)}
+.cbm-v2-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}
+.cbm-v2-guide>div{display:flex;align-items:flex-start;gap:10px;min-width:0;padding:13px 14px;border:1px solid #dce5f1;border-radius:12px;background:#f8fbff}
+.cbm-v2-guide b{display:grid;place-items:center;width:29px;height:29px;flex:0 0 29px;border-radius:8px;background:#e8f0ff;color:#2456c7;font-size:10px;line-height:1}
+.cbm-v2-guide span{min-width:0;color:#6b7990;font-size:11px;line-height:1.45}
+.cbm-v2-guide strong{display:block;margin-bottom:2px;color:#2c3d59;font-size:12px}
+.cbm-v2-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.cbm-v2-table-wrap{overflow:auto;border:1px solid #dce5f1;border-radius:13px;background:#fff;box-shadow:0 8px 22px rgba(18,38,76,.05)}
+.cbm-v2-table{width:100%;min-width:1010px;border-collapse:separate;border-spacing:0;table-layout:fixed}
+.cbm-v2-table th{padding:11px 10px;border-bottom:1px solid #e7edf5;background:#f7f9fc;color:#30415d;font-size:10.5px;font-weight:850;text-align:left;white-space:nowrap}
+.cbm-v2-table td{padding:8px 10px;border-bottom:1px solid #edf1f6;background:#fff;vertical-align:middle}
+.cbm-v2-table tr:last-child td{border-bottom:0}
+.cbm-v2-table th:nth-child(1),.cbm-v2-table td:nth-child(1),.cbm-v2-table th:nth-child(2),.cbm-v2-table td:nth-child(2),.cbm-v2-table th:nth-child(3),.cbm-v2-table td:nth-child(3){width:118px}
+.cbm-v2-table th:nth-child(4),.cbm-v2-table td:nth-child(4){width:88px}
+.cbm-v2-table th:nth-child(5),.cbm-v2-table td:nth-child(5){width:112px}
+.cbm-v2-table th:nth-child(6),.cbm-v2-table td:nth-child(6){width:82px}
+.cbm-v2-table th:nth-child(7),.cbm-v2-table td:nth-child(7),.cbm-v2-table th:nth-child(8),.cbm-v2-table td:nth-child(8){width:115px;text-align:center}
+.cbm-v2-table th:nth-child(9),.cbm-v2-table td:nth-child(9){width:86px;text-align:center}
+.cbm-v2-input,.cbm-v2-unit{width:100%;height:38px;padding:0 10px;border:1px solid #d5dfec;border-radius:9px;background:#fff;color:#22324d;font:inherit;font-size:12.5px;outline:0}
+.cbm-v2-input:focus,.cbm-v2-unit:focus{border-color:#2b5cdb;box-shadow:0 0 0 3px rgba(43,92,219,.1)}
+.cbm-v2-result{color:#2451b8;font-size:12px;font-weight:850;font-variant-numeric:tabular-nums}
+.cbm-v2-delete{min-width:60px;height:34px;padding:0 10px;border:1px solid #efcaca;border-radius:9px;background:#fff7f7;color:#b42318;font-size:11px;font-weight:800}
+.cbm-v2-delete:hover{background:#fff0f0}
+.cbm-v2-tip{margin:10px 2px 0;color:#7b899e;font-size:11px;line-height:1.55}
+.cbm-v2-results{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cbm-v2-container-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cbm-v2-container-card{padding:16px;border:1px solid #dce5f1;border-radius:14px;background:linear-gradient(180deg,#fff 0,#f8fbff 100%);box-shadow:0 8px 22px rgba(18,38,76,.05)}
+.cbm-v2-container-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cbm-v2-container-name{display:flex;align-items:center;gap:9px;color:#253652;font-size:14px;font-weight:850}
+.cbm-v2-container-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#eaf1ff;color:#2555c2;font-size:16px}
+.cbm-v2-container-cap{color:#7b899d;font-size:10.5px;font-weight:750;white-space:nowrap}
+.cbm-v2-bar{height:9px;margin-top:14px;overflow:hidden;border-radius:999px;background:#e7edf5}
+.cbm-v2-bar>i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#2b5cdb,#5183ef);transition:width .2s ease,background .2s ease}
+.cbm-v2-bar>i.over{background:linear-gradient(90deg,#c83232,#ee7c37)}
+.cbm-v2-container-label{margin-top:9px;color:#34445f;font-size:11.5px;font-weight:800;line-height:1.45}
+.cbm-v2-container-note{margin-top:6px;color:#b42318;font-size:10.5px;font-weight:700;line-height:1.5}
+.cbm-v2-container-fit{margin-top:8px;padding-top:8px;border-top:1px dashed #dce5f1;color:#50617a;font-size:10.5px;line-height:1.5}
+.cbm-v2-container-fit.ok{color:#176b46}
+.cbm-v2-status{display:inline-flex;align-items:center;justify-content:center;min-height:27px;padding:4px 8px;border-radius:999px;background:#eef3fb;color:#5e6e84;font-size:9.5px;font-weight:850;line-height:1.25;text-align:center}
+.cbm-v2-status.ok{background:#eaf8f1;color:#176b46}
+.cbm-v2-status.warn{background:#fff0ed;color:#b42318}
+.cbm-v2-spec-table td,.cbm-v2-spec-table th{white-space:nowrap}
+.cbm-v2-spec-table td:last-child,.cbm-v2-spec-table th:last-child{min-width:128px}
+.cbm-v2.flash .nt-result{animation:cbmV2Flash .45s ease}
+@keyframes cbmV2Flash{0%{transform:translateY(0)}45%{transform:translateY(-2px);box-shadow:0 10px 22px rgba(43,92,219,.12)}100%{transform:translateY(0)}}
+@media(max-width:980px){.cbm-v2-results{grid-template-columns:repeat(2,minmax(0,1fr))}.cbm-v2-container-grid{grid-template-columns:1fr}.cbm-v2-guide{grid-template-columns:1fr}}
+@media(max-width:720px){
+  .cbm-v2-head{align-items:stretch}.cbm-v2-factor{min-width:0;width:100%}.cbm-v2-factor select{height:40px}
+  .cbm-v2-guide{margin:14px 0}.cbm-v2-guide>div{padding:11px 12px}
+  .cbm-v2-actions{display:grid;grid-template-columns:1fr 1fr;margin-bottom:12px}.cbm-v2-actions .nt-btn{width:100%}.cbm-v2-actions .nt-btn:first-child{grid-column:1/-1}
+  .cbm-v2-table-wrap{overflow:visible;border:0;background:transparent;box-shadow:none}
+  .cbm-v2-table,.cbm-v2-table tbody,.cbm-v2-table tr,.cbm-v2-table td{display:block;width:100%;min-width:0}
+  .cbm-v2-table thead{display:none}.cbm-v2-table tbody{display:grid;gap:11px}
+  .cbm-v2-table tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 10px;padding:12px;border:1px solid #dce5f1;border-radius:13px;background:#fff;box-shadow:0 8px 22px rgba(18,38,76,.05)}
+  .cbm-v2-table td{width:auto!important;padding:0!important;border:0!important;text-align:left!important;background:transparent!important}
+  .cbm-v2-table td::before{content:attr(data-label);display:block;margin-bottom:4px;color:#41516b;font-size:10.5px;font-weight:850;line-height:1.25}
+  .cbm-v2-input,.cbm-v2-unit{height:37px;font-size:15px}
+  .cbm-v2-table td:nth-child(7),.cbm-v2-table td:nth-child(8){display:flex;flex-direction:column;justify-content:center;min-height:56px;padding:8px 9px!important;border:1px solid #dce8f7!important;border-radius:9px;background:#f7faff!important}
+  .cbm-v2-table td:nth-child(9){grid-column:1/-1}.cbm-v2-table td:nth-child(9)::before{display:none}.cbm-v2-delete{width:100%}
+  .cbm-v2-results{grid-template-columns:1fr}
+  .cbm-v2-spec-wrap{overflow:visible;border:0;background:transparent}
+  .cbm-v2-spec-table,.cbm-v2-spec-table tbody,.cbm-v2-spec-table tr,.cbm-v2-spec-table td{display:block;width:100%;min-width:0}
+  .cbm-v2-spec-table thead{display:none}.cbm-v2-spec-table tbody{display:grid;gap:10px}
+  .cbm-v2-spec-table tr{padding:12px;border:1px solid #dce5f1;border-radius:13px;background:#fff;box-shadow:0 8px 22px rgba(18,38,76,.05)}
+  .cbm-v2-spec-table td{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed #e3eaf3;text-align:right;white-space:normal;font-size:11.5px}
+  .cbm-v2-spec-table td:last-child{border-bottom:0}
+  .cbm-v2-spec-table td::before{content:attr(data-label);flex:0 0 42%;color:#40516d;font-size:10.5px;font-weight:850;text-align:left}
+}
+@media(max-width:420px){.cbm-v2-table tr{padding:10px;gap:8px}.cbm-v2-input,.cbm-v2-unit{height:35px;font-size:14px}.cbm-v2-container-card{padding:13px}}
+</style></head><body class="cbm-page"><a class="skip-link" href="#main-content">본문 바로가기</a><header class="header" id="top"><div class="container header-inner"><a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><nav aria-label="주요 메뉴" class="nav"><a href="index.html#services">즉시견적</a><a href="quote-comparison.html">견적서 비교</a><a href="warehouse-inquiry.html">창고 문의</a><div class="nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button><div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small><a href="domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a></div></div><div class="nav-dropdown tools-nav-dropdown active"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button><div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a href="duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="customs-exchange-rate.html">관세청 고시환율<span>수입신고 기준환율 확인</span></a><a class="active" href="cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div></div><div class="nav-dropdown blog-nav-dropdown"><button aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button><div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a href="blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div></div></nav><a class="header-btn" href="index.html#services">견적 받기</a><button aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn"><span></span></button></div></header><div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav"><a href="index.html#services">즉시견적 <span>→</span></a><a href="quote-comparison.html">견적서 비교 <span>→</span></a><a href="warehouse-inquiry.html">창고 문의 <span>→</span></a><div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span><a href="domestic.html">국내운송 안내 <span>→</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div><div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="lcl-storage.html">LCL 창고료 <span>→</span></a><a href="dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="terminal-info.html">터미널 정보 조회 <span>→</span></a></div><div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="blog/index.html?category=info">물류 정보 <span>→</span></a><a href="blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div></div><main id="main-content"><section class="hero"><div class="container hero-inner"><span class="eyebrow">CARGO VOLUME CALCULATOR</span><h1>CBM 계산기</h1><p>박스별 실측 규격과 수량으로 총 CBM과 참고 부피중량을 계산합니다. 항공사별 환산계수는 실제 운송사 기준을 적용하세요.</p><div class="badges"><span>CBM</span><span>부피중량</span><span>모바일 계산</span></div></div></section><section class="section"><div class="container"><div class="tool-shell"><div class="shell-head"><div><small>KBRIDGE LOGISTICS TOOL</small><strong>CBM 계산기</strong></div><span class="status">페이지 내 바로 조회</span></div><div class="kb-source-strip"><div class="kb-source-main"><span aria-hidden="true" class="kb-source-dot"></span><div class="kb-source-copy"><strong>산식 기준 업데이트</strong><span>CBM은 실측 규격 기준이며 항공 부피중량 환산계수는 항공사·서비스별로 달라질 수 있습니다.</span></div></div><div class="kb-source-links"><span class="kb-source-date">기준일 2026.07.07</span></div></div><div class="shell-body"><div class="nt-wrap cbm-v2" id="cbmTool">
+<section class="nt-card cbm-v2-input-card">
+<div class="nt-tool-head cbm-v2-head">
+<div>
+<h2>화물 규격 입력</h2>
+<p>박스별 최종 포장 규격, 중량과 수량을 입력하면 각 행과 전체 결과가 자동 계산됩니다.</p>
+</div>
+<div class="nt-field cbm-v2-factor">
+<label for="cbmFactor">항공 부피중량 기준</label>
+<select id="cbmFactor">
+<option value="6000">6,000 · 일반 항공</option>
+<option value="5000">5,000 · 특송·일부 항공</option>
+</select>
+</div>
+</div>
+<div aria-label="CBM 계산기 핵심 기능" class="cbm-v2-guide">
+<div><b>01</b><span><strong>다중 화물 입력</strong>서로 다른 규격을 행으로 추가해 합산합니다.</span></div>
+<div><b>02</b><span><strong>단위 자동 변환</strong>mm·cm·m·inch를 CBM으로 변환합니다.</span></div>
+<div><b>03</b><span><strong>적재 가능성 확인</strong>컨테이너 내부와 도어 규격을 비교합니다.</span></div>
+</div>
+<div class="cbm-v2-actions">
+<button class="nt-btn ghost" id="cbmAdd" type="button">＋ 행 추가</button>
+<button class="nt-btn" id="cbmCalc" type="button">계산하기</button>
+<button class="nt-btn secondary" id="cbmReset" type="button">초기화</button>
+</div>
+<div class="cbm-v2-table-wrap">
+<table class="cbm-v2-table">
+<thead>
+<tr>
+<th>가로 (Length)</th>
+<th>세로 (Width)</th>
+<th>높이 (Height)</th>
+<th>단위</th>
+<th>중량 (kg)</th>
+<th>수량</th>
+<th>개당 CBM</th>
+<th>합계 CBM</th>
+<th>삭제</th>
+</tr>
+</thead>
+<tbody aria-live="polite" id="cbmRows"></tbody>
+</table>
+</div>
+<p class="cbm-v2-tip">최종 포장 상태의 외형 치수와 개당 실중량을 입력하세요. 수량과 단위를 변경하면 결과가 즉시 다시 계산됩니다.</p>
+</section>
+<section class="nt-card">
+<div class="nt-tool-head">
+<div>
+<h2>계산 요약</h2>
+<p>총 CBM, 수량, 실중량, 항공 C/W와 해상 W/M을 한눈에 확인합니다.</p>
+</div>
+<span class="nt-badge">자동 계산</span>
+</div>
+<div class="nt-results cbm-v2-results">
+<div class="nt-result"><span>총 CBM</span><strong id="cbmTotal">0.0000 m³</strong></div>
+<div class="nt-result"><span>총 PCS</span><strong id="cbmPcs">0</strong></div>
+<div class="nt-result"><span>총 실중량</span><strong id="cbmWeight">0 kg</strong></div>
+<div class="nt-result"><span>항공 산출중량 C/W</span><strong id="cbmAirCharge">0 kg</strong><em id="cbmAirBreak">실중량 0 · 부피중량 0</em></div>
+<div class="nt-result"><span>해상 W/M</span><strong id="cbmWm">0.000 RT</strong><em id="cbmWmBreak">CBM·중량톤 중 큰 값</em></div>
+<div class="nt-result"><span>20FT 점유율</span><strong id="cbm20">0%</strong><em>33.2 m³ 기준</em></div>
+<div class="nt-result"><span>40FT 점유율</span><strong id="cbm40ft">0%</strong><em>67.6 m³ 기준</em></div>
+<div class="nt-result"><span>40HC 점유율</span><strong id="cbm40hc">0%</strong><em>76.3 m³ 기준</em></div>
+</div>
+</section>
+<section class="nt-card">
+<div class="nt-tool-head">
+<div>
+<h2>컨테이너 용적 대비 적재율</h2>
+<p>총 CBM과 개별 화물 치수를 기준으로 용적 초과, 내부 적재와 도어 통과 여부를 함께 확인합니다.</p>
+</div>
+<span class="nt-count" id="cbmFitSummary">입력 대기</span>
+</div>
+<div class="cbm-v2-container-grid" id="cbmContainerCards"></div>
+</section>
+<section class="nt-card">
+<div class="nt-tool-head">
+<div>
+<h2>컨테이너 규격·도어 통과 확인</h2>
+<p>대표 내부 규격과 입력 화물의 통과 가능성을 컨테이너별로 비교합니다.</p>
+</div>
+</div>
+<div class="nt-table-wrap cbm-v2-spec-wrap">
+<table class="nt-table cbm-v2-spec-table">
+<thead>
+<tr>
+<th>규격</th>
+<th>높이</th>
+<th>Tare</th>
+<th>Payload</th>
+<th>Max Gross</th>
+<th>Door W×H</th>
+<th>내부 L×W×H</th>
+<th>용적</th>
+<th>도어·내부 확인</th>
+</tr>
+</thead>
+<tbody id="cbmContainerRows"></tbody>
+</table>
+</div>
+</section>
+<div class="nt-notice">컨테이너 규격은 선사·장비·제조사별로 일부 차이가 있습니다. 계산 결과는 대표 제원 기준의 참고값이며 실제 적재 가능 여부는 팔레트, 포장 돌출, 고박, 중량 배분과 현장 작업성을 함께 확인해야 합니다.</div>
+</div><div class="nt-card related-tools-card kb-related-tools-unified"><h2>다른 물류도구</h2><p>필요한 계산기와 조회 페이지로 바로 이동할 수 있습니다.</p><div class="tool-nav"><a href="duty-calculator.html">관부가세 계산기</a><a href="customs-exchange-rate.html">관세청 고시환율</a><a href="cbm-calculator.html">CBM 계산기</a><a href="holiday-calendar.html">전세계 공휴일 조회</a><a href="hs-code-search.html">HS CODE 조회</a><a href="incoterms-guide.html">인코텀즈 가이드</a><a href="lcl-storage.html">LCL 창고료</a><a href="dangerous-goods.html">위험물 정보 조회</a><a href="vessel-location.html">실시간 선박 위치</a><a href="terminal-info.html">터미널 정보 조회</a></div></div></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div><a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" style="display:block;width:100%;height:100%" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a><p class="footer-desc">케이브릿지가 운영하는 수출입 디지털 포워딩·해외특송·국내운송 서비스입니다.</p></div><div><h4>서비스</h4><ul><li><a href="index.html#services">즉시견적</a></li><li><a href="domestic.html">국내운송</a></li><li><a href="safe-rate.html">안전운임 조회</a></li><li><a href="vehicle-spec.html">차량 제원 조회</a></li></ul></div><div><h4>물류도구</h4><ul><li><a href="convenience.html">전체 도구</a></li><li><a href="duty-calculator.html">관부가세 계산기</a></li><li><a href="customs-exchange-rate.html">관세청 고시환율</a></li><li><a href="cbm-calculator.html">CBM 계산기</a></li><li><a href="lcl-storage.html">LCL 창고료</a></li></ul></div><div><h4>문의</h4><ul><li><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a></li><li><a href="https://pf.kakao.com/_baLgb/chat">카카오톡 문의</a></li><li>평일 09:00–18:00</li></ul></div></div><div class="footer-bottom"><div>케이브릿지 주식회사 · 대표이사 김형진 · 사업자등록번호 548-88-02435<br/>부산광역시 동구 조방로17 5층 501호</div><div>© 2026 KBRIDGE CO., LTD.</div></div></div></footer><button class="top-btn" id="topBtn" type="button">TOP</button><script>
+(function(){
+  'use strict';
+  const root = document.getElementById('cbmTool');
+  if(!root) return;
+
+  const UNIT_TO_M = { mm:0.001, cm:0.01, m:1, inch:0.0254 };
+  const rowsEl = document.getElementById('cbmRows');
+  const addBtn = document.getElementById('cbmAdd');
+  const calcBtn = document.getElementById('cbmCalc');
+  const resetBtn = document.getElementById('cbmReset');
+  const factorEl = document.getElementById('cbmFactor');
+  const cardsEl = document.getElementById('cbmContainerCards');
+  const specRowsEl = document.getElementById('cbmContainerRows');
+  const fitSummaryEl = document.getElementById('cbmFitSummary');
+
+  const CONTAINERS = [
+    { key:'20', name:"20'FT", height:'8\'6"', tare:2200, payload:28280, gross:30480, door:[2340,2280], inner:[5898,2352,2392], cubic:33.2, icon:'20' },
+    { key:'40', name:"40'FT", height:'8\'6"', tare:3600, payload:28900, gross:32500, door:[2340,2280], inner:[12032,2352,2392], cubic:67.6, icon:'40' },
+    { key:'40hc', name:"40'HC", height:'9\'6"', tare:3800, payload:28700, gross:32500, door:[2340,2585], inner:[12032,2352,2698], cubic:76.3, icon:'HC' }
+  ];
+
+  const fmt = (value, digits=3) => Number(value || 0).toLocaleString('ko-KR', { maximumFractionDigits:digits });
+  const fixed = (value, digits=4) => Number(value || 0).toLocaleString('ko-KR', { minimumFractionDigits:digits, maximumFractionDigits:digits });
+  const positive = value => Number.isFinite(value) && value > 0 ? value : 0;
+  const toMm = (value, unit) => positive(value) * (UNIT_TO_M[unit] || 0) * 1000;
+
+  function inputCell(label, type, className, attrs=''){
+    return `<td data-label="${label}"><input class="${className}" type="${type}" min="0" ${attrs}></td>`;
+  }
+
+  function createRow(values={}){
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      inputCell('가로 (Length)','number','cbm-v2-input cbm-length','inputmode="decimal" step="0.01" aria-label="가로"') +
+      inputCell('세로 (Width)','number','cbm-v2-input cbm-width','inputmode="decimal" step="0.01" aria-label="세로"') +
+      inputCell('높이 (Height)','number','cbm-v2-input cbm-height','inputmode="decimal" step="0.01" aria-label="높이"') +
+      `<td data-label="단위"><select class="cbm-v2-unit" aria-label="단위"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="m">m</option><option value="inch">inch</option></select></td>` +
+      inputCell('중량 (kg)','number','cbm-v2-input cbm-row-weight','inputmode="decimal" step="0.01" aria-label="개당 중량"') +
+      inputCell('수량','number','cbm-v2-input cbm-qty','inputmode="numeric" step="1" aria-label="수량"') +
+      `<td class="cbm-v2-result cbm-per" data-label="개당 CBM">0.0000</td>` +
+      `<td class="cbm-v2-result cbm-line" data-label="합계 CBM">0.0000</td>` +
+      `<td data-label="삭제"><button class="cbm-v2-delete" type="button">삭제</button></td>`;
+
+    tr.querySelector('.cbm-length').value = values.length ?? '';
+    tr.querySelector('.cbm-width').value = values.width ?? '';
+    tr.querySelector('.cbm-height').value = values.height ?? '';
+    tr.querySelector('.cbm-v2-unit').value = values.unit || 'cm';
+    tr.querySelector('.cbm-row-weight').value = values.weight ?? '';
+    tr.querySelector('.cbm-qty').value = values.qty ?? '';
+
+    tr.querySelectorAll('input,select').forEach(el => {
+      el.addEventListener('input', compute);
+      el.addEventListener('change', compute);
+    });
+    tr.querySelector('.cbm-v2-delete').addEventListener('click', () => {
+      tr.remove();
+      if(!rowsEl.children.length) createRow();
+      compute();
+    });
+    rowsEl.appendChild(tr);
+    return tr;
+  }
+
+  function readRow(tr){
+    const unit = tr.querySelector('.cbm-v2-unit').value;
+    const length = positive(parseFloat(tr.querySelector('.cbm-length').value));
+    const width = positive(parseFloat(tr.querySelector('.cbm-width').value));
+    const height = positive(parseFloat(tr.querySelector('.cbm-height').value));
+    const weight = positive(parseFloat(tr.querySelector('.cbm-row-weight').value));
+    const qty = Math.max(0, Math.floor(positive(parseFloat(tr.querySelector('.cbm-qty').value))));
+    return { length, width, height, weight, qty, unit };
+  }
+
+  function canFitInner(spec, dims){
+    const [length,width,height] = dims;
+    const [innerLength,innerWidth,innerHeight] = spec.inner;
+    if(height > innerHeight) return false;
+    return (length <= innerLength && width <= innerWidth) || (width <= innerLength && length <= innerWidth);
+  }
+
+  function canPassDoor(spec, dims){
+    const [length,width,height] = dims;
+    const [doorWidth,doorHeight] = spec.door;
+    if(height > doorHeight) return false;
+    return length <= doorWidth || width <= doorWidth;
+  }
+
+  function issuesFor(spec, dims){
+    const [length,width,height] = dims;
+    const [innerLength,innerWidth,innerHeight] = spec.inner;
+    const [doorWidth,doorHeight] = spec.door;
+    const issues = [];
+    if(height > innerHeight) issues.push(`내부 높이 초과 ${fmt(height/10,1)}cm > ${fmt(innerHeight/10,1)}cm`);
+    if(height > doorHeight) issues.push(`도어 높이 초과 ${fmt(height/10,1)}cm > ${fmt(doorHeight/10,1)}cm`);
+    if(!((length <= innerLength && width <= innerWidth) || (width <= innerLength && length <= innerWidth))) issues.push('바닥면 길이·폭 초과');
+    if(!(length <= doorWidth || width <= doorWidth)) issues.push('도어 폭 초과');
+    return issues;
+  }
+
+  function getFit(spec, boxes){
+    if(!boxes.length) return { state:'wait', label:'입력 대기', issues:[] };
+    const issueSet = new Set();
+    let fail = false;
+    boxes.forEach(dims => {
+      if(!canFitInner(spec,dims) || !canPassDoor(spec,dims)) fail = true;
+      issuesFor(spec,dims).forEach(issue => issueSet.add(issue));
+    });
+    return fail ? { state:'warn', label:'확인 필요', issues:[...issueSet] } : { state:'ok', label:'통과 가능', issues:[] };
+  }
+
+  function makeContainerUi(){
+    cardsEl.innerHTML = CONTAINERS.map((c,index) => `
+      <article class="cbm-v2-container-card" data-container-card="${index}">
+        <div class="cbm-v2-container-head">
+          <div class="cbm-v2-container-name"><span class="cbm-v2-container-icon">${c.icon}</span>${c.name}</div>
+          <span class="cbm-v2-container-cap">용적 ${c.cubic} m³</span>
+        </div>
+        <div class="cbm-v2-bar"><i></i></div>
+        <div class="cbm-v2-container-label">0.000 / ${c.cubic} m³ (0%)</div>
+        <div class="cbm-v2-container-note" hidden></div>
+        <div class="cbm-v2-container-fit">화물 규격 입력 대기</div>
+      </article>`).join('');
+
+    specRowsEl.innerHTML = CONTAINERS.map((c,index) => `
+      <tr data-container-row="${index}">
+        <td data-label="규격">${c.name}</td>
+        <td data-label="높이">${c.height}</td>
+        <td data-label="Tare">${fmt(c.tare,0)} kg</td>
+        <td data-label="Payload">${fmt(c.payload,0)} kg</td>
+        <td data-label="Max Gross">${fmt(c.gross,0)} kg</td>
+        <td data-label="Door W×H">${fmt(c.door[0],0)} × ${fmt(c.door[1],0)} mm</td>
+        <td data-label="내부 L×W×H">${fmt(c.inner[0],0)} × ${fmt(c.inner[1],0)} × ${fmt(c.inner[2],0)} mm</td>
+        <td data-label="용적">${c.cubic} m³</td>
+        <td data-label="도어·내부 확인"><span class="cbm-v2-status">입력 대기</span></td>
+      </tr>`).join('');
+  }
+
+  function setText(id, text){
+    const el = document.getElementById(id);
+    if(el) el.textContent = text;
+  }
+
+  function compute(){
+    let totalCbm = 0;
+    let totalWeight = 0;
+    let totalPcs = 0;
+    const boxes = [];
+
+    [...rowsEl.children].forEach(tr => {
+      const row = readRow(tr);
+      const factor = UNIT_TO_M[row.unit] || 0;
+      const perCbm = row.length * factor * row.width * factor * row.height * factor;
+      const lineCbm = perCbm * row.qty;
+      tr.querySelector('.cbm-per').textContent = fixed(perCbm,4);
+      tr.querySelector('.cbm-line').textContent = fixed(lineCbm,4);
+      totalCbm += lineCbm;
+      totalWeight += row.weight * row.qty;
+      totalPcs += row.qty;
+      if(row.qty > 0 && row.length > 0 && row.width > 0 && row.height > 0){
+        boxes.push([toMm(row.length,row.unit),toMm(row.width,row.unit),toMm(row.height,row.unit)]);
+      }
+    });
+
+    const airFactor = Number(factorEl.value) || 6000;
+    const airVolumeWeight = totalCbm * 1000000 / airFactor;
+    const airCharge = Math.max(totalWeight, airVolumeWeight);
+    const weightTon = totalWeight / 1000;
+    const wm = Math.max(totalCbm, weightTon);
+
+    setText('cbmTotal', `${fixed(totalCbm,4)} m³`);
+    setText('cbmPcs', fmt(totalPcs,0));
+    setText('cbmWeight', `${fmt(totalWeight,1)} kg`);
+    setText('cbmAirCharge', `${fmt(airCharge,1)} kg`);
+    setText('cbmAirBreak', `실중량 ${fmt(totalWeight,1)} · 부피중량 ${fmt(airVolumeWeight,1)} (÷ ${fmt(airFactor,0)})`);
+    setText('cbmWm', `${fixed(wm,3)} RT`);
+    setText('cbmWmBreak', `CBM ${fixed(totalCbm,3)} · 중량톤 ${fixed(weightTon,3)}`);
+
+    const fitStates = [];
+    CONTAINERS.forEach((container,index) => {
+      const pct = container.cubic > 0 ? totalCbm / container.cubic * 100 : 0;
+      const over = Math.max(0,totalCbm-container.cubic);
+      const fit = getFit(container,boxes);
+      fitStates.push(fit.state);
+
+      if(container.key === '20') setText('cbm20', `${fmt(pct,1)}%`);
+      if(container.key === '40') setText('cbm40ft', `${fmt(pct,1)}%`);
+      if(container.key === '40hc') setText('cbm40hc', `${fmt(pct,1)}%`);
+
+      const card = cardsEl.querySelector(`[data-container-card="${index}"]`);
+      const bar = card.querySelector('.cbm-v2-bar i');
+      const label = card.querySelector('.cbm-v2-container-label');
+      const note = card.querySelector('.cbm-v2-container-note');
+      const fitEl = card.querySelector('.cbm-v2-container-fit');
+      bar.style.width = `${Math.min(100,Math.max(0,pct))}%`;
+      bar.classList.toggle('over', over > 0 || fit.state === 'warn');
+      label.textContent = over > 0
+        ? `${fixed(totalCbm,3)} / ${container.cubic} m³ (${fmt(pct,1)}%) · 초과 ${fixed(over,3)} m³`
+        : `${fixed(totalCbm,3)} / ${container.cubic} m³ (${fmt(pct,1)}%)`;
+
+      if(over > 0){
+        const needed = Math.max(1,Math.ceil(totalCbm/container.cubic));
+        const lastLoad = totalCbm - container.cubic*(needed-1);
+        note.hidden = false;
+        note.innerHTML = `컨테이너 추가 필요 · 최소 <b>${needed}</b>대 권장 · 마지막 예상 적재 ${fixed(lastLoad,3)} m³`;
+      }else{
+        note.hidden = true;
+        note.textContent = '';
+      }
+
+      fitEl.className = `cbm-v2-container-fit${fit.state === 'ok' ? ' ok' : ''}`;
+      fitEl.textContent = fit.state === 'wait' ? '화물 규격 입력 대기' : fit.state === 'ok' ? '개별 화물 기준 내부 적재·도어 통과 가능' : `규격 확인 필요 · ${fit.issues.slice(0,3).join(' · ')}`;
+
+      const status = specRowsEl.querySelector(`[data-container-row="${index}"] .cbm-v2-status`);
+      status.className = `cbm-v2-status${fit.state === 'ok' ? ' ok' : fit.state === 'warn' ? ' warn' : ''}`;
+      status.textContent = fit.label;
+      status.title = fit.issues.join(' · ');
+    });
+
+    if(!boxes.length){
+      fitSummaryEl.textContent = '입력 대기';
+    }else{
+      const okCount = fitStates.filter(state => state === 'ok').length;
+      fitSummaryEl.textContent = okCount ? `${okCount}개 규격 통과 가능` : '규격 확인 필요';
+    }
+  }
+
+  addBtn.addEventListener('click', () => { createRow(); compute(); });
+  factorEl.addEventListener('change', compute);
+  resetBtn.addEventListener('click', () => {
+    rowsEl.innerHTML = '';
+    factorEl.value = '6000';
+    createRow();
+    compute();
+  });
+  calcBtn.addEventListener('click', () => {
+    compute();
+    root.classList.remove('flash');
+    void root.offsetWidth;
+    root.classList.add('flash');
+    window.setTimeout(() => root.classList.remove('flash'),500);
+  });
+
+  makeContainerUi();
+  createRow();
+  compute();
+})();
+</script><script defer="" src="assets/tools-common.js"></script><script defer="" src="assets/enterprise-motion.js?v=20260708-1"></script></body></html>
