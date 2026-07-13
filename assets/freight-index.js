@@ -38,15 +38,32 @@
     const d = new Date(`${value}T00:00:00+09:00`);
     return Math.floor((Date.now()-d.getTime())/86400000);
   };
+  const validBdiHistory = history => {
+    const today = new Date();
+    today.setHours(23,59,59,999);
+    return (history || []).filter(item => {
+      const value = Number(item?.value);
+      const day = new Date(`${item?.date || ''}T00:00:00+09:00`);
+      return Number.isFinite(value) && value >= 100 && value <= 20000 &&
+        !Number.isNaN(day.getTime()) && day <= today;
+    }).sort((a,b)=>a.date.localeCompare(b.date));
+  };
+  const normalizeFreightData = data => {
+    const normalized = data && typeof data === 'object' ? data : FALLBACK;
+    normalized.bdi = normalized.bdi || {...FALLBACK.bdi};
+    const valid = validBdiHistory(normalized.bdi.history);
+    normalized.bdi.history = valid.length ? valid : FALLBACK.bdi.history.slice();
+    return normalized;
+  };
 
   async function loadData(){
     try{
       const res = await fetch(`${DATA_URL}?v=${Date.now()}`,{cache:'no-store'});
       if(!res.ok) throw new Error(`HTTP ${res.status}`);
-      state.data = await res.json();
+      state.data = normalizeFreightData(await res.json());
     }catch(err){
       console.warn('Using embedded freight-data fallback:',err);
-      state.data = FALLBACK;
+      state.data = normalizeFreightData(FALLBACK);
     }
     renderAll();
   }

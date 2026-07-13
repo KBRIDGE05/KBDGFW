@@ -27,6 +27,12 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data" / "freight-data.json"
 KST = ZoneInfo("Asia/Seoul")
 
+# BDI is an index-point series. Values outside this broad historical range are
+# treated as page-parser noise and are never written to the public JSON.
+BDI_MIN_VALUE = 100
+BDI_MAX_VALUE = 20_000
+BDI_MAX_WEEKLY_CHANGE_PCT = 80.0
+
 URLS = {
     "scfi": "https://en.sse.net.cn/indices/scfinew.jsp",
     "kcci_grid": "https://www.kobc.or.kr/ebz/shippinginfo/kcci/gridList.do?mId=0304000000",
@@ -187,6 +193,61 @@ def weekly_latest(items: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     return sorted(by_week.values(), key=lambda x: x["date"])
 
 
+def valid_bdi_point(item: dict[str, Any]) -> bool:
+    """Return True only for a plausible, non-future BDI observation."""
+    try:
+        day = parse_iso(str(item.get("date", "")))
+        value = int(round(float(item.get("value"))))
+    except (TypeError, ValueError):
+        return False
+    return day <= datetime.now(KST).date() and BDI_MIN_VALUE <= value <= BDI_MAX_VALUE
+
+
+def sanitize_bdi_history(items: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Remove malformed/implausible points and return a sorted weekly series."""
+    clean_items: list[dict[str, Any]] = []
+    for item in items:
+        if not valid_bdi_point(item):
+            continue
+        clean_items.append({
+            "date": parse_iso(str(item["date"])).isoformat(),
+            "value": int(round(float(item["value"]))),
+        })
+    dedup = {item["date"]: item for item in weekly_latest(clean_items)}
+    return sorted(dedup.values(), key=lambda item: item["date"])[-104:]
+
+
+def validate_bdi_update(
+    existing: Iterable[dict[str, Any]],
+    incoming: Iterable[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Reject parser noise and implausible one-week jumps before JSON is changed."""
+    current = sanitize_bdi_history(existing)
+    candidates = sanitize_bdi_history(incoming)
+    if not candidates:
+        raise ParseError(
+            f"BDI 값이 허용 범위({BDI_MIN_VALUE:,}~{BDI_MAX_VALUE:,})를 벗어났습니다."
+        )
+
+    accepted: list[dict[str, Any]] = []
+    reference = current[-1] if current else None
+    for candidate in candidates:
+        if reference and candidate["date"] >= reference["date"]:
+            pct = abs(candidate["value"] - reference["value"]) / reference["value"] * 100
+            if pct > BDI_MAX_WEEKLY_CHANGE_PCT:
+                continue
+        accepted.append(candidate)
+        if not reference or candidate["date"] >= reference["date"]:
+            reference = candidate
+
+    if not accepted:
+        raise ParseError(
+            f"BDI 주간 변동이 비정상적입니다(허용 최대 {BDI_MAX_WEEKLY_CHANGE_PCT:.0f}%). "
+            "직전 정상값을 유지합니다."
+        )
+    return accepted
+
+
 def parse_bdi(soup: BeautifulSoup) -> list[dict[str, Any]]:
     """Parse recent Baltic Dry Index observations from a public delayed quote page."""
     page = clean(soup.get_text(" ", strip=True))
@@ -223,7 +284,12 @@ def parse_bdi(soup: BeautifulSoup) -> list[dict[str, Any]]:
 
     if not found:
         raise ParseError("BDI 공개 시세를 찾지 못했습니다.")
-    return weekly_latest(found.values())
+    parsed = sanitize_bdi_history(found.values())
+    if not parsed:
+        raise ParseError(
+            f"BDI 공개 시세가 허용 범위({BDI_MIN_VALUE:,}~{BDI_MAX_VALUE:,})에 없습니다."
+        )
+    return parsed
 
 def parse_kcci_timeseries(soup: BeautifulSoup) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
@@ -411,18 +477,23 @@ def update(data: dict[str, Any], only: str = "all") -> dict[str, Result]:
       errors: list[str] = []
       items: list[dict[str, Any]] = []
       used_source = ""
+      bdi = data.setdefault("bdi", {})
+      existing_history = sanitize_bdi_history(bdi.setdefault("history", []))
+      bdi["history"] = existing_history
       for source_key in ("bdi", "bdi_fallback"):
         try:
-          items = parse_bdi(fetch(URLS[source_key]))
+          parsed = parse_bdi(fetch(URLS[source_key]))
+          items = validate_bdi_update(existing_history, parsed)
           used_source = source_key
           break
         except Exception as exc:  # noqa: BLE001
           errors.append(f"{source_key}: {exc}")
       if items:
-        data.setdefault("bdi", {}).setdefault("history", [])
-        upsert_history(data["bdi"]["history"], items)
-        data["bdi"]["last_data_source"] = URLS[used_source]
-        results["bdi"] = Result(True, f"{items[-1]['date']} {items[-1]['value']:,} ({used_source})")
+        upsert_history(bdi["history"], items)
+        bdi["history"] = sanitize_bdi_history(bdi["history"])
+        bdi["last_data_source"] = URLS[used_source]
+        latest = bdi["history"][-1]
+        results["bdi"] = Result(True, f"{latest['date']} {latest['value']:,} ({used_source})")
       else:
         results["bdi"] = Result(False, " / ".join(errors))
 
