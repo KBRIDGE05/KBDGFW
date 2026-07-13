@@ -30,7 +30,14 @@
 .cbm-v2-delete{min-width:60px;height:34px;padding:0 10px;border:1px solid #efcaca;border-radius:9px;background:#fff7f7;color:#b42318;font-size:11px;font-weight:800}
 .cbm-v2-delete:hover{background:#fff0f0}
 .cbm-v2-tip{margin:10px 2px 0;color:#7b899e;font-size:11px;line-height:1.55}
-.cbm-v2-results{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cbm-v2-summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.cbm-v2-summary-card{min-width:0;padding:17px 16px;border:1px solid #dce5f1;border-radius:14px;background:linear-gradient(180deg,#f1f6ff 0,#fff 100%);box-shadow:0 8px 22px rgba(18,38,76,.05)}
+.cbm-v2-summary-label{display:flex;align-items:center;gap:9px;color:#2451b8;font-size:11px;font-weight:850;line-height:1.3}
+.cbm-v2-summary-icon{display:grid;place-items:center;width:31px;height:31px;flex:0 0 31px;border:1px solid #cfddf1;border-radius:9px;background:#fff;color:#2451b8;font-size:11px;font-weight:900;letter-spacing:-.04em}
+.cbm-v2-summary-card>strong{display:block;margin-top:11px;color:#20314d;font-size:clamp(20px,2vw,27px);font-weight:900;line-height:1.12;letter-spacing:-.04em;font-variant-numeric:tabular-nums;word-break:break-word}
+.cbm-v2-summary-card>em{display:block;margin-top:7px;color:#7b899d;font-size:10.5px;font-style:normal;line-height:1.5;word-break:keep-all}
+.cbm-v2-summary-card>em b{color:#51627b;font-weight:850}
+
 .cbm-v2-container-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .cbm-v2-container-card{padding:16px;border:1px solid #dce5f1;border-radius:14px;background:linear-gradient(180deg,#fff 0,#f8fbff 100%);box-shadow:0 8px 22px rgba(18,38,76,.05)}
 .cbm-v2-container-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -51,7 +58,7 @@
 .cbm-v2-spec-table td:last-child,.cbm-v2-spec-table th:last-child{min-width:128px}
 .cbm-v2.flash .nt-result{animation:cbmV2Flash .45s ease}
 @keyframes cbmV2Flash{0%{transform:translateY(0)}45%{transform:translateY(-2px);box-shadow:0 10px 22px rgba(43,92,219,.12)}100%{transform:translateY(0)}}
-@media(max-width:980px){.cbm-v2-results{grid-template-columns:repeat(2,minmax(0,1fr))}.cbm-v2-container-grid{grid-template-columns:1fr}.cbm-v2-guide{grid-template-columns:1fr}}
+@media(max-width:980px){.cbm-v2-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cbm-v2-container-grid{grid-template-columns:1fr}.cbm-v2-guide{grid-template-columns:1fr}}
 @media(max-width:720px){
   .cbm-v2-head{align-items:stretch}.cbm-v2-factor{min-width:0;width:100%}.cbm-v2-factor select{height:40px}
   .cbm-v2-guide{margin:14px 0}.cbm-v2-guide>div{padding:11px 12px}
@@ -65,7 +72,9 @@
   .cbm-v2-input,.cbm-v2-unit{height:37px;font-size:15px}
   .cbm-v2-table td:nth-child(7),.cbm-v2-table td:nth-child(8){display:flex;flex-direction:column;justify-content:center;min-height:56px;padding:8px 9px!important;border:1px solid #dce8f7!important;border-radius:9px;background:#f7faff!important}
   .cbm-v2-table td:nth-child(9){grid-column:1/-1}.cbm-v2-table td:nth-child(9)::before{display:none}.cbm-v2-delete{width:100%}
-  .cbm-v2-results{grid-template-columns:1fr}
+  .cbm-v2-summary-grid{grid-template-columns:1fr}
+  .cbm-v2-summary-card{padding:14px}
+  .cbm-v2-summary-card>strong{font-size:23px}
   .cbm-v2-spec-wrap{overflow:visible;border:0;background:transparent}
   .cbm-v2-spec-table,.cbm-v2-spec-table tbody,.cbm-v2-spec-table tr,.cbm-v2-spec-table td{display:block;width:100%;min-width:0}
   .cbm-v2-spec-table thead{display:none}.cbm-v2-spec-table tbody{display:grid;gap:10px}
@@ -120,23 +129,35 @@
 </div>
 <p class="cbm-v2-tip">최종 포장 상태의 외형 치수와 개당 실중량을 입력하세요. 수량과 단위를 변경하면 결과가 즉시 다시 계산됩니다.</p>
 </section>
-<section class="nt-card">
+<section class="nt-card cbm-v2-summary-section">
 <div class="nt-tool-head">
 <div>
 <h2>계산 요약</h2>
-<p>총 CBM, 수량, 실중량, 항공 C/W와 해상 W/M을 한눈에 확인합니다.</p>
+<p>총 부피, 총 수량, 실중량, 항공 산출중량과 해상 W/M을 한눈에 확인합니다.</p>
 </div>
 <span class="nt-badge">자동 계산</span>
 </div>
-<div class="nt-results cbm-v2-results">
-<div class="nt-result"><span>총 CBM</span><strong id="cbmTotal">0.0000 m³</strong></div>
-<div class="nt-result"><span>총 PCS</span><strong id="cbmPcs">0</strong></div>
-<div class="nt-result"><span>총 실중량</span><strong id="cbmWeight">0 kg</strong></div>
-<div class="nt-result"><span>항공 산출중량 C/W</span><strong id="cbmAirCharge">0 kg</strong><em id="cbmAirBreak">실중량 0 · 부피중량 0</em></div>
-<div class="nt-result"><span>해상 W/M</span><strong id="cbmWm">0.000 RT</strong><em id="cbmWmBreak">CBM·중량톤 중 큰 값</em></div>
-<div class="nt-result"><span>20FT 점유율</span><strong id="cbm20">0%</strong><em>33.2 m³ 기준</em></div>
-<div class="nt-result"><span>40FT 점유율</span><strong id="cbm40ft">0%</strong><em>67.6 m³ 기준</em></div>
-<div class="nt-result"><span>40HC 점유율</span><strong id="cbm40hc">0%</strong><em>76.3 m³ 기준</em></div>
+<div class="cbm-v2-summary-grid">
+<article class="cbm-v2-summary-card">
+<div class="cbm-v2-summary-label"><span class="cbm-v2-summary-icon">㎥</span><span>총 CBM</span></div>
+<strong id="cbmTotal">0.0000 m³</strong>
+<em>총 <b id="cbmPcs">0</b> PCS</em>
+</article>
+<article class="cbm-v2-summary-card">
+<div class="cbm-v2-summary-label"><span class="cbm-v2-summary-icon">kg</span><span>총 실중량</span></div>
+<strong id="cbmWeight">0 kg</strong>
+<em>입력한 개당 중량 × 수량 합계</em>
+</article>
+<article class="cbm-v2-summary-card">
+<div class="cbm-v2-summary-label"><span class="cbm-v2-summary-icon">✈</span><span>항공 산출중량 C/W</span></div>
+<strong id="cbmAirCharge">0 kg</strong>
+<em id="cbmAirBreak">실중량 0 · 부피중량 0</em>
+</article>
+<article class="cbm-v2-summary-card">
+<div class="cbm-v2-summary-label"><span class="cbm-v2-summary-icon">W/M</span><span>해상 W/M</span></div>
+<strong id="cbmWm">0.000 RT</strong>
+<em id="cbmWmBreak">CBM·중량톤 중 큰 값</em>
+</article>
 </div>
 </section>
 <section class="nt-card">
