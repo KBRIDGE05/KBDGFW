@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-13T16:00:43+09:00",
+    "generated_at": "2026-07-13T16:01:44+09:00",
     "timezone": "Asia/Seoul",
     "source_status": {
       "scfi": {
@@ -21,7 +21,7 @@
       },
       "bdi": {
         "ok": true,
-        "message": "2026-07-10 2,944"
+        "message": "2026-07-13 3 (bdi)"
       }
     }
   },
@@ -384,7 +384,12 @@
       {
         "date": "2026-07-10",
         "value": 2944
+      },
+      {
+        "date": "2026-07-13",
+        "value": 3
       }
-    ]
+    ],
+    "last_data_source": "https://en.stockq.org/index/BDI.php"
   }
 }
