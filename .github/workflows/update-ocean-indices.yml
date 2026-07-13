@@ -1,0 +1,42 @@
+name: Update SCFI and KCCI
+
+on:
+  workflow_dispatch:
+  schedule:
+    # KCCI: Monday 15:30 KST = 06:30 UTC.
+    - cron: "30 6 * * 1"
+    # SCFI: Friday 17:30 KST = 08:30 UTC.
+    - cron: "30 8 * * 5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-ocean-indices
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Read SCFI and KCCI official pages
+        run: python scripts/update_freight_data.py --only ocean
+      - name: Commit only when data changed
+        shell: bash
+        run: |
+          if git diff --quiet -- data/freight-data.json; then
+            echo "No new ocean-index values published."
+            exit 0
+          fi
+          git config user.name "kbridge-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/freight-data.json
+          git commit -m "data: update SCFI and KCCI"
+          git push
