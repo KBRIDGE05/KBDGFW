@@ -25,6 +25,31 @@
     "modified": "2026-07-14"
   },
   {
+    "slug": "ess-import-logistics-gimcheon",
+    "category": "service",
+    "categoryLabel": "물류 서비스",
+    "title": "ESS 수입 물류가 까다로운 이유 - 김천 그린수소 프로젝트 수행 사례",
+    "summary": "김천 그린수소 프로젝트 실제 수행 사례로 알아보는 ESS 수입 물류. 위험물 검토, 수입 통관, 중량물 운송, 고속도로 운송 불가에 따른 밤 10시 이후 국도 운송, 현장 반입까지 정리했습니다.",
+    "date": "2026-07-14",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/service/assets/images/thumbnail_ess_import_logistics_1000.webp",
+    "keywords": [
+      "ESS 수입 물류",
+      "김천 그린수소 프로젝트",
+      "위험물 수입",
+      "중량물 운송",
+      "국도 야간 운송",
+      "ESS 통관",
+      "현장 진입로 검토",
+      "특수장비 하역",
+      "프로젝트 물류",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/service/ess-import-logistics-gimcheon.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-07-14"
+  },
+  {
     "slug": "28wnews",
     "category": "news",
     "categoryLabel": "물류 뉴스",
