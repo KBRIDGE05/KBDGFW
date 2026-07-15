@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-13T12:00:00+09:00",
+    "generated_at": "2026-07-15T10:07:05+09:00",
     "timezone": "Asia/Seoul",
     "source_status": {
       "scfi": {
@@ -13,11 +13,11 @@
       },
       "korean_air": {
         "ok": true,
-        "message": "초기 데이터"
+        "message": "2026-07-08 FSC 반영"
       },
       "asiana": {
-        "ok": true,
-        "message": "초기 데이터"
+        "ok": false,
+        "message": "아시아나 한국발 FSC 요율을 찾지 못했습니다."
       },
       "bdi": {
         "ok": true,
@@ -272,7 +272,6 @@
           {
             "start": "2026-06-16",
             "end": "2026-07-15",
-            "mops": 3.6127,
             "short": 1360,
             "medium": 1420,
             "long": 1520,
