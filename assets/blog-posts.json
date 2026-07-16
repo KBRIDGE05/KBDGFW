@@ -1,5 +1,31 @@
 [
   {
+    "slug": "redsea",
+    "category": "insight",
+    "categoryLabel": "물류 인사이트",
+    "title": "호르무즈 사태 이후 홍해가 가장 취약한 해상 운송로가 된 이유",
+    "summary": "호르무즈 해협 차질 이후 에너지 물동량이 홍해와 바브엘만데브로 집중된 이유, 후티 리스크와 해상운임·리드타임 영향, 화주의 공급망 대응 방법을 케이브릿지 물류 인사이트로 정리했습니다.",
+    "date": "2026-07-16",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_red_sea_vulnerability_1000.webp",
+    "keywords": [
+      "호르무즈 사태",
+      "홍해 물류",
+      "바브엘만데브 해협",
+      "후티 반군",
+      "홍해 운송 리스크",
+      "수에즈 운하",
+      "희망봉 우회",
+      "해상운임",
+      "공급망 리스크",
+      "국제물류",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/insight/redsea.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-07-16"
+  },
+  {
     "slug": "ci",
     "category": "info",
     "categoryLabel": "물류 정보",
