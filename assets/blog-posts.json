@@ -1,5 +1,29 @@
 [
   {
+    "slug": "ci",
+    "category": "info",
+    "categoryLabel": "물류 정보",
+    "title": "커머셜 인보이스(Commercial Invoice) 작성방법 & 양식 다운로드",
+    "summary": "수출 시 필요한 커머셜 인보이스(Commercial Invoice)의 의미, 작성 항목, 주의사항을 고객이 쉽게 이해할 수 있도록 정리했습니다. 케이브릿지 커머셜 인보이스 양식 다운로드 포함.",
+    "date": "2026-07-14",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_commercial_invoice_1000.webp",
+    "keywords": [
+      "커머셜 인보이스",
+      "Commercial Invoice",
+      "상업송장",
+      "커머셜 인보이스 양식",
+      "수출서류",
+      "수출 인보이스",
+      "Invoice 작성방법",
+      "케이브릿지",
+      "포워딩"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/info/ci.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-07-14"
+  },
+  {
     "slug": "csbs",
     "category": "glossary",
     "categoryLabel": "물류 용어집",
