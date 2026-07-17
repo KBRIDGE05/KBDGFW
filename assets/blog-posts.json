@@ -1,5 +1,31 @@
 [
   {
+    "slug": "azsl",
+    "category": "glossary",
+    "categoryLabel": "물류 용어집",
+    "title": "아마존 셀러들이 알아야 할 필수 용어 - FBA부터 ASIN·FNSKU까지",
+    "summary": "아마존 판매를 시작할 때 꼭 알아야 할 FBA, FBM, RA, PL, BSR, ASIN, SKU, FNSKU, UPC, EAN, GTIN을 풀필먼트·상품등록·재고관리 기준으로 쉽게 정리했습니다.",
+    "date": "2026-07-17",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_amazon_seller_terms_1000.webp",
+    "keywords": [
+      "아마존 셀러 용어",
+      "아마존 FBA",
+      "아마존 FBM",
+      "ASIN",
+      "SKU",
+      "FNSKU",
+      "UPC",
+      "EAN",
+      "GTIN",
+      "아마존 입고",
+      "아마존 물류"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/glossary/azsl.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-07-17"
+  },
+  {
     "slug": "redsea",
     "category": "insight",
     "categoryLabel": "물류 인사이트",

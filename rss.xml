@@ -8,8 +8,124 @@
     <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
     <generator>KBRIDGE Blog SEO Automation</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 16 Jul 2026 22:28:46 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 11:43:11 GMT</lastBuildDate>
     <ttl>60</ttl>
+
+    <item>
+      <title><![CDATA[아마존 셀러들이 알아야 할 필수 용어 - FBA부터 ASIN·FNSKU까지]]></title>
+      <link>https://www.kbexpress.kr/blog/posts/glossary/azsl.html</link>
+      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/glossary/azsl.html</guid>
+      <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
+      <category><![CDATA[물류 용어집]]></category>
+      <description><![CDATA[<div class="body">
+      <figure class="cover"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_amazon_seller_terms_1000.webp" width="1000" height="1000" alt="아마존 셀러 필수 용어 FBA부터 ASIN FNSKU까지 쉽게 정리" fetchpriority="high" decoding="async"></figure>
+      <section class="summary" aria-labelledby="summary-title"><h2 id="summary-title">핵심 요약</h2><p><strong>FBA·FBM은 주문 처리 방식</strong>, <strong>RA·PL은 판매 모델</strong>, <strong>ASIN·SKU·FNSKU는 상품과 재고를 구분하는 코드</strong>입니다. UPC와 EAN은 GTIN 체계에 포함되는 국제 상품 식별번호이며, FBA 입고 전에는 라벨·포장·통관 정보를 함께 확인해야 합니다.</p></section>
+      
+
+      <section id="overview" class="section">
+        <h2>아마존 용어는 먼저 4가지 영역으로 나누면 쉽습니다</h2>
+        <p class="lead-answer"><strong>직접 답변:</strong> 아마존 셀러 용어는 ① 누가 주문을 처리하는지, ② 어떤 방식으로 상품을 판매하는지, ③ 상품과 재고를 어떤 코드로 구분하는지, ④ FBA 창고에 어떻게 입고하는지로 나누면 이해하기 쉽습니다.</p>
+        <div class="term-grid">
+          <div class="term-card"><div class="term-head"><span class="term-code">01</span><h3>풀필먼트</h3></div><p>재고 보관, 피킹, 포장, 배송, 반품을 아마존과 판매자 중 누가 담당하는지 구분합니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">02</span><h3>판매 운영</h3></div><p>리셀링과 자체 브랜드, 판매 순위, 구매자 보호 클레임 등 상품 운영 방식을 의미합니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">03</span><h3>상품 식별 코드</h3></div><p>아마존 상품 페이지, 판매자 재고, FBA 재고 소유자를 서로 다른 코드로 구분합니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">04</span><h3>입고·라벨</h3></div><p>상품 바코드, FNSKU, 박스 라벨, 포장 규격, 위험물과 수입 통관 정보를 확인합니다.</p></div>
+        </div>
+      </section>
+
+      <section id="fulfillment" class="section">
+        <figure class="visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_01_amazon_fulfillment_terms.webp" width="1200" height="750" alt="아마존 풀필먼트 용어 FBA FBM SFP MCF 차이" loading="lazy" decoding="async"></figure>
+        <h2>FBA·FBM 등 아마존 풀필먼트 용어</h2>
+        <div class="term-grid">
+          <div class="term-card"><div class="term-head"><span class="term-code">FBA</span><h3>Fulfillment by Amazon</h3></div><p>판매자가 재고를 아마존 풀필먼트 센터로 보내면 아마존이 보관, 피킹, 포장, 배송과 고객 서비스·반품을 담당하는 방식입니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">FBM</span><h3>Fulfilled by Merchant</h3></div><p>판매자가 자신의 창고 또는 외부 물류센터에서 재고를 관리하고 주문별 포장과 배송을 직접 책임지는 방식입니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">SFP</span><h3>Seller Fulfilled Prime</h3></div><p>판매자가 주문을 처리하면서 일정한 자격과 성과 기준을 충족해 Prime 배지를 표시하는 프로그램입니다. 판매 국가와 계정별 제공 여부를 확인해야 합니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">MCF</span><h3>Multi-Channel Fulfillment</h3></div><p>아마존의 물류망과 FBA 재고를 활용해 자사몰이나 다른 온라인 판매 채널에서 발생한 주문까지 처리하는 다채널 풀필먼트 서비스입니다.</p></div>
+        </div>
+        <p class="note"><strong>실무 포인트:</strong> FBA와 FBM은 반드시 둘 중 하나만 선택하는 방식이 아닙니다. 상품의 크기, 회전율, 마진, 보관비, 계절성에 따라 상품별로 조합할 수 있습니다.</p>
+      </section>
+
+      <section id="sales" class="section">
+        <figure class="visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_02_amazon_sales_terms.webp" width="1200" height="750" alt="아마존 판매 운영 용어 RA PL BSR A-to-Z Guarantee" loading="lazy" decoding="async"></figure>
+        <h2>RA·PL·BSR 등 판매·운영 용어</h2>
+        <div class="term-grid">
+          <div class="term-card"><div class="term-head"><span class="term-code">RA</span><h3>Retail Arbitrage</h3></div><p>오프라인 소매점에서 할인 상품을 구입한 뒤 온라인에서 더 높은 가격으로 재판매해 차익을 얻는 방식입니다. 브랜드·카테고리 승인과 정품 증빙 요건을 사전에 확인해야 합니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">PL</span><h3>Private Label</h3></div><p>제조사에 상품 생산을 맡기되 판매자가 자신의 브랜드와 패키지로 판매하는 방식입니다. 상품 차별화, 상표, 품질 관리, 브랜드 보호가 중요합니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">BSR</span><h3>Best Sellers Rank</h3></div><p>같은 카테고리 안에서 해당 상품의 판매 성과를 상대적으로 보여주는 순위입니다. 일반적으로 숫자가 낮을수록 카테고리 내 판매 순위가 높습니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">A-to-Z</span><h3>A-to-z Guarantee Claim</h3></div><p>판매자 배송 주문의 배송 시점, 상품 상태, 반품 경험 등에 문제가 있을 때 구매자가 제기할 수 있는 보호 절차입니다. 판매자는 메시지와 배송 증빙을 체계적으로 관리해야 합니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">INV</span><h3>Inventory</h3></div><p>판매 가능한 상품의 재고를 의미합니다. 가용 재고, 예약 재고, 입고 중 재고, 장기 보관 재고처럼 상태별로 구분해 관리합니다.</p></div>
+          <div class="term-card"><div class="term-head"><span class="term-code">BR</span><h3>Brand Registry</h3></div><p>등록된 브랜드의 권리 보호와 브랜드 콘텐츠·분석 기능을 지원하는 프로그램입니다. PL 상품을 운영할 때 함께 검토되는 경우가 많습니다.</p></div>
+        </div>
+      </section>
+
+      <section id="codes" class="section">
+        <figure class="visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_03_amazon_identifier_codes.webp" width="1200" height="750" alt="아마존 상품 식별 코드 ASIN SKU FNSKU GTIN 차이" loading="lazy" decoding="async"></figure>
+        <h2>ASIN·SKU·FNSKU·GTIN은 무엇이 다른가요?</h2>
+        <p><strong>ASIN은 상품 페이지</strong>, <strong>SKU는 판매자 재고</strong>, <strong>FNSKU는 FBA 재고 소유자</strong>, <strong>GTIN은 국제 상품 식별번호 체계</strong>를 구분하는 코드입니다.</p>
+        <div class="table-wrap"><table aria-label="ASIN SKU FNSKU GTIN 비교표"><thead><tr><th>용어</th><th>누가 부여하나</th><th>무엇을 식별하나</th><th>실무에서 보는 위치</th></tr></thead><tbody>
+          <tr><td>ASIN</td><td>아마존</td><td>아마존 카탈로그의 상품</td><td>상품 상세페이지, 재고·주문 보고서</td></tr>
+          <tr><td>SKU</td><td>판매자</td><td>판매자가 관리하는 상품·옵션 재고</td><td>Seller Central 재고 관리, ERP·WMS</td></tr>
+          <tr><td>FNSKU</td><td>아마존 시스템</td><td>FBA 상품과 판매자 재고의 연결</td><td>아마존 바코드 라벨, FBA 배송 계획</td></tr>
+          <tr><td>GTIN</td><td>GS1 체계</td><td>전 세계 유통 상품</td><td>UPC·EAN·ISBN 등 상품 바코드</td></tr>
+        </tbody></table></div>
+        <h3>ASIN - Amazon Standard Identification Number</h3><p>아마존 카탈로그에 등록된 상품을 식별하는 10자리 영문·숫자 조합입니다. 동일한 상품에 여러 판매자가 오퍼를 등록하면 같은 ASIN의 상품 상세페이지를 공유할 수 있습니다.</p>
+        <h3>SKU - Stock Keeping Unit</h3><p>판매자가 재고 관리를 위해 직접 만드는 코드입니다. 색상, 사이즈, 모델, 포장 단위가 다르면 서로 다른 SKU로 관리하는 것이 일반적입니다.</p>
+        <h3>FNSKU - Fulfillment Network Stock Keeping Unit</h3><p>아마존 풀필먼트 네트워크에서 FBA 재고를 식별하는 코드입니다. 같은 ASIN이라도 판매자 또는 재고 소유 관계에 따라 FNSKU가 다를 수 있습니다.</p>
+        <p class="note"><strong>자주 하는 실수:</strong> ASIN과 FNSKU를 같은 코드로 생각하거나 제조사 바코드와 아마존 바코드를 동시에 노출해 스캔 오류를 만드는 경우가 있습니다. 실제 출고 라벨은 Seller Central 배송 계획의 지시를 기준으로 확인해야 합니다.</p>
+      </section>
+
+      <section id="barcodes" class="section">
+        <h2>UPC·EAN·ISBN과 GTIN의 관계</h2>
+        <p><strong>GTIN(Global Trade Item Number)</strong>은 국제적으로 상품을 식별하는 번호 체계의 상위 개념입니다. GS1 기준으로 UPC는 주로 12자리 GTIN-12, EAN은 주로 13자리 GTIN-13을 의미합니다.</p>
+        <div class="table-wrap"><table aria-label="UPC EAN ISBN 바코드 비교"><thead><tr><th>용어</th><th>일반적인 형태</th><th>주요 용도</th><th>주의사항</th></tr></thead><tbody>
+          <tr><td>UPC</td><td>GTIN-12</td><td>북미 소비재 상품 식별</td><td>공식 발급·소유 정보를 확인합니다.</td></tr>
+          <tr><td>EAN</td><td>GTIN-13</td><td>유럽과 전 세계 소비재 상품 식별</td><td>한국 유통 바코드도 이 체계를 사용합니다.</td></tr>
+          <tr><td>ISBN</td><td>도서 식별번호</td><td>책과 출판물 식별</td><td>일반 소비재 UPC와 용도가 다릅니다.</td></tr>
+          <tr><td>GTIN 면제</td><td>승인 조건별 상이</td><td>일부 브랜드·상품의 식별번호 예외</td><td>카테고리와 브랜드 조건에 따라 별도 심사가 필요합니다.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="inbound" class="section">
+        <figure class="visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_04_amazon_fba_inbound_check.webp" width="1200" height="750" alt="아마존 FBA 입고 전 바코드 포장 통관 체크리스트" loading="lazy" decoding="async"></figure>
+        <h2>FBA 입고 전 실무 체크포인트</h2>
+        <ul class="checklist">
+          <li><strong>상품 식별:</strong> ASIN, SKU, UPC·EAN과 실제 상품 모델·옵션이 정확히 일치하는지 확인합니다.</li>
+          <li><strong>라벨 방식:</strong> 제조사 바코드 사용 대상인지 FNSKU 라벨 부착 대상인지 배송 계획에서 확인합니다.</li>
+          <li><strong>스캔 가능성:</strong> 기존 바코드가 여러 개 노출되거나 라벨이 접힘·곡면·모서리에 걸리지 않도록 부착합니다.</li>
+          <li><strong>포장 규격:</strong> 세트 상품, 폴리백, 완충, 유리·액체, 의류, 날카로운 제품 등 품목별 준비 기준을 확인합니다.</li>
+          <li><strong>박스·팔레트 라벨:</strong> 상품 단위 라벨과 외부 운송 박스 라벨을 구분하고 각 박스에 올바른 라벨을 부착합니다.</li>
+          <li><strong>위험물:</strong> 리튬배터리, 에어로졸, 화학제품, 인화성 물질은 SDS와 운송·보관 규정을 사전에 검토합니다.</li>
+          <li><strong>수입 통관:</strong> 판매 국가의 수입자, 세금·관세 부담 주체, HS CODE, 원산지, 인증 요건을 출고 전에 확정합니다.</li>
+          <li><strong>예약과 납품:</strong> 지정 풀필먼트 센터, 납품 일정, 배송사 예약, POD 확보 등 최종 마일 조건을 확인합니다.</li>
+        </ul>
+        <p class="note">아마존의 프로그램, 라벨 정책, 수수료와 입고 기준은 판매 국가·상품 카테고리·계정 상태에 따라 달라지고 수시로 변경될 수 있습니다. 실제 출고 전 Seller Central의 최신 배송 계획과 공식 도움말을 다시 확인하세요.</p>
+      </section>
+
+      <section id="faq" class="section">
+        <h2>자주 묻는 질문</h2>
+        <div class="faq">
+          <div class="faq-item"><p class="faq-q">Q. FBA와 FBM을 한 계정에서 함께 사용할 수 있나요?</p><p class="faq-a">가능합니다. 상품별로 다른 방식으로 운영하거나 재고와 마진 구조에 맞춰 조합할 수 있습니다. 판매 마켓과 계정별 설정 가능 범위를 확인하세요.</p></div>
+          <div class="faq-item"><p class="faq-q">Q. ASIN과 SKU는 같은 번호인가요?</p><p class="faq-a">아닙니다. ASIN은 아마존 카탈로그의 상품을 식별하고, SKU는 판매자가 자신의 재고를 구분하기 위해 설정합니다.</p></div>
+          <div class="faq-item"><p class="faq-q">Q. UPC와 EAN은 GTIN과 어떤 관계인가요?</p><p class="faq-a">GTIN이 상위 개념이며 UPC는 일반적으로 GTIN-12, EAN은 일반적으로 GTIN-13에 해당합니다.</p></div>
+          <div class="faq-item"><p class="faq-q">Q. FNSKU는 모든 FBA 상품에 반드시 필요한가요?</p><p class="faq-a">상품과 계정 설정에 따라 제조사 바코드를 사용할 수 있는 경우도 있습니다. 배송 계획에서 아마존 바코드가 요구되면 해당 FNSKU 라벨을 사용해야 합니다.</p></div>
+          <div class="faq-item"><p class="faq-q">Q. 한국에서 미국 FBA 창고로 보낼 때 가장 먼저 확인할 내용은 무엇인가요?</p><p class="faq-a">상품 규격과 물량뿐 아니라 수입자, 관세·세금, HS CODE, 제품 인증, 위험물 여부, FBA 라벨과 납품 예약 조건을 함께 확인해야 합니다.</p></div>
+        </div>
+      </section>
+
+      <section class="cta" aria-label="케이브릿지 상담"><h2>아마존 FBA 입고와 국제운송이 필요하다면 케이브릿지와 확인하세요</h2><p>품명, 수량, 박스 규격, 중량, 출발지, 판매 국가와 FBA 목적지만 정리해도 해상·항공 운송, 통관, 라벨·포장 조건과 납품 방법을 검토할 수 있습니다.</p><div class="actions"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a><a class="btn sub" href="https://www.kbexpress.kr/index.html#quote">즉시견적</a><a class="btn sub" href="https://www.kbexpress.kr/blog/">블로그 목록</a></div></section>
+
+      <div class="tags" aria-label="태그"><span class="tag">#아마존셀러</span><span class="tag">#아마존FBA</span><span class="tag">#FBM</span><span class="tag">#ASIN</span><span class="tag">#SKU</span><span class="tag">#FNSKU</span><span class="tag">#UPC</span><span class="tag">#EAN</span><span class="tag">#GTIN</span><span class="tag">#글로벌이커머스</span><span class="tag">#케이브릿지</span></div>
+      <aside class="refs"><h3>참고 자료와 작성 기준</h3><ul>
+        <li><a href="https://sell.amazon.com/fulfillment-by-amazon" target="_blank" rel="noopener noreferrer">Amazon - Fulfillment by Amazon</a></li>
+        <li><a href="https://sell.amazon.com/programs/fulfilled-by-merchant" target="_blank" rel="noopener noreferrer">Amazon - Fulfilled by Merchant</a></li>
+        <li><a href="https://sell.amazon.com/blog/sku-definition-guide" target="_blank" rel="noopener noreferrer">Amazon - SKU definition guide</a></li>
+        <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GF6B8ZPNY2AP72VV" target="_blank" rel="noopener noreferrer">Amazon Seller Central - Amazon search glossary</a></li>
+        <li><a href="https://sell.amazon.com/blog/amazon-best-sellers-rank" target="_blank" rel="noopener noreferrer">Amazon - Best Sellers Rank guide</a></li>
+        <li><a href="https://www.gs1.org/standards/id-keys/gtin" target="_blank" rel="noopener noreferrer">GS1 - Global Trade Item Number</a></li>
+      </ul></aside>
+    </div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_amazon_seller_terms_1000.webp" type="image/webp" />
+    </item>
 
     <item>
       <title><![CDATA[호르무즈 사태 이후 홍해가 가장 취약한 해상 운송로가 된 이유]]></title>
