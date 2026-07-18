@@ -7,7 +7,9 @@ on:
       - main
     paths:
       - 'blog/posts/**/*.html'
+      - 'scripts/normalize-blog-posts.py'
       - 'scripts/build-blog-posts.mjs'
+      - 'assets/blog-header-28wnews.css'
       - '.github/workflows/update-blog-posts.yml'
 
 permissions:
@@ -19,12 +21,19 @@ concurrency:
 
 jobs:
   build-blog-seo:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
 
       - name: Setup Node.js
         uses: actions/setup-node@v5
@@ -37,7 +46,7 @@ jobs:
           : > /tmp/changed-blog-posts.txt
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             touch /tmp/notify-all-blog-posts
-            echo "Manual run: all current blog posts will be notified."
+            echo "Manual run: all current blog posts will be normalized and notified."
             exit 0
           fi
 
@@ -46,12 +55,26 @@ jobs:
           if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
             git ls-files 'blog/posts/**/*.html' > /tmp/changed-blog-posts.txt
           else
-            git diff --name-only "$BEFORE" "$AFTER" -- 'blog/posts/**/*.html' > /tmp/changed-blog-posts.txt
+            git diff --name-status "$BEFORE" "$AFTER" -- 'blog/posts/**/*.html' \
+              | awk '$1 != "D" {print $NF}' > /tmp/changed-blog-posts.txt
+            git diff --name-status "$BEFORE" "$AFTER" -- 'blog/posts/**/*.html' \
+              | awk '$1 == "D" {print $NF}' > /tmp/deleted-blog-posts.txt
           fi
           echo "Changed blog posts:"
           cat /tmp/changed-blog-posts.txt || true
 
-      - name: Generate manifest, sitemap and RSS
+      - name: Normalize article SEO and header
+        run: python scripts/normalize-blog-posts.py
+
+      - name: Include normalized articles in notification list
+        shell: bash
+        run: |
+          git diff --name-only -- blog/posts \
+            | grep -E '^blog/posts/(info|service|news|insight|glossary)/.+\.html?$' \
+            >> /tmp/changed-blog-posts.txt || true
+          sort -u -o /tmp/changed-blog-posts.txt /tmp/changed-blog-posts.txt
+
+      - name: Generate static blog list, manifest, sitemap and RSS
         run: node scripts/build-blog-posts.mjs
 
       - name: Commit generated SEO files
@@ -59,13 +82,20 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/blog-posts.json sitemap.xml rss.xml 736f09a19bf4a21e9a05a8bfe60a60c4.txt
+          git add \
+            blog/posts \
+            blog/index.html \
+            assets/blog-posts.json \
+            sitemap.xml \
+            rss.xml \
+            736f09a19bf4a21e9a05a8bfe60a60c4.txt
 
           if git diff --cached --quiet; then
             echo "No generated SEO file changes."
           else
-            git commit -m "Update blog manifest, sitemap and RSS"
-            git push
+            git commit -m "seo: normalize blog pages and notify Naver"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
 
       - name: Wait for GitHub Pages deployment
@@ -76,9 +106,13 @@ jobs:
         run: |
           if [ -f /tmp/notify-all-blog-posts ]; then
             node scripts/build-blog-posts.mjs --notify-all
-          elif [ -s /tmp/changed-blog-posts.txt ]; then
-            mapfile -t CHANGED_FILES < /tmp/changed-blog-posts.txt
-            node scripts/build-blog-posts.mjs --notify "${CHANGED_FILES[@]}"
           else
-            echo "No changed blog URLs to notify."
+            cat /tmp/deleted-blog-posts.txt >> /tmp/changed-blog-posts.txt 2>/dev/null || true
+            sort -u -o /tmp/changed-blog-posts.txt /tmp/changed-blog-posts.txt
+            if [ -s /tmp/changed-blog-posts.txt ]; then
+              mapfile -t CHANGED_FILES < /tmp/changed-blog-posts.txt
+              node scripts/build-blog-posts.mjs --notify "${CHANGED_FILES[@]}"
+            else
+              echo "No changed blog URLs to notify."
+            fi
           fi

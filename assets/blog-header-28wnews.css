@@ -1,0 +1,134 @@
+/*
+ * KBRIDGE blog header standard
+ * Visual and responsive behavior are based on blog/posts/news/28wnews.html.
+ * Loaded after each article's inline CSS so legacy header rules cannot diverge.
+ */
+.kb-header{
+  position:sticky!important;
+  top:0!important;
+  z-index:100!important;
+  width:100%!important;
+  background:#172f55!important;
+  color:#fff!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+}
+.kb-header *{box-sizing:border-box!important}
+.kb-header-inner{
+  max-width:1180px!important;
+  min-height:48px!important;
+  margin:0 auto!important;
+  padding:0 22px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:22px!important;
+}
+.kb-logo{
+  display:flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  color:#fff!important;
+  font-size:13px!important;
+  line-height:1!important;
+  font-weight:800!important;
+  letter-spacing:-.02em!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+}
+.kb-logo-mark{
+  width:20px!important;
+  height:20px!important;
+  flex:0 0 20px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:#2d6df6!important;
+  color:#fff!important;
+  border:0!important;
+  border-radius:0!important;
+  font-size:12px!important;
+  line-height:1!important;
+  font-weight:800!important;
+}
+.kb-nav{
+  min-width:0!important;
+  flex:1 1 auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:18px!important;
+  flex-wrap:nowrap!important;
+}
+.kb-nav a,
+.kb-contact{
+  min-height:48px!important;
+  padding:0!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  background:transparent!important;
+  color:#fff!important;
+  border:0!important;
+  border-radius:0!important;
+  font-size:12px!important;
+  line-height:1.2!important;
+  font-weight:560!important;
+  opacity:.96!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+}
+.kb-nav a:hover,
+.kb-nav a:focus-visible,
+.kb-contact:hover,
+.kb-contact:focus-visible{color:#d9e7ff!important;opacity:1!important}
+.kb-actions{
+  margin-left:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:18px!important;
+  white-space:nowrap!important;
+}
+.kb-actions .kb-contact{min-height:30px!important}
+.kb-quote{
+  height:30px!important;
+  min-height:30px!important;
+  padding:0 15px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:#2d6df6!important;
+  color:#fff!important;
+  border:0!important;
+  border-radius:0!important;
+  font-size:12px!important;
+  line-height:1!important;
+  font-weight:700!important;
+  text-decoration:none!important;
+}
+.kb-quote:hover,.kb-quote:focus-visible{background:#1f5fe8!important;color:#fff!important}
+@media(max-width:860px){
+  .kb-header{position:static!important}
+  .kb-header-inner{
+    min-height:auto!important;
+    padding:12px 14px!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:10px!important;
+  }
+  .kb-nav{
+    width:100%!important;
+    gap:12px!important;
+    flex-wrap:wrap!important;
+  }
+  .kb-nav a{min-height:28px!important}
+  .kb-actions{
+    width:100%!important;
+    margin-left:0!important;
+    justify-content:flex-start!important;
+  }
+}
+@media(max-width:560px){
+  .kb-nav{display:none!important}
+}

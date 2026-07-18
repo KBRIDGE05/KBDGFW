@@ -23,6 +23,7 @@ const postsRoot = path.join(root, 'blog', 'posts');
 const manifestPath = path.join(root, 'assets', 'blog-posts.json');
 const sitemapPath = path.join(root, 'sitemap.xml');
 const rssPath = path.join(root, 'rss.xml');
+const blogIndexPath = path.join(root, 'blog', 'index.html');
 
 const normalizeSlashes = value => String(value || '').split(path.sep).join('/');
 const decodeHtml = value => String(value || '')
@@ -48,6 +49,13 @@ const xmlEscape = value => String(value ?? '')
   .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&apos;');
+
+const htmlEscape = value => String(value ?? '')
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#39;');
 
 const cdata = value => String(value ?? '').replace(/]]>/g, ']]]]><![CDATA[>');
 const todayKst = () => new Intl.DateTimeFormat('en-CA', {
@@ -294,6 +302,54 @@ const writeManifest = posts => {
   fs.writeFileSync(manifestPath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
 };
 
+const formatCardDate = value => {
+  const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+  return match ? `${match[1]}.${match[2]}.${match[3]}` : String(value || '');
+};
+
+const staticPostCard = (post, index) => {
+  const label = post.categoryLabel || labels[post.category] || labels.info;
+  const date = formatCardDate(post.date);
+  const meta = date
+    ? `<span>${htmlEscape(label)}</span><span>${htmlEscape(date)}</span>`
+    : `<span>${htmlEscape(label)}</span>`;
+  return `<!-- KBRIDGE_STATIC_POST ${htmlEscape(post.relativePath)} -->
+<article class="post-card" data-category="${htmlEscape(post.category)}" data-search="${htmlEscape([label, post.title, post.summary, ...(post.keywords || [])].join(' '))}">
+  <a class="post-thumb" href="${htmlEscape(post.url)}">
+    <img src="${htmlEscape(post.thumbnail)}" alt="${htmlEscape(post.title)}" loading="${index < 2 ? 'eager' : 'lazy'}" decoding="async"${index === 0 ? ' fetchpriority="high"' : ''}>
+  </a>
+  <div class="post-body">
+    <div class="post-meta">${meta}</div>
+    <h2>${htmlEscape(post.title)}</h2>
+    <p>${htmlEscape(post.summary || '')}</p>
+    <a class="post-link" href="${htmlEscape(post.url)}">자세히 보기 →</a>
+  </div>
+</article>`;
+};
+
+const writeBlogIndex = posts => {
+  if (!fs.existsSync(blogIndexPath)) return;
+  let html = fs.readFileSync(blogIndexPath, 'utf8');
+  const cards = posts.map(staticPostCard).join('');
+  const marked = `<!-- KBRIDGE_STATIC_POSTS_START -->${cards}<!-- KBRIDGE_STATIC_POSTS_END -->`;
+
+  if (/<!-- KBRIDGE_STATIC_POSTS_START -->[\s\S]*?<!-- KBRIDGE_STATIC_POSTS_END -->/i.test(html)) {
+    html = html.replace(/<!-- KBRIDGE_STATIC_POSTS_START -->[\s\S]*?<!-- KBRIDGE_STATIC_POSTS_END -->/i, marked);
+  } else {
+    html = html.replace(
+      /(<div\b[^>]*class=["']blog-grid["'][^>]*id=["']blogGrid["'][^>]*>)[\s\S]*?(<\/div>\s*<div\b[^>]*id=["']emptyState["'])/i,
+      `$1${marked}$2`
+    );
+  }
+
+  html = html.replace(/(<p\b[^>]*id=["']resultCount["'][^>]*>)[\s\S]*?(<\/p>)/i, `$1총 ${posts.length}건$2`);
+  html = html.replace(
+    /<div\b([^>]*id=["']emptyState["'][^>]*)>[\s\S]*?<\/div>/i,
+    (_full, attrs) => `<div${String(attrs).replace(/\sclass=["'][^"']*["']/i, '').trimEnd()} class="empty"><strong>검색 결과가 없습니다.</strong><br>다른 키워드나 카테고리를 선택해 주세요.</div>`
+  );
+  fs.writeFileSync(blogIndexPath, html.replace(/\r\n/g, '\n'), 'utf8');
+};
+
 const existingSitemapBlocks = () => {
   if (!fs.existsSync(sitemapPath)) return [];
   const xml = fs.readFileSync(sitemapPath, 'utf8');
@@ -349,7 +405,7 @@ const toRssDate = date => {
 const writeRss = posts => {
   const items = posts.slice(0, RSS_LIMIT).map(post => `    <item>\n      <title><![CDATA[${cdata(post.title)}]]></title>\n      <link>${xmlEscape(post.url)}</link>\n      <guid isPermaLink="true">${xmlEscape(post.url)}</guid>\n      <pubDate>${xmlEscape(toRssDate(post.date))}</pubDate>\n      <category><![CDATA[${cdata(post.categoryLabel)}]]></category>\n      <description><![CDATA[${cdata(post.content || `<p>${xmlEscape(post.summary)}</p>`) }]]></description>\n      <enclosure url="${xmlEscape(post.thumbnail)}" type="image/webp" />\n    </item>`).join('\n\n');
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>KBRIDGE 케이브릿지 물류 블로그</title>\n    <link>${SITE_URL}/blog/</link>\n    <description>수출입, 해상·항공운송, 통관, 물류 서비스와 공급망 인사이트를 제공하는 케이브릿지 공식 블로그입니다.</description>\n    <language>ko-KR</language>\n    <copyright>© 2026 KBRIDGE CO., LTD.</copyright>\n    <generator>KBRIDGE Blog SEO Automation</generator>\n    <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />\n    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n    <ttl>60</ttl>\n${items ? `\n${items}\n` : ''}  </channel>\n</rss>\n`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>KBRIDGE 케이브릿지 물류 블로그</title>\n    <link>${SITE_URL}/blog/</link>\n    <description>수출입, 해상·항공운송, 통관, 물류 서비스와 공급망 인사이트를 제공하는 케이브릿지 공식 블로그입니다.</description>\n    <language>ko-KR</language>\n    <copyright>© 2026 KBRIDGE CO., LTD.</copyright>\n    <generator>KBRIDGE Blog SEO Automation</generator>\n    <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />\n    <lastBuildDate>${xmlEscape(toRssDate(posts[0]?.modified || posts[0]?.date || todayKst()))}</lastBuildDate>\n    <ttl>60</ttl>\n${items ? `\n${items}\n` : ''}  </channel>\n</rss>\n`;
   fs.writeFileSync(rssPath, xml, 'utf8');
 };
 
@@ -366,6 +422,7 @@ const urlsFromPaths = paths => [...new Set(paths
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const notifyIndexNow = async urls => {
+  urls = [...new Set([...urls, `${SITE_URL}/blog/`])];
   if (!urls.length) {
     console.log('IndexNow: 전송할 변경 URL이 없습니다.');
     return;
@@ -403,8 +460,11 @@ const validateOutput = posts => {
   if (new Set(urls).size !== urls.length) throw new Error('중복된 블로그 URL이 발견되었습니다.');
   const sitemap = fs.readFileSync(sitemapPath, 'utf8');
   const rss = fs.readFileSync(rssPath, 'utf8');
+  const blogIndex = fs.existsSync(blogIndexPath) ? fs.readFileSync(blogIndexPath, 'utf8') : '';
   for (const post of posts) {
     if (!sitemap.includes(xmlEscape(post.url))) throw new Error(`사이트맵 누락: ${post.url}`);
+    if (!rss.includes(xmlEscape(post.url))) throw new Error(`RSS 누락: ${post.url}`);
+    if (blogIndex && !blogIndex.includes(post.url)) throw new Error(`블로그 정적 목록 누락: ${post.url}`);
   }
   if (!sitemap.startsWith('<?xml') || !rss.startsWith('<?xml')) throw new Error('XML 파일 헤더가 올바르지 않습니다.');
 };
@@ -428,6 +488,7 @@ if (args.includes('--notify-all')) {
 } else {
   const posts = readPosts();
   writeManifest(posts);
+  writeBlogIndex(posts);
   writeSitemap(posts);
   writeRss(posts);
   ensureKeyFile();
