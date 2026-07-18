@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>글로벌 운임지수 통합 조회 - SCFI·KCCI·BDI·항공 FSC - 케이브릿지</title>
-  <meta name="description" content="상하이컨테이너 운임지수 SCFI, KOBC KCCI, 발틱운임지수 BDI, 대한항공·아시아나 한국발 항공화물 FSC 유류할증료와 추세선을 한 화면에서 조회합니다.">
+  <meta name="description" content="상하이컨테이너 운임지수 SCFI, KOBC KCCI, 발틱운임지수 BDI, 대한항공 Cargo 한국발 항공화물 FSC 유류할증료와 추세선을 한 화면에서 조회합니다.">
   <meta name="keywords" content="SCFI, 상하이컨테이너운임지수, KCCI, KOBC 컨테이너 운임지수, BDI, 발틱운임지수, 벌크운임지수, 항공 FSC, 화물 유류할증료, 해상운임 추세, 케이브릿지">
   <meta name="theme-color" content="#16284a">
   <meta name="format-detection" content="telephone=no">
@@ -24,6 +24,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="assets/freight-index.css?v=20260713-opt1">
   <link rel="stylesheet" href="assets/freight-index-header.css?v=20260713-opt1">
+  <style>
+    /* 대한항공 Cargo 단일 FSC 카드 레이아웃 */
+    .fsc-grid{grid-template-columns:minmax(0,1fr)}
+  </style>
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -163,9 +167,9 @@
     </div>
   </section>
 
-  <section class="section soft searchable" data-category="fsc" data-search="항공 FSC 유류할증료 대한항공 아시아나 단거리 중거리 장거리 한국발">
+  <section class="section soft searchable" data-category="fsc" data-search="항공 FSC 유류할증료 대한항공 단거리 중거리 장거리 한국발">
     <div class="container">
-      <div class="section-head"><div><span class="kicker">AIR CARGO FSC</span><h2>한국발 항공화물 유류할증료</h2></div><p>대한항공과 아시아나 Cargo의 한국발 국제선 FSC를 단거리·중거리·장거리로 구분해 비교합니다. 적용 기준은 Chargeable Weight와 On-board Date입니다.</p></div>
+      <div class="section-head"><div><span class="kicker">AIR CARGO FSC</span><h2>한국발 항공화물 유류할증료</h2></div><p>대한항공 Cargo의 한국발 국제선 FSC를 단거리·중거리·장거리로 구분해 확인합니다. 적용 기준은 Chargeable Weight와 On-board Date입니다.</p></div>
       <div class="fsc-grid" id="fscGrid"></div>
       <article class="fsc-chart">
         <div class="chart-toolbar"><div><span class="kicker" style="margin-bottom:5px">FSC TREND</span><h3 id="fscChartTitle">한국발 항공 FSC 추세</h3></div></div>
@@ -185,6 +189,66 @@
 
 <footer class="footer"><div class="container footer-inner"><div>케이브릿지 주식회사 · 대표이사 김형진 · 사업자등록번호 548-88-02435</div><div><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a> · © 2026 KBRIDGE CO., LTD.</div></div></footer>
 <a class="floating-top" href="#top" aria-label="최상단으로 이동">TOP</a>
+<script>
+(() => {
+  'use strict';
+
+  const originalFetch = window.fetch.bind(window);
+  window.fetch = async (...args) => {
+    const response = await originalFetch(...args);
+    const requestUrl = typeof args[0] === 'string' ? args[0] : (args[0]?.url || '');
+    if (!/data\/freight-data\.json(?:\?|$)/.test(requestUrl) || !response.ok) return response;
+
+    try {
+      const data = await response.clone().json();
+      if (data?.fsc?.providers?.asiana) delete data.fsc.providers.asiana;
+      const headers = new Headers(response.headers);
+      headers.delete('content-length');
+      headers.delete('content-encoding');
+      headers.set('content-type', 'application/json; charset=utf-8');
+      return new Response(JSON.stringify(data), {
+        status: response.status,
+        statusText: response.statusText,
+        headers
+      });
+    } catch (_) {
+      return response;
+    }
+  };
+
+  const removeAsianaOutput = () => {
+    document.querySelectorAll('#fscGrid .fsc-card').forEach(card => {
+      if (card.textContent.includes('아시아나')) card.remove();
+    });
+
+    document.querySelectorAll('[data-search]').forEach(el => {
+      if (el.dataset.search?.includes('아시아나')) {
+        el.dataset.search = el.dataset.search.replace(/\s*아시아나(?:\s*Cargo)?/g, '');
+      }
+    });
+
+    document.querySelectorAll('#sourceGrid .source-card').forEach(card => {
+      const label = card.querySelector('span');
+      if (label?.textContent.trim() !== 'AIR FSC') return;
+
+      const title = card.querySelector('h3');
+      const description = card.querySelector('p');
+      if (title && title.textContent !== '대한항공 Cargo') title.textContent = '대한항공 Cargo';
+      const copy = '대한항공 Cargo의 한국발 국제선 화물 단거리·중거리·장거리 유류할증료를 확인합니다.';
+      if (description && description.textContent !== copy) description.textContent = copy;
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    removeAsianaOutput();
+    const observer = new MutationObserver(removeAsianaOutput);
+    ['fscGrid', 'summaryGrid', 'sourceGrid'].forEach(id => {
+      const target = document.getElementById(id);
+      if (target) observer.observe(target, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-search'] });
+    });
+  });
+})();
+</script>
 <script defer src="assets/freight-index.js?v=20260713-4"></script>
 </body>
 </html>
