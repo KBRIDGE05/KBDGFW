@@ -23,6 +23,31 @@
     "modified": "2026-07-18"
   },
   {
+    "slug": "csbs",
+    "category": "glossary",
+    "categoryLabel": "물류 용어집",
+    "title": "컨테이너선과 벌크선의 종류 - 해상운송 선박 차이 쉽게 정리",
+    "summary": "컨테이너선과 벌크선의 구조, 화물, 선적 방식, 운항 형태, 운임 기준을 비교하고 피더선·파나막스·ULCV·핸디사이즈·케이프사이즈 등 주요 선박 종류를 쉽게 정리했습니다.",
+    "date": "2026-07-18",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_bulk_ship_1000.webp",
+    "keywords": [
+      "컨테이너선",
+      "벌크선",
+      "해상운송 선박 종류",
+      "피더선",
+      "파나막스",
+      "ULCV",
+      "핸디사이즈",
+      "케이프사이즈",
+      "벌크화물",
+      "해상운송"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/glossary/csbs.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-07-18"
+  },
+  {
     "slug": "azsl",
     "category": "glossary",
     "categoryLabel": "물류 용어집",
@@ -94,31 +119,6 @@
       "포워딩"
     ],
     "url": "https://www.kbexpress.kr/blog/posts/info/ci.html",
-    "published": true,
-    "source": "generated-html",
-    "modified": "2026-07-14"
-  },
-  {
-    "slug": "csbs",
-    "category": "glossary",
-    "categoryLabel": "물류 용어집",
-    "title": "컨테이너선과 벌크선의 종류 - 해상운송 선박 차이 쉽게 정리",
-    "summary": "컨테이너선과 벌크선의 구조, 화물, 선적 방식, 운항 형태, 운임 기준을 비교하고 피더선·파나막스·ULCV·핸디사이즈·케이프사이즈 등 주요 선박 종류를 쉽게 정리했습니다.",
-    "date": "2026-07-14",
-    "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_bulk_ship_1000.webp",
-    "keywords": [
-      "컨테이너선",
-      "벌크선",
-      "해상운송 선박 종류",
-      "피더선",
-      "파나막스",
-      "ULCV",
-      "핸디사이즈",
-      "케이프사이즈",
-      "벌크화물",
-      "해상운송"
-    ],
-    "url": "https://www.kbexpress.kr/blog/posts/glossary/csbs.html",
     "published": true,
     "source": "generated-html",
     "modified": "2026-07-14"
