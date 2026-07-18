@@ -1,5 +1,28 @@
 [
   {
+    "slug": "canal",
+    "category": "glossary",
+    "categoryLabel": "물류 용어집",
+    "title": "주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리",
+    "summary": "아시아-북미, 아시아-유럽, 유럽-북미 등 주요 컨테이너선 항로와 파나마 운하·수에즈 운하의 구조, 역할, 실무 체크포인트를 쉽게 정리했습니다.",
+    "date": "2026-07-18",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_routes_canals_1000.webp",
+    "keywords": [
+      "컨테이너선 항로",
+      "국제 운하",
+      "파나마 운하",
+      "수에즈 운하",
+      "아시아 유럽 항로",
+      "아시아 북미 항로",
+      "해상운송 항로",
+      "케이브릿지 물류 용어집"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/glossary/canal.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-07-18"
+  },
+  {
     "slug": "azsl",
     "category": "glossary",
     "categoryLabel": "물류 용어집",

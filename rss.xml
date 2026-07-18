@@ -8,8 +8,40 @@
     <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
     <generator>KBRIDGE Blog SEO Automation</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Fri, 17 Jul 2026 11:43:11 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2026 02:32:19 GMT</lastBuildDate>
     <ttl>60</ttl>
+
+    <item>
+      <title><![CDATA[주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리]]></title>
+      <link>https://www.kbexpress.kr/blog/posts/glossary/canal.html</link>
+      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/glossary/canal.html</guid>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
+      <category><![CDATA[물류 용어집]]></category>
+      <description><![CDATA[<div class="body">
+<figure class="cover"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_routes_canals_1000.webp" width="1000" height="1000" alt="주요 컨테이너선 항로와 파나마 수에즈 국제 운하 쉽게 정리" fetchpriority="high" decoding="async"></figure>
+<section class="summary"><h2>핵심 요약</h2><p><strong>아시아-북미, 아시아-유럽, 유럽-북미</strong>가 대표적인 컨테이너 간선항로입니다. <strong>파나마 운하는 갑문식</strong>으로 태평양과 대서양을 연결하고, <strong>수에즈 운하는 무갑문 해수면 운하</strong>로 지중해와 홍해를 연결합니다. 실제 운송에서는 직항·환적, 운하 통항 여부, 항만 혼잡과 우회 가능성을 함께 확인해야 합니다.</p></section>
+
+
+<section id="route" class="section"><figure class="visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_01_container_route_definition.webp" width="1200" height="750" alt="컨테이너선 항로 기항지 환적 스케줄 개념" loading="lazy" decoding="async"></figure><h2>컨테이너선 항로란?</h2><p class="lead"><strong>직접 답변:</strong> 컨테이너선 항로는 선박이 정해진 항만과 기항 순서를 반복 운항하는 해상운송 네트워크입니다.</p><p>정기선은 항로마다 기항항, 출항 요일, 운항 주기와 예상 운송시간을 설정합니다. 출발항과 도착항 사이에 직항 서비스가 없으면 싱가포르, 상하이, 부산, 로테르담 등 허브항에서 다른 선박으로 환적할 수 있습니다.</p><div class="grid"><div class="card"><span class="code">PORT</span><h3>기항지 Port of Call</h3><p>선박이 화물을 싣고 내리기 위해 정기적으로 들르는 항만입니다.</p></div><div class="card"><span class="code">T/S</span><h3>환적 Transshipment</h3><p>허브항에서 화물을 다른 선박으로 옮겨 최종 목적지까지 연결하는 방식입니다.</p></div><div class="card"><span class="code">TT</span><h3>Transit Time</h3><p>출항부터 도착까지 예상되는 해상 운송시간입니다. 기항과 환적에 따라 달라집니다.</p></div><div class="card"><span class="code">ROT</span><h3>Port Rotation</h3><p>선박이 항만을 방문하는 순서로, 실제 리드타임과 일정 안정성에 영향을 줍니다.</p></div></div></section>
+
+<section id="major" class="section"><figure class="visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_02_major_container_routes.webp" width="1200" height="750" alt="아시아 북미 아시아 유럽 유럽 북미 주요 컨테이너선 항로" loading="lazy" decoding="async"></figure><h2>세계 주요 컨테이너선 항로</h2><div class="table-wrap"><table><thead><tr><th>항로</th><th>주요 연결 지역</th><th>대표 특징</th><th>주요 변수</th></tr></thead><tbody><tr><td>아시아-북미</td><td>한국·중국·일본·동남아 ↔ 미국·캐나다</td><td>태평양을 횡단하는 대표 간선항로</td><td>미 서안·동안 선택, 파나마 경유, 항만 혼잡</td></tr><tr><td>아시아-유럽</td><td>동아시아·동남아 ↔ 북유럽·지중해</td><td>수에즈 운하 경유가 일반적인 최단 경로</td><td>홍해 정세, 수에즈 통항, 희망봉 우회</td></tr><tr><td>유럽-북미</td><td>북유럽·지중해 ↔ 미국·캐나다 동안</td><td>대서양 횡단 정기선 네트워크</td><td>계절성, 기항 순서, 항만 파업·혼잡</td></tr><tr><td>지역항로</td><td>동북아·동남아·중동·오세아니아</td><td>피더선으로 주요 허브항과 연결</td><td>환적 대기, 연결선 지연, 항만 운영시간</td></tr></tbody></table></div><p class="note"><strong>북극항로:</strong> 아시아와 유럽 사이의 거리를 줄일 가능성이 있지만 계절, 빙해, 쇄빙선, 보험, 연안국 규제 등 제약이 커 정기 컨테이너 운송의 일반 항로로 보기에는 아직 제한적입니다.</p></section>
+
+<section id="panama" class="section"><figure class="visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_03_panama_canal.webp" width="1200" height="750" alt="파나마 운하 갑문식 운하 Panamax Neopanamax 설명" loading="lazy" decoding="async"></figure><h2>파나마 운하 - 태평양과 대서양을 잇는 갑문식 운하</h2><p>파나마 운하는 대서양과 태평양 사이 약 80km를 연결합니다. 선박은 갑문을 통해 해수면에서 가툰호 수위까지 올라간 뒤 반대편에서 다시 내려갑니다. 파나마운하청은 운하가 전 세계 다수 항로와 항만을 연결하는 핵심 통로라고 안내합니다.</p><h3>Panamax와 Neopanamax</h3><p><strong>Panamax</strong>는 기존 갑문 통과 한계를 기준으로 한 선박 규격이고, <strong>Neopanamax</strong>는 2016년 개통한 확장 갑문을 이용할 수 있는 더 큰 선박군을 의미합니다. 실제 통항 가능 여부는 선박의 길이, 폭, 흘수와 운하 운영 조건을 함께 확인해야 합니다.</p><p class="note">파나마 운하는 강수량과 가툰호 수위의 영향을 받습니다. 예약 슬롯, 허용 흘수, 대기시간은 시기별로 달라질 수 있으므로 선적 전 선사 스케줄을 확인해야 합니다.</p></section>
+
+<section id="suez" class="section"><figure class="visual"><img src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_04_suez_canal.webp" width="1200" height="750" alt="수에즈 운하 무갑문 해수면 운하 아시아 유럽 항로" loading="lazy" decoding="async"></figure><h2>수에즈 운하 - 지중해와 홍해를 잇는 무갑문 운하</h2><p>수에즈 운하는 이집트의 포트사이드에서 수에즈까지 이어지며 지중해와 홍해를 연결합니다. 수에즈운하청에 따르면 운하 길이는 약 193.3km이고 갑문이 없는 해수면 운하입니다.</p><p>아시아-유럽 항로가 수에즈 운하를 이용하면 아프리카 남단 희망봉을 돌아가는 것보다 항해 거리를 줄일 수 있습니다. 다만 홍해와 중동 정세, 선사 안전정책, 보험과 전쟁위험 할증에 따라 희망봉 우회가 선택될 수 있습니다.</p><p class="note"><strong>실무 주의:</strong> 예약 시 표시된 항로가 실제 운항 과정에서 변경될 수 있습니다. 견적서의 Route, T/S Port, Suez/Cape 표기와 선사 공지를 함께 확인하세요.</p></section>
+
+<section id="compare" class="section"><h2>파나마 운하와 수에즈 운하 비교</h2><div class="table-wrap"><table><thead><tr><th>구분</th><th>파나마 운하</th><th>수에즈 운하</th></tr></thead><tbody><tr><td>연결 해역</td><td>태평양 ↔ 대서양·카리브해</td><td>지중해 ↔ 홍해</td></tr><tr><td>운하 방식</td><td>갑문식, 가툰호 수위 이용</td><td>무갑문 해수면 운하</td></tr><tr><td>공식 길이</td><td>약 80km</td><td>약 193.3km</td></tr><tr><td>주요 항로</td><td>아시아-미국 동안, 미주 동안-서안</td><td>아시아-유럽, 중동-유럽</td></tr><tr><td>대체 우회</td><td>남미 남단·다른 복합운송 경로</td><td>희망봉 우회</td></tr><tr><td>핵심 변수</td><td>수위·흘수·예약 슬롯</td><td>홍해 안전·통항 정책·선사 운항 결정</td></tr></tbody></table></div></section>
+
+<section id="practical" class="section"><h2>항로 선택 전 실무 체크포인트</h2><ul class="check"><li><strong>직항과 환적:</strong> 환적 횟수와 연결항을 확인해 지연·오선적 위험을 비교합니다.</li><li><strong>운하 경유 여부:</strong> Panama, Suez, Cape 표기를 견적과 선사 스케줄에서 확인합니다.</li><li><strong>Port Rotation:</strong> 같은 출발항·도착항이라도 기항 순서에 따라 리드타임이 달라집니다.</li><li><strong>Cut-off:</strong> CY Closing, SI·VGM 마감과 실제 선박 출항일을 구분해 관리합니다.</li><li><strong>항만 혼잡:</strong> 대기시간, 파업, 기상, 터미널 생산성 변수를 반영합니다.</li><li><strong>운임과 할증료:</strong> 운하 통과료, 전쟁위험 할증, 긴급 우회 할증이 추가될 수 있습니다.</li></ul></section>
+
+<section id="faq" class="section"><h2>자주 묻는 질문</h2><div class="faq"><div class="faq-item"><p class="faq-q">Q. 아시아-유럽 컨테이너선은 모두 수에즈 운하를 통과하나요?</p><p class="faq-a">일반적으로 수에즈 운하가 주요 최단 경로지만, 홍해 정세와 선사 안전정책에 따라 희망봉으로 우회할 수 있습니다.</p></div><div class="faq-item"><p class="faq-q">Q. 파나마 운하는 왜 갑문이 필요한가요?</p><p class="faq-a">선박을 해수면에서 가툰호 수위까지 올렸다가 반대편에서 다시 내리기 위해 갑문을 사용합니다.</p></div><div class="faq-item"><p class="faq-q">Q. 직항이 항상 환적보다 좋은가요?</p><p class="faq-a">직항은 환적 리스크가 적지만 운임과 스케줄 선택이 제한될 수 있습니다. 환적은 연결 범위가 넓지만 연결선 지연 가능성을 함께 고려해야 합니다.</p></div><div class="faq-item"><p class="faq-q">Q. 견적서에서 운하 경유 여부는 어디서 확인하나요?</p><p class="faq-a">Route, Vessel/Voyage, T/S Port, Remark 항목과 선사 스케줄에서 Panama, Suez, Cape 표기를 확인할 수 있습니다.</p></div></div></section>
+
+<section class="cta"><h2>선적 항로와 운하 경유 여부가 헷갈린다면 케이브릿지와 확인하세요</h2><p>출발항, 도착항, 화물 규격과 희망 일정만 정리해도 직항·환적, 예상 항로, 리드타임과 운임 조건을 함께 검토할 수 있습니다.</p><div class="buttons"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a><a class="btn sub" href="https://www.kbexpress.kr/index.html#quote">즉시견적</a><a class="btn sub" href="https://www.kbexpress.kr/blog/">블로그 목록</a></div></section>
+<div class="tags"><span class="tag">#컨테이너선항로</span><span class="tag">#파나마운하</span><span class="tag">#수에즈운하</span><span class="tag">#국제운하</span><span class="tag">#해상운송</span><span class="tag">#아시아유럽항로</span><span class="tag">#아시아북미항로</span><span class="tag">#케이브릿지</span></div>
+<aside class="refs"><h3>참고 자료</h3><ul><li><a href="https://pancanal.com/en/history-of-the-panama-canal/" target="_blank" rel="noopener">Panama Canal Authority - History and operation</a></li><li><a href="https://pancanal.com/en/connectivity/" target="_blank" rel="noopener">Panama Canal Authority - Connectivity</a></li><li><a href="https://www.suezcanal.gov.eg/English/Pages/FAQ.aspx" target="_blank" rel="noopener">Suez Canal Authority - FAQ</a></li><li><a href="https://www.suezcanal.gov.eg/English/About/Pages/WhySuezCanal.aspx" target="_blank" rel="noopener">Suez Canal Authority - Why Suez Canal</a></li></ul></aside>
+</div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_routes_canals_1000.webp" type="image/webp" />
+    </item>
 
     <item>
       <title><![CDATA[아마존 셀러들이 알아야 할 필수 용어 - FBA부터 ASIN·FNSKU까지]]></title>
