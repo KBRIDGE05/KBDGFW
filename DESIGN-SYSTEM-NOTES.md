@@ -57,3 +57,12 @@
 - Large OG PNG files palette-optimized without changing paths or dimensions.
 - Sitemap rebuilt from canonical, indexable HTML pages; canonical duplicate aliases remain functional but use noindex.
 - Naver/Yeti robots directives, robots.txt, canonical URLs, sitemap and ownership file retained.
+
+## v18 blog CTA visibility fix
+- Audited all 11 static blog post HTML files under `blog/posts/`.
+- Added the shared `kb-blog-cta` marker to every post CTA.
+- Protected CTA headings and lead paragraphs from article-body text-color overrides.
+- Standardized CTA contrast: white headings, high-contrast light descriptions, white buttons with navy labels.
+- Added mobile single-column CTA buttons below 560px.
+- Updated the shared design stylesheet cache version on all 38 HTML pages.
+- Verified CTA computed colors on all posts and confirmed zero mobile horizontal-overflow issues.
