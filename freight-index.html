@@ -1,34 +1,29 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>글로벌 운임지수 통합 조회 - SCFI·KCCI·BDI·항공 FSC - 케이브릿지</title>
-  <meta name="description" content="상하이컨테이너 운임지수 SCFI, KOBC KCCI, 발틱운임지수 BDI, 대한항공 Cargo 한국발 항공화물 FSC 유류할증료와 추세선을 한 화면에서 조회합니다.">
-  <meta name="keywords" content="SCFI, 상하이컨테이너운임지수, KCCI, KOBC 컨테이너 운임지수, BDI, 발틱운임지수, 벌크운임지수, 항공 FSC, 화물 유류할증료, 해상운임 추세, 케이브릿지">
-  <meta name="theme-color" content="#16284a">
-  <meta name="format-detection" content="telephone=no">
-  <link rel="canonical" href="https://www.kbexpress.kr/freight-index.html">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="naverbot" content="index,follow,max-image-preview:large">
-  <meta name="yeti" content="index,follow,max-image-preview:large">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="케이브릿지 KBRIDGE">
-  <meta property="og:locale" content="ko_KR">
-  <meta property="og:title" content="글로벌 운임지수 통합 조회 - SCFI·KCCI·BDI·항공 FSC">
-  <meta property="og:description" content="컨테이너·건화물 해상운임지수와 한국발 항공화물 유류할증료를 최신값·변동률·추세선으로 한 번에 확인하세요.">
-  <meta property="og:url" content="https://www.kbexpress.kr/freight-index.html">
-  <meta property="og:image" content="https://www.kbexpress.kr/assets/og/og-freight-index.png">
-  <meta property="og:image:width" content="1254">
-  <meta property="og:image:height" content="1254">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="assets/freight-index.css?v=20260713-opt1">
-  <link rel="stylesheet" href="assets/freight-index-header.css?v=20260713-opt1">
-  <style>
-    /* 대한항공 Cargo 단일 FSC 카드 레이아웃 */
-    .fsc-grid{grid-template-columns:minmax(0,1fr)}
-  </style>
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>글로벌 운임지수 통합 조회 - SCFI·KCCI·BDI·항공 FSC - 케이브릿지</title>
+<meta content="상하이컨테이너 운임지수 SCFI, KOBC KCCI, 발틱운임지수 BDI, 대한항공 Cargo 한국발 항공화물 FSC 유류할증료와 추세선을 한 화면에서 조회합니다." name="description"/>
+<meta content="SCFI, 상하이컨테이너운임지수, KCCI, KOBC 컨테이너 운임지수, BDI, 발틱운임지수, 벌크운임지수, 항공 FSC, 화물 유류할증료, 해상운임 추세, 케이브릿지" name="keywords"/>
+<meta content="#16284a" name="theme-color"/>
+<meta content="telephone=no" name="format-detection"/>
+<link href="https://www.kbexpress.kr/freight-index.html" rel="canonical"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/>
+<meta content="index,follow,max-image-preview:large" name="naverbot"/>
+<meta content="index,follow,max-image-preview:large" name="yeti"/>
+<meta content="website" property="og:type"/>
+<meta content="케이브릿지 KBRIDGE" property="og:site_name"/>
+<meta content="ko_KR" property="og:locale"/>
+<meta content="글로벌 운임지수 통합 조회 - SCFI·KCCI·BDI·항공 FSC" property="og:title"/>
+<meta content="컨테이너·건화물 해상운임지수와 한국발 항공화물 유류할증료를 최신값·변동률·추세선으로 한 번에 확인하세요." property="og:description"/>
+<meta content="https://www.kbexpress.kr/freight-index.html" property="og:url"/>
+<meta content="https://www.kbexpress.kr/assets/og/og-freight-index.png" property="og:image"/><meta content="image/png" property="og:image:type"/>
+<meta content="1254" property="og:image:width"/>
+<meta content="1254" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"WebApplication",
@@ -40,155 +35,128 @@
     "provider":{"@type":"Organization","name":"케이브릿지 주식회사","url":"https://www.kbexpress.kr/"}
   }
   </script>
+<link href="assets/css/pages/freight-index.css?v=20260720-12" rel="stylesheet"/>
+<link href="assets/css/kbridge-design-system.css?v=20260720-v17" rel="stylesheet"/>
 </head>
-<body>
+<body class="site-subpage kb-unified-site">
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="header" id="top">
-  <div class="container header-inner">
-    <a class="brand" href="index.html" data-brand-action="home" aria-label="케이브릿지 메인 화면으로 이동" title="케이브릿지 메인 화면으로 이동">
-      <span class="brand-symbol" aria-hidden="true"><svg aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:100%" viewBox="0 0 100 100"><rect x="5" y="5" width="90" height="90" rx="20" fill="#2B5CDB"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span>
-      <span class="brand-copy"><strong>KBRIDGE</strong></span>
-    </a>
-    <nav class="nav" aria-label="주요 메뉴">
-      <a href="index.html#services">즉시견적</a>
-      <a href="quote-comparison.html">견적서 비교</a>
-      <a href="warehouse-inquiry.html">창고 문의</a>
-      <div class="nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" aria-haspopup="true">국내운송</button>
-        <div class="nav-dropdown-menu">
-          <small>DOMESTIC TRANSPORT</small>
-          <a href="domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a>
-          <a href="safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a>
-          <a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a>
-        </div>
-      </div>
-      <a class="active" href="freight-index.html" aria-current="page">운임지수</a>
-      <div class="nav-dropdown tools-nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" aria-haspopup="true">물류도구</button>
-        <div class="nav-dropdown-menu tools-dropdown-menu">
-          <small>LOGISTICS TOOLS</small>
-          <a href="duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a>
-          <a href="customs-exchange-rate.html">관세청 고시환율<span>수입·수출 고시환율 표 직접 조회</span></a>
-          <a href="cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a>
-          <a href="holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a>
-          <a href="hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a>
-          <a href="incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a>
-          <a href="lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a>
-          <a href="dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a>
-          <a href="vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a>
-          <a href="terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a>
-        </div>
-      </div>
-      <div class="nav-dropdown blog-nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" aria-haspopup="true">블로그</button>
-        <div class="nav-dropdown-menu blog-dropdown-menu">
-          <small>KBRIDGE BLOG</small>
-          <a href="blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a>
-          <a href="blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a>
-          <a href="blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a>
-          <a href="blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a>
-          <a href="blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a>
-        </div>
-      </div>
-    </nav>
-    <a class="header-btn" href="index.html#services">견적 받기</a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="메뉴 열기"><span></span></button>
-  </div>
-</header>
-<div class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴" aria-hidden="true">
-  <a href="index.html#services">즉시견적 <span>→</span></a>
-  <a href="quote-comparison.html">견적서 비교 <span>→</span></a>
-  <a href="warehouse-inquiry.html">창고 문의 <span>→</span></a>
-  <div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span><a href="domestic.html">국내운송 안내 <span>→</span></a><a href="safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div>
-  <a class="active" href="freight-index.html" aria-current="page">운임지수 <span>→</span></a>
-  <div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="lcl-storage.html">LCL 창고료 <span>→</span></a><a href="dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="terminal-info.html">터미널 정보 조회 <span>→</span></a></div>
-  <div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="blog/index.html?category=info">물류 정보 <span>→</span></a><a href="blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div>
+<div class="container header-inner">
+<a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동">
+<span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span>
+<span class="brand-copy"><strong>KBRIDGE</strong></span>
+</a>
+<nav aria-label="주요 메뉴" class="nav">
+<a href="index.html#services">즉시견적</a>
+<a href="quote-comparison.html">견적서 비교</a>
+<a href="warehouse-inquiry.html">창고 문의</a>
+<div class="nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button>
+<div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small>
+<a href="domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a>
+<a href="load-planner.html">차량 배차 시뮬레이터<span>차량 추천·3D 적입 배치</span></a>
+<a href="safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a>
+<a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a>
 </div>
-
+</div>
+<a aria-current="page" class="active" href="freight-index.html">운임지수</a>
+<div class="nav-dropdown tools-nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button>
+<div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a href="duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="customs-exchange-rate.html">관세청 고시환율<span>수입신고 기준환율 확인</span></a><a href="cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div>
+</div>
+<div class="nav-dropdown blog-nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button>
+<div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a href="blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div>
+</div>
+</nav>
+<div class="header-actions"><a class="header-link" href="mailto:all@kbridges.co.kr">문의</a><a class="header-btn" href="index.html#services">견적 받기</a></div>
+<button aria-controls="mobileNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn" type="button"><span></span></button>
+</div>
+</header>
+<div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav">
+<a href="index.html#services">즉시견적 <span>→</span></a>
+<a href="quote-comparison.html">견적서 비교 <span>→</span></a>
+<a href="warehouse-inquiry.html">창고 문의 <span>→</span></a>
+<div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span>
+<a href="domestic.html">국내운송 안내 <span>→</span></a>
+<a href="load-planner.html">차량 배차 시뮬레이터 <span>→</span></a>
+<a href="safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a>
+<a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a>
+</div>
+<a href="freight-index.html">운임지수 <span>→</span></a>
+<div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="lcl-storage.html">LCL 창고료 <span>→</span></a><a href="dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="terminal-info.html">터미널 정보 조회 <span>→</span></a></div>
+<div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="blog/index.html?category=info">물류 정보 <span>→</span></a><a href="blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div>
+<a href="index.html#services">견적 받기 <span>→</span></a>
+</div>
 <main id="main">
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <span class="eyebrow">KBRIDGE FREIGHT MARKET DASHBOARD</span>
-        <h1>컨테이너·벌크 운임지수와 항공 FSC를<br><em>한 화면에서 조회하세요</em></h1>
-        <p>상하이컨테이너 운임지수(SCFI), 한국해양진흥공사 KCCI, 발틱운임지수(BDI), 한국발 국제선 화물 유류할증료를 최신 발표값과 추세선으로 비교합니다.</p>
-        <div class="hero-tags"><span>SCFI 매주 금요일 확인</span><span>KCCI 매주 월요일 확인</span><span>BDI 매주 최신 종가 반영</span><span>FSC 매월 1일·16일 확인</span></div>
-        <div class="hero-actions"><a class="btn primary" href="#dashboard">최신 지수 조회</a><a class="btn glass" href="index.html?quote=formal">운임 견적 문의</a></div>
-      </div>
-      <aside class="hero-board" aria-label="최신 운임시장 요약">
-        <span class="board-label">LATEST MARKET SNAPSHOT</span><h2 class="board-title">현재 발표된 핵심 운임 데이터</h2>
-        <div class="board-grid">
-          <div class="board-metric"><span>SCFI</span><strong id="heroScfi" data-loading class="loading">-</strong><small>상하이 종합지수</small></div>
-          <div class="board-metric"><span>KCCI</span><strong id="heroKcci" data-loading class="loading">-</strong><small>KOBC 종합지수</small></div>
-          <div class="board-metric"><span>BDI</span><strong id="heroBdi" data-loading class="loading">-</strong><small>글로벌 건화물 종합지수</small></div>
-          <div class="board-metric"><span>AIR FSC</span><strong id="heroFsc" data-loading class="loading">-</strong><small>단거리~장거리 원/kg</small></div>
-        </div>
-        <div class="board-line"><b>업데이트 상태</b> · <span id="heroUpdated">데이터를 불러오는 중입니다.</span></div>
-      </aside>
-    </div>
-  </section>
-
-  <div class="search-strip" id="dashboard">
-    <div class="container"><div class="search-panel">
-      <label class="search-box" for="globalSearch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="globalSearch" type="search" placeholder="예: SCFI, 미주 서안, 유럽, 대한항공, 장거리 FSC" autocomplete="off"></label>
-      <div class="search-tabs" role="group" aria-label="데이터 종류"><button class="active" type="button" data-category="all">전체</button><button type="button" data-category="scfi">SCFI</button><button type="button" data-category="kcci">KCCI</button><button type="button" data-category="bdi">BDI</button><button type="button" data-category="fsc">항공 FSC</button></div>
-      <p class="search-help">지수명·항로·항공사·거리 구분을 입력하면 관련 데이터만 빠르게 확인할 수 있습니다.</p>
-    </div></div>
-  </div>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head"><div><span class="kicker">MARKET SUMMARY</span><h2>최신 발표값과 전주 변동</h2></div><p>운임지수는 포워딩 견적 자체가 아니라 시장 방향을 읽는 참고지표입니다. 실제 선적 운임은 출발지·도착지·선사·항공사·화물 조건에 따라 달라집니다.</p></div>
-      <div class="summary-grid" id="summaryGrid" aria-live="polite"></div>
-    </div>
-  </section>
-
-  <section class="section soft searchable" data-category="scfi kcci bdi" data-search="SCFI KCCI BDI 발틱 벌크 운임지수 추세 차트 상하이 KOBC Baltic Dry">
-    <div class="container">
-      <div class="section-head"><div><span class="kicker">INDEX TREND</span><h2>운임지수 추세선</h2></div><p>자동 업데이트가 실행될 때마다 발표값을 누적합니다. 기간 버튼으로 최근 흐름을 좁혀 확인할 수 있습니다.</p></div>
-      <div class="chart-layout">
-        <article class="chart-card">
-          <div class="chart-toolbar"><div class="segmented" role="group" aria-label="지수 선택"><button class="active" type="button" data-index-series="scfi">SCFI</button><button type="button" data-index-series="kcci">KCCI</button><button type="button" data-index-series="bdi">BDI</button></div><div class="range-buttons" role="group" aria-label="조회 기간"><button type="button" data-range="4">4주</button><button type="button" data-range="12">12주</button><button type="button" data-range="26">26주</button><button type="button" data-range="52">52주</button><button class="active" type="button" data-range="all">전체</button></div></div>
-          <h3 id="chartTitle" style="margin-top:20px">SCFI 추세</h3><div class="chart-wrap"><svg id="indexChart" role="img" aria-label="운임지수 추세선"></svg></div><div class="chart-meta"><span id="chartPeriod">-</span><strong id="chartChange">-</strong></div>
-        </article>
-        <aside class="side-card"><h3>시장 방향 신호</h3><p>최신 발표값을 직전 발표값과 비교한 단순 변화 신호입니다.</p><div class="signal-list" id="signalList"></div><div class="source-mini"><span>발표·공개 시세 기준</span><a href="#sources">출처 보기</a></div></aside>
-      </div>
-    </div>
-  </section>
-
-  <section class="section searchable" data-category="kcci" data-search="KCCI 항로 미주 서안 동안 북유럽 지중해 중동 호주 중남미 아프리카 중국 일본 동남아">
-    <div class="container">
-      <div class="section-head"><div><span class="kicker">KCCI ROUTE INDEX</span><h2>KCCI 13개 항로 상세</h2></div><p>종합지수뿐 아니라 미주·유럽·중동·호주·중남미·아프리카·역내아시아 항로별 발표값과 주간 등락을 비교합니다.</p></div>
-      <div class="table-card">
-        <div class="table-tools"><h3>항로별 최신 지수 <small id="routeCount" style="color:#7b899d;font-weight:600"></small></h3><div class="table-filter" role="group" aria-label="KCCI 항로 그룹"><button class="active" type="button" data-route-group="all">전체</button><button type="button" data-route-group="Mainlane">기간항로</button><button type="button" data-route-group="Non-Mainlane">비기간항로</button><button type="button" data-route-group="Intra Asia">역내아시아</button></div></div>
-        <div class="table-scroll"><table class="data-table"><thead><tr><th>그룹</th><th>항로</th><th>가중치</th><th>현재</th><th>직전</th><th>증감</th><th>증감률</th></tr></thead><tbody id="routeBody"></tbody></table></div>
-        <div class="table-note">단위: pt 또는 USD/FEU · KCCI 공식 표기 기준. 항로별 실제 스팟 운임과는 차이가 있을 수 있습니다.</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section soft searchable" data-category="fsc" data-search="항공 FSC 유류할증료 대한항공 단거리 중거리 장거리 한국발">
-    <div class="container">
-      <div class="section-head"><div><span class="kicker">AIR CARGO FSC</span><h2>한국발 항공화물 유류할증료</h2></div><p>대한항공 Cargo의 한국발 국제선 FSC를 단거리·중거리·장거리로 구분해 확인합니다. 적용 기준은 Chargeable Weight와 On-board Date입니다.</p></div>
-      <div class="fsc-grid" id="fscGrid"></div>
-      <article class="fsc-chart">
-        <div class="chart-toolbar"><div><span class="kicker" style="margin-bottom:5px">FSC TREND</span><h3 id="fscChartTitle">한국발 항공 FSC 추세</h3></div></div>
-        <div class="legend" style="margin-top:16px"><span><i></i>단거리</span><span><i></i>중거리</span><span><i></i>장거리</span></div><div class="chart-wrap"><svg id="fscChart" role="img" aria-label="한국발 항공 FSC 통합 추세선"></svg></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" id="sources">
-    <div class="container">
-      <div class="section-head"><div><span class="kicker">DATA SOURCES</span><h2>데이터 출처와 업데이트 기준</h2></div><p>공식·공개 데이터 페이지를 확인해 CORS 오류와 화면 로딩 지연을 줄였습니다.</p></div>
-      <div class="source-grid" id="sourceGrid"></div>
-      <div class="notice"><strong>안내:</strong> BDI 원지수는 Baltic Exchange가 산출하며, 자동수집은 공개 지연 시세 페이지를 사용합니다. 공식·공개 사이트의 구조 변경, 점검 또는 접속 제한으로 자동수집이 실패하면 직전 정상 데이터를 유지하고 상태를 기록합니다. 실제 계약·선적 전에는 반드시 선사·항공사 또는 케이브릿지의 최신 견적을 확인해 주세요.</div>
-    </div>
-  </section>
+<section class="hero kb-page-hero kb-hero-has-panel" data-kb-hero="main"><div class="container hero-inner kb-hero-frame">
+<div class="hero-copy">
+<span class="eyebrow">KBRIDGE FREIGHT MARKET DASHBOARD</span>
+<h1 data-kb-ui-native="">컨테이너·벌크 운임지수와 항공 FSC를<br/><em>한 화면에서 조회하세요</em></h1>
+<p data-kb-ui-native="">상하이컨테이너 운임지수(SCFI), 한국해양진흥공사 KCCI, 발틱운임지수(BDI), 한국발 국제선 화물 유류할증료를 최신 발표값과 추세선으로 비교합니다.</p>
+<div class="hero-tags"><span>SCFI 매주 금요일 확인</span><span>KCCI 매주 월요일 확인</span><span>BDI 매주 최신 종가 반영</span><span>FSC 매월 1일·16일 확인</span></div>
+<div class="hero-actions"><a class="btn primary" data-kb-ui-native="" href="#dashboard">최신 지수 조회</a><a class="btn glass" data-kb-ui-native="" href="index.html?quote=formal">운임 견적 문의</a></div>
+</div>
+<aside aria-label="최신 운임시장 요약" class="hero-board">
+<span class="board-label">LATEST MARKET SNAPSHOT</span><h2 class="board-title" data-kb-ui-native="">현재 발표된 핵심 운임 데이터</h2>
+<div class="board-grid">
+<div class="board-metric"><span>SCFI</span><strong class="loading" data-loading="" id="heroScfi">-</strong><small>상하이 종합지수</small></div>
+<div class="board-metric"><span>KCCI</span><strong class="loading" data-loading="" id="heroKcci">-</strong><small>KOBC 종합지수</small></div>
+<div class="board-metric"><span>BDI</span><strong class="loading" data-loading="" id="heroBdi">-</strong><small>글로벌 건화물 종합지수</small></div>
+<div class="board-metric"><span>AIR FSC</span><strong class="loading" data-loading="" id="heroFsc">-</strong><small>단거리~장거리 원/kg</small></div>
+</div>
+<div class="board-line"><b>업데이트 상태</b> · <span id="heroUpdated">데이터를 불러오는 중입니다.</span></div>
+</aside>
+</div>
+</section>
+<section class="section" id="dashboard">
+<div class="container">
+<div class="section-head"><div><span class="kicker">MARKET SUMMARY</span><h2>최신 발표값과 전주 변동</h2></div><p>운임지수는 포워딩 견적 자체가 아니라 시장 방향을 읽는 참고지표입니다. 실제 선적 운임은 출발지·도착지·선사·항공사·화물 조건에 따라 달라집니다.</p></div>
+<div aria-live="polite" class="summary-grid" id="summaryGrid"></div>
+</div>
+</section>
+<section class="section soft searchable" data-category="scfi kcci bdi" data-search="SCFI KCCI BDI 발틱 벌크 운임지수 추세 차트 상하이 KOBC Baltic Dry">
+<div class="container">
+<div class="section-head"><div><span class="kicker">INDEX TREND</span><h2>운임지수 추세선</h2></div><p>자동 업데이트가 실행될 때마다 발표값을 누적합니다. 기간 버튼으로 최근 흐름을 좁혀 확인할 수 있습니다.</p></div>
+<div class="chart-layout">
+<article class="chart-card">
+<div class="chart-toolbar"><div aria-label="지수 선택" class="segmented" role="group"><button class="active" data-index-series="scfi" type="button">SCFI</button><button data-index-series="kcci" type="button">KCCI</button><button data-index-series="bdi" type="button">BDI</button></div><div aria-label="조회 기간" class="range-buttons" role="group"><button data-range="4" type="button">4주</button><button data-range="12" type="button">12주</button><button data-range="26" type="button">26주</button><button data-range="52" type="button">52주</button><button class="active" data-range="all" type="button">전체</button></div></div>
+<h3 class="kb-mt-20" id="chartTitle">SCFI 추세</h3><div class="chart-wrap"><svg aria-label="운임지수 추세선" id="indexChart" role="img"></svg></div><div class="chart-meta"><span id="chartPeriod">-</span><strong id="chartChange">-</strong></div>
+</article>
+<aside class="side-card"><h3>시장 방향 신호</h3><p>최신 발표값을 직전 발표값과 비교한 단순 변화 신호입니다.</p><div class="signal-list" id="signalList"></div><div class="source-mini"><span>발표·공개 시세 기준</span><a href="#sources">출처 보기</a></div></aside>
+</div>
+</div>
+</section>
+<section class="section searchable" data-category="kcci" data-search="KCCI 항로 미주 서안 동안 북유럽 지중해 중동 호주 중남미 아프리카 중국 일본 동남아">
+<div class="container">
+<div class="section-head"><div><span class="kicker">KCCI ROUTE INDEX</span><h2>KCCI 13개 항로 상세</h2></div><p>종합지수뿐 아니라 미주·유럽·중동·호주·중남미·아프리카·역내아시아 항로별 발표값과 주간 등락을 비교합니다.</p></div>
+<div class="table-card">
+<div class="table-tools"><h3>항로별 최신 지수 <small class="kb-muted-strong" id="routeCount"></small></h3><div aria-label="KCCI 항로 그룹" class="table-filter" role="group"><button class="active" data-route-group="all" type="button">전체</button><button data-route-group="Mainlane" type="button">기간항로</button><button data-route-group="Non-Mainlane" type="button">비기간항로</button><button data-route-group="Intra Asia" type="button">역내아시아</button></div></div>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>그룹</th><th>항로</th><th>가중치</th><th>현재</th><th>직전</th><th>증감</th><th>증감률</th></tr></thead><tbody id="routeBody"></tbody></table></div>
+<div class="table-note">단위: pt 또는 USD/FEU · KCCI 공식 표기 기준. 항로별 실제 스팟 운임과는 차이가 있을 수 있습니다.</div>
+</div>
+</div>
+</section>
+<section class="section soft searchable" data-category="fsc" data-search="항공 FSC 유류할증료 대한항공 단거리 중거리 장거리 한국발">
+<div class="container">
+<div class="section-head"><div><span class="kicker">AIR CARGO FSC</span><h2>한국발 항공화물 유류할증료</h2></div><p>대한항공 Cargo의 한국발 국제선 FSC를 단거리·중거리·장거리로 구분해 확인합니다. 적용 기준은 Chargeable Weight와 On-board Date입니다.</p></div>
+<div class="fsc-grid" id="fscGrid"></div>
+<article class="fsc-chart">
+<div class="chart-toolbar"><div><span class="kicker kb-mb-5">FSC TREND</span><h3 id="fscChartTitle">한국발 항공 FSC 추세</h3></div></div>
+<div class="legend kb-mt-16"><span><i></i>단거리</span><span><i></i>중거리</span><span><i></i>장거리</span></div><div class="chart-wrap"><svg aria-label="한국발 항공 FSC 통합 추세선" id="fscChart" role="img"></svg></div>
+</article>
+</div>
+</section>
+<section class="section" id="sources">
+<div class="container">
+<div class="section-head"><div><span class="kicker">DATA SOURCES</span><h2>데이터 출처와 업데이트 기준</h2></div><p>공식·공개 데이터 페이지를 확인해 CORS 오류와 화면 로딩 지연을 줄였습니다.</p></div>
+<div class="source-grid" id="sourceGrid"></div>
+<div class="notice"><strong>안내:</strong> BDI 원지수는 Baltic Exchange가 산출하며, 자동수집은 공개 지연 시세 페이지를 사용합니다. 공식·공개 사이트의 구조 변경, 점검 또는 접속 제한으로 자동수집이 실패하면 직전 정상 데이터를 유지하고 상태를 기록합니다. 실제 계약·선적 전에는 반드시 선사·항공사 또는 케이브릿지의 최신 견적을 확인해 주세요.</div>
+</div>
+</section>
 </main>
-
 <footer class="footer"><div class="container footer-inner"><div>케이브릿지 주식회사 · 대표이사 김형진 · 사업자등록번호 548-88-02435</div><div><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a> · © 2026 KBRIDGE CO., LTD.</div></div></footer>
-<a class="floating-top" href="#top" aria-label="최상단으로 이동">TOP</a>
+<a aria-label="최상단으로 이동" class="floating-top" href="#top">TOP</a>
 <script>
 (() => {
   'use strict';
@@ -249,6 +217,8 @@
   });
 })();
 </script>
-<script defer src="assets/freight-index.js?v=20260713-4"></script>
+<script defer="" src="assets/freight-index.js?v=20260713-4"></script>
+<script defer="" src="assets/site-chrome.js?v=20260720-v17"></script>
+<script defer="" src="assets/enterprise-motion.js?v=20260720-v17"></script>
 </body>
 </html>

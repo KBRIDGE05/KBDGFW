@@ -1,99 +1,114 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-
-<link rel="preload" as="image" href="assets/images/thumbnail_container_routes_canals_1000.webp" type="image/webp" fetchpriority="high">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<link as="image" fetchpriority="high" href="assets/images/thumbnail_container_routes_canals_1000.webp" rel="preload" type="image/webp"/>
 <title>주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리</title>
-<meta name="description" content="아시아-북미, 아시아-유럽, 유럽-북미 등 주요 컨테이너선 항로와 파나마 운하·수에즈 운하의 구조, 역할, 실무 체크포인트를 쉽게 정리했습니다.">
-<meta name="keywords" content="컨테이너선 항로, 국제 운하, 파나마 운하, 수에즈 운하, 아시아 유럽 항로, 아시아 북미 항로, 해상운송 항로, 케이브릿지 물류 용어집">
-<meta name="author" content="케이브릿지 주식회사">
-<meta name="kbridge:category" content="물류 용어집">
-<meta name="kbridge:thumbnail" content="assets/images/thumbnail_container_routes_canals_1000.webp">
-
-
-
-
-
-
-
-
-
-
-
-<meta property="article:tag" content="컨테이너선 항로"><meta property="article:tag" content="파나마 운하"><meta property="article:tag" content="수에즈 운하">
-
-
-
-
-<style>
-:root{--navy:#071f55;--navy2:#0b2f6f;--blue:#2868ce;--teal:#0b9aa2;--ink:#29394e;--muted:#637288;--line:#dde6ef;--soft:#f5f8fc;--white:#fff;--shadow:0 12px 34px rgba(7,31,85,.08)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f2f5f9;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR","Apple SD Gothic Neo","Segoe UI",sans-serif;font-size:15px;line-height:1.72;letter-spacing:-.018em;word-break:keep-all}a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:auto}.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;padding:10px 14px;background:#fff;z-index:9999}
-.header{position:sticky;top:0;z-index:100;background:#172f55;color:#fff}.header-in{max-width:1180px;min-height:48px;margin:auto;padding:0 22px;display:flex;align-items:center;gap:20px}.logo{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:800;white-space:nowrap}.mark{width:20px;height:20px;display:grid;place-items:center;background:var(--blue);font-size:12px}.nav{display:flex;gap:18px;align-items:center;flex:1}.nav a,.actions a{font-size:12px;color:#fff;white-space:nowrap}.actions{display:flex;gap:16px;margin-left:auto;align-items:center}.quote{padding:7px 14px;background:var(--blue);font-weight:700}
-.page{max-width:1060px;margin:auto;padding:20px 18px 60px}.crumb{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 12px;color:#748399;font-size:12.5px}.article{overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}.hero{padding:31px 34px 27px;background:linear-gradient(180deg,#fff,#f9fcff);border-bottom:1px solid #edf2f7}.hero-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:15px}.pills,.hero-links{display:flex;gap:7px;flex-wrap:wrap}.pill,.hero-links a{display:inline-flex;align-items:center;min-height:27px;padding:0 10px;border:1px solid #d7e4f6;background:#eef5ff;color:var(--navy);font-size:12px;font-weight:700}.hero-links a{background:#fff;color:#536276;border-color:#dbe4ee}.hero h1{max-width:850px;margin:0;color:var(--navy);font-size:28px;line-height:1.38;letter-spacing:-.045em;font-weight:800}.hero-desc{max-width:790px;margin:12px 0 0;color:#536276;font-size:14.6px}.meta{margin-top:12px;color:#78879a;font-size:12.5px}
-.body{max-width:790px;margin:auto;padding:34px 22px 50px}.cover,.visual{width:100%;margin:0 0 26px;border:1px solid #dfe8f2;background:#fff}.cover img{width:100%;aspect-ratio:1/1;object-fit:cover}.visual img{width:100%}.summary{margin-bottom:26px;padding:18px;border:1px solid var(--line);background:#fbfdff}.summary h2{margin:0 0 8px;font-size:16px;color:var(--navy)}.summary p{margin:0;font-size:14.4px}.toc{margin:0 0 30px;padding:16px 18px;border:1px solid var(--line)}.toc-title{margin:0 0 8px;color:var(--navy);font-weight:800}.toc ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 22px;margin:0;padding-left:20px;color:#536276}
-.section{margin-top:36px;padding-top:27px;border-top:1px solid #e7edf4}.section h2{margin:0 0 12px;color:var(--navy);font-size:21px;line-height:1.45;letter-spacing:-.035em}.section h3{margin:20px 0 7px;color:var(--navy2);font-size:15.5px}.section p{margin:0 0 12px;font-size:14.7px;line-height:1.76}.section strong{color:var(--navy);font-weight:800}.lead{padding:15px 16px;border-left:4px solid var(--teal);background:#f1fbfc}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:17px}.card{padding:16px;border:1px solid var(--line);background:#fbfdff}.code{display:inline-flex;min-width:58px;height:28px;padding:0 8px;align-items:center;justify-content:center;background:var(--navy);color:#fff;font-size:12px;font-weight:800}.card:nth-child(even) .code{background:var(--teal)}.card h3{margin:8px 0 5px}.card p{margin:0;color:#526174;font-size:13.8px;line-height:1.62}.table-wrap{margin-top:17px;overflow-x:auto;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:690px}th,td{padding:10px 11px;border-bottom:1px solid #edf2f7;text-align:left;vertical-align:top;font-size:13px;line-height:1.55}th{background:#f7fafc;color:var(--navy);font-weight:800}td:first-child{color:var(--navy);font-weight:800;white-space:nowrap}tr:last-child td{border-bottom:0}.note{margin-top:16px;padding:13px 14px;border:1px solid #cdeced;background:#f1fbfc;color:#46566a;font-size:13.6px}.check{display:grid;gap:8px;margin:15px 0 0;padding:0;list-style:none}.check li{position:relative;padding:11px 13px 11px 36px;border:1px solid #e3edf6;background:#fbfdff;font-size:13.9px}.check li:before{content:"";position:absolute;left:13px;top:15px;width:14px;height:14px;background:var(--teal)}.check li:after{content:"";position:absolute;left:17px;top:16px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}.faq{border-top:1px solid var(--line)}.faq-item{padding:13px 0;border-bottom:1px solid var(--line)}.faq-q{margin:0 0 4px!important;color:var(--navy);font-weight:800}.faq-a{margin:0!important;color:#536276;font-size:13.9px!important}.cta{margin-top:39px;padding:25px 23px;background:linear-gradient(135deg,var(--navy),var(--navy2) 62%,var(--teal));color:#fff}.cta h2{margin:0 0 8px;color:#fff;font-size:20px}.cta p{margin:0 0 16px;color:#eaf6ff}.buttons{display:flex;gap:8px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;min-height:37px;padding:0 14px;background:#fff;color:var(--navy);font-size:13px;font-weight:800}.btn.sub{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35)}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}.tag{padding:5px 8px;background:#f1f5f9;color:#56667a;font-size:12px}.refs{margin-top:20px;padding:15px;border:1px solid var(--line);background:#f8fafc}.refs h3{margin:0 0 7px;color:#334155;font-size:13.5px}.refs ul{margin:0;padding-left:18px}.refs li{margin:4px 0;color:#64748b;font-size:12.7px}.refs a{text-decoration:underline;text-underline-offset:2px}.footer{margin-top:26px;padding:32px 22px 28px;background:#10284d;color:#cfe1f7}.footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:24px}.footer-brand,.footer h4{color:#fff}.footer-brand{font-size:18px;font-weight:800}.footer h4{margin:0 0 8px;font-size:13.5px}.footer p,.footer li,.footer a{font-size:13px;line-height:1.6;color:#c9dcf4}.footer ul{margin:0;padding:0;list-style:none}.copy{margin:22px 0 0;padding-top:16px;border-top:1px solid #2f476d;font-size:12.2px}.top{position:fixed;right:24px;bottom:24px;width:46px;height:46px;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:11px;font-weight:800}
-@media(max-width:860px){body{word-break:normal}.header{position:static}.header-in{padding:12px 14px;flex-direction:column;align-items:flex-start;gap:10px}.nav{gap:13px;flex-wrap:wrap}.actions{margin-left:0}.page{padding:14px 10px 44px}.hero{padding:24px 17px 21px}.hero h1{font-size:23px}.body{padding:28px 15px 40px}.toc ol,.grid{grid-template-columns:1fr}.section h2{font-size:18px}.footer-grid{grid-template-columns:1fr 1fr}.top{right:12px;bottom:12px}}
-@media(max-width:560px){.footer-grid{grid-template-columns:1fr}.hero-links{display:none}}
-</style>
+<meta content="아시아-북미, 아시아-유럽, 유럽-북미 등 주요 컨테이너선 항로와 파나마 운하·수에즈 운하의 구조, 역할, 실무 체크포인트를 쉽게 정리했습니다." name="description"/>
+<meta content="컨테이너선 항로, 국제 운하, 파나마 운하, 수에즈 운하, 아시아 유럽 항로, 아시아 북미 항로, 해상운송 항로, 케이브릿지 물류 용어집" name="keywords"/>
+<meta content="케이브릿지 주식회사" name="author"/>
+<meta content="물류 용어집" name="kbridge:category"/>
+<meta content="assets/images/thumbnail_container_routes_canals_1000.webp" name="kbridge:thumbnail"/>
+<meta content="컨테이너선 항로" property="article:tag"/><meta content="파나마 운하" property="article:tag"/><meta content="수에즈 운하" property="article:tag"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.kbexpress.kr/blog/posts/glossary/canal.html"},"headline":"주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리","description":"아시아-북미, 아시아-유럽, 유럽-북미 등 주요 컨테이너선 항로와 파나마 운하·수에즈 운하의 구조, 역할, 실무 체크포인트를 쉽게 정리했습니다.","image":["https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_routes_canals_1000.webp"],"datePublished":"2026-07-18T09:00:00+09:00","dateModified":"2026-07-18T09:00:00+09:00","author":{"@type":"Organization","name":"케이브릿지 주식회사","url":"https://www.kbexpress.kr/"},"publisher":{"@type":"Organization","name":"케이브릿지 주식회사","url":"https://www.kbexpress.kr/"},"articleSection":"물류 용어집","keywords":["컨테이너선 항로","파나마 운하","수에즈 운하","국제 운하"],"inLanguage":"ko-KR","url":"https://www.kbexpress.kr/blog/posts/glossary/canal.html"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"아시아-유럽 컨테이너선은 모두 수에즈 운하를 통과하나요?","acceptedAnswer":{"@type":"Answer","text":"일반적으로 수에즈 운하가 가장 짧은 주요 경로지만, 홍해 정세와 선사 운항 정책에 따라 희망봉으로 우회할 수 있습니다."}},{"@type":"Question","name":"파나마 운하는 왜 갑문이 필요한가요?","acceptedAnswer":{"@type":"Answer","text":"선박을 해수면에서 가툰호 수위까지 올렸다가 반대편에서 다시 내리기 위해 갑문을 사용합니다."}},{"@type":"Question","name":"직항과 환적 중 어느 항로가 더 좋은가요?","acceptedAnswer":{"@type":"Answer","text":"직항은 환적 리스크가 적지만 운임과 기항지 선택이 제한될 수 있습니다. 환적은 연결 범위가 넓지만 일정 변동 가능성을 함께 봐야 합니다."}}]}</script>
-
-  <!-- KBRIDGE_AUTO_SEO_START -->
-  <link rel="canonical" href="https://www.kbexpress.kr/blog/posts/glossary/canal.html">
-  <link rel="alternate" type="application/rss+xml" title="KBRIDGE 물류 블로그 RSS" href="https://www.kbexpress.kr/rss.xml">
-  <link rel="stylesheet" href="/assets/blog-header-28wnews.css?v=20260718">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-  <meta name="naverbot" content="index,follow">
-  <meta name="yeti" content="index,follow">
-  <meta name="author" content="케이브릿지 주식회사">
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="ko_KR">
-  <meta property="og:site_name" content="KBRIDGE 물류 블로그">
-  <meta property="og:url" content="https://www.kbexpress.kr/blog/posts/glossary/canal.html">
-  <meta property="og:title" content="주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리">
-  <meta property="og:description" content="아시아-북미, 아시아-유럽, 유럽-북미 등 주요 컨테이너선 항로와 파나마 운하·수에즈 운하의 구조, 역할, 실무 체크포인트를 쉽게 정리했습니다.">
-  <meta property="og:image" content="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_routes_canals_1000.webp">
-  <meta property="og:image:alt" content="주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리">
-  <meta property="article:published_time" content="2026-07-18T09:00:00+09:00">
-  <meta property="article:modified_time" content="2026-07-18T09:00:00+09:00">
-  <meta property="article:section" content="물류 용어집">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리">
-  <meta name="twitter:description" content="아시아-북미, 아시아-유럽, 유럽-북미 등 주요 컨테이너선 항로와 파나마 운하·수에즈 운하의 구조, 역할, 실무 체크포인트를 쉽게 정리했습니다.">
-  <meta name="twitter:image" content="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_routes_canals_1000.webp">
-  <!-- KBRIDGE_AUTO_SEO_END -->
-</head><body>
+<!-- KBRIDGE_AUTO_SEO_START -->
+<link href="https://www.kbexpress.kr/blog/posts/glossary/canal.html" rel="canonical"/>
+<link href="https://www.kbexpress.kr/rss.xml" rel="alternate" title="KBRIDGE 물류 블로그 RSS" type="application/rss+xml"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="index,follow" name="naverbot"/>
+<meta content="index,follow" name="yeti"/>
+<meta content="케이브릿지 주식회사" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="ko_KR" property="og:locale"/>
+<meta content="KBRIDGE 물류 블로그" property="og:site_name"/>
+<meta content="https://www.kbexpress.kr/blog/posts/glossary/canal.html" property="og:url"/>
+<meta content="주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리" property="og:title"/>
+<meta content="아시아-북미, 아시아-유럽, 유럽-북미 등 주요 컨테이너선 항로와 파나마 운하·수에즈 운하의 구조, 역할, 실무 체크포인트를 쉽게 정리했습니다." property="og:description"/>
+<meta content="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_routes_canals_1000.webp" property="og:image"/><meta content="image/webp" property="og:image:type"/><meta content="1000" property="og:image:height"/><meta content="1000" property="og:image:width"/>
+<meta content="주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리" property="og:image:alt"/>
+<meta content="2026-07-18T09:00:00+09:00" property="article:published_time"/>
+<meta content="2026-07-18T09:00:00+09:00" property="article:modified_time"/>
+<meta content="물류 용어집" property="article:section"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리" name="twitter:title"/>
+<meta content="아시아-북미, 아시아-유럽, 유럽-북미 등 주요 컨테이너선 항로와 파나마 운하·수에즈 운하의 구조, 역할, 실무 체크포인트를 쉽게 정리했습니다." name="twitter:description"/>
+<meta content="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_routes_canals_1000.webp" name="twitter:image"/>
+<!-- KBRIDGE_AUTO_SEO_END -->
+<link href="../../../assets/css/pages/blog-posts-glossary-canal.css?v=20260720-10" rel="stylesheet"/>
+<link href="../../../assets/css/kbridge-design-system.css?v=20260720-v17" rel="stylesheet"/>
+</head><body class="site-subpage kb-unified-site">
 <a class="skip" href="#main">본문 바로가기</a>
-<header class="kb-header"><div class="kb-header-inner"><a class="kb-logo" href="https://www.kbexpress.kr/index.html" aria-label="케이브릿지 홈"><span class="kb-logo-mark">K</span><span>KBRIDGE</span></a><nav class="kb-nav" aria-label="주요 메뉴"><a href="https://www.kbexpress.kr/index.html#quote">즉시견적</a><a href="https://www.kbexpress.kr/quote-comparison.html">견적서 비교</a><a href="https://www.kbexpress.kr/warehouse-inquiry.html">창고 문의</a><a href="https://www.kbexpress.kr/domestic.html">국내운송</a><a href="https://www.kbexpress.kr/freight-index.html">운임지수</a><a href="https://www.kbexpress.kr/convenience.html">물류도구</a><a href="https://www.kbexpress.kr/blog/">블로그</a></nav><div class="kb-actions"><a class="kb-contact" href="https://www.kbexpress.kr/index.html#contact">문의</a><a class="kb-quote" href="https://www.kbexpress.kr/index.html?quote=formal">즉시 견적</a></div></div></header>
-<main id="main" class="page">
+<header class="header" id="top">
+<div class="container header-inner">
+<a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="../../../index.html" title="케이브릿지 메인 화면으로 이동">
+<span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span>
+<span class="brand-copy"><strong>KBRIDGE</strong></span>
+</a>
+<nav aria-label="주요 메뉴" class="nav">
+<a href="../../../index.html#services">즉시견적</a>
+<a href="../../../quote-comparison.html">견적서 비교</a>
+<a href="../../../warehouse-inquiry.html">창고 문의</a>
+<div class="nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button>
+<div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small>
+<a href="../../../domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a>
+<a href="../../../load-planner.html">차량 배차 시뮬레이터<span>차량 추천·3D 적입 배치</span></a>
+<a href="../../../safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a>
+<a href="../../../vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a>
+</div>
+</div>
+<a href="../../../freight-index.html">운임지수</a>
+<div class="nav-dropdown tools-nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button>
+<div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a href="../../../duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="../../../customs-exchange-rate.html">관세청 고시환율<span>수입신고 기준환율 확인</span></a><a href="../../../cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="../../../holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="../../../hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="../../../incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="../../../lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="../../../dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="../../../vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="../../../terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div>
+</div>
+<div class="nav-dropdown blog-nav-dropdown active">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button>
+<div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a href="../../../blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="../../../blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="../../../blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="../../../blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="../../../blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div>
+</div>
+</nav>
+<div class="header-actions"><a class="header-link" href="mailto:all@kbridges.co.kr">문의</a><a class="header-btn" href="../../../index.html#services">견적 받기</a></div>
+<button aria-controls="mobileNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn" type="button"><span></span></button>
+</div>
+</header>
+<div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav">
+<a href="../../../index.html#services">즉시견적 <span>→</span></a>
+<a href="../../../quote-comparison.html">견적서 비교 <span>→</span></a>
+<a href="../../../warehouse-inquiry.html">창고 문의 <span>→</span></a>
+<div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span>
+<a href="../../../domestic.html">국내운송 안내 <span>→</span></a>
+<a href="../../../load-planner.html">차량 배차 시뮬레이터 <span>→</span></a>
+<a href="../../../safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a>
+<a href="../../../vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a>
+</div>
+<a href="../../../freight-index.html">운임지수 <span>→</span></a>
+<div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="../../../duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="../../../customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="../../../cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="../../../holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="../../../hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="../../../incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="../../../lcl-storage.html">LCL 창고료 <span>→</span></a><a href="../../../dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="../../../vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="../../../terminal-info.html">터미널 정보 조회 <span>→</span></a></div>
+<div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="../../../blog/index.html?category=info">물류 정보 <span>→</span></a><a href="../../../blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="../../../blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="../../../blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="../../../blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div>
+<a href="../../../index.html#services">견적 받기 <span>→</span></a>
+</div>
+<main class="page" id="main">
 <nav class="crumb"><a href="https://www.kbexpress.kr/">홈</a><span>›</span><a href="https://www.kbexpress.kr/blog/">블로그</a><span>›</span><a href="https://www.kbexpress.kr/blog/?category=glossary">물류 용어집</a><span>›</span><span>주요 컨테이너선 항로와 국제 운하</span></nav>
 <article class="article">
-<header class="hero"><div class="hero-top"><div class="pills"><span class="pill">물류 용어집</span><span class="pill">해상운송</span><span class="pill">국제 운하</span></div><div class="hero-links"><a href="#route">항로 개념</a><a href="#major">주요 항로</a><a href="#panama">파나마</a><a href="#suez">수에즈</a></div></div><h1>주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리</h1><p class="hero-desc">컨테이너선은 정해진 항로와 기항 순서에 따라 세계 주요 항만을 연결합니다. 이 글에서는 아시아-북미·아시아-유럽 등 대표 항로와 파나마 운하·수에즈 운하의 구조, 역할, 우회 가능성을 실무 관점에서 정리합니다.</p><p class="meta">등록일 2026-07-18 · 케이브릿지 물류 용어집 · 공식 공개자료 기준</p></header>
+<header class="hero kb-page-hero" data-kb-hero="main"><div class="kb-hero-frame"><div class="hero-top"><div class="pills"><span class="pill">물류 용어집</span><span class="pill">해상운송</span><span class="pill">국제 운하</span></div><div class="hero-links"><a href="#route">항로 개념</a><a href="#major">주요 항로</a><a href="#panama">파나마</a><a href="#suez">수에즈</a></div></div><h1 data-kb-ui-native="">주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리</h1><p class="hero-desc" data-kb-ui-native="">컨테이너선은 정해진 항로와 기항 순서에 따라 세계 주요 항만을 연결합니다. 이 글에서는 아시아-북미·아시아-유럽 등 대표 항로와 파나마 운하·수에즈 운하의 구조, 역할, 우회 가능성을 실무 관점에서 정리합니다.</p><p class="meta" data-kb-ui-native="">등록일 2026-07-18 · 케이브릿지 물류 용어집 · 공식 공개자료 기준</p></div></header>
 <div class="body">
-<figure class="cover"><img src="assets/images/thumbnail_container_routes_canals_1000.webp" width="1000" height="1000" alt="주요 컨테이너선 항로와 파나마 수에즈 국제 운하 쉽게 정리" fetchpriority="high" decoding="async"></figure>
+<figure class="cover"><img alt="주요 컨테이너선 항로와 파나마 수에즈 국제 운하 쉽게 정리" decoding="async" fetchpriority="high" height="1000" loading="lazy" src="assets/images/thumbnail_container_routes_canals_1000.webp" width="1000"/></figure>
 <section class="summary"><h2>핵심 요약</h2><p><strong>아시아-북미, 아시아-유럽, 유럽-북미</strong>가 대표적인 컨테이너 간선항로입니다. <strong>파나마 운하는 갑문식</strong>으로 태평양과 대서양을 연결하고, <strong>수에즈 운하는 무갑문 해수면 운하</strong>로 지중해와 홍해를 연결합니다. 실제 운송에서는 직항·환적, 운하 통항 여부, 항만 혼잡과 우회 가능성을 함께 확인해야 합니다.</p></section>
 <nav class="toc"><p class="toc-title">목차</p><ol><li><a href="#route">컨테이너선 항로란?</a></li><li><a href="#major">세계 주요 컨테이너선 항로</a></li><li><a href="#panama">파나마 운하</a></li><li><a href="#suez">수에즈 운하</a></li><li><a href="#compare">파나마와 수에즈 비교</a></li><li><a href="#practical">실무 체크포인트</a></li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav>
-
-<section id="route" class="section"><figure class="visual"><img src="assets/images/visual_01_container_route_definition.webp" width="1200" height="750" alt="컨테이너선 항로 기항지 환적 스케줄 개념" loading="lazy" decoding="async"></figure><h2>컨테이너선 항로란?</h2><p class="lead"><strong>직접 답변:</strong> 컨테이너선 항로는 선박이 정해진 항만과 기항 순서를 반복 운항하는 해상운송 네트워크입니다.</p><p>정기선은 항로마다 기항항, 출항 요일, 운항 주기와 예상 운송시간을 설정합니다. 출발항과 도착항 사이에 직항 서비스가 없으면 싱가포르, 상하이, 부산, 로테르담 등 허브항에서 다른 선박으로 환적할 수 있습니다.</p><div class="grid"><div class="card"><span class="code">PORT</span><h3>기항지 Port of Call</h3><p>선박이 화물을 싣고 내리기 위해 정기적으로 들르는 항만입니다.</p></div><div class="card"><span class="code">T/S</span><h3>환적 Transshipment</h3><p>허브항에서 화물을 다른 선박으로 옮겨 최종 목적지까지 연결하는 방식입니다.</p></div><div class="card"><span class="code">TT</span><h3>Transit Time</h3><p>출항부터 도착까지 예상되는 해상 운송시간입니다. 기항과 환적에 따라 달라집니다.</p></div><div class="card"><span class="code">ROT</span><h3>Port Rotation</h3><p>선박이 항만을 방문하는 순서로, 실제 리드타임과 일정 안정성에 영향을 줍니다.</p></div></div></section>
-
-<section id="major" class="section"><figure class="visual"><img src="assets/images/visual_02_major_container_routes.webp" width="1200" height="750" alt="아시아 북미 아시아 유럽 유럽 북미 주요 컨테이너선 항로" loading="lazy" decoding="async"></figure><h2>세계 주요 컨테이너선 항로</h2><div class="table-wrap"><table><thead><tr><th>항로</th><th>주요 연결 지역</th><th>대표 특징</th><th>주요 변수</th></tr></thead><tbody><tr><td>아시아-북미</td><td>한국·중국·일본·동남아 ↔ 미국·캐나다</td><td>태평양을 횡단하는 대표 간선항로</td><td>미 서안·동안 선택, 파나마 경유, 항만 혼잡</td></tr><tr><td>아시아-유럽</td><td>동아시아·동남아 ↔ 북유럽·지중해</td><td>수에즈 운하 경유가 일반적인 최단 경로</td><td>홍해 정세, 수에즈 통항, 희망봉 우회</td></tr><tr><td>유럽-북미</td><td>북유럽·지중해 ↔ 미국·캐나다 동안</td><td>대서양 횡단 정기선 네트워크</td><td>계절성, 기항 순서, 항만 파업·혼잡</td></tr><tr><td>지역항로</td><td>동북아·동남아·중동·오세아니아</td><td>피더선으로 주요 허브항과 연결</td><td>환적 대기, 연결선 지연, 항만 운영시간</td></tr></tbody></table></div><p class="note"><strong>북극항로:</strong> 아시아와 유럽 사이의 거리를 줄일 가능성이 있지만 계절, 빙해, 쇄빙선, 보험, 연안국 규제 등 제약이 커 정기 컨테이너 운송의 일반 항로로 보기에는 아직 제한적입니다.</p></section>
-
-<section id="panama" class="section"><figure class="visual"><img src="assets/images/visual_03_panama_canal.webp" width="1200" height="750" alt="파나마 운하 갑문식 운하 Panamax Neopanamax 설명" loading="lazy" decoding="async"></figure><h2>파나마 운하 - 태평양과 대서양을 잇는 갑문식 운하</h2><p>파나마 운하는 대서양과 태평양 사이 약 80km를 연결합니다. 선박은 갑문을 통해 해수면에서 가툰호 수위까지 올라간 뒤 반대편에서 다시 내려갑니다. 파나마운하청은 운하가 전 세계 다수 항로와 항만을 연결하는 핵심 통로라고 안내합니다.</p><h3>Panamax와 Neopanamax</h3><p><strong>Panamax</strong>는 기존 갑문 통과 한계를 기준으로 한 선박 규격이고, <strong>Neopanamax</strong>는 2016년 개통한 확장 갑문을 이용할 수 있는 더 큰 선박군을 의미합니다. 실제 통항 가능 여부는 선박의 길이, 폭, 흘수와 운하 운영 조건을 함께 확인해야 합니다.</p><p class="note">파나마 운하는 강수량과 가툰호 수위의 영향을 받습니다. 예약 슬롯, 허용 흘수, 대기시간은 시기별로 달라질 수 있으므로 선적 전 선사 스케줄을 확인해야 합니다.</p></section>
-
-<section id="suez" class="section"><figure class="visual"><img src="assets/images/visual_04_suez_canal.webp" width="1200" height="750" alt="수에즈 운하 무갑문 해수면 운하 아시아 유럽 항로" loading="lazy" decoding="async"></figure><h2>수에즈 운하 - 지중해와 홍해를 잇는 무갑문 운하</h2><p>수에즈 운하는 이집트의 포트사이드에서 수에즈까지 이어지며 지중해와 홍해를 연결합니다. 수에즈운하청에 따르면 운하 길이는 약 193.3km이고 갑문이 없는 해수면 운하입니다.</p><p>아시아-유럽 항로가 수에즈 운하를 이용하면 아프리카 남단 희망봉을 돌아가는 것보다 항해 거리를 줄일 수 있습니다. 다만 홍해와 중동 정세, 선사 안전정책, 보험과 전쟁위험 할증에 따라 희망봉 우회가 선택될 수 있습니다.</p><p class="note"><strong>실무 주의:</strong> 예약 시 표시된 항로가 실제 운항 과정에서 변경될 수 있습니다. 견적서의 Route, T/S Port, Suez/Cape 표기와 선사 공지를 함께 확인하세요.</p></section>
-
-<section id="compare" class="section"><h2>파나마 운하와 수에즈 운하 비교</h2><div class="table-wrap"><table><thead><tr><th>구분</th><th>파나마 운하</th><th>수에즈 운하</th></tr></thead><tbody><tr><td>연결 해역</td><td>태평양 ↔ 대서양·카리브해</td><td>지중해 ↔ 홍해</td></tr><tr><td>운하 방식</td><td>갑문식, 가툰호 수위 이용</td><td>무갑문 해수면 운하</td></tr><tr><td>공식 길이</td><td>약 80km</td><td>약 193.3km</td></tr><tr><td>주요 항로</td><td>아시아-미국 동안, 미주 동안-서안</td><td>아시아-유럽, 중동-유럽</td></tr><tr><td>대체 우회</td><td>남미 남단·다른 복합운송 경로</td><td>희망봉 우회</td></tr><tr><td>핵심 변수</td><td>수위·흘수·예약 슬롯</td><td>홍해 안전·통항 정책·선사 운항 결정</td></tr></tbody></table></div></section>
-
-<section id="practical" class="section"><h2>항로 선택 전 실무 체크포인트</h2><ul class="check"><li><strong>직항과 환적:</strong> 환적 횟수와 연결항을 확인해 지연·오선적 위험을 비교합니다.</li><li><strong>운하 경유 여부:</strong> Panama, Suez, Cape 표기를 견적과 선사 스케줄에서 확인합니다.</li><li><strong>Port Rotation:</strong> 같은 출발항·도착항이라도 기항 순서에 따라 리드타임이 달라집니다.</li><li><strong>Cut-off:</strong> CY Closing, SI·VGM 마감과 실제 선박 출항일을 구분해 관리합니다.</li><li><strong>항만 혼잡:</strong> 대기시간, 파업, 기상, 터미널 생산성 변수를 반영합니다.</li><li><strong>운임과 할증료:</strong> 운하 통과료, 전쟁위험 할증, 긴급 우회 할증이 추가될 수 있습니다.</li></ul></section>
-
-<section id="faq" class="section"><h2>자주 묻는 질문</h2><div class="faq"><div class="faq-item"><p class="faq-q">Q. 아시아-유럽 컨테이너선은 모두 수에즈 운하를 통과하나요?</p><p class="faq-a">일반적으로 수에즈 운하가 주요 최단 경로지만, 홍해 정세와 선사 안전정책에 따라 희망봉으로 우회할 수 있습니다.</p></div><div class="faq-item"><p class="faq-q">Q. 파나마 운하는 왜 갑문이 필요한가요?</p><p class="faq-a">선박을 해수면에서 가툰호 수위까지 올렸다가 반대편에서 다시 내리기 위해 갑문을 사용합니다.</p></div><div class="faq-item"><p class="faq-q">Q. 직항이 항상 환적보다 좋은가요?</p><p class="faq-a">직항은 환적 리스크가 적지만 운임과 스케줄 선택이 제한될 수 있습니다. 환적은 연결 범위가 넓지만 연결선 지연 가능성을 함께 고려해야 합니다.</p></div><div class="faq-item"><p class="faq-q">Q. 견적서에서 운하 경유 여부는 어디서 확인하나요?</p><p class="faq-a">Route, Vessel/Voyage, T/S Port, Remark 항목과 선사 스케줄에서 Panama, Suez, Cape 표기를 확인할 수 있습니다.</p></div></div></section>
-
+<section class="section" id="route"><figure class="visual"><img alt="컨테이너선 항로 기항지 환적 스케줄 개념" decoding="async" height="750" loading="lazy" src="assets/images/visual_01_container_route_definition.webp" width="1200"/></figure><h2>컨테이너선 항로란?</h2><p class="lead"><strong>직접 답변:</strong> 컨테이너선 항로는 선박이 정해진 항만과 기항 순서를 반복 운항하는 해상운송 네트워크입니다.</p><p>정기선은 항로마다 기항항, 출항 요일, 운항 주기와 예상 운송시간을 설정합니다. 출발항과 도착항 사이에 직항 서비스가 없으면 싱가포르, 상하이, 부산, 로테르담 등 허브항에서 다른 선박으로 환적할 수 있습니다.</p><div class="grid"><div class="card"><span class="code">PORT</span><h3>기항지 Port of Call</h3><p>선박이 화물을 싣고 내리기 위해 정기적으로 들르는 항만입니다.</p></div><div class="card"><span class="code">T/S</span><h3>환적 Transshipment</h3><p>허브항에서 화물을 다른 선박으로 옮겨 최종 목적지까지 연결하는 방식입니다.</p></div><div class="card"><span class="code">TT</span><h3>Transit Time</h3><p>출항부터 도착까지 예상되는 해상 운송시간입니다. 기항과 환적에 따라 달라집니다.</p></div><div class="card"><span class="code">ROT</span><h3>Port Rotation</h3><p>선박이 항만을 방문하는 순서로, 실제 리드타임과 일정 안정성에 영향을 줍니다.</p></div></div></section>
+<section class="section" id="major"><figure class="visual"><img alt="아시아 북미 아시아 유럽 유럽 북미 주요 컨테이너선 항로" decoding="async" height="750" loading="lazy" src="assets/images/visual_02_major_container_routes.webp" width="1200"/></figure><h2>세계 주요 컨테이너선 항로</h2><div class="table-wrap"><table><thead><tr><th>항로</th><th>주요 연결 지역</th><th>대표 특징</th><th>주요 변수</th></tr></thead><tbody><tr><td>아시아-북미</td><td>한국·중국·일본·동남아 ↔ 미국·캐나다</td><td>태평양을 횡단하는 대표 간선항로</td><td>미 서안·동안 선택, 파나마 경유, 항만 혼잡</td></tr><tr><td>아시아-유럽</td><td>동아시아·동남아 ↔ 북유럽·지중해</td><td>수에즈 운하 경유가 일반적인 최단 경로</td><td>홍해 정세, 수에즈 통항, 희망봉 우회</td></tr><tr><td>유럽-북미</td><td>북유럽·지중해 ↔ 미국·캐나다 동안</td><td>대서양 횡단 정기선 네트워크</td><td>계절성, 기항 순서, 항만 파업·혼잡</td></tr><tr><td>지역항로</td><td>동북아·동남아·중동·오세아니아</td><td>피더선으로 주요 허브항과 연결</td><td>환적 대기, 연결선 지연, 항만 운영시간</td></tr></tbody></table></div><p class="note"><strong>북극항로:</strong> 아시아와 유럽 사이의 거리를 줄일 가능성이 있지만 계절, 빙해, 쇄빙선, 보험, 연안국 규제 등 제약이 커 정기 컨테이너 운송의 일반 항로로 보기에는 아직 제한적입니다.</p></section>
+<section class="section" id="panama"><figure class="visual"><img alt="파나마 운하 갑문식 운하 Panamax Neopanamax 설명" decoding="async" height="750" loading="lazy" src="assets/images/visual_03_panama_canal.webp" width="1200"/></figure><h2>파나마 운하 - 태평양과 대서양을 잇는 갑문식 운하</h2><p>파나마 운하는 대서양과 태평양 사이 약 80km를 연결합니다. 선박은 갑문을 통해 해수면에서 가툰호 수위까지 올라간 뒤 반대편에서 다시 내려갑니다. 파나마운하청은 운하가 전 세계 다수 항로와 항만을 연결하는 핵심 통로라고 안내합니다.</p><h3>Panamax와 Neopanamax</h3><p><strong>Panamax</strong>는 기존 갑문 통과 한계를 기준으로 한 선박 규격이고, <strong>Neopanamax</strong>는 2016년 개통한 확장 갑문을 이용할 수 있는 더 큰 선박군을 의미합니다. 실제 통항 가능 여부는 선박의 길이, 폭, 흘수와 운하 운영 조건을 함께 확인해야 합니다.</p><p class="note">파나마 운하는 강수량과 가툰호 수위의 영향을 받습니다. 예약 슬롯, 허용 흘수, 대기시간은 시기별로 달라질 수 있으므로 선적 전 선사 스케줄을 확인해야 합니다.</p></section>
+<section class="section" id="suez"><figure class="visual"><img alt="수에즈 운하 무갑문 해수면 운하 아시아 유럽 항로" decoding="async" height="750" loading="lazy" src="assets/images/visual_04_suez_canal.webp" width="1200"/></figure><h2>수에즈 운하 - 지중해와 홍해를 잇는 무갑문 운하</h2><p>수에즈 운하는 이집트의 포트사이드에서 수에즈까지 이어지며 지중해와 홍해를 연결합니다. 수에즈운하청에 따르면 운하 길이는 약 193.3km이고 갑문이 없는 해수면 운하입니다.</p><p>아시아-유럽 항로가 수에즈 운하를 이용하면 아프리카 남단 희망봉을 돌아가는 것보다 항해 거리를 줄일 수 있습니다. 다만 홍해와 중동 정세, 선사 안전정책, 보험과 전쟁위험 할증에 따라 희망봉 우회가 선택될 수 있습니다.</p><p class="note"><strong>실무 주의:</strong> 예약 시 표시된 항로가 실제 운항 과정에서 변경될 수 있습니다. 견적서의 Route, T/S Port, Suez/Cape 표기와 선사 공지를 함께 확인하세요.</p></section>
+<section class="section" id="compare"><h2>파나마 운하와 수에즈 운하 비교</h2><div class="table-wrap"><table><thead><tr><th>구분</th><th>파나마 운하</th><th>수에즈 운하</th></tr></thead><tbody><tr><td>연결 해역</td><td>태평양 ↔ 대서양·카리브해</td><td>지중해 ↔ 홍해</td></tr><tr><td>운하 방식</td><td>갑문식, 가툰호 수위 이용</td><td>무갑문 해수면 운하</td></tr><tr><td>공식 길이</td><td>약 80km</td><td>약 193.3km</td></tr><tr><td>주요 항로</td><td>아시아-미국 동안, 미주 동안-서안</td><td>아시아-유럽, 중동-유럽</td></tr><tr><td>대체 우회</td><td>남미 남단·다른 복합운송 경로</td><td>희망봉 우회</td></tr><tr><td>핵심 변수</td><td>수위·흘수·예약 슬롯</td><td>홍해 안전·통항 정책·선사 운항 결정</td></tr></tbody></table></div></section>
+<section class="section" id="practical"><h2>항로 선택 전 실무 체크포인트</h2><ul class="check"><li><strong>직항과 환적:</strong> 환적 횟수와 연결항을 확인해 지연·오선적 위험을 비교합니다.</li><li><strong>운하 경유 여부:</strong> Panama, Suez, Cape 표기를 견적과 선사 스케줄에서 확인합니다.</li><li><strong>Port Rotation:</strong> 같은 출발항·도착항이라도 기항 순서에 따라 리드타임이 달라집니다.</li><li><strong>Cut-off:</strong> CY Closing, SI·VGM 마감과 실제 선박 출항일을 구분해 관리합니다.</li><li><strong>항만 혼잡:</strong> 대기시간, 파업, 기상, 터미널 생산성 변수를 반영합니다.</li><li><strong>운임과 할증료:</strong> 운하 통과료, 전쟁위험 할증, 긴급 우회 할증이 추가될 수 있습니다.</li></ul></section>
+<section class="section" id="faq"><h2>자주 묻는 질문</h2><div class="faq"><details class="faq-item"><summary class="faq-q">Q. 아시아-유럽 컨테이너선은 모두 수에즈 운하를 통과하나요?</summary><div class="faq-a">일반적으로 수에즈 운하가 주요 최단 경로지만, 홍해 정세와 선사 안전정책에 따라 희망봉으로 우회할 수 있습니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 파나마 운하는 왜 갑문이 필요한가요?</summary><div class="faq-a">선박을 해수면에서 가툰호 수위까지 올렸다가 반대편에서 다시 내리기 위해 갑문을 사용합니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 직항이 항상 환적보다 좋은가요?</summary><div class="faq-a">직항은 환적 리스크가 적지만 운임과 스케줄 선택이 제한될 수 있습니다. 환적은 연결 범위가 넓지만 연결선 지연 가능성을 함께 고려해야 합니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 견적서에서 운하 경유 여부는 어디서 확인하나요?</summary><div class="faq-a">Route, Vessel/Voyage, T/S Port, Remark 항목과 선사 스케줄에서 Panama, Suez, Cape 표기를 확인할 수 있습니다.</div></details></div></section>
 <section class="cta"><h2>선적 항로와 운하 경유 여부가 헷갈린다면 케이브릿지와 확인하세요</h2><p>출발항, 도착항, 화물 규격과 희망 일정만 정리해도 직항·환적, 예상 항로, 리드타임과 운임 조건을 함께 검토할 수 있습니다.</p><div class="buttons"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a><a class="btn sub" href="https://www.kbexpress.kr/index.html#quote">즉시견적</a><a class="btn sub" href="https://www.kbexpress.kr/blog/">블로그 목록</a></div></section>
 <div class="tags"><span class="tag">#컨테이너선항로</span><span class="tag">#파나마운하</span><span class="tag">#수에즈운하</span><span class="tag">#국제운하</span><span class="tag">#해상운송</span><span class="tag">#아시아유럽항로</span><span class="tag">#아시아북미항로</span><span class="tag">#케이브릿지</span></div>
-<aside class="refs"><h3>참고 자료</h3><ul><li><a href="https://pancanal.com/en/history-of-the-panama-canal/" target="_blank" rel="noopener">Panama Canal Authority - History and operation</a></li><li><a href="https://pancanal.com/en/connectivity/" target="_blank" rel="noopener">Panama Canal Authority - Connectivity</a></li><li><a href="https://www.suezcanal.gov.eg/English/Pages/FAQ.aspx" target="_blank" rel="noopener">Suez Canal Authority - FAQ</a></li><li><a href="https://www.suezcanal.gov.eg/English/About/Pages/WhySuezCanal.aspx" target="_blank" rel="noopener">Suez Canal Authority - Why Suez Canal</a></li></ul></aside>
+<aside class="refs"><h3>참고 자료</h3><ul><li><a href="https://pancanal.com/en/history-of-the-panama-canal/" rel="noopener" target="_blank">Panama Canal Authority - History and operation</a></li><li><a href="https://pancanal.com/en/connectivity/" rel="noopener" target="_blank">Panama Canal Authority - Connectivity</a></li><li><a href="https://www.suezcanal.gov.eg/English/Pages/FAQ.aspx" rel="noopener" target="_blank">Suez Canal Authority - FAQ</a></li><li><a href="https://www.suezcanal.gov.eg/English/About/Pages/WhySuezCanal.aspx" rel="noopener" target="_blank">Suez Canal Authority - Why Suez Canal</a></li></ul></aside>
 </div></article>
 <footer class="footer"><div class="footer-grid"><div><div class="footer-brand">KBRIDGE</div><p>수출입 디지털 포워딩, 해외특송, 국내운송과 해상운송 정보를 연결합니다.</p></div><div><h4>서비스</h4><ul><li><a href="https://www.kbexpress.kr/index.html#quote">해상·항공 견적</a></li><li><a href="https://www.kbexpress.kr/domestic.html">국내운송</a></li><li><a href="https://www.kbexpress.kr/warehouse.html">창고 문의</a></li></ul></div><div><h4>콘텐츠</h4><ul><li><a href="https://www.kbexpress.kr/blog/">블로그</a></li><li><a href="https://www.kbexpress.kr/blog/?category=glossary">물류 용어집</a></li><li><a href="https://www.kbexpress.kr/blog/?category=insight">물류 인사이트</a></li></ul></div><div><h4>문의</h4><ul><li><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a></li><li>평일 09:00–18:00</li><li><a href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 접수</a></li></ul></div></div><p class="copy">케이브릿지 주식회사 · © 2026 KBRIDGE CO. LTD.</p></footer>
-</main><a class="top" href="#main" aria-label="최상단으로 이동">TOP</a></body></html>
+</main><a aria-label="최상단으로 이동" class="top" href="#main">TOP</a><script defer="" src="../../../assets/site-chrome.js?v=20260720-v17"></script>
+<script defer="" src="../../../assets/enterprise-motion.js?v=20260720-v17"></script>
+</body></html>

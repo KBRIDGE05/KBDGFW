@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>차량·컨테이너 적입 시뮬레이터 - KBRIDGE</title>
+<meta content="화물 규격과 수량, 중량을 입력하면 차량 또는 컨테이너를 자동 추천하고 실제 박스 배치를 3D로 확인할 수 있는 독립형 적입 시뮬레이터입니다." name="description"/>
+<link href="https://www.kbexpress.kr/load-planner.html" rel="canonical"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/><meta content="index,follow,max-image-preview:large" name="naverbot"/><meta content="index,follow,max-image-preview:large" name="yeti"/>
+<meta content="#16284a" name="theme-color"/>
+<meta content="website" property="og:type"/>
+<meta content="차량·컨테이너 적입 시뮬레이터 - KBRIDGE" property="og:title"/>
+<meta content="CBM뿐 아니라 박스 규격, 회전, 적층, 중량 제한까지 반영한 차량·컨테이너 적입 계산기" property="og:description"/>
+<link href="assets/css/pages/load-planner.css?v=20260720-11" rel="stylesheet"/>
+<link href="assets/css/kbridge-design-system.css?v=20260720-v17" rel="stylesheet"/>
+</head>
+<body class="site-subpage container-planner-mode kb-unified-site" data-build="v24-main-page-exact-match" id="page-top">
+<a class="skip-link" href="#plannerWorkspace">본문 바로가기</a>
+<header class="header" id="top">
+<div class="container header-inner">
+<a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="index.html" title="케이브릿지 메인 화면으로 이동">
+<span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span>
+<span class="brand-copy"><strong>KBRIDGE</strong></span>
+</a>
+<nav aria-label="주요 메뉴" class="nav">
+<a href="index.html#services">즉시견적</a>
+<a href="quote-comparison.html">견적서 비교</a>
+<a href="warehouse-inquiry.html">창고 문의</a>
+<div class="nav-dropdown active">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button>
+<div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small>
+<a href="domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a>
+<a aria-current="page" class="active" href="load-planner.html">차량 배차 시뮬레이터<span>차량 추천·3D 적입 배치</span></a>
+<a href="safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a>
+<a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a>
+</div>
+</div>
+<a href="freight-index.html">운임지수</a>
+<div class="nav-dropdown tools-nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button>
+<div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a href="duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="customs-exchange-rate.html">관세청 고시환율<span>수입신고 기준환율 확인</span></a><a href="cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div>
+</div>
+<div class="nav-dropdown blog-nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button>
+<div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a href="blog/index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="blog/index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="blog/index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="blog/index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="blog/index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div>
+</div>
+</nav>
+<div class="header-actions"><a class="header-link" href="mailto:all@kbridges.co.kr">문의</a><a class="header-btn" href="index.html#services">견적 받기</a></div>
+<button aria-controls="mobileNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn" type="button"><span></span></button>
+</div>
+</header>
+<div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav">
+<a href="index.html#services">즉시견적 <span>→</span></a>
+<a href="quote-comparison.html">견적서 비교 <span>→</span></a>
+<a href="warehouse-inquiry.html">창고 문의 <span>→</span></a>
+<div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span>
+<a href="domestic.html">국내운송 안내 <span>→</span></a>
+<a aria-current="page" class="active" href="load-planner.html">차량 배차 시뮬레이터 <span>→</span></a>
+<a href="safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a>
+<a href="vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a>
+</div>
+<a href="freight-index.html">운임지수 <span>→</span></a>
+<div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="lcl-storage.html">LCL 창고료 <span>→</span></a><a href="dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="terminal-info.html">터미널 정보 조회 <span>→</span></a></div>
+<div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="blog/index.html?category=info">물류 정보 <span>→</span></a><a href="blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div>
+<a href="index.html#services">견적 받기 <span>→</span></a>
+</div>
+<main>
+<section class="hero kb-page-hero kb-hero-has-panel" data-kb-hero="main"><div class="shell hero-grid kb-hero-frame">
+<div>
+<p class="eyebrow" data-kb-ui-native="">KBRIDGE DOMESTIC LOAD PLANNER</p>
+<h1 data-kb-title-scale="medium" data-kb-ui-native="">화물차 배차와 컨테이너 적입을<br/><span>3D로 미리 확인하세요.</span></h1>
+<p class="hero-copy" data-kb-ui-native="">화물의 실제 규격·수량·중량을 기준으로 적합한 차량 또는 컨테이너를 자동 배정하고, 박스별 실제 좌표와 적재율을 시각적으로 확인합니다.</p>
+<div class="hero-pills">
+<span>차량 자동 분할</span><span>회전·적층 조건</span><span>중량 한도 검사</span><span>결과 이미지 저장</span>
+</div>
+</div>
+<aside aria-label="현재 입력 화물 요약" class="hero-panel load-summary-card">
+<div class="load-summary-head">
+<span class="load-summary-kicker">LIVE CARGO SUMMARY</span>
+<h2 data-kb-ui-native="">현재 입력 화물</h2>
+<p data-kb-ui-native="">화물을 추가하면 배차 판단에 필요한 핵심 수치가 실시간으로 계산됩니다.</p>
+</div>
+<div class="load-summary-main">
+<span>총 적재 부피</span>
+<strong><b id="heroCbm">0.000</b><small>㎥</small></strong>
+</div>
+<div class="load-summary-grid">
+<div><span>품목</span><strong><b id="heroSku">0</b><small>종</small></strong></div>
+<div><span>수량</span><strong><b id="heroQty">0</b><small>개</small></strong></div>
+<div><span>총중량</span><strong><b id="heroWeight">0</b><small>kg</small></strong></div>
+</div>
+<div class="load-summary-note"><i aria-hidden="true"></i><span>입력값을 기준으로 적합 차량과 적입 가능 여부를 계산합니다.</span></div>
+</aside>
+</div>
+</section>
+<div class="shell workspace" id="plannerWorkspace">
+<section aria-label="적입 도구 선택" class="tool-mode-strip">
+<div aria-label="계산 도구 선택" class="tool-mode-buttons" role="tablist">
+<button aria-selected="false" class="tool-mode-btn" data-mode="container" role="tab" type="button">컨테이너 모드</button>
+<button aria-selected="true" class="tool-mode-btn active" data-mode="vehicle" role="tab" type="button">LCL 카고</button>
+<button aria-selected="false" class="tool-mode-btn" id="simpleModeBtn" role="tab" type="button">단순계산</button>
+</div>
+<p class="mode-description" hidden="" id="modeDescription">20FT DRY부터 45FT HIGH CUBE까지 내부 제원·CBM·중량과 실제 배치를 비교해 적합한 규격과 수량을 찾습니다.</p>
+<button hidden="" id="sampleBtn" type="button"></button>
+<button hidden="" id="settingsBtn" type="button"></button>
+</section>
+<section aria-labelledby="simpleTitle" class="simple-calculator-panel hidden" id="simpleCalculatorPanel">
+<div class="simple-calc-head">
+<div>
+<p class="section-number">SIMPLE CALCULATION</p>
+<h2 id="simpleTitle">CBM·부피중량 단순계산</h2>
+<p>화물 규격과 수량을 입력하면 CBM, 실중량, 항공·특송 부피중량과 단순 추천 규격을 즉시 계산합니다.</p>
+</div>
+<div class="simple-head-actions">
+<button class="primary-btn compact" id="simpleAddBtn" type="button">+ 품목 추가</button>
+</div>
+</div>
+<div class="simple-calc-grid">
+<section class="simple-input-card">
+<div class="simple-card-head"><strong>화물 정보</strong><span>규격 mm · 중량 kg</span></div>
+<div aria-hidden="true" class="simple-table-head"><span>품명</span><span>가로 L</span><span>세로 W</span><span>높이 H</span><span>수량</span><span>개당중량</span><span></span></div>
+<div class="simple-rows" id="simpleRows"></div>
+<div aria-label="단순계산 실행 및 초기화" class="simple-table-actions">
+<button class="primary-btn" id="simpleCalcBtn" type="button">단순계산</button>
+<button class="secondary-btn" id="simpleResetBtn" type="button">초기화</button>
+</div>
+</section>
+<section aria-live="polite" class="simple-result-card">
+<div class="simple-card-head"><strong>계산 결과</strong><span>입력값 기준 자동 계산</span></div>
+<div class="simple-summary-grid">
+<div><span>총 품목</span><strong id="simpleSku">1종</strong></div>
+<div><span>총 수량</span><strong id="simpleQty">1개</strong></div>
+<div><span>총 CBM</span><strong id="simpleCbm">0.080</strong><small>㎥</small></div>
+<div><span>총 실중량</span><strong id="simpleWeight">10.0</strong><small>kg</small></div>
+</div>
+<div class="simple-metric-list">
+<div><span>항공 부피중량</span><strong id="simpleAirVolume">13.4 kg</strong><small>CBM × 167</small></div>
+<div><span>항공 과금중량</span><strong id="simpleAirCharge">13.4 kg</strong><small>실중량과 부피중량 중 큰 값</small></div>
+<div><span>특송 부피중량</span><strong id="simpleExpressVolume">16.0 kg</strong><small>CBM × 200</small></div>
+<div><span>특송 과금중량</span><strong id="simpleExpressCharge">16.0 kg</strong><small>실중량과 부피중량 중 큰 값</small></div>
+<div><span>LCL 과금톤(R/T)</span><strong id="simpleRevenueTon">0.080 R/T</strong><small>CBM과 중량톤 중 큰 값</small></div>
+</div>
+<div class="simple-recommend-grid">
+<div><span>차량 단순 추천</span><strong id="simpleVehicleRecommend">다마스 트럭</strong><small>CBM·중량 기준이며 실제 적재는 LCL 카고에서 확인</small></div>
+<div><span>컨테이너 단순 추천</span><strong id="simpleContainerRecommend">20FT DRY</strong><small>내부 치수·배치는 컨테이너 모드에서 확인</small></div>
+</div>
+<p class="simple-formula-note">CBM = 가로(mm) × 세로(mm) × 높이(mm) × 수량 ÷ 1,000,000,000</p>
+</section>
+</div>
+</section>
+<div class="main-grid" id="plannerMainGrid">
+<div class="left-column">
+<section aria-labelledby="cargoTitle" class="panel cargo-panel">
+<div class="panel-heading inline-heading">
+<div>
+<p class="section-number">02</p>
+<h2 id="cargoTitle">화물 입력</h2>
+</div>
+<div class="heading-actions cargo-heading-actions">
+<button class="secondary-btn cargo-action-btn cargo-reset-btn" id="resetCargoBtn" type="button">전체 초기화</button>
+<button class="secondary-btn cargo-action-btn cargo-add-btn" id="addCargoBtn" type="button">+ 화물 추가</button>
+</div>
+</div>
+<div class="cargo-list-tools hidden" id="cargoListTools">
+<label class="cargo-search-wrap">
+<span class="sr-only">화물 검색</span>
+<input autocomplete="off" id="cargoSearch" placeholder="품목명 또는 규격 검색" type="search"/>
+</label>
+<span class="cargo-list-count" id="cargoListCount">전체 0종 · 표시 0종</span>
+<button class="cargo-list-toggle hidden" id="cargoListToggle" type="button">전체 0종 보기</button>
+</div>
+<div aria-live="polite" class="cargo-list" id="cargoList"></div>
+<div class="empty-state" id="cargoEmpty">
+<div aria-hidden="true" class="empty-icon">▦</div>
+<strong>등록된 화물이 없습니다.</strong>
+<p>화물 규격을 입력하거나 샘플 데이터를 불러오세요.</p>
+<button class="secondary-btn" id="emptyAddBtn" type="button">화물 추가</button>
+</div>
+<div class="cargo-summary" id="cargoSummary">
+<div><span>품목</span><strong id="sumSku">0종</strong></div>
+<div><span>수량</span><strong id="sumQty">0개</strong></div>
+<div><span>부피</span><strong id="sumCbm">0.000 CBM</strong></div>
+<div><span>중량</span><strong id="sumWeight">0.0 kg</strong></div>
+</div>
+<div class="file-upload-tools">
+<div class="file-upload-row">
+<div class="file-upload-copy">
+<strong>PDF·엑셀 화물 목록 자동 스캔</strong>
+<span>업로드 파일의 <b>6개 필수 열</b>을 자동으로 인식합니다.<br/>기존 화물 목록을 교체한 뒤 적입 계산을 바로 실행합니다.</span>
+</div>
+<div class="file-upload-actions">
+<button class="secondary-btn" id="importBtn" type="button">PDF·엑셀 업로드</button>
+<a download="" href="cargo-upload-template.xlsx">엑셀 양식 다운로드</a>
+</div>
+</div>
+<details class="file-guide">
+<summary>업로드 파일 작성 방법</summary>
+<ul>
+<li>필수 열: <code>품목명, 가로, 세로, 높이, 수량, 개당중량</code></li>
+<li>가로·세로·높이는 mm, 개당중량은 kg 단위로 작성합니다.</li>
+<li>엑셀은 .xlsx·.xls 파일을 지원합니다.</li>
+<li>PDF는 텍스트 표와 스캔 문서를 지원합니다.</li>
+<li>스캔 PDF는 OCR 처리로 시간이 더 걸릴 수 있습니다.</li>
+</ul>
+</details>
+<div aria-live="polite" class="file-import-status" id="fileImportStatus"></div>
+</div>
+</section>
+<section aria-labelledby="optionTitle" class="panel option-panel">
+<div class="panel-heading">
+<p class="section-number">03</p>
+<h2 id="optionTitle">컨테이너 · 적입 옵션</h2>
+</div>
+<div aria-hidden="true" class="route-compat-fields" hidden="">
+<select id="routeDirection"><option value="import">수입</option><option value="export">수출</option><option value="domestic">일반 국내운송</option></select>
+<input id="routeOrigin" type="text" value=""/>
+<input id="routeDestination" type="text" value=""/>
+<input id="routeDestinationDetail" type="text" value=""/>
+<button id="destinationAddressBtn" tabindex="-1" type="button"></button>
+<button id="routeSwapBtn" tabindex="-1" type="button"></button>
+</div>
+<div class="form-grid">
+<label class="field span-2">
+<span id="targetLabel">컨테이너 선택</span>
+<select id="targetSelect"><option value="auto">자동 추천 (최소 비용)</option><option value="20dry">20FT DRY — 33.2 CBM / 28,000 kg</option><option value="40dry">40FT DRY — 67.6 CBM / 26,700 kg</option><option value="40hc">40FT HIGH CUBE — 76.3 CBM / 26,500 kg</option><option value="45hc">45FT HIGH CUBE — 85.9 CBM / 27,400 kg</option></select>
+</label>
+<div class="container-mode-note span-2" id="containerModeNote">20FT DRY부터 45FT HIGH CUBE까지 내부 제원·CBM·중량을 비교해 가장 적합한 컨테이너 규격과 수량을 추천합니다.</div>
+<label class="field">
+<span>회전 방식</span>
+<select id="rotationSelect">
+<option value="horizontal">가로·세로 회전</option>
+<option value="fixed">회전 없음</option>
+<option value="six">6방향 회전</option>
+</select>
+</label>
+<label class="field">
+<span>배치 우선순위</span>
+<select id="prioritySelect">
+<option value="volume">큰 부피 우선</option>
+<option value="base">큰 바닥면 우선</option>
+<option value="weight">중량 화물 우선</option>
+<option value="sequence">입력 순서</option>
+</select>
+</label>
+</div>
+<div class="toggle-grid">
+<label class="toggle-row">
+<input checked="" id="stackingCheck" type="checkbox"/>
+<span aria-hidden="true" class="toggle-ui"></span>
+<span><strong>겹쳐 쌓기 허용</strong><small>아래 화물의 바닥 지지율을 검사합니다.</small></span>
+</label>
+<label class="toggle-row">
+<input checked="" id="weightCheck" type="checkbox"/>
+<span aria-hidden="true" class="toggle-ui"></span>
+<span><strong>최대 적재중량 준수</strong><small>차량·컨테이너별 설정 중량을 초과하지 않습니다.</small></span>
+</label>
+</div>
+<div class="range-field">
+<div><span>최소 바닥 지지율</span><strong id="supportValue">60%</strong></div>
+<input id="supportRange" max="100" min="30" step="5" type="range" value="60"/>
+</div>
+<button class="primary-btn run-btn" id="runBtn" type="button">
+<span id="runButtonLabel">컨테이너 적입 계산 실행</span><small id="runButtonHelp">컨테이너 내부 제원과 실제 박스 배치 기준</small>
+</button>
+<a class="quote-inline" href="https://www.kbexpress.kr/domestic.html" id="inlineQuoteLink" rel="noopener" target="_blank">국내운송 견적 바로 요청</a>
+</section>
+</div>
+<div class="right-column">
+<section aria-labelledby="resultTitle" class="panel result-panel">
+<div class="panel-heading inline-heading result-heading">
+<div>
+<p class="section-number">04</p>
+<h2 id="resultTitle">컨테이너 자동 추천 및 적입 결과</h2>
+</div>
+<div class="result-actions">
+<button aria-label="결과 이미지 저장" class="icon-btn" id="downloadImageBtn" title="이미지 저장" type="button">↓</button>
+<button aria-label="인쇄 또는 PDF 저장" class="icon-btn" id="printBtn" title="인쇄 또는 PDF 저장" type="button">⎙</button>
+</div>
+</div>
+<div class="result-placeholder" id="resultPlaceholder">
+<strong id="resultPlaceholderTitle">화물을 입력하고 컨테이너 적입 계산을 실행하세요.</strong>
+<p id="resultPlaceholderText">계산을 실행하면 추천 컨테이너 규격과 수량,<br/>공간·중량 사용률과 실제 적입 배치가 표시됩니다.</p>
+</div>
+<div class="result-content hidden" id="resultContent">
+<section aria-label="자동 추천 요약" class="result-summary-card">
+<div class="plan-summary" id="planSummary"></div>
+<div class="result-overview">
+<div><span id="resultUnitLabel">추천 컨테이너</span><strong id="resultBinCount">0대</strong></div>
+<div><span>적재 완료</span><strong id="resultLoaded">0개</strong></div>
+<div><span>공간 사용률</span><strong id="resultSpaceRate">0%</strong></div>
+<div><span>중량 사용률</span><strong id="resultWeightRate">0%</strong></div>
+</div>
+<div class="bin-cards hidden" id="binCards"></div>
+</section>
+<article class="planner-sim-card">
+<header class="planner-sim-head">
+<div>
+<strong id="simulationTitle">적입 시뮬레이션 — 차량</strong>
+<small id="simulationSubtitle">선택 차량의 실제 적재 배치를 확인합니다.</small>
+</div>
+<span class="selected-bin-badge" id="selectedBinBadge">-</span>
+</header>
+<div class="planner-bin-tabs bin-tabs" id="binTabs"></div>
+<div class="viewer-wrap planner-viewer" id="viewerWrap">
+<div class="viewer-toolbar">
+<div class="viewer-label">3D 적재 배치</div>
+<div class="view-buttons">
+<button data-view="iso" type="button">입체</button>
+<button data-view="top" type="button">상단</button>
+<button data-view="front" type="button">정면</button>
+<button data-view="side" type="button">측면</button>
+<button id="resetViewBtn" type="button">초기화</button>
+</div>
+</div>
+<div class="canvas-shell">
+<canvas aria-label="3D 적입 배치" height="1" id="loadCanvas" width="1"></canvas>
+<div class="canvas-hint">드래그해서 회전 · 휠로 확대/축소 · 박스 클릭 시 상세 확인</div>
+<div class="box-tooltip hidden" id="boxTooltip"></div>
+</div>
+<div class="viewer-diagnostic" id="viewerDiagnostic"></div>
+</div>
+<div class="legend planner-legend" id="legend"></div>
+<div class="utilization-grid">
+<div class="utilization-item">
+<div class="utilization-copy">
+<span>용적 사용률 — <b id="binVolumeUsageText">0.000 / 0.0 CBM</b></span>
+<strong id="binVolumeRate">0%</strong>
+</div>
+<div class="wide-progress volume"><i class="kb-progress-zero" id="binVolumeBar"></i></div>
+</div>
+<div class="utilization-item">
+<div class="utilization-copy">
+<span>중량 — <b id="binWeightUsageText">0 / 0 kg</b></span>
+<strong id="binWeightRate">0%</strong>
+</div>
+<div class="wide-progress weight"><i class="kb-progress-zero" id="binWeightBar"></i></div>
+</div>
+</div>
+<div class="result-status-stack" id="resultStatusStack"></div>
+<div class="warning-box hidden" id="warningBox"></div>
+</article>
+<section aria-labelledby="itemDetailTitle" class="item-detail-card">
+<div class="item-detail-head">
+<div>
+<strong id="itemDetailTitle">품목별 상세</strong>
+<small>현재 선택한 차량·컨테이너에 배치된 화물 기준</small>
+</div>
+<span id="itemDetailCount">0종</span>
+</div>
+<div class="item-detail-table-wrap">
+<table class="item-detail-table">
+<thead><tr><th>품명</th><th>규격 (mm)</th><th>수량</th><th>CBM</th><th>실중량</th><th>적재</th></tr></thead>
+<tbody id="resultCargoTableBody"></tbody>
+</table>
+</div>
+</section>
+</div>
+<aside aria-label="국내운송 견적 연결" class="quote-connect" id="quoteConnect">
+<div>
+<span class="quote-kicker">KBRIDGE DOMESTIC TRANSPORT</span>
+<strong>계산 결과를 실제 국내운송 견적으로 연결하세요.</strong>
+<p>화물 규격과 추천 차량 정보가 복사되고 케이브릿지 국내운송 견적 페이지가 새 창으로 열립니다.</p>
+</div>
+<a class="quote-link quote-main" href="https://www.kbexpress.kr/domestic.html" id="quoteRequestBtn" rel="noopener" target="_blank">국내운송 견적 요청</a>
+<small id="quoteCopyStatus">계산 전에도 견적 페이지로 이동할 수 있으며, 계산 후에는 결과 요약이 함께 복사됩니다.</small>
+</aside>
+</section>
+</div>
+</div>
+<section aria-label="계산 안내" class="info-grid" id="plannerInfoGrid">
+<article>
+<span>01</span><h3>CBM보다 실제 배치</h3><p>합산 부피가 충분해도 박스 치수와 적재함 폭·높이가 맞지 않으면 적재되지 않을 수 있습니다.</p>
+</article>
+<article>
+<span>02</span><h3>무게와 부피 동시 검사</h3><p>공간이 남아도 최대 적재중량을 넘으면 다음 차량 또는 컨테이너로 자동 분리합니다.</p>
+</article>
+<article>
+<span>03</span><h3>회전·적층 조건 반영</h3><p>세워서 회전, 6방향 회전, 회전 금지와 바닥 지지율을 선택해 현장 조건에 맞출 수 있습니다.</p>
+</article>
+</section>
+<section class="notice-panel" id="plannerNoticePanel">
+<strong>계산 결과 사용 안내</strong>
+<p>본 도구는 사전 검토용 휴리스틱 시뮬레이터입니다. 차량 적재함 구조, 팔레트 돌출, 축중, 결박 공간, 하역 순서, 화물 강도 및 현장 안전조건에 따라 실제 적입 결과가 달라질 수 있습니다.</p>
+</section>
+</div>
+</main>
+<footer>
+<div class="shell footer-inner">
+<div><strong>KBRIDGE LOAD PLANNER</strong><p>독립 제작 차량·컨테이너 적입 시뮬레이터</p></div>
+<p>© 2026 KBRIDGE. All rights reserved.</p>
+</div>
+</footer>
+<dialog class="modal" id="cargoDialog">
+<form id="cargoForm" method="dialog">
+<div class="modal-head">
+<div><p class="section-number">화물 정보</p><h2 id="cargoDialogTitle">화물 추가</h2></div>
+<button aria-label="닫기" class="close-btn" type="submit" value="cancel">×</button>
+</div>
+<input id="cargoId" type="hidden"/>
+<div class="modal-body cargo-modal-body">
+<label class="field cargo-name-field"><span>품명</span><input id="cargoName" maxlength="40" placeholder="예: 박스" required="" type="text"/></label>
+<label class="field cargo-dimension-field"><span>가로 L (mm)</span><input id="cargoLength" max="30000" min="1" required="" step="1" type="number"/></label>
+<label class="field cargo-dimension-field"><span>세로 W (mm)</span><input id="cargoWidth" max="30000" min="1" required="" step="1" type="number"/></label>
+<label class="field cargo-dimension-field"><span>높이 H (mm)</span><input id="cargoHeight" max="30000" min="1" required="" step="1" type="number"/></label>
+<label class="field cargo-quantity-field"><span>수량 (EA)</span><input id="cargoQty" max="1000" min="1" required="" step="1" type="number"/></label>
+<label class="field cargo-weight-field"><span>총중량 (kg)</span><input id="cargoWeight" max="100000000" min="0" required="" step="0.1" type="number"/></label>
+<label class="field cargo-stack-field"><span>겹쳐 쌓기</span><select id="cargoStackMode">
+<option value="global">전역 옵션 따름</option>
+<option value="allow">가능</option>
+<option value="blocked">불가 — 위에도 못 쌓음</option>
+</select></label>
+<label class="field cargo-rotation-field"><span>회전</span><select id="cargoRotationMode">
+<option value="global">전역 옵션 따름</option>
+<option value="horizontal">세워서만 (가로·세로)</option>
+<option value="fixed">회전 없음</option>
+<option value="six">6방향 (눕히기 OK)</option>
+</select></label>
+<div class="cargo-dialog-summary" id="cargoDialogSummary">총 0.000 CBM · 0 kg · 개당 0 kg</div>
+<input id="cargoMaxStack" type="hidden" value="99"/>
+<input id="cargoColor" type="hidden" value="#2f75d6"/>
+<input hidden="" id="cargoNoTop" type="checkbox"/>
+</div>
+<div class="modal-foot">
+<button class="ghost-btn" type="submit" value="cancel">취소</button>
+<button class="primary-btn compact" id="saveCargoBtn" type="submit" value="default">저장</button>
+</div>
+</form>
+</dialog>
+<dialog class="modal wide-modal" id="settingsDialog">
+<form id="settingsForm" method="dialog">
+<div class="modal-head">
+<div><p class="section-number">기준 데이터</p><h2>차량·컨테이너 규격 관리</h2></div>
+<button aria-label="닫기" class="close-btn" type="submit" value="cancel">×</button>
+</div>
+<div class="settings-tabs">
+<button class="active" data-settings-tab="vehicle" type="button">차량</button>
+<button data-settings-tab="container" type="button">컨테이너</button>
+</div>
+<div class="settings-table-wrap"><table class="settings-table"><thead><tr><th>명칭</th><th>길이 mm</th><th>폭 mm</th><th>높이 mm</th><th>중량 kg</th><th>실무 CBM</th><th>비용지수</th></tr></thead><tbody id="settingsTableBody"></tbody></table></div>
+<p class="settings-note">비용지수는 자동 추천 시 상대적인 비교에만 사용됩니다. 실제 운임이 아닙니다.</p>
+<div class="modal-foot split-foot">
+<button class="text-btn danger" id="resetSettingsBtn" type="button">기본값 복원</button>
+<div><button class="ghost-btn" type="submit" value="cancel">취소</button><button class="primary-btn compact" id="saveSettingsBtn" type="submit" value="default">저장</button></div>
+</div>
+</form>
+</dialog>
+<input accept=".xlsx,.xls,.pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,application/pdf" hidden="" id="cargoFileInput" type="file"/>
+<script defer="" src="assets/load-planner-app.js?v=20260720-v17"></script><script defer="" src="assets/site-chrome.js?v=20260720-v17"></script>
+<script defer="" src="assets/enterprise-motion.js?v=20260720-v17"></script>
+</body></html>
