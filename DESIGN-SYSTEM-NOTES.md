@@ -66,3 +66,11 @@
 - Added mobile single-column CTA buttons below 560px.
 - Updated the shared design stylesheet cache version on all 38 HTML pages.
 - Verified CTA computed colors on all posts and confirmed zero mobile horizontal-overflow issues.
+
+
+## v19 Naver crawl audit (2026-07-21)
+- Fixed 3 broken internal links: `/warehouse.html` → `/warehouse-inquiry.html`.
+- Removed non-document SVG `<title>` from the home page.
+- Split generated-download `<title>` markup in `safe-rate.html` so crawlers do not count it as a second page title.
+- Converted `vessel-tracking.html` from a canonical/noindex alias into a distinct self-canonical indexable AIS tracking page.
+- Added `vessel-tracking.html` to `sitemap.xml`.
