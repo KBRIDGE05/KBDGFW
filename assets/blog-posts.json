@@ -1,5 +1,32 @@
 [
   {
+    "slug": "29news",
+    "category": "news",
+    "categoryLabel": "물류 뉴스",
+    "title": "2026년 29주차 물류뉴스 - 해상운임 숨 고르기, 반도체·자동차 수출 확대, 항공운임 전망 상향",
+    "summary": "2026년 29주차(7월 13일~19일) 한국 수출입 기업이 확인해야 할 해상운임, 항공화물, 반도체·자동차 수출, 미국 항공부품 232조, 남미 통상협정과 공급망 이슈를 정리했습니다.",
+    "date": "2026-07-20",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/news/assets/images/thumbnail_week29_logistics_news_1000.webp",
+    "keywords": [
+      "29주차 물류뉴스",
+      "2026 물류뉴스",
+      "해상운임",
+      "KCCI",
+      "항공화물",
+      "반도체 수출",
+      "자동차 수출",
+      "미국 Section 232",
+      "공급망",
+      "관세",
+      "FTA",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/news/29news.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-07-20"
+  },
+  {
     "slug": "canal",
     "category": "glossary",
     "categoryLabel": "물류 용어집",
