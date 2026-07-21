@@ -27,7 +27,7 @@
     "category": "glossary",
     "categoryLabel": "물류 용어집",
     "title": "컨테이너선과 벌크선의 종류 - 해상운송 선박 차이 쉽게 정리",
-    "summary": "컨테이너선과 벌크선의 구조, 화물, 선적 방식, 운항 형태, 운임 기준을 비교하고 피더선·파나막스·ULCV·핸디사이즈·케이프사이즈 등 주요 선박 종류를 쉽게 정리했습니다.",
+    "summary": "컨테이너선과 벌크선의 구조·화물·선적 방식과 피더선·ULCV·파나막스 등 주요 선박 종류를 비교합니다.",
     "date": "2026-07-18",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_bulk_ship_1000.webp",
     "keywords": [
@@ -52,7 +52,7 @@
     "category": "glossary",
     "categoryLabel": "물류 용어집",
     "title": "아마존 셀러들이 알아야 할 필수 용어 - FBA부터 ASIN·FNSKU까지",
-    "summary": "아마존 판매를 시작할 때 꼭 알아야 할 FBA, FBM, RA, PL, BSR, ASIN, SKU, FNSKU, UPC, EAN, GTIN을 풀필먼트·상품등록·재고관리 기준으로 쉽게 정리했습니다.",
+    "summary": "아마존 판매에 필요한 FBA·FBM·ASIN·FNSKU 등 풀필먼트와 상품·재고관리 핵심 용어를 쉽게 정리했습니다.",
     "date": "2026-07-17",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_amazon_seller_terms_1000.webp",
     "keywords": [
@@ -78,7 +78,7 @@
     "category": "insight",
     "categoryLabel": "물류 인사이트",
     "title": "호르무즈 사태 이후 홍해가 가장 취약한 해상 운송로가 된 이유",
-    "summary": "호르무즈 해협 차질 이후 에너지 물동량이 홍해와 바브엘만데브로 집중된 이유, 후티 리스크와 해상운임·리드타임 영향, 화주의 공급망 대응 방법을 케이브릿지 물류 인사이트로 정리했습니다.",
+    "summary": "호르무즈 차질 이후 홍해 물동량 집중, 후티 리스크, 운임·리드타임 영향과 화주의 대응 방법을 정리했습니다.",
     "date": "2026-07-16",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_red_sea_vulnerability_1000.webp",
     "keywords": [
@@ -104,7 +104,7 @@
     "category": "info",
     "categoryLabel": "물류 정보",
     "title": "커머셜 인보이스(Commercial Invoice) 작성방법 & 양식 다운로드",
-    "summary": "수출 시 필요한 커머셜 인보이스(Commercial Invoice)의 의미, 작성 항목, 주의사항을 고객이 쉽게 이해할 수 있도록 정리했습니다. 케이브릿지 커머셜 인보이스 양식 다운로드 포함.",
+    "summary": "커머셜 인보이스의 의미, 필수 작성 항목, 주의사항과 실무용 양식 다운로드를 정리했습니다.",
     "date": "2026-07-14",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_commercial_invoice_1000.webp",
     "keywords": [
@@ -128,7 +128,7 @@
     "category": "service",
     "categoryLabel": "물류 서비스",
     "title": "ESS 수입 물류가 까다로운 이유 - 김천 그린수소 프로젝트 수행 사례",
-    "summary": "김천 그린수소 프로젝트 실제 수행 사례로 알아보는 ESS 수입 물류. 위험물 검토, 수입 통관, 중량물 운송, 고속도로 운송 불가에 따른 밤 10시 이후 국도 운송, 현장 반입까지 정리했습니다.",
+    "summary": "ESS 위험물 검토, 수입통관, 중량물 야간 국도 운송과 현장 반입까지 실제 수행 사례로 정리했습니다.",
     "date": "2026-07-14",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/service/assets/images/thumbnail_ess_import_logistics_1000.webp",
     "keywords": [
@@ -153,7 +153,7 @@
     "category": "news",
     "categoryLabel": "물류 뉴스",
     "title": "2026년 28주차 물류뉴스 - 해상운임 급등부터 항공화물·관세 변화까지",
-    "summary": "2026년 28주차(7월 6일~12일) 한국 수출입 기업이 확인해야 할 해상운임, 항공화물, 북극항로, 자율주행 물류, 미국 관세·통관 이슈를 정리했습니다.",
+    "summary": "7월 6~12일 해상운임, 항공화물, 북극항로, 자율주행 물류, 미국 관세·통관 이슈를 정리했습니다.",
     "date": "2026-07-13",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/news/assets/images/thumbnail_week28_logistics_news_1000.webp",
     "keywords": [
@@ -179,7 +179,7 @@
     "category": "insight",
     "categoryLabel": "물류 인사이트",
     "title": "미국 연말 물량은 왜 벌써 움직였나? 중국발 조기 선적과 하반기 해운 대응",
-    "summary": "미국 소매업체들이 중국발 연말 재고 주문을 4~6주 앞당긴 배경과 선복 부족, 해상운임 상승, 3분기 물동량 전망을 케이브릿지 물류 인사이트로 정리했습니다.",
+    "summary": "미국 연말 재고의 조기 발주 배경과 선복 부족, 해상운임 상승, 하반기 물동량 대응 포인트를 정리했습니다.",
     "date": "2026-07-11",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_us_retail_early_orders_1000.webp",
     "keywords": [
@@ -208,7 +208,12 @@
     "date": "2026-07-11",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_export_procedure_documents_1000.webp",
     "keywords": [
-      "\"수출"
+      "수출",
+      "B/L",
+      "AWB",
+      "수출신고필증",
+      "케이브릿지",
+      "포워딩"
     ],
     "url": "https://www.kbexpress.kr/blog/posts/glossary/export.html",
     "published": true,
@@ -220,7 +225,7 @@
     "category": "service",
     "categoryLabel": "물류 서비스",
     "title": "태양광 패널 수입, 보관·소분·운송까지 한 번에",
-    "summary": "태양광 패널 수입 후 컨테이너 적출, 창고 보관, 주문·현장별 소분, FLASH DATA와 시리얼 기준 재고관리, 납품지 배차·운송까지 한 번에 제공하는 케이브릿지 물류 서비스입니다.",
+    "summary": "태양광 패널 적출, 창고 보관, 소분, 시리얼 재고관리, 납품지 운송까지 연결하는 서비스를 소개합니다.",
     "date": "2026-07-11",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/service/assets/images/thumbnail_solar_panel_logistics_1000.webp",
     "keywords": [
@@ -244,7 +249,7 @@
     "category": "info",
     "categoryLabel": "물류 정보",
     "title": "패킹리스트(Packing List) 작성방법 & 양식 다운로드",
-    "summary": "수출 시 필요한 패킹리스트(Packing List)의 의미, 작성 항목, 주의사항을 고객이 쉽게 이해할 수 있도록 정리했습니다. 케이브릿지 패킹리스트 양식 다운로드 포함.",
+    "summary": "패킹리스트의 의미, 필수 작성 항목, 주의사항과 실무용 양식 다운로드를 정리했습니다.",
     "date": "2026-07-10",
     "thumbnail": "https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_packing_list_generated_1000.webp",
     "keywords": [
