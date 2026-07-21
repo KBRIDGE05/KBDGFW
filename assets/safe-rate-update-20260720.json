@@ -1,0 +1,27 @@
+{
+  "sourceFiles": [
+    "(별첨)_수출입_컨테이너_품목_기점별_운임(왕복).xlsx",
+    "(별첨)_수출입_컨테이너_품목_기점별_운임(편도).xlsx",
+    "행정예고문(국토교통부_2026년_적용_화물자동차_안전운임_일부개정).hwpx",
+    "(별첨)_전배운송_운임.hwpx"
+  ],
+  "noticeNo": "국토교통부공고 제2026-978호",
+  "published": "2026-07-20",
+  "plannedEffective": "2026-08-01",
+  "status": "administrative-preannouncement",
+  "roundTripSheets": 14,
+  "roundTripRowsPerSheet": 3480,
+  "oneWaySheets": 3,
+  "oneWayRowsPerSheet": 1213,
+  "transferRows": 4,
+  "excludedRows": 1,
+  "excludedRowDetail": "광양항-강원특별자치도 고성군 현내면: 첨부 운임표 #N/A",
+  "warning": "최종 고시 전 운임 및 시행일이 변경될 수 있습니다.",
+  "unavailableRows": [
+    {
+      "port": "광양항",
+      "destination": "강원특별자치도 고성군 현내면",
+      "reason": "첨부 운임표 전 항목 #N/A"
+    }
+  ]
+}
