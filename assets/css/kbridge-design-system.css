@@ -38,7 +38,6 @@ video {
   max-width: 100%;
 }
 
-/* Header values are copied from the rendered main index page. */
 html body .header {
   position: sticky;
   top: 0;
@@ -494,7 +493,6 @@ html body .mobile-nav a.active {
   color: #9ec1ff;
 }
 
-/* Hero layout stays page-specific; only the title adapts to its wording. */
 html body [data-kb-hero="main"] h1[data-kb-title-scale] {
   text-wrap: balance;
   word-break: keep-all;
@@ -577,7 +575,6 @@ html body [data-kb-hero="main"] h1[data-kb-title-scale="xlong"] {
   }
 }
 
-/* Safe-rate tool ships with ID-scoped legacy rules, so it needs an equally scoped bridge. */
 html body #main-content #safe-rate-tool #calculator h2 {
   color: var(--kb-ui-heading);
   font-size: 21px;
@@ -642,7 +639,6 @@ html body #main-content #safe-rate-tool #calculator .btn {
   }
 }
 
-/* Shared UI system: consistent typography and neutral component colors. */
 html body {
   color: var(--kb-ui-text);
   font-family: var(--kb-site-font);
@@ -656,7 +652,6 @@ html body :where(button, input, select, textarea, table) {
   font-family: var(--kb-site-font);
 }
 
-/* Major page sections, compact tool sections, and article sections use separate fixed levels. */
 html body main :where(.section-head, .hero-choice-head, .transport-intro, .faq-wrap, .quote-layout) h2 {
   color: var(--kb-ui-heading);
   font-size: 28px;
@@ -852,7 +847,6 @@ html body footer :where(h3, h4) {
   }
 }
 
-/* Specificity guard: overrides legacy page-level rules without touching layout logic. */
 html body:is(.site-home, .site-subpage) main h2:not([data-kb-ui-native]) {
   color: var(--kb-ui-heading);
   font-size: 21px;
@@ -974,8 +968,6 @@ html body:is(.site-home, .site-subpage) main td:not([data-kb-ui-native]) {
   }
 }
 
-
-/* v7 targeted fixes: preserve home hero contrast and tool search layout */
 html body.site-home [data-kb-hero="main"] .hero-choice-head h2,
 html body.site-home [data-kb-hero="main"] .hero-choice-head h2:not([data-kb-ui-native]){
   color:#ffffff;
@@ -1015,9 +1007,6 @@ html body .search-strip .search-box input[type="search"]::-webkit-search-results
   -webkit-appearance:none;
 }
 
-/* KBRIDGE unified shell v8.0
-   Scope: shared typography, site header/footer, common hero only.
-   Existing page/tool component CSS is intentionally preserved. */
 :root{
   --kb-brand:#2864e8;--kb-brand-dark:#1c4fbf;--kb-navy:#10284c;--kb-navy-deep:#071a35;
   --kb-ink:#172640;--kb-text:#45556e;--kb-muted:#718099;--kb-line:#dce4ef;
@@ -1029,7 +1018,6 @@ body.kb-unified-site h1,body.kb-unified-site h2,body.kb-unified-site h3,body.kb-
 body.kb-unified-site :focus-visible{outline:3px solid rgba(40,100,232,.35);outline-offset:3px}
 body.kb-unified-site input:focus,body.kb-unified-site select:focus,body.kb-unified-site textarea:focus{border-color:var(--kb-brand);box-shadow:0 0 0 4px rgba(40,100,232,.12)}
 
-/* Consistent site chrome */
 body.kb-unified-site .header,body.kb-unified-site .kb-header{height:var(--kb-header);background:rgba(16,40,76,.98);border-bottom:1px solid rgba(255,255,255,.11);color:#fff;backdrop-filter:blur(14px)}
 body.kb-unified-site .header .header-inner,body.kb-unified-site .kb-header .kb-header-inner{width:min(var(--kb-max),calc(100% - 48px));height:100%;margin-inline:auto;display:flex;align-items:center}
 body.kb-unified-site .brand,body.kb-unified-site .kb-logo{color:#fff}
@@ -1041,7 +1029,6 @@ body.kb-unified-site .header-btn:hover,body.kb-unified-site .kb-quote:hover{back
 body.kb-unified-site .nav-dropdown-menu{border:1px solid rgba(17,39,74,.12);border-radius:15px;background:#fff;color:var(--kb-ink);box-shadow:0 22px 54px rgba(4,18,44,.24)}
 body.kb-unified-site .nav-dropdown-menu a:hover,body.kb-unified-site .nav-dropdown-menu a.active{background:#eef4ff;color:var(--kb-brand)}
 
-/* Standard subpage hero: one image-free design across every page */
 body.kb-unified-site .kb-page-hero{
   position:relative;isolation:isolate;min-height:360px;overflow:hidden;
   background:linear-gradient(120deg,#0d2039 0%,#173d66 64%,#176a8b 100%);color:#fff;
@@ -1084,7 +1071,6 @@ body.kb-unified-site .kb-page-hero.article-hero h1{max-width:900px;font-size:cla
 body.kb-unified-site .kb-page-hero .article-meta{color:#c6d4e8}
 body.kb-unified-site .kb-page-hero .effective{display:inline-flex;margin-top:18px;padding:7px 12px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(7,28,57,.4);color:#e6f0ff}
 
-/* Keep content surfaces readable without changing tool mechanics */
 body.kb-unified-site main{background:#fff}
 body.kb-unified-site .tool-shell,body.kb-unified-site .panel,body.kb-unified-site .card{border-color:var(--kb-line)}
 body.kb-unified-site .footer,body.kb-unified-site .kb-footer,body.kb-unified-site>footer{background:#0e203d;color:#d7e1ef}
@@ -1108,14 +1094,12 @@ body.kb-unified-site .footer,body.kb-unified-site .kb-footer,body.kb-unified-sit
  body.kb-unified-site .kb-page-hero :is(.hero-actions,.actions) .btn{flex:1 1 150px}
 }
 
-/* Unified utility classes extracted from former inline style attributes */
 .kb-svg-fill{display:block;width:100%;height:100%}
 .kb-mt-5{margin-top:5px}.kb-mt-8{margin-top:8px}.kb-mt-15{margin-top:15px}.kb-mt-16{margin-top:16px}.kb-mt-18{margin-top:18px}.kb-mt-20{margin-top:20px}.kb-mt-34{margin-top:34px}
 .kb-progress-zero{width:0%}.kb-min-w-170{min-width:170px}.kb-text-right-mt5{text-align:right;margin-top:5px}
 .kb-muted-strong{color:#7b899d;font-weight:600}.kb-accent-soft{color:#a8c8ff}.kb-accent-blue{color:#9fc2ff}
 .kb-visually-hidden{position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* Required contrast on dark request panels */
 body.kb-unified-site .form-section .form-guide .kb-on-dark-title,
 body.kb-unified-site .quote-section .quote-guide .kb-on-dark-title,
 body.kb-unified-site .form-section .form-guide h2,
@@ -1123,12 +1107,10 @@ body.kb-unified-site .quote-section .quote-guide h2{color:#fff;text-shadow:0 1px
 body.kb-unified-site .form-section .form-guide>p,
 body.kb-unified-site .quote-section .quote-guide>p{color:rgba(239,246,255,.86)}
 
-/* Main hero contrast */
 body.site-home [data-kb-hero="main"] .hero-choice-head h2{color:#fff}
 body.site-home [data-kb-hero="main"] .hero-choice-head p,
 body.site-home [data-kb-hero="main"] .hero-choice-head span{color:rgba(236,244,255,.88)}
 
-/* Freight-index search icon/input separation */
 body.kb-unified-site .search-strip .search-box{position:relative;display:block}
 body.kb-unified-site .search-strip .search-box svg{position:absolute;left:18px;top:50%;width:20px;height:20px;transform:translateY(-50%);pointer-events:none;z-index:2}
 body.kb-unified-site .search-strip .search-box input{padding-left:56px;padding-right:18px}
@@ -1140,10 +1122,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
 
 @layer design {.kb-mb-5{margin-bottom:5px}.kb-mb-8{margin-bottom:8px}}
 
-/* =========================================================
-   KBRIDGE V13 — Unified visual & motion system
-   Shared across every page. No priority-forcing declarations.
-   ========================================================= */
 @layer design {
   :root {
     --kb-v13-navy-950: #071a32;
@@ -1205,7 +1183,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     color: var(--kb-v13-navy-950);
   }
 
-  /* Header */
   html body.kb-unified-site .header {
     background: linear-gradient(110deg, rgba(7, 26, 50, .985), rgba(13, 42, 77, .975) 58%, rgba(13, 55, 86, .97));
     border-bottom: 1px solid rgba(167, 205, 255, .13);
@@ -1274,7 +1251,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     transform: translateX(3px);
   }
 
-  /* Subpage hero */
   body.site-subpage.kb-unified-site .kb-page-hero {
     min-height: 370px;
     background: linear-gradient(118deg, var(--kb-v13-navy-950) 0%, var(--kb-v13-navy-800) 58%, #126b82 100%);
@@ -1344,7 +1320,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     backdrop-filter: blur(18px) saturate(125%);
   }
 
-  /* Main hero enhancements without changing its structure */
   body.site-home.kb-unified-site [data-kb-hero="main"] {
     isolation: isolate;
   }
@@ -1359,7 +1334,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     transition: transform .3s var(--kb-v13-ease), border-color .3s ease, box-shadow .3s ease, background .3s ease;
   }
 
-  /* Sections */
   body.kb-unified-site main > .section,
   body.kb-unified-site main > section.section {
     position: relative;
@@ -1408,7 +1382,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     background: linear-gradient(90deg, var(--kb-v13-blue-600), var(--kb-v13-cyan-500));
   }
 
-  /* Shells and cards */
   body.kb-unified-site :is(.tool-shell, .kbfx-card, .form-card, .panel) {
     border-color: var(--kb-v13-line);
     background: rgba(255, 255, 255, .96);
@@ -1461,7 +1434,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     transition: transform .3s var(--kb-v13-ease), box-shadow .3s ease;
   }
 
-  /* Status and source strips */
   body.kb-unified-site .kb-source-strip {
     border-color: #d7e6f3;
     border-radius: 14px;
@@ -1480,7 +1452,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     color: var(--kb-v13-blue-700);
   }
 
-  /* Buttons */
   body.kb-unified-site :is(.btn, .nt-btn, .native-btn, .primary-btn, .secondary-btn, .header-btn, .top-btn, .kb-top-button, .transport-cta, .promo-cta) {
     position: relative;
     overflow: hidden;
@@ -1518,7 +1489,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     pointer-events: none;
   }
 
-  /* Forms */
   body.kb-unified-site main :is(
     input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="color"]),
     select, textarea
@@ -1545,7 +1515,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     box-shadow: 0 0 0 4px rgba(75, 134, 247, .115), 0 10px 24px rgba(17, 43, 82, .055);
   }
 
-  /* Tables */
   body.kb-unified-site :is(.nt-table-wrap, .result-table-wrap, .table-wrap, .vehicle-table-wrap, .table-card) {
     border-color: var(--kb-v13-line);
     background: #fff;
@@ -1564,7 +1533,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     transition: background .18s ease, box-shadow .18s ease;
   }
 
-  /* FAQ */
   body.kb-unified-site :is(.faq-item, .faq-wrap details, .faq details) {
     border-color: var(--kb-v13-line);
     background: linear-gradient(180deg, #fff, #fbfdff);
@@ -1581,7 +1549,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     color: var(--kb-v13-ink);
   }
 
-  /* CTAs */
   body.kb-unified-site .cta {
     position: relative;
     overflow: hidden;
@@ -1608,7 +1575,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     z-index: 1;
   }
 
-  /* Blog/article surfaces */
   body.kb-unified-site :is(.article-body, .post-content, .article-content) h2 {
     position: relative;
     padding-left: 17px;
@@ -1636,7 +1602,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     transition: color .18s ease, transform .18s var(--kb-v13-ease);
   }
 
-  /* Related tools */
   body.kb-unified-site .related-tools-card.kb-related-tools-unified {
     border-color: var(--kb-v13-line);
     background:
@@ -1651,7 +1616,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     transition: transform .22s var(--kb-v13-ease), border-color .22s ease, box-shadow .22s ease, color .22s ease;
   }
 
-  /* Footer */
   body.kb-unified-site :is(.footer, .kb-footer) {
     position: relative;
     background:
@@ -1660,7 +1624,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     border-top: 1px solid rgba(169, 208, 255, .1);
   }
 
-  /* Scroll progress */
   .kb-scroll-progress {
     position: fixed;
     z-index: 1900;
@@ -1676,7 +1639,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     transition: transform .08s linear;
   }
 
-  /* Hover interactions */
   @media (hover: hover) and (pointer: fine) {
     html body.kb-unified-site .header .brand:hover .brand-symbol {
       transform: translateY(-1px) rotate(-2deg) scale(1.04);
@@ -1733,7 +1695,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     }
   }
 
-  /* Motion */
   @media (prefers-reduced-motion: no-preference) {
     body.site-subpage.kb-unified-site .kb-page-hero {
       animation: kbV13HeroGradient 15s ease-in-out infinite alternate;
@@ -1850,11 +1811,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
   }
 }
 
-
-/* =========================================================
-   KBRIDGE V14 — Readability palette & safe-rate refinement
-   Stronger text hierarchy, calmer accent colors, clearer controls.
-   ========================================================= */
 @layer design {
   :root {
     --kb-v13-navy-950: #06182f;
@@ -1932,7 +1888,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     color: #fff;
   }
 
-  /* Safe-rate surcharge cards: balanced text/control layout. */
   body.page-safe-rate #calculator #tab_equip .grid {
     align-items: stretch;
   }
@@ -2016,13 +1971,8 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
   }
 }
 
-
-/* =========================================================
-   KBRIDGE V15 — Unified FAQ and motion system
-   Compact safe-rate guidance, natural FAQ flow, consistent motion language.
-   ========================================================= */
 @layer design {
-  /* Safe-rate guidance: secondary information, not main-body scale */
+
   body.page-safe-rate #calculator .guideBox {
     padding: 11px 13px;
     border-color: #d7e2ef;
@@ -2068,7 +2018,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     background: #6c8fc5;
   }
 
-  /* FAQ: one continuous reading flow instead of table/card boxes */
   body.kb-unified-site :is(.faq-wrap, .faq-list, .faq) {
     display: block;
     width: 100%;
@@ -2171,7 +2120,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     animation: kbV15FaqAnswer .34s var(--kb-v13-ease) both;
   }
 
-  /* Remove the old card-hover treatment from FAQs */
   @media (hover: hover) and (pointer: fine) {
     body.kb-unified-site :is(.faq-item, .faq-wrap details, .faq details):hover {
       border-color: #c2d2e5;
@@ -2186,7 +2134,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     }
   }
 
-  /* Unified motion language: crisp rise, soft side alternation, consistent timing */
   html.kb-motion-ready .kb-reveal {
     opacity: 0;
     filter: none;
@@ -2307,8 +2254,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     }
   }
 
-
-  /* KBRIDGE V16 — Reliable FAQ interaction and file upload contrast */
   body.kb-unified-site :is(.faq-wrap, .faq-list, .faq) {
     content-visibility: visible;
     contain: none;
@@ -2336,7 +2281,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     pointer-events: none;
   }
 
-  /* Native and custom file-selection controls */
   body.kb-unified-site input[type="file"] {
     color: #42556f;
     font-weight: 650;
@@ -2406,9 +2350,8 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
   }
 }
 
-
 @layer design {
-  /* KBRIDGE v17: mobile, consistency and rendering-performance layer */
+
   :root {
     --kb-mobile-gutter: 14px;
     --kb-mobile-radius: 15px;
@@ -2417,7 +2360,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
   body.kb-unified-site .kb-empty-compact { padding: 18px 12px; }
   body.kb-unified-site .kb-empty-spacious { padding: 24px 12px; }
 
-  /* Stable media sizing prevents layout shifts while assets load. */
   body.kb-unified-site img,
   body.kb-unified-site video,
   body.kb-unified-site canvas,
@@ -2432,7 +2374,6 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Below-the-fold sections are skipped until near the viewport. FAQ and forms stay fully measurable. */
   @supports (content-visibility: auto) {
     body.kb-unified-site main > section:not(:first-child):not(.faq-section):not(.quote-section),
     body.kb-unified-site .article-body > section:not(.faq):not(.faq-section) {
@@ -2581,9 +2522,8 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
   }
 }
 
-
 @layer design {
-  /* v18 blog CTA contrast guard */
+
   html body.site-subpage.kb-unified-site main .kb-blog-cta {
     color: #ffffff;
   }

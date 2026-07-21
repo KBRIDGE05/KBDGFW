@@ -1,7 +1,6 @@
 @layer page, design;
 @layer page {
 
-/* Source: inline */
 :root{--navy:#071f55;--navy2:#10284d;--blue:#2d6df6;--teal:#0b9aa2;--ink:#273241;--muted:#667085;--line:#e2e8f0;--soft:#f4f7fb;--white:#fff;--shadow:0 10px 28px rgba(7,31,85,.08);--warn:#fff8e8;--warnline:#f6d887}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f6fa;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Pretendard","Segoe UI",sans-serif;font-size:15px;line-height:1.72;letter-spacing:-.018em;word-break:keep-all}a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:auto}.skip-link{position:absolute;left:-9999px}.skip-link:focus{left:10px;top:10px;background:#fff;padding:10px;z-index:1000}
 .kb-header{position:sticky;top:0;z-index:100;background:#172f55}.kb-header-inner{max-width:1180px;min-height:48px;margin:auto;padding:0 22px;display:flex;align-items:center;gap:22px}.kb-logo{display:flex;align-items:center;gap:7px;color:#fff;font-size:13px;font-weight:800;white-space:nowrap}.kb-logo-mark{width:20px;height:20px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800}.kb-nav{display:flex;align-items:center;gap:18px;flex:1}.kb-nav a,.kb-contact{color:#fff;font-size:12px;font-weight:560;opacity:.96}.kb-actions{display:flex;gap:18px;align-items:center}.kb-quote{height:30px;padding:0 15px;background:var(--blue);color:#fff;display:flex;align-items:center;font-weight:700}
@@ -9,13 +8,6 @@
 @media(max-width:860px){body{word-break:normal}.kb-header{position:static}.kb-header-inner{padding:12px 14px;flex-direction:column;align-items:flex-start;gap:10px}.kb-nav{gap:12px;flex-wrap:wrap}.kb-actions{width:100%}.page-wrap{padding:14px 10px 44px}.article-hero{padding:24px 17px 20px}.article-hero h1{font-size:23px}.article-body{padding:28px 15px 40px}.summary-points,.toc ol,.issue-grid,.briefs{grid-template-columns:1fr}.market-table-wrap{overflow-x:auto}.market-table{min-width:610px}.footer-grid{grid-template-columns:1fr 1fr}.floating-top{right:14px;bottom:14px;width:42px;height:42px}}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr}.kb-nav{display:none}.article-hero h1{font-size:21.5px}.news-item{grid-template-columns:38px 1fr}}
 
-
-/* Source: assets/blog-header-28wnews.css */
-/*
- * KBRIDGE blog header standard
- * Visual and responsive behavior are based on blog/posts/news/28wnews.html.
- * Loaded after each article's inline CSS so legacy header rules cannot diverge.
- */
 .kb-header{
   position:sticky;
   top:0;

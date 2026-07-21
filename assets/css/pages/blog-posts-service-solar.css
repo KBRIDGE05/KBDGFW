@@ -1,7 +1,6 @@
 @layer page, design;
 @layer page {
 
-/* Source: inline */
 :root{
   --kb-navy:#071f55; --kb-navy-2:#0b2f6f; --kb-teal:#0b9aa2; --kb-ink:#273241; --kb-muted:#667085;
   --kb-line:#e2e8f0; --kb-soft:#f5f8fc; --kb-card:#ffffff; --kb-shadow:0 10px 26px rgba(7,31,85,.08);
@@ -50,7 +49,6 @@ h2{margin:0 0 11px;color:var(--kb-navy);font-size:19px;line-height:1.42;letter-s
 @media (max-width:860px){body{font-size:14.5px;line-height:1.64;word-break:normal}.kb-header{position:static}.kb-header-inner{padding:12px 14px;align-items:flex-start;flex-direction:column}.kb-nav{justify-content:flex-start;width:100%;gap:2px}.kb-nav-link{font-size:12.6px;padding:0 9px;min-height:31px}.kb-dropdown{display:none}.page-wrap{padding:14px 10px 44px}.article-shell{border-radius:18px}.article-hero{padding:24px 17px 20px}.article-hero h1{font-size:22.5px;line-height:1.4}.hero-desc{font-size:13.9px}.thumb-inline{width:112px;margin:16px auto 18px}.article-body{padding:28px 15px 40px}.quick-summary{grid-template-columns:1fr}.toc ol{grid-template-columns:1fr}.flow-strip{grid-template-columns:repeat(2,1fr)}h2{font-size:17.3px}p{font-size:14px;line-height:1.66}.process-item{grid-template-columns:32px 1fr;padding:10px 12px}.process-item p,.checklist li,.faq-a{font-size:13.4px}.doc-table-wrap{overflow-x:auto}.doc-table{min-width:560px}.doc-table th,.doc-table td{font-size:12.4px;padding:8px}.cta{padding:20px 17px}.cta h2{font-size:17.4px}.cta p{font-size:13.7px}.body-visual,.hero-visual{border-radius:13px}.footer-grid{grid-template-columns:1fr 1fr;gap:18px}.kb-footer{padding:26px 18px}}
 @media (max-width:560px){.footer-grid{grid-template-columns:1fr}.flow-strip{grid-template-columns:1fr}.kb-logo{font-size:17px}.kb-logo-mark{width:28px;height:28px}.doc-table{min-width:500px}}
 
-/* v9 final image size corrections */
 .thumb-inline{display:none}
 .article-hero{padding-bottom:24px}
 .hero-copy{max-width:760px}
@@ -86,22 +84,16 @@ h2{margin:0 0 11px;color:var(--kb-navy);font-size:19px;line-height:1.42;letter-s
   .article-body > .body-visual{margin-bottom:22px}
 }
 
-
-/* v11 image size lock */
 .body-visual.cover-thumbnail,
 .article-body > .body-visual{width:100%;max-width:100%;display:block;margin:0 0 26px;}
 .body-visual.cover-thumbnail img{width:100%;max-width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
 .article-body > .body-visual img{width:100%;max-width:100%;display:block;}
 
-
-/* v12 requested adjustments */
 .quick-summary{grid-template-columns:1fr;max-width:100%;margin:0 0 26px;}
 .quick-summary .summary-card{width:100%;border-radius:0;}
 .cover-thumbnail,.cover-thumbnail img,.body-visual,.hero-visual,.doc-table-wrap,.summary-card{border-radius:0;}
 .doc-table-wrap{overflow:hidden;}
 
-
-/* v13 final requested corrections */
 *{border-radius:0}
 .kb-header{
   position:sticky;
@@ -231,8 +223,6 @@ p strong, li strong, td strong{font-weight:650;color:#071f55}
   .kb-dropdown{display:none}
 }
 
-
-/* v14 requested corrections */
 .kb-header-inner{min-height:48px;padding:0 22px}
 .kb-logo{font-size:13px;gap:7px}
 .kb-logo-mark{width:20px;height:20px;font-size:12px}
@@ -274,8 +264,6 @@ p strong, li strong, td strong{font-weight:650;color:#071f55}
   .floating-top-btn{right:14px;bottom:14px;width:44px;height:44px}
 }
 
-
-/* v15 footer color match */
 .kb-footer{
   background:#10284d;
   border-color:#263f66;
@@ -302,8 +290,6 @@ p strong, li strong, td strong{font-weight:650;color:#071f55}
   color:#ffffff;
 }
 
-
-/* v16 TOP button match main page style */
 .floating-top-btn{
   width:46px;
   height:46px;
@@ -331,8 +317,6 @@ p strong, li strong, td strong{font-weight:650;color:#071f55}
   }
 }
 
-
-/* Solar panel logistics article components */
 .service-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:18px 0 2px;border:1px solid var(--kb-line);background:#fff}
 .service-flow-item{padding:13px 9px;border-right:1px solid #e8eef5;text-align:center}.service-flow-item:last-child{border-right:0}
 .service-flow-item span{display:block;margin-bottom:4px;color:var(--kb-teal);font-size:12px;font-weight:700}.service-flow-item strong{display:block;color:var(--kb-navy);font-size:13.2px;line-height:1.4;font-weight:620}
@@ -346,13 +330,6 @@ p strong, li strong, td strong{font-weight:650;color:#071f55}
 @media (max-width:860px){.service-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.service-flow-item{border-bottom:1px solid #e8eef5}.service-flow-item:nth-child(2n){border-right:0}.service-flow-item:last-child{grid-column:1/-1;border-bottom:0}.photo-card img{height:285px}.service-points{grid-template-columns:1fr}}
 @media (max-width:560px){.photo-grid{grid-template-columns:1fr}.photo-card.wide{grid-column:auto}.photo-card img{height:270px}.photo-card.portrait img{height:330px}.service-flow{grid-template-columns:1fr}.service-flow-item{border-right:0}.service-flow-item:last-child{grid-column:auto}}
 
-
-/* Source: assets/blog-header-28wnews.css */
-/*
- * KBRIDGE blog header standard
- * Visual and responsive behavior are based on blog/posts/news/28wnews.html.
- * Loaded after each article's inline CSS so legacy header rules cannot diverge.
- */
 .kb-header{
   position:sticky;
   top:0;

@@ -1,7 +1,6 @@
 @layer page, design;
 @layer page {
 
-/* Source: inline */
 :root{--navy:#071f55;--navy2:#0b2f6f;--blue:#2868ce;--teal:#0b9aa2;--ink:#29394e;--muted:#637288;--line:#dde6ef;--soft:#f5f8fc;--white:#fff;--shadow:0 12px 34px rgba(7,31,85,.08)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f2f5f9;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR","Apple SD Gothic Neo","Segoe UI",sans-serif;font-size:15px;line-height:1.72;letter-spacing:-.018em;word-break:keep-all}a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:auto}.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;padding:10px 14px;background:#fff;z-index:9999}
 .header{position:sticky;top:0;z-index:100;background:#172f55;color:#fff}.header-in{max-width:1180px;min-height:48px;margin:auto;padding:0 22px;display:flex;align-items:center;gap:20px}.logo{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:800;white-space:nowrap}.mark{width:20px;height:20px;display:grid;place-items:center;background:var(--blue);font-size:12px}.nav{display:flex;gap:18px;align-items:center;flex:1}.nav a,.actions a{font-size:12px;color:#fff;white-space:nowrap}.actions{display:flex;gap:16px;margin-left:auto;align-items:center}.quote{padding:7px 14px;background:var(--blue);font-weight:700}
@@ -11,13 +10,6 @@
 @media(max-width:860px){body{word-break:normal}.header{position:static}.header-in{padding:12px 14px;flex-direction:column;align-items:flex-start;gap:10px}.nav{gap:13px;flex-wrap:wrap}.actions{margin-left:0}.page{padding:14px 10px 44px}.hero{padding:24px 17px 21px}.hero h1{font-size:23px}.body{padding:28px 15px 40px}.toc ol,.grid{grid-template-columns:1fr}.section h2{font-size:18px}.footer-grid{grid-template-columns:1fr 1fr}.top{right:12px;bottom:12px}}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr}.hero-links{display:none}}
 
-
-/* Source: assets/blog-header-28wnews.css */
-/*
- * KBRIDGE blog header standard
- * Visual and responsive behavior are based on blog/posts/news/28wnews.html.
- * Loaded after each article's inline CSS so legacy header rules cannot diverge.
- */
 .kb-header{
   position:sticky;
   top:0;

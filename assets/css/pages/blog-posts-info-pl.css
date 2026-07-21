@@ -1,7 +1,6 @@
 @layer page, design;
 @layer page {
 
-/* Source: inline */
 :root{
   --kb-navy:#071f55; --kb-navy-2:#0b2f6f; --kb-teal:#0b9aa2; --kb-blue:#2d6df6; --kb-ink:#273241; --kb-muted:#667085;
   --kb-line:#e2e8f0; --kb-soft:#f5f8fc; --kb-card:#ffffff; --kb-shadow:0 10px 26px rgba(7,31,85,.08);
@@ -20,13 +19,6 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%;height:au
 @media (max-width:860px){body{font-size:14.5px;line-height:1.64;word-break:normal}.kb-header{position:static}.kb-header-inner{min-height:auto;padding:12px 14px;align-items:flex-start;flex-direction:column;gap:10px}.kb-nav{width:100%;gap:12px;flex-wrap:wrap}.kb-nav-link{min-height:28px;font-size:12px}.kb-header-actions{width:100%;justify-content:flex-start;gap:14px}.kb-contact-link,.kb-quote-btn{font-size:12px}.kb-dropdown{display:none}.page-wrap{padding:14px 10px 44px}.article-hero{padding:24px 17px 20px}.article-hero h1{font-size:22.5px;line-height:1.4}.hero-desc{font-size:13.9px}.article-body{padding:28px 15px 40px}.toc ol{grid-template-columns:1fr}.field-grid{grid-template-columns:1fr}.download-box{grid-template-columns:1fr}.download-btn{width:100%}h2{font-size:17.3px}p{font-size:14px;line-height:1.66}.process-item{grid-template-columns:32px 1fr;padding:10px 12px}.process-item p,.checklist li,.faq-a{font-size:13.4px}.doc-table-wrap{overflow-x:auto}.doc-table{min-width:600px}.doc-table th,.doc-table td{font-size:12.4px;padding:8px}.cta{padding:20px 17px}.cta h2{font-size:17.4px}.cta p{font-size:13.7px}.footer-grid{grid-template-columns:1fr 1fr;gap:18px}.kb-footer{padding:26px 18px}.floating-top-btn{width:42px;height:42px;right:14px;bottom:14px}}
 @media (max-width:560px){.footer-grid{grid-template-columns:1fr}.kb-logo{font-size:13px}.doc-table{min-width:560px}}
 
-
-/* Source: assets/blog-header-28wnews.css */
-/*
- * KBRIDGE blog header standard
- * Visual and responsive behavior are based on blog/posts/news/28wnews.html.
- * Loaded after each article's inline CSS so legacy header rules cannot diverge.
- */
 .kb-header{
   position:sticky;
   top:0;

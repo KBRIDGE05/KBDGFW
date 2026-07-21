@@ -1,7 +1,6 @@
 @layer page, design;
 @layer page {
 
-/* Source: inline */
 :root{--navy:#071f55;--navy2:#102b60;--blue:#2d6df6;--teal:#0b919b;--ink:#2b3647;--muted:#607084;--line:#dfe7f0;--soft:#f4f7fb;--white:#fff}
     *{box-sizing:border-box;border-radius:0}
     html{scroll-behavior:smooth}
@@ -36,13 +35,6 @@
     @media(max-width:860px){body{word-break:normal}.header{position:static}.header-inner{padding:12px 14px;align-items:flex-start;flex-direction:column;gap:10px}.nav{width:100%;gap:12px;flex-wrap:wrap}.nav a{min-height:28px}.actions{width:100%}.page{padding:14px 10px 44px}.hero{padding:24px 17px 20px}h1{font-size:23px}.body{padding:28px 15px 40px}.toc ol{grid-template-columns:1fr}.photo-grid{grid-template-columns:1fr}.photo.wide{grid-column:auto}.photo img{height:280px}.points{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.top{right:14px;bottom:14px;width:42px;height:42px}}
     @media(max-width:560px){.footer-grid{grid-template-columns:1fr}.photo.portrait img{height:340px}}
 
-
-/* Source: assets/blog-header-28wnews.css */
-/*
- * KBRIDGE blog header standard
- * Visual and responsive behavior are based on blog/posts/news/28wnews.html.
- * Loaded after each article's inline CSS so legacy header rules cannot diverge.
- */
 .kb-header{
   position:sticky;
   top:0;
