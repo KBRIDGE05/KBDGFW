@@ -5,7 +5,7 @@ on:
   schedule:
     # KCCI: Monday 15:30 KST = 06:30 UTC.
     - cron: "30 6 * * 1"
-    # SCFI: Friday 17:30 KST = 08:30 UTC.
+    # SCFI: Friday 17:30 KST = 08:30 UTC (16:30 Beijing, after 15:00 release).
     - cron: "30 8 * * 5"
 
 permissions:
@@ -26,17 +26,35 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Read SCFI and KCCI official pages
-        run: python scripts/update_freight_data.py --only ocean
+
+      - name: Update the scheduled official source
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            python scripts/update_freight_data.py --only ocean
+          elif [[ "$EVENT_SCHEDULE" == "30 8 * * 5" ]]; then
+            python scripts/update_freight_data.py --only scfi
+          elif [[ "$EVENT_SCHEDULE" == "30 6 * * 1" ]]; then
+            python scripts/update_freight_data.py --only kcci
+          else
+            echo "Unknown schedule: $EVENT_SCHEDULE" >&2
+            exit 2
+          fi
+
       - name: Commit only when data changed
         shell: bash
         run: |
+          set -euo pipefail
           if git diff --quiet -- data/freight-data.json; then
-            echo "No new ocean-index values published."
+            echo "No new ocean-index values or source-status changes."
             exit 0
           fi
           git config user.name "kbridge-data-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/freight-data.json
-          git commit -m "data: update SCFI and KCCI"
+          git commit -m "data: update official ocean indices"
           git push

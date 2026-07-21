@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Update KBRIDGE freight-index JSON from official public webpages.
 
-The script is intentionally text/regex based rather than tied to fragile CSS classes.
-If one source changes or becomes temporarily unavailable, the previous valid data is kept.
+The parsers prefer semantic table labels and validate dates/value ranges before writing.
+A source-specific run exits non-zero when that source fails, so GitHub Actions cannot
+report a silent success while leaving stale public data in place.
 """
 from __future__ import annotations
 
@@ -32,9 +33,14 @@ KST = ZoneInfo("Asia/Seoul")
 BDI_MIN_VALUE = 100
 BDI_MAX_VALUE = 20_000
 BDI_MAX_WEEKLY_CHANGE_PCT = 80.0
+SCFI_MIN_VALUE = 100.0
+SCFI_MAX_VALUE = 20_000.0
 
 URLS = {
-    "scfi": "https://en.sse.net.cn/indices/scfinew.jsp",
+    # The legacy English page moved the live SCFI figures into an image in June 2026.
+    # Use the official text table published by SSEI, with the SSE mirror as fallback.
+    "scfi": "https://www.sse.net.cn/index/singleIndex?indexType=scfi",
+    "scfi_fallback": "https://www.sse.sh.cn/index/singleIndex?indexType=scfi",
     "kcci_grid": "https://www.kobc.or.kr/ebz/shippinginfo/kcci/gridList.do?mId=0304000000",
     "kcci_timeseries": "https://www.kobc.or.kr/ebz/shippinginfo/timeseries/gridList.do?mId=0304000000",
     "bdi": "https://en.stockq.org/index/BDI.php",
@@ -138,48 +144,82 @@ def upsert_periods(periods: list[dict[str, Any]], items: Iterable[dict[str, Any]
 
 
 def parse_scfi(soup: BeautifulSoup) -> list[dict[str, Any]]:
+    """Parse the official SSEI/SSE SCFI text table.
+
+    Since June 2026 the legacy English endpoint renders the figures as an image.
+    The current Chinese official page exposes a normal table with labels such as
+    ``上期``, ``本期`` and ``综合指数 Comprehensive Index``.  This parser accepts
+    both Chinese and English labels and validates the row before returning it.
+    """
     page = clean(soup.get_text(" ", strip=True))
-    header = re.search(
-        r"Previous Index\s*(20\d{2}-\d{2}-\d{2}).*?Current Index\s*(20\d{2}-\d{2}-\d{2})",
-        page,
-        re.I,
+
+    # Prefer the dates that are explicitly attached to previous/current columns.
+    header_patterns = (
+        r"上期\s*(20\d{2}-\d{2}-\d{2})\s*本期\s*(20\d{2}-\d{2}-\d{2})",
+        r"Previous\s+Index\s*(20\d{2}-\d{2}-\d{2}).*?Current\s+Index\s*(20\d{2}-\d{2}-\d{2})",
     )
-    if not header:
+    previous_date = current_date = ""
+    for pattern in header_patterns:
+        match = re.search(pattern, page, re.I)
+        if match:
+            previous_date, current_date = match.groups()
+            break
+    if not previous_date:
+        # A date-search input can add an unrelated date before the table, so use
+        # the last two dates only as a guarded fallback.
         dates = re.findall(r"20\d{2}-\d{2}-\d{2}", page)
         if len(dates) < 2:
             raise ParseError("SCFI 발표일을 찾지 못했습니다.")
         previous_date, current_date = dates[-2], dates[-1]
-    else:
-        previous_date, current_date = header.group(1), header.group(2)
 
     row_text = ""
     for tr in soup.find_all("tr"):
         candidate = clean(tr.get_text(" ", strip=True))
-        if re.search(r"Comprehensive\s+Index", candidate, re.I):
+        if re.search(r"(?:综合指数\s*)?Comprehensive\s+Index|综合指数", candidate, re.I):
             row_text = candidate
             break
     if not row_text:
-        match = re.search(r"Comprehensive Index\s+(.{0,160})", page, re.I)
-        row_text = match.group(0) if match else ""
-
-    values = [num(x) for x in re.findall(r"-?\d+(?:,\d{3})*(?:\.\d+)?", row_text)]
-    if len(values) < 2:
-        # Official page can render the row outside a conventional table.
         match = re.search(
-            r"Comprehensive Index.*?(\d{3,5}(?:\.\d+)?)\s+(\d{3,5}(?:\.\d+)?)\s+[-+]?\d+(?:\.\d+)?",
+            r"(?:综合指数\s*)?Comprehensive\s+Index\s+[-+\d,. ]+|综合指数\s+[-+\d,. ]+",
             page,
             re.I,
         )
-        if not match:
-            raise ParseError("SCFI 종합지수 값을 찾지 못했습니다.")
-        previous_value, current_value = num(match.group(1)), num(match.group(2))
-    else:
-        previous_value, current_value = values[-3:-1] if len(values) >= 3 else values[:2]
+        row_text = match.group(0) if match else ""
+    if not row_text:
+        raise ParseError("SCFI 종합지수 행을 찾지 못했습니다.")
+
+    values = [num(raw) for raw in re.findall(r"-?\d+(?:,\d{3})*(?:\.\d+)?", row_text)]
+    if len(values) < 2:
+        raise ParseError("SCFI 종합지수 값을 찾지 못했습니다.")
+    previous_value, current_value = values[0], values[1]
+    reported_change = values[2] if len(values) >= 3 else None
+
+    previous_day, current_day = parse_iso(previous_date), parse_iso(current_date)
+    today = datetime.now(KST).date()
+    if previous_day >= current_day or current_day > today + timedelta(days=1):
+        raise ParseError(f"SCFI 발표일 순서가 비정상입니다: {previous_date} → {current_date}")
+    if not (SCFI_MIN_VALUE <= previous_value <= SCFI_MAX_VALUE):
+        raise ParseError(f"SCFI 이전값이 허용 범위를 벗어났습니다: {previous_value}")
+    if not (SCFI_MIN_VALUE <= current_value <= SCFI_MAX_VALUE):
+        raise ParseError(f"SCFI 현재값이 허용 범위를 벗어났습니다: {current_value}")
+    if reported_change is not None and abs((current_value - previous_value) - reported_change) > 0.2:
+        raise ParseError("SCFI 증감값 검증에 실패했습니다.")
 
     return [
-        {"date": previous_date, "value": previous_value},
-        {"date": current_date, "value": current_value},
+        {"date": previous_date, "value": round(previous_value, 2)},
+        {"date": current_date, "value": round(current_value, 2)},
     ]
+
+
+def fetch_scfi() -> tuple[list[dict[str, Any]], str]:
+    """Try official SCFI text-table endpoints in order and report the source used."""
+    errors: list[str] = []
+    for source_key in ("scfi", "scfi_fallback"):
+        try:
+            return parse_scfi(fetch(URLS[source_key])), source_key
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{source_key}: {exc}")
+    raise ParseError(" / ".join(errors))
 
 
 
@@ -456,14 +496,18 @@ def save_data(data: dict[str, Any]) -> None:
 def update(data: dict[str, Any], only: str = "all") -> dict[str, Result]:
     results: dict[str, Result] = {}
 
-    if only in {"all", "ocean"}:
+    if only in {"all", "ocean", "scfi"}:
       try:
-        items = parse_scfi(fetch(URLS["scfi"]))
+        items, source_key = fetch_scfi()
         upsert_history(data["scfi"]["history"], items)
-        results["scfi"] = Result(True, f"{items[-1]['date']} {items[-1]['value']:,.2f}")
+        data["scfi"]["source_url"] = URLS[source_key]
+        results["scfi"] = Result(
+            True, f"{items[-1]['date']} {items[-1]['value']:,.2f} ({source_key})"
+        )
       except Exception as exc:  # noqa: BLE001 - keep prior valid data on any source failure
         results["scfi"] = Result(False, str(exc))
 
+    if only in {"all", "ocean", "kcci"}:
       try:
         timeseries = parse_kcci_timeseries(fetch(URLS["kcci_timeseries"]))
         upsert_history(data["kcci"]["history"], timeseries)
@@ -525,7 +569,12 @@ def update(data: dict[str, Any], only: str = "all") -> dict[str, Result]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true", help="Parse sources but do not write JSON")
-    parser.add_argument("--only", choices=("all", "ocean", "bdi", "fsc"), default="all", help="Update only the selected source group")
+    parser.add_argument(
+        "--only",
+        choices=("all", "ocean", "scfi", "kcci", "bdi", "fsc"),
+        default="all",
+        help="Update only the selected source or source group",
+    )
     args = parser.parse_args()
 
     original = load_data()
@@ -534,9 +583,7 @@ def main() -> int:
     for key, result in results.items():
         mark = "OK" if result.ok else "WARN"
         print(f"[{mark}] {key}: {result.message}")
-    if not any(result.ok for result in results.values()):
-        print("All sources failed; refusing a silent success.", file=sys.stderr)
-        return 2
+    failed = [key for key, result in results.items() if not result.ok]
 
     def substantive(payload: dict[str, Any]) -> dict[str, Any]:
         clone = copy.deepcopy(payload)
@@ -546,14 +593,23 @@ def main() -> int:
         clone.get("bdi", {}).pop("last_data_source", None)
         return clone
 
-    changed = substantive(data) != substantive(original)
+    substantive_changed = substantive(data) != substantive(original)
+    if substantive_changed:
+        data.setdefault("meta", {})["generated_at"] = datetime.now(KST).isoformat(timespec="seconds")
+
+    # Persist source_status even when the published value itself did not change.
+    # This clears a stale warning after a parser/source recovery.
+    any_changed = data != original
     if not args.dry_run:
-        if changed:
-            data.setdefault("meta", {})["generated_at"] = datetime.now(KST).isoformat(timespec="seconds")
+        if any_changed:
             save_data(data)
             print(f"Saved: {DATA_PATH}")
         else:
-            print("No published value changed; JSON left untouched.")
+            print("No published value or source status changed; JSON left untouched.")
+
+    if failed:
+        print(f"Required source failure: {', '.join(failed)}", file=sys.stderr)
+        return 2
     return 0
 
 
