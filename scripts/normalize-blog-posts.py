@@ -11,7 +11,6 @@ from urllib.parse import urljoin
 ROOT = Path(__file__).resolve().parents[1]
 SITE_URL = "https://www.kbexpress.kr"
 POSTS_ROOT = ROOT / "blog" / "posts"
-HEADER_CSS = "/assets/blog-header-28wnews.css?v=20260718"
 RSS_URL = f"{SITE_URL}/rss.xml"
 
 CATEGORY_LABELS = {
@@ -327,7 +326,6 @@ def normalize_file(file_path: Path) -> bool:
         "<!-- KBRIDGE_AUTO_SEO_START -->",
         f'<link rel="canonical" href="{escape_attr(page_url)}">',
         f'<link rel="alternate" type="application/rss+xml" title="KBRIDGE 물류 블로그 RSS" href="{RSS_URL}">',
-        f'<link rel="stylesheet" href="{HEADER_CSS}">',
         '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">',
         '<meta name="naverbot" content="index,follow">',
         '<meta name="yeti" content="index,follow">',

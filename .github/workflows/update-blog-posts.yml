@@ -9,7 +9,6 @@ on:
       - 'blog/posts/**/*.html'
       - 'scripts/normalize-blog-posts.py'
       - 'scripts/build-blog-posts.mjs'
-      - 'assets/blog-header-28wnews.css'
       - '.github/workflows/update-blog-posts.yml'
 
 permissions:
