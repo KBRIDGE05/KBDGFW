@@ -11,8 +11,8 @@
   const ONE_DAY = 24 * 60 * 60 * 1000;
   const AVATAR_URL = (() => {
     const current = document.currentScript?.src;
-    if (current) return new URL("kebby-avatar-v2.webp?v=20260723-centered", current).href;
-    return "/assets/kebby-avatar-v2.webp?v=20260723-centered";
+    if (current) return new URL("kebby-avatar-v2.webp?v=20260723-ui-v4", current).href;
+    return "/assets/kebby-avatar-v2.webp?v=20260723-ui-v4";
   })();
 
   const initialMessage =
@@ -29,6 +29,7 @@
   let turnstileToken = "";
   let turnstileWidgetId = null;
   let handoffOpen = false;
+  let apiWarmed = false;
 
   function loadHistory() {
     try {
@@ -89,16 +90,31 @@
     .kb-kebby-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background:linear-gradient(#f8faff,#fff 150px);padding:16px 16px 22px;scroll-behavior:smooth}
     .kb-kebby-quick{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}.kb-kebby-quick button{border:1px solid #d8e2f0;background:#fff;border-radius:14px;padding:11px 10px;color:#29466e;font-weight:750;text-align:left;cursor:pointer}.kb-kebby-quick button:hover{border-color:#7ca4f7;color:#1d5bdb;background:#f5f8ff}
     .kb-kebby-message{display:flex;gap:8px;margin:0 0 13px;align-items:flex-end}.kb-kebby-message.user{justify-content:flex-end}.kb-kebby-message-avatar{display:block;width:30px;height:30px;border-radius:50%;object-fit:contain;object-position:center;background:#fff;flex:0 0 auto;box-shadow:0 4px 12px rgba(25,66,135,.16)}
-    .kb-kebby-bubble{max-width:82%;padding:12px 14px;border-radius:17px;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.62}.kb-kebby-message.assistant .kb-kebby-bubble{background:#fff;border:1px solid #dce5f1;border-bottom-left-radius:5px;box-shadow:0 5px 14px rgba(31,63,110,.06)}.kb-kebby-message.user .kb-kebby-bubble{background:linear-gradient(135deg,#2c66e7,#477cf0);color:#fff;border-bottom-right-radius:5px;box-shadow:0 8px 18px rgba(42,99,226,.18)}
+    .kb-kebby-bubble{max-width:86%;padding:12px 14px;border-radius:17px;word-break:break-word;font-size:14px;line-height:1.62}
+    .kb-kebby-message.user .kb-kebby-bubble{white-space:pre-wrap}
+    .kb-kebby-message.assistant .kb-kebby-bubble{white-space:normal}
+    .kb-kebby-answer-p{margin:0 0 10px}.kb-kebby-answer-p:last-child{margin-bottom:0}
+    .kb-kebby-answer-title{margin:14px 0 7px;color:#17365f;font-weight:850;font-size:14.5px;line-height:1.45}
+    .kb-kebby-answer-title:first-child{margin-top:0}
+    .kb-kebby-answer-list{margin:7px 0 11px;padding-left:20px}.kb-kebby-answer-list:last-child{margin-bottom:0}
+    .kb-kebby-answer-list li{margin:5px 0;padding-left:2px;line-height:1.58}
+    .kb-kebby-answer-list li::marker{color:#2f67de;font-weight:800}
+    .kb-kebby-bubble strong{color:#163b73;font-weight:850}
+    .kb-kebby-sources{margin-top:12px;padding-top:10px;border-top:1px solid #e5ebf4}
+    .kb-kebby-sources-title{display:block;margin-bottom:6px;color:#65758d;font-size:11px;font-weight:800}
+    .kb-kebby-sources a{display:block;margin:4px 0;color:#245ed7;font-size:11.5px;line-height:1.45;text-decoration:none;overflow-wrap:anywhere}
+    .kb-kebby-sources a:hover{text-decoration:underline}.kb-kebby-message.assistant .kb-kebby-bubble{background:#fff;border:1px solid #dce5f1;border-bottom-left-radius:5px;box-shadow:0 5px 14px rgba(31,63,110,.06)}.kb-kebby-message.user .kb-kebby-bubble{background:linear-gradient(135deg,#2c66e7,#477cf0);color:#fff;border-bottom-right-radius:5px;box-shadow:0 8px 18px rgba(42,99,226,.18)}
     .kb-kebby-typing{display:inline-flex;gap:4px;align-items:center}.kb-kebby-typing-label{display:inline-block;margin-left:8px;color:#71819a;font-size:12px;vertical-align:middle}.kb-kebby-typing i{width:6px;height:6px;border-radius:50%;background:#7090c5;animation:kbKebbyDot 1s infinite ease-in-out}.kb-kebby-typing i:nth-child(2){animation-delay:.14s}.kb-kebby-typing i:nth-child(3){animation-delay:.28s}@keyframes kbKebbyDot{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
     .kb-kebby-error{margin:10px 0;padding:11px 12px;border-radius:13px;border:1px solid #f1c6c6;background:#fff7f7;color:#bd4444;font-size:13px}
     .kb-kebby-footer{border-top:1px solid #e0e7f1;background:#fff;padding:12px 14px 10px}.kb-kebby-footer-actions{display:flex;gap:8px;margin-bottom:9px;overflow-x:auto}.kb-kebby-footer-actions button,.kb-kebby-footer-actions a{white-space:nowrap;border:1px solid #d8e2ef;background:#fff;border-radius:12px;color:#294669;font-weight:750;padding:9px 11px;text-decoration:none;cursor:pointer}.kb-kebby-footer-actions .primary{background:#255fdf;color:#fff;border-color:#255fdf}
-    .kb-kebby-input-row{display:flex;gap:8px;align-items:flex-end}.kb-kebby-input{min-height:48px;max-height:112px;resize:none;flex:1;border:1px solid #cad8ea;border-radius:16px;padding:13px 14px;outline:none;color:#21395f;background:#fff}.kb-kebby-input:focus{border-color:#5c8df2;box-shadow:0 0 0 3px rgba(58,112,230,.12)}.kb-kebby-send{width:48px;height:48px;border:0;border-radius:15px;background:linear-gradient(145deg,#3b75ed,#1f5ddd);color:#fff;display:grid;place-items:center;cursor:pointer;flex:0 0 auto}.kb-kebby-send:disabled{opacity:.45;cursor:not-allowed}.kb-kebby-legal{font-size:10.5px;color:#8a97aa;margin:8px 3px 0;line-height:1.45}
+    .kb-kebby-input-row{display:flex;gap:8px;align-items:flex-end}.kb-kebby-input{min-height:48px;max-height:112px;resize:none;flex:1;border:1px solid #cad8ea;border-radius:16px;padding:13px 14px;outline:none;color:#21395f;background:#fff}.kb-kebby-input:focus{border-color:#5c8df2;box-shadow:0 0 0 3px rgba(58,112,230,.12)}.kb-kebby-send{width:48px;height:48px;border:0;border-radius:15px;background:linear-gradient(145deg,#3b75ed,#1f5ddd);color:#fff;display:grid;place-items:center;cursor:pointer;flex:0 0 auto}.kb-kebby-send:disabled{opacity:.45;cursor:not-allowed}.kb-kebby-legal{display:grid;gap:2px;margin:9px 3px 0;color:#8491a6;font-size:10.5px;line-height:1.45}
+    .kb-kebby-legal span{display:block}
+    .kb-kebby-legal strong{color:#64758e;font-weight:800}
     .kb-kebby-handoff{display:none}.kb-kebby-handoff.is-open{display:block}.kb-kebby-handoff-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}.kb-kebby-handoff-head img{display:block;width:48px;height:48px;border-radius:15px;object-fit:contain;object-position:center;background:#fff}.kb-kebby-handoff-head h3{margin:0;font-size:18px;color:#17365f}.kb-kebby-handoff-head p{margin:3px 0 0;color:#75839a;font-size:12px}.kb-kebby-back{margin-left:auto;border:0;background:#eef3fa;color:#37577f;border-radius:11px;padding:8px 10px;cursor:pointer}
     .kb-kebby-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kb-kebby-field{display:flex;flex-direction:column;gap:5px}.kb-kebby-field.full{grid-column:1/-1}.kb-kebby-field label{font-size:12px;font-weight:750;color:#425c7f}.kb-kebby-field input,.kb-kebby-field select{height:43px;border:1px solid #d3deec;border-radius:12px;padding:0 11px;color:#223c61;background:#fff;outline:none}.kb-kebby-field input:focus,.kb-kebby-field select:focus{border-color:#6594f2;box-shadow:0 0 0 3px rgba(61,117,235,.1)}
     .kb-kebby-consent{display:flex;gap:8px;align-items:flex-start;margin:12px 0;color:#536985;font-size:11.5px;line-height:1.5}.kb-kebby-consent input{margin-top:3px}.kb-kebby-turnstile{min-height:65px;margin:4px 0 10px;display:flex;align-items:center;justify-content:center}.kb-kebby-submit{width:100%;height:46px;border:0;border-radius:14px;background:linear-gradient(135deg,#235edc,#3c78ef);color:#fff;font-weight:800;cursor:pointer}.kb-kebby-submit:disabled{opacity:.55;cursor:not-allowed}.kb-kebby-form-status{margin-top:10px;font-size:12px;color:#b94343;text-align:center}
     .kb-kebby-success{text-align:center;padding:25px 12px}.kb-kebby-success-icon{width:62px;height:62px;border-radius:20px;margin:0 auto 14px;background:#e8f7f0;color:#21a66f;display:grid;place-items:center;font-size:30px;font-weight:900}.kb-kebby-success h3{font-size:20px;margin:0;color:#18385f}.kb-kebby-success p{color:#6d7d95;margin:8px 0 15px}.kb-kebby-receipt{padding:13px;background:#f1f6ff;border:1px solid #d7e4fa;border-radius:13px;font-size:16px;font-weight:850;color:#2158c5;letter-spacing:.3px}.kb-kebby-success-actions{display:flex;gap:8px;justify-content:center;margin-top:14px}.kb-kebby-success-actions button,.kb-kebby-success-actions a{border:1px solid #d7e1ee;background:#fff;color:#315073;border-radius:12px;padding:9px 12px;text-decoration:none;font-weight:750;cursor:pointer}
-    @media(max-width:520px){#kb-kebby-root{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}.kb-kebby-launcher{width:60px;height:60px}.kb-kebby-panel{position:fixed;right:10px;left:10px;bottom:max(10px,env(safe-area-inset-bottom));width:auto;height:calc(100dvh - 20px - env(safe-area-inset-bottom));min-height:0;border-radius:24px}.kb-kebby-welcome{position:fixed;right:10px;left:10px;bottom:calc(82px + env(safe-area-inset-bottom));width:auto}.kb-kebby-header{padding:15px}.kb-kebby-header-avatar{width:48px;height:48px}.kb-kebby-body{padding:13px 13px max(18px,env(safe-area-inset-bottom))}.kb-kebby-footer{padding-bottom:max(10px,env(safe-area-inset-bottom))}.kb-kebby-input{font-size:16px}.kb-kebby-quick{gap:7px}.kb-kebby-quick button{padding:10px 8px;font-size:12px}.kb-kebby-form-grid{grid-template-columns:1fr}.kb-kebby-field.full{grid-column:auto}}
+    @media(max-width:520px){#kb-kebby-root{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}.kb-kebby-launcher{width:60px;height:60px}.kb-kebby-panel{position:fixed;right:6px;left:6px;bottom:max(6px,env(safe-area-inset-bottom));width:auto;height:calc(100dvh - 12px - env(safe-area-inset-bottom));min-height:0;border-radius:24px}.kb-kebby-welcome{position:fixed;right:10px;left:10px;bottom:calc(82px + env(safe-area-inset-bottom));width:auto}.kb-kebby-header{padding:15px}.kb-kebby-header-avatar{width:48px;height:48px}.kb-kebby-body{padding:13px 13px max(18px,env(safe-area-inset-bottom))}.kb-kebby-footer{padding:11px 12px max(10px,env(safe-area-inset-bottom))}.kb-kebby-input{font-size:16px}.kb-kebby-quick{gap:7px}.kb-kebby-quick button{padding:10px 8px;font-size:12px}.kb-kebby-bubble{max-width:89%;font-size:14px;line-height:1.6}.kb-kebby-answer-title{font-size:14px}.kb-kebby-legal{font-size:10px;line-height:1.42}.kb-kebby-form-grid{grid-template-columns:1fr}.kb-kebby-field.full{grid-column:auto}}
     @media(prefers-reduced-motion:reduce){#kb-kebby-root *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   `;
   document.head.appendChild(style);
@@ -146,7 +162,10 @@
           <textarea class="kb-kebby-input" rows="1" maxlength="800" placeholder="케비에게 물류 관련 질문을 입력해 주세요."></textarea>
           <button class="kb-kebby-send" type="button" aria-label="질문 전송">➤</button>
         </div>
-        <div class="kb-kebby-legal">AI 안내는 참고용이며, 실제 운임·통관 가능 여부는 담당자 확인 후 확정됩니다. 상담원 연결에 동의한 경우에만 연락처와 대화 내용이 전달됩니다.</div>
+        <div class="kb-kebby-legal">
+          <span><strong>AI 안내는 참고용입니다.</strong> 실제 운임·통관 가능 여부는 담당자 확인 후 확정됩니다.</span>
+          <span>상담원 연결에 동의한 경우에만 연락처와 대화 내용이 전달됩니다.</span>
+        </div>
       </footer>
     </section>
     <button class="kb-kebby-launcher" type="button" aria-label="케비 AI 물류 상담 열기"><img src="${AVATAR_URL}" alt=""></button>
@@ -164,17 +183,31 @@
   const input = $(".kb-kebby-input");
   const sendButton = $(".kb-kebby-send");
 
+  function warmApi() {
+    if (apiWarmed) return;
+    apiWarmed = true;
+    fetch(`${API_BASE}/?warm=1`, {
+      method: "GET",
+      cache: "no-store",
+      credentials: "omit",
+      mode: "cors",
+    }).catch(() => {});
+  }
+
   function openPanel() {
     welcome.classList.remove("is-visible");
     panel.classList.add("is-open");
     panel.setAttribute("aria-modal", "true");
-    setTimeout(() => input.focus(), 80);
+    window.dispatchEvent(new CustomEvent("kb:kebby-toggle", { detail: { open: true } }));
+    warmApi();
+    setTimeout(() => input.focus(), 60);
     track("kebby_open");
   }
 
   function closePanel() {
     panel.classList.remove("is-open");
     panel.setAttribute("aria-modal", "false");
+    window.dispatchEvent(new CustomEvent("kb:kebby-toggle", { detail: { open: false } }));
   }
 
   function renderQuickPrompts() {
@@ -194,7 +227,125 @@
     scrollBody();
   }
 
-  function appendMessage(role, content, save = true) {
+  function appendInlineText(parent, text) {
+    const value = String(text || "").replace(/`+/g, "");
+    const tokenPattern = /(\*\*[^*\n]+\*\*|__[^_\n]+__)/g;
+    let cursor = 0;
+    for (const match of value.matchAll(tokenPattern)) {
+      if (match.index > cursor) parent.appendChild(document.createTextNode(value.slice(cursor, match.index)));
+      const strong = document.createElement("strong");
+      strong.textContent = match[0].slice(2, -2);
+      parent.appendChild(strong);
+      cursor = match.index + match[0].length;
+    }
+    if (cursor < value.length) parent.appendChild(document.createTextNode(value.slice(cursor)));
+  }
+
+  function renderAssistantContent(bubble, content) {
+    const source = String(content || "")
+      .replace(/<think>[\s\S]*?<\/think>/gi, "")
+      .replace(/\r/g, "")
+      .replace(/```[\w-]*\n?/g, "")
+      .trim();
+
+    const lines = source.split("\n");
+    let activeList = null;
+    let activeType = "";
+
+    const closeList = () => {
+      activeList = null;
+      activeType = "";
+    };
+
+    const ensureList = (type) => {
+      if (!activeList || activeType !== type) {
+        activeList = document.createElement(type);
+        activeList.className = "kb-kebby-answer-list";
+        bubble.appendChild(activeList);
+        activeType = type;
+      }
+      return activeList;
+    };
+
+    for (const originalLine of lines) {
+      const line = originalLine.trim();
+      if (!line) {
+        closeList();
+        continue;
+      }
+
+      const heading = line.match(/^#{1,6}\s*(.+)$/);
+      if (heading) {
+        closeList();
+        const title = document.createElement("div");
+        title.className = "kb-kebby-answer-title";
+        appendInlineText(title, heading[1]);
+        bubble.appendChild(title);
+        continue;
+      }
+
+      const bullet = line.match(/^[-*•]\s+(.+)$/);
+      if (bullet) {
+        const li = document.createElement("li");
+        appendInlineText(li, bullet[1]);
+        ensureList("ul").appendChild(li);
+        continue;
+      }
+
+      const numbered = line.match(/^\d+[.)]\s+(.+)$/);
+      if (numbered) {
+        const li = document.createElement("li");
+        appendInlineText(li, numbered[1]);
+        ensureList("ol").appendChild(li);
+        continue;
+      }
+
+      closeList();
+      const paragraph = document.createElement("p");
+      paragraph.className = "kb-kebby-answer-p";
+      appendInlineText(
+        paragraph,
+        line
+          .replace(/^#{1,6}\s*/, "")
+          .replace(/^[-*•]\s+/, "· ")
+      );
+      bubble.appendChild(paragraph);
+    }
+
+    if (!bubble.childNodes.length) bubble.textContent = source;
+  }
+
+  function appendSources(bubble, sources) {
+    if (!Array.isArray(sources) || !sources.length) return;
+    const unique = [];
+    const seen = new Set();
+    for (const source of sources) {
+      const url = String(source?.url || "");
+      if (!/^https:\/\/(www\.)?kbexpress\.kr\//i.test(url) || seen.has(url)) continue;
+      seen.add(url);
+      unique.push(url);
+      if (unique.length >= 3) break;
+    }
+    if (!unique.length) return;
+
+    const box = document.createElement("div");
+    box.className = "kb-kebby-sources";
+    const label = document.createElement("span");
+    label.className = "kb-kebby-sources-title";
+    label.textContent = "관련 케이브릿지 정보";
+    box.appendChild(label);
+    unique.forEach((url, index) => {
+      const link = document.createElement("a");
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = `${index + 1}. ${url.replace(/^https:\/\/(www\.)?kbexpress\.kr\//i, "/") || "/"}`;
+      box.appendChild(link);
+    });
+    bubble.appendChild(box);
+  }
+
+  function appendMessage(role, content, save = true, sources = []) {
     const wrap = document.createElement("div");
     wrap.className = `kb-kebby-message ${role}`;
     if (role === "assistant") {
@@ -206,7 +357,12 @@
     }
     const bubble = document.createElement("div");
     bubble.className = "kb-kebby-bubble";
-    bubble.textContent = content;
+    if (role === "assistant") {
+      renderAssistantContent(bubble, content);
+      appendSources(bubble, sources);
+    } else {
+      bubble.textContent = content;
+    }
     wrap.appendChild(bubble);
     messagesEl.appendChild(wrap);
     if (save) {
@@ -253,7 +409,7 @@
 
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  async function fetchJsonWithRetry(url, options, { timeoutMs = 70000, retries = 1 } = {}) {
+  async function fetchJsonWithRetry(url, options, { timeoutMs = 50000, retries = 1 } = {}) {
     let lastError;
     for (let attempt = 0; attempt <= retries; attempt += 1) {
       const controller = new AbortController();
@@ -281,7 +437,7 @@
           error instanceof TypeError ||
           [429, 500, 502, 503, 504, 522, 524].includes(Number(error?.status));
         if (!retryable || attempt >= retries) break;
-        await wait(1200 * (attempt + 1));
+        await wait(300 * (attempt + 1));
       } finally {
         clearTimeout(timer);
       }
@@ -303,7 +459,7 @@
     input.value = "";
     autoResize();
     appendMessage("user", message, true);
-    const requestHistory = history.slice(0, -1).slice(-6);
+    const requestHistory = history.slice(0, -1).slice(-4);
     const typing = showTyping();
     const typingBubble = typing.querySelector(".kb-kebby-bubble");
     const progressTimer1 = setTimeout(() => {
@@ -311,13 +467,13 @@
         typingBubble.innerHTML = '<span class="kb-kebby-typing"><i></i><i></i><i></i></span><span class="kb-kebby-typing-label">케이브릿지 자료 확인 중</span>';
         scrollBody();
       }
-    }, 7000);
+    }, 3500);
     const progressTimer2 = setTimeout(() => {
       if (typing.isConnected && typingBubble) {
         typingBubble.innerHTML = '<span class="kb-kebby-typing"><i></i><i></i><i></i></span><span class="kb-kebby-typing-label">답변을 정리하고 있어요</span>';
         scrollBody();
       }
-    }, 18000);
+    }, 10000);
 
     sendButton.disabled = true;
     sendButton.setAttribute("aria-busy", "true");
@@ -325,11 +481,11 @@
     try {
       const data = await fetchJsonWithRetry(`${API_BASE}/chat`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({ message, history: requestHistory }),
-      }, { timeoutMs: 70000, retries: 1 });
+      }, { timeoutMs: 50000, retries: 1 });
       if (typing.isConnected) typing.remove();
-      appendMessage("assistant", data.reply, true);
+      appendMessage("assistant", data.reply, true, data.sources);
       track("kebby_answer_success", { knowledge_used: data.knowledgeUsed === true });
     } catch (error) {
       if (typing.isConnected) typing.remove();
@@ -534,6 +690,12 @@
   renderQuickPrompts();
   renderMessages();
   autoResize();
+
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(warmApi, { timeout: 2500 });
+  } else {
+    setTimeout(warmApi, 1800);
+  }
 
   try {
     const lastShown = Number(localStorage.getItem(WELCOME_KEY) || 0);
