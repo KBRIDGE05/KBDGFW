@@ -7,29 +7,22 @@
   const API_BASE = "https://kbridge-ai-chat.jin-kim-937.workers.dev";
   const TURNSTILE_SITE_KEY = "0x4AAAAAAD7Rv6zNeCAC4U_L";
   const STORAGE_KEY = "kbridge-kebby-session-v2";
-  const WELCOME_KEY = "kbridge-kebby-welcome-at-v2";
-  const ONE_DAY = 24 * 60 * 60 * 1000;
   const AVATAR_URL = (() => {
     const current = document.currentScript?.src;
-    if (current) return new URL("kebby-avatar-v2.webp?v=20260723-ui-v4", current).href;
-    return "/assets/kebby-avatar-v2.webp?v=20260723-ui-v4";
+    if (current) return new URL("kebby-avatar-v2.webp?v=20260723-ui-v6", current).href;
+    return "/assets/kebby-avatar-v2.webp?v=20260723-ui-v6";
   })();
 
   const initialMessage =
     "안녕하세요! 케이브릿지 AI 물류 상담원 케비예요. 해상·항공운송, LCL·FCL, 통관, 해외특송 등 궁금한 내용을 편하게 물어보세요.";
 
-  const quickPrompts = [
-    ["LCL·FCL 차이", "LCL과 FCL의 차이와 어떤 경우에 선택하면 좋은지 알려줘."],
-    ["견적 준비 정보", "물류 견적을 받기 위해 어떤 정보를 준비해야 하는지 알려줘."],
-    ["수입통관 안내", "수입통관 절차와 준비 서류를 초보자도 이해하기 쉽게 알려줘."],
-    ["화물차량 선택", "화물 크기와 중량에 따라 어떤 카고 차량을 선택해야 하는지 알려줘."],
-  ];
 
   let history = loadHistory();
   let turnstileToken = "";
   let turnstileWidgetId = null;
   let handoffOpen = false;
   let apiWarmed = false;
+  let welcomeShown = false;
 
   function loadHistory() {
     try {
@@ -75,9 +68,9 @@
     .kb-kebby-welcome-sub{margin-top:2px;color:var(--kb-kebby-muted);font-size:12px}
     .kb-kebby-welcome-close{position:absolute;right:14px;top:14px;width:32px;height:32px;border:0;border-radius:12px;background:#f0f4fa;color:#536a8e;cursor:pointer;font-size:20px}
     .kb-kebby-welcome-copy{margin:13px 0 14px;font-size:15px;font-weight:700;color:#203859}
-    .kb-kebby-welcome-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-    .kb-kebby-welcome-actions button{border:1px solid #d7e1f0;border-radius:14px;background:#fff;color:#274469;padding:11px 10px;text-align:left;font-weight:700;cursor:pointer;transition:.18s ease}
-    .kb-kebby-welcome-actions button:hover{border-color:#7ba2f7;background:#f5f8ff;color:#1f5bd7}
+    .kb-kebby-welcome-actions{display:block}
+    .kb-kebby-welcome-actions button{width:100%;border:0;border-radius:14px;background:linear-gradient(135deg,#2c66e7,#477cf0);color:#fff;padding:12px 14px;text-align:center;font-weight:800;cursor:pointer;transition:.18s ease;box-shadow:0 8px 18px rgba(42,99,226,.18)}
+    .kb-kebby-welcome-actions button:hover{transform:translateY(-1px);filter:brightness(1.03)}
     .kb-kebby-panel{position:absolute;right:0;bottom:82px;width:min(410px,calc(100vw - 24px));height:min(700px,calc(100dvh - 106px));min-height:520px;background:#fff;border:1px solid #d8e3f1;border-radius:28px;box-shadow:0 26px 78px rgba(15,43,91,.34);overflow:hidden;display:none;flex-direction:column}
     .kb-kebby-panel.is-open{display:flex;animation:kbKebbyIn .2s ease both}
     @keyframes kbKebbyIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
@@ -88,9 +81,8 @@
     .kb-kebby-head-sub{margin-top:2px;color:rgba(255,255,255,.8);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .kb-kebby-head-actions{position:relative;z-index:2;display:flex;gap:7px}.kb-kebby-icon-btn{width:38px;height:38px;border:0;border-radius:13px;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;display:grid;place-items:center}.kb-kebby-icon-btn:hover{background:rgba(255,255,255,.22)}
     .kb-kebby-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background:linear-gradient(#f8faff,#fff 150px);padding:16px 16px 22px;scroll-behavior:smooth}
-    .kb-kebby-quick{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}.kb-kebby-quick button{border:1px solid #d8e2f0;background:#fff;border-radius:14px;padding:11px 10px;color:#29466e;font-weight:750;text-align:left;cursor:pointer}.kb-kebby-quick button:hover{border-color:#7ca4f7;color:#1d5bdb;background:#f5f8ff}
-    .kb-kebby-message{display:flex;gap:8px;margin:0 0 13px;align-items:flex-end}.kb-kebby-message.user{justify-content:flex-end}.kb-kebby-message-avatar{display:block;width:30px;height:30px;border-radius:50%;object-fit:contain;object-position:center;background:#fff;flex:0 0 auto;box-shadow:0 4px 12px rgba(25,66,135,.16)}
-    .kb-kebby-bubble{max-width:86%;padding:12px 14px;border-radius:17px;word-break:break-word;font-size:14px;line-height:1.62}
+    .kb-kebby-messages{min-width:0}.kb-kebby-message{display:flex;gap:8px;margin:0 0 13px;align-items:flex-end;min-width:0}.kb-kebby-message.user{justify-content:flex-end}.kb-kebby-message-avatar{display:block;width:30px;height:30px;border-radius:50%;object-fit:contain;object-position:center;background:#fff;flex:0 0 auto;box-shadow:0 4px 12px rgba(25,66,135,.16)}
+    .kb-kebby-bubble{max-width:86%;min-width:0;padding:12px 14px;border-radius:17px;word-break:keep-all;overflow-wrap:anywhere;font-size:14px;line-height:1.62}
     .kb-kebby-message.user .kb-kebby-bubble{white-space:pre-wrap}
     .kb-kebby-message.assistant .kb-kebby-bubble{white-space:normal}
     .kb-kebby-answer-p{margin:0 0 10px}.kb-kebby-answer-p:last-child{margin-bottom:0}
@@ -110,11 +102,11 @@
     .kb-kebby-input-row{display:flex;gap:8px;align-items:flex-end}.kb-kebby-input{min-height:48px;max-height:112px;resize:none;flex:1;border:1px solid #cad8ea;border-radius:16px;padding:13px 14px;outline:none;color:#21395f;background:#fff}.kb-kebby-input:focus{border-color:#5c8df2;box-shadow:0 0 0 3px rgba(58,112,230,.12)}.kb-kebby-send{width:48px;height:48px;border:0;border-radius:15px;background:linear-gradient(145deg,#3b75ed,#1f5ddd);color:#fff;display:grid;place-items:center;cursor:pointer;flex:0 0 auto}.kb-kebby-send:disabled{opacity:.45;cursor:not-allowed}.kb-kebby-legal{display:grid;gap:2px;margin:9px 3px 0;color:#8491a6;font-size:10.5px;line-height:1.45}
     .kb-kebby-legal span{display:block}
     .kb-kebby-legal strong{color:#64758e;font-weight:800}
-    .kb-kebby-handoff{display:none}.kb-kebby-handoff.is-open{display:block}.kb-kebby-handoff-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}.kb-kebby-handoff-head img{display:block;width:48px;height:48px;border-radius:15px;object-fit:contain;object-position:center;background:#fff}.kb-kebby-handoff-head h3{margin:0;font-size:18px;color:#17365f}.kb-kebby-handoff-head p{margin:3px 0 0;color:#75839a;font-size:12px}.kb-kebby-back{margin-left:auto;border:0;background:#eef3fa;color:#37577f;border-radius:11px;padding:8px 10px;cursor:pointer}
+    .kb-kebby-handoff{display:none}.kb-kebby-handoff.is-open{display:block}.kb-kebby-handoff-head{display:grid;grid-template-columns:48px minmax(0,1fr) auto;grid-template-rows:auto auto;align-items:center;column-gap:11px;row-gap:2px;margin-bottom:15px;padding-bottom:12px;border-bottom:1px solid #e5ebf4}.kb-kebby-handoff-head img{grid-column:1;grid-row:1/3;display:block;width:48px;height:48px;border-radius:15px;object-fit:contain;object-position:center;background:#fff}.kb-kebby-handoff-title{grid-column:2;grid-row:1;min-width:0}.kb-kebby-handoff-head h3{margin:0;font-size:18px;line-height:1.3;color:#17365f}.kb-kebby-handoff-head p{grid-column:2/4;grid-row:2;margin:1px 0 0;color:#75839a;font-size:12px;line-height:1.45;overflow-wrap:anywhere}.kb-kebby-back{grid-column:3;grid-row:1;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:36px;border:1px solid #b9cff5;background:#f5f8ff;color:#245ed7;border-radius:11px;padding:7px 10px;font-size:12px;font-weight:800;line-height:1.2;white-space:nowrap;cursor:pointer}.kb-kebby-back:hover{border-color:#78a0ef;background:#eaf1ff;color:#194fb9}
     .kb-kebby-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kb-kebby-field{display:flex;flex-direction:column;gap:5px}.kb-kebby-field.full{grid-column:1/-1}.kb-kebby-field label{font-size:12px;font-weight:750;color:#425c7f}.kb-kebby-field input,.kb-kebby-field select{height:43px;border:1px solid #d3deec;border-radius:12px;padding:0 11px;color:#223c61;background:#fff;outline:none}.kb-kebby-field input:focus,.kb-kebby-field select:focus{border-color:#6594f2;box-shadow:0 0 0 3px rgba(61,117,235,.1)}
     .kb-kebby-consent{display:flex;gap:8px;align-items:flex-start;margin:12px 0;color:#536985;font-size:11.5px;line-height:1.5}.kb-kebby-consent input{margin-top:3px}.kb-kebby-turnstile{min-height:65px;margin:4px 0 10px;display:flex;align-items:center;justify-content:center}.kb-kebby-submit{width:100%;height:46px;border:0;border-radius:14px;background:linear-gradient(135deg,#235edc,#3c78ef);color:#fff;font-weight:800;cursor:pointer}.kb-kebby-submit:disabled{opacity:.55;cursor:not-allowed}.kb-kebby-form-status{margin-top:10px;font-size:12px;color:#b94343;text-align:center}
     .kb-kebby-success{text-align:center;padding:25px 12px}.kb-kebby-success-icon{width:62px;height:62px;border-radius:20px;margin:0 auto 14px;background:#e8f7f0;color:#21a66f;display:grid;place-items:center;font-size:30px;font-weight:900}.kb-kebby-success h3{font-size:20px;margin:0;color:#18385f}.kb-kebby-success p{color:#6d7d95;margin:8px 0 15px}.kb-kebby-receipt{padding:13px;background:#f1f6ff;border:1px solid #d7e4fa;border-radius:13px;font-size:16px;font-weight:850;color:#2158c5;letter-spacing:.3px}.kb-kebby-success-actions{display:flex;gap:8px;justify-content:center;margin-top:14px}.kb-kebby-success-actions button,.kb-kebby-success-actions a{border:1px solid #d7e1ee;background:#fff;color:#315073;border-radius:12px;padding:9px 12px;text-decoration:none;font-weight:750;cursor:pointer}
-    @media(max-width:520px){#kb-kebby-root{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}.kb-kebby-launcher{width:60px;height:60px}.kb-kebby-panel{position:fixed;right:6px;left:6px;bottom:max(6px,env(safe-area-inset-bottom));width:auto;height:calc(100dvh - 12px - env(safe-area-inset-bottom));min-height:0;border-radius:24px}.kb-kebby-welcome{position:fixed;right:10px;left:10px;bottom:calc(82px + env(safe-area-inset-bottom));width:auto}.kb-kebby-header{padding:15px}.kb-kebby-header-avatar{width:48px;height:48px}.kb-kebby-body{padding:13px 13px max(18px,env(safe-area-inset-bottom))}.kb-kebby-footer{padding:11px 12px max(10px,env(safe-area-inset-bottom))}.kb-kebby-input{font-size:16px}.kb-kebby-quick{gap:7px}.kb-kebby-quick button{padding:10px 8px;font-size:12px}.kb-kebby-bubble{max-width:89%;font-size:14px;line-height:1.6}.kb-kebby-answer-title{font-size:14px}.kb-kebby-legal{font-size:10px;line-height:1.42}.kb-kebby-form-grid{grid-template-columns:1fr}.kb-kebby-field.full{grid-column:auto}}
+    @media(max-width:520px){#kb-kebby-root{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}.kb-kebby-launcher{width:60px;height:60px}.kb-kebby-panel{position:fixed;right:6px;left:6px;bottom:max(6px,env(safe-area-inset-bottom));width:auto;height:calc(100dvh - 12px - env(safe-area-inset-bottom));min-height:0;border-radius:24px}.kb-kebby-welcome{position:fixed;right:10px;left:10px;bottom:calc(82px + env(safe-area-inset-bottom));width:auto}.kb-kebby-header{padding:15px}.kb-kebby-header-avatar{width:48px;height:48px}.kb-kebby-body{padding:13px 13px max(18px,env(safe-area-inset-bottom))}.kb-kebby-footer{padding:11px 12px max(10px,env(safe-area-inset-bottom))}.kb-kebby-input{font-size:16px}.kb-kebby-bubble{max-width:91%;font-size:14px;line-height:1.64}.kb-kebby-answer-title{font-size:14px}.kb-kebby-legal{font-size:10px;line-height:1.42}.kb-kebby-handoff-head{grid-template-columns:42px minmax(0,1fr) auto;column-gap:8px;row-gap:2px;margin-bottom:13px;padding-bottom:11px}.kb-kebby-handoff-head img{width:42px;height:42px;border-radius:13px}.kb-kebby-handoff-head h3{font-size:16.5px}.kb-kebby-handoff-head p{font-size:11px;line-height:1.4}.kb-kebby-back{min-height:34px;padding:6px 8px;border-radius:10px;font-size:11px}.kb-kebby-form-grid{grid-template-columns:1fr}.kb-kebby-field.full{grid-column:auto}}
     @media(prefers-reduced-motion:reduce){#kb-kebby-root *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   `;
   document.head.appendChild(style);
@@ -131,10 +123,7 @@
       </div>
       <div class="kb-kebby-welcome-copy">안녕하세요! 어떤 물류 업무가 궁금하신가요?</div>
       <div class="kb-kebby-welcome-actions">
-        <button type="button" data-welcome-prompt="수입 물류 상담을 시작하고 싶어요. 필요한 정보를 안내해줘.">수입 물류 →</button>
-        <button type="button" data-welcome-prompt="수출 물류 상담을 시작하고 싶어요. 필요한 정보를 안내해줘.">수출 물류 →</button>
-        <button type="button" data-welcome-prompt="LCL 운임 조회와 견적 준비 정보를 알려줘.">LCL 운임 안내 →</button>
-        <button type="button" data-welcome-open>직접 질문하기 →</button>
+        <button type="button" data-welcome-open>케비에게 바로 물어보기 →</button>
       </div>
     </section>
     <section class="kb-kebby-panel" role="dialog" aria-label="케비 AI 물류 상담" aria-modal="false">
@@ -148,7 +137,6 @@
       </header>
       <div class="kb-kebby-body">
         <div class="kb-kebby-chat-view">
-          <div class="kb-kebby-quick"></div>
           <div class="kb-kebby-messages" aria-live="polite"></div>
         </div>
         <div class="kb-kebby-handoff"></div>
@@ -176,7 +164,6 @@
   const panel = $(".kb-kebby-panel");
   const welcome = $(".kb-kebby-welcome");
   const messagesEl = $(".kb-kebby-messages");
-  const quickEl = $(".kb-kebby-quick");
   const chatView = $(".kb-kebby-chat-view");
   const handoffView = $(".kb-kebby-handoff");
   const footer = $(".kb-kebby-footer");
@@ -208,17 +195,6 @@
     panel.classList.remove("is-open");
     panel.setAttribute("aria-modal", "false");
     window.dispatchEvent(new CustomEvent("kb:kebby-toggle", { detail: { open: false } }));
-  }
-
-  function renderQuickPrompts() {
-    quickEl.textContent = "";
-    quickPrompts.forEach(([label, prompt]) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = `${label}  →`;
-      button.addEventListener("click", () => sendMessage(prompt));
-      quickEl.appendChild(button);
-    });
   }
 
   function renderMessages() {
@@ -464,13 +440,13 @@
     const typingBubble = typing.querySelector(".kb-kebby-bubble");
     const progressTimer1 = setTimeout(() => {
       if (typing.isConnected && typingBubble) {
-        typingBubble.innerHTML = '<span class="kb-kebby-typing"><i></i><i></i><i></i></span><span class="kb-kebby-typing-label">케이브릿지 자료 확인 중</span>';
+        typingBubble.innerHTML = '<span class="kb-kebby-typing"><i></i><i></i><i></i></span><span class="kb-kebby-typing-label">질문을 이해하고 있어요</span>';
         scrollBody();
       }
     }, 3500);
     const progressTimer2 = setTimeout(() => {
       if (typing.isConnected && typingBubble) {
-        typingBubble.innerHTML = '<span class="kb-kebby-typing"><i></i><i></i><i></i></span><span class="kb-kebby-typing-label">답변을 정리하고 있어요</span>';
+        typingBubble.innerHTML = '<span class="kb-kebby-typing"><i></i><i></i><i></i></span><span class="kb-kebby-typing-label">알맞은 답변을 준비하고 있어요</span>';
         scrollBody();
       }
     }, 10000);
@@ -540,8 +516,9 @@
     handoffView.innerHTML = `
       <div class="kb-kebby-handoff-head">
         <img src="${AVATAR_URL}" alt="케비">
-        <div><h3>상담원 연결 요청</h3><p>케비와 나눈 대화를 요약해 케이브릿지 담당자에게 전달합니다.</p></div>
-        <button class="kb-kebby-back" type="button">← 돌아가기</button>
+        <div class="kb-kebby-handoff-title"><h3>상담원 연결 요청</h3></div>
+        <button class="kb-kebby-back" type="button">← 대화로 돌아가기</button>
+        <p>케비와 나눈 대화를 요약해 케이브릿지 담당자에게 전달합니다.</p>
       </div>
       <form class="kb-kebby-form" novalidate>
         <div class="kb-kebby-form-grid">
@@ -666,14 +643,9 @@
   $(".kb-kebby-handoff-open").addEventListener("click", openHandoff);
   $(".kb-kebby-welcome-close").addEventListener("click", () => {
     welcome.classList.remove("is-visible");
-    localStorage.setItem(WELCOME_KEY, String(Date.now()));
+    welcomeShown = true;
     track("kebby_welcome_close");
   });
-  root.querySelectorAll("[data-welcome-prompt]").forEach((button) => button.addEventListener("click", () => {
-    openPanel();
-    sendMessage(button.dataset.welcomePrompt);
-    track("kebby_welcome_select");
-  }));
   $("[data-welcome-open]").addEventListener("click", openPanel);
   sendButton.addEventListener("click", () => sendMessage());
   input.addEventListener("input", autoResize);
@@ -687,7 +659,6 @@
     if (event.key === "Escape" && panel.classList.contains("is-open")) closePanel();
   });
 
-  renderQuickPrompts();
   renderMessages();
   autoResize();
 
@@ -697,16 +668,11 @@
     setTimeout(warmApi, 1800);
   }
 
-  try {
-    const lastShown = Number(localStorage.getItem(WELCOME_KEY) || 0);
-    if (Date.now() - lastShown > ONE_DAY) {
-      setTimeout(() => {
-        if (!panel.classList.contains("is-open")) {
-          welcome.classList.add("is-visible");
-          localStorage.setItem(WELCOME_KEY, String(Date.now()));
-          track("kebby_welcome_show");
-        }
-      }, 1200);
+  setTimeout(() => {
+    if (!panel.classList.contains("is-open") && !welcomeShown) {
+      welcomeShown = true;
+      welcome.classList.add("is-visible");
+      track("kebby_welcome_show");
     }
-  } catch (_) {}
+  }, 900);
 })();
