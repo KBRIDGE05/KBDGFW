@@ -7,15 +7,20 @@
   const API_BASE = "https://kbridge-ai-chat.jin-kim-937.workers.dev";
   const TURNSTILE_SITE_KEY = "0x4AAAAAAD7Rv6zNeCAC4U_L";
   const STORAGE_KEY = "kbridge-kebby-session-v2";
+  const CLIENT_VERSION = "v8";
   const AVATAR_URL = (() => {
     const current = document.currentScript?.src;
-    if (current) return new URL("kebby-avatar-v2.webp?v=20260723-ui-v6", current).href;
-    return "/assets/kebby-avatar-v2.webp?v=20260723-ui-v6";
+    if (current) return new URL("kebby-avatar-v2.webp?v=20260723-ui-v8", current).href;
+    return "/assets/kebby-avatar-v2.webp?v=20260723-ui-v8";
   })();
 
   const initialMessage =
     "안녕하세요! 케이브릿지 AI 물류 상담원 케비예요. 해상·항공운송, LCL·FCL, 통관, 해외특송 등 궁금한 내용을 편하게 물어보세요.";
 
+  const pageContext = Object.freeze({
+    pageTitle: String(document.title || "KBRIDGE").trim().slice(0, 180),
+    pageUrl: String(location.href || "").slice(0, 500),
+  });
 
   let history = loadHistory();
   let turnstileToken = "";
@@ -60,8 +65,9 @@
     .kb-kebby-launcher{width:66px;height:66px;border:0;border-radius:50%;padding:3px;background:linear-gradient(145deg,#3c78f3,#1854d6);box-shadow:0 16px 38px rgba(22,61,137,.34);cursor:pointer;display:grid;place-items:center;transition:transform .2s ease,box-shadow .2s ease}
     .kb-kebby-launcher:hover{transform:translateY(-3px);box-shadow:0 20px 42px rgba(22,61,137,.4)}
     .kb-kebby-launcher img{display:block;width:100%;height:100%;border-radius:50%;object-fit:contain;object-position:center;border:2px solid rgba(255,255,255,.88);background:#fff}
-    .kb-kebby-welcome{position:absolute;right:0;bottom:82px;width:min(360px,calc(100vw - 28px));padding:18px;border-radius:24px;background:#fff;border:1px solid #dbe5f3;box-shadow:0 22px 65px rgba(20,49,96,.24);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px) scale(.98);transition:.22s ease}
-    .kb-kebby-welcome.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+    .kb-kebby-welcome{position:absolute;right:0;bottom:82px;width:min(360px,calc(100vw - 28px));padding:18px;border-radius:24px;background:#fff;border:1px solid #dbe5f3;box-shadow:0 22px 65px rgba(20,49,96,.24);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(18px) scale(.96);transform-origin:100% 100%;transition:opacity .26s ease,transform .26s ease,visibility 0s linear .26s}
+    .kb-kebby-welcome.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);animation:kbKebbyWelcomeIn .42s cubic-bezier(.2,.82,.24,1) both;transition-delay:0s}
+    @keyframes kbKebbyWelcomeIn{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
     .kb-kebby-welcome-head{display:flex;gap:12px;align-items:center;padding-right:36px}
     .kb-kebby-welcome-avatar{display:block;width:58px;height:58px;border-radius:18px;object-fit:contain;object-position:center;background:#fff;box-shadow:0 8px 18px rgba(29,89,203,.22)}
     .kb-kebby-welcome-title{font-weight:800;font-size:17px;color:#17345f}.kb-kebby-welcome-title b{color:var(--kb-kebby-blue)}
@@ -458,7 +464,7 @@
       const data = await fetchJsonWithRetry(`${API_BASE}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ message, history: requestHistory }),
+        body: JSON.stringify({ message, history: requestHistory, ...pageContext, clientVersion: CLIENT_VERSION }),
       }, { timeoutMs: 50000, retries: 1 });
       if (typing.isConnected) typing.remove();
       appendMessage("assistant", data.reply, true, data.sources);
@@ -598,7 +604,8 @@
           consent: true,
           turnstileToken,
           history: history.slice(-12),
-          pageUrl: location.href,
+          pageTitle: pageContext.pageTitle,
+          pageUrl: pageContext.pageUrl,
         }),
       });
       const result = await response.json().catch(() => ({}));
@@ -674,5 +681,5 @@
       welcome.classList.add("is-visible");
       track("kebby_welcome_show");
     }
-  }, 900);
+  }, 1380);
 })();
