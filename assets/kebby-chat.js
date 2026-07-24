@@ -6,21 +6,53 @@
 
   const API_BASE = "https://kbridge-ai-chat.jin-kim-937.workers.dev";
   const TURNSTILE_SITE_KEY = "0x4AAAAAAD7Rv6zNeCAC4U_L";
-  const STORAGE_KEY = "kbridge-kebby-session-v2";
-  const CLIENT_VERSION = "v8";
+  const STORAGE_KEY = "kbridge-kebby-session-v4";
+  const CLIENT_VERSION = "v10";
   const AVATAR_URL = (() => {
     const current = document.currentScript?.src;
-    if (current) return new URL("kebby-avatar-v2.webp?v=20260723-ui-v8", current).href;
-    return "/assets/kebby-avatar-v2.webp?v=20260723-ui-v8";
+    if (current) return new URL("kebby-avatar-v2.webp?v=20260725-ui-v10", current).href;
+    return "/assets/kebby-avatar-v2.webp?v=20260725-ui-v10";
   })();
 
   const initialMessage =
-    "안녕하세요! 케이브릿지 AI 물류 상담원 케비예요. 해상·항공운송, LCL·FCL, 통관, 해외특송 등 궁금한 내용을 편하게 물어보세요.";
+    "안녕하세요! 케이브릿지 AI 물류 상담원 케비예요. 해상·항공운송, LCL·FCL, 통관, 해외특송은 물론 국내운송·화물차량·창고 문의도 편하게 물어보세요.";
 
-  const pageContext = Object.freeze({
-    pageTitle: String(document.title || "KBRIDGE").trim().slice(0, 180),
-    pageUrl: String(location.href || "").slice(0, 500),
-  });
+  function compactPageText(value, maxLength = 9000) {
+    return String(value || "")
+      .replace(/[\u0000-\u001F\u007F]/g, " ")
+      .replace(/[ \t]+/g, " ")
+      .replace(/\n\s*\n+/g, "\n")
+      .trim()
+      .slice(0, maxLength);
+  }
+
+  function getPageContext() {
+    const description = document.querySelector('meta[name="description"]')?.content ||
+      document.querySelector('meta[property="og:description"]')?.content || "";
+    const headings = Array.from(document.querySelectorAll("h1,h2,h3"))
+      .map((node) => compactPageText(node.textContent, 180))
+      .filter(Boolean)
+      .filter((value, index, list) => list.indexOf(value) === index)
+      .slice(0, 28)
+      .join(" | ");
+    const source = document.querySelector("main") || document.querySelector("article") || document.body;
+    let pageText = "";
+    if (source) {
+      const clone = source.cloneNode(true);
+      clone.querySelectorAll("script,style,noscript,svg,canvas,template,nav,footer,dialog,#kb-kebby-root,[hidden],[aria-hidden='true']")
+        .forEach((node) => node.remove());
+      pageText = compactPageText(clone.textContent, 9000);
+    }
+    return {
+      pageTitle: compactPageText(document.title || "KBRIDGE", 180),
+      pageUrl: String(location.href || "").slice(0, 500),
+      pagePath: String(location.pathname || "/").slice(0, 300),
+      pageDescription: compactPageText(description, 700),
+      pageHeadings: compactPageText(headings, 1600),
+      pageText,
+      siteKnowledgeVersion: "v10",
+    };
+  }
 
   let history = loadHistory();
   let turnstileToken = "";
@@ -464,7 +496,7 @@
       const data = await fetchJsonWithRetry(`${API_BASE}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ message, history: requestHistory, ...pageContext, clientVersion: CLIENT_VERSION }),
+        body: JSON.stringify({ message, history: requestHistory, ...getPageContext(), clientVersion: CLIENT_VERSION }),
       }, { timeoutMs: 50000, retries: 1 });
       if (typing.isConnected) typing.remove();
       appendMessage("assistant", data.reply, true, data.sources);
@@ -604,8 +636,8 @@
           consent: true,
           turnstileToken,
           history: history.slice(-12),
-          pageTitle: pageContext.pageTitle,
-          pageUrl: pageContext.pageUrl,
+          pageTitle: getPageContext().pageTitle,
+          pageUrl: getPageContext().pageUrl,
         }),
       });
       const result = await response.json().catch(() => ({}));
