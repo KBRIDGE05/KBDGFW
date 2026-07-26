@@ -346,14 +346,15 @@
     box.className = "kb-kebby-sources";
     const label = document.createElement("span");
     label.className = "kb-kebby-sources-title";
-    label.textContent = "관련 케이브릿지 정보";
+    label.textContent = "관련 글·서비스 바로가기";
     box.appendChild(label);
     unique.forEach((url, index) => {
       const link = document.createElement("a");
       link.href = url;
       link.target = "_blank";
       link.rel = "noopener";
-      link.textContent = `${index + 1}. ${url.replace(/^https:\/\/(www\.)?kbexpress\.kr\//i, "/") || "/"}`;
+      const title = String(sources.find((item) => String(item?.url || "") === url)?.title || "").trim();
+      link.textContent = `${index + 1}. ${title || url.replace(/^https:\/\/(www\.)?kbexpress\.kr\//i, "/") || "/"}`;
       box.appendChild(link);
     });
     bubble.appendChild(box);
