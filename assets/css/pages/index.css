@@ -44,3 +44,6 @@ body,html{max-width:100%;overflow-x:clip}canvas,img,svg,video{max-width:100%}img
   .hero-desc{font-size:14.5px!important;line-height:1.72}
   .hero-actions .btn{font-size:14px}
 }
+
+/* v14: quote dialog titles must remain visible on the navy header. */
+html body.kb-unified-site #seaDialog .dialog-head h2,html body.kb-unified-site #expressDialog .dialog-head h2{color:#fff!important;text-shadow:none}
