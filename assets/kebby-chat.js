@@ -6,8 +6,21 @@
 
   const API_BASE = "https://kbridge-ai-chat.jin-kim-937.workers.dev";
   const TURNSTILE_SITE_KEY = "0x4AAAAAAD7Rv6zNeCAC4U_L";
-  const STORAGE_KEY = "kbridge-kebby-session-v4";
-  const CLIENT_VERSION = "v10";
+  const STORAGE_KEY = "kbridge-kebby-session-v7";
+  const CLIENT_VERSION = "v13";
+  const LOCAL_SITE_DIRECTORY = [{"path":"blog/index.html","url":"https://www.kbexpress.kr/blog/index.html","title":"케이브릿지 블로그 - 수출입 물류 실무 정보","description":"물류 정보, 물류 서비스, 물류 뉴스, 물류 인사이트, 물류 용어집으로 나누어 수출입 물류 실무 정보를 확인하세요.","keywords":["케이브릿지","블로그","수출입","물류","실무","정보","실무를","쉽고","정확하게","정리합니다","최신","주요","컨테이너선","항로와","국제","운하","파나마","수에즈","쉽게","정리","컨테이너선과","벌크선의","종류","해상운송"],"aliases":["케이브릿지 블로그 - 수출입 물류 실무 정보"]},{"path":"blog/post.html","url":"https://www.kbexpress.kr/blog/post.html","title":"물류 정보 - KBRIDGE","description":"케이브릿지 물류 정보","keywords":["물류","정보","KBRIDGE","글을","불러오는","중입니다"],"aliases":["물류 정보 - KBRIDGE"]},{"path":"blog/posts/glossary/azsl.html","url":"https://www.kbexpress.kr/blog/posts/glossary/azsl.html","title":"아마존 셀러 필수 용어 - FBA·FBM·ASIN·FNSKU 쉽게 정리","description":"아마존 판매에 필요한 FBA·FBM·ASIN·FNSKU 등 풀필먼트와 상품·재고관리 핵심 용어를 쉽게 정리했습니다.","keywords":["아마존 셀러 용어","아마존 FBA","아마존 FBM","ASIN","SKU","FNSKU","UPC","EAN","GTIN","아마존 입고","아마존 물류"],"aliases":["아마존 셀러 필수 용어 - FBA·FBM·ASIN·FNSKU 쉽게 정리","아마존 FBA FBM ASIN FNSKU"]},{"path":"blog/posts/glossary/canal.html","url":"https://www.kbexpress.kr/blog/posts/glossary/canal.html","title":"주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리","description":"아시아-북미, 아시아-유럽, 유럽-북미 등 주요 컨테이너선 항로와 파나마 운하·수에즈 운하의 구조, 역할, 실무 체크포인트를 쉽게 정리했습니다.","keywords":["컨테이너선 항로","국제 운하","파나마 운하","수에즈 운하","아시아 유럽 항로","아시아 북미 항로","해상운송 항로","케이브릿지 물류 용어집"],"aliases":["주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리","파나마 수에즈 운하"]},{"path":"blog/posts/glossary/csbs.html","url":"https://www.kbexpress.kr/blog/posts/glossary/csbs.html","title":"컨테이너선과 벌크선의 종류 - 해상운송 선박 차이 쉽게 정리","description":"컨테이너선과 벌크선의 구조·화물·선적 방식과 피더선·ULCV·파나막스 등 주요 선박 종류를 비교합니다.","keywords":["컨테이너선","벌크선","해상운송 선박 종류","피더선","파나막스","ULCV","핸디사이즈","케이프사이즈","벌크화물","해상운송"],"aliases":["컨테이너선과 벌크선의 종류 - 해상운송 선박 차이 쉽게 정리","컨테이너선 벌크선 종류"]},{"path":"blog/posts/glossary/export.html","url":"https://www.kbexpress.kr/blog/posts/glossary/export.html","title":"수출 절차 및 서류 - 해외 수출 흐름 한눈에 정리","description":"처음 수출을 준비하는 기업을 위해 거래 조건 확인부터 수출서류, 수출신고, 선적, 바이어 서류 전달까지 해외 수출 흐름을 한눈에 정리했습니다.","keywords":["수출","B/L","AWB","수출신고필증","케이브릿지","포워딩"],"aliases":["수출 절차 및 서류 - 해외 수출 흐름 한눈에 정리","수출 절차 및 서류"]},{"path":"blog/posts/info/ci.html","url":"https://www.kbexpress.kr/blog/posts/info/ci.html","title":"커머셜 인보이스 작성법·양식 다운로드 - KBRIDGE","description":"커머셜 인보이스의 의미, 필수 작성 항목, 주의사항과 실무용 양식 다운로드를 정리했습니다.","keywords":["커머셜 인보이스","Commercial Invoice","상업송장","커머셜 인보이스 양식","수출서류","수출 인보이스","Invoice 작성방법","케이브릿지","포워딩"],"aliases":["커머셜 인보이스 작성법·양식 다운로드 - KBRIDGE","커머셜 인보이스 작성법 양식"]},{"path":"blog/posts/info/pl.html","url":"https://www.kbexpress.kr/blog/posts/info/pl.html","title":"패킹리스트(Packing List) 작성방법 & 양식 다운로드","description":"패킹리스트의 의미, 필수 작성 항목, 주의사항과 실무용 양식 다운로드를 정리했습니다.","keywords":["패킹리스트","Packing List","패킹리스트 양식","수출서류","수출 패킹리스트","Commercial Invoice","수출 포장명세서","케이브릿지","포워딩"],"aliases":["패킹리스트(Packing List) 작성방법 & 양식 다운로드","패킹리스트 작성방법 양식"]},{"path":"blog/posts/insight/cuimport.html","url":"https://www.kbexpress.kr/blog/posts/insight/cuimport.html","title":"중국발 조기 선적과 하반기 해운 대응 - KBRIDGE","description":"미국 연말 재고의 조기 발주 배경과 선복 부족, 해상운임 상승, 하반기 물동량 대응 포인트를 정리했습니다.","keywords":["미국 연말 쇼핑 시즌","중국발 조기 선적","프론트로딩","미국 수입 물동량","중국 미국 해상운임","상하이 로스앤젤레스 운임","상하이 뉴욕 운임","관세 리스크","해운 시황","케이브릿지"],"aliases":["중국발 조기 선적과 하반기 해운 대응 - KBRIDGE","중국발 조기 선적 하반기 해운"]},{"path":"blog/posts/insight/redsea.html","url":"https://www.kbexpress.kr/blog/posts/insight/redsea.html","title":"홍해가 취약한 해상 운송로가 된 이유 - KBRIDGE","description":"호르무즈 차질 이후 홍해 물동량 집중, 후티 리스크, 운임·리드타임 영향과 화주의 대응 방법을 정리했습니다.","keywords":["호르무즈 사태","홍해 물류","바브엘만데브 해협","후티 반군","홍해 운송 리스크","수에즈 운하","희망봉 우회","해상운임","공급망 리스크","국제물류","케이브릿지"],"aliases":["홍해가 취약한 해상 운송로가 된 이유 - KBRIDGE","홍해 취약 해상 운송로"]},{"path":"blog/posts/news/28wnews.html","url":"https://www.kbexpress.kr/blog/posts/news/28wnews.html","title":"2026년 28주차 물류뉴스 - KBRIDGE","description":"7월 6~12일 해상운임, 항공화물, 북극항로, 자율주행 물류, 미국 관세·통관 이슈를 정리했습니다.","keywords":["28주차 물류뉴스","2026 물류뉴스","해상운임","KCCI","항공화물","HBM","북극항로","미국 관세","CPSC eFiling","공급망","케이브릿지"],"aliases":["2026년 28주차 물류뉴스 - KBRIDGE","2026년 28주차 물류뉴스"]},{"path":"blog/posts/service/ess-import-logistics-gimcheon.html","url":"https://www.kbexpress.kr/blog/posts/service/ess-import-logistics-gimcheon.html","title":"ESS 수입 물류 - 김천 그린수소 수행 사례 | KBRIDGE","description":"ESS 위험물 검토, 수입통관, 중량물 야간 국도 운송과 현장 반입까지 실제 수행 사례로 정리했습니다.","keywords":["ESS 수입 물류","김천 그린수소 프로젝트","위험물 수입","중량물 운송","국도 야간 운송","ESS 통관","현장 진입로 검토","특수장비 하역","프로젝트 물류","케이브릿지"],"aliases":["ESS 수입 물류 - 김천 그린수소 수행 사례 | KBRIDGE","ESS 김천 그린수소 수입 물류"]},{"path":"blog/posts/service/solar.html","url":"https://www.kbexpress.kr/blog/posts/service/solar.html","title":"태양광 패널 수입·보관·재고관리 물류 | KBRIDGE","description":"태양광 패널 적출, 창고 보관, 소분, 시리얼 재고관리, 납품지 운송까지 연결하는 서비스를 소개합니다.","keywords":["태양광 패널 수입","태양광 모듈 물류","태양광 패널 보관","컨테이너 적출","소분 작업","FLASH DATA","시리얼 재고관리","태양광 패널 운송","케이브릿지"],"aliases":["태양광 패널 수입·보관·재고관리 물류 | KBRIDGE","태양광 패널 수입 보관 재고관리"]},{"path":"cbm-calculator.html","url":"https://www.kbexpress.kr/cbm-calculator.html","title":"CBM 계산기 - KBRIDGE 물류도구","description":"박스 규격과 수량을 입력해 해상운송 CBM과 항공 부피중량을 바로 계산합니다.","keywords":["CBM","계산기","KBRIDGE","물류도구","화물","규격","입력","계산","요약","컨테이너","용적","대비","적재율","도어","통과","확인","다른"],"aliases":["CBM 계산기 - KBRIDGE 물류도구","CBM 계산기","CBM 자동 계산"]},{"path":"convenience.html","url":"https://www.kbexpress.kr/convenience.html","title":"케이브릿지 물류도구 - 수출입 계산·조회 도구","description":"관부가세, 고시환율, CBM, 공휴일, 선박 위치, LCL 창고료, 위험물, 터미널 정보 등 수출입 물류도구를 한 곳에서 확인하세요.","keywords":["케이브릿지","물류도구","수출입","계산","조회","도구","업무에","필요한","물류도구를","곳에서","반복되는","조회와","계산을","빠르게","처리하세요","관부가세","계산기","관세청","고시환율","CBM","전세계","공휴일","HS","CODE"],"aliases":["케이브릿지 물류도구 - 수출입 계산·조회 도구","케이브릿지 물류도구","수출입 계산 조회 도구"]},{"path":"copyright-policy.html","url":"https://www.kbexpress.kr/copyright-policy.html","title":"저작권 정책 - 케이브릿지","description":"케이브릿지 웹사이트 콘텐츠, LCL 운임자료, 데이터와 디자인의 이용범위 및 무단 수집·AI 학습 금지 기준을 안내합니다.","keywords":["저작권","정책","케이브릿지","저작권과","권리","귀속","허용되는","이용","금지되는","LCL","실제","운임표와","비공개","사업정보","물류","정보와","계산","결과의","제3자","콘텐츠와","링크","허락","요청과","침해"],"aliases":["저작권 정책 - 케이브릿지","저작권 정책"]},{"path":"customs-exchange-rate.html","url":"https://www.kbexpress.kr/customs-exchange-rate.html","title":"관세청 고시환율 조회 - KBRIDGE 물류도구","description":"관세청 관세환율정보 API 기준으로 수입환율과 수출환율을 조회합니다.","keywords":["관세청","고시환율","조회","KBRIDGE","물류도구","다른"],"aliases":["관세청 고시환율 조회 - KBRIDGE 물류도구","관세청 고시환율 조회","수입 고시환율"]},{"path":"dangerous-goods.html","url":"https://www.kbexpress.kr/dangerous-goods.html","title":"위험물 정보 조회 - KBRIDGE 물류도구","description":"UN 번호, 물질명과 Class를 기준으로 위험물 등급과 대표 라벨 정보를 확인합니다.","keywords":["위험물","정보","조회","KBRIDGE","물류도구","UN","번호","물질명","검색","결과","Class","빠른","안내","다른"],"aliases":["위험물 정보 조회 - KBRIDGE 물류도구","위험물 UN 번호 조회","위험물 정보 검색"]},{"path":"domestic.html","url":"https://www.kbexpress.kr/domestic.html","title":"케이브릿지 국내운송 - 항만·공항 픽업 및 전국 배차","description":"항만·공항 픽업부터 공장·창고 납품까지 국내운송 견적을 접수하고, 안전운임제와 화물차량 제원을 함께 조회하세요.","keywords":["케이브릿지","국내운송","항만","공항","픽업","전국","배차","공항에서","목적지까지","국내운송을","정확하게","연결합니다","픽업부터","최종","납품까지","하나의","운송","흐름","화물","조건에","맞는","차량을","검토합니다","컨테이너"],"aliases":["케이브릿지 국내운송 - 항만·공항 픽업 및 전국 배차","국내운송 견적","화물차 배차","항만 공항 픽업","컨테이너 국내운송"]},{"path":"duty-calculator.html","url":"https://www.kbexpress.kr/duty-calculator.html","title":"관부가세 계산기 - KBRIDGE 물류도구","description":"해외직구·특송 수입 시 예상 관세와 부가세를 현재 웹페이지에서 간편하게 계산합니다.","keywords":["관부가세","계산기","KBRIDGE","물류도구","수입","유형과","금액","입력","계산","결과","다른"],"aliases":["관부가세 계산기 - KBRIDGE 물류도구","수입 관부가세 계산","관세 부가세 계산","관부가세 계산기"]},{"path":"food-export-check.html","url":"https://www.kbexpress.kr/food-export-check.html","title":"식품 수출 사전 점검 - KBRIDGE 물류도구","description":"국가별 규정, 성분, 라벨, 검역과 보관 조건을 선적 전에 단계별로 점검합니다.","keywords":["식품","수출","사전","점검","KBRIDGE","물류도구","조건","입력","체크리스트","국가별","공식","확인","경로","다른"],"aliases":["식품 수출 사전 점검 - KBRIDGE 물류도구","식품 수출 사전 점검","식품 수출 체크"]},{"path":"freight-index.html","url":"https://www.kbexpress.kr/freight-index.html","title":"SCFI·KCCI·BDI·항공 FSC 운임지수 조회","description":"SCFI, KCCI, BDI와 한국발 항공화물 FSC 유류할증료의 최신값·변동률·추세를 한 화면에서 조회합니다.","keywords":["SCFI","상하이컨테이너운임지수","KCCI","KOBC 컨테이너 운임지수","BDI","발틱운임지수","벌크운임지수","항공 FSC","화물 유류할증료","해상운임 추세","케이브릿지"],"aliases":["SCFI·KCCI·BDI·항공 FSC 운임지수 조회","SCFI KCCI BDI 운임지수","항공 FSC 운임지수"]},{"path":"holiday-calendar.html","url":"https://www.kbexpress.kr/holiday-calendar.html","title":"전세계 공휴일 조회 - KBRIDGE 물류도구","description":"국가별 공휴일과 현지 휴무 일정을 확인해 선적·통관 일정을 준비합니다.","keywords":["전세계","공휴일","조회","KBRIDGE","물류도구","국가별","지역별","빠른","선택","결과","다른"],"aliases":["전세계 공휴일 조회 - KBRIDGE 물류도구","전세계 공휴일 조회","국가별 공휴일"]},{"path":"hs-code-search.html","url":"https://www.kbexpress.kr/hs-code-search.html","title":"HS CODE 조회 - KBRIDGE 물류도구","description":"품명과 용도를 기준으로 HS CODE 후보와 관련 관세율을 확인합니다.","keywords":["HS","CODE","조회","KBRIDGE","물류도구","후보","검색","결과","공식","분류","세율","확인","다른"],"aliases":["HS CODE 조회 - KBRIDGE 물류도구","HS CODE 조회","HS 코드 검색"]},{"path":"incoterms-guide.html","url":"https://www.kbexpress.kr/incoterms-guide.html","title":"인코텀즈 빠른 가이드 - KBRIDGE 물류도구","description":"주요 거래조건별 운임 부담, 통관 책임과 위험 이전 기준을 한 화면에서 비교합니다.","keywords":["인코텀즈","빠른","가이드","KBRIDGE","물류도구","2020","조건","선택","비교","다른"],"aliases":["인코텀즈 빠른 가이드 - KBRIDGE 물류도구","인코텀즈 빠른 가이드","Incoterms 조건"]},{"path":"index.html","url":"https://www.kbexpress.kr/index.html","title":"케이브릿지 - FCL · LCL 해상운송 · 해외특송 견적·계산·문의","description":"해상·항공·해외특송 견적을 케이브릿지에서 빠르게 접수하세요. 예상 운임 확인부터 정식 견적 문의까지 한 번에 시작할 수 있습니다.","keywords":["케이브릿지","FCL","LCL","해상운송","해외특송","견적","계산","문의","해상","항공","케이브릿지에서","바로","시작하세요","어떤","운송이","필요하세요","받고","통관","운송까지","이어서","진행하세요","운송","방식별","즉시견적"],"aliases":["케이브릿지 - FCL · LCL 해상운송 · 해외특송 견적·계산·문의","FCL LCL 해외특송 견적","해상운송 항공운송 견적","케이브릿지 메인"]},{"path":"lcl-storage.html","url":"https://www.kbexpress.kr/lcl-storage.html","title":"LCL 창고료 - KBRIDGE 물류도구","description":"참고 요율 프로필로 LCL 화물의 예상 창고료와 작업료를 계산하고 실제 CFS 견적과 비교합니다.","keywords":["LCL","창고료","KBRIDGE","물류도구","계산","정보","화물","입력","방식","요약","결과","다른"],"aliases":["LCL 창고료 - KBRIDGE 물류도구","LCL 창고료 조회","LCL 보관료 계산","CFS 창고료"]},{"path":"load-planner.html","url":"https://www.kbexpress.kr/load-planner.html","title":"차량·컨테이너 적입 시뮬레이터 - KBRIDGE","description":"화물 규격과 수량, 중량을 입력하면 차량 또는 컨테이너를 자동 추천하고 실제 박스 배치를 3D로 확인할 수 있는 독립형 적입 시뮬레이터입니다.","keywords":["차량","컨테이너","적입","시뮬레이터","KBRIDGE","화물차","배차와","적입을","3D로","미리","확인하세요","현재","입력","화물","CBM","부피중량","단순계산","옵션","자동","추천","결과","CBM보다","실제","배치"],"aliases":["차량·컨테이너 적입 시뮬레이터 - KBRIDGE","차량 컨테이너 적입 시뮬레이터","화물 적재 시뮬레이터"]},{"path":"privacy-policy.html","url":"https://www.kbexpress.kr/privacy-policy.html","title":"개인정보처리방침 - 케이브릿지","description":"케이브릿지 웹사이트의 견적문의·상담 과정에서 처리하는 개인정보의 목적, 항목, 보유기간과 정보주체의 권리를 안내합니다.","keywords":["개인정보처리방침","케이브릿지","개인정보의","처리","목적","처리하는","개인정보","항목","근거","보유기간","14세","미만","아동의","제3자","제공","처리업무의","위탁","파기","정보주체의","권리와","행사","방법"],"aliases":["개인정보처리방침 - 케이브릿지","개인정보처리방침"]},{"path":"quote-comparison.html","url":"https://www.kbexpress.kr/quote-comparison.html","title":"견적서 비교 - 케이브릿지 해상·항공 운임 비교","description":"받으신 해상·항공 운임 견적서를 업로드하면 케이브릿지가 동일 구간과 화물 조건으로 항목별 비교 견적을 안내합니다.","keywords":["견적서","비교","케이브릿지","해상","항공","운임","받으신","물류","견적","같은","조건으로","비교해","보세요","파일만","올려도","접수가","시작됩니다","총액보다","먼저","비용","범위를","확인합니다","동일","구간"],"aliases":["견적서 비교 - 케이브릿지 해상·항공 운임 비교","견적서 비교","해상 항공 운임 비교"]},{"path":"safe-rate.html","url":"https://www.kbexpress.kr/safe-rate.html","title":"2026 컨테이너 안전운임 조회 | 적용기간 선택 - 케이브릿지","description":"2026년 7월 31일까지의 기존 운임과 8월 1일부터 시행 예정인 개정 안전운임을 적용기간별로 선택해 조회합니다.","keywords":["2026","컨테이너","안전운임","조회","적용기간","선택","케이브릿지","국내운송","조건","터미널","전배운송","운임"],"aliases":["2026 컨테이너 안전운임 조회 | 적용기간 선택 - 케이브릿지","컨테이너 안전운임 조회","2026 안전운임"]},{"path":"simple-calculator.html","url":"https://www.kbexpress.kr/simple-calculator.html","title":"CBM·부피중량 단순계산 - KBRIDGE","description":"화물 규격과 수량, 중량을 입력하면 CBM, 실중량, 항공·특송 부피중량과 단순 추천 규격을 즉시 계산합니다.","keywords":["CBM","부피중량","단순계산","KBRIDGE","화물","CBM과","부피중량을","빠르게","계산하세요","입력","컨테이너","적입","옵션","자동","추천","결과","CBM보다","실제","배치","무게와","부피","동시","검사","회전"],"aliases":["CBM·부피중량 단순계산 - KBRIDGE","CBM 부피중량 단순계산","부피중량 계산"]},{"path":"surcharge.html","url":"https://www.kbexpress.kr/surcharge.html","title":"부대비용 - KBRIDGE 물류도구","description":"수출입 운송 실무에서 자주 확인하는 포워더 부대비용 기준표 페이지로 연결합니다.","keywords":["부대비용","KBRIDGE","물류도구","바로","조회","실무","확인","포인트","다른"],"aliases":["부대비용 - KBRIDGE 물류도구","해상 항공 부대비용","수출입 부대비용 조회"]},{"path":"terminal-info.html","url":"https://www.kbexpress.kr/terminal-info.html","title":"터미널 정보 조회 - KBRIDGE 물류도구","description":"지역·터미널 코드·장치장코드와 공지 및 작업정보를 확인합니다.","keywords":["터미널","정보","조회","KBRIDGE","물류도구","국내","컨테이너","다른"],"aliases":["터미널 정보 조회 - KBRIDGE 물류도구","항만 터미널 정보 조회","터미널 정보"]},{"path":"vehicle-spec.html","url":"https://www.kbexpress.kr/vehicle-spec.html","title":"화물차량 제원 조회 - 케이브릿지 국내운송","description":"톤수와 바디타입별 적재함 크기, 적재중량과 팔레트 규격별 예상 적재 수량을 한 화면에서 비교합니다.","keywords":["화물차량","제원","조회","케이브릿지","국내운송"],"aliases":["화물차량 제원 조회 - 케이브릿지 국내운송","화물차량 제원 조회","화물차 제원","트럭 제원"]},{"path":"vessel-location.html","url":"https://www.kbexpress.kr/vessel-location.html","title":"실시간 선박 위치 - KBRIDGE 물류도구","description":"MarineTraffic 공식 AIS 지도로 실시간 선박 위치와 항만 주변 운항 상황을 확인합니다.","keywords":["실시간","선박","위치","KBRIDGE","물류도구","확인","MarineTraffic","공식","지도에서","확인하세요","주요","항만","바로가기","다른"],"aliases":["실시간 선박 위치 - KBRIDGE 물류도구","실시간 선박 위치 확인","선박 위치 조회"]},{"path":"vessel-tracking.html","url":"https://www.kbexpress.kr/vessel-tracking.html","title":"AIS 선박 추적 지도 - MMSI·항만 위치 | KBRIDGE","description":"MMSI와 국내 주요 항만을 기준으로 AIS 선박 위치 지도를 조회하고 운항 현황을 확인합니다.","keywords":["AIS","선박","추적","지도","MMSI","항만","위치","KBRIDGE","다른","물류도구"],"aliases":["AIS 선박 추적 지도 - MMSI·항만 위치 | KBRIDGE","AIS MMSI 선박 추적 지도","AIS 선박 추적"]},{"path":"warehouse-inquiry.html","url":"https://www.kbexpress.kr/warehouse-inquiry.html","title":"창고 문의 - 부산·인천·평택·광양 창고료 견적","description":"부산·인천·평택·광양의 수출입 창고, CFS 작업, 보관, 상하차, 팔레트·쇼링 작업 견적을 케이브릿지에 문의하세요.","keywords":["창고","문의","부산","인천","평택","광양","창고료","견적","화물에","맞는","창고를","연결합니다","창고료는","화물과","작업","조건에","따라","달라집니다","주요","항만","번에","문의하세요","접수","화물"],"aliases":["창고 문의 - 부산·인천·평택·광양 창고료 견적","창고 보관 견적","부산 인천 평택 광양 창고 문의","수출입 창고"]}];
+  const LOCAL_FIXED_ANSWERS = [
+    {
+      test: /^(?:(?:커머셜|commercial)\s*)?인보이스(?:\s*(?:란|뜻|뭐야|무엇|양식|작성법|작성\s*방법|다운로드))?[?!.\s]*$/i,
+      reply: "커머셜 인보이스는 수출자가 바이어에게 발행하는 상업송장으로, 품명·수량·단가·총액·통화·거래조건을 기재합니다. 수출신고와 수입통관, 대금결제의 기준 자료이므로 패킹리스트와 품명·수량이 일치해야 합니다.",
+      source: { url: "https://www.kbexpress.kr/blog/posts/info/ci.html", title: "커머셜 인보이스 작성방법 & 양식 다운로드" },
+    },
+    {
+      test: /^(?:패킹\s*리스트|packing\s*list)(?:\s*(?:란|뜻|뭐야|무엇|양식|작성법|작성\s*방법|다운로드))?[?!.\s]*$/i,
+      reply: "패킹리스트는 화물의 포장 단위별 품명·수량·순중량·총중량·부피를 정리한 포장명세서입니다. 통관과 창고·운송 작업에 사용되므로 인보이스와 품명·수량이 일치해야 합니다.",
+      source: { url: "https://www.kbexpress.kr/blog/posts/info/pl.html", title: "패킹리스트 작성방법 & 양식 다운로드" },
+    },
+  ];
   const AVATAR_URL = (() => {
     const current = document.currentScript?.src;
     if (current) return new URL("kebby-avatar-v2.webp?v=20260725-ui-v10", current).href;
@@ -152,6 +165,7 @@
   const root = document.createElement("div");
   root.id = "kb-kebby-root";
   root.setAttribute("data-kb-kebby", "");
+  root.setAttribute("data-client-version", CLIENT_VERSION);
   root.innerHTML = `
     <section class="kb-kebby-welcome" aria-label="케비 빠른 상담">
       <button type="button" class="kb-kebby-welcome-close" aria-label="안내 닫기">×</button>
@@ -466,6 +480,151 @@
     throw lastError || new Error("케비의 답변을 불러오지 못했습니다.");
   }
 
+
+  function normalizeLocalSearch(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/commercial\s*invoice/g, "커머셜 인보이스")
+      .replace(/packing\s*list/g, "패킹리스트")
+      .replace(/hs\s*code/g, "hs code")
+      .replace(/[^0-9a-z가-힣]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function localTokens(value) {
+    const stop = new Set(["케이브릿지", "문의", "안내", "관련", "방법", "서비스", "페이지", "알려줘", "알려주세요", "뭐야", "무엇", "대한", "있어", "가능", "확인"]);
+    return normalizeLocalSearch(value).split(" ").filter((token) => token.length >= 2 && !stop.has(token));
+  }
+
+  function scoreLocalPage(page, message) {
+    const q = normalizeLocalSearch(message);
+    if (!q) return 0;
+    const title = normalizeLocalSearch(page.title);
+    const desc = normalizeLocalSearch(page.description);
+    const aliases = (page.aliases || []).map(normalizeLocalSearch);
+    const keywords = (page.keywords || []).map(normalizeLocalSearch);
+    let score = 0;
+    if (title === q || aliases.includes(q) || keywords.includes(q)) score += 120;
+    if (title.includes(q) || aliases.some((v) => v.includes(q))) score += 52;
+    if (keywords.some((v) => v === q)) score += 45;
+    if (keywords.some((v) => v.includes(q) || q.includes(v))) score += 22;
+    for (const token of localTokens(q)) {
+      if (title.includes(token)) score += 18;
+      if (aliases.some((v) => v.includes(token))) score += 14;
+      if (keywords.some((v) => v.includes(token))) score += 12;
+      if (desc.includes(token)) score += 5;
+    }
+    if (/^blog\/(?:index|post)\.html$/i.test(page.path || "")) score -= 35;
+    if (/(privacy|copyright)-policy\.html$/i.test(page.path || "")) score -= 20;
+    return score;
+  }
+
+  function findLocalPages(message, limit = 3) {
+    return LOCAL_SITE_DIRECTORY
+      .map((page) => ({ page, score: scoreLocalPage(page, message) }))
+      .filter((item) => item.score >= 22)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limit);
+  }
+
+  function isSimpleLocalLookup(message) {
+    const q = normalizeLocalSearch(message);
+    const tokens = localTokens(q);
+    if (!q) return false;
+    const exactPageName = LOCAL_SITE_DIRECTORY.some((page) => {
+      const names = [page.title, ...(page.aliases || []), ...(page.keywords || [])].map(normalizeLocalSearch);
+      return names.includes(q);
+    });
+    if (exactPageName) return true;
+    if (q.length > 36 || tokens.length > 5) return false;
+    if (/(왜|차이|비교|오류|문제|vat|넣어|제외|면제|필요한가|가능한가|어떻게 계산|얼마|금액|조건|주의사항은)/i.test(q)) return false;
+    return true;
+  }
+
+  function ensureSentence(text) {
+    let value = String(text || "").replace(/\s+/g, " ").trim();
+    if (!value) return "";
+    if (!/[.!?。！？]$/.test(value)) value += ".";
+    return value;
+  }
+
+  function buildLocalAnswer(message, { simpleOnly = false } = {}) {
+    const q = String(message || "").trim();
+    for (const item of LOCAL_FIXED_ANSWERS) {
+      if (item.test.test(q)) return { reply: item.reply, sources: [item.source], score: 999, fixed: true };
+    }
+    const matches = findLocalPages(q, 3);
+    if (!matches.length || (simpleOnly && !isSimpleLocalLookup(q))) return null;
+    const best = matches[0];
+    if (best.score < (simpleOnly ? 42 : 26)) return null;
+    const page = best.page;
+    const description = ensureSentence(page.description || `${page.title} 관련 케이브릿지 공식 안내입니다.`);
+    const reply = `${description} 자세한 내용과 이용 방법은 아래 공식 페이지에서 확인해 주세요.`;
+    return {
+      reply,
+      sources: matches.map((item) => ({ url: item.page.url, title: item.page.title })).filter((item) => item.url),
+      score: best.score,
+      fixed: false,
+    };
+  }
+
+  function mergeClientSources(primary, secondary) {
+    const output = [];
+    const seen = new Set();
+    for (const item of [...(primary || []), ...(secondary || [])]) {
+      const url = String(item?.url || "").trim();
+      if (!/^https:\/\/(www\.)?kbexpress\.kr\//i.test(url) || seen.has(url)) continue;
+      seen.add(url);
+      output.push({ url, title: String(item?.title || "케이브릿지 관련 페이지").trim() });
+      if (output.length >= 3) break;
+    }
+    return output;
+  }
+
+  function replyLooksComplete(text) {
+    const value = String(text || "").trim();
+    if (!value) return false;
+    const pairs = [["(", ")"], ["[", "]"], ["{", "}"]];
+    if (pairs.some(([a, b]) => (value.split(a).length - 1) !== (value.split(b).length - 1))) return false;
+    if (/[,:;·\-–—\/(（]$/.test(value)) return false;
+    if (/(부가|필요|정확한|다음|아래|포함|케이브릿|그리고|또한|따라서|경우|내용은)$/u.test(value)) return false;
+    return /(?:다|요|니다|세요|됩니다|있습니다|없습니다|바랍니다|확인됩니다)[.!?]?$/u.test(value);
+  }
+
+  function compactToCompleteSentence(text, maxLength = 360) {
+    const source = String(text || "").replace(/<think>[\s\S]*?<\/think>/gi, "").replace(/\r/g, "").trim();
+    if (!source) return "";
+    const plain = source.replace(/\n{3,}/g, "\n\n");
+    if (plain.length <= maxLength && replyLooksComplete(plain)) return plain;
+    const cut = plain.slice(0, maxLength);
+    const endings = [...cut.matchAll(/(?:다|요|니다|세요|됩니다|있습니다|없습니다|바랍니다|확인됩니다)[.!?]?/gu)];
+    if (endings.length) {
+      const last = endings[endings.length - 1];
+      return cut.slice(0, (last.index || 0) + last[0].length).trim();
+    }
+    return "";
+  }
+
+  function guardWorkerAnswer(message, data) {
+    const local = buildLocalAnswer(message, { simpleOnly: false });
+    const reply = String(data?.reply || "").trim();
+    const tooLong = reply.length > 420 || (reply.match(/\n/g) || []).length > 8;
+    const incomplete = !replyLooksComplete(reply);
+    let safeReply = reply;
+    if (tooLong || incomplete) {
+      safeReply = local?.reply || compactToCompleteSentence(reply, 340);
+    }
+    if (!safeReply) {
+      safeReply = "질문과 관련된 케이브릿지 공식 안내를 찾았습니다. 아래 페이지에서 핵심 내용과 이용 방법을 확인해 주세요.";
+    }
+    return {
+      reply: safeReply,
+      sources: mergeClientSources(local?.sources, data?.sources),
+      repaired: safeReply !== reply,
+    };
+  }
+
   async function sendMessage(forcedMessage) {
     const message = String(forcedMessage ?? input.value).trim();
     if (!message || sendButton.disabled) return;
@@ -494,14 +653,28 @@
     sendButton.setAttribute("aria-busy", "true");
     track("kebby_question_send");
     try {
+      const instantLocal = buildLocalAnswer(message, { simpleOnly: true });
+      if (instantLocal) {
+        await wait(180);
+        if (typing.isConnected) typing.remove();
+        appendMessage("assistant", instantLocal.reply, true, instantLocal.sources);
+        track("kebby_answer_success", { knowledge_used: true, answer_mode: "local_directory_v13" });
+        return;
+      }
+
       const data = await fetchJsonWithRetry(`${API_BASE}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({ message, history: requestHistory, ...getPageContext(), clientVersion: CLIENT_VERSION }),
       }, { timeoutMs: 50000, retries: 1 });
+      const guarded = guardWorkerAnswer(message, data);
       if (typing.isConnected) typing.remove();
-      appendMessage("assistant", data.reply, true, data.sources);
-      track("kebby_answer_success", { knowledge_used: data.knowledgeUsed === true });
+      appendMessage("assistant", guarded.reply, true, guarded.sources);
+      track("kebby_answer_success", {
+        knowledge_used: data.knowledgeUsed === true || guarded.sources.length > 0,
+        answer_repaired: guarded.repaired,
+        worker_version: data.workerVersion || data.version || "unknown",
+      });
     } catch (error) {
       if (typing.isConnected) typing.remove();
       if (!input.value.trim()) {
