@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-31T20:03:11+09:00",
+    "generated_at": "2026-08-01T12:43:32+09:00",
     "timezone": "Asia/Seoul",
     "source_status": {
       "scfi": {
@@ -21,7 +21,7 @@
       },
       "bdi": {
         "ok": true,
-        "message": "2026-07-17 2,752 (bdi_fallback)"
+        "message": "2026-07-31 2,732 (bdi_fallback)"
       }
     }
   },
@@ -403,6 +403,10 @@
       {
         "date": "2026-07-17",
         "value": 2752
+      },
+      {
+        "date": "2026-07-31",
+        "value": 2732
       }
     ],
     "last_data_source": "https://tradingeconomics.com/commodity/baltic"
