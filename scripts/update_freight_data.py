@@ -13,10 +13,12 @@ import html
 import json
 import re
 import sys
+import time
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any, Iterable
+from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
 from zoneinfo import ZoneInfo
 
 import requests
@@ -37,16 +39,15 @@ SCFI_MIN_VALUE = 100.0
 SCFI_MAX_VALUE = 20_000.0
 
 URLS = {
-    # The legacy English page moved the live SCFI figures into an image in June 2026.
-    # Use the official text table published by SSEI, with the SSE mirror as fallback.
     "scfi": "https://www.sse.net.cn/index/singleIndex?indexType=scfi",
     "scfi_fallback": "https://www.sse.sh.cn/index/singleIndex?indexType=scfi",
     "kcci_grid": "https://www.kobc.or.kr/ebz/shippinginfo/kcci/gridList.do?mId=0304000000",
     "kcci_timeseries": "https://www.kobc.or.kr/ebz/shippinginfo/timeseries/gridList.do?mId=0304000000",
+    "kcci_grid_eng": "https://www.kobc.or.kr/ebz/shippinginfoeng/kcci/gridList.do?mId=0304000000",
     "bdi": "https://en.stockq.org/index/BDI.php",
     "bdi_fallback": "https://tradingeconomics.com/commodity/baltic",
     "korean_air": "https://cargo.koreanair.com/ko/services/Surcharge-Information",
-    "asiana": "https://asianacargo.com/contents/surcharge.do",
+    "korean_air_news": "https://cargo.koreanair.com/ko/cargo-news",
 }
 
 ROUTES = {
@@ -100,10 +101,24 @@ def session() -> requests.Session:
     return s
 
 
-def fetch(url: str) -> BeautifulSoup:
-    r = session().get(url, timeout=35)
+def cache_busted_url(url: str) -> str:
+    parts = urlsplit(url)
+    query = dict(parse_qsl(parts.query, keep_blank_values=True))
+    query["_kbts"] = str(int(time.time()))
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(query), parts.fragment))
+
+
+def fetch(url: str, *, cache_bust: bool = True) -> BeautifulSoup:
+    target = cache_busted_url(url) if cache_bust else url
+    r = session().get(
+        target,
+        timeout=35,
+        headers={"Cache-Control": "no-cache, no-store, max-age=0", "Pragma": "no-cache"},
+    )
     r.raise_for_status()
-    r.encoding = r.apparent_encoding or r.encoding
+    content_type = (r.headers.get("content-type") or "").lower()
+    if "charset=" not in content_type and not r.encoding:
+        r.encoding = "utf-8"
     return BeautifulSoup(r.text, "html.parser")
 
 
@@ -121,6 +136,20 @@ def int_num(value: str) -> int:
 
 def parse_iso(value: str) -> date:
     return datetime.strptime(value, "%Y-%m-%d").date()
+
+
+def normalize_ymd(year: str, month: str, day: str) -> str:
+    return date(int(year), int(month), int(day)).isoformat()
+
+
+def assert_fresh(label: str, value: str, max_age_days: int) -> None:
+    observed = parse_iso(value)
+    today = datetime.now(KST).date()
+    age = (today - observed).days
+    if age < 0:
+        raise ParseError(f"{label} 발표일이 미래입니다: {value}")
+    if age > max_age_days:
+        raise ParseError(f"{label} 최신값이 {age}일 경과했습니다: {value}")
 
 
 def upsert_history(history: list[dict[str, Any]], items: Iterable[dict[str, Any]], limit: int = 104) -> None:
@@ -322,6 +351,20 @@ def parse_bdi(soup: BeautifulSoup) -> list[dict[str, Any]]:
         day = datetime.strptime(f"{month} {day_num}, {year}", "%B %d, %Y").date().isoformat()
         found[day] = {"date": day, "value": int_num(value)}
 
+    # Trading Economics current-summary format: "traded ... at 2,732 Index Points on July 31, 2026".
+    current_summary = re.search(
+        r"Baltic Dry.*?traded.{0,80}?at\s+([\d,]+(?:\.\d+)?)"
+        r"(?:\s+Index Points)?.{0,100}?on\s+"
+        r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+        r"(\d{1,2}),\s+(20\d{2})",
+        page,
+        re.I,
+    )
+    if current_summary:
+        value, month, day_num, year = current_summary.groups()
+        day = datetime.strptime(f"{month} {day_num}, {year}", "%B %d, %Y").date().isoformat()
+        found[day] = {"date": day, "value": int_num(value)}
+
     if not found:
         raise ParseError("BDI 공개 시세를 찾지 못했습니다.")
     parsed = sanitize_bdi_history(found.values())
@@ -348,36 +391,80 @@ def parse_kcci_timeseries(soup: BeautifulSoup) -> list[dict[str, Any]]:
     return sorted(dedup.values(), key=lambda x: x["date"])
 
 
-def parse_kcci_routes(soup: BeautifulSoup) -> list[dict[str, Any]]:
+def parse_kcci_grid(soup: BeautifulSoup) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Parse KOBC current/previous KCCI values and all route rows from the grid page.
+
+    The grid is authoritative for the newest Monday publication.  The timeseries page
+    can lag one publication, so the KCCI row from this grid is also returned as two
+    history points and merged into the longer series.
+    """
     page = clean(soup.get_text(" ", strip=True))
+    table = None
+    for candidate in soup.find_all("table"):
+        if re.search(r"\bKCCI\b", clean(candidate.get_text(" ", strip=True))):
+            table = candidate
+            break
+    scope = clean((table or soup).get_text(" ", strip=True))
+    dates = sorted(set(re.findall(r"20\d{2}-\d{2}-\d{2}", scope)))
+    if len(dates) < 2:
+        dates = sorted(set(re.findall(r"20\d{2}-\d{2}-\d{2}", page)))
+    if len(dates) < 2:
+        raise ParseError("KCCI 현재/이전 발표일을 찾지 못했습니다.")
+    previous_date, current_date = dates[-2], dates[-1]
+
     output: list[dict[str, Any]] = []
-    for code, (group, label, default_weight) in ROUTES.items():
-        # Route label is intentionally not captured; the official English/Korean spelling can change.
-        pattern = re.compile(
-            rf"\b{re.escape(code)}\b\s+.*?\s+(\d+(?:\.\d+)?)%\s+"
-            r"([\d,]+)\s+([\d,]+)\s+([-+]?\d[\d,]*)\s*\(([-+]?\d+(?:\.\d+)?)%\)",
-            re.I,
-        )
-        match = pattern.search(page)
-        if not match:
+    rows = (table or soup).find_all("tr")
+    for tr in rows:
+        cells = [clean(cell.get_text(" ", strip=True)) for cell in tr.find_all(["th", "td"])]
+        if not cells:
             continue
-        weight, current, previous, change, change_pct = match.groups()
-        output.append(
-            {
-                "group": group,
-                "code": code,
-                "route": label,
-                "weight": f"{weight}%" if weight else default_weight,
-                "current": int_num(current),
-                "previous": int_num(previous),
-                "change": int_num(change),
-                "change_pct": float(change_pct),
-            }
-        )
+        code_index = next((i for i, value in enumerate(cells) if value in ROUTES), None)
+        if code_index is None:
+            continue
+        code = cells[code_index]
+        group, label, default_weight = ROUTES[code]
+        tail = cells[code_index + 1:]
+        if len(tail) < 4:
+            continue
+        weight_idx = next((i for i, value in enumerate(tail) if re.fullmatch(r"\d+(?:\.\d+)?%", value)), None)
+        if weight_idx is None or len(tail) < weight_idx + 4:
+            continue
+        weight = tail[weight_idx]
+        current_raw = tail[weight_idx + 1]
+        previous_raw = tail[weight_idx + 2]
+        change_raw = " ".join(tail[weight_idx + 3:])
+        if not re.fullmatch(r"[\d,]+(?:\.\d+)?", current_raw) or not re.fullmatch(r"[\d,]+(?:\.\d+)?", previous_raw):
+            continue
+        change_match = re.search(r"([-+]?\d[\d,]*)\s*\(\s*([-+]?\d+(?:\.\d+)?)%\s*\)", change_raw)
+        current = int_num(current_raw)
+        previous = int_num(previous_raw)
+        if change_match:
+            change = int_num(change_match.group(1))
+            change_pct = float(change_match.group(2))
+        else:
+            change = current - previous
+            change_pct = round((change / previous * 100) if previous else 0.0, 2)
+        output.append({
+            "group": group,
+            "code": code,
+            "route": label,
+            "weight": weight or default_weight,
+            "current": current,
+            "previous": previous,
+            "change": change,
+            "change_pct": change_pct,
+        })
+
     if len(output) < 10:
         raise ParseError(f"KCCI 항로 데이터가 부족합니다({len(output)}개).")
-    return output
-
+    kcci_row = next((row for row in output if row["code"] == "KCCI"), None)
+    if not kcci_row:
+        raise ParseError("KCCI 종합지수 행을 찾지 못했습니다.")
+    history = [
+        {"date": previous_date, "value": kcci_row["previous"]},
+        {"date": current_date, "value": kcci_row["current"]},
+    ]
+    return history, output
 
 def cycle_for_day(day: date) -> tuple[str, str]:
     if day.day >= 16:
@@ -392,7 +479,67 @@ def cycle_for_day(day: date) -> tuple[str, str]:
     return start.isoformat(), end.isoformat()
 
 
-def parse_korean_air(soup: BeautifulSoup) -> tuple[str, list[dict[str, Any]]]:
+def parse_korean_air_article(soup: BeautifulSoup) -> list[dict[str, Any]]:
+    """Parse a Korean Air Cargo monthly Korea-origin international FSC notice."""
+    page = clean(soup.get_text(" ", strip=True))
+    period_match = re.search(
+        r"적용\s*기간\s*[:：]?\s*(20\d{2})[.\-/](\d{1,2})[.\-/](\d{1,2})"
+        r"\s*~\s*(20\d{2})[.\-/](\d{1,2})[.\-/](\d{1,2})",
+        page,
+        re.I,
+    )
+    if not period_match:
+        raise ParseError("대한항공 FSC 공지의 적용기간을 찾지 못했습니다.")
+    sy, sm, sd, ey, em, ed = period_match.groups()
+    start = normalize_ymd(sy, sm, sd)
+    end = normalize_ymd(ey, em, ed)
+
+    def rate(label: str) -> int:
+        match = re.search(rf"{label}\s*(?:할증료)?\s*[:：]?\s*([\d,]+)\s*원", page, re.I)
+        if not match:
+            raise ParseError(f"대한항공 {label} FSC 요율을 찾지 못했습니다.")
+        return int_num(match.group(1))
+
+    mops_match = re.search(
+        r"(?:싱가포르\s*항공유\s*현물\s*시장가|MOPS).{0,120}?US\s*\$?\s*([\d.]+)\s*/?\s*Gallon",
+        page,
+        re.I,
+    )
+    period: dict[str, Any] = {
+        "start": start,
+        "end": end,
+        "short": rate("단거리"),
+        "medium": rate("중거리"),
+        "long": rate("장거리"),
+    }
+    if mops_match:
+        period["mops"] = float(mops_match.group(1))
+    return [period]
+
+
+def find_korean_air_fsc_article(soup: BeautifulSoup) -> str:
+    candidates: list[tuple[str, str]] = []
+    for anchor in soup.find_all("a", href=True):
+        text = clean(anchor.get_text(" ", strip=True))
+        if not re.search(r"한국발\s*국제선\s*화물\s*유류할증료", text):
+            continue
+        href = urljoin(URLS["korean_air_news"], anchor.get("href", ""))
+        if "/cargo-news/" not in href:
+            continue
+        candidates.append((text, href))
+    if not candidates:
+        raise ParseError("대한항공 국제선 화물 FSC 최신 공지 링크를 찾지 못했습니다.")
+    # The news list is newest-first; use the first matching official notice.
+    return candidates[0][1]
+
+
+def parse_korean_air_service(soup: BeautifulSoup) -> tuple[str, list[dict[str, Any]]]:
+    """Fallback parser for the live surcharge page.
+
+    Important: the rate cycle is derived from the page's Last Update date, not the
+    workflow execution date.  This prevents a stale page from being assigned to a
+    newer 16th~15th cycle.
+    """
     page = clean(soup.get_text(" ", strip=True))
     match = re.search(
         r"대한민국\s+KRW\s+([\d,]+)\s+TC1,2.*?KRW\s+([\d,]+)\s+TC3.*?KRW\s+([\d,]+)\s+within\s+2\s+hours",
@@ -402,88 +549,47 @@ def parse_korean_air(soup: BeautifulSoup) -> tuple[str, list[dict[str, Any]]]:
     if not match:
         raise ParseError("대한항공 한국발 FSC 요율을 찾지 못했습니다.")
     long_rate, medium_rate, short_rate = map(int_num, match.groups())
-    update_match = re.search(r"Last Update\s*(20\d{2})[.-](\d{2})[.-](\d{2})", page, re.I)
-    checked = (
-        f"{update_match.group(1)}-{update_match.group(2)}-{update_match.group(3)}"
-        if update_match
-        else datetime.now(KST).date().isoformat()
-    )
-    start, end = cycle_for_day(datetime.now(KST).date())
-    return checked, [
-        {
-            "start": start,
-            "end": end,
-            "short": short_rate,
-            "medium": medium_rate,
-            "long": long_rate,
-        }
-    ]
+    update_match = re.search(r"Last Update\s*(20\d{2})[.\-/](\d{2})[.\-/](\d{2})", page, re.I)
+    if not update_match:
+        raise ParseError("대한항공 FSC 페이지의 Last Update 날짜를 찾지 못했습니다.")
+    checked = normalize_ymd(*update_match.groups())
+    start, end = cycle_for_day(parse_iso(checked))
+    return checked, [{
+        "start": start,
+        "end": end,
+        "short": short_rate,
+        "medium": medium_rate,
+        "long": long_rate,
+    }]
 
 
-def parse_asiana(soup: BeautifulSoup) -> tuple[str, list[dict[str, Any]]]:
-    # The official page exposes the history as a table on some responses and as
-    # values inside scripts/attributes on others. Inspect both visible text and raw HTML.
-    visible = clean(soup.get_text(" ", strip=True))
-    raw = clean(html.unescape(str(soup)))
-    blobs = [visible, raw]
-    periods: list[dict[str, Any]] = []
+def fetch_korean_air_fsc() -> tuple[str, list[dict[str, Any]], str]:
+    errors: list[str] = []
+    try:
+        listing = fetch(URLS["korean_air_news"])
+        article_url = find_korean_air_fsc_article(listing)
+        periods = parse_korean_air_article(fetch(article_url))
+        return datetime.now(KST).date().isoformat(), periods, article_url
+    except Exception as exc:  # noqa: BLE001
+        errors.append(f"cargo-news: {exc}")
 
-    labelled = re.compile(
-        r"(20\d{2}-\d{2}-\d{2})\s*~\s*(20\d{2}-\d{2}-\d{2}).{0,180}?"
-        r"MOPS.{0,40}?([\d.]+).{0,220}?"
-        r"(?:Short[- ]distance|단거리).{0,80}?([\d,]+).{0,180}?"
-        r"(?:Mid[- ]distance|Medium[- ]distance|중거리).{0,80}?([\d,]+).{0,180}?"
-        r"(?:Long[- ]distance|장거리).{0,80}?([\d,]+)",
-        re.I,
-    )
-    compact = re.compile(
-        r"(20\d{2}-\d{2}-\d{2})\s*~\s*(20\d{2}-\d{2}-\d{2})"
-        r".{0,100}?([1-9]\d?\.\d{2,5}).{0,100}?([\d,]{2,6})"
-        r".{0,80}?([\d,]{2,6}).{0,80}?([\d,]{2,6})",
-        re.I,
-    )
+    try:
+        checked, periods = parse_korean_air_service(fetch(URLS["korean_air"]))
+        return checked, periods, URLS["korean_air"]
+    except Exception as exc:  # noqa: BLE001
+        errors.append(f"surcharge-page: {exc}")
+    raise ParseError(" / ".join(errors))
 
-    found: dict[str, dict[str, Any]] = {}
-    for blob in blobs:
-        matches = list(labelled.findall(blob)) or list(compact.findall(blob))
-        for start, end, mops, short, medium, long_rate in matches:
-            rates = tuple(map(int_num, (short, medium, long_rate)))
-            # Reject dates or unrelated large figures accidentally captured from navigation text.
-            if not all(0 <= rate <= 10000 for rate in rates):
-                continue
-            found[start] = {
-                "start": start,
-                "end": end,
-                "mops": float(mops),
-                "short": rates[0],
-                "medium": rates[1],
-                "long": rates[2],
-            }
 
-    # Conventional table-row fallback is the least ambiguous representation.
-    for tr in soup.find_all("tr"):
-        text = clean(tr.get_text(" ", strip=True))
-        match = re.search(
-            r"(20\d{2}-\d{2}-\d{2})\s*~\s*(20\d{2}-\d{2}-\d{2})\s+"
-            r"([1-9]\d?\.\d{2,5})\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)",
-            text,
-        )
-        if match:
-            start, end, mops, short, medium, long_rate = match.groups()
-            found[start] = {
-                "start": start,
-                "end": end,
-                "mops": float(mops),
-                "short": int_num(short),
-                "medium": int_num(medium),
-                "long": int_num(long_rate),
-            }
-
-    periods = sorted(found.values(), key=lambda item: item["start"], reverse=True)[:6]
-    if not periods:
-        raise ParseError("아시아나 한국발 FSC 요율을 찾지 못했습니다.")
-    return datetime.now(KST).date().isoformat(), periods
-
+def validate_fsc_coverage(periods: Iterable[dict[str, Any]]) -> None:
+    today = datetime.now(KST).date()
+    normalized = list(periods)
+    if any(parse_iso(item["start"]) <= today <= parse_iso(item["end"]) for item in normalized):
+        return
+    # Early-month official notices can announce the next 16th before it becomes current.
+    if any(today < parse_iso(item["start"]) <= today + timedelta(days=20) for item in normalized):
+        return
+    raise ParseError("대한항공 FSC 데이터에 현재 또는 다음 적용기간이 없습니다.")
 
 def load_data() -> dict[str, Any]:
     return json.loads(DATA_PATH.read_text(encoding="utf-8"))
@@ -499,6 +605,7 @@ def update(data: dict[str, Any], only: str = "all") -> dict[str, Result]:
     if only in {"all", "ocean", "scfi"}:
       try:
         items, source_key = fetch_scfi()
+        assert_fresh("SCFI", items[-1]["date"], 9)
         upsert_history(data["scfi"]["history"], items)
         data["scfi"]["source_url"] = URLS[source_key]
         results["scfi"] = Result(
@@ -509,11 +616,32 @@ def update(data: dict[str, Any], only: str = "all") -> dict[str, Result]:
 
     if only in {"all", "ocean", "kcci"}:
       try:
-        timeseries = parse_kcci_timeseries(fetch(URLS["kcci_timeseries"]))
-        upsert_history(data["kcci"]["history"], timeseries)
-        routes = parse_kcci_routes(fetch(URLS["kcci_grid"]))
+        errors: list[str] = []
+        grid_history: list[dict[str, Any]] = []
+        routes: list[dict[str, Any]] = []
+        grid_source = ""
+        for source_key in ("kcci_grid", "kcci_grid_eng"):
+          try:
+            grid_history, routes = parse_kcci_grid(fetch(URLS[source_key]))
+            grid_source = source_key
+            break
+          except Exception as exc:  # noqa: BLE001
+            errors.append(f"{source_key}: {exc}")
+        if not grid_history:
+          raise ParseError(" / ".join(errors))
+        assert_fresh("KCCI", grid_history[-1]["date"], 10)
+        # Timeseries is useful for history but can lag the newest Monday release.
+        try:
+          timeseries = parse_kcci_timeseries(fetch(URLS["kcci_timeseries"]))
+          upsert_history(data["kcci"]["history"], timeseries)
+        except Exception as exc:  # noqa: BLE001
+          errors.append(f"timeseries(optional): {exc}")
+        upsert_history(data["kcci"]["history"], grid_history)
         data["kcci"]["routes"] = routes
-        results["kcci"] = Result(True, f"{timeseries[-1]['date']} {timeseries[-1]['value']:,}")
+        data["kcci"]["source_url"] = URLS[grid_source]
+        latest = grid_history[-1]
+        suffix = f"; {' / '.join(errors)}" if errors else ""
+        results["kcci"] = Result(True, f"{latest['date']} {latest['value']:,} ({grid_source}){suffix}")
       except Exception as exc:  # noqa: BLE001
         results["kcci"] = Result(False, str(exc))
 
@@ -533,6 +661,7 @@ def update(data: dict[str, Any], only: str = "all") -> dict[str, Result]:
         except Exception as exc:  # noqa: BLE001
           errors.append(f"{source_key}: {exc}")
       if items:
+        assert_fresh("BDI", items[-1]["date"], 5)
         upsert_history(bdi["history"], items)
         bdi["history"] = sanitize_bdi_history(bdi["history"])
         bdi["last_data_source"] = URLS[used_source]
@@ -542,23 +671,24 @@ def update(data: dict[str, Any], only: str = "all") -> dict[str, Result]:
         results["bdi"] = Result(False, " / ".join(errors))
 
     if only in {"all", "fsc"}:
+      # Asiana was intentionally removed from the public page.  Keeping it out of
+      # the updater also prevents an unrelated source change from failing FSC updates.
+      data.get("fsc", {}).get("providers", {}).pop("asiana", None)
+      data.setdefault("meta", {}).setdefault("source_status", {}).pop("asiana", None)
       try:
-        checked, periods = parse_korean_air(fetch(URLS["korean_air"]))
+        checked, periods, article_url = fetch_korean_air_fsc()
         provider = data["fsc"]["providers"]["korean_air"]
         provider["last_checked"] = checked
+        provider["source_article_url"] = article_url
         upsert_periods(provider["periods"], periods)
-        results["korean_air"] = Result(True, f"{checked} FSC 반영")
+        validate_fsc_coverage(provider["periods"])
+        latest = sorted(periods, key=lambda item: item["start"])[-1]
+        results["korean_air"] = Result(
+            True,
+            f"{latest['start']}~{latest['end']} {latest['short']:,}/{latest['medium']:,}/{latest['long']:,}원/kg",
+        )
       except Exception as exc:  # noqa: BLE001
         results["korean_air"] = Result(False, str(exc))
-
-      try:
-        checked, periods = parse_asiana(fetch(URLS["asiana"]))
-        provider = data["fsc"]["providers"]["asiana"]
-        provider["last_checked"] = checked
-        upsert_periods(provider["periods"], periods)
-        results["asiana"] = Result(True, f"{checked} {len(periods)}개 기간 반영")
-      except Exception as exc:  # noqa: BLE001
-        results["asiana"] = Result(False, str(exc))
 
     data.setdefault("meta", {})["timezone"] = "Asia/Seoul"
     status = data["meta"].setdefault("source_status", {})

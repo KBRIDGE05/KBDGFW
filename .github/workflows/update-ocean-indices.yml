@@ -3,24 +3,28 @@ name: Update SCFI and KCCI
 on:
   workflow_dispatch:
   schedule:
-    # KCCI: Monday 15:30 KST = 06:30 UTC.
+    # KCCI primary / retry: Monday 15:30 / 18:30 KST.
     - cron: "30 6 * * 1"
-    # SCFI: Friday 17:30 KST = 08:30 UTC (16:30 Beijing, after 15:00 release).
+    - cron: "30 9 * * 1"
+    # SCFI primary / retry: Friday 17:30 / 19:30 KST.
     - cron: "30 8 * * 5"
+    - cron: "30 10 * * 5"
 
 permissions:
   contents: write
 
 concurrency:
-  group: update-ocean-indices
+  group: freight-data-writer
   cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -36,9 +40,9 @@ jobs:
           set -euo pipefail
           if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
             python scripts/update_freight_data.py --only ocean
-          elif [[ "$EVENT_SCHEDULE" == "30 8 * * 5" ]]; then
+          elif [[ "$EVENT_SCHEDULE" == "30 8 * * 5" || "$EVENT_SCHEDULE" == "30 10 * * 5" ]]; then
             python scripts/update_freight_data.py --only scfi
-          elif [[ "$EVENT_SCHEDULE" == "30 6 * * 1" ]]; then
+          elif [[ "$EVENT_SCHEDULE" == "30 6 * * 1" || "$EVENT_SCHEDULE" == "30 9 * * 1" ]]; then
             python scripts/update_freight_data.py --only kcci
           else
             echo "Unknown schedule: $EVENT_SCHEDULE" >&2
@@ -50,11 +54,12 @@ jobs:
         run: |
           set -euo pipefail
           if git diff --quiet -- data/freight-data.json; then
-            echo "No new ocean-index values or source-status changes."
+            echo "No new ocean-index value or source-status change."
             exit 0
           fi
           git config user.name "kbridge-data-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/freight-data.json
           git commit -m "data: update official ocean indices"
-          git push
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
