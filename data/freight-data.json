@@ -13,7 +13,7 @@
       },
       "korean_air": {
         "ok": true,
-        "message": "2026-07-16~2026-08-15 930/980/1,050원/kg (official Korean Air Cargo notice)"
+        "message": "2026-07-16~2026-08-15 930/980/1,050원/kg"
       },
       "bdi": {
         "ok": true,
@@ -300,10 +300,10 @@
           {
             "start": "2026-07-16",
             "end": "2026-08-15",
-            "mops": 2.9746,
             "short": 930,
             "medium": 980,
             "long": 1050,
+            "mops": 2.9746,
             "status": "current"
           }
         ],
