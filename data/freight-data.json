@@ -17,7 +17,7 @@
       },
       "bdi": {
         "ok": true,
-        "message": "2026-07-31 2,732 (StockQ / Trading Economics cross-check)"
+        "message": "2026-07-31 2,732 (bdi_fallback)"
       }
     }
   },
