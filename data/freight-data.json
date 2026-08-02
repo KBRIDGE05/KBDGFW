@@ -5,11 +5,11 @@
     "source_status": {
       "scfi": {
         "ok": true,
-        "message": "2026-07-31 3,205.97 (official SSEI)"
+        "message": "2026-07-31 3,205.97 (scfi)"
       },
       "kcci": {
         "ok": true,
-        "message": "2026-07-27 4,123 (official KOBC grid)"
+        "message": "2026-07-27 4,123 (kcci_grid)"
       },
       "korean_air": {
         "ok": true,
