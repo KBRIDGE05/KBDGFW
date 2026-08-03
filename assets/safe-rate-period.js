@@ -64,7 +64,7 @@
       text("#safeHeroPeriodBadge","2026.08.01 시행 운임표");
       text("#safeAlertBadge","최종 고시");
       text("#safeAlertTitle","2026년 8월 1일부터 시행되는 안전운임을 선택했습니다.");
-      text("#safeAlertDescription","국토교통부고시 제2026-402호와 첨부 기점별 운임표를 반영했습니다. 2026년 8월 1일부터 시행되며, 첨부 운임표에서 전 항목이 #N/A인 광양항-강원 고성군 현내면 구간은 조회에서 제외했습니다.");
+      text("#safeAlertDescription","국토교통부고시 제2026-402호와 첨부 기점별 운임표를 반영했습니다. 2026년 8월 1일부터 시행되며, 광양항-강원 고성군 현내면 구간은 별도산출로 표시합니다.");
       text("#safePeriodNote","* 국토교통부고시 제2026-402호 · 2026.08.01 시행");
       text("#safeGuideCurrent","현재 조회값은 국토교통부고시 제2026-402호 최종 고시 기준입니다.");
       var transferAfter=document.getElementById("transfer-rates");
