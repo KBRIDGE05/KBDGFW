@@ -36,7 +36,7 @@ body,html{max-width:100%;overflow-x:clip}canvas,img,svg,video{max-width:100%}img
 .safe-update-alert__badge{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 12px;border-radius:999px;background:#1762c4;color:#fff;font-size:12px;font-weight:850;letter-spacing:-.01em}
 .safe-update-alert__copy strong{display:block;color:#102d52;font-size:15px;line-height:1.45}
 .safe-update-alert__copy p{margin:5px 0 0;color:#48627f;font-size:12.5px;line-height:1.7}
-.safe-transfer-section{padding-top:20px;background:#fff}
+.safe-transfer-section{padding-top:20px;padding-bottom:72px;background:#fff}
 .safe-transfer-head{align-items:flex-end}
 .safe-transfer-card{overflow:hidden;border:1px solid #d9e4f1;border-radius:22px;background:#fff;box-shadow:0 18px 44px rgba(18,43,78,.08)}
 .safe-transfer-status{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;border-bottom:1px solid #dfe8f3;background:linear-gradient(90deg,#f3f7ff,#f7fbfc)}
@@ -51,5 +51,5 @@ body,html{max-width:100%;overflow-x:clip}canvas,img,svg,video{max-width:100%}img
 .safe-transfer-table tbody tr:hover{background:#f7faff}
 .safe-transfer-note{display:flex;gap:12px;padding:16px 22px;background:#f8fafc;color:#58708a;font-size:12px;line-height:1.65}
 .safe-transfer-note strong{flex:0 0 auto;color:#214b79}
-@media(max-width:680px){.safe-update-alert{margin:14px 14px 0;padding:16px;flex-direction:column;gap:10px}.safe-update-alert__copy strong{font-size:14px}.safe-update-alert__copy p{font-size:12px}.safe-transfer-status{align-items:flex-start;flex-direction:column;padding:16px}.safe-transfer-note{flex-direction:column;padding:15px 16px}.safe-transfer-table th,.safe-transfer-table td{padding:14px 15px}}
+@media(max-width:680px){.safe-update-alert{margin:14px 14px 0;padding:16px;flex-direction:column;gap:10px}.safe-update-alert__copy strong{font-size:14px}.safe-update-alert__copy p{font-size:12px}.safe-transfer-section{padding-bottom:48px}.safe-transfer-status{align-items:flex-start;flex-direction:column;padding:16px}.safe-transfer-note{flex-direction:column;padding:15px 16px}.safe-transfer-table th,.safe-transfer-table td{padding:14px 15px}}
 }
