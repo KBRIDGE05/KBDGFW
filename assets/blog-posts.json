@@ -1,5 +1,33 @@
 [
   {
+    "slug": "index",
+    "category": "glossary",
+    "categoryLabel": "물류 용어집",
+    "title": "해상 및 항공 운임지수 완전정리 SCFI·KCCI·BDI·KDCI·BAI·FAX 보는 법",
+    "summary": "해상·항공 운임지수의 뜻과 SCFI, CCFI, KCCI, BDI, KDCI, BDTI/BCTI, BAI, FAX의 차이, 실제 확인 사이트와 2026년 최신 기준을 쉽게 정리했습니다.",
+    "date": "2026-08-06",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_freight_index_1000.webp",
+    "keywords": [
+      "해상운임지수",
+      "항공운임지수",
+      "SCFI",
+      "CCFI",
+      "KCCI",
+      "BDI",
+      "KDCI",
+      "BAI",
+      "TAC Index",
+      "FAX",
+      "Freightos Air Index",
+      "컨테이너 운임지수",
+      "벌크 운임지수"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/glossary/index.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-08-06"
+  },
+  {
     "slug": "pi",
     "category": "info",
     "categoryLabel": "물류 정보",
