@@ -1,0 +1,42 @@
+name: Sync FCL ocean freight period
+
+on:
+  push:
+    paths:
+      - "data/ocean-freight.xlsx"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ocean-freight-period-writer
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Read Excel save month and update FCL period metadata
+        run: python scripts/sync_ocean_freight_period.py
+      - name: Commit period metadata only when changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- data/ocean-freight-meta.json; then
+            echo "FCL period metadata is already current."
+            exit 0
+          fi
+          git config user.name "kbridge-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/ocean-freight-meta.json
+          git commit -m "data: sync FCL ocean freight period"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
