@@ -316,7 +316,7 @@ const staticPostCard = (post, index) => {
   return `<!-- KBRIDGE_STATIC_POST ${htmlEscape(post.relativePath)} -->
 <article class="post-card" data-category="${htmlEscape(post.category)}" data-search="${htmlEscape([label, post.title, post.summary, ...(post.keywords || [])].join(' '))}">
   <a class="post-thumb" href="${htmlEscape(post.url)}">
-    <img src="${htmlEscape(post.thumbnail)}" alt="${htmlEscape(post.title)}" loading="${index < 2 ? 'eager' : 'lazy'}" decoding="async"${index === 0 ? ' fetchpriority="high"' : ''}>
+    <img src="${htmlEscape(post.thumbnail)}" alt="${htmlEscape(post.title)}" width="1000" height="1000" loading="${index < 2 ? 'eager' : 'lazy'}" decoding="async"${index === 0 ? ' fetchpriority="high"' : ''}>
   </a>
   <div class="post-body">
     <div class="post-meta">${meta}</div>

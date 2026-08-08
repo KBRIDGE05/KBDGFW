@@ -2482,3 +2482,13 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
     }
   }
 }
+
+
+@layer design {
+  /* KBRIDGE footer heading visibility fix - 2026-08-08 */
+  html body.kb-unified-site :is(.footer, .kb-footer) :is(h3, h4),
+  html body.kb-unified-site .footer-grid :is(h3, h4) {
+    color: #ffffff !important;
+    opacity: 1;
+  }
+}
