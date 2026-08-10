@@ -1,7 +1,7 @@
 (()=>{
   "use strict";
-  let PERIOD_LABEL=window.KBridgeFreightPeriod?.getLabel?.()||"2026년 7월";
-  let PERIOD_CODE=window.KBridgeFreightPeriod?.getPeriod?.()||"2026-07";
+  let PERIOD_LABEL=window.KBridgeFreightPeriod?.getLabel?.()||"2026년 8월";
+  let PERIOD_CODE=window.KBridgeFreightPeriod?.getPeriod?.()||"2026-08";
   const state={data:null,regionMap:new Map(),entryMap:new Map(),loading:null,fallbackOrigin:false,currentEntries:[]};
   const $=selector=>document.querySelector(selector);
   const esc=value=>String(value??"").replace(/[&<>'"]/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
@@ -95,7 +95,7 @@
     if(state.data)return state.data;if(state.loading)return state.loading;
     const{status,result}=elements(); if(status)status.textContent=`${PERIOD_LABEL} LCL 운임 데이터를 불러오는 중입니다.`;
     if(result)result.innerHTML='<div class="lcl-rate-empty is-loading"><strong>운임 데이터 확인 중</strong><span>잠시 후 도착 국가와 포트를 선택할 수 있습니다.</span></div>';
-    state.loading=fetch("data/lcl-freight.json?v=20260711-country-ko",{cache:"default"}).then(r=>{if(!r.ok)throw new Error(`운임 데이터 응답 오류 (${r.status})`);return r.json()}).then(data=>{state.data=data;state.regionMap=new Map(data.regions.map(r=>[r.id,r]));data.regions.forEach(r=>r.entries.forEach(e=>state.entryMap.set(e.id,e)));const{region}=elements();if(region){region.innerHTML=data.regions.map(item=>`<option value="${esc(item.id)}">${esc(item.label)}</option>`).join("");populateCountries()}return data}).catch(error=>{console.error("[KBRIDGE] LCL freight data:",error);if(status)status.textContent="LCL 운임 데이터를 불러오지 못했습니다.";if(result)result.innerHTML='<div class="lcl-rate-empty is-error"><strong>운임 조회를 불러오지 못했습니다.</strong><span>정식 견적문의로 접수해 주세요.</span></div>';throw error});
+    state.loading=fetch("data/lcl-freight.json?v="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`운임 데이터 응답 오류 (${r.status})`);return r.json()}).then(data=>{PERIOD_LABEL=data?.meta?.periodLabel||PERIOD_LABEL;PERIOD_CODE=data?.meta?.period||PERIOD_CODE;window.KBridgeFreightPeriod?.apply?.(data.meta||{});state.data=data;state.regionMap=new Map(data.regions.map(r=>[r.id,r]));data.regions.forEach(r=>r.entries.forEach(e=>state.entryMap.set(e.id,e)));const{region}=elements();if(region){region.innerHTML=data.regions.map(item=>`<option value="${esc(item.id)}">${esc(item.label)}</option>`).join("");populateCountries()}return data}).catch(error=>{console.error("[KBRIDGE] LCL freight data:",error);if(status)status.textContent="LCL 운임 데이터를 불러오지 못했습니다.";if(result)result.innerHTML='<div class="lcl-rate-empty is-error"><strong>운임 조회를 불러오지 못했습니다.</strong><span>정식 견적문의로 접수해 주세요.</span></div>';throw error});
     return state.loading;
   }
   function bind(){

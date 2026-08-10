@@ -1,0 +1,42 @@
+name: Sync LCL freight from Excel
+
+on:
+  push:
+    paths:
+      - "data/LCL FREIGHT.xlsx"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lcl-freight-writer
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Convert LCL Excel to site JSON and sync period
+        run: python scripts/sync_lcl_freight.py
+      - name: Commit generated LCL JSON only when changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- data/lcl-freight.json; then
+            echo "LCL freight JSON is already current."
+            exit 0
+          fi
+          git config user.name "kbridge-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/lcl-freight.json
+          git commit -m "data: sync LCL freight from Excel"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
