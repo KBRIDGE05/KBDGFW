@@ -258,7 +258,7 @@
       "korean_air": {
         "name": "대한항공 Cargo",
         "source_url": "https://cargo.koreanair.com/ko/services/Surcharge-Information",
-        "last_checked": "2026-08-17",
+        "last_checked": "2026-08-18",
         "periods": [
           {
             "start": "2026-01-16",
