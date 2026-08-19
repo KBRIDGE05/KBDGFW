@@ -1,5 +1,34 @@
 [
   {
+    "slug": "hscode",
+    "category": "glossary",
+    "categoryLabel": "물류 용어집",
+    "title": "HS CODE(품목분류코드)란? 조회 방법부터 HSK 10자리·FTA 활용까지",
+    "summary": "HS CODE의 뜻과 6자리 국제공통 구조, 한국 HSK 10자리, 관세법령정보포털 CLIP 조회 방법, 관세율·FTA 활용, 품목분류 사전심사와 2026년 HS 2022 최신 실무 포인트를 쉽게 정리했습니다.",
+    "date": "2026-08-19",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_hscode_1000.webp",
+    "keywords": [
+      "HS CODE",
+      "HS코드",
+      "품목분류코드",
+      "HSK",
+      "HSK 10자리",
+      "HS 2022",
+      "HS 2028",
+      "관세율",
+      "FTA",
+      "원산지증명서",
+      "품목분류",
+      "관세법령정보포털",
+      "CLIP",
+      "품목분류 사전심사"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/glossary/hscode.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-08-20"
+  },
+  {
     "slug": "32news",
     "category": "news",
     "categoryLabel": "물류 뉴스",

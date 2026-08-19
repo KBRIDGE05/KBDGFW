@@ -8,8 +8,97 @@
     <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
     <generator>KBRIDGE Blog SEO Automation</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Mon, 10 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 00:00:00 GMT</lastBuildDate>
     <ttl>60</ttl>
+
+    <item>
+      <title><![CDATA[HS CODE(품목분류코드)란? 조회 방법부터 HSK 10자리·FTA 활용까지]]></title>
+      <link>https://www.kbexpress.kr/blog/posts/glossary/hscode.html</link>
+      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/glossary/hscode.html</guid>
+      <pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate>
+      <category><![CDATA[물류 용어집]]></category>
+      <description><![CDATA[<div class="body">
+<figure class="cover"><img alt="HS CODE 품목분류코드 완벽 정리 조회 방법 확인 포인트 실무 활용" decoding="async" fetchpriority="high" height="1000" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_hscode_1000.webp" width="1000"/></figure>
+<section aria-labelledby="summary-title" class="summary"><h2 id="summary-title">핵심 요약</h2><p><strong>HS CODE는 국제무역 상품을 분류하는 공통 코드</strong>입니다. 국제 공통은 6자리이며 대한민국은 이를 세분화한 <strong>HSK 10단위</strong>를 사용합니다. 2026년 현재 국제 기준은 <strong>HS 2022</strong>이고, 품목번호에 따라 관세율·FTA 원산지 기준·통관요건이 달라질 수 있으므로 제품명만 보고 번호를 정하지 말고 <strong>재질·기능·용도·구성</strong>을 함께 확인해야 합니다.</p></section>
+
+<section class="section" id="definition">
+
+<figure class="visual"><img alt="HS Code란 국제 상품분류의 공통 언어라는 핵심 개념과 6단위 국제공통, 한국 10단위 구조 안내" decoding="async" height="750" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_01_hscode.webp" width="1200"/></figure><h2>HS CODE란 무엇인가요?</h2>
+<p class="lead-answer"><strong>직접 답변:</strong> HS CODE는 세계관세기구(WCO)의 국제통일상품분류체계에 따라 무역되는 상품을 분류하는 코드입니다. 국제적으로 공통 사용하는 핵심 번호는 6자리이며, 각 국가는 자국의 관세·통계 목적에 맞게 뒤에 숫자를 추가해 더 세분화할 수 있습니다.</p>
+<p>HS는 단순한 상품번호가 아닙니다. 수입 시 적용되는 관세율, FTA 특혜관세 적용 여부, 원산지결정기준, 세관장 확인대상이나 각종 수입요건, 무역통계 분류가 모두 HS 품목분류와 연결됩니다.</p>
+<div class="note"><strong>2026년 기준</strong><br/>현재 국제무역에서 유효한 HS 명명체계는 <strong>HS 2022</strong>입니다. WCO는 다음 개정판인 HS 2028 개정안을 확정했으며 2028년 1월 1일부터 시행될 예정입니다.</div>
+</section>
+<section class="section" id="structure">
+
+<h2>HS 6자리와 대한민국 HSK 10자리는 어떻게 구성되나요?</h2>
+<p class="lead-answer"><strong>핵심:</strong> HS는 앞 2자리의 <strong>류(Chapter)</strong>, 4자리의 <strong>호(Heading)</strong>, 6자리의 <strong>소호(Subheading)</strong>로 세분화됩니다. 대한민국은 국제 공통 6자리 뒤에 4자리를 추가한 <strong>HSK 10단위</strong> 품목번호를 사용합니다.</p>
+<div class="term-grid">
+<div class="term-card"><div class="term-head"><span class="term-code">2</span><h3>류 Chapter</h3></div><p>상품군의 큰 범위를 나타냅니다. 예를 들어 기계류, 섬유류처럼 넓은 상품군을 먼저 구분합니다.</p></div>
+<div class="term-card"><div class="term-head"><span class="term-code">4</span><h3>호 Heading</h3></div><p>류 안에서 물품의 종류와 형태 등을 더 구체적으로 나누는 단계입니다.</p></div>
+<div class="term-card"><div class="term-head"><span class="term-code">6</span><h3>소호 Subheading</h3></div><p>국제 공통 기준이 되는 6자리입니다. 국가 간 HS 비교는 통상 이 6자리까지가 공통 기준입니다.</p></div>
+<div class="term-card"><div class="term-head"><span class="term-code">10</span><h3>HSK</h3></div><p>대한민국의 관세·통계통합품목분류표에서 사용하는 10단위 번호입니다.</p></div>
+</div>
+<div class="warning"><strong>주의:</strong> 같은 상품명이라도 재질, 성분, 기능, 가공상태, 세트 구성에 따라 다른 HS CODE가 적용될 수 있습니다. 검색 결과의 품명만 보고 번호를 확정하면 안 됩니다.</div>
+</section>
+<section class="section" id="why">
+<figure class="visual"><img alt="HS CODE 오분류에 따른 관세 통관 일정 리스크와 정확한 품목분류 관리 중요성" decoding="async" height="750" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_04_hscode.webp" width="1200"/></figure><h2>HS CODE가 중요한 이유</h2>
+<div class="term-grid">
+<div class="term-card"><div class="term-head"><span class="term-code">01</span><h3>관세율 결정</h3></div><p>기본세율, WTO 협정세율, 할당·조정·탄력세율과 FTA 협정관세 적용 여부가 품목번호와 연결됩니다.</p></div>
+<div class="term-card"><div class="term-head"><span class="term-code">02</span><h3>FTA 원산지 기준</h3></div><p>품목별 원산지결정기준(PSR)은 HS 코드와 기준연도에 따라 달라질 수 있어 협정별 확인이 필요합니다.</p></div>
+<div class="term-card"><div class="term-head"><span class="term-code">03</span><h3>수입요건·규제</h3></div><p>세관장 확인사항, 인증·검사·허가 대상 여부를 확인할 때 HSK 10단위가 주요 기준으로 사용됩니다.</p></div>
+<div class="term-card"><div class="term-head"><span class="term-code">04</span><h3>무역통계</h3></div><p>수출입 금액과 물량, 시장규모, 경쟁국 분석 등 통계 역시 HS 분류를 기준으로 집계됩니다.</p></div>
+</div>
+</section>
+<section class="section" id="lookup">
+
+<figure class="visual"><img alt="UNI-PASS와 품목분류 사전심사를 활용한 HS CODE 조회 방법과 확인 체크리스트" decoding="async" height="750" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_02_hscode.webp" width="1200"/></figure><h2>HS CODE 조회 방법: CLIP에서 이렇게 확인하세요</h2>
+<p class="lead-answer"><strong>가장 중요한 원칙:</strong> 먼저 제품의 객관적 정보를 정리한 뒤 관세청 <strong>관세법령정보포털 CLIP</strong>에서 속견표·관세율표·HS 해설서·품목분류 결정사례를 순서대로 확인하는 것이 좋습니다.</p>
+<div class="steps">
+<div class="step"><span>1</span><div><h3>제품 사양부터 정리</h3><p>제품명, 재질·성분, 주요 기능, 작동원리, 용도, 제조공정, 구성품과 세트 여부를 준비합니다.</p></div></div>
+<div class="step"><span>2</span><div><h3>품목명과 키워드로 범위 검색</h3><p>CLIP의 세계HS 메뉴에서 품명과 관련 키워드로 후보 류·호·소호를 찾습니다.</p></div></div>
+<div class="step"><span>3</span><div><h3>주(Notes)와 HS 해설서 확인</h3><p>류주·호주·소호주와 HS 해설서를 통해 포함·제외 조건, 물품의 본질적인 특성을 확인합니다.</p></div></div>
+<div class="step"><span>4</span><div><h3>품목분류 사례 비교</h3><p>유사한 제품의 국내 결정사례, 위원회 결정사항, 필요하면 해외 분류사례도 참고합니다.</p></div></div>
+<div class="step"><span>5</span><div><h3>HSK 10단위와 세율·요건 확인</h3><p>최종 후보의 HSK 10단위에서 관세율표와 세관장 확인사항, FTA 적용 가능성을 함께 확인합니다.</p></div></div>
+</div>
+<p class="btn-row"><a class="btn" href="https://unipass.customs.go.kr/clip/index.do" rel="noopener noreferrer" target="_blank">관세법령정보포털 CLIP 확인</a></p>
+</section>
+<section class="section" id="fta">
+<figure class="visual"><img alt="관세율 FTA 수출입 신고에서 HS CODE를 활용하는 실무 체크포인트" decoding="async" height="750" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_03_hscode.webp" width="1200"/></figure><h2>HS CODE와 관세율·FTA는 어떻게 연결되나요?</h2>
+<p>수입관세는 단순히 상품명으로 정해지지 않습니다. <strong>어떤 HSK 10단위로 분류되는지</strong>, 원산지가 어디인지, 적용 가능한 협정세율이 있는지, 협정의 원산지결정기준을 충족하는지를 순서대로 확인해야 합니다.</p>
+<div class="compare"><div><h3>일반 수입</h3><ul><li>HSK 10단위 확인</li><li>기본·WTO·탄력세율 등 비교</li><li>세관장 확인사항과 인증·검사 확인</li></ul></div><div><h3>FTA 특혜관세</h3><ul><li>협정별 품목 양허 여부 확인</li><li>협정의 HS 기준연도 확인</li><li>품목별 원산지결정기준(PSR) 충족 확인</li><li>원산지증명서의 HS 기재 기준 확인</li></ul></div></div>
+<div class="warning"><strong>FTA에서 특히 주의할 점:</strong> 협정마다 원산지결정기준에 사용하는 HS 버전이 다를 수 있습니다. 현재 사용하는 HSK와 원산지증명서·PSR의 기준 HS 연도가 항상 같은 것은 아니므로 관세청 FTA 포털의 HS 연계표와 협정문을 함께 확인해야 합니다.</div>
+</section>
+<section class="section" id="update">
+
+<h2>2026년 최신 HS CODE 체크포인트</h2>
+<div class="term-grid">
+<div class="term-card"><div class="term-head"><span class="term-code">2022</span><h3>현재 국제 기준</h3></div><p>2026년 현재 WCO가 안내하는 유효한 국제 HS 명명체계는 <strong>HS 2022</strong>입니다.</p></div>
+<div class="term-card"><div class="term-head"><span class="term-code">5/1</span><h3>한·아세안 FTA</h3></div><p>관세청 FTA 포털 안내에 따르면 <strong>2026년 5월 1일부터</strong> 한·아세안 FTA 원산지증명서의 HS 코드와 원산지결정기준이 HS 2022 기준으로 적용됩니다.</p></div>
+<div class="term-card"><div class="term-head"><span class="term-code">2028</span><h3>다음 국제 개정</h3></div><p>WCO는 HS 2028 개정사항을 공개했으며 <strong>2028년 1월 1일</strong> 시행 예정입니다. 신기술·신상품 비중이 큰 기업은 연계표 준비가 필요합니다.</p></div>
+</div>
+<div class="note"><strong>실무 포인트:</strong> 품목번호를 한 번 정했다고 계속 고정해서 쓰기보다는 법령·HS 개정, 제품 사양 변경, FTA 기준연도 변경이 있는지 정기적으로 점검하는 것이 안전합니다.</div>
+</section>
+<section class="section" id="advance">
+<h2>품목분류가 애매하면 사전심사를 활용하세요</h2>
+<p>제품이 복합기능을 가지고 있거나 여러 재질로 구성되어 있거나, 유사 품목의 분류사례가 엇갈려 자체 판단이 어렵다면 <strong>품목분류 사전심사</strong>를 활용할 수 있습니다. 관세평가분류원은 수출입 신고 전에 신청하면 법령에 따라 품목번호를 결정해 회신하는 제도를 운영하고 있습니다.</p>
+<p>신청은 원칙적으로 UNI-PASS에서 전자신고 → 신고서작성 → 품목분류 → 품목분류사전심사신청 순서로 진행합니다. 제품설명서, 카탈로그, 성분표, 도면, 견본 등 분류에 필요한 자료를 충분히 준비하는 것이 중요합니다.</p>
+<p class="btn-row"><a class="btn" href="https://www.customs.go.kr/cvnci/cm/cntnts/cntntsView.do?cntntsId=948&amp;mi=3217" rel="noopener noreferrer" target="_blank">관세평가분류원 사전심사 안내</a></p>
+</section>
+<section class="section" id="faq">
+<h2>HS CODE 자주 묻는 질문</h2>
+<div class="faq"><details open=""><summary>HS CODE는 몇 자리인가요?</summary><p>국제 공통은 6자리입니다. 대한민국은 이를 세분화한 HSK 10단위를 수출입 신고와 관세·통계 등에 사용합니다.</p></details><details><summary>수출자와 수입자가 같은 HS CODE를 써야 하나요?</summary><p>국제 공통 6자리까지는 동일한 국제 체계를 기반으로 하지만, 7자리 이후 세분류는 국가별로 다릅니다. 실제 수입신고는 수입국 세번과 규정을 확인해야 합니다.</p></details><details><summary>제품명 검색만으로 HS CODE를 결정해도 되나요?</summary><p>권장하지 않습니다. 동일하거나 비슷한 제품명이라도 재질, 기능, 용도, 구성에 따라 분류가 달라질 수 있으므로 관련 주와 해설서, 결정사례를 함께 확인해야 합니다.</p></details><details><summary>잘못된 HS CODE를 사용하면 어떤 문제가 생기나요?</summary><p>관세 추징, FTA 특혜 배제, 수입요건 누락, 통관 지연, 원산지 검증 대응 문제로 이어질 수 있습니다. 불확실하면 사전심사를 검토하는 것이 좋습니다.</p></details></div>
+</section>
+<section class="cta"><h2>HS CODE 확인부터 수출입 물류까지 함께 준비하세요</h2><p>케이브릿지는 국제운송 견적과 수출입 물류 실무를 지원합니다. HS CODE 자체 판정이 필요한 경우에는 관세사 또는 관세평가분류원의 공식 품목분류 절차를 함께 활용하는 것이 안전합니다.</p><div class="btn-row"><a class="btn primary" href="https://www.kbexpress.kr/index.html?quote=formal">KBRIDGE 정식 견적 요청</a><a class="btn" href="mailto:all@kbridges.co.kr">물류 문의하기</a></div></section>
+<aside class="sources"><h2>참고 자료</h2><ul>
+<li><a href="https://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2022-edition.aspx" rel="noopener noreferrer" target="_blank">World Customs Organization - HS Nomenclature 2022 Edition</a></li>
+<li><a href="https://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2028-edition/amendments-effective-from-1-january-2028.aspx" rel="noopener noreferrer" target="_blank">World Customs Organization - HS 2028 Amendments</a></li>
+<li><a href="https://unipass.customs.go.kr/clip/index.do" rel="noopener noreferrer" target="_blank">관세청 - 관세법령정보포털 CLIP</a></li>
+<li><a href="https://www.customs.go.kr/ftaportalkor/cm/cntnts/cntntsView.do?cntntsId=1059&amp;mi=3397" rel="noopener noreferrer" target="_blank">관세청 FTA 포털 - HS 연계표</a></li>
+<li><a href="https://www.customs.go.kr/cvnci/cm/cntnts/cntntsView.do?cntntsId=948&amp;mi=3217" rel="noopener noreferrer" target="_blank">관세평가분류원 - 품목분류 사전심사 신청방법</a></li>
+</ul></aside>
+</div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_hscode_1000.webp" type="image/webp" />
+    </item>
 
     <item>
       <title><![CDATA[2026년 32주차 물류뉴스 - KCCI 반등·항공 유류할증 인상·미국 301조·EU PPWR 임박]]></title>
