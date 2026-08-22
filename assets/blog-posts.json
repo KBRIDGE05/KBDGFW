@@ -1,5 +1,37 @@
 [
   {
+    "slug": "customs inspection",
+    "category": "info",
+    "categoryLabel": "물류 정보",
+    "title": "수입 화물검사, 어떤 검사가 있고 왜 걸리는 걸까? (모든 유형 정리)",
+    "summary": "수입 화물검사의 종류와 검사대상으로 선별되는 이유를 관세청 기준으로 정리했습니다. 전량·발췌·분석·X-ray 검사, 관리대상화물, 특송, 식약처·검역·수입요건 검사까지 한 번에 확인하세요.",
+    "date": "2026-08-22",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_customs_inspection_1000.webp?v=20260822-final",
+    "keywords": [
+      "수입 화물검사",
+      "수입검사",
+      "세관검사",
+      "수입통관검사",
+      "관리대상화물",
+      "X-ray 검사",
+      "컨테이너 검색기",
+      "개장검사",
+      "전량검사",
+      "발췌검사",
+      "분석검사",
+      "정밀검사",
+      "식약처 수입검사",
+      "검역",
+      "KC 수입요건",
+      "포워딩",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/info/customs inspection.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-08-22"
+  },
+  {
     "slug": "hscode",
     "category": "glossary",
     "categoryLabel": "물류 용어집",
