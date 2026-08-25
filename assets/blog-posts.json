@@ -1,31 +1,5 @@
 [
   {
-    "slug": "heavy",
-    "category": "service",
-    "categoryLabel": "물류 서비스",
-    "title": "굴착기·중장비 수출, Flat Rack 선적은 이렇게 진행됩니다",
-    "summary": "실제 현장 사진으로 보는 중장비 수출 물류. 굴착기 제원 확인, 특수차량 내륙운송, Flat Rack 컨테이너 적재·고박, 수출통관, 해상운송까지 케이브릿지의 실무 흐름을 정리했습니다.",
-    "date": "2026-08-26",
-    "thumbnail": "https://www.kbexpress.kr/blog/posts/service/assets/images/thumbnail_heavy_equipment_export_1000.webp",
-    "keywords": [
-      "중장비 수출",
-      "굴착기 수출",
-      "중고 굴착기 수출",
-      "건설기계 수출",
-      "Flat Rack",
-      "플랫랙 컨테이너",
-      "OOG 화물",
-      "중장비 해상운송",
-      "프로젝트 물류",
-      "부산항 중장비",
-      "케이브릿지"
-    ],
-    "url": "https://www.kbexpress.kr/blog/posts/service/heavy.html",
-    "published": true,
-    "source": "generated-html",
-    "modified": "2026-08-26"
-  },
-  {
     "slug": "alliance",
     "category": "glossary",
     "categoryLabel": "물류 용어집",

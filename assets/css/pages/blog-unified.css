@@ -215,3 +215,55 @@ html body.kb-blog-post :is(.refs,.sources,.references,.source-list,.reference-li
   html body.kb-blog-post :is(.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography,[class*="source"],[class*="reference"]) :is(h2,h3,h4){font-size:12.5px!important}
   html body.kb-blog-post :is(.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography,[class*="source"],[class*="reference"]) :is(p,li,a,span,strong,em){font-size:11px!important;line-height:1.58!important}
 }
+
+/* KBRIDGE BLOG CTA visibility hardening - 2026-08-26 REV4
+   Keeps CTA copy readable regardless of per-post legacy CSS or design-system cascade. */
+body.kb-blog-post main .cta,
+body.kb-blog-post main .kb-blog-cta{
+  color:#fff!important;
+}
+body.kb-blog-post main .cta > :is(h2,h3),
+body.kb-blog-post main .kb-blog-cta > :is(h2,h3){
+  color:#fff!important;
+  opacity:1!important;
+}
+body.kb-blog-post main .cta > p,
+body.kb-blog-post main .kb-blog-cta > p{
+  color:rgba(244,249,255,.96)!important;
+  opacity:1!important;
+}
+body.kb-blog-post main .cta > :is(h2,h3,p) strong,
+body.kb-blog-post main .kb-blog-cta > :is(h2,h3,p) strong{
+  color:#fff!important;
+}
+body.kb-blog-post main .cta :is(.action-row,.actions,.buttons) .btn:not(.sub),
+body.kb-blog-post main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn:not(.sub){
+  background:#fff!important;
+  border-color:#fff!important;
+  color:#0a2342!important;
+  opacity:1!important;
+}
+body.kb-blog-post main .cta :is(.action-row,.actions,.buttons) .btn.sub,
+body.kb-blog-post main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn.sub{
+  background:rgba(255,255,255,.14)!important;
+  border-color:rgba(255,255,255,.42)!important;
+  color:#fff!important;
+  opacity:1!important;
+}
+body.kb-blog-post main .cta > a:not(.btn),
+body.kb-blog-post main .kb-blog-cta > a:not(.btn){
+  color:#fff!important;
+  opacity:1!important;
+}
+@media (hover:hover) and (pointer:fine){
+  body.kb-blog-post main .cta :is(.action-row,.actions,.buttons) .btn:not(.sub):hover,
+  body.kb-blog-post main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn:not(.sub):hover{
+    background:#f2f7ff!important;
+    color:#071d39!important;
+  }
+  body.kb-blog-post main .cta :is(.action-row,.actions,.buttons) .btn.sub:hover,
+  body.kb-blog-post main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn.sub:hover{
+    background:rgba(255,255,255,.22)!important;
+    color:#fff!important;
+  }
+}
