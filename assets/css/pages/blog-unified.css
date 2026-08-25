@@ -216,54 +216,207 @@ html body.kb-blog-post :is(.refs,.sources,.references,.source-list,.reference-li
   html body.kb-blog-post :is(.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography,[class*="source"],[class*="reference"]) :is(p,li,a,span,strong,em){font-size:11px!important;line-height:1.58!important}
 }
 
-/* KBRIDGE BLOG CTA visibility hardening - 2026-08-26 REV4
-   Keeps CTA copy readable regardless of per-post legacy CSS or design-system cascade. */
-body.kb-blog-post main .cta,
-body.kb-blog-post main .kb-blog-cta{
+/* ======================================================================
+   KBRIDGE REV5 BLOG ENTERPRISE UNIFICATION
+   One article frame / hero / typography system across every category.
+   ====================================================================== */
+body.kb-blog-post {
+  background:
+    radial-gradient(circle at 5% 6%, rgba(43,92,219,.065), transparent 28rem),
+    radial-gradient(circle at 96% 18%, rgba(19,183,215,.05), transparent 24rem),
+    #f5f8fc;
+  color:#2b3b52;
+  font-size:15.5px;
+  line-height:1.76;
+}
+
+body.kb-blog-post main:is(.page,.page-wrap){
+  width:min(1120px,calc(100% - 48px));
+  max-width:1120px;
+  padding:28px 0 78px;
+}
+
+body.kb-blog-post article:is(.article,.article-shell){
+  overflow:hidden;
+  border:1px solid rgba(35,67,118,.12);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 22px 60px rgba(18,43,84,.10);
+}
+
+body.kb-blog-post article>:is(.hero,.article-hero){
+  position:relative;
+  isolation:isolate;
+  min-height:235px;
+  padding:46px 54px 40px;
+  overflow:hidden;
+  border:0;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  border-radius:0;
+  background:
+    radial-gradient(circle at 88% 12%,rgba(116,85,232,.30),transparent 24rem),
+    radial-gradient(circle at 15% 118%,rgba(19,183,215,.20),transparent 25rem),
+    linear-gradient(122deg,#0a2144 0%,#12325f 45%,#203b72 72%,#243d69 100%);
+  color:#fff;
+  box-shadow:none;
+}
+
+body.kb-blog-post article>:is(.hero,.article-hero)::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  right:-8%;
+  bottom:-46px;
+  width:48%;
+  height:130px;
+  pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(81,132,255,.18),rgba(19,183,215,.16));
+  filter:blur(22px);
+  transform:skewX(-18deg);
+}
+
+body.kb-blog-post article>:is(.hero,.article-hero) h1,
+body.kb-blog-post article>:is(.hero,.article-hero) .article-title{
+  max-width:850px;
   color:#fff!important;
+  font-size:clamp(28px,3.1vw,38px);
+  line-height:1.34;
+  letter-spacing:-.045em;
+  font-weight:800;
+  text-shadow:0 3px 22px rgba(0,17,45,.20);
 }
-body.kb-blog-post main .cta > :is(h2,h3),
-body.kb-blog-post main .kb-blog-cta > :is(h2,h3){
-  color:#fff!important;
-  opacity:1!important;
+
+body.kb-blog-post article>:is(.hero,.article-hero) :is(.hero-desc,.article-lead,.article-meta,.post-meta){
+  color:rgba(232,241,255,.88)!important;
 }
-body.kb-blog-post main .cta > p,
-body.kb-blog-post main .kb-blog-cta > p{
-  color:rgba(244,249,255,.96)!important;
-  opacity:1!important;
+
+body.kb-blog-post article>:is(.hero,.article-hero) :is(.pill,.category-pill,.article-category){
+  border-color:rgba(255,255,255,.17)!important;
+  background:rgba(255,255,255,.10)!important;
+  color:#dfeaff!important;
+  backdrop-filter:blur(7px);
 }
-body.kb-blog-post main .cta > :is(h2,h3,p) strong,
-body.kb-blog-post main .kb-blog-cta > :is(h2,h3,p) strong{
-  color:#fff!important;
+
+body.kb-blog-post article>:is(.hero,.article-hero) .hero-nav a{
+  border-color:rgba(255,255,255,.18)!important;
+  background:rgba(255,255,255,.08)!important;
+  color:#edf5ff!important;
 }
-body.kb-blog-post main .cta :is(.action-row,.actions,.buttons) .btn:not(.sub),
-body.kb-blog-post main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn:not(.sub){
-  background:#fff!important;
-  border-color:#fff!important;
-  color:#0a2342!important;
-  opacity:1!important;
+
+body.kb-blog-post article>:is(.hero,.article-hero) .hero-nav a:hover{
+  background:rgba(255,255,255,.16)!important;
 }
-body.kb-blog-post main .cta :is(.action-row,.actions,.buttons) .btn.sub,
-body.kb-blog-post main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn.sub{
-  background:rgba(255,255,255,.14)!important;
-  border-color:rgba(255,255,255,.42)!important;
-  color:#fff!important;
-  opacity:1!important;
+
+body.kb-blog-post :is(.article-body,.post-body){
+  max-width:820px;
+  padding:46px 30px 62px;
+  color:#33445a;
+  font-size:15.2px;
+  line-height:1.82;
 }
-body.kb-blog-post main .cta > a:not(.btn),
-body.kb-blog-post main .kb-blog-cta > a:not(.btn){
-  color:#fff!important;
-  opacity:1!important;
+
+body.kb-blog-post :is(.article-body,.post-body) :is(p,li){
+  font-size:inherit;
+  line-height:inherit;
 }
-@media (hover:hover) and (pointer:fine){
-  body.kb-blog-post main .cta :is(.action-row,.actions,.buttons) .btn:not(.sub):hover,
-  body.kb-blog-post main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn:not(.sub):hover{
-    background:#f2f7ff!important;
-    color:#071d39!important;
-  }
-  body.kb-blog-post main .cta :is(.action-row,.actions,.buttons) .btn.sub:hover,
-  body.kb-blog-post main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn.sub:hover{
-    background:rgba(255,255,255,.22)!important;
-    color:#fff!important;
-  }
+
+body.kb-blog-post :is(.article-body,.post-body) :is(h2,.section h2){
+  color:#102b55;
+  font-size:22px;
+  line-height:1.45;
+  letter-spacing:-.035em;
+}
+
+body.kb-blog-post :is(.article-body,.post-body) h3{
+  color:#1c3d6c;
+  font-size:16.5px;
+  line-height:1.5;
+}
+
+body.kb-blog-post :is(.quick-summary,.toc,.summary-card,.issue-card,.news-item,.brief,.analysis-box,.data-note,.warning,.refs){
+  border-color:rgba(38,75,132,.13);
+  box-shadow:0 10px 30px rgba(20,48,92,.055);
+}
+
+body.kb-blog-post :is(.quick-summary,.toc,.summary-card,.issue-card,.news-item,.brief){
+  position:relative;
+  overflow:hidden;
+}
+
+body.kb-blog-post :is(.quick-summary,.toc,.summary-card,.issue-card,.news-item,.brief)::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:3px;
+  height:100%;
+  background:linear-gradient(180deg,#2b5cdb,#7455e8,#13b7d7);
+  opacity:.72;
+}
+
+body.kb-blog-post :is(.refs,.reference,.references,.source-box){
+  color:#64748b;
+  font-size:12.5px!important;
+  line-height:1.68;
+}
+
+body.kb-blog-post :is(.refs,.reference,.references,.source-box) :is(p,li,a,span){
+  font-size:inherit!important;
+  line-height:inherit;
+}
+
+body.kb-blog-post :is(.market-table,.article-table,table) th{
+  background:linear-gradient(180deg,#f4f7fc,#edf3fb);
+  color:#173154;
+}
+
+body.kb-blog-post :is(.cta,.kb-blog-cta){
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 92% 0,rgba(116,85,232,.30),transparent 22rem),
+    linear-gradient(125deg,#09234a,#164174 56%,#11687a 100%);
+}
+
+body.kb-blog-post :is(.cta,.kb-blog-cta)::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+  height:2px;
+  background:linear-gradient(90deg,#4f7cff,#8a67f0,#1cc2d8,#18b987);
+}
+
+body.kb-blog-post .kb-footer,
+body.kb-blog-post .footer{
+  background:linear-gradient(118deg,#071a34 0%,#0d2445 46%,#142c51 74%,#102b45 100%);
+}
+
+body.kb-blog-post.kb-page-ready article>:is(.hero,.article-hero) > *{
+  animation:kb-blog-hero-enter .54s cubic-bezier(.2,.8,.2,1) both;
+}
+
+body.kb-blog-post.kb-page-ready article>:is(.hero,.article-hero) > :nth-child(2){animation-delay:55ms}
+body.kb-blog-post.kb-page-ready article>:is(.hero,.article-hero) > :nth-child(3){animation-delay:100ms}
+body.kb-blog-post.kb-page-ready article>:is(.hero,.article-hero) > :nth-child(4){animation-delay:145ms}
+
+@keyframes kb-blog-hero-enter{
+  from{opacity:.86;transform:translateY(7px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:820px){
+  body.kb-blog-post{font-size:15px;line-height:1.74}
+  body.kb-blog-post main:is(.page,.page-wrap){width:calc(100% - 24px);padding:14px 0 54px}
+  body.kb-blog-post article:is(.article,.article-shell){border-radius:15px}
+  body.kb-blog-post article>:is(.hero,.article-hero){min-height:0;padding:32px 22px 28px}
+  body.kb-blog-post article>:is(.hero,.article-hero) h1,
+  body.kb-blog-post article>:is(.hero,.article-hero) .article-title{font-size:clamp(25px,7.8vw,32px);line-height:1.38}
+  body.kb-blog-post :is(.article-body,.post-body){max-width:none;padding:32px 18px 46px;font-size:14.8px;line-height:1.78}
+  body.kb-blog-post :is(.article-body,.post-body) :is(h2,.section h2){font-size:20.5px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  body.kb-blog-post.kb-page-ready article>:is(.hero,.article-hero) > *{animation:none!important}
 }
