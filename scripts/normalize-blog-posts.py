@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Normalize KBRIDGE blog article SEO and header without altering article content."""
+"""Normalize KBRIDGE blog article SEO without altering authored article content or header."""
 from __future__ import annotations
 
 import html as html_lib
@@ -20,8 +20,6 @@ CATEGORY_LABELS = {
     "insight": "물류 인사이트",
     "glossary": "물류 용어집",
 }
-
-HEADER_HTML = '''<header class="kb-header"><div class="kb-header-inner"><a class="kb-logo" href="https://www.kbexpress.kr/index.html" aria-label="케이브릿지 홈"><span class="kb-logo-mark">K</span><span>KBRIDGE</span></a><nav class="kb-nav" aria-label="주요 메뉴"><a href="https://www.kbexpress.kr/index.html#quote">즉시견적</a><a href="https://www.kbexpress.kr/quote-comparison.html">견적서 비교</a><a href="https://www.kbexpress.kr/warehouse-inquiry.html">창고 문의</a><a href="https://www.kbexpress.kr/domestic.html">국내운송</a><a href="https://www.kbexpress.kr/freight-index.html">운임지수</a><a href="https://www.kbexpress.kr/convenience.html">물류도구</a><a href="https://www.kbexpress.kr/blog/">블로그</a></nav><div class="kb-actions"><a class="kb-contact" href="https://www.kbexpress.kr/index.html#contact">문의</a><a class="kb-quote" href="https://www.kbexpress.kr/index.html?quote=formal">즉시 견적</a></div></div></header>'''
 
 META_TAG_RE = re.compile(r"<meta\b[^>]*>", re.I)
 LINK_TAG_RE = re.compile(r"<link\b[^>]*>", re.I)
@@ -130,7 +128,7 @@ def escape_attr(value: str) -> str:
 
 def remove_conflicting_head_tags(source: str) -> str:
     remove_keys = {
-        "robots", "naverbot", "yeti",
+        "robots", "naverbot", "yeti", "author",
         "og:type", "og:locale", "og:site_name", "og:url", "og:title",
         "og:description", "og:image", "og:image:type", "og:image:width",
         "og:image:height", "og:image:alt",
@@ -249,26 +247,6 @@ def generated_article_json(page_url: str, title: str, description: str, image_ur
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False, separators=(",", ":"))}</script>'
 
 
-def replace_site_header(source: str) -> str:
-    body_match = re.search(r"<body\b[^>]*>", source, re.I)
-    main_match = re.search(r"<main\b", source, re.I)
-    if not body_match or not main_match or main_match.start() <= body_match.end():
-        return source
-    prefix = source[:main_match.start()]
-    suffix = source[main_match.start():]
-    header_re = re.compile(
-        r'<header\b[^>]*class=["\'][^"\']*(?:kb-header|header)[^"\']*["\'][^>]*>[\s\S]*?</header>',
-        re.I,
-    )
-    matches = list(header_re.finditer(prefix))
-    if matches:
-        match = matches[-1]
-        prefix = f"{prefix[:match.start()]}{HEADER_HTML}{prefix[match.end():]}"
-    else:
-        prefix = f"{prefix[:body_match.end()]}\n{HEADER_HTML}\n{prefix[body_match.end():]}"
-    return prefix + suffix
-
-
 def normalize_file(file_path: Path) -> bool:
     relative = file_path.relative_to(ROOT).as_posix()
     parts = relative.split("/")
@@ -354,7 +332,6 @@ def normalize_file(file_path: Path) -> bool:
     auto_block = "\n  " + "\n  ".join(auto_lines) + "\n"
 
     source = re.sub(r"</head>", f"{auto_block}</head>", source, count=1, flags=re.I)
-    source = replace_site_header(source)
 
     # Clean accidental HTML tags inside the keywords content attribute without changing other metadata.
     def clean_keywords(match: re.Match[str]) -> str:

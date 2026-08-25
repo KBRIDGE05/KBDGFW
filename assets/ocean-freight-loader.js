@@ -31,7 +31,7 @@ const applyPeriod=(period,source="published-xlsx")=>{
 };
 const loadPublishedPeriodMeta=async()=>{
   try{
-    const response=await fetch(`data/ocean-freight-meta.json?v=${Date.now()}`,{cache:"no-store"});
+    const response=await fetch("data/ocean-freight-meta.json",{cache:"no-cache"});
     if(!response.ok)return;
     const meta=await response.json();
     if(meta?.period)applyPeriod(meta.period,"published-meta");
@@ -86,7 +86,7 @@ const applyResult=(result,source)=>{
 const loadPublishedFile=async()=>{
   try{
     await ensureXlsx();
-    const response=await fetch(`data/ocean-freight.xlsx?v=${Date.now()}`,{cache:"no-store"});
+    const response=await fetch("data/ocean-freight.xlsx",{cache:"no-cache"});
     if(!response.ok)throw new Error(`운임 파일 응답 오류 (${response.status})`);
     const result=workbookToData(await response.arrayBuffer(),response.headers.get("last-modified"));
     applyResult(result,"published-xlsx");

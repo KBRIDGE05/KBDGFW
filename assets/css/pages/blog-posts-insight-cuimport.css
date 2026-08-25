@@ -1,4 +1,4 @@
-@layer page, design;
+@layer design, page;
 @layer page {
 
 :root{--navy:#071f55;--navy2:#102f67;--blue:#155eef;--teal:#0b9aa2;--ink:#273241;--muted:#667085;--line:#dce5ef;--soft:#f4f7fb;--white:#fff;--shadow:0 10px 26px rgba(7,31,85,.08)}

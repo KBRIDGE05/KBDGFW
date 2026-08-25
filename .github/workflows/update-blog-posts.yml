@@ -62,7 +62,7 @@ jobs:
           echo "Changed blog posts:"
           cat /tmp/changed-blog-posts.txt || true
 
-      - name: Normalize article SEO and header
+      - name: Normalize article SEO (preserve authored header)
         run: python scripts/normalize-blog-posts.py
 
       - name: Include normalized articles in notification list

@@ -52,7 +52,7 @@
 
   async function loadData(){
     try{
-      const res = await fetch(`${DATA_URL}?v=${Date.now()}`,{cache:'no-store'});
+      const res = await fetch(DATA_URL,{cache:'no-cache'});
       if(!res.ok) throw new Error(`HTTP ${res.status}`);
       state.data = normalizeFreightData(await res.json());
     }catch(err){
