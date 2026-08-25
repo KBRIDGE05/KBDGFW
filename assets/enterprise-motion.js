@@ -14,11 +14,11 @@
     },
     {
       selector: [
-        ".tool-card", ".service-card", ".guide-card", ".feature-card", ".route-card", ".post-card",
+        ".tool-card", ".service-card", ".guide-card", ".route-card", ".post-card",
         ".summary-card", ".term-card", ".news-item", ".type-item", ".photo-card",
         ".source-card", ".fsc-card", ".rate-card", ".vehicle-card", ".process-item",
-        ".trust-card", ".promo-card", ".native-card", ".nt-card", ".form-block", ".hero-card", ".faq-item",
-        ".result-panel", ".related-tools-card", ".article-cover", ".quick-summary", ".toc", ".tool-nav a"
+        ".trust-card", ".promo-card", ".native-card", ".nt-card", ".form-block",
+        ".result-panel", ".related-tools-card", ".article-cover", ".quick-summary", ".toc"
       ].join(","),
       variant: "sequence"
     },

@@ -8,6 +8,7 @@ on:
     paths:
       - 'blog/posts/**/*.html'
       - 'scripts/normalize-blog-posts.py'
+      - 'scripts/enforce-blog-shell.py'
       - 'scripts/build-blog-posts.mjs'
       - '.github/workflows/update-blog-posts.yml'
 
@@ -62,8 +63,14 @@ jobs:
           echo "Changed blog posts:"
           cat /tmp/changed-blog-posts.txt || true
 
-      - name: Normalize article SEO (preserve authored header)
+      - name: Pre-normalize canonical blog shell
+        run: python scripts/enforce-blog-shell.py
+
+      - name: Normalize article SEO
         run: python scripts/normalize-blog-posts.py
+
+      - name: Finalize canonical blog shell
+        run: python scripts/enforce-blog-shell.py
 
       - name: Include normalized articles in notification list
         shell: bash
