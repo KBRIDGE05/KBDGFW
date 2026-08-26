@@ -26,6 +26,33 @@
     "modified": "2026-08-26"
   },
   {
+    "slug": "arctic",
+    "category": "insight",
+    "categoryLabel": "물류 인사이트",
+    "title": "북극항로란? 2026 정기선 전환과 한국 시범운항",
+    "summary": "2026년 북극항로 최신 동향을 정리합니다. 수에즈항로 대비 거리·운송기간, 중국 계절형 정기선, 한국 PanStar Acro 시범운항, 보험·Polar Code·제재·환경 리스크와 화주 대응까지 확인하세요.",
+    "date": "2026-08-26",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_arctic_route_2026_1000.webp",
+    "keywords": [
+      "북극항로",
+      "북동항로",
+      "Northern Sea Route",
+      "NSR",
+      "수에즈항로",
+      "팬스타 아크로",
+      "PanStar Acro",
+      "북극해운",
+      "북극 정기선",
+      "부산 유럽 해상운송",
+      "국제물류",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/insight/arctic.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-08-26"
+  },
+  {
     "slug": "alliance",
     "category": "glossary",
     "categoryLabel": "물류 용어집",
