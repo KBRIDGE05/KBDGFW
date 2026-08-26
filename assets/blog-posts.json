@@ -53,6 +53,33 @@
     "modified": "2026-08-26"
   },
   {
+    "slug": "index",
+    "category": "insight",
+    "categoryLabel": "물류 인사이트",
+    "title": "북극항로란? 수에즈보다 최대 32% 짧은 항로, 2026 계절형 정기 서비스와 한국 시범운항",
+    "summary": "2026년 북극항로 최신 동향을 기준으로 수에즈항로 대비 거리·운송기간, 중국 계절형 정기 서비스, 한국 PanStar Acro 시범운항, 보험·극지규정·화주 대응 포인트를 정리했습니다.",
+    "date": "2026-08-26",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_arctic_route_2026_1000.webp",
+    "keywords": [
+      "북극항로",
+      "북동항로",
+      "Northern Sea Route",
+      "NSR",
+      "수에즈항로",
+      "PanStar Acro",
+      "팬스타 아크로",
+      "북극 정기선",
+      "부산 유럽 해상운송",
+      "국제물류",
+      "물류 인사이트",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/insight/index.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-08-26"
+  },
+  {
     "slug": "alliance",
     "category": "glossary",
     "categoryLabel": "물류 용어집",
@@ -77,30 +104,6 @@
     "published": true,
     "source": "generated-html",
     "modified": "2026-08-26"
-  },
-  {
-    "slug": "index",
-    "category": "insight",
-    "categoryLabel": "물류 인사이트",
-    "title": "파나마 운하, 흘수 제한 넘어 통항 슬롯까지 축소 2026년 9월 선적 일정은 어떻게 달라질까요?",
-    "summary": "2026년 8월 20일 파나마운하청 공식 공지를 기준으로 흘수 제한 일정, 9월 통항 슬롯 축소, 예약 규칙 변경과 한국 화주의 대응 포인트를 쉽게 정리했습니다.",
-    "date": "2026-08-23",
-    "thumbnail": "https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_panama_canal_2026_1000.webp",
-    "keywords": [
-      "파나마운하",
-      "파나마운하 흘수 제한",
-      "통항 슬롯",
-      "네오파나막스",
-      "선적 지연",
-      "미주 동안 해상운송",
-      "국제물류",
-      "물류 인사이트",
-      "케이브릿지"
-    ],
-    "url": "https://www.kbexpress.kr/blog/posts/insight/index.html",
-    "published": true,
-    "source": "generated-html",
-    "modified": "2026-08-23"
   },
   {
     "slug": "customs inspection",
