@@ -1,0 +1,14 @@
+KBRIDGE 북극항로 중복 게시글 수정
+
+기준 파일: KBDGFW-main-FINAL-20260826-REV6-COMMON-BLOG-FIX.zip
+
+수정 내용
+- 정상 게시글 유지: /blog/posts/insight/arctic.html
+- 중복 게시글 삭제: /blog/posts/insight/index.html
+- assets/blog-posts.json 중복 항목 삭제
+- blog/index.html 중복 카드 삭제
+- rss.xml 중복 item 삭제
+- sitemap.xml 중복 URL 삭제
+- 중복 게시글 전용 미사용 이미지 삭제
+
+북극항로 글은 arctic.html 1개만 노출되도록 정리했습니다.
