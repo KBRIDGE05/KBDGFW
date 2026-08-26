@@ -9,6 +9,8 @@ on:
       - 'blog/posts/**/*.html'
       - 'scripts/normalize-blog-posts.py'
       - 'scripts/enforce-blog-shell.py'
+      - 'assets/css/pages/blog-unified.css'
+      - 'assets/css/kbridge-design-system.css'
       - 'scripts/build-blog-posts.mjs'
       - '.github/workflows/update-blog-posts.yml'
 
