@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-31T23:14:06+09:00",
+    "generated_at": "2026-09-01T16:44:24+09:00",
     "timezone": "Asia/Seoul",
     "source_status": {
       "scfi": {
@@ -13,7 +13,7 @@
       },
       "korean_air": {
         "ok": true,
-        "message": "2026-08-16~2026-09-15 1,170/1,230/1,320원/kg"
+        "message": "2026-09-16~2026-10-15 1,290/1,360/1,450원/kg"
       },
       "bdi": {
         "ok": true,
@@ -278,7 +278,7 @@
       "korean_air": {
         "name": "대한항공 Cargo",
         "source_url": "https://cargo.koreanair.com/ko/services/Surcharge-Information",
-        "last_checked": "2026-08-31",
+        "last_checked": "2026-09-01",
         "periods": [
           {
             "start": "2026-01-16",
@@ -350,10 +350,19 @@
             "long": 1320,
             "mops": 3.3147,
             "status": "current"
+          },
+          {
+            "start": "2026-09-16",
+            "end": "2026-10-15",
+            "short": 1290,
+            "medium": 1360,
+            "long": 1450,
+            "mops": 3.5341,
+            "status": "upcoming"
           }
         ],
         "news_url": "https://cargo.koreanair.com/ko/cargo-news",
-        "source_article_url": "https://cargo.koreanair.com/ko/cargo-news/2026nyeon-8wol-hangugbal-gugjeseon-hwamul-yulyuhaljeunglyo-gongji"
+        "source_article_url": "https://cargo.koreanair.com/ko/cargo-news/2026nyeon-9wol-hangugbal-gugjeseon-hwamul-yulyuhaljeunglyo-gongji"
       }
     }
   },
