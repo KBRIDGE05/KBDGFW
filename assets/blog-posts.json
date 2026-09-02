@@ -1,5 +1,36 @@
 [
   {
+    "slug": "35news",
+    "category": "news",
+    "categoryLabel": "물류 뉴스",
+    "title": "2026년 35주차 물류뉴스 - KCCI 상승·호르무즈·파나마 운하·미국 232조·일본 철강 규제",
+    "summary": "2026년 35주차(8월 24~30일) 한국 수출입 기업이 확인해야 할 KCCI·SCFI 해상운임, 호르무즈·파나마 운하·북극항로, 항공화물, 한국 수출, 미국 Section 232·전력망·드론 관세, 일본 철강 반덤핑 이슈를 정리했습니다.",
+    "date": "2026-08-31",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/news/assets/images/thumbnail_week35_logistics_news_1000.webp",
+    "keywords": [
+      "35주차 물류뉴스",
+      "2026 물류뉴스",
+      "KCCI",
+      "SCFI",
+      "해상운임",
+      "항공화물",
+      "호르무즈",
+      "파나마 운하",
+      "북극항로",
+      "Section 232",
+      "미국 관세",
+      "일본 반덤핑",
+      "공급망",
+      "관세",
+      "통상",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/news/35news.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-08-31"
+  },
+  {
     "slug": "heavy",
     "category": "service",
     "categoryLabel": "물류 서비스",
