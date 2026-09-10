@@ -1,5 +1,33 @@
 [
   {
+    "slug": "36news",
+    "category": "news",
+    "categoryLabel": "물류 뉴스",
+    "title": "2026년 36주차 물류뉴스 - KCCI·SCFI 상승·파나마 운하 제한·호르무즈·미국 UAS 관세",
+    "summary": "2026년 36주차(8월 31일~9월 6일) 한국 수출입 기업이 확인해야 할 KCCI·SCFI, 파나마운하 통항 제한, 호르무즈 리스크, 중국 항만 혼잡, 항공화물, 8월 수출, 한일 공급망 협력, EU CBAM, 미국 UAS Section 232와 추석 특별통관지원 이슈를 정리했습니다.",
+    "date": "2026-09-06",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/news/assets/images/thumbnail_week36_logistics_news_1000.webp",
+    "keywords": [
+      "36주차 물류뉴스",
+      "KCCI",
+      "SCFI",
+      "파나마운하",
+      "호르무즈",
+      "중국 항만 혼잡",
+      "항공화물",
+      "한국 수출",
+      "UAS Section 232",
+      "CBAM",
+      "한일 공급망",
+      "추석 특별통관",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/news/36news.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-09-06"
+  },
+  {
     "slug": "35news",
     "category": "news",
     "categoryLabel": "물류 뉴스",
