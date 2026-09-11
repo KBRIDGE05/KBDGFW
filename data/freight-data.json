@@ -1,11 +1,11 @@
 {
   "meta": {
-    "generated_at": "2026-09-07T21:50:51+09:00",
+    "generated_at": "2026-09-11T21:53:43+09:00",
     "timezone": "Asia/Seoul",
     "source_status": {
       "scfi": {
         "ok": true,
-        "message": "2026-09-04 3,590.05 (scfi)"
+        "message": "2026-09-11 3,662.18 (scfi)"
       },
       "kcci": {
         "ok": true,
@@ -71,6 +71,10 @@
       {
         "date": "2026-09-04",
         "value": 3590.05
+      },
+      {
+        "date": "2026-09-11",
+        "value": 3662.18
       }
     ]
   },
