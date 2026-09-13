@@ -1,5 +1,34 @@
 [
   {
+    "slug": "37news",
+    "category": "news",
+    "categoryLabel": "물류 뉴스",
+    "title": "2026년 37주차 물류뉴스 - KCCI·SCFI 상승·호르무즈 운임 급등·수에즈 복귀·아시아 항만 혼잡",
+    "summary": "2026년 37주차(9월 7~13일) 한국 수출입 기업이 확인해야 할 KCCI·SCFI, 호르무즈 통항과 탱커 운임, 수에즈 운항 재개, 동아시아 항만 혼잡, 항공화물, 9월 수출, 무역금융, 한-EU 공급망, 한-베트남 수출통제, 그린경제 통상 이슈를 정리했습니다.",
+    "date": "2026-09-13",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/news/assets/images/thumbnail_week37_logistics_news_1000.webp",
+    "keywords": [
+      "37주차 물류뉴스",
+      "KCCI",
+      "SCFI",
+      "호르무즈",
+      "수에즈운하",
+      "아시아 항만 혼잡",
+      "항공화물",
+      "인천공항 화물",
+      "9월 수출",
+      "무역금융",
+      "한EU 공급망",
+      "한베트남 수출통제",
+      "그린경제협정",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/news/37news.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-09-13"
+  },
+  {
     "slug": "36news",
     "category": "news",
     "categoryLabel": "물류 뉴스",
