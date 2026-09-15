@@ -1,5 +1,33 @@
 [
   {
+    "slug": "vf",
+    "category": "info",
+    "categoryLabel": "물류 정보",
+    "title": "실시간 선박 위치 확인하는 방법 - AIS·IMO·MMSI·ETA 보는 법",
+    "summary": "MarineTraffic·VesselFinder 등 AIS 기반 서비스에서 선명·IMO·MMSI로 선박을 검색하고 현재 위치, 속도, 침로, 목적지, ETA, 마지막 AIS 업데이트와 데이터 소스를 확인하는 방법을 2026년 최신 기준으로 정리했습니다.",
+    "date": "2026-09-16",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_vessel_location_1000.webp",
+    "keywords": [
+      "실시간 선박 위치",
+      "선박 위치 조회",
+      "AIS",
+      "MarineTraffic",
+      "VesselFinder",
+      "IMO 번호",
+      "MMSI",
+      "선박 ETA",
+      "컨테이너선 위치",
+      "선박 추적",
+      "해상운송",
+      "포워딩",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/info/vf.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-09-16"
+  },
+  {
     "slug": "lgsys",
     "category": "glossary",
     "categoryLabel": "물류 용어집",
