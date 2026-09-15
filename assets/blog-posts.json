@@ -1,5 +1,32 @@
 [
   {
+    "slug": "lgsys",
+    "category": "glossary",
+    "categoryLabel": "물류 용어집",
+    "title": "물류정보시스템이란? OMS·WMS·TMS·SCM 차이와 연결 구조",
+    "summary": "물류정보시스템의 개념과 OMS·WMS·TMS·SCM의 역할, 주문-창고-운송-공급망 연결 구조, API·클라우드·실시간 가시성·AI 활용까지 2026년 기준으로 쉽게 정리했습니다.",
+    "date": "2026-09-15",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_lgsys_1000.webp",
+    "keywords": [
+      "물류정보시스템",
+      "OMS",
+      "WMS",
+      "TMS",
+      "SCM",
+      "주문관리시스템",
+      "창고관리시스템",
+      "운송관리시스템",
+      "공급망관리",
+      "스마트물류",
+      "물류 디지털전환",
+      "실시간 가시성"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/glossary/lgsys.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-09-15"
+  },
+  {
     "slug": "37news",
     "category": "news",
     "categoryLabel": "물류 뉴스",

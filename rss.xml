@@ -8,8 +8,40 @@
     <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
     <generator>KBRIDGE Blog SEO Automation</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sun, 13 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 00:00:00 GMT</lastBuildDate>
     <ttl>60</ttl>
+
+    <item>
+      <title><![CDATA[물류정보시스템이란? OMS·WMS·TMS·SCM 차이와 연결 구조]]></title>
+      <link>https://www.kbexpress.kr/blog/posts/glossary/lgsys.html</link>
+      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/glossary/lgsys.html</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+      <category><![CDATA[물류 용어집]]></category>
+      <description><![CDATA[<div class="article-body">
+<figure class="body-visual cover-thumbnail"><img alt="KBRIDGE 물류정보시스템 OMS WMS TMS SCM 썸네일" decoding="async" fetchpriority="high" height="1000" loading="eager" sizes="(max-width: 820px) calc(100vw - 32px), 790px" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_lgsys_1000.webp" width="1000"/></figure>
+<section class="quick-summary"><div class="summary-card"><p class="summary-title">핵심 요약</p><p><strong>물류정보시스템(Logistics Information System)</strong>은 주문·재고·창고·운송·공급망에서 발생하는 데이터를 연결해 물류를 계획하고 실행하며 추적하는 정보 체계입니다. <strong>OMS는 주문, WMS는 창고, TMS는 운송</strong>을 주로 담당하고, <strong>SCM은 수요·공급·조달·생산·재고·물류를 아우르는 더 넓은 공급망 관리 개념</strong>입니다. 2026년의 핵심은 시스템을 따로 쓰는 것이 아니라 <strong>클라우드·API·실시간 이벤트 데이터와 AI를 이용해 서로 연결</strong>하는 데 있습니다.</p></div></section>
+<figure class="body-visual"><img alt="물류정보시스템 OMS WMS TMS SCM 주문 창고 운송 공급망 연결 구조" decoding="async" fetchpriority="low" height="800" loading="lazy" sizes="(max-width: 820px) calc(100vw - 32px), 790px" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_01_lgsys_overview.webp" width="1200"/></figure>
+
+
+<section class="section" id="definition"><h2>1. 물류정보시스템이란?</h2><p class="lead"><strong>물류정보시스템은 물류 과정에서 발생하는 정보를 수집·공유·분석해 주문 처리부터 창고 운영, 운송, 공급망 의사결정까지 연결하는 정보 체계</strong>입니다. 과거에는 단순 전산화에 초점이 있었다면 현재는 여러 시스템과 파트너의 데이터를 실시간으로 연결해 예외 상황에 빠르게 대응하는 방향으로 발전하고 있습니다.</p><p>실무에서는 하나의 프로그램이 모든 것을 처리하기보다, 주문 단계의 OMS, 물류센터의 WMS, 운송 단계의 TMS가 API나 ERP·전자상거래 플랫폼과 연결되고, 더 상위에서 SCM이 수요·공급·재고·조달·물류 의사결정을 조정하는 구조가 일반적입니다.</p></section>
+
+<section class="section" id="systems"><h2>2. OMS·WMS·TMS·SCM, 무엇이 다른가요?</h2><div class="table-wrap"><table><thead><tr><th>구분</th><th>주요 관리 대상</th><th>대표 기능</th><th>핵심 질문</th></tr></thead><tbody><tr><td><strong>OMS</strong></td><td>주문·고객·재고 약속</td><td>주문 수집·검증·할당·취소·반품·이행상태</td><td>어떤 주문을 어디에서 어떻게 이행할까?</td></tr><tr><td><strong>WMS</strong></td><td>물류센터·재고</td><td>입고·적치·재고·보충·피킹·패킹·출고</td><td>창고 안에서 상품을 어떻게 정확하고 빠르게 움직일까?</td></tr><tr><td><strong>TMS</strong></td><td>운송·차량·운송사</td><td>운송계획·배차·경로·추적·예외관리·운임정산</td><td>화물을 언제 어떤 경로와 운송수단으로 보낼까?</td></tr><tr><td><strong>SCM</strong></td><td>전체 공급망</td><td>수요·공급·조달·생산·재고·물류 계획과 조정</td><td>공급망 전체를 어떻게 균형 있게 최적화할까?</td></tr></tbody></table></div><p><strong>중요:</strong> SCM은 OMS·WMS·TMS와 정확히 같은 수준의 단일 실행 시스템이라기보다, 이들 실행 시스템과 계획·조달·생산 데이터를 묶어 공급망 전체를 관리하는 더 넓은 개념입니다.</p></section>
+
+<figure class="body-visual"><img alt="OMS 주문관리시스템 주문 수집 검증 할당 출고 지시 인포그래피" decoding="async" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_02_lgsys_oms.webp" width="1200"/></figure>
+<section class="section" id="oms"><h2>3. OMS(Order Management System) - 주문관리시스템</h2><p><strong>OMS는 고객 주문을 접수한 뒤 검증하고, 재고와 출고 거점을 확인해 주문 이행을 조정하는 시스템</strong>입니다. 온라인몰·오프라인 매장·B2B·마켓플레이스처럼 주문 채널이 여러 개인 기업일수록 OMS의 역할이 커집니다.</p><ul class="checklist"><li><strong>주문 통합:</strong> 여러 판매채널의 주문을 한곳에서 수집하고 중복·오류를 줄입니다.</li><li><strong>재고 약속:</strong> 판매 가능한 재고와 예정 입고를 바탕으로 주문 가능 여부와 출고 거점을 판단합니다.</li><li><strong>이행 오케스트레이션:</strong> 창고·매장·3PL 등 가장 적합한 출고 지점으로 주문을 전달합니다.</li><li><strong>취소·반품·상태관리:</strong> 주문 변경과 반품, 배송상태를 고객·판매채널과 연결합니다.</li></ul><p>Oracle은 현재 OMS를 주문·재고·판매·고객 정보를 통합하고 주문-결제 과정의 이행과 예외를 중앙에서 관리하는 주문 허브로 설명합니다. 즉, 2026년의 OMS는 단순 주문접수 프로그램보다 <strong>옴니채널 주문 오케스트레이션</strong>에 가깝습니다.</p></section>
+
+<figure class="body-visual"><img alt="WMS 창고관리시스템 입고 재고 피킹 패킹 출고 인포그래피" decoding="async" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_03_lgsys_wms.webp" width="1200"/></figure>
+<section class="section" id="wms"><h2>4. WMS(Warehouse Management System) - 창고관리시스템</h2><p><strong>WMS는 물류센터 안에서 재고가 어디에 있고, 어떤 작업으로 이동하며, 어떤 순서로 출고되는지를 관리하는 실행 시스템</strong>입니다. 입고부터 적치, 재고, 보충, 피킹, 패킹, 검수, 출고까지 창고의 물리적 흐름을 데이터와 연결합니다.</p><ul class="checklist"><li><strong>입고·적치:</strong> ASN·입고검수·로케이션 배정으로 재고의 시작점을 정확히 기록합니다.</li><li><strong>실시간 재고:</strong> 품목·LOT·유통기한·위치 단위로 가용재고를 추적합니다.</li><li><strong>피킹·패킹:</strong> 웨이브·배치·존피킹 등 작업전략으로 이동거리와 오류를 줄입니다.</li><li><strong>자동화 연동:</strong> 바코드·RF·AMR·컨베이어·로봇 등 자동화 설비와 데이터를 주고받습니다.</li></ul><p>현대 WMS는 창고 내부의 단독 시스템을 넘어 ERP·OMS·TMS·자동화 설비와 연결되고, 클라우드 환경에서 실시간 재고 가시성과 주문이행을 지원하는 방향으로 발전하고 있습니다.</p></section>
+
+<figure class="body-visual"><img alt="TMS 운송관리시스템 운송계획 배차 실시간 추적 운임정산 인포그래피" decoding="async" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_04_lgsys_tms.webp" width="1200"/></figure>
+<section class="section" id="tms"><h2>5. TMS(Transportation Management System) - 운송관리시스템</h2><p><strong>TMS는 화물을 어느 운송수단·운송사·경로로 보낼지 계획하고, 배차부터 운송 중 추적과 비용 정산까지 관리하는 시스템</strong>입니다. 단순 배송조회보다 범위가 넓습니다.</p><ul class="checklist"><li><strong>운송계획:</strong> 출발지·도착지·납기·화물조건을 바탕으로 운송모드와 경로를 설계합니다.</li><li><strong>배차·운송사 관리:</strong> 차량·운송사·스페이스를 배정하고 예약·입찰을 관리합니다.</li><li><strong>실시간 가시성:</strong> GPS·운송사 이벤트·EDI/API 데이터를 이용해 위치와 ETA를 추적합니다.</li><li><strong>예외·정산:</strong> 지연·노선변경 등 예외를 처리하고 운임·할증료·정산 데이터를 관리합니다.</li></ul><p>SAP는 현재 TMS를 글로벌·국내 운송의 계획, 운송사 협업, 실행, 가시성을 통합하는 도구로 설명하고 있으며, 최신 물류 플랫폼은 예측 ETA와 재라우팅·재스케줄링 같은 기능을 실시간 이벤트와 AI에 연결하는 방향으로 확장되고 있습니다.</p></section>
+
+<figure class="body-visual"><img alt="SCM 공급망관리 수요예측 공급망가시성 리스크관리 데이터분석 인포그래피" decoding="async" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_05_lgsys_scm.webp" width="1200"/></figure>
+<section class="section" id="scm"><h2>6. SCM(Supply Chain Management) - 공급망관리</h2><p><strong>SCM은 원재료 조달부터 생산, 재고, 물류, 고객 인도까지 공급망 전체의 흐름을 계획하고 조정하는 관리 개념과 플랫폼</strong>입니다. OMS·WMS·TMS가 실행 데이터를 만든다면 SCM은 이 데이터를 수요예측·공급계획·재고전략·리스크관리와 연결해 전체 최적화를 목표로 합니다.</p><p>그래서 SCM을 단순히 '물류 프로그램 하나'로 이해하면 범위를 지나치게 좁게 보는 셈입니다. 실제 기업 환경에서는 ERP, 계획시스템, OMS, WMS, TMS, 공급업체·운송사 네트워크가 연결되어 하나의 공급망 운영 체계를 만듭니다.</p></section>
+
+<section class="section" id="trends"><h2>7. 2026년 물류정보시스템의 최신 흐름</h2><div class="news-list"><article class="news-item"><div class="news-num">01</div><div><h3>클라우드·API 중심의 연결</h3><p>OMS·WMS·TMS를 각각 따로 운영하기보다 ERP, 이커머스, 3PL, 운송사와 API로 연결해 주문·재고·운송 이벤트를 공유하는 구조가 중요해졌습니다. 데이터가 끊기면 자동화보다 수작업 확인이 늘어나므로 <strong>연동 구조 자체가 경쟁력</strong>입니다.</p></div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_lgsys_1000.webp" type="image/webp" />
+    </item>
 
     <item>
       <title><![CDATA[2026년 37주차 물류뉴스 - KCCI·SCFI 상승·호르무즈 운임 급등·수에즈 복귀·아시아 항만 혼잡]]></title>
