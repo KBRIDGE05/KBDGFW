@@ -1,5 +1,31 @@
 [
   {
+    "slug": "duty",
+    "category": "insight",
+    "categoryLabel": "물류 인사이트",
+    "title": "과세가격(관세평가), 왜 우리 관세가 예상보다 높나? 운임·로열티가 관세에 가산되는 이유",
+    "summary": "송장 금액보다 관세가 크게 나오는 이유를 최신 기준으로 정리합니다. 과세가격의 구조, 운임·보험료와 로열티 가산 기준, 인코텀즈별 점검사항과 신고 전 체크리스트를 확인하세요.",
+    "date": "2026-09-19",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/insight/assets/images/thumbnail_duty_customs_value_1000.webp",
+    "keywords": [
+      "과세가격",
+      "관세평가",
+      "운임가산",
+      "보험료",
+      "로열티가산",
+      "권리사용료",
+      "인코텀즈",
+      "수입통관",
+      "관세추징",
+      "수입실무",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/insight/duty.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-09-19"
+  },
+  {
     "slug": "vf",
     "category": "info",
     "categoryLabel": "물류 정보",
