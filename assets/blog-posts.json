@@ -1,5 +1,36 @@
 [
   {
+    "slug": "38news",
+    "category": "news",
+    "categoryLabel": "물류 뉴스",
+    "title": "2026년 38주차 물류뉴스 - KCCI·SCFI·호르무즈·수에즈·미국 품목관세·EU CBAM",
+    "summary": "2026년 38주차(9월 14~20일) 한국 수출입 기업이 확인해야 할 KCCI·SCFI·CCFI, 호르무즈 통항과 탱커 운임, 수에즈 서비스 확대, 8월 실제 수출입 운송비용, 미국 폴리실리콘·UAS 품목관세, EU IAA·CSDDD·CBAM, 중국산 철강 반덤핑, 중앙아시아 핵심광물 공급망 이슈를 정리했습니다.",
+    "date": "2026-09-20",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/news/assets/images/thumbnail_week38_logistics_news_1000.webp",
+    "keywords": [
+      "38주차 물류뉴스",
+      "KCCI",
+      "SCFI",
+      "CCFI",
+      "호르무즈",
+      "수에즈운하",
+      "수출입 운송비",
+      "항공운송비",
+      "미국 품목관세",
+      "폴리실리콘 관세",
+      "UAS 관세",
+      "CBAM",
+      "CSDDD",
+      "H형강 반덤핑",
+      "핵심광물",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/news/38news.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-09-20"
+  },
+  {
     "slug": "duty",
     "category": "insight",
     "categoryLabel": "물류 인사이트",
