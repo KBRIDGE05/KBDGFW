@@ -1,5 +1,36 @@
 [
   {
+    "slug": "pipe",
+    "category": "service",
+    "categoryLabel": "물류 서비스",
+    "title": "강관·형강·후판 수출입 물류, 적입과 쇼링은 이렇게 진행됩니다",
+    "summary": "실제 작업 사진으로 보는 강관 파이프·형강·후판 수출입 물류. 장척·중량 철강재의 하차, 지게차 핸들링, 컨테이너 적입, 쇼링·고박, 통관과 해상운송까지 KBRIDGE 실무 흐름을 정리했습니다.",
+    "date": "2026-09-21",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/service/assets/images/thumbnail_pipe_1000.webp",
+    "keywords": [
+      "강관 수출",
+      "강관 수입",
+      "파이프 수출",
+      "형강 수출",
+      "형강 수입",
+      "후판 수출",
+      "후판 수입",
+      "철강재 물류",
+      "장척화물",
+      "중량화물",
+      "컨테이너 적입",
+      "쇼링",
+      "고박",
+      "해상운송",
+      "프로젝트 물류",
+      "케이브릿지"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/service/pipe.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-09-21"
+  },
+  {
     "slug": "38news",
     "category": "news",
     "categoryLabel": "물류 뉴스",
