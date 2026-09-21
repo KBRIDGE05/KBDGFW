@@ -31,6 +31,30 @@
     "modified": "2026-09-21"
   },
   {
+    "slug": "container",
+    "category": "glossary",
+    "categoryLabel": "물류 용어집",
+    "title": "컨테이너(Container)란? 20FT·40FT·FCL·LCL·CBM까지 쉽게 정리",
+    "summary": "컨테이너의 뜻과 규격, 종류, 적재 단위와 실무 포인트를 한눈에 정리했습니다.",
+    "date": "2026-09-21",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_container_1000.webp",
+    "keywords": [
+      "컨테이너",
+      "20FT",
+      "40FT",
+      "FCL",
+      "LCL",
+      "CBM",
+      "KGS",
+      "Reefer",
+      "Flat Rack"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/glossary/container.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-09-21"
+  },
+  {
     "slug": "38news",
     "category": "news",
     "categoryLabel": "물류 뉴스",
