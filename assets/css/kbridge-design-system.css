@@ -2513,3 +2513,14 @@ body.kb-unified-site .search-strip .search-box input[type="search"]::-webkit-sea
   html body .mobile-nav .mobile-nav-group.is-open>.mobile-nav-label{color:#aecdff}
   html body .mobile-nav .mobile-nav-group>a{min-height:44px;padding:10px 4px 10px 14px;font-size:13.5px}
 }
+
+/* KBRIDGE MOBILE NAV V38 — accordion reliability */
+@media(max-width:1180px){
+  html body .mobile-nav.open{display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+  html body .mobile-nav .mobile-nav-group{overflow:visible!important}
+  html body .mobile-nav .mobile-nav-group>.mobile-nav-label{display:flex!important;position:relative!important;z-index:1!important}
+  html body .mobile-nav .mobile-nav-group>a{display:none!important}
+  html body .mobile-nav .mobile-nav-group.is-open>a{display:flex!important}
+  html body .mobile-nav .mobile-nav-group.is-open{max-height:none!important;overflow:visible!important}
+  html body.lock{overflow:hidden!important}
+}

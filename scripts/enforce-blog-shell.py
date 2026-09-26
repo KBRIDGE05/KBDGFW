@@ -13,9 +13,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 POSTS_ROOT = ROOT / "blog" / "posts"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
-DESIGN_VERSION = "20260926-design-v35"
-BLOG_STYLE_VERSION = "20260926-blog-ui-v37"
-SCRIPT_VERSION = "20260926-site-chrome-v35"
+DESIGN_VERSION = "20260926-design-v38"
+BLOG_STYLE_VERSION = "20260926-blog-ui-v38"
+SCRIPT_VERSION = "20260926-site-chrome-v38"
 
 STYLE_LINK_RE = re.compile(
     r'<link\b[^>]*href=["\'][^"\']*(?:kbridge-design-system\.css|(?:pages/)?blog-unified\.css)[^"\']*["\'][^>]*>\s*',
