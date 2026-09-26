@@ -9,6 +9,7 @@ on:
       - 'blog/posts/**/*.html'
       - 'scripts/normalize-blog-posts.py'
       - 'scripts/enforce-blog-shell.py'
+      - 'scripts/enhance-blog-content.py'
       - 'assets/css/pages/blog-unified.css'
       - 'assets/css/kbridge-design-system.css'
       - 'scripts/build-blog-posts.mjs'
@@ -73,6 +74,9 @@ jobs:
 
       - name: Finalize canonical blog shell
         run: python scripts/enforce-blog-shell.py
+
+      - name: Enhance editorial article structure
+        run: python scripts/enhance-blog-content.py
 
       - name: Include normalized articles in notification list
         shell: bash

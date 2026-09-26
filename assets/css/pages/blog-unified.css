@@ -906,3 +906,246 @@ body.kb-blog-post .kb-footer .footer-copy{max-width:960px!important;margin:0 aut
   body.kb-blog-post .cta .btn,body.kb-blog-post .cta a.btn,body.kb-blog-post main .cta > a:not(.btn){width:100%!important}
   body.kb-blog-post .kb-footer .footer-grid{grid-template-columns:1fr!important}
 }
+
+/* ========================================================================== 
+   KBRIDGE BLOG UI V34 — EDITORIAL VISUAL SYSTEM
+   2026-09-26
+   - Text-first reading rhythm with wider visual modules
+   - Infographics become part of each chapter, not floating image inserts
+   - Automatic section leads and end-of-article takeaways
+   - Unified visual captions for graphics and field photos
+   ========================================================================== */
+body.kb-blog-post{
+  --kb-blog-wide:1120px;
+  --kb-blog-side:196px;
+  --kb-blog-gap:32px;
+  --kb-blog-prose:720px;
+  --kb-blog-visual:#f5f8fc;
+  --kb-blog-visual-line:#dbe4ef;
+}
+
+/* Give the reading column more room while keeping navigation compact. */
+body.kb-blog-post article > :is(.body,.content,.article-body){
+  grid-template-columns:minmax(0,1fr) var(--kb-blog-side)!important;
+  column-gap:var(--kb-blog-gap)!important;
+}
+body.kb-blog-post :is(.toc,.pipe-toc){width:var(--kb-blog-side)!important}
+
+/* Prose is deliberately narrower than tables and visuals. */
+body.kb-blog-post :is(.body,.content,.article-body) > section.section > :is(p,ul,ol,dl):not(.summary-points):not(.checklist),
+body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section > :is(p,ul,ol,dl):not(.summary-points):not(.checklist){
+  max-width:var(--kb-blog-prose)!important;
+}
+body.kb-blog-post :is(.body,.content,.article-body) > section.section > h2,
+body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section > h2{
+  max-width:760px!important;
+}
+
+/* Each chapter opens with a compact answer block, then returns to normal prose. */
+body.kb-blog-post .kb-section-lead,
+body.kb-blog-post section.section > h2 + p,
+body.kb-blog-post section.pipe-section > h2 + p{
+  max-width:var(--kb-blog-prose)!important;
+  margin:16px 0 23px!important;
+  padding:13px 16px!important;
+  border-left:3px solid var(--kb-blog-accent)!important;
+  background:#f4f8f7!important;
+  color:#344d49!important;
+  font-size:15px!important;
+  font-weight:620!important;
+  line-height:1.72!important;
+}
+
+/* Infographics are editorial modules tied to the chapter around them. */
+body.kb-blog-post figure.kb-figure{max-width:100%!important;box-sizing:border-box!important}
+body.kb-blog-post figure.kb-figure--graphic{
+  margin:22px 0 34px!important;
+  padding:0!important;
+  border:1px solid var(--kb-blog-visual-line)!important;
+  border-top:3px solid var(--kb-blog-brand)!important;
+  background:var(--kb-blog-visual)!important;
+  box-shadow:none!important;
+}
+body.kb-blog-post section.section + figure.kb-figure--graphic,
+body.kb-blog-post section.pipe-section + figure.kb-figure--graphic{
+  margin-top:-20px!important;
+}
+body.kb-blog-post .kb-figure-head{
+  display:flex!important;
+  align-items:baseline!important;
+  gap:11px!important;
+  padding:12px 15px 11px!important;
+  border-bottom:1px solid var(--kb-blog-visual-line)!important;
+  background:#f8fafc!important;
+}
+body.kb-blog-post .kb-figure-kicker{
+  flex:0 0 auto!important;
+  color:var(--kb-blog-brand2)!important;
+  font-size:10.5px!important;
+  font-weight:900!important;
+  line-height:1.4!important;
+  letter-spacing:.075em!important;
+}
+body.kb-blog-post .kb-figure-title{
+  min-width:0!important;
+  color:#26364b!important;
+  font-size:13.75px!important;
+  font-weight:800!important;
+  line-height:1.48!important;
+  letter-spacing:-.012em!important;
+}
+body.kb-blog-post figure.kb-figure--graphic > img{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  max-height:680px!important;
+  height:auto!important;
+  margin:0 auto!important;
+  padding:0!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#fff!important;
+}
+body.kb-blog-post figure.kb-figure--graphic > figcaption{
+  margin:0!important;
+  padding:10px 15px 12px!important;
+  border-top:1px solid var(--kb-blog-visual-line)!important;
+  background:#f8fafc!important;
+  color:#6b7687!important;
+  font-size:11.75px!important;
+  line-height:1.58!important;
+}
+body.kb-blog-post figure.kb-figure--graphic > figcaption strong{
+  display:inline!important;
+  margin:0 7px 0 0!important;
+  color:#526174!important;
+  font-size:11.5px!important;
+  font-weight:850!important;
+}
+
+/* Field photos stay photographic; captions anchor them to the explanation. */
+body.kb-blog-post figure.kb-figure--photo{
+  margin:20px 0 27px!important;
+  padding:0!important;
+  border:0!important;
+  background:#fff!important;
+}
+body.kb-blog-post figure.kb-figure--photo > img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  background:#f6f7f9!important;
+}
+body.kb-blog-post figure.kb-figure--photo > figcaption{
+  margin:0!important;
+  padding:8px 1px 0!important;
+  color:#717d8d!important;
+  font-size:11.75px!important;
+  line-height:1.58!important;
+}
+body.kb-blog-post figure.kb-figure--photo > figcaption strong{
+  display:inline!important;
+  margin-right:6px!important;
+  color:#4f5f73!important;
+  font-size:11.75px!important;
+}
+
+/* Tables use the visual width, while cell copy remains compact. */
+body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap){
+  margin:22px 0 31px!important;
+  border-top:2px solid #263957!important;
+  border-bottom:1px solid var(--kb-blog-line)!important;
+}
+body.kb-blog-post table th,body.kb-blog-post table td{
+  padding:10px 11px!important;
+  font-size:13px!important;
+  line-height:1.55!important;
+}
+body.kb-blog-post table th{font-weight:800!important}
+
+/* A quiet recap at the end closes the information loop before FAQ / CTA. */
+body.kb-blog-post .kb-takeaways{
+  margin:4px 0 38px!important;
+  padding:24px 0 0!important;
+  border:0!important;
+  border-top:2px solid var(--kb-blog-ink)!important;
+  background:#fff!important;
+}
+body.kb-blog-post .kb-takeaways .kb-takeaways-kicker{
+  margin:0 0 4px!important;
+  color:var(--kb-blog-brand2)!important;
+  font-size:10.5px!important;
+  font-weight:900!important;
+  line-height:1.4!important;
+  letter-spacing:.075em!important;
+}
+body.kb-blog-post .kb-takeaways h2{
+  margin:0 0 13px!important;
+  padding:0!important;
+  color:#1f2d40!important;
+  font-size:18px!important;
+  font-weight:800!important;
+  line-height:1.45!important;
+  letter-spacing:-.02em!important;
+}
+body.kb-blog-post .kb-takeaways h2::before{content:none!important;display:none!important}
+body.kb-blog-post .kb-takeaways ol{
+  counter-reset:kb-takeaway!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:0!important;
+  max-width:760px!important;
+  margin:0!important;
+  padding:0!important;
+  list-style:none!important;
+}
+body.kb-blog-post .kb-takeaways li{
+  counter-increment:kb-takeaway!important;
+  position:relative!important;
+  margin:0!important;
+  padding:10px 0 10px 34px!important;
+  border-bottom:1px solid #edf0f4!important;
+  color:#465365!important;
+  font-size:14px!important;
+  line-height:1.62!important;
+}
+body.kb-blog-post .kb-takeaways li::before{
+  content:counter(kb-takeaway,decimal-leading-zero)!important;
+  position:absolute!important;
+  left:0!important;
+  top:10px!important;
+  color:var(--kb-blog-brand2)!important;
+  font-size:10.5px!important;
+  font-weight:900!important;
+  letter-spacing:.03em!important;
+}
+
+/* Slightly tighter editorial rhythm across long pages. */
+body.kb-blog-post :is(.body,.content,.article-body) > section.section,
+body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section{
+  padding-top:34px!important;
+  padding-bottom:36px!important;
+}
+body.kb-blog-post :is(.body,.content,.article-body) h2{font-size:21px!important;margin-bottom:14px!important}
+body.kb-blog-post :is(.body,.content,.article-body) h3{font-size:16.75px!important;margin-top:25px!important}
+body.kb-blog-post :is(.body,.content,.article-body) p,
+body.kb-blog-post :is(.body,.content,.article-body) li,
+body.kb-blog-post :is(.body,.content,.article-body) dd{font-size:15px!important;line-height:1.76!important}
+
+@media(max-width:900px){
+  body.kb-blog-post{--kb-blog-prose:100%}
+  body.kb-blog-post article > :is(.body,.content,.article-body){display:block!important}
+  body.kb-blog-post figure.kb-figure--graphic > img{max-height:none!important;max-width:100%!important;width:100%!important}
+  body.kb-blog-post section.section + figure.kb-figure--graphic,
+  body.kb-blog-post section.pipe-section + figure.kb-figure--graphic{margin-top:-12px!important}
+}
+@media(max-width:560px){
+  body.kb-blog-post .kb-figure-head{display:block!important;padding:10px 12px!important}
+  body.kb-blog-post .kb-figure-kicker{display:block!important;margin-bottom:3px!important}
+  body.kb-blog-post .kb-figure-title{font-size:13px!important}
+  body.kb-blog-post figure.kb-figure--graphic > figcaption{padding:9px 12px 10px!important}
+  body.kb-blog-post .kb-takeaways{margin-bottom:32px!important;padding-top:20px!important}
+  body.kb-blog-post .kb-takeaways h2{font-size:17px!important}
+}
