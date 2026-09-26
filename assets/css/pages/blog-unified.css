@@ -492,3 +492,521 @@ body.kb-blog-post .kb-footer .footer-grid{display:grid;grid-template-columns:1.4
 body.kb-blog-post .kb-footer .footer-copy{max-width:960px;margin:0 auto!important;padding:14px 22px 24px;border-top:1px solid rgba(255,255,255,.12)}
 @media(max-width:720px){body.kb-blog-post .toc ol{grid-template-columns:1fr}body.kb-blog-post table.comparison{display:block;overflow-x:auto;white-space:normal}body.kb-blog-post .kb-footer .footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){body.kb-blog-post .action-row{display:grid;grid-template-columns:1fr}body.kb-blog-post .cta .btn,body.kb-blog-post main .cta>a:not(.btn){width:100%!important}body.kb-blog-post .kb-footer .footer-grid{grid-template-columns:1fr}}
+
+/* REV7 information-first article UX - 2026-09-26
+   Scope: blog readability only. No header/navigation/JS/functionality changes. */
+body.kb-blog-post{
+  --kb-blog-ink:#26374c;
+  --kb-blog-muted:#687a90;
+  --kb-blog-navy:#102f5c;
+  --kb-blog-blue:#2b5cdb;
+  --kb-blog-cyan:#1598a5;
+  --kb-blog-line:#dce5ef;
+  --kb-blog-soft:#f6f9fc;
+  --kb-blog-answer:#eef5ff;
+  --kb-blog-warn:#fff7ed;
+  background:#f3f6fa;
+  color:var(--kb-blog-ink);
+}
+
+/* Reading width + typography: make long logistics posts easier to scan. */
+body.kb-blog-post article>:is(.body,.content,.article-body){
+  width:min(960px,100%);
+  max-width:960px;
+  padding:50px 46px 70px;
+  color:var(--kb-blog-ink);
+  font-size:17px;
+  line-height:1.82;
+}
+body.kb-blog-post :is(.body,.content,.article-body) :is(p,li,dd){
+  color:var(--kb-blog-ink);
+  font-size:17px;
+  line-height:1.82;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+body.kb-blog-post :is(.body,.content,.article-body) p{margin-bottom:18px!important}
+body.kb-blog-post :is(.body,.content,.article-body) strong{color:#153f72;font-weight:800}
+
+/* Hero: shorter first screen, clearer hierarchy. */
+body.kb-blog-post article>:is(.hero,.article-hero){
+  min-height:270px;
+  padding:38px 52px 34px;
+  background:linear-gradient(120deg,#f8fafc 0%,#eef4f8 66%,#e5f1f2 100%);
+}
+body.kb-blog-post article>:is(.hero,.article-hero) :is(h1){
+  max-width:920px;
+  font-size:clamp(31px,2.9vw,40px);
+  line-height:1.28;
+  letter-spacing:-.045em;
+}
+body.kb-blog-post article>:is(.hero,.article-hero) :is(.hero-desc,.lead,.desc),
+body.kb-blog-post article>:is(.hero,.article-hero) .kb-hero-frame>p:not(.meta):not(.article-meta){
+  max-width:880px;
+  margin-top:14px;
+  color:#53677f;
+  font-size:16px;
+  line-height:1.72;
+}
+body.kb-blog-post article>:is(.hero,.article-hero) :is(.meta,.article-meta){
+  margin-top:12px;
+  color:#7a899c;
+  font-size:12.5px;
+}
+
+/* Visuals: keep the whole image visible and prevent oversized screenshots/infographics. */
+body.kb-blog-post :is(.cover-thumbnail,.body-visual,.visual,.figure,figure.visual,figure.body-visual){
+  margin:30px auto 38px;
+}
+body.kb-blog-post :is(.body,.content,.article-body) .body-visual:not(.cover-thumbnail),
+body.kb-blog-post :is(.body,.content,.article-body) figure.visual:not(.cover-thumbnail){
+  width:min(880px,100%);
+}
+body.kb-blog-post :is(.cover-thumbnail,.body-visual,.visual,.figure,figure.visual,figure.body-visual) img,
+body.kb-blog-post :is(.body,.content,.article-body)>img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+
+/* 10-second answer block: existing quick-summary markup becomes the strongest scan target. */
+body.kb-blog-post .quick-summary{
+  margin:4px 0 30px;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+body.kb-blog-post .quick-summary>.summary-card,
+body.kb-blog-post .summary-card:not(.quick-summary .summary-card){
+  position:relative;
+  margin:0;
+  padding:24px 26px 22px;
+  border:1px solid #cfdceb;
+  border-left:5px solid var(--kb-blog-blue);
+  background:linear-gradient(110deg,#f8fbff 0%,#f2f7fc 100%);
+  box-shadow:none;
+}
+body.kb-blog-post .summary-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:0 0 10px;
+  color:var(--kb-blog-navy);
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:-.02em;
+}
+body.kb-blog-post .summary-title::before{
+  content:"";
+  width:8px;
+  height:8px;
+  flex:0 0 8px;
+  background:var(--kb-blog-blue);
+}
+body.kb-blog-post :is(.summary-card,.quick-summary) p{
+  margin-bottom:0!important;
+  color:#31475f;
+  font-size:16.5px;
+  line-height:1.76;
+}
+body.kb-blog-post .summary-points{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:8px;
+  margin-top:16px;
+}
+body.kb-blog-post .summary-point{
+  min-width:0;
+  padding:11px 12px;
+  border:1px solid #dbe6f1;
+  background:#fff;
+  color:#36516f;
+  font-size:13.5px;
+  font-weight:750;
+  line-height:1.45;
+}
+
+/* Table of contents: compact navigation instead of another long paragraph block. */
+body.kb-blog-post .toc{
+  margin:0 0 40px;
+  padding:18px 20px 19px;
+  border:1px solid var(--kb-blog-line);
+  border-top:3px solid #9fb4ce;
+  background:#fff;
+}
+body.kb-blog-post .toc-title{
+  margin:0 0 11px;
+  color:#3a526f;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+body.kb-blog-post .toc ol{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 26px;
+  margin:0;
+  padding-left:22px;
+}
+body.kb-blog-post .toc li{
+  margin:0!important;
+  padding:5px 0;
+  color:#8291a4;
+  font-size:14px!important;
+  line-height:1.5!important;
+}
+body.kb-blog-post .toc a{
+  color:#425b77;
+  font-size:14px!important;
+  font-weight:650;
+  line-height:1.5!important;
+  text-decoration:none;
+}
+body.kb-blog-post .toc a:hover{color:var(--kb-blog-blue);text-decoration:underline;text-underline-offset:3px}
+
+/* Sections: stronger question/answer hierarchy without adding new markup. */
+body.kb-blog-post :is(.body,.content,.article-body) :is(.section,section[id]){
+  margin-top:58px;
+  padding-top:42px;
+  border-top:1px solid #e3eaf2;
+}
+body.kb-blog-post :is(.body,.content,.article-body) :is(.section,section[id]):first-of-type{
+  margin-top:0!important;
+  padding-top:0!important;
+  border-top:0!important;
+}
+body.kb-blog-post :is(.body,.content,.article-body) h2{
+  margin:0 0 20px;
+  padding-left:16px;
+  color:var(--kb-blog-navy);
+  font-size:27px;
+  font-weight:850;
+  line-height:1.38;
+  letter-spacing:-.04em;
+}
+body.kb-blog-post :is(.body,.content,.article-body) h2::before{
+  top:.12em;
+  bottom:.12em;
+  width:4px;
+  border-radius:0;
+  background:linear-gradient(180deg,var(--kb-blog-blue),var(--kb-blog-cyan));
+}
+body.kb-blog-post :is(.body,.content,.article-body) h3{
+  margin:33px 0 12px;
+  color:#193e67;
+  font-size:20px;
+  font-weight:800;
+  line-height:1.45;
+}
+body.kb-blog-post :is(.body,.content,.article-body) .section>.lead,
+body.kb-blog-post :is(.body,.content,.article-body) .section>.lead-answer,
+body.kb-blog-post :is(.body,.content,.article-body) section[id]>.lead-answer{
+  margin:0 0 20px!important;
+  padding:15px 17px;
+  border-left:4px solid #73a1dc;
+  background:var(--kb-blog-answer);
+  color:#274764;
+  font-size:16.5px;
+  font-weight:650;
+  line-height:1.72;
+}
+
+/* Practical explanation boxes. */
+body.kb-blog-post :is(.analysis-box,.note,.editor-note,.data-note){
+  margin:22px 0 26px;
+  padding:16px 18px;
+  border:1px solid #dbe5ef;
+  border-left:4px solid #7d9fc8;
+  background:#f8fafc;
+  color:#40566f;
+  font-size:15.5px;
+  line-height:1.72;
+}
+body.kb-blog-post :is(.warning,.warn){
+  margin:22px 0 26px;
+  padding:16px 18px;
+  border:1px solid #efd7b8;
+  border-left:4px solid #cf7d2b;
+  background:var(--kb-blog-warn);
+  color:#68492d;
+  font-size:15.5px;
+  line-height:1.72;
+}
+
+/* Quick-fact / term cards: short facts should look short. */
+body.kb-blog-post .briefs,
+body.kb-blog-post .fact-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:22px 0 30px;
+}
+body.kb-blog-post .briefs>.brief,
+body.kb-blog-post .fact-grid>.fact{
+  min-width:0;
+  margin:0;
+  padding:15px 16px;
+  border:1px solid #dbe5ef;
+  background:#fbfdff;
+}
+body.kb-blog-post .briefs>.brief strong,
+body.kb-blog-post .fact-grid>.fact strong{
+  display:block;
+  margin-bottom:4px;
+  color:#183f6b;
+  font-size:14px;
+  font-weight:850;
+}
+body.kb-blog-post .briefs>.brief :is(span,p),
+body.kb-blog-post .fact-grid>.fact :is(span,p){
+  margin:0!important;
+  color:#5a6d82;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* Numbered cards / process rows. */
+body.kb-blog-post .news-list{display:grid;gap:10px;margin:22px 0 30px}
+body.kb-blog-post .news-item{
+  display:grid;
+  grid-template-columns:46px minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+  margin:0;
+  padding:17px 18px;
+  border:1px solid #dce6f0;
+  background:#fff;
+}
+body.kb-blog-post .news-item .news-num{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  border-right:1px solid #dce6f0;
+  color:#2b5cdb;
+  font-size:13px;
+  font-weight:900;
+  line-height:1;
+}
+body.kb-blog-post .news-item h3{margin:0 0 5px!important;font-size:17px!important}
+body.kb-blog-post .news-item p{margin:0!important;font-size:15px!important;line-height:1.7!important}
+body.kb-blog-post :is(.flow-step,.process-item){
+  position:relative;
+  margin:0 0 10px;
+  padding:17px 18px;
+  border:1px solid #dce6f0;
+  background:#fff;
+}
+
+/* Tables: make comparison rows readable at a glance. */
+body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap){
+  margin:24px 0 32px;
+  border:1px solid #d7e1ec;
+  background:#fff;
+}
+body.kb-blog-post table{border-collapse:collapse}
+body.kb-blog-post table th,
+body.kb-blog-post table td{
+  padding:14px 15px;
+  border-right:1px solid #e7edf4;
+  border-bottom:1px solid #e4ebf2;
+  color:#344a60;
+  font-size:14.5px;
+  line-height:1.62;
+  vertical-align:top;
+}
+body.kb-blog-post table th{
+  background:#edf3f8;
+  color:#173d68;
+  font-weight:850;
+}
+body.kb-blog-post table tr:last-child td{border-bottom:0}
+body.kb-blog-post table :is(th,td):last-child{border-right:0}
+body.kb-blog-post table tbody tr:nth-child(even) td{background:#fbfcfe}
+
+/* Checklist: practical tasks should be scannable, not look like body copy. */
+body.kb-blog-post .checklist{
+  display:grid;
+  gap:8px;
+  margin:22px 0 30px;
+  padding:0;
+  list-style:none;
+}
+body.kb-blog-post .checklist li{
+  position:relative;
+  margin:0!important;
+  padding:14px 16px 14px 43px;
+  border:1px solid #dce6f0;
+  background:#fbfdff;
+  color:#344a60;
+  font-size:15.5px!important;
+  line-height:1.68!important;
+}
+body.kb-blog-post .checklist li::before{
+  content:"✓";
+  position:absolute;
+  top:13px;
+  left:16px;
+  width:18px;
+  color:#087f8c;
+  font-weight:950;
+}
+
+/* FAQ: one question per row, clear open state. */
+body.kb-blog-post .faq{
+  margin-top:12px;
+  border-top:1px solid #dbe4ee;
+}
+body.kb-blog-post .faq-item{
+  margin:0;
+  padding:0;
+  border:0;
+  border-bottom:1px solid #dbe4ee;
+  background:#fff;
+}
+body.kb-blog-post details.faq-item>summary,
+body.kb-blog-post .faq-q{
+  position:relative;
+  padding:18px 42px 18px 4px;
+  color:#173f6d;
+  font-size:15.5px;
+  font-weight:800;
+  line-height:1.55;
+}
+body.kb-blog-post details.faq-item>summary::after{
+  content:"+";
+  position:absolute;
+  top:50%;
+  right:6px;
+  transform:translateY(-50%);
+  color:#65809f;
+  font-size:20px;
+  font-weight:500;
+}
+body.kb-blog-post details.faq-item[open]>summary::after{content:"−"}
+body.kb-blog-post details.faq-item>.faq-a,
+body.kb-blog-post .faq-answer{
+  padding:0 4px 18px;
+  color:#52677e;
+  font-size:15px;
+  line-height:1.72;
+}
+
+/* CTA: preserve existing actions, improve contrast and hierarchy. */
+body.kb-blog-post main .cta,
+body.kb-blog-post main .kb-blog-cta{
+  margin-top:52px;
+  padding:32px 34px;
+  border:0;
+  border-radius:0;
+  background:linear-gradient(120deg,#102f5c 0%,#173f73 72%,#166f7c 100%);
+  color:#fff!important;
+}
+body.kb-blog-post main .cta > :is(h2,h3),
+body.kb-blog-post main .kb-blog-cta > :is(h2,h3){
+  margin:0 0 9px!important;
+  color:#fff!important;
+  font-size:23px;
+  font-weight:850;
+  line-height:1.42;
+}
+body.kb-blog-post main .cta > p,
+body.kb-blog-post main .kb-blog-cta > p{
+  max-width:760px;
+  margin:0!important;
+  color:rgba(247,250,255,.93)!important;
+  font-size:15.5px;
+  line-height:1.7;
+}
+body.kb-blog-post .action-row{gap:8px;margin-top:20px}
+body.kb-blog-post .cta .btn{
+  min-height:43px;
+  padding:0 17px;
+  border-radius:0;
+  font-size:13px;
+  font-weight:850;
+}
+
+/* Tags: de-emphasize after the conversion point. */
+body.kb-blog-post .tags{
+  gap:6px;
+  margin-top:26px;
+  padding-top:18px;
+  border-top:1px solid #e3eaf1;
+}
+body.kb-blog-post .tag{
+  min-height:29px;
+  padding:0 9px;
+  border:1px solid #dde5ee;
+  border-radius:0;
+  background:#f8fafc;
+  color:#65778c;
+  font-size:11.5px;
+  font-weight:700;
+}
+
+/* Responsive reading rules. */
+@media(max-width:900px){
+  body.kb-blog-post article>:is(.hero,.article-hero){min-height:240px;padding:32px 30px 29px}
+  body.kb-blog-post article>:is(.hero,.article-hero) :is(h1){font-size:31px}
+  body.kb-blog-post article>:is(.body,.content,.article-body){padding:42px 30px 58px}
+}
+@media(max-width:640px){
+  body.kb-blog-post article>:is(.hero,.article-hero){min-height:0;padding:27px 20px 25px}
+  body.kb-blog-post article>:is(.hero,.article-hero) :is(h1){font-size:26px;line-height:1.32}
+  body.kb-blog-post article>:is(.hero,.article-hero) :is(.hero-desc,.lead,.desc),
+  body.kb-blog-post article>:is(.hero,.article-hero) .kb-hero-frame>p:not(.meta):not(.article-meta){font-size:14.5px;line-height:1.65}
+  body.kb-blog-post article>:is(.body,.content,.article-body){padding:32px 18px 48px;font-size:16px}
+  body.kb-blog-post :is(.body,.content,.article-body) :is(p,li,dd){font-size:16px;line-height:1.78}
+  body.kb-blog-post :is(.body,.content,.article-body) :is(.section,section[id]){margin-top:46px;padding-top:34px}
+  body.kb-blog-post :is(.body,.content,.article-body) h2{font-size:23px;line-height:1.4}
+  body.kb-blog-post :is(.body,.content,.article-body) h3{font-size:18px}
+  body.kb-blog-post .quick-summary>.summary-card,
+  body.kb-blog-post .summary-card:not(.quick-summary .summary-card){padding:20px 18px 18px}
+  body.kb-blog-post :is(.summary-card,.quick-summary) p{font-size:15.5px;line-height:1.72}
+  body.kb-blog-post .summary-points{grid-template-columns:1fr;gap:6px;margin-top:14px}
+  body.kb-blog-post .toc{padding:16px 17px}
+  body.kb-blog-post .toc ol{grid-template-columns:1fr;gap:0}
+  body.kb-blog-post .briefs,
+  body.kb-blog-post .fact-grid{grid-template-columns:1fr}
+  body.kb-blog-post .news-item{grid-template-columns:38px minmax(0,1fr);gap:11px;padding:15px 14px}
+  body.kb-blog-post table th,
+  body.kb-blog-post table td{padding:12px 11px;font-size:13.5px}
+  body.kb-blog-post .checklist li{padding:13px 13px 13px 40px;font-size:15px!important}
+  body.kb-blog-post main .cta,
+  body.kb-blog-post main .kb-blog-cta{padding:27px 20px}
+  body.kb-blog-post main .cta > :is(h2,h3),
+  body.kb-blog-post main .kb-blog-cta > :is(h2,h3){font-size:21px}
+}
+
+/* REV7 compatibility details for mixed legacy markup. */
+body.kb-blog-post .faq .faq-q{margin:0!important}
+body.kb-blog-post .faq div.faq-item>.faq-a{margin:0!important;padding:0 4px 18px!important}
+body.kb-blog-post .checklist>.check{
+  position:relative;
+  min-width:0;
+  margin:0;
+  padding:14px 16px 14px 43px;
+  border:1px solid #dce6f0;
+  background:#fbfdff;
+}
+body.kb-blog-post .checklist>.check::before{
+  content:"✓";
+  position:absolute;
+  top:13px;
+  left:16px;
+  color:#087f8c;
+  font-weight:950;
+}
+body.kb-blog-post .checklist>.check strong{display:block;margin-bottom:3px;color:#173f6d;font-size:15px;font-weight:850}
+body.kb-blog-post .checklist>.check span{display:block;color:#63758a;font-size:14px;line-height:1.58}
+body.kb-blog-post main .cta :is(.action-row,.actions,.buttons,.cta-actions){display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+body.kb-blog-post main .cta .btn:not(.sub):not(.secondary),
+body.kb-blog-post main .kb-blog-cta .btn:not(.sub):not(.secondary){background:#fff!important;border:1px solid #fff!important;color:#0a2342!important}
+body.kb-blog-post main .cta .btn:is(.sub,.secondary),
+body.kb-blog-post main .kb-blog-cta .btn:is(.sub,.secondary){background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.42)!important;color:#fff!important}
+@media(max-width:640px){
+  body.kb-blog-post .checklist>.check{padding:13px 13px 13px 40px}
+  body.kb-blog-post main .cta :is(.action-row,.actions,.buttons,.cta-actions){display:grid;grid-template-columns:1fr}
+  body.kb-blog-post main .cta :is(.action-row,.actions,.buttons,.cta-actions) .btn{width:100%!important}
+}
