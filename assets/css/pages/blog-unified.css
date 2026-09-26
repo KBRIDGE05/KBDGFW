@@ -1294,243 +1294,133 @@ body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table[data-
 }
 
 /* ========================================================================== 
-   KBRIDGE BLOG UI V38 — RHYTHM / TABLE / TOC / VISUAL CONSISTENCY
+   KBRIDGE BLOG UI V39 — CORRECTIVE READABILITY PATCH
    2026-09-26
-   - One consistent article title rhythm across all posts
-   - Horizontal single-line TOC (prevents sidebar grid-height whitespace)
-   - Tables and adjacent notes share one full visual width
-   - Fixed VISUAL GUIDE header geometry
-   - More breathing room for practical checklists
+   Scope intentionally limited:
+   1) Restore V37 TOC appearance/location and remove summary↔article blank space
+   2) Align lead blocks, prose, tables and notes to the same reading-column width
+   3) Normalize paragraph rhythm without redesigning existing components
    ========================================================================== */
-body.kb-blog-post{
-  --kb-blog-prose:760px;
-  --kb-blog-wide:1120px;
-  --kb-blog-side:0px;
-  --kb-blog-gap:0px;
-}
 
-/* 1) Article hero/title: same position, same spacing, unmistakable title treatment. */
-body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero){
-  padding:30px 52px 30px!important;
-}
-body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero) > :is(.kb-hero-frame,.hero-copy),
-body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero) .kb-hero-frame{
-  width:100%!important;max-width:none!important;margin:0!important;padding:0!important;
-}
-body.kb-blog-post :is(.article-hero,.hero,.kb-page-hero) .hero-top{
-  min-height:24px!important;margin:0 0 18px!important;gap:12px 22px!important;
-}
-body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero) h1,
-body.kb-blog-post .kb-page-hero .kb-hero-frame h1{
-  width:100%!important;max-width:900px!important;
-  margin:0 0 14px!important;padding:1px 0 1px 16px!important;
-  border-left:4px solid var(--kb-blog-brand2)!important;
-  color:#1e2d42!important;font-size:30px!important;font-weight:850!important;
-  line-height:1.36!important;letter-spacing:-.034em!important;
-  text-align:left!important;text-wrap:balance!important;
-}
-body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero) :is(.hero-desc,.lead,.desc),
-body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero) .kb-hero-frame > p:not(.meta):not(.article-meta){
-  max-width:840px!important;margin:0 0 12px!important;font-size:15.25px!important;line-height:1.72!important;
-}
-body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero) :is(.meta,.article-meta){
-  margin:0!important;font-size:12px!important;line-height:1.55!important;
-}
-
-/* 3+4) Single-column article + single-line horizontal TOC.
-   This removes the blank space caused by the taller sticky side TOC defining grid row height. */
-body.kb-blog-post article > :is(.body,.content,.article-body){
-  width:min(var(--kb-blog-wide),100%)!important;max-width:var(--kb-blog-wide)!important;
-  margin:0 auto!important;padding:28px 52px 66px!important;
-  display:block!important;color:var(--kb-blog-text)!important;
-}
-body.kb-blog-post article > :is(.body,.content,.article-body) > *{
-  width:100%!important;max-width:100%!important;min-width:0!important;
-}
-body.kb-blog-post :is(.quick-summary,.summary,.pipe-summary){
-  margin:0 0 16px!important;padding:20px 22px!important;
-}
-body.kb-blog-post :is(.toc,.pipe-toc){
-  position:sticky!important;top:70px!important;z-index:8!important;
-  display:flex!important;align-items:center!important;gap:14px!important;
-  width:100%!important;max-width:100%!important;height:48px!important;
-  margin:0 0 22px!important;padding:0 14px!important;
-  overflow:hidden!important;border:1px solid #dfe5ed!important;border-top:2px solid #263957!important;
-  background:rgba(255,255,255,.97)!important;box-shadow:0 6px 18px rgba(24,39,63,.04)!important;
-  backdrop-filter:blur(8px)!important;
-}
-body.kb-blog-post :is(.toc,.pipe-toc) :is(.toc-title,.pipe-toc-title){
-  flex:0 0 auto!important;margin:0!important;padding:0 13px 0 0!important;border-right:1px solid #dfe5ed!important;
-  color:#263957!important;font-size:12px!important;font-weight:900!important;line-height:1!important;white-space:nowrap!important;
-}
-body.kb-blog-post :is(.toc,.pipe-toc) :is(ol,ul){
-  display:flex!important;align-items:center!important;flex:1 1 auto!important;gap:0!important;
-  min-width:0!important;margin:0!important;padding:0!important;overflow-x:auto!important;overflow-y:hidden!important;
-  list-style:none!important;white-space:nowrap!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;
-}
-body.kb-blog-post :is(.toc,.pipe-toc) :is(ol,ul)::-webkit-scrollbar{display:none!important}
-body.kb-blog-post :is(.toc,.pipe-toc) li{
-  flex:0 0 auto!important;margin:0!important;padding:0!important;border:0!important;list-style:none!important;
-}
-body.kb-blog-post :is(.toc,.pipe-toc) li + li{border-left:1px solid #e9edf2!important}
-body.kb-blog-post :is(.toc,.pipe-toc) a{
-  display:block!important;margin:0!important;padding:0 12px!important;border:0!important;
-  color:#667085!important;font-size:12.25px!important;font-weight:650!important;line-height:44px!important;
-  white-space:nowrap!important;text-decoration:none!important;
-}
-body.kb-blog-post :is(.toc,.pipe-toc) a:hover,
-body.kb-blog-post :is(.toc,.pipe-toc) a.active{color:var(--kb-blog-brand)!important;font-weight:800!important}
-body.kb-blog-post :is(.body,.content,.article-body) > :is(.quick-summary,.summary,.pipe-summary) + :is(.toc,.pipe-toc) + section.section,
-body.kb-blog-post :is(.body,.content,.article-body) > :is(.quick-summary,.summary,.pipe-summary) + section.section,
-body.kb-blog-post :is(.body,.content,.article-body) > nav.toc + section.section{
-  border-top:0!important;padding-top:16px!important;
-}
-
-/* Chapter rhythm: same separation from one article to the next. */
-body.kb-blog-post :is(.body,.content,.article-body) > section.section,
-body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section{
-  margin:0!important;padding:34px 0 38px!important;
-}
-body.kb-blog-post :is(.body,.content,.article-body) h2{
-  margin:0 0 17px!important;font-size:21.5px!important;line-height:1.43!important;
-}
-body.kb-blog-post :is(.body,.content,.article-body) h2::before{
-  width:28px!important;height:3px!important;margin:0 0 10px!important;
-}
-
-/* 2+3+6) Every table occupies exactly the same editorial width and uses one readable cell system. */
-body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap){
-  display:block!important;width:100%!important;max-width:100%!important;
-  margin:22px 0 18px!important;padding:0!important;
-  overflow-x:auto!important;overflow-y:hidden!important;
-  border:0!important;border-top:3px solid #263957!important;border-bottom:1px solid #dfe5ed!important;
-  background:#fff!important;box-shadow:none!important;-webkit-overflow-scrolling:touch!important;
-}
-body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table{
-  width:100%!important;max-width:100%!important;min-width:100%!important;
-  margin:0!important;border:0!important;border-collapse:collapse!important;border-spacing:0!important;
-  table-layout:fixed!important;background:#fff!important;
-}
-body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table :is(th,td){
-  padding:15px 18px!important;border-right:1px solid #e0e5eb!important;border-bottom:1px solid #e0e5eb!important;
-  color:#46556a!important;font-size:14px!important;font-weight:500!important;line-height:1.66!important;
-  text-align:left!important;vertical-align:middle!important;word-break:keep-all!important;overflow-wrap:anywhere!important;
-}
-body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table thead th,
-body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table tr:first-child > th{
-  padding-top:14px!important;padding-bottom:14px!important;
-  background:#f1f4f8!important;color:#263957!important;font-size:13.75px!important;font-weight:850!important;line-height:1.5!important;
-}
-body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table td strong{
-  color:#2b3d56!important;font-weight:800!important;
-}
-body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table :is(th,td):last-child{border-right:0!important}
-body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table tbody tr:last-child td{border-bottom:0!important}
-/* Notes immediately related to a table align with the table, not the narrower prose column. */
-body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap) + :is(.note,.data-note,.analysis-box,.pipe-note,.tip,blockquote){
-  width:100%!important;max-width:100%!important;margin:0 0 28px!important;padding:15px 18px!important;
-}
-
-/* Practical checklist: more internal air so lines never feel glued together. */
-body.kb-blog-post :is(.check,.checklist,.pipe-check-grid,.check-grid){margin:22px 0 28px!important}
-body.kb-blog-post :is(.check,.checklist) li,
-body.kb-blog-post ul.checklist > li{
-  min-height:54px!important;padding:13px 16px 13px 38px!important;
-  font-size:14.25px!important;line-height:1.72!important;
-}
-body.kb-blog-post :is(.check,.checklist) li::before,
-body.kb-blog-post ul.checklist > li::before{left:15px!important;top:14px!important}
-body.kb-blog-post :is(.check,.checklist) ul,
-body.kb-blog-post ul.checklist{gap:0 26px!important}
-
-/* 5) VISUAL GUIDE: fixed geometry on every post. Title stays one line; image keeps its own ratio. */
-body.kb-blog-post figure.kb-figure--graphic{margin:22px 0 32px!important}
-body.kb-blog-post .kb-figure-head{
-  display:flex!important;align-items:center!important;gap:14px!important;
-  width:100%!important;height:52px!important;min-height:52px!important;max-height:52px!important;
-  margin:0!important;padding:0 16px!important;overflow:hidden!important;
-  border-bottom:1px solid var(--kb-blog-visual-line)!important;background:#f8fafc!important;
-}
-body.kb-blog-post .kb-figure-kicker{
-  flex:0 0 96px!important;width:96px!important;min-width:96px!important;height:24px!important;
-  margin:0!important;padding:0 8px!important;font-size:10px!important;line-height:22px!important;
-}
-body.kb-blog-post .kb-figure-title{
-  display:block!important;flex:1 1 auto!important;min-width:0!important;min-height:0!important;
-  margin:0!important;padding:0!important;color:#26364b!important;
-  font-size:13.5px!important;font-weight:800!important;line-height:1.4!important;letter-spacing:-.012em!important;
-  white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
-}
-
-@media(max-width:900px){
-  body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero){padding:26px 28px 26px!important}
-  body.kb-blog-post article > :is(.body,.content,.article-body){padding:24px 28px 54px!important}
-  body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero) h1,
-  body.kb-blog-post .kb-page-hero .kb-hero-frame h1{font-size:27px!important;line-height:1.38!important}
-  body.kb-blog-post :is(.toc,.pipe-toc){top:64px!important}
-}
-@media(max-width:560px){
-  body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero){padding:22px 18px 22px!important}
-  body.kb-blog-post :is(.article-hero,.hero,.kb-page-hero) .hero-top{margin-bottom:14px!important;flex-wrap:wrap!important}
-  body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero) h1,
-  body.kb-blog-post .kb-page-hero .kb-hero-frame h1{
-    margin-bottom:12px!important;padding-left:12px!important;border-left-width:3px!important;
-    font-size:24px!important;line-height:1.4!important;
-  }
-  body.kb-blog-post article > :is(.body,.content,.article-body){padding:20px 18px 46px!important}
-  body.kb-blog-post :is(.quick-summary,.summary,.pipe-summary){margin-bottom:14px!important;padding:17px 16px!important}
-  body.kb-blog-post :is(.toc,.pipe-toc){
-    top:56px!important;height:44px!important;margin-bottom:18px!important;padding:0 10px!important;gap:9px!important;
-  }
-  body.kb-blog-post :is(.toc,.pipe-toc) :is(.toc-title,.pipe-toc-title){padding-right:9px!important;font-size:11px!important}
-  body.kb-blog-post :is(.toc,.pipe-toc) a{padding:0 10px!important;font-size:11.75px!important;line-height:40px!important}
-  body.kb-blog-post :is(.body,.content,.article-body) > section.section,
-  body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section{padding:29px 0 33px!important}
-  body.kb-blog-post :is(.body,.content,.article-body) h2{font-size:19.5px!important}
-  body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap){margin:18px 0 15px!important}
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table{table-layout:auto!important}
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table :is(th,td){
-    padding:12px 13px!important;font-size:13.25px!important;line-height:1.62!important;word-break:normal!important;
-  }
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table thead th,
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table tr:first-child > th{font-size:13px!important}
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table[data-kb-cols="3"]{min-width:560px!important}
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table[data-kb-cols="4"]{min-width:700px!important}
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table[data-kb-cols="5"],
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table[data-kb-cols="6"],
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table[data-kb-cols="7"],
-  body.kb-blog-post :is(.body,.content,.article-body) table.kb-content-table[data-kb-cols="8"]{min-width:820px!important}
-  body.kb-blog-post :is(.check,.checklist) ul,body.kb-blog-post ul.checklist{grid-template-columns:1fr!important}
-  body.kb-blog-post :is(.check,.checklist) li,body.kb-blog-post ul.checklist > li{min-height:0!important;padding:12px 12px 12px 36px!important}
-  body.kb-blog-post :is(.check,.checklist) li::before,body.kb-blog-post ul.checklist > li::before{left:13px!important;top:13px!important}
-  body.kb-blog-post .kb-figure-head{height:48px!important;min-height:48px!important;max-height:48px!important;padding:0 11px!important;gap:10px!important}
-  body.kb-blog-post .kb-figure-kicker{flex-basis:86px!important;width:86px!important;min-width:86px!important;height:22px!important;padding:0 6px!important;font-size:9.25px!important;line-height:20px!important}
-  body.kb-blog-post .kb-figure-title{font-size:12.5px!important}
-}
-
-/* V38 final QA corrections: neutralize site hero frame + force editorial order. */
+/* Keep the existing V37 title/hero UI, but neutralize site-level hero min-height. */
 body.kb-blog-post article > :is(.hero,.article-hero,.kb-page-hero) :is(.kb-hero-frame,.hero-copy){
-  display:block!important;min-height:0!important;height:auto!important;
-  align-items:stretch!important;justify-content:normal!important;place-content:normal!important;
-}
-body.kb-blog-post article > :is(.body,.content,.article-body){
-  display:flex!important;flex-direction:column!important;align-items:stretch!important;
-}
-body.kb-blog-post article > :is(.body,.content,.article-body) > *{order:3!important}
-body.kb-blog-post article > :is(.body,.content,.article-body) > :is(.quick-summary,.summary,.pipe-summary){order:1!important}
-body.kb-blog-post article > :is(.body,.content,.article-body) > :is(.toc,.pipe-toc){order:2!important}
-body.kb-blog-post :is(.body,.content,.article-body) > section.section > :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap) + :is(.note,.data-note,.analysis-box,.pipe-note,.tip,blockquote),
-body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section > :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap) + :is(.note,.data-note,.analysis-box,.pipe-note,.tip,blockquote){
-  width:100%!important;max-width:100%!important;margin:0 0 28px!important;padding:15px 18px!important;
+  min-height:0!important;
+  height:auto!important;
 }
 
-/* V38 table companion width lock: beat prose max-width specificity. */
-body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.section > :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap) + :is(p.note,p.data-note,p.analysis-box,p.pipe-note,p.tip,blockquote),
-body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.pipe-section > :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap) + :is(p.note,p.data-note,p.analysis-box,p.pipe-note,p.tip,blockquote){
-  width:100%!important;max-width:none!important;margin:0 0 28px!important;padding:15px 18px!important;
+/* Preserve the original right-side TOC. Let it span article rows so its height
+   never enlarges the summary row or creates a blank block under the summary. */
+@media(min-width:901px){
+  body.kb-blog-post article > :is(.body,.content,.article-body){
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) var(--kb-blog-side)!important;
+    column-gap:var(--kb-blog-gap)!important;
+    row-gap:0!important;
+    align-items:start!important;
+  }
+  body.kb-blog-post article > :is(.body,.content,.article-body) > *{
+    grid-column:1!important;
+  }
+  body.kb-blog-post article > :is(.body,.content,.article-body) > :is(.quick-summary,.summary,.pipe-summary){
+    grid-column:1!important;
+    grid-row:1!important;
+  }
+  body.kb-blog-post article > :is(.body,.content,.article-body) > :is(.toc,.pipe-toc){
+    grid-column:2!important;
+    grid-row:1 / span 60!important;
+    align-self:start!important;
+    position:sticky!important;
+    top:84px!important;
+    width:var(--kb-blog-side)!important;
+    margin:0!important;
+  }
 }
 
-/* V38 mobile TOC visibility: keep the same one-line horizontal navigator on small screens. */
+/* One visual width inside each chapter. Tables, first-answer boxes and normal
+   paragraphs now start/end on exactly the same reading-column edges. */
+body.kb-blog-post :is(.body,.content,.article-body) > section.section > :is(h2,h3,h4,p,ul,ol,dl,blockquote),
+body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section > :is(h2,h3,h4,p,ul,ol,dl,blockquote),
+body.kb-blog-post :is(.body,.content,.article-body) > section.section > :is(.kb-section-lead,.lead-answer,.pipe-lead,.note,.warning,.warn,.data-note,.analysis-box,.pipe-note,.tip),
+body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section > :is(.kb-section-lead,.lead-answer,.pipe-lead,.note,.warning,.warn,.data-note,.analysis-box,.pipe-note,.tip){
+  width:100%!important;
+  max-width:none!important;
+  box-sizing:border-box!important;
+}
+
+/* Normal body copy: same line measure and predictable paragraph rhythm. */
+body.kb-blog-post :is(.body,.content,.article-body) > section.section > p:not(.kb-section-lead):not(.lead-answer):not(.pipe-lead),
+body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section > p:not(.kb-section-lead):not(.lead-answer):not(.pipe-lead){
+  margin:0 0 18px!important;
+  font-size:15.5px!important;
+  line-height:1.8!important;
+}
+body.kb-blog-post :is(.body,.content,.article-body) > section.section > p:last-child,
+body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section > p:last-child{
+  margin-bottom:0!important;
+}
+
+/* First explanation block: same width as tables and body copy, comfortable padding. */
+body.kb-blog-post .kb-section-lead,
+body.kb-blog-post section.section > h2 + p,
+body.kb-blog-post section.pipe-section > h2 + p,
+body.kb-blog-post :is(.lead-answer,.pipe-lead){
+  width:100%!important;
+  max-width:none!important;
+  margin:16px 0 22px!important;
+  padding:15px 18px!important;
+  box-sizing:border-box!important;
+  font-size:15.5px!important;
+  line-height:1.78!important;
+}
+
+/* Tables and table companions remain full width of the same reading column. */
+body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap){
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  box-sizing:border-box!important;
+}
+body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap) table,
+body.kb-blog-post table.kb-content-table{
+  width:100%!important;
+  max-width:none!important;
+}
+
+/* Keep V37 TOC hidden on compact screens exactly as before. */
 @media(max-width:900px){
-  body.kb-blog-post article > :is(.body,.content,.article-body) > :is(.toc,.pipe-toc){display:flex!important}
+  body.kb-blog-post article > :is(.body,.content,.article-body) > :is(.toc,.pipe-toc){display:none!important}
+  body.kb-blog-post :is(.body,.content,.article-body) > section.section > :is(h2,h3,h4,p,ul,ol,dl,blockquote),
+  body.kb-blog-post :is(.body,.content,.article-body) > section.pipe-section > :is(h2,h3,h4,p,ul,ol,dl,blockquote){
+    width:100%!important;
+    max-width:none!important;
+  }
+}
+
+/* V39 width lock — intentionally specific so older editorial max-width rules cannot win. */
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.section > p,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.section > ul,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.section > ol,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.section > dl,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.section > blockquote,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.pipe-section > p,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.pipe-section > ul,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.pipe-section > ol,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.pipe-section > dl,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.pipe-section > blockquote{
+  width:100%!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.section > p.kb-section-lead,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.section > h2 + p,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.pipe-section > p.kb-section-lead,
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.pipe-section > h2 + p{
+  width:100%!important;
+  max-width:100%!important;
+}
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.section > :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap),
+html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body > section.pipe-section > :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap,.scope-table-wrap,.pipe-table-wrap){
+  width:100%!important;
+  max-width:100%!important;
 }
