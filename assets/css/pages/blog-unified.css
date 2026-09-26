@@ -493,520 +493,652 @@ body.kb-blog-post .kb-footer .footer-copy{max-width:960px;margin:0 auto!importan
 @media(max-width:720px){body.kb-blog-post .toc ol{grid-template-columns:1fr}body.kb-blog-post table.comparison{display:block;overflow-x:auto;white-space:normal}body.kb-blog-post .kb-footer .footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){body.kb-blog-post .action-row{display:grid;grid-template-columns:1fr}body.kb-blog-post .cta .btn,body.kb-blog-post main .cta>a:not(.btn){width:100%!important}body.kb-blog-post .kb-footer .footer-grid{grid-template-columns:1fr}}
 
-/* REV7 information-first article UX - 2026-09-26
-   Scope: blog readability only. No header/navigation/JS/functionality changes. */
-body.kb-blog-post{
-  --kb-blog-ink:#26374c;
-  --kb-blog-muted:#687a90;
-  --kb-blog-navy:#102f5c;
+/* ========================================================================== */
+/* KBRIDGE BLOG READABILITY V28 — HIGH-CONTRAST ARTICLE UI / 2026-09-26       */
+/* Visual-only upgrade. Shared header/footer behavior, JS and article content  */
+/* are intentionally untouched.                                               */
+/* ========================================================================== */
+
+:root{
+  --kb-blog-navy:#102b55;
+  --kb-blog-navy-2:#173f70;
   --kb-blog-blue:#2b5cdb;
-  --kb-blog-cyan:#1598a5;
-  --kb-blog-line:#dce5ef;
-  --kb-blog-soft:#f6f9fc;
-  --kb-blog-answer:#eef5ff;
-  --kb-blog-warn:#fff7ed;
-  background:#f3f6fa;
-  color:var(--kb-blog-ink);
+  --kb-blog-cyan:#13a8b5;
+  --kb-blog-ink:#1f2f46;
+  --kb-blog-copy:#41536a;
+  --kb-blog-muted:#718096;
+  --kb-blog-line:#dfe7f0;
+  --kb-blog-soft:#f4f8fc;
+  --kb-blog-soft-blue:#edf4ff;
 }
 
-/* Reading width + typography: make long logistics posts easier to scan. */
-body.kb-blog-post article>:is(.body,.content,.article-body){
-  width:min(960px,100%);
-  max-width:960px;
-  padding:50px 46px 70px;
-  color:var(--kb-blog-ink);
-  font-size:17px;
-  line-height:1.82;
+/* 1. Overall article canvas */
+html body.kb-blog-post{
+  background:linear-gradient(180deg,#eaf1f8 0,#f4f7fb 360px,#f6f8fb 100%)!important;
+  color:var(--kb-blog-ink)!important;
 }
-body.kb-blog-post :is(.body,.content,.article-body) :is(p,li,dd){
-  color:var(--kb-blog-ink);
-  font-size:17px;
-  line-height:1.82;
-  word-break:keep-all;
-  overflow-wrap:break-word;
+html body.kb-blog-post main:is(.page,.page-wrap){
+  width:min(1240px,calc(100% - 44px))!important;
+  max-width:1240px!important;
+  padding:28px 0 84px!important;
 }
-body.kb-blog-post :is(.body,.content,.article-body) p{margin-bottom:18px!important}
-body.kb-blog-post :is(.body,.content,.article-body) strong{color:#153f72;font-weight:800}
-
-/* Hero: shorter first screen, clearer hierarchy. */
-body.kb-blog-post article>:is(.hero,.article-hero){
-  min-height:270px;
-  padding:38px 52px 34px;
-  background:linear-gradient(120deg,#f8fafc 0%,#eef4f8 66%,#e5f1f2 100%);
+html body.kb-blog-post article:is(.article,.article-shell){
+  overflow:hidden!important;
+  border:1px solid rgba(16,43,85,.10)!important;
+  border-radius:22px!important;
+  background:#fff!important;
+  box-shadow:0 24px 70px rgba(21,49,83,.12)!important;
 }
-body.kb-blog-post article>:is(.hero,.article-hero) :is(h1){
-  max-width:920px;
-  font-size:clamp(31px,2.9vw,40px);
-  line-height:1.28;
-  letter-spacing:-.045em;
-}
-body.kb-blog-post article>:is(.hero,.article-hero) :is(.hero-desc,.lead,.desc),
-body.kb-blog-post article>:is(.hero,.article-hero) .kb-hero-frame>p:not(.meta):not(.article-meta){
-  max-width:880px;
-  margin-top:14px;
-  color:#53677f;
-  font-size:16px;
-  line-height:1.72;
-}
-body.kb-blog-post article>:is(.hero,.article-hero) :is(.meta,.article-meta){
-  margin-top:12px;
-  color:#7a899c;
-  font-size:12.5px;
+html body.kb-blog-post :is(.breadcrumb,.breadcrumbs,.crumb){
+  margin-bottom:16px!important;
+  color:#718096!important;
+  font-size:12.5px!important;
+  font-weight:650!important;
 }
 
-/* Visuals: keep the whole image visible and prevent oversized screenshots/infographics. */
-body.kb-blog-post :is(.cover-thumbnail,.body-visual,.visual,.figure,figure.visual,figure.body-visual){
-  margin:30px auto 38px;
+/* 2. Hero: deliberately strong and immediately recognisable */
+html body.kb-blog-post article>:is(.hero,.article-hero){
+  position:relative!important;
+  isolation:isolate!important;
+  padding:56px 64px 52px!important;
+  border:0!important;
+  background:
+    radial-gradient(circle at 88% 14%,rgba(76,151,255,.28),transparent 28rem),
+    radial-gradient(circle at 74% 92%,rgba(19,168,181,.20),transparent 24rem),
+    linear-gradient(125deg,#0d2547 0%,#153968 48%,#1a4e7d 100%)!important;
+  color:#fff!important;
 }
-body.kb-blog-post :is(.body,.content,.article-body) .body-visual:not(.cover-thumbnail),
-body.kb-blog-post :is(.body,.content,.article-body) figure.visual:not(.cover-thumbnail){
-  width:min(880px,100%);
+html body.kb-blog-post article>:is(.hero,.article-hero)::after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:-1!important;
+  right:-84px!important;
+  top:-118px!important;
+  width:330px!important;
+  height:330px!important;
+  border:1px solid rgba(255,255,255,.15)!important;
+  border-radius:50%!important;
+  box-shadow:0 0 0 48px rgba(255,255,255,.025),0 0 0 96px rgba(255,255,255,.018)!important;
+  pointer-events:none!important;
 }
-body.kb-blog-post :is(.cover-thumbnail,.body-visual,.visual,.figure,figure.visual,figure.body-visual) img,
-body.kb-blog-post :is(.body,.content,.article-body)>img{
-  width:100%;
-  height:auto;
-  object-fit:contain;
+html body.kb-blog-post article>:is(.hero,.article-hero) h1{
+  max-width:900px!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  font-size:clamp(36px,4vw,52px)!important;
+  font-weight:900!important;
+  line-height:1.22!important;
+  letter-spacing:-.055em!important;
+  text-shadow:0 3px 18px rgba(0,0,0,.12)!important;
+}
+html body.kb-blog-post article>:is(.hero,.article-hero) :is(.hero-desc,.lead,.desc),
+html body.kb-blog-post article>:is(.hero,.article-hero)>p{
+  max-width:850px!important;
+  margin-top:20px!important;
+  color:rgba(239,246,255,.90)!important;
+  -webkit-text-fill-color:rgba(239,246,255,.90)!important;
+  font-size:17.5px!important;
+  line-height:1.82!important;
+}
+html body.kb-blog-post article>:is(.hero,.article-hero) .article-meta{
+  margin-top:20px!important;
+  padding-top:16px!important;
+  border-top:1px solid rgba(255,255,255,.15)!important;
+  color:rgba(222,235,252,.70)!important;
+  -webkit-text-fill-color:rgba(222,235,252,.70)!important;
+  font-size:12.5px!important;
+  font-weight:650!important;
+}
+html body.kb-blog-post .article-hero .hero-top{
+  margin-bottom:24px!important;
+}
+html body.kb-blog-post .article-hero :is(.pill,.badge){
+  min-height:32px!important;
+  padding:0 12px!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.10)!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  backdrop-filter:blur(8px)!important;
+  font-size:11.5px!important;
+  letter-spacing:.02em!important;
+}
+html body.kb-blog-post .article-hero .hero-nav a{
+  min-height:32px!important;
+  padding:0 12px!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:9px!important;
+  background:rgba(3,17,37,.18)!important;
+  color:#dcecff!important;
+  -webkit-text-fill-color:#dcecff!important;
+}
+html body.kb-blog-post .article-hero .hero-nav a:hover{
+  background:#fff!important;
+  color:#173f70!important;
+  -webkit-text-fill-color:#173f70!important;
 }
 
-/* 10-second answer block: existing quick-summary markup becomes the strongest scan target. */
-body.kb-blog-post .quick-summary{
-  margin:4px 0 30px;
-  padding:0;
-  border:0;
-  background:transparent;
+/* 3. Reading width and typography */
+html body.kb-blog-post article>:is(.body,.content,.article-body){
+  width:min(980px,100%)!important;
+  max-width:980px!important;
+  padding:54px 48px 76px!important;
+  color:var(--kb-blog-copy)!important;
+  font-size:17px!important;
+  line-height:1.9!important;
 }
-body.kb-blog-post .quick-summary>.summary-card,
-body.kb-blog-post .summary-card:not(.quick-summary .summary-card){
-  position:relative;
-  margin:0;
-  padding:24px 26px 22px;
-  border:1px solid #cfdceb;
-  border-left:5px solid var(--kb-blog-blue);
-  background:linear-gradient(110deg,#f8fbff 0%,#f2f7fc 100%);
-  box-shadow:none;
+html body.kb-blog-post :is(.body,.content,.article-body) p,
+html body.kb-blog-post :is(.body,.content,.article-body) li,
+html body.kb-blog-post :is(.body,.content,.article-body) dd{
+  color:var(--kb-blog-copy)!important;
+  line-height:1.9!important;
 }
-body.kb-blog-post .summary-title{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin:0 0 10px;
-  color:var(--kb-blog-navy);
-  font-size:15px;
-  font-weight:900;
-  letter-spacing:-.02em;
+html body.kb-blog-post :is(.body,.content,.article-body) p{margin-bottom:20px!important}
+html body.kb-blog-post :is(.body,.content,.article-body) .lead{
+  color:#263a55!important;
+  font-size:18px!important;
+  line-height:1.88!important;
 }
-body.kb-blog-post .summary-title::before{
-  content:"";
-  width:8px;
-  height:8px;
-  flex:0 0 8px;
-  background:var(--kb-blog-blue);
-}
-body.kb-blog-post :is(.summary-card,.quick-summary) p{
-  margin-bottom:0!important;
-  color:#31475f;
-  font-size:16.5px;
-  line-height:1.76;
-}
-body.kb-blog-post .summary-points{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:8px;
-  margin-top:16px;
-}
-body.kb-blog-post .summary-point{
-  min-width:0;
-  padding:11px 12px;
-  border:1px solid #dbe6f1;
-  background:#fff;
-  color:#36516f;
-  font-size:13.5px;
-  font-weight:750;
-  line-height:1.45;
+html body.kb-blog-post :is(.body,.content,.article-body) strong{
+  color:#123d72!important;
+  font-weight:850!important;
 }
 
-/* Table of contents: compact navigation instead of another long paragraph block. */
-body.kb-blog-post .toc{
-  margin:0 0 40px;
-  padding:18px 20px 19px;
-  border:1px solid var(--kb-blog-line);
-  border-top:3px solid #9fb4ce;
-  background:#fff;
+/* 4. Section hierarchy: unmistakable visual breaks */
+html body.kb-blog-post :is(.body,.content,.article-body) .section{
+  margin:58px 0 0!important;
+  padding:48px 0 0!important;
+  border-top:1px solid #e4ebf3!important;
 }
-body.kb-blog-post .toc-title{
-  margin:0 0 11px;
-  color:#3a526f;
-  font-size:13px;
-  font-weight:900;
-  letter-spacing:.02em;
-}
-body.kb-blog-post .toc ol{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:0 26px;
-  margin:0;
-  padding-left:22px;
-}
-body.kb-blog-post .toc li{
-  margin:0!important;
-  padding:5px 0;
-  color:#8291a4;
-  font-size:14px!important;
-  line-height:1.5!important;
-}
-body.kb-blog-post .toc a{
-  color:#425b77;
-  font-size:14px!important;
-  font-weight:650;
-  line-height:1.5!important;
-  text-decoration:none;
-}
-body.kb-blog-post .toc a:hover{color:var(--kb-blog-blue);text-decoration:underline;text-underline-offset:3px}
-
-/* Sections: stronger question/answer hierarchy without adding new markup. */
-body.kb-blog-post :is(.body,.content,.article-body) :is(.section,section[id]){
-  margin-top:58px;
-  padding-top:42px;
-  border-top:1px solid #e3eaf2;
-}
-body.kb-blog-post :is(.body,.content,.article-body) :is(.section,section[id]):first-of-type{
-  margin-top:0!important;
-  padding-top:0!important;
+html body.kb-blog-post :is(.body,.content,.article-body) .section:first-of-type{
+  margin-top:16px!important;
+  padding-top:18px!important;
   border-top:0!important;
 }
-body.kb-blog-post :is(.body,.content,.article-body) h2{
-  margin:0 0 20px;
-  padding-left:16px;
-  color:var(--kb-blog-navy);
-  font-size:27px;
-  font-weight:850;
-  line-height:1.38;
-  letter-spacing:-.04em;
+html body.kb-blog-post :is(.body,.content,.article-body) h2{
+  position:relative!important;
+  margin:0 0 24px!important;
+  padding:0 0 14px!important;
+  border-bottom:2px solid #e4ebf3!important;
+  color:#102b55!important;
+  font-size:30px!important;
+  font-weight:900!important;
+  line-height:1.38!important;
+  letter-spacing:-.045em!important;
 }
-body.kb-blog-post :is(.body,.content,.article-body) h2::before{
-  top:.12em;
-  bottom:.12em;
-  width:4px;
-  border-radius:0;
-  background:linear-gradient(180deg,var(--kb-blog-blue),var(--kb-blog-cyan));
+html body.kb-blog-post :is(.body,.content,.article-body) h2::before{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  bottom:-2px!important;
+  top:auto!important;
+  width:74px!important;
+  height:4px!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,#2b5cdb,#13a8b5)!important;
 }
-body.kb-blog-post :is(.body,.content,.article-body) h3{
-  margin:33px 0 12px;
-  color:#193e67;
-  font-size:20px;
-  font-weight:800;
-  line-height:1.45;
-}
-body.kb-blog-post :is(.body,.content,.article-body) .section>.lead,
-body.kb-blog-post :is(.body,.content,.article-body) .section>.lead-answer,
-body.kb-blog-post :is(.body,.content,.article-body) section[id]>.lead-answer{
-  margin:0 0 20px!important;
-  padding:15px 17px;
-  border-left:4px solid #73a1dc;
-  background:var(--kb-blog-answer);
-  color:#274764;
-  font-size:16.5px;
-  font-weight:650;
-  line-height:1.72;
+html body.kb-blog-post :is(.body,.content,.article-body) h3{
+  margin:34px 0 13px!important;
+  color:#183d68!important;
+  font-size:21px!important;
+  font-weight:850!important;
 }
 
-/* Practical explanation boxes. */
-body.kb-blog-post :is(.analysis-box,.note,.editor-note,.data-note){
-  margin:22px 0 26px;
-  padding:16px 18px;
-  border:1px solid #dbe5ef;
-  border-left:4px solid #7d9fc8;
-  background:#f8fafc;
-  color:#40566f;
-  font-size:15.5px;
-  line-height:1.72;
+/* 5. Cover and article images */
+html body.kb-blog-post :is(.cover-thumbnail,.body-visual,.visual,.figure,figure.visual,figure.body-visual){
+  margin:32px 0 42px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(16,43,85,.08)!important;
+  border-radius:16px!important;
+  background:#f7f9fc!important;
+  box-shadow:0 12px 34px rgba(28,55,91,.09)!important;
 }
-body.kb-blog-post :is(.warning,.warn){
-  margin:22px 0 26px;
-  padding:16px 18px;
-  border:1px solid #efd7b8;
-  border-left:4px solid #cf7d2b;
-  background:var(--kb-blog-warn);
-  color:#68492d;
-  font-size:15.5px;
-  line-height:1.72;
+html body.kb-blog-post :is(.cover-thumbnail,.body-visual,.visual,.figure,figure.visual,figure.body-visual) img,
+html body.kb-blog-post :is(.body,.content,.article-body)>img{
+  border-radius:16px!important;
 }
 
-/* Quick-fact / term cards: short facts should look short. */
-body.kb-blog-post .briefs,
-body.kb-blog-post .fact-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
-  margin:22px 0 30px;
+/* 6. Summary: dominant answer-first panel */
+html body.kb-blog-post :is(.quick-summary,.summary,.summary-card){
+  position:relative!important;
+  margin:0 0 28px!important;
+  padding:28px 30px!important;
+  overflow:hidden!important;
+  border:1px solid #c9ddf7!important;
+  border-radius:16px!important;
+  background:linear-gradient(135deg,#f3f8ff 0%,#edf7fb 100%)!important;
+  box-shadow:0 12px 28px rgba(43,92,219,.08)!important;
 }
-body.kb-blog-post .briefs>.brief,
-body.kb-blog-post .fact-grid>.fact{
-  min-width:0;
-  margin:0;
-  padding:15px 16px;
-  border:1px solid #dbe5ef;
-  background:#fbfdff;
+html body.kb-blog-post :is(.quick-summary,.summary,.summary-card)::before{
+  content:""!important;
+  position:absolute!important;
+  top:0!important;
+  left:0!important;
+  width:100%!important;
+  height:5px!important;
+  background:linear-gradient(90deg,#2b5cdb,#13a8b5)!important;
 }
-body.kb-blog-post .briefs>.brief strong,
-body.kb-blog-post .fact-grid>.fact strong{
-  display:block;
-  margin-bottom:4px;
-  color:#183f6b;
-  font-size:14px;
-  font-weight:850;
+html body.kb-blog-post :is(.summary-title,.quick-summary h2,.summary h2){
+  margin:0 0 12px!important;
+  padding:0!important;
+  border:0!important;
+  color:#123d72!important;
+  font-size:17px!important;
+  font-weight:900!important;
+  letter-spacing:-.025em!important;
 }
-body.kb-blog-post .briefs>.brief :is(span,p),
-body.kb-blog-post .fact-grid>.fact :is(span,p){
+html body.kb-blog-post :is(.summary-title,.quick-summary h2,.summary h2)::before{display:none!important}
+html body.kb-blog-post :is(.quick-summary,.summary,.summary-card) p{
+  margin-bottom:0!important;
+  color:#36506d!important;
+  font-size:16.5px!important;
+  line-height:1.82!important;
+}
+html body.kb-blog-post .summary-points{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:10px!important;
+  margin-top:20px!important;
+}
+html body.kb-blog-post .summary-point{
+  position:relative!important;
+  min-height:54px!important;
+  display:flex!important;
+  align-items:center!important;
+  padding:13px 15px 13px 42px!important;
+  border:1px solid rgba(43,92,219,.14)!important;
+  border-radius:11px!important;
+  background:rgba(255,255,255,.82)!important;
+  color:#294764!important;
+  font-size:14.5px!important;
+  font-weight:750!important;
+  line-height:1.5!important;
+}
+html body.kb-blog-post .summary-point::before{
+  content:"✓"!important;
+  position:absolute!important;
+  left:15px!important;
+  width:18px!important;
+  height:18px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:#2b5cdb!important;
+  color:#fff!important;
+  font-size:11px!important;
+  font-weight:900!important;
+}
+
+/* 7. TOC: scan-friendly navigation block */
+html body.kb-blog-post .toc{
+  margin:0 0 42px!important;
+  padding:24px 26px!important;
+  border:1px solid #dce5ef!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  box-shadow:0 8px 24px rgba(28,55,91,.055)!important;
+}
+html body.kb-blog-post .toc-title{
+  margin:0 0 14px!important;
+  color:#102b55!important;
+  font-size:15px!important;
+  font-weight:900!important;
+}
+html body.kb-blog-post .toc ol{
+  counter-reset:kb-toc!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px 18px!important;
+  padding:0!important;
+  list-style:none!important;
+}
+html body.kb-blog-post .toc li{
+  counter-increment:kb-toc!important;
   margin:0!important;
-  color:#5a6d82;
-  font-size:14px;
-  line-height:1.6;
+}
+html body.kb-blog-post .toc a{
+  min-height:45px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  padding:9px 12px!important;
+  border-radius:9px!important;
+  background:#f7f9fc!important;
+  color:#40556f!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  line-height:1.45!important;
+}
+html body.kb-blog-post .toc a::before{
+  content:counter(kb-toc,decimal-leading-zero)!important;
+  flex:0 0 auto!important;
+  color:#2b5cdb!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  letter-spacing:.03em!important;
+}
+html body.kb-blog-post .toc a:hover{
+  background:#edf4ff!important;
+  color:#174d9b!important;
 }
 
-/* Numbered cards / process rows. */
-body.kb-blog-post .news-list{display:grid;gap:10px;margin:22px 0 30px}
-body.kb-blog-post .news-item{
-  display:grid;
-  grid-template-columns:46px minmax(0,1fr);
-  gap:14px;
-  align-items:start;
-  margin:0;
-  padding:17px 18px;
-  border:1px solid #dce6f0;
-  background:#fff;
+/* 8. Explanatory / caution boxes */
+html body.kb-blog-post :is(.analysis-box,.note,.tip,.data-note,.practical-note){
+  position:relative!important;
+  margin:24px 0!important;
+  padding:20px 22px 20px 24px!important;
+  border:1px solid #cfe0f3!important;
+  border-left:5px solid #2b5cdb!important;
+  border-radius:12px!important;
+  background:#f4f8ff!important;
+  color:#3b526d!important;
+  box-shadow:none!important;
 }
-body.kb-blog-post .news-item .news-num{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:34px;
-  border-right:1px solid #dce6f0;
-  color:#2b5cdb;
-  font-size:13px;
-  font-weight:900;
-  line-height:1;
-}
-body.kb-blog-post .news-item h3{margin:0 0 5px!important;font-size:17px!important}
-body.kb-blog-post .news-item p{margin:0!important;font-size:15px!important;line-height:1.7!important}
-body.kb-blog-post :is(.flow-step,.process-item){
-  position:relative;
-  margin:0 0 10px;
-  padding:17px 18px;
-  border:1px solid #dce6f0;
-  background:#fff;
+html body.kb-blog-post :is(.warning,.warn){
+  margin:24px 0!important;
+  padding:20px 22px 20px 24px!important;
+  border:1px solid #f1d2ad!important;
+  border-left:5px solid #d8842e!important;
+  border-radius:12px!important;
+  background:#fff8ef!important;
+  color:#65482d!important;
 }
 
-/* Tables: make comparison rows readable at a glance. */
-body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card,.market-table-wrap){
-  margin:24px 0 32px;
-  border:1px solid #d7e1ec;
-  background:#fff;
+/* 9. Content cards / numbered lists */
+html body.kb-blog-post :is(.news-list,.briefs,.cards,.card-grid){
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:14px!important;
+  margin:24px 0 30px!important;
 }
-body.kb-blog-post table{border-collapse:collapse}
-body.kb-blog-post table th,
-body.kb-blog-post table td{
-  padding:14px 15px;
-  border-right:1px solid #e7edf4;
-  border-bottom:1px solid #e4ebf2;
-  color:#344a60;
-  font-size:14.5px;
-  line-height:1.62;
-  vertical-align:top;
-}
-body.kb-blog-post table th{
-  background:#edf3f8;
-  color:#173d68;
-  font-weight:850;
-}
-body.kb-blog-post table tr:last-child td{border-bottom:0}
-body.kb-blog-post table :is(th,td):last-child{border-right:0}
-body.kb-blog-post table tbody tr:nth-child(even) td{background:#fbfcfe}
-
-/* Checklist: practical tasks should be scannable, not look like body copy. */
-body.kb-blog-post .checklist{
-  display:grid;
-  gap:8px;
-  margin:22px 0 30px;
-  padding:0;
-  list-style:none;
-}
-body.kb-blog-post .checklist li{
-  position:relative;
+html body.kb-blog-post :is(.news-item,.brief,.card,.term-card,.type-item,.compare-card,.alliance-card){
+  position:relative!important;
   margin:0!important;
-  padding:14px 16px 14px 43px;
-  border:1px solid #dce6f0;
-  background:#fbfdff;
-  color:#344a60;
+  padding:20px!important;
+  border:1px solid #dce6f0!important;
+  border-radius:13px!important;
+  background:#fff!important;
+  box-shadow:0 7px 18px rgba(28,55,91,.055)!important;
+}
+html body.kb-blog-post .news-item{
+  display:grid!important;
+  grid-template-columns:42px 1fr!important;
+  gap:14px!important;
+  align-items:start!important;
+}
+html body.kb-blog-post .news-num{
+  width:42px!important;
+  height:42px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:11px!important;
+  background:#102b55!important;
+  color:#fff!important;
+  font-size:12px!important;
+  font-weight:900!important;
+}
+html body.kb-blog-post .brief{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:7px!important;
+  border-top:4px solid #2b5cdb!important;
+}
+html body.kb-blog-post .brief>strong{font-size:18px!important}
+html body.kb-blog-post .brief>span{color:#65778c!important;font-size:14px!important;line-height:1.65!important}
+
+/* 10. Tables: dark header + row scanning */
+html body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card){
+  margin:26px 0 34px!important;
+  overflow:hidden!important;
+  border:1px solid #d8e2ed!important;
+  border-radius:13px!important;
+  background:#fff!important;
+  box-shadow:0 8px 22px rgba(28,55,91,.055)!important;
+}
+html body.kb-blog-post :is(.table-wrap,.doc-table-wrap,.table-card){overflow-x:auto!important}
+html body.kb-blog-post table th,
+html body.kb-blog-post table.comparison th{
+  padding:15px 16px!important;
+  border-color:rgba(255,255,255,.12)!important;
+  background:#173f70!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  font-size:14px!important;
+  font-weight:850!important;
+}
+html body.kb-blog-post table td,
+html body.kb-blog-post table.comparison td{
+  padding:15px 16px!important;
+  border-color:#e6edf4!important;
+  color:#405269!important;
+  font-size:14.5px!important;
+}
+html body.kb-blog-post table tbody tr:nth-child(even) td{background:#f8fafc!important}
+html body.kb-blog-post table tbody tr:hover td{background:#eef5ff!important}
+
+/* 11. Checklist: card grid rather than plain bullets */
+html body.kb-blog-post .checklist{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:12px!important;
+  margin:24px 0 30px!important;
+  padding:0!important;
+  list-style:none!important;
+}
+html body.kb-blog-post .checklist>li,
+html body.kb-blog-post .checklist>.check{
+  position:relative!important;
+  min-height:74px!important;
+  margin:0!important;
+  padding:17px 17px 17px 48px!important;
+  border:1px solid #dbe6f0!important;
+  border-radius:12px!important;
+  background:#fbfdff!important;
+  color:#41546b!important;
+  box-shadow:0 5px 15px rgba(28,55,91,.04)!important;
+}
+html body.kb-blog-post .checklist>li::before,
+html body.kb-blog-post .checklist>.check::before{
+  content:"✓"!important;
+  position:absolute!important;
+  left:17px!important;
+  top:18px!important;
+  width:21px!important;
+  height:21px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:#13a8b5!important;
+  color:#fff!important;
+  font-size:12px!important;
+  font-weight:900!important;
+}
+html body.kb-blog-post .checklist>.check{display:block!important}
+html body.kb-blog-post .checklist>.check>strong{display:block!important;margin-bottom:4px!important}
+html body.kb-blog-post .checklist>.check>span{display:block!important;color:#687b91!important;font-size:14px!important;line-height:1.55!important}
+
+/* 12. FAQ: distinct question cards */
+html body.kb-blog-post .faq{
+  display:grid!important;
+  gap:10px!important;
+  margin-top:18px!important;
+  border:0!important;
+}
+html body.kb-blog-post .faq-item{
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:1px solid #dce5ef!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  box-shadow:0 5px 14px rgba(28,55,91,.04)!important;
+}
+html body.kb-blog-post details.faq-item>summary,
+html body.kb-blog-post .faq-item>.faq-q{
+  position:relative!important;
+  display:block!important;
+  margin:0!important;
+  padding:18px 52px 18px 20px!important;
+  border:0!important;
+  background:#f7f9fc!important;
+  color:#173f70!important;
+  font-size:16px!important;
+  font-weight:850!important;
+  line-height:1.55!important;
+}
+html body.kb-blog-post details.faq-item>summary::after{
+  content:"+"!important;
+  position:absolute!important;
+  right:18px!important;
+  top:50%!important;
+  width:26px!important;
+  height:26px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:#e8f0fd!important;
+  color:#2b5cdb!important;
+  font-size:18px!important;
+  font-weight:700!important;
+  transform:translateY(-50%)!important;
+}
+html body.kb-blog-post details.faq-item[open]>summary::after{content:"−"!important}
+html body.kb-blog-post .faq-item>.faq-a,
+html body.kb-blog-post .faq-item>.faq-answer{
+  margin:0!important;
+  padding:17px 20px 20px!important;
+  background:#fff!important;
+  color:#52647a!important;
   font-size:15.5px!important;
-  line-height:1.68!important;
+  line-height:1.8!important;
 }
-body.kb-blog-post .checklist li::before{
-  content:"✓";
-  position:absolute;
-  top:13px;
-  left:16px;
-  width:18px;
-  color:#087f8c;
-  font-weight:950;
-}
+html body.kb-blog-post .faq-item>p.faq-a{padding:17px 20px 20px!important}
 
-/* FAQ: one question per row, clear open state. */
-body.kb-blog-post .faq{
-  margin-top:12px;
-  border-top:1px solid #dbe4ee;
+/* 13. CTA: clear conversion zone */
+html body.kb-blog-post main .cta,
+html body.kb-blog-post main .kb-blog-cta{
+  position:relative!important;
+  margin-top:58px!important;
+  padding:38px 38px!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:18px!important;
+  background:
+    radial-gradient(circle at 88% 15%,rgba(62,143,255,.30),transparent 20rem),
+    linear-gradient(120deg,#0d2547,#173f70 70%,#15566c)!important;
+  box-shadow:0 18px 44px rgba(16,43,85,.22)!important;
 }
-body.kb-blog-post .faq-item{
-  margin:0;
-  padding:0;
-  border:0;
-  border-bottom:1px solid #dbe4ee;
-  background:#fff;
+html body.kb-blog-post main .cta::after,
+html body.kb-blog-post main .kb-blog-cta::after{
+  content:"KBRIDGE"!important;
+  position:absolute!important;
+  right:24px!important;
+  bottom:-12px!important;
+  color:rgba(255,255,255,.055)!important;
+  font-size:64px!important;
+  font-weight:950!important;
+  letter-spacing:-.05em!important;
+  pointer-events:none!important;
 }
-body.kb-blog-post details.faq-item>summary,
-body.kb-blog-post .faq-q{
-  position:relative;
-  padding:18px 42px 18px 4px;
-  color:#173f6d;
-  font-size:15.5px;
-  font-weight:800;
-  line-height:1.55;
-}
-body.kb-blog-post details.faq-item>summary::after{
-  content:"+";
-  position:absolute;
-  top:50%;
-  right:6px;
-  transform:translateY(-50%);
-  color:#65809f;
-  font-size:20px;
-  font-weight:500;
-}
-body.kb-blog-post details.faq-item[open]>summary::after{content:"−"}
-body.kb-blog-post details.faq-item>.faq-a,
-body.kb-blog-post .faq-answer{
-  padding:0 4px 18px;
-  color:#52677e;
-  font-size:15px;
-  line-height:1.72;
-}
-
-/* CTA: preserve existing actions, improve contrast and hierarchy. */
-body.kb-blog-post main .cta,
-body.kb-blog-post main .kb-blog-cta{
-  margin-top:52px;
-  padding:32px 34px;
-  border:0;
-  border-radius:0;
-  background:linear-gradient(120deg,#102f5c 0%,#173f73 72%,#166f7c 100%);
+html body.kb-blog-post main .cta>:is(h2,h3),
+html body.kb-blog-post main .kb-blog-cta>:is(h2,h3){
+  position:relative!important;
+  z-index:1!important;
+  margin:0 0 10px!important;
+  padding:0!important;
+  border:0!important;
   color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  font-size:27px!important;
+  font-weight:900!important;
 }
-body.kb-blog-post main .cta > :is(h2,h3),
-body.kb-blog-post main .kb-blog-cta > :is(h2,h3){
-  margin:0 0 9px!important;
+html body.kb-blog-post main .cta>:is(h2,h3)::before,
+html body.kb-blog-post main .kb-blog-cta>:is(h2,h3)::before{display:none!important}
+html body.kb-blog-post main .cta>p,
+html body.kb-blog-post main .kb-blog-cta>p{
+  position:relative!important;
+  z-index:1!important;
+  max-width:720px!important;
+  color:rgba(240,247,255,.90)!important;
+  -webkit-text-fill-color:rgba(240,247,255,.90)!important;
+  font-size:16px!important;
+}
+html body.kb-blog-post main .cta :is(.action-row,.cta-actions,.actions,.buttons){
+  position:relative!important;
+  z-index:1!important;
+  display:flex!important;
+  gap:10px!important;
+  flex-wrap:wrap!important;
+  margin-top:22px!important;
+}
+html body.kb-blog-post main .cta .btn,
+html body.kb-blog-post main .kb-blog-cta .btn,
+html body.kb-blog-post main .cta>a:not(.btn){
+  min-height:46px!important;
+  padding:0 20px!important;
+  border:1px solid #fff!important;
+  border-radius:10px!important;
+  background:#fff!important;
+  color:#102b55!important;
+  -webkit-text-fill-color:#102b55!important;
+  font-size:13.5px!important;
+  font-weight:850!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.11)!important;
+}
+html body.kb-blog-post main .cta .btn:is(.sub,.secondary),
+html body.kb-blog-post main .kb-blog-cta .btn:is(.sub,.secondary){
+  background:rgba(255,255,255,.10)!important;
   color:#fff!important;
-  font-size:23px;
-  font-weight:850;
-  line-height:1.42;
-}
-body.kb-blog-post main .cta > p,
-body.kb-blog-post main .kb-blog-cta > p{
-  max-width:760px;
-  margin:0!important;
-  color:rgba(247,250,255,.93)!important;
-  font-size:15.5px;
-  line-height:1.7;
-}
-body.kb-blog-post .action-row{gap:8px;margin-top:20px}
-body.kb-blog-post .cta .btn{
-  min-height:43px;
-  padding:0 17px;
-  border-radius:0;
-  font-size:13px;
-  font-weight:850;
+  -webkit-text-fill-color:#fff!important;
+  border-color:rgba(255,255,255,.38)!important;
+  box-shadow:none!important;
 }
 
-/* Tags: de-emphasize after the conversion point. */
-body.kb-blog-post .tags{
-  gap:6px;
-  margin-top:26px;
-  padding-top:18px;
-  border-top:1px solid #e3eaf1;
+/* 14. Tags */
+html body.kb-blog-post .tags{
+  gap:8px!important;
+  margin-top:30px!important;
+  padding-top:24px!important;
+  border-top:1px solid #e4ebf3!important;
 }
-body.kb-blog-post .tag{
-  min-height:29px;
-  padding:0 9px;
-  border:1px solid #dde5ee;
-  border-radius:0;
-  background:#f8fafc;
-  color:#65778c;
-  font-size:11.5px;
-  font-weight:700;
+html body.kb-blog-post .tag{
+  min-height:32px!important;
+  padding:0 11px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:#eef3f8!important;
+  color:#60738a!important;
+  font-size:11.5px!important;
+  font-weight:750!important;
 }
 
-/* Responsive reading rules. */
+/* Responsive */
 @media(max-width:900px){
-  body.kb-blog-post article>:is(.hero,.article-hero){min-height:240px;padding:32px 30px 29px}
-  body.kb-blog-post article>:is(.hero,.article-hero) :is(h1){font-size:31px}
-  body.kb-blog-post article>:is(.body,.content,.article-body){padding:42px 30px 58px}
+  html body.kb-blog-post main:is(.page,.page-wrap){width:min(100% - 28px,1240px)!important}
+  html body.kb-blog-post article>:is(.hero,.article-hero){padding:46px 36px 42px!important}
+  html body.kb-blog-post article>:is(.body,.content,.article-body){padding:44px 32px 62px!important}
+  html body.kb-blog-post :is(.news-list,.briefs,.cards,.card-grid),
+  html body.kb-blog-post .checklist{grid-template-columns:1fr!important}
 }
-@media(max-width:640px){
-  body.kb-blog-post article>:is(.hero,.article-hero){min-height:0;padding:27px 20px 25px}
-  body.kb-blog-post article>:is(.hero,.article-hero) :is(h1){font-size:26px;line-height:1.32}
-  body.kb-blog-post article>:is(.hero,.article-hero) :is(.hero-desc,.lead,.desc),
-  body.kb-blog-post article>:is(.hero,.article-hero) .kb-hero-frame>p:not(.meta):not(.article-meta){font-size:14.5px;line-height:1.65}
-  body.kb-blog-post article>:is(.body,.content,.article-body){padding:32px 18px 48px;font-size:16px}
-  body.kb-blog-post :is(.body,.content,.article-body) :is(p,li,dd){font-size:16px;line-height:1.78}
-  body.kb-blog-post :is(.body,.content,.article-body) :is(.section,section[id]){margin-top:46px;padding-top:34px}
-  body.kb-blog-post :is(.body,.content,.article-body) h2{font-size:23px;line-height:1.4}
-  body.kb-blog-post :is(.body,.content,.article-body) h3{font-size:18px}
-  body.kb-blog-post .quick-summary>.summary-card,
-  body.kb-blog-post .summary-card:not(.quick-summary .summary-card){padding:20px 18px 18px}
-  body.kb-blog-post :is(.summary-card,.quick-summary) p{font-size:15.5px;line-height:1.72}
-  body.kb-blog-post .summary-points{grid-template-columns:1fr;gap:6px;margin-top:14px}
-  body.kb-blog-post .toc{padding:16px 17px}
-  body.kb-blog-post .toc ol{grid-template-columns:1fr;gap:0}
-  body.kb-blog-post .briefs,
-  body.kb-blog-post .fact-grid{grid-template-columns:1fr}
-  body.kb-blog-post .news-item{grid-template-columns:38px minmax(0,1fr);gap:11px;padding:15px 14px}
-  body.kb-blog-post table th,
-  body.kb-blog-post table td{padding:12px 11px;font-size:13.5px}
-  body.kb-blog-post .checklist li{padding:13px 13px 13px 40px;font-size:15px!important}
-  body.kb-blog-post main .cta,
-  body.kb-blog-post main .kb-blog-cta{padding:27px 20px}
-  body.kb-blog-post main .cta > :is(h2,h3),
-  body.kb-blog-post main .kb-blog-cta > :is(h2,h3){font-size:21px}
-}
-
-/* REV7 compatibility details for mixed legacy markup. */
-body.kb-blog-post .faq .faq-q{margin:0!important}
-body.kb-blog-post .faq div.faq-item>.faq-a{margin:0!important;padding:0 4px 18px!important}
-body.kb-blog-post .checklist>.check{
-  position:relative;
-  min-width:0;
-  margin:0;
-  padding:14px 16px 14px 43px;
-  border:1px solid #dce6f0;
-  background:#fbfdff;
-}
-body.kb-blog-post .checklist>.check::before{
-  content:"✓";
-  position:absolute;
-  top:13px;
-  left:16px;
-  color:#087f8c;
-  font-weight:950;
-}
-body.kb-blog-post .checklist>.check strong{display:block;margin-bottom:3px;color:#173f6d;font-size:15px;font-weight:850}
-body.kb-blog-post .checklist>.check span{display:block;color:#63758a;font-size:14px;line-height:1.58}
-body.kb-blog-post main .cta :is(.action-row,.actions,.buttons,.cta-actions){display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-body.kb-blog-post main .cta .btn:not(.sub):not(.secondary),
-body.kb-blog-post main .kb-blog-cta .btn:not(.sub):not(.secondary){background:#fff!important;border:1px solid #fff!important;color:#0a2342!important}
-body.kb-blog-post main .cta .btn:is(.sub,.secondary),
-body.kb-blog-post main .kb-blog-cta .btn:is(.sub,.secondary){background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.42)!important;color:#fff!important}
-@media(max-width:640px){
-  body.kb-blog-post .checklist>.check{padding:13px 13px 13px 40px}
-  body.kb-blog-post main .cta :is(.action-row,.actions,.buttons,.cta-actions){display:grid;grid-template-columns:1fr}
-  body.kb-blog-post main .cta :is(.action-row,.actions,.buttons,.cta-actions) .btn{width:100%!important}
+@media(max-width:620px){
+  html body.kb-blog-post{background:#fff!important}
+  html body.kb-blog-post main:is(.page,.page-wrap){width:100%!important;padding:0 0 48px!important}
+  html body.kb-blog-post article:is(.article,.article-shell){border:0!important;border-radius:0!important;box-shadow:none!important}
+  html body.kb-blog-post article>:is(.hero,.article-hero){padding:34px 20px 32px!important}
+  html body.kb-blog-post article>:is(.hero,.article-hero) h1{font-size:30px!important;line-height:1.28!important}
+  html body.kb-blog-post article>:is(.hero,.article-hero) :is(.hero-desc,.lead,.desc),
+  html body.kb-blog-post article>:is(.hero,.article-hero)>p{font-size:15.5px!important;line-height:1.75!important}
+  html body.kb-blog-post article>:is(.body,.content,.article-body){padding:34px 18px 48px!important}
+  html body.kb-blog-post :is(.quick-summary,.summary,.summary-card){padding:23px 19px!important;border-radius:13px!important}
+  html body.kb-blog-post .summary-points{grid-template-columns:1fr!important}
+  html body.kb-blog-post .toc{padding:20px 17px!important;border-radius:12px!important}
+  html body.kb-blog-post .toc ol{grid-template-columns:1fr!important}
+  html body.kb-blog-post :is(.body,.content,.article-body) h2{font-size:24px!important;padding-bottom:12px!important}
+  html body.kb-blog-post :is(.body,.content,.article-body) .section{margin-top:46px!important;padding-top:38px!important}
+  html body.kb-blog-post :is(.cover-thumbnail,.body-visual,.visual,.figure,figure.visual,figure.body-visual){border-radius:10px!important;margin:25px 0 34px!important}
+  html body.kb-blog-post main .cta,html body.kb-blog-post main .kb-blog-cta{margin-top:46px!important;padding:28px 20px!important;border-radius:14px!important}
+  html body.kb-blog-post main .cta>:is(h2,h3),html body.kb-blog-post main .kb-blog-cta>:is(h2,h3){font-size:23px!important}
+  html body.kb-blog-post main .cta :is(.action-row,.cta-actions,.actions,.buttons){display:grid!important;grid-template-columns:1fr!important}
+  html body.kb-blog-post main .cta .btn,html body.kb-blog-post main .kb-blog-cta .btn,html body.kb-blog-post main .cta>a:not(.btn){width:100%!important}
 }
