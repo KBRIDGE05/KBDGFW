@@ -10,6 +10,7 @@ on:
       - 'scripts/normalize-blog-posts.py'
       - 'scripts/enforce-blog-shell.py'
       - 'scripts/enhance-blog-content.py'
+      - 'scripts/upgrade-blog-visuals.py'
       - 'assets/css/pages/blog-unified.css'
       - 'assets/css/kbridge-design-system.css'
       - 'assets/site-chrome.js'
@@ -43,6 +44,9 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: '24'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
 
       - name: Detect changed blog posts
         shell: bash
@@ -78,6 +82,9 @@ jobs:
 
       - name: Enhance editorial article structure
         run: python scripts/enhance-blog-content.py
+
+      - name: Upgrade simple infographics to responsive HTML visuals
+        run: python scripts/upgrade-blog-visuals.py
 
       - name: Include normalized articles in notification list
         shell: bash
