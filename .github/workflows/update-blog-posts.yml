@@ -12,6 +12,7 @@ on:
       - 'scripts/enhance-blog-content.py'
       - 'assets/css/pages/blog-unified.css'
       - 'assets/css/kbridge-design-system.css'
+      - 'assets/site-chrome.js'
       - 'scripts/build-blog-posts.mjs'
       - '.github/workflows/update-blog-posts.yml'
 

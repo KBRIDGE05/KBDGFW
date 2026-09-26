@@ -5,6 +5,41 @@
   const menu = document.getElementById('mobileNav');
   const trigger = document.getElementById('menuBtn');
   const dropdowns = [...document.querySelectorAll('.header .nav-dropdown')];
+  const mobileGroups = menu ? [...menu.querySelectorAll('.mobile-nav-group')] : [];
+
+  const closeMobileGroups = (except = null) => {
+    mobileGroups.forEach((group) => {
+      if (group === except) return;
+      group.classList.remove('is-open');
+      group.querySelector('.mobile-nav-label')?.setAttribute('aria-expanded', 'false');
+    });
+  };
+
+  mobileGroups.forEach((group) => {
+    const label = group.querySelector('.mobile-nav-label');
+    if (!label) return;
+    if (label.tagName !== 'BUTTON') {
+      label.setAttribute('role', 'button');
+      label.setAttribute('tabindex', '0');
+    }
+    label.setAttribute('aria-expanded', 'false');
+    const toggleGroup = () => {
+      const open = !group.classList.contains('is-open');
+      closeMobileGroups(group);
+      group.classList.toggle('is-open', open);
+      label.setAttribute('aria-expanded', String(open));
+    };
+    label.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      toggleGroup();
+    });
+    label.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      toggleGroup();
+    });
+  });
 
   const closeDropdowns = (except = null) => {
     dropdowns.forEach((dropdown) => {
@@ -21,6 +56,7 @@
     trigger.setAttribute('aria-expanded', 'false');
     trigger.setAttribute('aria-label', '메뉴 열기');
     document.body.classList.remove('lock');
+    closeMobileGroups();
   };
 
   if (menu && trigger) {
@@ -30,6 +66,7 @@
       event.stopImmediatePropagation();
       const open = !menu.classList.contains('open');
       closeDropdowns();
+      if (open) closeMobileGroups();
       menu.classList.toggle('open', open);
       menu.setAttribute('aria-hidden', String(!open));
       trigger.setAttribute('aria-expanded', String(open));
