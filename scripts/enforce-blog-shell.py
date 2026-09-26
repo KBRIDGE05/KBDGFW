@@ -13,11 +13,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 POSTS_ROOT = ROOT / "blog" / "posts"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
-STYLE_VERSION = "20260826-blog-unified-v26"
+DESIGN_VERSION = "20260826-design-v26"
+BLOG_STYLE_VERSION = "20260926-blog-ui-v30"
 SCRIPT_VERSION = "20260826-blog-unified-v26"
 
 STYLE_LINK_RE = re.compile(
-    r'<link\b[^>]*href=["\'][^"\']*(?:kbridge-design-system\.css|pages/blog-unified\.css)[^"\']*["\'][^>]*>\s*',
+    r'<link\b[^>]*href=["\'][^"\']*(?:kbridge-design-system\.css|(?:pages/)?blog-unified\.css)[^"\']*["\'][^>]*>\s*',
     re.I,
 )
 SCRIPT_SRC_RE = re.compile(
@@ -40,7 +41,7 @@ CANONICAL_HEADER = '''<header class="header" id="top"><div class="container head
 
 CANONICAL_MOBILE = '''<div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav"><a href="../../../index.html#services">즉시견적 <span>→</span></a><a href="../../../quote-comparison.html">견적서 비교 <span>→</span></a><a href="../../../warehouse-inquiry.html">창고 문의 <span>→</span></a><div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span><a href="../../../domestic.html">국내운송 안내 <span>→</span></a><a href="../../../load-planner.html">차량 배차 시뮬레이터 <span>→</span></a><a href="../../../safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="../../../vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div><a href="../../../freight-index.html">운임지수 <span>→</span></a><div class="mobile-nav-group tools-mobile-group"><span class="mobile-nav-label">물류도구</span><a href="../../../duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="../../../customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="../../../cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="../../../holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="../../../hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="../../../incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="../../../lcl-storage.html">LCL 창고료 <span>→</span></a><a href="../../../dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="../../../vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="../../../terminal-info.html">터미널 정보 조회 <span>→</span></a></div><div class="mobile-nav-group blog-mobile-group"><span class="mobile-nav-label">블로그</span><a href="../../../blog/index.html?category=info">물류 정보 <span>→</span></a><a href="../../../blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="../../../blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="../../../blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="../../../blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div><a href="../../../index.html#services">견적 받기 <span>→</span></a></div>'''
 
-SHARED_STYLES = f'''<link href="../../../assets/css/kbridge-design-system.css?v={STYLE_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-unified.css?v={STYLE_VERSION}" rel="stylesheet"/>'''
+SHARED_STYLES = f'''<link href="../../../assets/css/kbridge-design-system.css?v={DESIGN_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-unified.css?v={BLOG_STYLE_VERSION}" rel="stylesheet"/>'''
 SHARED_SCRIPTS = f'''<script defer src="../../../assets/enterprise-motion.js?v=20260720-v17"></script>\n<script defer src="../../../assets/site-chrome.js?v={SCRIPT_VERSION}"></script>\n<script defer src="../../../assets/kebby-chat.js?v={SCRIPT_VERSION}"></script>'''
 
 
