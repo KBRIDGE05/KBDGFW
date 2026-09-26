@@ -8,8 +8,104 @@
     <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
     <generator>KBRIDGE Blog SEO Automation</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Mon, 21 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 00:00:00 GMT</lastBuildDate>
     <ttl>60</ttl>
+
+    <item>
+      <title><![CDATA[아마존 입점 가이드: 상품 선정부터 FBA 입고·재고 보충까지]]></title>
+      <link>https://www.kbexpress.kr/blog/posts/glossary/amazon-fba-entry-guide.html</link>
+      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/glossary/amazon-fba-entry-guide.html</guid>
+      <pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+      <category><![CDATA[물류 용어집]]></category>
+      <description><![CDATA[<div class="article-body">
+<figure class="body-visual cover-thumbnail"><img alt="아마존 입점 가이드 상품 선정 HS CODE 포장 라벨 FBA 입고 썸네일" decoding="async" fetchpriority="high" height="1000" loading="eager" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_amazon_fba_entry_guide_1000.webp" width="1000"/></figure>
+<section class="quick-summary"><div class="summary-card">
+<p class="summary-title">핵심 요약</p>
+<p><strong>아마존 FBA 입점은 상품 등록만으로 끝나지 않습니다.</strong> 판매 가능성과 물류비를 함께 검토한 상품 선정, 정확한 HS CODE와 목적지 규정 확인, 수출·통관 서류 준비, FBA 포장·라벨 규정 준수, 관세·세금이 미납되지 않도록 한 국제운송, 그리고 입고 후 재고 보충까지 하나의 흐름으로 관리해야 합니다.</p>
+<div class="summary-points"><div class="summary-point">상품 · 시장성 + 부피·중량</div><div class="summary-point">통관 · HS CODE + 규정</div><div class="summary-point">입고 · 포장 + 라벨</div><div class="summary-point">운영 · 추적 + 재고 보충</div></div>
+</div></section>
+
+<figure class="body-visual"><img alt="아마존 입점 상품 선정 시장성 부피 중량 HS CODE 확인 인포그래픽" decoding="async" height="800" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_01_amazon_product_hscode.webp" width="1200"/></figure>
+<section class="section" id="prepare">
+<h2>1. 아마존 셀링 상품 선정: 판매 가능성과 물류비를 같이 보세요</h2>
+<p class="lead"><strong>아마존 진출 상품은 수요와 경쟁력뿐 아니라 부피·중량이 만드는 국제운송비와 FBA 비용까지 함께 검토해야 합니다.</strong> 같은 판매가를 받아도 부피가 크거나 무거운 상품은 항공·해상 운송비, 현지 내륙운송, 보관·처리비 부담이 커져 실제 마진이 낮아질 수 있습니다.</p>
+<p>따라서 초기에 판매량만 예상하기보다 상품 1개당 포장 후 크기·중량, 카톤당 입수량, 예상 출고 수량, 항공·해상 운송비, 통관 관련 비용을 한 표에 놓고 손익을 계산하는 것이 좋습니다. 특히 신제품은 초도 물량을 과도하게 잡기보다 시장 반응을 확인할 수 있는 수준으로 시작하는 편이 재고 리스크를 줄이는 데 유리합니다.</p>
+<div class="analysis-box"><strong>실무 포인트:</strong> 판매가가 같다면 작고 가벼우며 파손 위험이 낮고 규제가 단순한 상품이 글로벌 이커머스 물류 운영에서는 상대적으로 관리하기 쉽습니다.</div>
+</section>
+<section class="section" id="hscode">
+<h2>2. HS CODE부터 확인해야 하는 이유</h2>
+<p><strong>HS CODE는 관세율뿐 아니라 수입 규제·인증·검사 여부를 확인하는 출발점</strong>입니다. 판매할 상품을 정했다면 한국 수출신고용 품목분류와 목적지 국가에서 적용될 분류를 확인하고, 필요한 인증·허가·표시 요건이 있는지 먼저 검토해야 합니다.</p>
+<p>식품, 화장품, 건강 관련 제품, 전기·전자제품, 어린이용품처럼 규제가 많은 품목은 국가와 상품 특성에 따라 별도의 등록이나 인증이 필요할 수 있습니다. 따라서 상품 상세페이지 제작이나 대량 발주보다 먼저 품목분류와 수입 가능 여부를 확인하는 것이 안전합니다.</p>
+<div class="analysis-box"><strong>체크:</strong> HS CODE는 상품명만으로 자동 확정되는 값이 아닙니다. 재질·성분·용도·기능을 바탕으로 분류해야 하므로 애매한 품목은 관세사 등 전문가 확인이 필요합니다.</div>
+</section>
+<figure class="body-visual"><img alt="아마존 FBA 수출서류 포장 FBA Box ID 상품 라벨 준비 인포그래픽" decoding="async" height="800" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_02_amazon_documents_labels.webp" width="1200"/></figure>
+<section class="section" id="documents">
+<h2>3. 수출·통관 서류는 무엇을 준비할까?</h2>
+<p>실제 필요 서류는 국가·품목·거래 구조에 따라 달라지지만, 일반적으로 <strong>Commercial Invoice, Packing List, 수출신고 관련 서류, 운송서류(AWB 또는 B/L)</strong> 등을 준비합니다. 원산지증명서는 FTA 적용이나 거래 조건에 따라 필요한 경우가 있습니다.</p>
+<div class="table-wrap"><table class="market-table"><thead><tr><th>서류</th><th>주요 용도</th><th>실무 확인 포인트</th></tr></thead><tbody>
+<tr><td><strong>Commercial Invoice</strong></td><td>가격·거래조건·상품 정보</td><td>품명, 수량, 단가, 통화, HS CODE, 거래조건 일치</td></tr>
+<tr><td><strong>Packing List</strong></td><td>포장 수량·박스 정보</td><td>박스 수, 중량, 치수, 수량 일치</td></tr>
+<tr><td><strong>Export Declaration</strong></td><td>한국 수출신고</td><td>신고 품목과 실제 출고 물품 일치</td></tr>
+<tr><td><strong>AWB / B/L</strong></td><td>항공·해상 운송서류</td><td>송하인·수하인·화물 정보 확인</td></tr>
+</tbody></table></div>
+</section>
+<section class="section" id="packing">
+<h2>4. FBA 포장·라벨: 박스마다 고유 FBA Box ID가 필요합니다</h2>
+<p><strong>Amazon FBA 입고에서는 포장과 라벨이 정확해야 입고 지연을 줄일 수 있습니다.</strong> Amazon의 현재 안내에 따르면 FBA 센터로 보내는 각 박스에는 Shipment workflow에서 생성한 고유 FBA Box ID label이 필요하며, 운송사 라벨과 함께 스캔 가능한 상태로 부착해야 합니다.</p>
+<p>상품 단위 바코드는 상품과 계정의 barcode 설정에 따라 제조사 바코드 또는 Amazon barcode를 사용할 수 있어 <strong>모든 상품에 무조건 FNSKU를 붙인다고 단정하면 안 됩니다.</strong> Seller Central의 해당 상품 라벨 설정을 확인한 뒤 작업해야 합니다. 재사용 박스의 기존 바코드는 제거하거나 스캔되지 않도록 처리하고, 라벨은 박스 이음새나 모서리를 피해서 평평한 면에 붙이는 것이 중요합니다.</p>
+<p class="data-note"><strong>최신 안내:</strong> Amazon은 각 FBA 박스의 고유 Box ID label과 읽을 수 있는 운송사 라벨을 요구하고 있습니다. 팔레트 발송은 박스 라벨과 별도로 팔레트 라벨 요건도 확인해야 합니다.</p>
+</section>
+<figure class="body-visual"><img alt="아마존 FBA DDP 항공운송 해상운송 비교 인포그래픽" decoding="async" height="800" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_03_amazon_air_sea_ddp.webp" width="1200"/></figure>
+<section class="section" id="shipping">
+<h2>5. 해외에서 FBA로 보낼 때: 관세·세금과 항공·해상 운송</h2>
+<p><strong>Amazon fulfillment center는 수입자 역할이나 미납 관세·세금·운송비를 대신 부담하지 않습니다.</strong> 해외에서 FBA 재고를 보내는 경우 통관 구조와 Importer of Record를 사전에 정하고, Amazon 센터 도착 시 Collect charge가 남지 않도록 준비해야 합니다. Amazon 안내에서는 이러한 국제 FBA 입고 화물에 DDP(Free Domicile) 방식이 사용되도록 요구하고 있습니다.</p>
+<div class="briefs"><div class="brief"><strong>항공운송</strong><span>초도 물량, 긴급 보충, 품절 방지 등 속도가 중요할 때 검토</span></div><div class="brief"><strong>해상운송</strong><span>대량 물량과 정기 보충 등 단위당 운송비 절감이 중요할 때 검토</span></div></div>
+<p>운송수단은 단순히 “빠른 항공 vs 저렴한 해상”으로 고르기보다 <strong>재고 회전일수, 예상 판매 속도, 리드타임, 품절 손실, 통관 기간, 현지 내륙운송비</strong>를 함께 비교해야 합니다. 초도는 항공으로 빠르게 테스트하고 판매가 안정되면 해상 비중을 높이는 혼합 전략도 실무에서 자주 활용됩니다.</p>
+</section>
+<figure class="body-visual"><img alt="아마존 FBA Shipment 추적 Checked in Receiving 재고 보충 전략 인포그래픽" decoding="async" height="800" loading="lazy" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_04_amazon_receiving_inventory.webp" width="1200"/></figure>
+<section class="section" id="receiving">
+<h2>6. Seller Central에서 Shipment와 Receiving 상태를 확인하세요</h2>
+<p>화물이 출발하면 Seller Central의 shipment 화면에서 운송 상태를 추적해야 합니다. 현재 Amazon의 안내에서는 일반적으로 <strong>Shipment Created → In Transit → Delivered → Checked in → Receiving</strong>과 같은 단계로 진행 상황을 확인할 수 있습니다.</p>
+<p><strong>Delivered는 판매 가능 재고로 완전히 입고됐다는 뜻이 아닙니다.</strong> Amazon fulfillment center에 도착한 뒤 Checked in과 Receiving 과정을 거치며, Receiving 단계에서 스캔된 수량부터 판매 가능 상태로 전환될 수 있습니다. 따라서 도착일만 보고 판매재고를 확정하지 말고 실제 수량과 입고 상태를 계속 확인해야 합니다.</p>
+</section>
+<section class="section" id="inventory">
+<h2>7. 판매가 시작되면 물류 전략은 ‘재고 보충’으로 바뀝니다</h2>
+<p>첫 입고 이후에는 판매 속도와 재고 회전, 광고·프로모션 일정, 국제운송 리드타임을 기준으로 재주문 시점을 계산해야 합니다. <strong>재고가 거의 소진된 뒤 보충하면 항공운송을 반복하게 되어 마진이 흔들릴 수 있고, 반대로 과잉 입고는 장기 보관과 자금 부담을 키울 수 있습니다.</strong></p>
+<div class="analysis-box"><strong>운영 예시:</strong> 기본 보충 물량은 해상으로 보내고, 예상보다 판매가 빠른 경우 일부 물량만 항공으로 보충해 품절을 방지하는 방식처럼 항공·해상을 역할별로 나누면 비용과 판매 연속성을 함께 관리하기 좋습니다.</div>
+</section>
+<section class="section" id="check">
+<h2>8. 아마존 FBA 출고 전 실무 체크리스트</h2>
+<ol class="checklist">
+<li><strong>상품:</strong> 판매 가능성, 포장 후 크기·무게, 마진을 확인했는가?</li>
+<li><strong>규정:</strong> HS CODE와 목적지 국가 수입규제·인증 여부를 확인했는가?</li>
+<li><strong>서류:</strong> Invoice, Packing List, 신고·운송서류 정보가 서로 일치하는가?</li>
+<li><strong>포장:</strong> Amazon의 현재 포장 규정과 상품 보호 조건을 충족하는가?</li>
+<li><strong>라벨:</strong> 각 박스의 FBA Box ID와 운송사 라벨이 정확하고 스캔 가능한가?</li>
+<li><strong>통관:</strong> Importer of Record, 관세·세금 부담 구조, DDP 조건을 확인했는가?</li>
+<li><strong>운송:</strong> 판매 속도와 재고 수준에 맞춰 항공·해상을 선택했는가?</li>
+<li><strong>입고:</strong> Seller Central에서 Shipment, Checked in, Receiving 상태를 추적할 준비가 됐는가?</li>
+</ol>
+</section>
+<section class="section faq-section" id="faq"><h2>자주 묻는 질문</h2>
+<details open=""><summary>아마존 FBA로 보내는 모든 상품에 FNSKU 라벨을 붙여야 하나요?</summary><div class="faq-answer"><p>항상 그런 것은 아닙니다. 상품과 계정의 barcode 설정에 따라 제조사 바코드 또는 Amazon barcode를 사용할 수 있으므로 Seller Central의 상품별 라벨 요구사항을 확인해야 합니다. 다만 각 배송 박스의 FBA Box ID label은 별도로 중요합니다.</p></div></details>
+<details><summary>Amazon을 Importer of Record로 지정할 수 있나요?</summary><div class="faq-answer"><p>Amazon은 일반적으로 FBA 재고 수입통관의 Importer of Record 역할을 하지 않습니다. 셀러는 적절한 수입자와 통관 구조를 준비해야 하며, 관세·세금·운송비가 미납된 상태로 fulfillment center에 도착하지 않도록 해야 합니다.</p></div></details>
+<details><summary>항공과 해상 중 어떤 운송이 더 좋나요?</summary><div class="faq-answer"><p>정답은 재고 수준과 판매 속도에 따라 달라집니다. 급한 초도·보충 물량은 항공, 안정적인 대량 보충은 해상을 검토하고, 두 방식을 혼합해 품절과 물류비를 동시에 관리할 수 있습니다.</p></div></details>
+<details><summary>Delivered가 표시되면 바로 판매 가능한가요?</summary><div class="faq-answer"><p>아닙니다. Delivered 이후 Checked in과 Receiving 단계를 거칠 수 있으며, 실제 판매 가능 수량은 Seller Central의 입고·재고 상태를 기준으로 확인해야 합니다.</p></div></details>
+<details><summary>원문에 나온 과거 통관 금액 기준과 90일 규칙도 그대로 적용되나요?</summary><div class="faq-answer"><p>아마존과 각국 통관·입고 정책은 변경될 수 있습니다. 과거 게시물의 금액 기준이나 기간을 현재 규정으로 단정하지 말고, 발송 시점의 Seller Central과 세관·운송사 안내를 다시 확인하는 것이 안전합니다.</p></div></details>
+</section>
+<section class="section"><h2>참고한 최신 자료</h2>
+<p class="data-note">이 글은 Cello Square의 「아마존 입점 가이드」를 기본 흐름으로 참고하되, 2026년 현재 Amazon FBA의 박스 라벨 및 Shipment 상태 안내를 반영해 오래된 수치·기간 표현은 그대로 사용하지 않았습니다.</p>
+<ul class="checklist">
+<li><strong>Cello Square:</strong> 아마존 입점 가이드</li>
+<li><strong>Amazon Seller Central:</strong> FBA shipment label requirements</li>
+<li><strong>Amazon Seller Forums / Amazon staff guidance:</strong> 국제 FBA 통관·DDP 및 Shipment Events 상태 안내</li>
+</ul>
+</section>
+<section class="cta kb-blog-cta"><div class="cta-copy"><p class="eyebrow">KBRIDGE 글로벌 이커머스 물류</p><h2>아마존 FBA 입고와 국제운송,<br/>처음부터 물류비와 규정을 함께 검토하세요.</h2><p>상품 정보, 박스 규격·중량, 출발지, 판매 국가와 FBA 목적지를 알려주시면 해상·항공 운송과 통관·입고 조건을 함께 검토할 수 있습니다.</p></div><div class="cta-actions"><a class="btn primary" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a><a class="btn secondary" href="https://www.kbexpress.kr/index.html#quote">즉시견적</a></div></section>
+<div class="tags"><span>태그</span><a href="https://www.kbexpress.kr/blog/index.html?category=glossary">물류 용어집</a><a href="https://www.kbexpress.kr/blog/index.html?search=Amazon%20FBA">Amazon FBA</a><a href="https://www.kbexpress.kr/blog/index.html?search=%EC%95%84%EB%A7%88%EC%A1%B4%20%EC%9E%85%EC%A0%90">아마존 입점</a><a href="https://www.kbexpress.kr/blog/index.html?search=HS%20CODE">HS CODE</a><a href="https://www.kbexpress.kr/blog/index.html?search=%ED%95%B4%EC%99%B8%ED%8C%90%EB%A7%A4">해외판매</a><a href="https://www.kbexpress.kr/blog/index.html?search=%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EC%9D%B4%EC%BB%A4%EB%A8%B8%EC%8A%A4">글로벌 이커머스</a></div>
+</div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_amazon_fba_entry_guide_1000.webp" type="image/webp" />
+    </item>
 
     <item>
       <title><![CDATA[강관·형강·후판 수출입 물류, 적입과 쇼링은 이렇게 진행됩니다]]></title>

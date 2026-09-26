@@ -1,5 +1,28 @@
 [
   {
+    "slug": "amazon-fba-entry-guide",
+    "category": "glossary",
+    "categoryLabel": "물류 용어집",
+    "title": "아마존 입점 가이드: 상품 선정부터 FBA 입고·재고 보충까지",
+    "summary": "아마존 FBA 입점의 상품 선정부터 통관·운송·Receiving·재고 보충까지 실무 흐름을 정리했습니다.",
+    "date": "2026-09-26",
+    "thumbnail": "https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_amazon_fba_entry_guide_1000.webp",
+    "keywords": [
+      "아마존 입점",
+      "Amazon FBA",
+      "FBA 입고",
+      "HS CODE",
+      "FBA Box ID",
+      "DDP",
+      "항공운송",
+      "해상운송"
+    ],
+    "url": "https://www.kbexpress.kr/blog/posts/glossary/amazon-fba-entry-guide.html",
+    "published": true,
+    "source": "generated-html",
+    "modified": "2026-09-26"
+  },
+  {
     "slug": "pipe",
     "category": "service",
     "categoryLabel": "물류 서비스",
