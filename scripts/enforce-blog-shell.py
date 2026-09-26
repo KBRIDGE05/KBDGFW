@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 POSTS_ROOT = ROOT / "blog" / "posts"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
 DESIGN_VERSION = "20260826-design-v26"
-BLOG_STYLE_VERSION = "20260926-blog-ui-v31"
+BLOG_STYLE_VERSION = "20260926-blog-ui-v32"
 SCRIPT_VERSION = "20260826-blog-unified-v26"
 
 STYLE_LINK_RE = re.compile(
@@ -32,6 +32,11 @@ SITE_HEADER_RE = re.compile(
 )
 BODY_RE = re.compile(r'<body\b([^>]*)>', re.I)
 CLASS_ATTR_RE = re.compile(r'\bclass\s*=\s*(["\'])(.*?)\1', re.I | re.S)
+SKIP_LINK_RE = re.compile(
+    r'<a\b[^>]*class=["\'][^"\']*(?:skip-link|\bskip\b)[^"\']*["\'][^>]*>\s*본문 바로가기\s*</a>\s*',
+    re.I | re.S,
+)
+
 LOCAL_PAGE_STYLE_RE = re.compile(
     r'<link\b[^>]*href=["\'](?P<href>[^"\']*assets/css/pages/[^"\']+\.css(?:\?[^"\']*)?)["\'][^>]*>\s*',
     re.I,
@@ -97,6 +102,7 @@ def normalize_shell(source: str, html_path: Path | None = None) -> str:
     source = STYLE_LINK_RE.sub("", source)
     source = SCRIPT_SRC_RE.sub("", source)
     source = SCRIPT_BLOCK_RE.sub(remove_legacy_menu_script, source)
+    source = SKIP_LINK_RE.sub("", source)
     source = ensure_body_classes(source)
 
     main = re.search(r'<main\b', source, re.I)
