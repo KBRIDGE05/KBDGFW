@@ -1424,3 +1424,129 @@ html body.kb-blog-post.kb-unified-site article.article-shell > div.article-body 
   width:100%!important;
   max-width:100%!important;
 }
+
+
+/* ==========================================================================\n   V40 — Visual Guide normalization + TOC column fix\n   - One fixed header geometry for every VISUAL GUIDE module\n   - Same label, title baseline, border and divider across all blog posts\n   - Preserve the V39 TOC design; only prevent legacy multi-column TOCs\n   ========================================================================== */
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic{
+  width:100%!important;
+  max-width:100%!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:1px solid #dfe6ef!important;
+  border-top:3px solid var(--kb-blog-brand)!important;
+  border-radius:0!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  box-sizing:border-box!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > .kb-figure-head{
+  display:grid!important;
+  grid-template-columns:96px minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:0 14px!important;
+  width:100%!important;
+  height:52px!important;
+  min-height:52px!important;
+  max-height:52px!important;
+  margin:0!important;
+  padding:0 16px!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-bottom:1px solid #dfe6ef!important;
+  background:#f7f9fc!important;
+  box-sizing:border-box!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > .kb-figure-head > .kb-figure-kicker{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:96px!important;
+  min-width:96px!important;
+  max-width:96px!important;
+  height:24px!important;
+  min-height:24px!important;
+  max-height:24px!important;
+  margin:0!important;
+  padding:0 8px!important;
+  border:1px solid #bfd2ef!important;
+  border-radius:999px!important;
+  background:#edf4ff!important;
+  color:#2f67ad!important;
+  box-sizing:border-box!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  line-height:22px!important;
+  letter-spacing:.06em!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > .kb-figure-head > .kb-figure-title{
+  display:-webkit-box!important;
+  align-self:center!important;
+  min-width:0!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:36px!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  color:#20344f!important;
+  font-size:13.5px!important;
+  font-weight:800!important;
+  line-height:18px!important;
+  letter-spacing:-.012em!important;
+  text-align:left!important;
+  word-break:keep-all!important;
+  overflow-wrap:anywhere!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:2!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > figcaption{
+  width:100%!important;
+  margin:0!important;
+  padding:10px 16px 12px!important;
+  border:0!important;
+  border-top:1px solid #e6ebf1!important;
+  background:#f8fafc!important;
+  box-sizing:border-box!important;
+}
+/* Legacy pages such as customs inspection carried `columns:2` inline.\n   Keep the original V39 TOC appearance, but force one vertical list. */
+html body.kb-blog-post.kb-unified-site :is(.toc,.pipe-toc) :is(ol,ul){
+  columns:1!important;
+  column-count:1!important;
+  column-width:auto!important;
+  column-gap:0!important;
+}
+@media(max-width:560px){
+  html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > .kb-figure-head{
+    grid-template-columns:86px minmax(0,1fr)!important;
+    gap:0 10px!important;
+    height:48px!important;
+    min-height:48px!important;
+    max-height:48px!important;
+    padding:0 12px!important;
+  }
+  html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > .kb-figure-head > .kb-figure-kicker{
+    width:86px!important;
+    min-width:86px!important;
+    max-width:86px!important;
+    height:22px!important;
+    min-height:22px!important;
+    max-height:22px!important;
+    padding:0 6px!important;
+    font-size:9.25px!important;
+    line-height:20px!important;
+  }
+  html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > .kb-figure-head > .kb-figure-title{
+    max-height:34px!important;
+    font-size:12.5px!important;
+    line-height:17px!important;
+  }
+  html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > figcaption{
+    padding:9px 12px 10px!important;
+  }
+}
+/* END V40 */

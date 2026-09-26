@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 POSTS_ROOT = ROOT / "blog" / "posts"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
 DESIGN_VERSION = "20260926-design-v38"
-BLOG_STYLE_VERSION = "20260926-blog-ui-v39"
+BLOG_STYLE_VERSION = "20260926-blog-ui-v40"
 SCRIPT_VERSION = "20260926-site-chrome-v38"
 
 STYLE_LINK_RE = re.compile(
