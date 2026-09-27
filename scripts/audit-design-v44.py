@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 POSTS = sorted((ROOT / "blog" / "posts").glob("*/*.html"))
-VERSION = "20260927-blog-design-v44"
+VERSION = "20260927-blog-design-v45r1"
 errors=[]
 counts={"visual":0,"photo":0,"tables":0,"takeaways":0,"resource":0,"cta":0}
 
@@ -34,6 +34,8 @@ for p in POSTS:
 
 css=(ROOT/"assets/css/pages/blog-unified.css").read_text(encoding="utf-8")
 if "V44 — KBRIDGE FULL EDITORIAL DESIGN SYSTEM" not in css: fail("blog-unified.css: V44 design block missing")
+if "V45 — Requested readability fixes only" not in css: fail("blog-unified.css: V45 patch missing")
+if "V45R1 — Source/Reference typography + CTA visibility hard lock" not in css: fail("blog-unified.css: V45R1 patch missing")
 
 if errors:
     print("V44 DESIGN QA FAIL")

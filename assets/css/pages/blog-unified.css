@@ -2363,3 +2363,129 @@ html body.kb-blog-post.kb-unified-site .news-item p{font-size:14px!important;lin
   html body.kb-blog-post.kb-unified-site .kb-blog-cta :is(h2,h3){font-size:19px!important}
 }
 /* END V44 */
+
+
+/* ========================================================================== 
+   V45 — Requested readability fixes only
+   - Section separators
+   - CTA body-copy contrast
+   - Remove resource lead box
+   ========================================================================== */
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.section,
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.pipe-section{
+  border-top:1px solid #dfe6ee!important;
+}
+html body.kb-blog-post.kb-unified-site section.cta p,
+html body.kb-blog-post.kb-unified-site .kb-blog-cta p{
+  color:#eaf1f9!important;
+}
+html body.kb-blog-post.kb-unified-site section.cta p strong,
+html body.kb-blog-post.kb-unified-site .kb-blog-cta p strong{
+  color:#ffffff!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-lead{
+  display:none!important;
+}
+/* END V45 */
+
+/* ========================================================================== 
+   V45R1 — Source/Reference typography + CTA visibility hard lock
+   Base: user-attached V45 package. Only these two areas are intentionally
+   normalized; no layout, TOC, table, VISUAL GUIDE, or article styling changes.
+   ========================================================================== */
+
+/* 1) Source / reference blocks: one typography scale across every post. */
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography){
+  width:100%!important;
+  max-width:100%!important;
+  margin:30px 0 0!important;
+  padding:16px 18px!important;
+  border:1px solid #dfe7f0!important;
+  background:#f7f9fc!important;
+  color:#64748b!important;
+  box-sizing:border-box!important;
+}
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) > :is(h2,h3,h4),
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(h2,h3,h4){
+  margin:0 0 9px!important;
+  padding:0!important;
+  color:#34465e!important;
+  font-size:14px!important;
+  font-weight:800!important;
+  line-height:1.45!important;
+  letter-spacing:-.015em!important;
+}
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(p,li,a,span,strong,em),
+html body.kb-blog-post.kb-unified-site .editor-note{
+  color:#64748b!important;
+  font-size:12.5px!important;
+  line-height:1.68!important;
+  letter-spacing:-.005em!important;
+  overflow-wrap:anywhere!important;
+  word-break:break-word!important;
+}
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(ol,ul){
+  margin:0!important;
+  padding-left:20px!important;
+}
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) li{
+  margin:5px 0!important;
+}
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) a{
+  text-decoration:underline!important;
+  text-underline-offset:2px!important;
+}
+
+/* 2) CTA: force visible copy after every legacy/page-specific rule. */
+html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta){
+  color:#ffffff!important;
+}
+html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(h2,h3),
+html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(h2,h3) *{
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:none!important;
+  mix-blend-mode:normal!important;
+}
+html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) > p,
+html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) > p *{
+  color:#eef5ff!important;
+  -webkit-text-fill-color:#eef5ff!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:none!important;
+  mix-blend-mode:normal!important;
+  text-shadow:none!important;
+}
+html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(.action-row,.actions,.buttons) a.btn:not(.sub),
+html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(.action-row,.actions,.buttons) button.btn:not(.sub){
+  color:#0a2342!important;
+  -webkit-text-fill-color:#0a2342!important;
+  background:#ffffff!important;
+  border-color:#ffffff!important;
+  opacity:1!important;
+}
+html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(.action-row,.actions,.buttons) :is(a.btn.sub,button.btn.sub){
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+  background:rgba(255,255,255,.14)!important;
+  border-color:rgba(255,255,255,.42)!important;
+  opacity:1!important;
+}
+
+@media(max-width:560px){
+  html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography){
+    padding:14px 15px!important;
+  }
+  html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(h2,h3,h4){
+    font-size:13.5px!important;
+  }
+  html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(p,li,a,span,strong,em),
+  html body.kb-blog-post.kb-unified-site .editor-note{
+    font-size:12px!important;
+    line-height:1.65!important;
+  }
+}
+/* END V45R1 */
