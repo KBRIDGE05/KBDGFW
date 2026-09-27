@@ -73,18 +73,13 @@ for path in POSTS:
         if cols and f"kb-cols-{cols}" not in shell.get("class", []):
             errors.append(f"{rel}: table cols={cols} but wrapper classes={shell.get('class', [])}")
 
-if stats["posts"] != 34:
-    errors.append(f"post count expected 34, got {stats['posts']}")
-if stats["tables"] != 44:
-    errors.append(f"table count expected 44, got {stats['tables']}")
-if stats["sources"] != 29:
-    errors.append(f"source block count expected 29, got {stats['sources']}")
-if stats["resources"] != 34:
-    errors.append(f"resource hub count expected 34, got {stats['resources']}")
-if stats["ctas"] != 34:
-    errors.append(f"CTA count expected 34, got {stats['ctas']}")
-if stats["visuals"] != 132:
-    errors.append(f"visual guide count expected 132, got {stats['visuals']}")
+# Aggregate totals are intentionally not hard-coded. New posts/tables/visuals are
+# expected to increase these counts. Structural invariants are validated per post
+# above, which keeps QA strict without making every legitimate new article fail.
+if stats["resources"] != stats["posts"]:
+    errors.append(f"resource hub total must match posts: {stats['resources']} != {stats['posts']}")
+if stats["ctas"] != stats["posts"]:
+    errors.append(f"CTA total must match posts: {stats['ctas']} != {stats['posts']}")
 
 if errors:
     print("V47 DESIGN QA FAIL")

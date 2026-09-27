@@ -37,6 +37,11 @@ SKIP_LINK_RE = re.compile(
     re.I | re.S,
 )
 
+REF_BLOCK_RE = re.compile(
+    r'<(?P<tag>aside|div|section)\b(?P<before>[^>]*?)class=(?P<q>["\'])(?P<classes>[^"\']*\brefs\b[^"\']*)(?P=q)(?P<after>[^>]*)>',
+    re.I | re.S,
+)
+
 LOCAL_PAGE_STYLE_RE = re.compile(
     r'<link\b[^>]*href=["\'](?P<href>[^"\']*assets/css/pages/[^"\']+\.css(?:\?[^"\']*)?)["\'][^>]*>\s*',
     re.I,
@@ -81,6 +86,20 @@ def ensure_body_classes(source: str) -> str:
     return source[:match.start()] + f"<body{attrs}>" + source[match.end():]
 
 
+def ensure_editorial_hooks(source: str) -> str:
+    """Add durable V47 classes that every authored post must carry."""
+    def refs_repl(match: re.Match[str]) -> str:
+        classes = match.group("classes").split()
+        if "kb-source-block" not in classes:
+            classes.append("kb-source-block")
+        return (
+            f'<{match.group("tag")}{match.group("before")}class={match.group("q")}'
+            f'{" ".join(classes)}{match.group("q")}{match.group("after")}>'
+        )
+
+    return REF_BLOCK_RE.sub(refs_repl, source)
+
+
 def remove_missing_page_styles(source: str, html_path: Path) -> str:
     """Remove only broken local page stylesheet links; shared styles are re-added later."""
     def repl(match: re.Match[str]) -> str:
@@ -104,6 +123,7 @@ def normalize_shell(source: str, html_path: Path | None = None) -> str:
     source = SCRIPT_BLOCK_RE.sub(remove_legacy_menu_script, source)
     source = SKIP_LINK_RE.sub("", source)
     source = ensure_body_classes(source)
+    source = ensure_editorial_hooks(source)
 
     main = re.search(r'<main\b', source, re.I)
     if main:

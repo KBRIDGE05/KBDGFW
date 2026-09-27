@@ -20,6 +20,12 @@ ROW_RE = re.compile(r"<tr\b[^>]*>(.*?)</tr>", re.I | re.S)
 CELL_RE = re.compile(r"<(?:th|td)\b", re.I)
 CLASS_RE = re.compile(r'class\s*=\s*(["\'])(.*?)\1', re.I | re.S)
 DATA_RE = re.compile(r'\sdata-kb-cols\s*=\s*(["\']).*?\1', re.I | re.S)
+TABLE_WRAP_RE = re.compile(
+    r'(?P<open><div\b[^>]*class\s*=\s*(?P<q>["\'])(?P<classes>[^"\']*\btable-wrap\b[^"\']*)(?P=q)[^>]*>)'
+    r'(?P<body>\s*<table\b[^>]*data-kb-cols="(?P<cols>\d+)"[^>]*>.*?</table>\s*)'
+    r'(?P<close></div>)',
+    re.I | re.S,
+)
 
 
 def normalize_opening(open_tag: str, cols: int) -> str:
@@ -48,6 +54,21 @@ def normalize_block(block: str) -> str:
     return new_open + block[om.end():]
 
 
+def normalize_wrapper(match: re.Match[str]) -> str:
+    open_tag = match.group("open")
+    classes = match.group("classes").split()
+    cols = match.group("cols")
+    for item in ("kb-table-shell", f"kb-cols-{cols}"):
+        if item not in classes:
+            classes.append(item)
+    class_re = re.compile(r'class\s*=\s*(["\'])(.*?)\1', re.I | re.S)
+    cm = class_re.search(open_tag)
+    if cm:
+        replacement = f'class={cm.group(1)}{" ".join(classes)}{cm.group(1)}'
+        open_tag = open_tag[:cm.start()] + replacement + open_tag[cm.end():]
+    return open_tag + match.group("body") + match.group("close")
+
+
 def main() -> None:
     changed = 0
     tables = 0
@@ -55,6 +76,7 @@ def main() -> None:
         text = path.read_text(encoding="utf-8")
         tables += len(TABLE_RE.findall(text))
         updated = TABLE_RE.sub(lambda m: normalize_block(m.group(0)), text)
+        updated = TABLE_WRAP_RE.sub(normalize_wrapper, updated)
         if updated != text:
             path.write_text(updated, encoding="utf-8")
             changed += 1
