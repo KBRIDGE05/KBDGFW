@@ -1,0 +1,27 @@
+{
+  "categories": {
+    "info": {"label": "물류 정보", "ctaLabel": "실무 적용이 필요하다면 화물 조건을 기준으로 확인해 보세요."},
+    "service": {"label": "물류 서비스", "ctaLabel": "실제 프로젝트 조건에 맞는 운송·통관 흐름을 확인해 보세요."},
+    "news": {"label": "물류 뉴스", "ctaLabel": "이번 이슈가 내 수출입 일정과 비용에 미치는 영향을 확인해 보세요."},
+    "insight": {"label": "물류 인사이트", "ctaLabel": "시장 변화가 실제 물류비와 일정에 어떻게 연결되는지 확인해 보세요."},
+    "glossary": {"label": "물류 용어집", "ctaLabel": "용어를 이해했다면 실제 화물 조건에 맞는 적용 방법을 확인해 보세요."}
+  },
+  "tools": [
+    {"id":"duty","title":"관부가세 계산기","url":"/duty-calculator.html","description":"예상 관세·부가세를 빠르게 계산합니다.","keywords":["관세","부가세","관부가세","과세가격","duty","tariff"]},
+    {"id":"exchange","title":"관세청 고시환율","url":"/customs-exchange-rate.html","description":"통관에 적용되는 고시환율을 확인합니다.","keywords":["고시환율","환율","과세가격","관세"]},
+    {"id":"hs","title":"HS CODE 조회","url":"/hs-code-search.html","description":"품목분류와 HS CODE 확인에 활용합니다.","keywords":["hs code","hscode","품목분류","세번","hs코드"]},
+    {"id":"cbm","title":"CBM 계산기","url":"/cbm-calculator.html","description":"화물 부피와 CBM을 계산합니다.","keywords":["cbm","부피","가로","세로","높이","용적"]},
+    {"id":"load","title":"적입·배차 시뮬레이터","url":"/load-planner.html","description":"화물 크기와 수량을 기준으로 적재·배차를 검토합니다.","keywords":["적입","배차","컨테이너","20ft","40ft","40hq","차량"]},
+    {"id":"vessel","title":"실시간 선박 위치","url":"/vessel-location.html","description":"AIS 기반 선박 위치와 항해 정보를 확인합니다.","keywords":["ais","선박 위치","선박위치","vessel","imo","mmsi","eta","port call"]},
+    {"id":"tracking","title":"선박 추적","url":"/vessel-tracking.html","description":"선박 운항과 위치 추적 정보를 확인합니다.","keywords":["선박 추적","선박추적","tracking","vessel","항해"]},
+    {"id":"dg","title":"위험물 정보 조회","url":"/dangerous-goods.html","description":"위험물 분류와 운송 검토에 필요한 정보를 확인합니다.","keywords":["위험물","dg","배터리","리튬","ess","un number","un번호"]},
+    {"id":"incoterms","title":"인코텀즈 가이드","url":"/incoterms-guide.html","description":"FOB·CIF·DAP·DDP 등 무역조건별 책임을 확인합니다.","keywords":["인코텀즈","incoterms","fob","cif","dap","ddp","exw"]},
+    {"id":"lcl","title":"LCL 창고료","url":"/lcl-storage.html","description":"LCL 화물의 창고료와 비용 구조를 확인합니다.","keywords":["lcl","cfs","창고료","혼재","소량화물"]},
+    {"id":"freight","title":"운임지수","url":"/freight-index.html","description":"해상·항공 운임과 주요 지수를 확인합니다.","keywords":["운임","운임지수","scfi","bdi","freight","항공운임","해상운임"]},
+    {"id":"holiday","title":"전세계 공휴일 조회","url":"/holiday-calendar.html","description":"국가별 공휴일과 물류 일정 영향을 확인합니다.","keywords":["공휴일","휴일","holiday","연휴"]},
+    {"id":"terminal","title":"터미널 정보 조회","url":"/terminal-info.html","description":"항만·터미널 정보를 빠르게 확인합니다.","keywords":["터미널","terminal","항만","port"]},
+    {"id":"vehicle","title":"차량 제원 조회","url":"/vehicle-spec.html","description":"국내 운송 차량의 제원과 적재 조건을 확인합니다.","keywords":["차량","카고","윙바디","트레일러","국내운송","제원"]},
+    {"id":"safe","title":"안전운임 조회","url":"/safe-rate.html","description":"국내 컨테이너 운송 관련 운임 기준을 확인합니다.","keywords":["안전운임","국내운송","컨테이너 운송","운송료"]},
+    {"id":"food","title":"식품 수출 체크","url":"/food-export-check.html","description":"식품 수출 전 확인해야 할 기본 항목을 점검합니다.","keywords":["식품","식품수출","food","검역"]}
+  ]
+}

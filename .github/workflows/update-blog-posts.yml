@@ -11,6 +11,11 @@ on:
       - 'scripts/enforce-blog-shell.py'
       - 'scripts/normalize-blog-tables.py'
       - 'scripts/enhance-blog-content.py'
+      - 'scripts/enrich-blog-system.py'
+      - 'scripts/audit-blog-system.py'
+      - 'scripts/blog-system-config.json'
+      - 'scripts/blog-templates/**'
+      - 'scripts/create-blog-post.py'
       - 'assets/css/pages/blog-unified.css'
       - 'assets/css/kbridge-design-system.css'
       - 'assets/site-chrome.js'
@@ -83,6 +88,9 @@ jobs:
       - name: Normalize editorial tables
         run: python scripts/normalize-blog-tables.py
 
+      - name: Add contextual tools and related articles
+        run: python scripts/enrich-blog-system.py
+
       - name: Optimize blog image loading and layout stability
         run: python scripts/optimize-blog-performance.py
 
@@ -96,6 +104,9 @@ jobs:
 
       - name: Generate static blog list, manifest, sitemap and RSS
         run: node scripts/build-blog-posts.mjs
+
+      - name: Validate KBRIDGE Blog System structure
+        run: python scripts/audit-blog-system.py
 
       - name: Validate SEO output and local resources
         run: python scripts/audit-site.py
