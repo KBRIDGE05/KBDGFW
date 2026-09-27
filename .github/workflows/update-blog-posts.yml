@@ -13,6 +13,7 @@ on:
       - 'scripts/enhance-blog-content.py'
       - 'scripts/enrich-blog-system.py'
       - 'scripts/audit-blog-system.py'
+      - 'scripts/audit-design-v47.py'
       - 'scripts/blog-system-config.json'
       - 'scripts/blog-templates/**'
       - 'scripts/create-blog-post.py'
@@ -108,8 +109,8 @@ jobs:
       - name: Validate KBRIDGE Blog System structure
         run: python scripts/audit-blog-system.py
 
-      - name: Validate V44 full editorial design
-        run: python scripts/audit-design-v44.py
+      - name: Validate V47 editorial design
+        run: python scripts/audit-design-v47.py
 
       - name: Validate SEO output and local resources
         run: python scripts/audit-site.py

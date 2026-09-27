@@ -2389,103 +2389,748 @@ html body.kb-blog-post.kb-unified-site .kb-resource-lead{
 /* END V45 */
 
 /* ========================================================================== 
-   V45R1 — Source/Reference typography + CTA visibility hard lock
-   Base: user-attached V45 package. Only these two areas are intentionally
-   normalized; no layout, TOC, table, VISUAL GUIDE, or article styling changes.
+   V47 — K-BRIDGE Editorial System
+   Baseline: user-uploaded package (2026-09-27)
+   Goals: consistent tables/sources, restrained editorial hierarchy,
+   readable resource hub, guaranteed CTA contrast, stable mobile behavior.
    ========================================================================== */
+html body.kb-blog-post.kb-unified-site{
+  --kb47-navy:#183153;
+  --kb47-navy-deep:#0f2744;
+  --kb47-blue:#2f67ad;
+  --kb47-ink:#172235;
+  --kb47-text:#46546a;
+  --kb47-muted:#758196;
+  --kb47-line:#dfe6ef;
+  --kb47-soft:#f6f8fb;
+  --kb47-soft-blue:#eef4fa;
+  --kb47-reading:820px;
+  --kb47-radius:0px;
+  color:var(--kb47-text)!important;
+}
 
-/* 1) Source / reference blocks: one typography scale across every post. */
-html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography){
+/* Hero: quieter, publication-like */
+html body.kb-blog-post.kb-unified-site article > :is(.hero,.article-hero,.kb-page-hero){
+  padding-top:50px!important;
+  padding-bottom:34px!important;
+  background:#fff!important;
+  border-top:0!important;
+  border-bottom:1px solid var(--kb47-line)!important;
+}
+html body.kb-blog-post.kb-unified-site article > :is(.hero,.article-hero,.kb-page-hero) h1,
+html body.kb-blog-post.kb-unified-site .kb-page-hero .kb-hero-frame h1{
+  max-width:900px!important;
+  font-size:38px!important;
+  line-height:1.27!important;
+  letter-spacing:-.04em!important;
+}
+html body.kb-blog-post.kb-unified-site article > :is(.hero,.article-hero,.kb-page-hero) :is(.hero-desc,.lead,.desc){
+  max-width:820px!important;
+  font-size:16px!important;
+  line-height:1.75!important;
+}
+
+/* Summary: one clear editorial block, no card stack */
+html body.kb-blog-post.kb-unified-site :is(.quick-summary,.summary,.pipe-summary){
+  margin-bottom:30px!important;
+  padding:22px 24px 0!important;
+  border:0!important;
+  border-top:4px solid var(--kb47-navy)!important;
+  border-radius:0!important;
+  background:#f7f9fc!important;
+  box-shadow:none!important;
+}
+html body.kb-blog-post.kb-unified-site :is(.quick-summary,.summary,.pipe-summary) p:not(.summary-title):not(.pipe-summary-label){
+  font-size:16px!important;
+  line-height:1.72!important;
+}
+
+/* Section system: consistent separator + typography */
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.section,
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.pipe-section{
+  margin:0 0 46px!important;
+  padding:46px 0 0!important;
+  border:0!important;
+  border-top:1px solid #e3e8ef!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.section > h2,
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.pipe-section > h2{
+  margin:0 0 18px!important;
+  padding:0!important;
+  color:var(--kb47-ink)!important;
+  font-size:24px!important;
+  font-weight:900!important;
+  line-height:1.42!important;
+  letter-spacing:-.032em!important;
+}
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.section > h2::before,
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.pipe-section > h2::before{
+  content:""!important;
+  display:block!important;
+  width:26px!important;
+  height:3px!important;
+  margin:0 0 12px!important;
+  background:var(--kb47-blue)!important;
+  border-radius:99px!important;
+}
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) :is(p,li,dd){
+  color:var(--kb47-text)!important;
+  font-size:15.5px!important;
+  line-height:1.83!important;
+}
+html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) p{margin-bottom:18px!important}
+
+/* Lead answer: useful emphasis without heavy cards */
+html body.kb-blog-post.kb-unified-site :is(.kb-section-lead,.lead-answer,.pipe-lead),
+html body.kb-blog-post.kb-unified-site section.section > h2 + p,
+html body.kb-blog-post.kb-unified-site section.pipe-section > h2 + p{
+  margin:0 0 22px!important;
+  padding:17px 19px!important;
+  border:0!important;
+  border-left:4px solid #5a9c73!important;
+  border-radius:0!important;
+  background:#eef7f1!important;
+  color:#31475a!important;
+  font-size:15px!important;
+  line-height:1.74!important;
+  box-shadow:none!important;
+}
+
+/* VISUAL GUIDE / graphics: one fixed editorial frame */
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic{
   width:100%!important;
   max-width:100%!important;
-  margin:30px 0 0!important;
-  padding:16px 18px!important;
-  border:1px solid #dfe7f0!important;
-  background:#f7f9fc!important;
-  color:#64748b!important;
-  box-sizing:border-box!important;
+  margin:30px 0 32px!important;
+  border:0!important;
+  border-top:3px solid var(--kb47-navy)!important;
+  border-radius:0!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
 }
-html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) > :is(h2,h3,h4),
-html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(h2,h3,h4){
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > .kb-figure-head{
+  display:grid!important;
+  grid-template-columns:96px minmax(0,1fr)!important;
+  align-items:center!important;
+  min-height:54px!important;
+  padding:9px 16px!important;
+  column-gap:14px!important;
+  border-bottom:1px solid var(--kb47-line)!important;
+  background:#fff!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic .kb-figure-kicker{
+  width:96px!important;
+  min-width:96px!important;
+  height:24px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:0 8px!important;
+  border:1px solid #cbd8e7!important;
+  border-radius:0!important;
+  background:#f7f9fc!important;
+  color:var(--kb47-blue)!important;
+  font-size:9.75px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:.06em!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic .kb-figure-title{
+  color:#26374d!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  line-height:1.45!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > img{
+  display:block!important;
+  width:calc(100% - 36px)!important;
+  max-width:100%!important;
+  height:auto!important;
+  margin:20px auto!important;
+  object-fit:contain!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--graphic > figcaption{
+  margin:0!important;
+  padding:12px 16px 13px!important;
+  border-top:1px solid var(--kb47-line)!important;
+  background:#fff!important;
+  color:#6b788b!important;
+  font-size:12.5px!important;
+  line-height:1.65!important;
+}
+
+/* Field photos: distinct from infographics */
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--photo{
+  width:100%!important;
+  max-width:100%!important;
+  margin:30px 0 32px!important;
+  padding:0!important;
+  border:0!important;
+  border-top:3px solid var(--kb47-navy)!important;
+  border-radius:0!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--photo > img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:620px!important;
+  object-fit:contain!important;
+  background:#f4f6f8!important;
+}
+html body.kb-blog-post.kb-unified-site figure.kb-figure.kb-figure--photo > figcaption{
+  padding:12px 16px!important;
+  border-top:1px solid var(--kb47-line)!important;
+  color:#65748a!important;
+  font-size:12.5px!important;
+  line-height:1.65!important;
+}
+
+/* TABLE SYSTEM — all 44 tables share the same outer width, type scale and density */
+html body.kb-blog-post.kb-unified-site .kb-table-shell{
+  width:100%!important;
+  max-width:100%!important;
+  margin:28px 0 32px!important;
+  padding:0!important;
+  overflow-x:auto!important;
+  border:0!important;
+  border-top:2px solid var(--kb47-navy)!important;
+  border-radius:0!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  scrollbar-width:thin!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-table-shell table.kb-content-table{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  border-collapse:collapse!important;
+  border-spacing:0!important;
+  table-layout:fixed!important;
+  background:#fff!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-table-shell table.kb-content-table :is(th,td){
+  height:auto!important;
+  min-height:0!important;
+  padding:15px 17px!important;
+  border:0!important;
+  border-bottom:1px solid #e2e7ed!important;
+  border-right:1px solid #edf0f4!important;
+  color:#435168!important;
+  font-size:14px!important;
+  font-weight:500!important;
+  line-height:1.62!important;
+  text-align:left!important;
+  vertical-align:top!important;
+  word-break:keep-all!important;
+  overflow-wrap:anywhere!important;
+  background:#fff!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-table-shell table.kb-content-table :is(th,td):last-child{border-right:0!important}
+html body.kb-blog-post.kb-unified-site .kb-table-shell table.kb-content-table thead th{
+  padding-top:14px!important;
+  padding-bottom:14px!important;
+  background:#f4f7fa!important;
+  color:#26374d!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  line-height:1.5!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-table-shell table.kb-content-table tbody :is(th:first-child,td:first-child){
+  background:#fafbfd!important;
+  color:#31445f!important;
+  font-weight:760!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-table-shell.kb-cols-2 table.kb-content-table :is(th,td):first-child{width:32%!important}
+html body.kb-blog-post.kb-unified-site .kb-table-shell.kb-cols-3 table.kb-content-table :is(th,td):first-child{width:24%!important}
+html body.kb-blog-post.kb-unified-site .kb-table-shell.kb-cols-4 table.kb-content-table :is(th,td):first-child{width:21%!important}
+html body.kb-blog-post.kb-unified-site .kb-table-shell.kb-cols-5 table.kb-content-table :is(th,td):first-child{width:18%!important}
+html body.kb-blog-post.kb-unified-site .kb-table-shell.kb-cols-4 table.kb-content-table{min-width:760px!important}
+html body.kb-blog-post.kb-unified-site .kb-table-shell.kb-cols-5 table.kb-content-table{min-width:900px!important}
+
+/* Tips / warning blocks: restrained, consistent */
+html body.kb-blog-post.kb-unified-site :is(.tip,.tip-box,.note-box,.notice,.warning,.caution){
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+/* Sources: one scale everywhere, independent of old page-specific CSS */
+html body.kb-blog-post.kb-unified-site .kb-source-block,
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,section.refs){
+  width:100%!important;
+  max-width:var(--kb47-reading)!important;
+  margin:30px auto 0!important;
+  padding:16px 0 0!important;
+  border:0!important;
+  border-top:1px dashed #d5dce5!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#7b8797!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-source-block > h3,
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,section.refs) > h3{
   margin:0 0 9px!important;
   padding:0!important;
-  color:#34465e!important;
+  color:#526178!important;
   font-size:14px!important;
-  font-weight:800!important;
-  line-height:1.45!important;
-  letter-spacing:-.015em!important;
+  font-weight:850!important;
+  line-height:1.5!important;
+  letter-spacing:-.01em!important;
 }
-html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(p,li,a,span,strong,em),
-html body.kb-blog-post.kb-unified-site .editor-note{
-  color:#64748b!important;
+html body.kb-blog-post.kb-unified-site .kb-source-block :is(p,li,a,span,strong),
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,section.refs) :is(p,li,a,span,strong){
+  color:#7b8797!important;
   font-size:12.5px!important;
-  line-height:1.68!important;
-  letter-spacing:-.005em!important;
-  overflow-wrap:anywhere!important;
-  word-break:break-word!important;
+  line-height:1.7!important;
 }
-html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(ol,ul){
+html body.kb-blog-post.kb-unified-site .kb-source-block :is(ol,ul),
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,section.refs) :is(ol,ul){
   margin:0!important;
-  padding-left:20px!important;
+  padding-left:19px!important;
 }
-html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) li{
-  margin:5px 0!important;
-}
-html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) a{
+html body.kb-blog-post.kb-unified-site .kb-source-block li,
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,section.refs) li{margin:4px 0!important}
+html body.kb-blog-post.kb-unified-site .kb-source-block a,
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,section.refs) a{
+  color:#567aad!important;
   text-decoration:underline!important;
   text-underline-offset:2px!important;
+  text-decoration-thickness:1px!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-source-block .editor-note,
+html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,section.refs) .editor-note{
+  margin-top:11px!important;
+  padding-top:11px!important;
+  border-top:1px solid #edf0f4!important;
 }
 
-/* 2) CTA: force visible copy after every legacy/page-specific rule. */
-html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta){
-  color:#ffffff!important;
+/* KEY TAKEAWAYS */
+html body.kb-blog-post.kb-unified-site .kb-takeaways{
+  margin:44px 0 0!important;
+  padding:23px 24px!important;
+  border:0!important;
+  border-top:3px solid var(--kb47-navy)!important;
+  border-radius:0!important;
+  background:#f8fafc!important;
+  box-shadow:none!important;
 }
-html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(h2,h3),
-html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(h2,h3) *{
+html body.kb-blog-post.kb-unified-site .kb-takeaways :is(h2,h3){
+  color:#20334a!important;
+  font-size:20px!important;
+  line-height:1.45!important;
+}
+
+/* Resource hub: two editorial columns, no nested card appearance */
+html body.kb-blog-post.kb-unified-site .kb-resource-hub{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)!important;
+  column-gap:34px!important;
+  row-gap:0!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:42px 0 0!important;
+  padding:28px 0 0!important;
+  border:0!important;
+  border-top:1px solid var(--kb47-line)!important;
+  background:transparent!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-hub > .kb-resource-eyebrow,
+html body.kb-blog-post.kb-unified-site .kb-resource-hub > h2{
+  grid-column:1 / -1!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-eyebrow{
+  display:block!important;
+  min-height:0!important;
+  margin:0 0 5px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:var(--kb47-blue)!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  letter-spacing:.08em!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-hub > h2{
+  margin:0 0 22px!important;
+  color:#18283d!important;
+  font-size:24px!important;
+  line-height:1.4!important;
+  letter-spacing:-.025em!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-lead{display:none!important}
+html body.kb-blog-post.kb-unified-site :is(.kb-resource-tools,.kb-resource-related){
+  margin:0!important;
+  min-width:0!important;
+}
+html body.kb-blog-post.kb-unified-site :is(.kb-resource-tools,.kb-resource-related) > h3{
+  display:block!important;
+  margin:0 0 8px!important;
+  padding:0!important;
+  color:#34455b!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  line-height:1.5!important;
+}
+html body.kb-blog-post.kb-unified-site :is(.kb-resource-tools,.kb-resource-related) > h3::before{display:none!important;content:none!important}
+html body.kb-blog-post.kb-unified-site .kb-resource-grid,
+html body.kb-blog-post.kb-unified-site :is(.kb-resource-grid--tools,.kb-resource-grid--posts){
+  display:block!important;
+  width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-card{
+  position:relative!important;
+  display:block!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:14px 92px 14px 0!important;
+  border:0!important;
+  border-top:1px solid #e4e9ef!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-card:first-child{border-top:0!important}
+html body.kb-blog-post.kb-unified-site .kb-resource-card:hover{background:transparent!important;box-shadow:none!important;transform:none!important}
+html body.kb-blog-post.kb-unified-site .kb-resource-type{
+  display:block!important;
+  min-height:0!important;
+  margin:0 0 3px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:#8090a3!important;
+  font-size:10.5px!important;
+  line-height:1.45!important;
+  letter-spacing:.02em!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-card > strong{
+  display:block!important;
+  margin:0!important;
+  color:#21344d!important;
+  font-size:14px!important;
+  font-weight:820!important;
+  line-height:1.55!important;
+  -webkit-line-clamp:unset!important;
+  overflow:visible!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-desc{
+  display:block!important;
+  margin:4px 0 0!important;
+  color:#8090a3!important;
+  font-size:12px!important;
+  line-height:1.6!important;
+  -webkit-line-clamp:2!important;
+  overflow:hidden!important;
+}
+html body.kb-blog-post.kb-unified-site .kb-resource-go{
+  position:absolute!important;
+  right:0!important;
+  top:16px!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:var(--kb47-blue)!important;
+  font-size:11.75px!important;
+  font-weight:850!important;
+  line-height:1.45!important;
+  white-space:nowrap!important;
+}
+
+/* CTA: hard contrast lock. This intentionally wins over every older CTA rule. */
+html body.kb-blog-post.kb-unified-site section.cta,
+html body.kb-blog-post.kb-unified-site .kb-blog-cta{
+  margin:40px 0 28px!important;
+  padding:30px 32px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:var(--kb47-navy-deep)!important;
+  box-shadow:none!important;
+  color:#ffffff!important;
+  opacity:1!important;
+}
+html body.kb-blog-post.kb-unified-site section.cta :is(h1,h2,h3,h4),
+html body.kb-blog-post.kb-unified-site .kb-blog-cta :is(h1,h2,h3,h4),
+html body.kb-blog-post.kb-unified-site section.cta :is(h1,h2,h3,h4) *,
+html body.kb-blog-post.kb-unified-site .kb-blog-cta :is(h1,h2,h3,h4) *{
   color:#ffffff!important;
   -webkit-text-fill-color:#ffffff!important;
   opacity:1!important;
-  visibility:visible!important;
-  filter:none!important;
-  mix-blend-mode:normal!important;
 }
-html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) > p,
-html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) > p *{
-  color:#eef5ff!important;
-  -webkit-text-fill-color:#eef5ff!important;
+html body.kb-blog-post.kb-unified-site section.cta :is(h2,h3),
+html body.kb-blog-post.kb-unified-site .kb-blog-cta :is(h2,h3){
+  margin:0 0 8px!important;
+  font-size:23px!important;
+  font-weight:900!important;
+  line-height:1.42!important;
+}
+html body.kb-blog-post.kb-unified-site section.cta p,
+html body.kb-blog-post.kb-unified-site .kb-blog-cta p,
+html body.kb-blog-post.kb-unified-site section.cta p *,
+html body.kb-blog-post.kb-unified-site .kb-blog-cta p *{
+  color:#edf4ff!important;
+  -webkit-text-fill-color:#edf4ff!important;
   opacity:1!important;
   visibility:visible!important;
-  filter:none!important;
-  mix-blend-mode:normal!important;
-  text-shadow:none!important;
 }
-html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(.action-row,.actions,.buttons) a.btn:not(.sub),
-html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(.action-row,.actions,.buttons) button.btn:not(.sub){
-  color:#0a2342!important;
-  -webkit-text-fill-color:#0a2342!important;
+html body.kb-blog-post.kb-unified-site section.cta p,
+html body.kb-blog-post.kb-unified-site .kb-blog-cta p{
+  margin:0 0 18px!important;
+  font-size:14.5px!important;
+  font-weight:500!important;
+  line-height:1.75!important;
+}
+html body.kb-blog-post.kb-unified-site section.cta :is(.btn,a.btn),
+html body.kb-blog-post.kb-unified-site .kb-blog-cta :is(.btn,a.btn){
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+  opacity:1!important;
+  border-color:#ffffff!important;
+  background:transparent!important;
+  font-size:13px!important;
+  font-weight:850!important;
+}
+html body.kb-blog-post.kb-unified-site section.cta :is(.btn.sub,a.btn.sub),
+html body.kb-blog-post.kb-unified-site .kb-blog-cta :is(.btn.sub,a.btn.sub){
+  color:#f3f7ff!important;
+  -webkit-text-fill-color:#f3f7ff!important;
+  border-color:#88a9ce!important;
+}
+
+/* TOC: preserve current vertical format, only refine density */
+html body.kb-blog-post.kb-unified-site :is(.toc,.pipe-toc){
+  border-top:0!important;
+  border-left:1px solid #dbe2eb!important;
+  padding:0 0 0 18px!important;
+}
+html body.kb-blog-post.kb-unified-site :is(.toc,.pipe-toc) a{
+  padding:6px 0!important;
+  border-bottom:0!important;
+  color:#718094!important;
+  font-size:12.5px!important;
+  line-height:1.55!important;
+}
+
+@media(max-width:900px){
+  html body.kb-blog-post.kb-unified-site .kb-resource-hub{
+    grid-template-columns:1fr!important;
+  }
+  html body.kb-blog-post.kb-unified-site .kb-resource-hub > *{grid-column:1!important}
+  html body.kb-blog-post.kb-unified-site .kb-resource-tools{margin-bottom:24px!important}
+}
+@media(max-width:640px){
+  html body.kb-blog-post.kb-unified-site article > :is(.hero,.article-hero,.kb-page-hero) h1,
+  html body.kb-blog-post.kb-unified-site .kb-page-hero .kb-hero-frame h1{font-size:28px!important}
+  html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.section,
+  html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.pipe-section{
+    margin-bottom:36px!important;
+    padding-top:36px!important;
+  }
+  html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.section > h2,
+  html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) > section.pipe-section > h2{font-size:21px!important}
+  html body.kb-blog-post.kb-unified-site :is(.body,.content,.article-body) :is(p,li,dd){font-size:14.5px!important;line-height:1.8!important}
+  html body.kb-blog-post.kb-unified-site .kb-table-shell{margin:24px 0 28px!important}
+  html body.kb-blog-post.kb-unified-site .kb-table-shell table.kb-content-table{min-width:680px!important}
+  html body.kb-blog-post.kb-unified-site .kb-table-shell table.kb-content-table :is(th,td){padding:12px 14px!important;font-size:13.5px!important;line-height:1.6!important}
+  html body.kb-blog-post.kb-unified-site .kb-source-block,
+  html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,section.refs){margin-top:24px!important;padding-top:13px!important}
+  html body.kb-blog-post.kb-unified-site .kb-resource-hub > h2{font-size:21px!important;margin-bottom:18px!important}
+  html body.kb-blog-post.kb-unified-site .kb-resource-card{padding:13px 78px 13px 0!important}
+  html body.kb-blog-post.kb-unified-site .kb-resource-card > strong{font-size:13.5px!important}
+  html body.kb-blog-post.kb-unified-site section.cta,
+  html body.kb-blog-post.kb-unified-site .kb-blog-cta{padding:24px 20px!important}
+  html body.kb-blog-post.kb-unified-site section.cta :is(h2,h3),
+  html body.kb-blog-post.kb-unified-site .kb-blog-cta :is(h2,h3){font-size:20px!important}
+  html body.kb-blog-post.kb-unified-site section.cta p,
+  html body.kb-blog-post.kb-unified-site .kb-blog-cta p{font-size:13.75px!important}
+}
+/* END V47 */
+
+/* V47 CTA final contrast lock — resolves legacy primary-button specificity */
+html body.kb-blog-post.kb-unified-site main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn:not(.sub),
+html body.kb-blog-post.kb-unified-site main section.cta :is(.action-row,.actions,.buttons) .btn:not(.sub){
   background:#ffffff!important;
   border-color:#ffffff!important;
+  color:#0f2744!important;
+  -webkit-text-fill-color:#0f2744!important;
   opacity:1!important;
 }
-html body.kb-blog-post.kb-unified-site main :is(section.cta,.kb-blog-cta) :is(.action-row,.actions,.buttons) :is(a.btn.sub,button.btn.sub){
-  color:#ffffff!important;
-  -webkit-text-fill-color:#ffffff!important;
-  background:rgba(255,255,255,.14)!important;
-  border-color:rgba(255,255,255,.42)!important;
+html body.kb-blog-post.kb-unified-site main .kb-blog-cta :is(.action-row,.actions,.buttons) .btn.sub,
+html body.kb-blog-post.kb-unified-site main section.cta :is(.action-row,.actions,.buttons) .btn.sub{
+  background:transparent!important;
+  border-color:#88a9ce!important;
+  color:#f3f7ff!important;
+  -webkit-text-fill-color:#f3f7ff!important;
   opacity:1!important;
 }
 
-@media(max-width:560px){
-  html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography){
-    padding:14px 15px!important;
-  }
-  html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(h2,h3,h4){
-    font-size:13.5px!important;
-  }
-  html body.kb-blog-post.kb-unified-site :is(aside.refs,div.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography) :is(p,li,a,span,strong,em),
-  html body.kb-blog-post.kb-unified-site .editor-note{
-    font-size:12px!important;
-    line-height:1.65!important;
-  }
+/* ========================================================================== 
+   V47 FINAL CASCADE LOCK
+   Uses #main + article class so legacy per-post !important rules cannot
+   override the V47 system after the automation pipeline rewrites markup.
+   ========================================================================== */
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) h1{
+  color:#172235!important;
+  -webkit-text-fill-color:#172235!important;
+  font-size:38px!important;
+  font-weight:900!important;
+  line-height:1.27!important;
+  letter-spacing:-.04em!important;
 }
-/* END V45R1 */
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.section,section.pipe-section) > h2{
+  color:#172235!important;
+  -webkit-text-fill-color:#172235!important;
+  font-size:24px!important;
+  font-weight:900!important;
+  line-height:1.42!important;
+  letter-spacing:-.032em!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.section,section.pipe-section){
+  margin-bottom:46px!important;
+  padding-top:46px!important;
+  border-top:1px solid #e3e8ef!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-table-shell{
+  width:100%!important;
+  max-width:100%!important;
+  margin:28px 0 32px!important;
+  overflow-x:auto!important;
+  border-top:2px solid #183153!important;
+  border-radius:0!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table :is(th,td){
+  padding:15px 17px!important;
+  color:#435168!important;
+  -webkit-text-fill-color:#435168!important;
+  font-size:14px!important;
+  font-weight:500!important;
+  line-height:1.62!important;
+  vertical-align:top!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table thead th{
+  color:#26374d!important;
+  -webkit-text-fill-color:#26374d!important;
+  background:#f4f7fa!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  line-height:1.5!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-source-block{
+  width:100%!important;
+  max-width:820px!important;
+  margin:30px auto 0!important;
+  padding:16px 0 0!important;
+  border:0!important;
+  border-top:1px dashed #d5dce5!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-source-block > h3{
+  margin:0 0 9px!important;
+  padding:0!important;
+  color:#526178!important;
+  -webkit-text-fill-color:#526178!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  line-height:1.5!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-source-block :is(p,li,a,span,strong,em){
+  color:#7b8797!important;
+  -webkit-text-fill-color:#7b8797!important;
+  font-size:12.5px!important;
+  line-height:1.7!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-source-block a{
+  color:#567aad!important;
+  -webkit-text-fill-color:#567aad!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-resource-hub{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)!important;
+  column-gap:34px!important;
+  row-gap:0!important;
+  margin:42px 0 0!important;
+  padding:28px 0 0!important;
+  border-top:1px solid #dfe6ef!important;
+  background:transparent!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-resource-hub > .kb-resource-eyebrow,
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-resource-hub > h2{
+  grid-column:1 / -1!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-resource-hub > h2{
+  color:#18283d!important;
+  -webkit-text-fill-color:#18283d!important;
+  font-size:24px!important;
+  line-height:1.4!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta){
+  background:#0f2744!important;
+  color:#fff!important;
+  opacity:1!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta) :is(h2,h3),
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta) :is(h2,h3) *{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  opacity:1!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta) p,
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta) p *{
+  color:#edf4ff!important;
+  -webkit-text-fill-color:#edf4ff!important;
+  opacity:1!important;
+  visibility:visible!important;
+  font-size:14.5px!important;
+  line-height:1.75!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta) :is(.action-row,.actions,.buttons) .btn:not(.sub){
+  background:#fff!important;
+  border-color:#fff!important;
+  color:#0f2744!important;
+  -webkit-text-fill-color:#0f2744!important;
+}
+html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta) :is(.action-row,.actions,.buttons) .btn.sub{
+  background:transparent!important;
+  border-color:#88a9ce!important;
+  color:#f3f7ff!important;
+  -webkit-text-fill-color:#f3f7ff!important;
+}
+@media(max-width:900px){
+  html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(.toc,.pipe-toc){display:none!important}
+  html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-resource-hub{grid-template-columns:1fr!important}
+  html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-resource-hub > *{grid-column:1!important}
+}
+@media(max-width:640px){
+  html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) h1{
+    color:#172235!important;
+    -webkit-text-fill-color:#172235!important;
+    font-size:28px!important;
+    line-height:1.3!important;
+  }
+  html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.section,section.pipe-section) > h2{font-size:21px!important}
+  html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table{min-width:680px!important}
+  html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table :is(th,td){font-size:13.5px!important;padding:12px 14px!important}
+  html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta) p,
+  html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta) p *{font-size:13.75px!important}
+}
+/* END V47 FINAL CASCADE LOCK */
