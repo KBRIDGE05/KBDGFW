@@ -83,6 +83,9 @@ jobs:
       - name: Normalize editorial tables
         run: python scripts/normalize-blog-tables.py
 
+      - name: Optimize blog image loading and layout stability
+        run: python scripts/optimize-blog-performance.py
+
       - name: Include normalized articles in notification list
         shell: bash
         run: |
@@ -93,6 +96,9 @@ jobs:
 
       - name: Generate static blog list, manifest, sitemap and RSS
         run: node scripts/build-blog-posts.mjs
+
+      - name: Validate SEO output and local resources
+        run: python scripts/audit-site.py
 
       - name: Commit generated SEO files
         shell: bash

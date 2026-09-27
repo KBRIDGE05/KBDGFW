@@ -6,7 +6,7 @@ import html as html_lib
 import json
 import re
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import quote, urljoin
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_URL = "https://www.kbexpress.kr"
@@ -261,7 +261,7 @@ def normalize_file(file_path: Path) -> bool:
     meta = all_meta(source)
     json_values = json_candidates(source)
 
-    page_url = f"{SITE_URL}/{relative}"
+    page_url = f"{SITE_URL}/{quote(relative, safe='/._-~')}"
     title = tag_text(source, "h1") or tag_text(source, "title") or file_path.stem
     description = meta.get("description") or meta.get("og:description") or title
     description = strip_tags(description)

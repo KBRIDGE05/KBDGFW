@@ -26,6 +26,7 @@ const rssPath = path.join(root, 'rss.xml');
 const blogIndexPath = path.join(root, 'blog', 'index.html');
 
 const normalizeSlashes = value => String(value || '').split(path.sep).join('/');
+const encodeSitePath = value => normalizeSlashes(value).split('/').map(segment => encodeURIComponent(segment)).join('/');
 const decodeHtml = value => String(value || '')
   .replace(/&nbsp;/gi, ' ')
   .replace(/&amp;/gi, '&')
@@ -231,7 +232,7 @@ const parsePost = file => {
   if (!isPublished(html, meta)) return null;
 
   const jsonLd = parseJsonLd(html);
-  const url = `${SITE_URL}/${relative}`;
+  const url = `${SITE_URL}/${encodeSitePath(relative)}`;
   // The visible article H1 is the single source of truth for card/list titles.
   // This makes a title edit propagate automatically to the home page, blog page, sitemap and RSS.
   const title = stripTags(
@@ -299,7 +300,7 @@ const readPosts = () => walk(postsRoot)
 const writeManifest = posts => {
   const payload = posts.map(({ content, relativePath, warnings, modified, ...post }) => ({ ...post, modified }));
   fs.mkdirSync(path.dirname(manifestPath), { recursive: true });
-  fs.writeFileSync(manifestPath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+  fs.writeFileSync(manifestPath, `${JSON.stringify(payload)}\n`, 'utf8');
 };
 
 const formatCardDate = value => {
@@ -417,7 +418,7 @@ const ensureKeyFile = () => {
 const urlsFromPaths = paths => [...new Set(paths
   .map(normalizeSlashes)
   .filter(value => /^blog\/posts\/(info|service|news|insight|glossary)\/.+\.html?$/i.test(value))
-  .map(value => `${SITE_URL}/${value.replace(/^\/+/, '')}`))];
+  .map(value => `${SITE_URL}/${encodeSitePath(value.replace(/^\/+/, ''))}`))];
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
