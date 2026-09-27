@@ -98,7 +98,7 @@ def tools_for(current: dict, limit: int = 2) -> list[dict]:
 
 
 def block_html(current: dict, rels: list[dict], tools: list[dict]) -> str:
-    chunks = [START, '<section class="kb-resource-hub" data-kb-auto="v42" aria-label="관련 자료와 물류도구">', '<p class="kb-resource-eyebrow">NEXT STEP</p>', '<h2>이 글과 함께 보면 좋은 자료</h2>', f'<p class="kb-resource-lead">{esc(CONFIG["categories"][current["category"]]["ctaLabel"])}</p>']
+    chunks = [START, '<section class="kb-resource-hub" data-kb-auto="v44" aria-label="관련 자료와 물류도구">', '<p class="kb-resource-eyebrow">NEXT STEP</p>', '<h2>이 글과 함께 보면 좋은 자료</h2>', f'<p class="kb-resource-lead">{esc(CONFIG["categories"][current["category"]]["ctaLabel"])}</p>']
     if tools:
         chunks += ['<div class="kb-resource-tools"><h3>관련 물류도구</h3><div class="kb-resource-grid kb-resource-grid--tools">']
         for tool in tools:

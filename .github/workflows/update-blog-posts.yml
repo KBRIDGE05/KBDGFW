@@ -108,6 +108,9 @@ jobs:
       - name: Validate KBRIDGE Blog System structure
         run: python scripts/audit-blog-system.py
 
+      - name: Validate V44 full editorial design
+        run: python scripts/audit-design-v44.py
+
       - name: Validate SEO output and local resources
         run: python scripts/audit-site.py
 

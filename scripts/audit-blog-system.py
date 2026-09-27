@@ -47,7 +47,7 @@ def main():
                 if href.startswith("#") and href[1:] not in ids: fail(f"{rel}: 깨진 목차 링크 {href}")
         if len(soup.select("section.cta,.kb-blog-cta"))!=1: fail(f"{rel}: CTA 개수 이상")
         if len(soup.select(".kb-takeaways"))!=1: fail(f"{rel}: KEY TAKEAWAYS 개수 이상")
-        hubs=soup.select(".kb-resource-hub[data-kb-auto='v42']")
+        hubs=soup.select(".kb-resource-hub[data-kb-auto='v44']")
         if len(hubs)!=1: fail(f"{rel}: V42 관련자료 허브 개수 {len(hubs)}")
         else:
             resources+=1
