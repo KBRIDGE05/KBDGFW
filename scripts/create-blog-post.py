@@ -2,6 +2,7 @@
 """Create a new KBRIDGE blog post from the V42 category templates."""
 from __future__ import annotations
 import argparse
+import html
 import re
 from datetime import date
 from pathlib import Path
@@ -13,6 +14,17 @@ CATEGORIES={"info","service","news","insight","glossary"}
 
 def slug_ok(value:str)->bool:
     return bool(re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*",value))
+
+
+def tags_html(raw: str) -> str:
+    seen=[]
+    for item in raw.split(','):
+        value=re.sub(r"\s+", "", item.strip().lstrip('#'))
+        if value and value.lower() not in {x.lower() for x in seen}:
+            seen.append(value)
+    if not any(x.lower()=="kbridge" for x in seen):
+        seen.append("KBRIDGE")
+    return "".join(f'<span class="tag">#{html.escape(x)}</span>' for x in seen[:12])
 
 
 def main():
@@ -27,7 +39,7 @@ def main():
     args=ap.parse_args()
     if not slug_ok(args.slug): raise SystemExit("slug는 영문/숫자/점/하이픈/언더스코어만 사용하세요.")
     tmpl=(TEMPLATES/f"{args.category}.html.tmpl").read_text("utf-8")
-    vals={"TITLE":args.title,"SUMMARY":args.summary,"KEYWORDS":args.keywords,"DATE":args.date}
+    vals={"TITLE":args.title,"SUMMARY":args.summary,"KEYWORDS":args.keywords,"DATE":args.date,"TAGS_HTML":tags_html(args.keywords)}
     for k,v in vals.items(): tmpl=tmpl.replace("{{"+k+"}}",v)
     out=ROOT/"blog"/"posts"/args.category/f"{args.slug}.html"
     if out.exists() and not args.force: raise SystemExit(f"이미 존재합니다: {out.relative_to(ROOT)}")

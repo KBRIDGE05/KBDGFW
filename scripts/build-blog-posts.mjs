@@ -240,7 +240,7 @@ const parsePost = file => {
     metaValue(meta, ['kbridge:title', 'blog-title', 'og:title', 'twitter:title']) ||
     jsonLd.headline || jsonLd.name ||
     tagText(html, 'title') || slug
-  ).replace(/\s*[-|]\s*KBRIDGE.*$/i, '').trim();
+  ).replace(/\s*[-|/]\s*KBRIDGE.*$/i, '').trim();
 
   const summary = stripTags(
     metaValue(meta, ['blog-summary', 'description', 'og:description', 'twitter:description']) ||
@@ -363,6 +363,10 @@ const existingSitemapBlocks = () => {
 const fallbackStaticUrls = () => {
   const files = fs.readdirSync(root, { withFileTypes: true })
     .filter(entry => entry.isFile() && /^(index|[a-z0-9-]+)\.html$/i.test(entry.name))
+    .filter(entry => {
+      const html = fs.readFileSync(path.join(root, entry.name), 'utf8');
+      return isPublished(html, allMeta(html));
+    })
     .map(entry => entry.name === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${entry.name}`);
   files.push(`${SITE_URL}/blog/`);
   return [...new Set(files)].map(loc => ({
@@ -379,8 +383,13 @@ const replaceLastmod = (block, date) => {
 
 const writeSitemap = posts => {
   const latestDate = posts[0]?.modified || posts[0]?.date || todayKst();
-  const source = existingSitemapBlocks();
-  const staticBlocks = (source.length ? source : fallbackStaticUrls())
+  // Reconcile the static sitemap with the files that actually exist now.
+  // Existing blocks keep their custom metadata, new root pages are added, and
+  // deleted/noindex root pages disappear automatically instead of lingering.
+  const existing = new Map(existingSitemapBlocks().map(item => [item.loc, item.block]));
+  const currentStatic = fallbackStaticUrls();
+  const staticBlocks = currentStatic
+    .map(item => ({ loc: item.loc, block: existing.get(item.loc) || item.block }))
     .map(item => item.loc === `${SITE_URL}/blog/` ? replaceLastmod(item.block, latestDate) : item.block)
     .map(block => block.replace(/^\s*/, '  '));
 
@@ -417,8 +426,29 @@ const ensureKeyFile = () => {
 
 const urlsFromPaths = paths => [...new Set(paths
   .map(normalizeSlashes)
-  .filter(value => /^blog\/posts\/(info|service|news|insight|glossary)\/.+\.html?$/i.test(value))
-  .map(value => `${SITE_URL}/${encodeSitePath(value.replace(/^\/+/, ''))}`))];
+  .map(value => value.replace(/^\/+/, ''))
+  .filter(value => /(^|\/)index\.html?$|\.html?$/i.test(value))
+  .filter(value => !value.includes('..'))
+  .filter(value => {
+    const full = path.join(root, value);
+    if (!fs.existsSync(full)) return true; // deleted URLs can still be notified for recrawl/removal
+    const html = fs.readFileSync(full, 'utf8');
+    const meta = allMeta(html);
+    return isPublished(html, meta);
+  })
+  .map(value => {
+    if (value === 'index.html') return `${SITE_URL}/`;
+    if (value === 'blog/index.html') return `${SITE_URL}/blog/`;
+    return `${SITE_URL}/${encodeSitePath(value)}`;
+  }))];
+
+const urlsFromSitemap = () => {
+  if (!fs.existsSync(sitemapPath)) return [];
+  const xml = fs.readFileSync(sitemapPath, 'utf8');
+  return [...new Set((xml.match(/<loc>[\s\S]*?<\/loc>/gi) || [])
+    .map(item => decodeHtml(item.replace(/^<loc>|<\/loc>$/gi, '')).trim())
+    .filter(url => /^https:\/\/www\.kbexpress\.kr\//i.test(url)))];
+};
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -453,7 +483,7 @@ const notifyIndexNow = async urls => {
     }
     if (attempt < 3) await sleep(attempt * 5000);
   }
-  console.log('::warning::IndexNow 전송은 실패했지만 사이트맵·RSS 생성은 정상 완료되었습니다. 다음 게시 시 자동 재시도됩니다.');
+  throw new Error('IndexNow 전송 실패: 3회 재시도 후에도 네이버가 정상 응답하지 않았습니다. 사이트맵·RSS 생성 성공과 별개로 알림 단계는 실패 처리합니다.');
 };
 
 const validateOutput = posts => {
@@ -464,8 +494,10 @@ const validateOutput = posts => {
   const blogIndex = fs.existsSync(blogIndexPath) ? fs.readFileSync(blogIndexPath, 'utf8') : '';
   for (const post of posts) {
     if (!sitemap.includes(xmlEscape(post.url))) throw new Error(`사이트맵 누락: ${post.url}`);
-    if (!rss.includes(xmlEscape(post.url))) throw new Error(`RSS 누락: ${post.url}`);
     if (blogIndex && !blogIndex.includes(post.url)) throw new Error(`블로그 정적 목록 누락: ${post.url}`);
+  }
+  for (const post of posts.slice(0, RSS_LIMIT)) {
+    if (!rss.includes(xmlEscape(post.url))) throw new Error(`RSS 최신 ${RSS_LIMIT}건 누락: ${post.url}`);
   }
   if (!sitemap.startsWith('<?xml') || !rss.startsWith('<?xml')) throw new Error('XML 파일 헤더가 올바르지 않습니다.');
 };
@@ -480,7 +512,11 @@ const printReport = posts => {
 };
 
 const args = process.argv.slice(2);
-if (args.includes('--notify-all')) {
+if (args.includes('--notify-sitemap')) {
+  const urls = urlsFromSitemap();
+  if (!urls.length) throw new Error('사이트맵에서 IndexNow 전송 대상 URL을 찾지 못했습니다.');
+  await notifyIndexNow(urls);
+} else if (args.includes('--notify-all')) {
   const posts = readPosts();
   await notifyIndexNow(posts.map(post => post.url));
 } else if (args.includes('--notify')) {

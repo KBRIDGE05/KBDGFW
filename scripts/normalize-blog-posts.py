@@ -5,6 +5,7 @@ from __future__ import annotations
 import html as html_lib
 import json
 import re
+import subprocess
 from pathlib import Path
 from urllib.parse import quote, urljoin
 
@@ -68,6 +69,55 @@ def all_meta(source: str) -> dict[str, str]:
 def tag_text(source: str, tag: str) -> str:
     match = re.search(rf"<{tag}\b[^>]*>([\s\S]*?)</{tag}>", source, re.I)
     return strip_tags(match.group(1)) if match else ""
+
+
+def visible_article_date(source: str) -> str:
+    match = re.search(
+        r'<(?:p|div|span)\b[^>]*class=["\'][^"\']*article-meta[^"\']*["\'][^>]*>([\s\S]*?)</(?:p|div|span)>',
+        source, re.I,
+    )
+    if not match:
+        return ""
+    text = strip_tags(match.group(1))
+    found = re.search(r"(20\d{2})[-./년\s]*(\d{1,2})[-./월\s]*(\d{1,2})", text)
+    if not found:
+        return ""
+    return f"{found.group(1)}-{int(found.group(2)):02d}-{int(found.group(3)):02d}"
+
+
+def git_date(file_path: Path, *, first: bool = False) -> str:
+    rel = file_path.relative_to(ROOT).as_posix()
+    try:
+        if first:
+            cmd = ["git", "log", "--follow", "--reverse", "--format=%aI", "--", rel]
+        else:
+            cmd = ["git", "log", "-1", "--format=%aI", "--", rel]
+        result = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, check=False)
+        lines = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+        return lines[0] if lines else ""
+    except Exception:
+        return ""
+
+
+def normalized_seo_title(existing: str, article_title: str) -> str:
+    raw = strip_tags(existing) or strip_tags(article_title)
+    # Preserve curated SEO wording, but enforce the requested slash separator
+    # immediately before the brand. Append the brand when it is absent.
+    match = re.match(r"^(.*?)(?:\s*[|/-]\s*)((?:KBRIDGE|케이브릿지)(?:\s+.*)?)$", raw, re.I)
+    if match:
+        base, brand = match.group(1).strip(), match.group(2).strip()
+        if re.match(r"^케이브릿지(?:\s|$)", brand, re.I):
+            suffix = re.sub(r"^케이브릿지", "", brand, flags=re.I).strip()
+            brand = "KBRIDGE" + (f" {suffix}" if suffix else "")
+        return f"{base} / {brand}"
+    return f"{raw} / KBRIDGE"
+
+
+def set_title_tag(source: str, value: str) -> str:
+    tag = f"<title>{html_lib.escape(value)}</title>"
+    if re.search(r"<title\b[^>]*>[\s\S]*?</title>", source, re.I):
+        return re.sub(r"<title\b[^>]*>[\s\S]*?</title>", tag, source, count=1, flags=re.I)
+    return re.sub(r"</head>", f"  {tag}\n</head>", source, count=1, flags=re.I)
 
 
 def first_content_image(source: str) -> str:
@@ -262,7 +312,10 @@ def normalize_file(file_path: Path) -> bool:
     json_values = json_candidates(source)
 
     page_url = f"{SITE_URL}/{quote(relative, safe='/._-~')}"
-    title = tag_text(source, "h1") or tag_text(source, "title") or file_path.stem
+    existing_title = tag_text(source, "title")
+    title = tag_text(source, "h1") or existing_title or file_path.stem
+    seo_title = normalized_seo_title(existing_title, title)
+    source = set_title_tag(source, seo_title)
     description = meta.get("description") or meta.get("og:description") or title
     description = strip_tags(description)
     category_label = CATEGORY_LABELS[category]
@@ -276,12 +329,13 @@ def normalize_file(file_path: Path) -> bool:
 
     published_raw = (
         meta.get("article:published_time") or meta.get("kbridge:date") or
-        next((find_json_value(item, "datePublished") for item in json_values if find_json_value(item, "datePublished")), "")
+        next((find_json_value(item, "datePublished") for item in json_values if find_json_value(item, "datePublished")), "") or
+        visible_article_date(source) or git_date(file_path, first=True) or "2026-07-18"
     )
     modified_raw = (
         meta.get("article:modified_time") or
         next((find_json_value(item, "dateModified") for item in json_values if find_json_value(item, "dateModified")), "") or
-        published_raw
+        git_date(file_path) or published_raw
     )
     published_date = normalize_date(published_raw)
     modified_date = normalize_date(modified_raw, published_date)

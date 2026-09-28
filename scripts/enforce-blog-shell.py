@@ -30,6 +30,10 @@ SITE_HEADER_RE = re.compile(
     r'<header\b[^>]*class=["\'][^"\']*(?:header|kb-header)[^"\']*["\'][^>]*>[\s\S]*?</header>',
     re.I,
 )
+SITE_FOOTER_RE = re.compile(
+    r'<footer\b[^>]*class=["\'][^"\']*(?:\bkb-footer\b|\bfooter\b)[^"\']*["\'][^>]*>[\s\S]*?</footer>\s*',
+    re.I,
+)
 BODY_RE = re.compile(r'<body\b([^>]*)>', re.I)
 CLASS_ATTR_RE = re.compile(r'\bclass\s*=\s*(["\'])(.*?)\1', re.I | re.S)
 SKIP_LINK_RE = re.compile(
@@ -51,7 +55,10 @@ CANONICAL_HEADER = '''<header class="header" id="top"><div class="container head
 
 CANONICAL_MOBILE = '''<div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav" id="mobileNav"><a href="../../../index.html#services">즉시견적 <span>→</span></a><a href="../../../quote-comparison.html">견적서 비교 <span>→</span></a><a href="../../../warehouse-inquiry.html">창고 문의 <span>→</span></a><div class="mobile-nav-group"><button aria-expanded="false" class="mobile-nav-label" type="button">국내운송</button><a href="../../../domestic.html">국내운송 안내 <span>→</span></a><a href="../../../load-planner.html">차량 배차 시뮬레이터 <span>→</span></a><a href="../../../safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="../../../vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div><a href="../../../freight-index.html">운임지수 <span>→</span></a><div class="mobile-nav-group tools-mobile-group"><button aria-expanded="false" class="mobile-nav-label" type="button">물류도구</button><a href="../../../duty-calculator.html">관부가세 계산기 <span>→</span></a><a href="../../../customs-exchange-rate.html">관세청 고시환율 <span>→</span></a><a href="../../../cbm-calculator.html">CBM 계산기 <span>→</span></a><a href="../../../holiday-calendar.html">전세계 공휴일 조회 <span>→</span></a><a href="../../../hs-code-search.html">HS CODE 조회 <span>→</span></a><a href="../../../incoterms-guide.html">인코텀즈 가이드 <span>→</span></a><a href="../../../lcl-storage.html">LCL 창고료 <span>→</span></a><a href="../../../dangerous-goods.html">위험물 정보 조회 <span>→</span></a><a href="../../../vessel-location.html">실시간 선박 위치 <span>→</span></a><a href="../../../terminal-info.html">터미널 정보 조회 <span>→</span></a></div><div class="mobile-nav-group blog-mobile-group"><button aria-expanded="false" class="mobile-nav-label" type="button">블로그</button><a href="../../../blog/index.html?category=info">물류 정보 <span>→</span></a><a href="../../../blog/index.html?category=service">물류 서비스 <span>→</span></a><a href="../../../blog/index.html?category=news">물류 뉴스 <span>→</span></a><a href="../../../blog/index.html?category=insight">물류 인사이트 <span>→</span></a><a href="../../../blog/index.html?category=glossary">물류 용어집 <span>→</span></a></div><a href="../../../index.html#services">견적 받기 <span>→</span></a></div>'''
 
-SHARED_STYLES = f'''<link href="../../../assets/css/kbridge-design-system.css?v={DESIGN_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-unified.css?v=20260927-blog-design-v47" rel="stylesheet"/>'''
+CANONICAL_FOOTER = '''<footer aria-label="케이브릿지 푸터" class="kb-footer"><div class="footer-grid"><div><div class="footer-brand">KBRIDGE</div><p>FCL·LCL 해상운송, 항공운송, 해외특송과 국내운송을 연결하는 종합 물류 서비스입니다.</p></div><div><h4>서비스</h4><ul><li><a href="https://www.kbexpress.kr/index.html#services">해상·항공 견적</a></li><li><a href="https://www.kbexpress.kr/domestic.html">국내운송</a></li><li><a href="https://www.kbexpress.kr/convenience.html">물류도구</a></li></ul></div><div><h4>콘텐츠</h4><ul><li><a href="https://www.kbexpress.kr/blog/">블로그</a></li><li><a href="https://www.kbexpress.kr/blog/index.html?category=insight">물류 인사이트</a></li><li><a href="https://www.kbexpress.kr/blog/index.html?category=info">물류 정보</a></li></ul></div><div><h4>문의</h4><ul><li><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a></li><li>평일 09:00–18:00</li><li><a href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 접수</a></li></ul></div></div><p class="footer-copy">케이브릿지 주식회사 · © 2026 KBRIDGE CO., LTD.</p></footer>'''
+
+
+SHARED_STYLES = f'''<link href="../../../assets/css/kbridge-design-system.css?v={DESIGN_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-unified.css?v={BLOG_STYLE_VERSION}" rel="stylesheet"/>'''
 SHARED_SCRIPTS = f'''<script defer src="../../../assets/enterprise-motion.js?v=20260720-v17"></script>\n<script defer src="../../../assets/site-chrome.js?v={SCRIPT_VERSION}"></script>\n<script defer src="../../../assets/kebby-chat.js?v={SCRIPT_VERSION}"></script>'''
 
 
@@ -121,6 +128,10 @@ def normalize_shell(source: str, html_path: Path | None = None) -> str:
     source = STYLE_LINK_RE.sub("", source)
     source = SCRIPT_SRC_RE.sub("", source)
     source = SCRIPT_BLOCK_RE.sub(remove_legacy_menu_script, source)
+    # Canonicalize the boundary before the auto-SEO block. Shared stylesheet
+    # removal used to consume this newline on a brand-new post, causing a
+    # one-time diff on the next workflow run.
+    source = re.sub(r"\s*(<!-- KBRIDGE_AUTO_SEO_START -->)", r"\n\1", source, count=1)
     source = SKIP_LINK_RE.sub("", source)
     source = ensure_body_classes(source)
     source = ensure_editorial_hooks(source)
@@ -139,8 +150,11 @@ def normalize_shell(source: str, html_path: Path | None = None) -> str:
             prefix = prefix.rstrip() + "\n" + canonical
         source = prefix + suffix
 
+    # Footer is a shared shell element just like the header. Replace legacy variants
+    # with one canonical footer and guarantee it exists for newly created posts.
+    source = SITE_FOOTER_RE.sub("", source)
     source = re.sub(r'</head>', SHARED_STYLES + "\n</head>", source, count=1, flags=re.I)
-    source = re.sub(r'</body>', SHARED_SCRIPTS + "\n</body>", source, count=1, flags=re.I)
+    source = re.sub(r'</body>', CANONICAL_FOOTER + "\n" + SHARED_SCRIPTS + "\n</body>", source, count=1, flags=re.I)
     return source.replace("\r\n", "\n")
 
 

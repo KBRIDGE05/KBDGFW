@@ -32,8 +32,11 @@ SUMMARY_ITEM_RE = re.compile(
     re.I,
 )
 FAQ_SECTION_RE = re.compile(r"<section\b[^>]*(?:id=[\"']faq[\"']|class=[\"'][^\"']*faq[^\"']*[\"'])[^>]*>", re.I)
-CTA_SECTION_RE = re.compile(r"<section\b[^>]*class=[\"'][^\"']*(?:\bcta\b|kb-blog-cta)[^\"']*[\"'][^>]*>", re.I)
-TAKEAWAYS_RE = re.compile(r"class=[\"'][^\"']*kb-takeaways[^\"']*[\"']", re.I)
+CTA_SECTION_RE = re.compile(r'<section\b[^>]*class=["\'][^"\']*(?:\bcta\b|kb-blog-cta)[^"\']*["\'][^>]*>', re.I)
+CTA_BLOCK_RE = re.compile(r'<section\b[^>]*class=["\'][^"\']*(?:\bcta\b|kb-blog-cta)[^"\']*["\'][^>]*>[\s\S]*?</section>', re.I)
+TAKEAWAYS_RE = re.compile(r'class=["\'][^"\']*kb-takeaways[^"\']*["\']', re.I)
+TAGS_RE = re.compile(r'<div\b[^>]*class=["\'][^"\']*\btags\b[^"\']*["\'][^>]*>', re.I)
+META_KEYWORDS_RE = re.compile(r'<meta\b[^>]*name=["\']keywords["\'][^>]*content=(?:"([^"]*)"|\'([^\']*)\')[^>]*>', re.I)
 
 
 def strip_tags(value: str) -> str:
@@ -180,6 +183,51 @@ def takeaway_items(source: str) -> list[str]:
     return items[:6]
 
 
+def add_faq_if_missing(source: str) -> str:
+    if FAQ_SECTION_RE.search(source):
+        return source
+    sm = SUMMARY_RE.search(source)
+    answer = strip_tags(sm.group("body")) if sm else ""
+    if not answer:
+        answer = "본문의 핵심 내용과 실제 적용 조건을 함께 확인하세요."
+    block = (
+        '<section class="section" id="faq">'
+        '<h2>자주 묻는 질문</h2>'
+        '<div class="faq"><details class="faq-item">'
+        '<summary class="faq-q">Q. 이 글에서 가장 먼저 확인할 핵심은 무엇인가요?</summary>'
+        f'<div class="faq-a"><p>{html.escape(answer)}</p></div>'
+        '</details></div></section>\n'
+    )
+    cta = CTA_SECTION_RE.search(source)
+    if not cta:
+        return source
+    return source[:cta.start()] + block + source[cta.start():]
+
+
+def add_tags_if_missing(source: str) -> str:
+    if TAGS_RE.search(source):
+        return source
+    match = META_KEYWORDS_RE.search(source)
+    raw = next((g for g in match.groups() if g is not None), "") if match else ""
+    values: list[str] = []
+    for item in raw.split(","):
+        tag = re.sub(r"\s+", "", html.unescape(item).strip().lstrip("#"))
+        tag = re.sub(r"[^0-9A-Za-z가-힣._+-]", "", tag)
+        if tag and tag.lower() not in {x.lower() for x in values}:
+            values.append(tag)
+    if not any(x.lower() == "kbridge" for x in values):
+        values.append("KBRIDGE")
+    if not values:
+        return source
+    block = '<div class="tags" aria-label="태그">' + ''.join(
+        f'<span class="tag">#{html.escape(x)}</span>' for x in values[:12]
+    ) + '</div>\n'
+    cta = CTA_BLOCK_RE.search(source)
+    if not cta:
+        return source
+    return source[:cta.end()] + "\n" + block + source[cta.end():]
+
+
 def add_takeaways(source: str) -> str:
     if TAKEAWAYS_RE.search(source):
         return source
@@ -205,7 +253,9 @@ def add_takeaways(source: str) -> str:
 def enhance(source: str) -> str:
     source = enhance_figures(source)
     source = mark_section_leads(source)
+    source = add_faq_if_missing(source)
     source = add_takeaways(source)
+    source = add_tags_if_missing(source)
     return source.replace("\r\n", "\n")
 
 

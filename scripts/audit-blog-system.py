@@ -37,6 +37,16 @@ def main():
         ids=[str(x.get("id")) for x in soup.find_all(id=True)]
         dup={x for x in ids if ids.count(x)>1}
         if dup: fail(f"{rel}: 중복 id {sorted(dup)}")
+        body_classes=set(soup.body.get("class",[]) if soup.body else [])
+        required_body={"site-subpage","kb-unified-site","kb-blog-post"}
+        if not required_body.issubset(body_classes): fail(f"{rel}: 공통 body class 누락 {sorted(required_body-body_classes)}")
+        if len(soup.select("header.header#top")) != 1: fail(f"{rel}: 공통 Header 구조 이상")
+        if len(soup.select("#mobileNav.mobile-nav")) != 1: fail(f"{rel}: 공통 모바일 메뉴 구조 이상")
+        if len(soup.select("footer.kb-footer")) != 1: fail(f"{rel}: 공통 Footer 구조 이상")
+        blog_css=[x.get("href","") for x in soup.find_all("link",href=True) if "blog-unified.css" in x.get("href","")]
+        if len(blog_css) != 1: fail(f"{rel}: blog-unified.css 참조 개수 {len(blog_css)}")
+        site_chrome=[x.get("src","") for x in soup.find_all("script",src=True) if "site-chrome.js" in x.get("src","")]
+        if len(site_chrome) != 1: fail(f"{rel}: site-chrome.js 참조 개수 {len(site_chrome)}")
         if len(soup.find_all("h1"))!=1: fail(f"{rel}: h1 구조 이상")
         if len(soup.select(".quick-summary,.pipe-summary,.summary"))!=1: fail(f"{rel}: 핵심 요약은 정확히 1개여야 함")
         tocs=soup.select(".toc,.pipe-toc")
@@ -47,6 +57,8 @@ def main():
                 if href.startswith("#") and href[1:] not in ids: fail(f"{rel}: 깨진 목차 링크 {href}")
         if len(soup.select("section.cta,.kb-blog-cta"))!=1: fail(f"{rel}: CTA 개수 이상")
         if len(soup.select(".kb-takeaways"))!=1: fail(f"{rel}: KEY TAKEAWAYS 개수 이상")
+        if len(soup.select("#faq .faq-item, section#faq details"))<1: fail(f"{rel}: FAQ 구조 누락")
+        if len(soup.select(".tags .tag"))<1: fail(f"{rel}: 태그 구조 누락")
         hubs=soup.select(".kb-resource-hub[data-kb-auto='v44']")
         if len(hubs)!=1: fail(f"{rel}: V42 관련자료 허브 개수 {len(hubs)}")
         else:
@@ -78,6 +90,6 @@ def main():
     print(f"- V42 관련자료 허브: {resources}개")
     print(f"- VISUAL GUIDE 구조 검사: {figures}개")
     print(f"- 표 공통 구조 검사: {tables}개")
-    print("- 핵심요약/목차/CTA/KEY TAKEAWAYS/중복 ID/내부링크: 정상")
+    print("- 공통 Header/Footer/모바일/공통 CSS·JS/핵심요약/목차/FAQ/태그/CTA/KEY TAKEAWAYS/중복 ID/내부링크: 정상")
 
 if __name__=="__main__": main()

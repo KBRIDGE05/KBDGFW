@@ -2,17 +2,33 @@ name: KBRIDGE Blog SEO Automation
 
 on:
   workflow_dispatch:
+    inputs:
+      notify_scope:
+        description: "Naver IndexNow notification scope"
+        required: true
+        default: all_blog
+        type: choice
+        options:
+          - all_blog
+          - all_site
   push:
     branches:
       - main
     paths:
+      - '*.html'
+      - 'blog/index.html'
       - 'blog/posts/**/*.html'
       - 'scripts/normalize-blog-posts.py'
       - 'scripts/enforce-blog-shell.py'
       - 'scripts/normalize-blog-tables.py'
       - 'scripts/enhance-blog-content.py'
       - 'scripts/enrich-blog-system.py'
+      - 'scripts/optimize-blog-performance.py'
       - 'scripts/audit-blog-system.py'
+      - 'scripts/audit-site.py'
+      - 'scripts/smoke-test-blog-automation.py'
+      - 'requirements.txt'
+      - 'scripts/audit-indexing.py'
       - 'scripts/audit-design-v47.py'
       - 'scripts/blog-system-config.json'
       - 'scripts/blog-templates/**'
@@ -45,6 +61,10 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
 
       - name: Setup Node.js
         uses: actions/setup-node@v5
@@ -55,9 +75,15 @@ jobs:
         shell: bash
         run: |
           : > /tmp/changed-blog-posts.txt
+          : > /tmp/changed-site-pages.txt
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            touch /tmp/notify-all-blog-posts
-            echo "Manual run: all current blog posts will be normalized and notified."
+            if [ "${{ inputs.notify_scope }}" = "all_site" ]; then
+              touch /tmp/notify-all-site
+              echo "Manual run: all sitemap URLs will be notified after deployment verification."
+            else
+              touch /tmp/notify-all-blog-posts
+              echo "Manual run: all current blog posts will be normalized and notified."
+            fi
             exit 0
           fi
 
@@ -71,8 +97,18 @@ jobs:
             git diff --name-status "$BEFORE" "$AFTER" -- 'blog/posts/**/*.html' \
               | awk '$1 == "D" {print $NF}' > /tmp/deleted-blog-posts.txt
           fi
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            git ls-files '*.html' 'blog/**/*.html' > /tmp/changed-site-pages.txt
+          else
+            git diff --name-status "$BEFORE" "$AFTER" -- '*.html' 'blog/**/*.html' \
+              | awk '$1 != "D" {print $NF}' > /tmp/changed-site-pages.txt
+            git diff --name-status "$BEFORE" "$AFTER" -- '*.html' 'blog/**/*.html' \
+              | awk '$1 == "D" {print $NF}' > /tmp/deleted-site-pages.txt
+          fi
           echo "Changed blog posts:"
           cat /tmp/changed-blog-posts.txt || true
+          echo "Changed site pages:"
+          cat /tmp/changed-site-pages.txt || true
 
       - name: Pre-normalize canonical blog shell
         run: python scripts/enforce-blog-shell.py
@@ -102,6 +138,8 @@ jobs:
             | grep -E '^blog/posts/(info|service|news|insight|glossary)/.+\.html?$' \
             >> /tmp/changed-blog-posts.txt || true
           sort -u -o /tmp/changed-blog-posts.txt /tmp/changed-blog-posts.txt
+          git diff --name-only -- '*.html' 'blog/**/*.html' >> /tmp/changed-site-pages.txt || true
+          sort -u -o /tmp/changed-site-pages.txt /tmp/changed-site-pages.txt
 
       - name: Generate static blog list, manifest, sitemap and RSS
         run: node scripts/build-blog-posts.mjs
@@ -115,6 +153,16 @@ jobs:
       - name: Validate SEO output and local resources
         run: python scripts/audit-site.py
 
+      - name: Validate indexing and re-crawl readiness
+        run: python scripts/audit-indexing.py
+
+      - name: Regression test future blog automation
+        run: python scripts/smoke-test-blog-automation.py
+
+      - name: Write deployment marker
+        shell: bash
+        run: printf '%s\n' "${{ github.sha }}" > deploy-version.txt
+
       - name: Commit generated SEO files
         shell: bash
         run: |
@@ -126,7 +174,8 @@ jobs:
             assets/blog-posts.json \
             sitemap.xml \
             rss.xml \
-            736f09a19bf4a21e9a05a8bfe60a60c4.txt
+            736f09a19bf4a21e9a05a8bfe60a60c4.txt \
+            deploy-version.txt
 
           if git diff --cached --quiet; then
             echo "No generated SEO file changes."
@@ -136,21 +185,37 @@ jobs:
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
 
-      - name: Wait for GitHub Pages deployment
-        run: sleep 75
+      - name: Verify GitHub Pages deployment
+        shell: bash
+        run: |
+          EXPECTED="${{ github.sha }}"
+          URL="https://www.kbexpress.kr/deploy-version.txt"
+          for attempt in $(seq 1 36); do
+            BODY="$(curl -fsSL --max-time 10 -H 'Cache-Control: no-cache' "${URL}?cb=${GITHUB_RUN_ID}-${attempt}" 2>/dev/null | tr -d '\r\n' || true)"
+            if [ "$BODY" = "$EXPECTED" ]; then
+              echo "GitHub Pages deployment verified on attempt ${attempt}."
+              exit 0
+            fi
+            echo "Deployment not ready yet (${attempt}/36)."
+            sleep 10
+          done
+          echo "::error::GitHub Pages deployment verification failed: expected marker ${EXPECTED}."
+          exit 1
 
       - name: Notify Naver IndexNow
         shell: bash
         run: |
-          if [ -f /tmp/notify-all-blog-posts ]; then
+          if [ -f /tmp/notify-all-site ]; then
+            node scripts/build-blog-posts.mjs --notify-sitemap
+          elif [ -f /tmp/notify-all-blog-posts ]; then
             node scripts/build-blog-posts.mjs --notify-all
           else
-            cat /tmp/deleted-blog-posts.txt >> /tmp/changed-blog-posts.txt 2>/dev/null || true
-            sort -u -o /tmp/changed-blog-posts.txt /tmp/changed-blog-posts.txt
-            if [ -s /tmp/changed-blog-posts.txt ]; then
-              mapfile -t CHANGED_FILES < /tmp/changed-blog-posts.txt
+            cat /tmp/deleted-site-pages.txt >> /tmp/changed-site-pages.txt 2>/dev/null || true
+            sort -u -o /tmp/changed-site-pages.txt /tmp/changed-site-pages.txt
+            if [ -s /tmp/changed-site-pages.txt ]; then
+              mapfile -t CHANGED_FILES < /tmp/changed-site-pages.txt
               node scripts/build-blog-posts.mjs --notify "${CHANGED_FILES[@]}"
             else
-              echo "No changed blog URLs to notify."
+              echo "No changed indexable HTML URLs to notify."
             fi
           fi
