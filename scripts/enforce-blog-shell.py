@@ -17,6 +17,13 @@ DESIGN_VERSION = "20260926-design-v38"
 BLOG_STYLE_VERSION = "20260927-blog-design-v47"
 SCRIPT_VERSION = "20260926-site-chrome-v38"
 
+
+def is_noindex_html(source: str) -> bool:
+    for tag in re.findall(r"<meta\b[^>]*>", source, re.I):
+        if re.search(r"\bname\s*=\s*[\"\'](?:robots|naverbot|yeti)[\"\']", tag, re.I) and re.search(r"\bcontent\s*=\s*[\"\'][^\"\']*\bnoindex\b", tag, re.I):
+            return True
+    return False
+
 STYLE_LINK_RE = re.compile(
     r'<link\b[^>]*href=["\'][^"\']*(?:kbridge-design-system\.css|(?:pages/)?blog-unified\.css)[^"\']*["\'][^>]*>\s*',
     re.I,
@@ -164,6 +171,8 @@ def main() -> None:
         if path.parent.name not in CATEGORIES:
             continue
         original = path.read_text(encoding="utf-8")
+        if is_noindex_html(original):
+            continue
         updated = normalize_shell(original, path)
         if updated != original:
             path.write_text(updated, encoding="utf-8", newline="\n")

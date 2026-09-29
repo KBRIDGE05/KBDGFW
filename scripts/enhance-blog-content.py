@@ -16,6 +16,13 @@ ROOT = Path(__file__).resolve().parents[1]
 POSTS_ROOT = ROOT / "blog" / "posts"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
 
+
+def is_noindex_html(source: str) -> bool:
+    for tag in re.findall(r"<meta\b[^>]*>", source, re.I):
+        if re.search(r"\bname\s*=\s*[\"\'](?:robots|naverbot|yeti)[\"\']", tag, re.I) and re.search(r"\bcontent\s*=\s*[\"\'][^\"\']*\bnoindex\b", tag, re.I):
+            return True
+    return False
+
 FIGURE_RE = re.compile(r"<figure\b(?P<attrs>[^>]*)>(?P<body>[\s\S]*?)</figure>", re.I)
 IMG_RE = re.compile(r"<img\b(?P<attrs>[^>]*)>", re.I)
 CLASS_RE = re.compile(r"\bclass\s*=\s*([\"'])(?P<value>.*?)\1", re.I | re.S)
@@ -265,6 +272,8 @@ def main() -> None:
         if path.parent.name not in CATEGORIES:
             continue
         original = path.read_text(encoding="utf-8")
+        if is_noindex_html(original):
+            continue
         updated = enhance(original)
         if updated != original:
             path.write_text(updated, encoding="utf-8", newline="\n")

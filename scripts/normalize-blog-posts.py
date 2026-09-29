@@ -28,6 +28,14 @@ LD_JSON_RE = re.compile(
     r'(<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>)([\s\S]*?)(</script>)',
     re.I,
 )
+
+
+def is_noindex_html(source: str) -> bool:
+    for tag in re.findall(r"<meta\b[^>]*>", source, re.I):
+        if re.search(r"\bname\s*=\s*[\"\'](?:robots|naverbot|yeti)[\"\']", tag, re.I) and re.search(r"\bcontent\s*=\s*[\"\'][^\"\']*\bnoindex\b", tag, re.I):
+            return True
+    return False
+
 AUTO_BLOCK_RE = re.compile(
     r"\s*<!-- KBRIDGE_AUTO_SEO_START -->[\s\S]*?<!-- KBRIDGE_AUTO_SEO_END -->\s*",
     re.I,
@@ -307,6 +315,8 @@ def normalize_file(file_path: Path) -> bool:
         return False
 
     original = file_path.read_text(encoding="utf-8")
+    if is_noindex_html(original):
+        return False
     source = AUTO_BLOCK_RE.sub("\n", original)
     meta = all_meta(source)
     json_values = json_candidates(source)
@@ -346,7 +356,7 @@ def normalize_file(file_path: Path) -> bool:
     source, article_found = update_json_ld(
         source,
         page_url=page_url,
-        title=title,
+        title=seo_title,
         description=description,
         image_url=image_url,
         category_label=category_label,
@@ -366,21 +376,21 @@ def normalize_file(file_path: Path) -> bool:
         '<meta property="og:locale" content="ko_KR">',
         '<meta property="og:site_name" content="KBRIDGE 물류 블로그">',
         f'<meta property="og:url" content="{escape_attr(page_url)}">',
-        f'<meta property="og:title" content="{escape_attr(title)}">',
+        f'<meta property="og:title" content="{escape_attr(seo_title)}">',
         f'<meta property="og:description" content="{escape_attr(description)}">',
         f'<meta property="og:image" content="{escape_attr(image_url)}">',
-        f'<meta property="og:image:alt" content="{escape_attr(title)}">',
+        f'<meta property="og:image:alt" content="{escape_attr(seo_title)}">',
         f'<meta property="article:published_time" content="{escape_attr(published_iso)}">',
         f'<meta property="article:modified_time" content="{escape_attr(modified_iso)}">',
         f'<meta property="article:section" content="{escape_attr(category_label)}">',
         '<meta name="twitter:card" content="summary_large_image">',
-        f'<meta name="twitter:title" content="{escape_attr(title)}">',
+        f'<meta name="twitter:title" content="{escape_attr(seo_title)}">',
         f'<meta name="twitter:description" content="{escape_attr(description)}">',
         f'<meta name="twitter:image" content="{escape_attr(image_url)}">',
     ]
     if not article_found:
         auto_lines.append(generated_article_json(
-            page_url, title, description, image_url, category_label, published_iso, modified_iso
+            page_url, seo_title, description, image_url, category_label, published_iso, modified_iso
         ))
     auto_lines.append("<!-- KBRIDGE_AUTO_SEO_END -->")
     auto_block = "\n  " + "\n  ".join(auto_lines) + "\n"

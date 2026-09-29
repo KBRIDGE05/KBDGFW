@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>블로그 검색 이동 / KBRIDGE</title>
+  <meta name="description" content="케이브릿지 블로그의 이전 검색 주소입니다. 현재 블로그 검색으로 자동 연결합니다.">
+  <meta name="robots" content="noindex,follow">
+  <meta name="naverbot" content="noindex,follow">
+  <meta name="yeti" content="noindex,follow">
+  <link rel="canonical" href="https://www.kbexpress.kr/blog/">
+  <style>body{margin:0;font-family:Arial,"Noto Sans KR",sans-serif;background:#f6f8fb;color:#162338}.wrap{max-width:680px;margin:14vh auto;padding:28px}.card{background:#fff;border:1px solid #e4e9f0;padding:28px}.card h1{margin:0 0 12px;font-size:24px}.card p{line-height:1.7;color:#536174}.card a{color:#1e56c9;font-weight:700}</style>
+</head>
+<body data-kb-legacy-url="/blog/search.html">
+  <main class="wrap"><section class="card"><h1>블로그 검색 주소가 변경되었습니다.</h1><p>기존 검색어를 유지해 현재 케이브릿지 블로그 검색 화면으로 이동합니다.</p><p><a id="fallbackLink" href="https://www.kbexpress.kr/blog/">케이브릿지 블로그로 이동</a></p></section></main>
+  <script>
+  (()=>{
+    const oldParams=new URLSearchParams(location.search);
+    const next=new URL('https://www.kbexpress.kr/blog/');
+    const q=(oldParams.get('q')||'').trim();
+    const category=(oldParams.get('category')||'').trim();
+    if(q) next.searchParams.set('q',q);
+    if(['info','service','news','insight','glossary'].includes(category)) next.searchParams.set('category',category);
+    const fallback=document.getElementById('fallbackLink');
+    if(fallback) fallback.href=next.href;
+    location.replace(next.href);
+  })();
+  </script>
+</body>
+</html>

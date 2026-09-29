@@ -29,6 +29,13 @@ STOP = {"그리고","하지만","대한","위한","에서","으로","하는","�
 TOKEN_RE = re.compile(r"[가-힣A-Za-z0-9]{2,}")
 
 
+def is_noindex_html(source: str) -> bool:
+    for tag in re.findall(r"<meta\b[^>]*>", source, re.I):
+        if re.search(r"\bname\s*=\s*[\"\'](?:robots|naverbot|yeti)[\"\']", tag, re.I) and re.search(r"\bcontent\s*=\s*[\"\'][^\"\']*\bnoindex\b", tag, re.I):
+            return True
+    return False
+
+
 def esc(value: str) -> str:
     return html.escape(value or "", quote=True)
 
@@ -127,7 +134,7 @@ def add_category_attr(source: str, category: str) -> str:
 
 
 def main() -> None:
-    paths = [p for p in sorted(POSTS.glob("*/*.html")) if p.parent.name in CATEGORIES]
+    paths = [p for p in sorted(POSTS.glob("*/*.html")) if p.parent.name in CATEGORIES and not is_noindex_html(p.read_text("utf-8", errors="ignore"))]
     profiles = [profile(p) for p in paths]
     changed = []
     for current in profiles:

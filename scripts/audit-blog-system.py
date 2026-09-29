@@ -13,6 +13,13 @@ CATEGORIES={"info","service","news","insight","glossary"}
 errors=[]
 
 
+def is_noindex_html(source: str) -> bool:
+    for tag in re.findall(r"<meta\b[^>]*>", source, re.I):
+        if re.search(r"\bname\s*=\s*[\"\'](?:robots|naverbot|yeti)[\"\']", tag, re.I) and re.search(r"\bcontent\s*=\s*[\"\'][^\"\']*\bnoindex\b", tag, re.I):
+            return True
+    return False
+
+
 def fail(msg): errors.append(msg)
 
 
@@ -31,9 +38,12 @@ def main():
     count=0; figures=0; tables=0; resources=0
     for page in sorted(POSTS.glob("*/*.html")):
         if page.parent.name not in CATEGORIES: continue
+        source=page.read_text("utf-8",errors="ignore")
+        if is_noindex_html(source):
+            continue
         count+=1
         rel=page.relative_to(ROOT).as_posix()
-        soup=BeautifulSoup(page.read_text("utf-8",errors="ignore"),"html.parser")
+        soup=BeautifulSoup(source,"html.parser")
         ids=[str(x.get("id")) for x in soup.find_all(id=True)]
         dup={x for x in ids if ids.count(x)>1}
         if dup: fail(f"{rel}: 중복 id {sorted(dup)}")

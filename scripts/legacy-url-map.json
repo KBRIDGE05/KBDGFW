@@ -1,0 +1,23 @@
+[
+  {
+    "path": "/services.html",
+    "file": "services.html",
+    "canonical": "https://www.kbexpress.kr/",
+    "target": "https://www.kbexpress.kr/#services",
+    "type": "redirect"
+  },
+  {
+    "path": "/blog/search.html",
+    "file": "blog/search.html",
+    "canonical": "https://www.kbexpress.kr/blog/",
+    "target": "https://www.kbexpress.kr/blog/",
+    "type": "search-forward"
+  },
+  {
+    "path": "/blog/posts/insight/index.html",
+    "file": "blog/posts/insight/index.html",
+    "canonical": "https://www.kbexpress.kr/blog/posts/insight/arctic.html",
+    "target": "https://www.kbexpress.kr/blog/posts/insight/arctic.html",
+    "type": "redirect"
+  }
+]

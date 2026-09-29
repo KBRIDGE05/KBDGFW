@@ -2,9 +2,19 @@
 """Structural QA for the KBRIDGE V44 full editorial blog design."""
 from pathlib import Path
 from bs4 import BeautifulSoup
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTS = sorted((ROOT / "blog" / "posts").glob("*/*.html"))
+POSTS_ROOT = ROOT / "blog" / "posts"
+
+
+def is_noindex_html(source: str) -> bool:
+    for tag in re.findall(r"<meta\b[^>]*>", source, re.I):
+        if re.search(r"\bname\s*=\s*[\"\'](?:robots|naverbot|yeti)[\"\']", tag, re.I) and re.search(r"\bcontent\s*=\s*[\"\'][^\"\']*\bnoindex\b", tag, re.I):
+            return True
+    return False
+
+POSTS = [p for p in sorted(POSTS_ROOT.glob("*/*.html")) if not is_noindex_html(p.read_text(encoding="utf-8", errors="ignore"))]
 VERSION = "20260927-blog-design-v45"
 errors=[]
 counts={"visual":0,"photo":0,"tables":0,"takeaways":0,"resource":0,"cta":0}

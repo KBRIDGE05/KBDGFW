@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 
@@ -15,6 +16,13 @@ CATEGORIES = {"info", "service", "news", "insight", "glossary"}
 
 errors: list[str] = []
 warnings: list[str] = []
+
+
+def is_noindex_html(source: str) -> bool:
+    for tag in re.findall(r"<meta\b[^>]*>", source, re.I):
+        if re.search(r"\bname\s*=\s*[\"\'](?:robots|naverbot|yeti)[\"\']", tag, re.I) and re.search(r"\bcontent\s*=\s*[\"\'][^\"\']*\bnoindex\b", tag, re.I):
+            return True
+    return False
 
 
 def fail(msg: str) -> None:
@@ -42,10 +50,13 @@ def audit_posts() -> int:
     for page in sorted(POSTS.glob("*/*.html")):
         if page.parent.name not in CATEGORIES:
             continue
+        source = page.read_text("utf-8", errors="ignore")
+        if is_noindex_html(source):
+            continue
         count += 1
         rel = page.relative_to(ROOT).as_posix()
         url = encoded_page_url(page)
-        soup = BeautifulSoup(page.read_text("utf-8", errors="ignore"), "html.parser")
+        soup = BeautifulSoup(source, "html.parser")
         h1 = soup.find_all("h1")
         canonical = soup.find("link", rel=lambda value: value and "canonical" in value)
         canonical_url = str(canonical.get("href", "")).strip() if canonical else ""

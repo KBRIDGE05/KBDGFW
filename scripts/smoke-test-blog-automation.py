@@ -39,6 +39,7 @@ AUDITS = [
     [sys.executable, "scripts/audit-design-v47.py"],
     [sys.executable, "scripts/audit-site.py"],
     [sys.executable, "scripts/audit-indexing.py"],
+    [sys.executable, "scripts/audit-legacy-urls.py"],
 ]
 
 
@@ -175,7 +176,7 @@ def main() -> None:
         # Lightweight 51st-post boundary check. Extra fixtures only need enough
         # metadata for build-blog-posts.mjs because the full structural pipeline
         # was already exercised above in every category.
-        current_count = len(list((work / "blog" / "posts").glob("*/*.html")))
+        current_count = len(manifest)  # noindex/legacy compatibility files are intentionally excluded
         extra = max(0, 51 - current_count)
         for i in range(extra):
             p = work / "blog" / "posts" / "news" / f"zz-rss-boundary-{i:02d}.html"

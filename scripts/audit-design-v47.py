@@ -13,11 +13,20 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTS = sorted((ROOT / "blog" / "posts").rglob("*.html"))
+POSTS_ROOT = ROOT / "blog" / "posts"
 CSS = ROOT / "assets" / "css" / "pages" / "blog-unified.css"
 VERSION = "20260927-blog-design-v47"
 
 errors: list[str] = []
+
+
+def is_noindex_html(source: str) -> bool:
+    for tag in re.findall(r"<meta\b[^>]*>", source, re.I):
+        if re.search(r"\bname\s*=\s*[\"\'](?:robots|naverbot|yeti)[\"\']", tag, re.I) and re.search(r"\bcontent\s*=\s*[\"\'][^\"\']*\bnoindex\b", tag, re.I):
+            return True
+    return False
+
+POSTS = [p for p in sorted(POSTS_ROOT.rglob("*.html")) if not is_noindex_html(p.read_text(encoding="utf-8", errors="ignore"))]
 stats = {"posts": 0, "tables": 0, "sources": 0, "resources": 0, "ctas": 0, "visuals": 0}
 
 css = CSS.read_text(encoding="utf-8")

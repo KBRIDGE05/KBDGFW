@@ -29,6 +29,9 @@ on:
       - 'scripts/smoke-test-blog-automation.py'
       - 'requirements.txt'
       - 'scripts/audit-indexing.py'
+      - 'scripts/audit-legacy-urls.py'
+      - 'scripts/legacy-url-map.json'
+      - 'assets/blog.js'
       - 'scripts/audit-design-v47.py'
       - 'scripts/blog-system-config.json'
       - 'scripts/blog-templates/**'
@@ -155,6 +158,9 @@ jobs:
 
       - name: Validate indexing and re-crawl readiness
         run: python scripts/audit-indexing.py
+
+      - name: Validate deprecated URL compatibility
+        run: python scripts/audit-legacy-urls.py
 
       - name: Regression test future blog automation
         run: python scripts/smoke-test-blog-automation.py

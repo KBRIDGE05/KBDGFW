@@ -79,25 +79,40 @@ for path in html_files:
     if is_blog_post and not re.search(r"\s/\s(?:KBRIDGE|케이브릿지)(?:\s|$)", title, re.I):
         err(f"블로그 SEO title 브랜드 구분자가 / 형식이 아님: {path.relative_to(ROOT)} -> {title}")
     if len(title) > 40:
-        warn(f"title 40자 초과: {path.relative_to(ROOT)} ({len(title)}자)")
+        err(f"SEO title 40자 초과: {path.relative_to(ROOT)} ({len(title)}자)")
 
     desc = meta(soup, name="description")
     if not desc:
         err(f"description 누락: {path.relative_to(ROOT)}")
     elif len(desc) > 80:
-        warn(f"description 80자 초과: {path.relative_to(ROOT)} ({len(desc)}자)")
+        err(f"SEO description 80자 초과: {path.relative_to(ROOT)} ({len(desc)}자)")
 
-    for label, value in (("og:title", meta(soup, prop="og:title")), ("twitter:title", meta(soup, name="twitter:title"))):
+    og_title = meta(soup, prop="og:title")
+    tw_title = meta(soup, name="twitter:title")
+    og_desc = meta(soup, prop="og:description")
+    tw_desc = meta(soup, name="twitter:description")
+    for label, value in (("og:title", og_title), ("twitter:title", tw_title)):
         if value and "|" in value:
             err(f"{label}에 금지 구분자 | 남음: {path.relative_to(ROOT)} -> {value}")
+    if is_blog_post:
+        if og_title != title:
+            err(f"블로그 og:title과 SEO title 불일치: {path.relative_to(ROOT)}")
+        if tw_title != title:
+            err(f"블로그 twitter:title과 SEO title 불일치: {path.relative_to(ROOT)}")
+        if og_desc != desc:
+            err(f"블로그 og:description과 SEO description 불일치: {path.relative_to(ROOT)}")
+        if tw_desc != desc:
+            err(f"블로그 twitter:description과 SEO description 불일치: {path.relative_to(ROOT)}")
 
 # Future templates must keep the same title separator policy.
 for template in sorted(TEMPLATES.glob("*.tmpl")):
     text = template.read_text(encoding="utf-8")
     if "{{TITLE}} | KBRIDGE" in text:
         err(f"신규 글 템플릿에 | 구분자 남음: {template.relative_to(ROOT)}")
-    if "{{TITLE}} / KBRIDGE" not in text:
-        err(f"신규 글 템플릿의 / KBRIDGE 제목 규칙 누락: {template.relative_to(ROOT)}")
+    if "<title>{{SEO_TITLE}}</title>" not in text:
+        err(f"신규 글 템플릿 SEO_TITLE 자리표시자 누락: {template.relative_to(ROOT)}")
+    if 'name="description" content="{{SEO_DESCRIPTION}}"' not in text:
+        err(f"신규 글 템플릿 SEO_DESCRIPTION 자리표시자 누락: {template.relative_to(ROOT)}")
     if 'name="kbridge:date" content="{{DATE}}"' not in text:
         err(f"신규 글 템플릿 날짜 메타 누락: {template.relative_to(ROOT)}")
     if '{{TAGS_HTML}}' not in text or 'class="tags"' not in text:
