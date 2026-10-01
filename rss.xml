@@ -8,8 +8,31 @@
     <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
     <generator>KBRIDGE Blog SEO Automation</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 01 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 00:00:00 GMT</lastBuildDate>
     <ttl>60</ttl>
+
+    <item>
+      <title><![CDATA[관세와 통관이란? 과세가격·관세율·수입신고 절차까지 쉽게 정리]]></title>
+      <link>https://www.kbexpress.kr/blog/posts/glossary/customs.html</link>
+      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/glossary/customs.html</guid>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
+      <category><![CDATA[물류 용어집]]></category>
+      <description><![CDATA[<div class="article-body">
+<figure class="body-visual cover-thumbnail"><img alt="관세 통관 HS CODE 과세가격 관세율 수입신고 KBRIDGE 물류용어 썸네일" height="1000" sizes="(max-width: 820px) calc(100vw - 32px), 790px" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_customs_1000.webp" width="1000"/ decoding="async" loading="lazy"></figure>
+<section class="quick-summary"><div class="summary-card"><p class="summary-title">핵심 요약</p><p><strong>관세는 수입물품에 부과되는 세금이고, 통관은 수출입 물품을 세관에 신고해 적법 여부를 확인받고 반출·적재까지 진행하는 절차</strong>입니다. 실제 관세는 단순히 물품가격에 세율 하나를 곱해서 끝나는 것이 아니라 <strong>HS CODE, 과세가격, 적용 관세율, 원산지·FTA 조건</strong>을 함께 확인해야 합니다.</p></div></section>
+
+<section class="section" id="definition"><h2>1. 관세와 통관, 무엇이 다른가요?</h2>
+<p class="kb-section-lead"><strong>관세(Customs Duty)는 세금이고, 통관(Customs Clearance)은 수출입 화물을 세관 절차에 따라 신고·심사·수리하는 과정</strong>입니다.</p>
+<p>2026년 8월 11일 시행 관세법은 수입물품을 관세의 과세물건으로 규정하고 있습니다. 통관은 그 세액을 계산하는 일만 뜻하지 않습니다. 품목분류, 수입요건 확인, 과세가격과 원산지 검토, 수입신고, 서류심사 또는 물품검사, 세금 납부, 신고수리와 화물반출까지 이어지는 전체 절차를 말합니다.</p>
+<div class="briefs"><div class="brief"><strong>관세</strong><span>수입물품의 과세표준에 적용 관세율을 반영해 부과되는 세금</span></div><div class="brief"><strong>통관</strong><span>수출입 신고부터 심사·검사·수리·반출 또는 적재까지의 세관 절차</span></div></div>
+</section>
+<figure class="body-visual kb-figure kb-figure--graphic"><div class="kb-figure-head"><span class="kb-figure-kicker">VISUAL GUIDE</span><strong class="kb-figure-title">관세를 결정하는 4가지 핵심 요소</strong></div><img alt="HS CODE 과세가격 관세율 원산지 FTA 관세 결정 요소 인포그래픽" height="750" src="https://www.kbexpress.kr/blog/posts/glossary/assets/images/visual_01_customs_duty_factors.webp" width="1200"/ decoding="async" loading="lazy"><figcaption><strong>읽는 포인트</strong>품목분류가 같아도 거래조건·원산지·협정 적용 여부에 따라 최종 세부담이 달라질 수 있습니다.</figcaption></figure>
+<section class="section" id="duty"><h2>2. 관세는 어떻게 결정될까?</h2>
+<p class="kb-section-lead">실무에서는 <strong>① HS CODE → ② 과세가격 → ③ 적용 관세율 → ④ 원산지·FTA 요건</strong> 순으로 확인하면 이해하기 쉽습니다.</p>
+<div class="news-list">
+<article class="news-item"><div class="news-num">01</div><div><h3>HS CODE: 어떤 물품인지 분류</h3><p>관세율과 수입요건의 출발점입니다. 제품명만으로 정하는 것이 아니라 재질, 기능, 용도, 구성 등을 기준으로 품목을 분류해야 합니다. 분류가 달라지면 세율과 세관장확인 대상 여부가 함께 달라질 수 있습니다.</p></div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/glossary/assets/images/thumbnail_customs_1000.webp" type="image/webp" />
+    </item>
 
     <item>
       <title><![CDATA[아시아 항만 적체, 2027년까지 이어질까? 정시성 49.9%가 말하는 장기화 신호]]></title>
@@ -36,7 +59,6 @@
 
 <section class="kb-takeaways" aria-label="이 글에서 기억할 것"><p class="kb-takeaways-kicker">KEY TAKEAWAYS</p><h2>이 글에서 기억할 것</h2><ol><li>먼저 결론부터 2026년 9월 말 기준 아시아 항만 적체는 여전히 글로벌 선박 일정과 실제 가용 선복을 압박하고 있습니다.</li><li>8월 글로벌 정시성은 49.9%까지 떨어졌고, 지연에 묶인 선복은 약 300만TEU로 추산됩니다.</li><li>다만 “2027년까지 계속된다”는 말은 확정된 일정이 아니라 과거 혼잡 회복 속도를 적용한 시나리오입니다.</li><li>한국 화주는 춘절 전 성수기까지 일정 버퍼, 환적 리스크, Free Time과 ETA 변동을 함께 관리하는 것이 중요합니다.</li></ol></section>
 <section class="section" id="faq"><h2>7. 자주 묻는 질문</h2><div class="faq"><details class="faq-item"><summary class="faq-q">Q. 아시아 항만 적체가 정말 2027년까지 이어지나요?</summary><div class="faq-a">확정된 일정은 아닙니다. 과거 팬데믹과 홍해 사태 초기의 회복 속도를 현재 상황에 적용한 시나리오에서 완전 정상화까지 수개월이 걸릴 수 있다는 분석입니다. 2027년 춘절 전 성수기까지 일부 혼잡이 남을 가능성을 염두에 두는 것이 안전합니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 선복이 늘었다는데 왜 예약은 여전히 어렵나요?</summary><div class="faq-a">지연된 선박이 특정 주차에 몰리면 편성상 선복은 많아 보일 수 있습니다. 하지만 항만 대기와 이전 항차 지연으로 실제 운항 가능한 유효 선복이 줄어들면 예약 가능한 스페이스는 여전히 빠듯할 수 있습니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 한국발 화물도 바로 영향을 받나요?</summary><div class="faq-a">항로에 따라 다릅니다. 중국 주요항이나 동남아 허브를 거치는 환적 화물은 직접 영향을 받을 수 있고, 직항이라도 이전 기항지 지연이 누적되면 부산 등 후속 기항 일정이 늦어질 수 있습니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 출항 계획은 얼마나 앞당겨야 하나요?</summary><div class="faq-a">일률적으로 몇 주라고 정하기는 어렵습니다. 최근 같은 항로와 선사의 실제 지연, 환적 여부, 공휴일·성수기 일정을 확인한 뒤 평소보다 충분한 버퍼를 두는 방식이 현실적입니다.</div></details></div></section>
-
 
 <section class="kb-resource-hub" data-kb-auto="v44" aria-label="관련 자료와 물류도구">
 <p class="kb-resource-eyebrow">NEXT STEP</p>
@@ -1257,9 +1279,9 @@
 <a class="kb-resource-card kb-resource-card--tool" href="https://www.kbexpress.kr/duty-calculator.html"><span class="kb-resource-type">TOOL</span><strong>관부가세 계산기</strong><span class="kb-resource-desc">예상 관세·부가세를 빠르게 계산합니다.</span><span class="kb-resource-go">바로 사용하기 →</span></a>
 </div></div>
 <div class="kb-resource-related"><h3>함께 읽기</h3><div class="kb-resource-grid kb-resource-grid--posts">
+<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/glossary/customs.html"><span class="kb-resource-type">물류 용어집</span><strong>관세와 통관이란? 과세가격·관세율·수입신고 절차까지 쉽게 정리</strong><span class="kb-resource-desc">관세·과세가격·관세율과 수입통관 절차를 2026년 기준으로 쉽게 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
 <a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/glossary/amazon-fba-entry-guide.html"><span class="kb-resource-type">물류 용어집</span><strong>아마존 입점 가이드: 상품 선정부터 FBA 입고·재고 보충까지</strong><span class="kb-resource-desc">상품 선정부터 HS CODE, 수출통관, FBA 포장·라벨, 입고·재고 보충까지 실무 흐름을 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
 <a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/glossary/index.html"><span class="kb-resource-type">물류 용어집</span><strong>해상 및 항공 운임지수 완전정리 SCFI·KCCI·BDI·KDCI·BAI·FAX 보는 법</strong><span class="kb-resource-desc">SCFI·KCCI·BDI·KDCI·BAI 등 해상·항공 운임지수의 의미와 활용법을 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
-<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/glossary/canal.html"><span class="kb-resource-type">물류 용어집</span><strong>주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리</strong><span class="kb-resource-desc">주요 컨테이너선 항로와 파나마·수에즈 운하의 역할, 차이와 실무 체크포인트를 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
 </div></div>
 </section>
 
@@ -1610,7 +1632,7 @@
 <div class="kb-resource-related"><h3>함께 읽기</h3><div class="kb-resource-grid kb-resource-grid--posts">
 <a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/glossary/canal.html"><span class="kb-resource-type">물류 용어집</span><strong>주요 컨테이너선 항로와 국제 운하 - 파나마·수에즈 운하 쉽게 정리</strong><span class="kb-resource-desc">주요 컨테이너선 항로와 파나마·수에즈 운하의 역할, 차이와 실무 체크포인트를 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
 <a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/glossary/container.html"><span class="kb-resource-type">물류 용어집</span><strong>컨테이너(Container)란? 20FT·40FT·FCL·LCL·CBM까지 쉽게 정리</strong><span class="kb-resource-desc">20FT·40FT 규격과 Dry·Reefer 등 종류, FCL·LCL·CBM 개념을 수출입 실무 기준으로 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
-<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/glossary/azsl.html"><span class="kb-resource-type">물류 용어집</span><strong>아마존 셀러들이 알아야 할 필수 용어 - FBA부터 ASIN·FNSKU까지</strong><span class="kb-resource-desc">FBA·FBM·ASIN·FNSKU 등 아마존 판매와 재고관리에 필요한 핵심 용어를 쉽게 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
+<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/glossary/customs.html"><span class="kb-resource-type">물류 용어집</span><strong>관세와 통관이란? 과세가격·관세율·수입신고 절차까지 쉽게 정리</strong><span class="kb-resource-desc">관세·과세가격·관세율과 수입통관 절차를 2026년 기준으로 쉽게 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
 </div></div>
 </section>
 
