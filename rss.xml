@@ -8,8 +8,114 @@
     <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
     <generator>KBRIDGE Blog SEO Automation</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Fri, 02 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 00:00:00 GMT</lastBuildDate>
     <ttl>60</ttl>
+
+    <item>
+      <title><![CDATA[항공화물 C/W 산출 방법 / Chargeable Weight 계산법과 항공운임 절감 팁]]></title>
+      <link>https://www.kbexpress.kr/blog/posts/info/air-cw.html</link>
+      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/info/air-cw.html</guid>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 GMT</pubDate>
+      <category><![CDATA[물류 정보]]></category>
+      <description><![CDATA[<div class="article-body">
+<figure class="body-visual cover-thumbnail"><img alt="항공화물 C/W Chargeable Weight 계산법과 항공운임 절감 팁 썸네일" height="1000" sizes="(max-width: 820px) calc(100vw - 32px), 790px" src="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_air_cw_1000.webp" width="1000"/ decoding="async" loading="lazy"></figure>
+
+<section class="quick-summary"><div class="summary-card"><p class="summary-title">먼저 결론부터</p>
+<p><strong>항공화물 C/W(Chargeable Weight)는 일반적으로 실제중량(Gross Weight)과 부피중량(Volumetric Weight)을 비교해 더 큰 값을 적용</strong>합니다. 일반 국제 항공화물은 통상 <strong>6,000cm³ = 1kg</strong>의 밀도비를 사용하므로, 가볍지만 부피가 큰 화물은 실제 무게보다 훨씬 높은 C/W가 나올 수 있습니다.</p>
+<div class="summary-points"><div class="summary-point">실제중량 G/W</div><div class="summary-point">부피중량 V/W = cm³ ÷ 6,000</div><div class="summary-point">큰 값 = C/W</div><div class="summary-point">포장·Weight Break로 비용 최적화</div></div></div></section>
+
+
+
+<section class="section" id="definition"><h2>1. C/W(Chargeable Weight)란?</h2>
+<p class="lead kb-section-lead"><strong>직접 답변:</strong> C/W는 항공운임을 계산할 때 적용하는 ‘과금중량’입니다.</p>
+<p>IATA와 대한항공의 공개 규정에 따르면 항공화물의 중량운임은 <strong>실제 총중량(Actual Gross Weight)과 부피중량(Volume Weight) 중 더 큰 값</strong>을 기준으로 계산합니다. 즉 화물이 가벼워도 항공기 화물칸을 많이 차지하면 공간에 대한 비용이 반영됩니다.</p>
+<p>솜·완충재·가벼운 플라스틱 제품처럼 <strong>무게 대비 부피가 큰 화물은 V/W가 C/W</strong>가 되기 쉽고, 금속부품처럼 밀도가 높은 화물은 실제중량이 C/W가 되는 경우가 많습니다.</p></section>
+
+<figure class="body-visual kb-figure kb-figure--graphic"><div class="kb-figure-head"><span class="kb-figure-kicker">VISUAL GUIDE</span><strong class="kb-figure-title">C/W(Chargeable Weight)란?</strong></div><img alt="항공화물 실제중량 부피중량 Chargeable Weight 계산 공식과 예시" height="750" sizes="(max-width: 820px) calc(100vw - 32px), 790px" src="https://www.kbexpress.kr/blog/posts/info/assets/images/visual_01_air_cw_calculation.webp" width="1200"/ decoding="async" loading="lazy"><figcaption><strong>읽는 포인트</strong>항공화물 실제중량 부피중량 Chargeable Weight 계산 공식과 예시</figcaption></figure>
+
+<section class="section" id="formula"><h2>2. 항공화물 부피중량 계산 공식</h2>
+<p class="lead kb-section-lead"><strong>일반 국제 항공화물에서 가장 많이 사용하는 공식은 ‘총 부피(cm³) ÷ 6,000’</strong>입니다.</p>
+<div class="summary-card"><p class="summary-title">기본 공식</p><p><strong>V/W(kg) = 가로(cm) × 세로(cm) × 높이(cm) × 수량 ÷ 6,000</strong></p></div>
+<p>포장이 여러 개이고 크기가 같다면 수량을 곱하면 됩니다. 크기가 서로 다르면 <strong>각 포장의 최대 외형 치수로 부피를 구한 뒤 모두 합산</strong>해 6,000으로 나누는 방식으로 계산합니다.</p>
+<p>DHL Global Forwarding은 항공화물의 밀도비를 <strong>1:6</strong>으로 설명하고 있으며, IATA 공개 자료와 대한항공 국제화물 운임 안내 역시 6,000cm³를 1kg으로 환산하는 기준을 제시합니다.</p>
+<p class="note"><strong>주의:</strong> 국제특송이나 특정 계약상품은 별도의 Dimensional Weight 기준을 사용할 수 있습니다. 항공화물 6,000 공식을 모든 특송상품에 그대로 적용하면 안 됩니다.</p></section>
+
+<section class="section" id="example"><h2>3. 실제 계산 예시 / 박스 2개라면?</h2>
+<div class="table-wrap kb-table-shell kb-cols-3"><table class="kb-content-table" data-kb-cols="3"><thead><tr><th>항목</th><th>조건</th><th>계산</th></tr></thead><tbody>
+<tr><td><strong>수량</strong></td><td>동일 박스 2개</td><td>2 PCS</td></tr>
+<tr><td><strong>박스 크기</strong></td><td>120 × 80 × 50 cm</td><td>1개당 480,000cm³</td></tr>
+<tr><td><strong>총 부피</strong></td><td>480,000 × 2</td><td>960,000cm³</td></tr>
+<tr><td><strong>부피중량 V/W</strong></td><td>960,000 ÷ 6,000</td><td><strong>160kg</strong></td></tr>
+<tr><td><strong>실제 총중량 G/W</strong></td><td>포장 포함</td><td><strong>110kg</strong></td></tr>
+<tr><td><strong>Chargeable Weight</strong></td><td>110kg vs 160kg</td><td><strong>160kg 적용</strong></td></tr>
+</tbody></table></div>
+<p>실제 무게는 110kg이지만 공간 기준으로는 160kg에 해당하므로 이 화물은 일반적으로 <strong>160kg C/W</strong>를 기준으로 항공운임이 계산됩니다.</p></section>
+
+<section class="section" id="ratebreak"><h2>4. Weight Break를 알면 C/W가 높아져도 총 운임이 낮아질 수 있습니다</h2>
+<p class="lead kb-section-lead"><strong>항공운임은 중량이 늘어날수록 kg당 요율이 낮아지는 구간이 있을 수 있습니다.</strong></p>
+<p>대한항공의 공개 운임 안내와 IATA 자료는 <strong>더 높은 중량단계의 낮은 요율을 적용했을 때 총 운임이 오히려 낮아지는 경우 그 높은 중량을 과금중량으로 적용할 수 있음</strong>을 설명합니다.</p>
+<div class="table-wrap kb-table-shell kb-cols-3"><table class="kb-content-table" data-kb-cols="3"><thead><tr><th>가상 예시</th><th>적용요율</th><th>총 중량운임</th></tr></thead><tbody>
+<tr><td>C/W 95kg 그대로</td><td>5.00 / kg</td><td><strong>475</strong></td></tr>
+<tr><td>100kg Weight Break 적용</td><td>4.60 / kg</td><td><strong>460</strong></td></tr>
+</tbody></table></div>
+<p class="note"><strong>위 숫자는 원리 설명용 가상 예시</strong>입니다. 실제 중량단계와 요율은 항공사·노선·품목·계약에 따라 달라집니다.</p></section>
+
+<figure class="body-visual kb-figure kb-figure--graphic"><div class="kb-figure-head"><span class="kb-figure-kicker">VISUAL GUIDE</span><strong class="kb-figure-title">Weight Break를 알면 C/W가 높아져도 총 운임이 낮아질 수 있습니다</strong></div><img alt="항공화물 Chargeable Weight 절감 포장 최적화 Weight Break 항공사 노선 비교 팁" height="750" sizes="(max-width: 820px) calc(100vw - 32px), 790px" src="https://www.kbexpress.kr/blog/posts/info/assets/images/visual_02_air_freight_saving.webp" width="1200"/ decoding="async" loading="lazy"><figcaption><strong>읽는 포인트</strong>항공화물 Chargeable Weight 절감 포장 최적화 Weight Break 항공사 노선 비교 팁</figcaption></figure>
+
+<section class="section" id="saving"><h2>5. 항공운임을 줄이는 실무 팁</h2>
+<ul class="checklist">
+<li><strong>박스의 빈 공간부터 줄이세요.</strong> C/W가 부피중량으로 결정되는 화물은 포장 5~10cm 차이도 여러 박스가 합쳐지면 큰 중량 차이가 됩니다.</li>
+<li><strong>제품에 맞는 외포장 규격을 다시 설계하세요.</strong> 포장 안전성을 해치지 않는 범위에서 분해·중첩·압축 포장이 가능하면 부피중량을 낮출 수 있습니다.</li>
+<li><strong>팔레트 오버행과 불필요한 높이를 줄이세요.</strong> 실제 적재 외형을 기준으로 보기 때문에 팔레트 밖으로 튀어나온 박스와 과도한 상부 공간이 비용을 키울 수 있습니다.</li>
+<li><strong>Weight Break별 총액을 비교하세요.</strong> 현재 C/W만 곱하지 말고 다음 중량단계의 낮은 kg당 요율까지 계산해 실제 총액이 더 낮은지 확인합니다.</li>
+<li><strong>항공사·노선·출발일을 함께 비교하세요.</strong> 같은 목적지라도 직항·환적, 여객기 Belly·화물기, 운항요일과 스페이스 상황에 따라 요율이 달라집니다.</li>
+<li><strong>급하지 않은 화물은 사전부킹으로 선택지를 넓히세요.</strong> 긴급편이나 우선탑재가 필요한 상황을 줄이면 프리미엄 비용을 피할 가능성이 높아집니다.</li>
+</ul></section>
+
+<section class="section" id="latest"><h2>6. 2026년 최신 체크포인트 / 항공화물 수요는 여전히 증가세</h2>
+<p class="kb-section-lead">IATA가 2026년 9월 29일 발표한 최신 글로벌 항공화물 자료에서 <strong>8월 CTK는 전년 동월 대비 4.4% 증가</strong>했고, 공급능력(ACTK)은 0.1% 감소했습니다. 국제선 수요는 5.3% 증가했습니다.</p>
+<p>이 수치가 개별 항공운임을 직접 결정하는 것은 아니지만, <strong>수요가 강한 구간에서는 스페이스와 요율 선택 폭이 줄어들 수 있으므로 C/W 최적화와 사전부킹의 중요성이 커질 수 있습니다.</strong></p>
+<p>또한 항공사 공지에 따라 유류할증료 등 일부 중량 기반 부대비용은 C/W를 기준으로 계산되는 경우가 있습니다. 따라서 부피중량을 낮춰 C/W가 줄어들면 기본 운임뿐 아니라 일부 부대비용에서도 절감효과가 생길 수 있습니다.</p></section>
+
+<section class="section" id="check"><h2>7. 견적 요청 전에 이것만 알려주시면 C/W를 빠르게 계산할 수 있습니다</h2>
+<ul class="checklist"><li><strong>포장 수량:</strong> 총 몇 박스·몇 팔레트인지</li><li><strong>각 포장 외형:</strong> 가로 × 세로 × 높이(cm)</li><li><strong>각 포장 실제중량:</strong> 포장재 포함 kg</li><li><strong>출발지·도착지:</strong> 공항 기준 또는 Door 조건</li><li><strong>품목:</strong> 일반화물, 배터리, 위험물, 냉장·냉동 등 특수조건 여부</li><li><strong>희망 일정:</strong> 출고 가능일과 필요한 도착일</li></ul>
+<p>이 정보가 있으면 포워더는 <strong>G/W와 V/W를 비교해 예상 C/W를 계산하고, 항공사별 Weight Break와 가능한 스케줄을 함께 비교</strong>할 수 있습니다.</p></section>
+
+<section class="kb-takeaways" aria-label="이 글에서 기억할 것"><p class="kb-takeaways-kicker">KEY TAKEAWAYS</p><h2>이 글에서 기억할 것</h2><ol><li>실제중량 G/W</li><li>부피중량 V/W = cm³ ÷ 6,000</li><li>큰 값 = C/W</li><li>포장·Weight Break로 비용 최적화</li></ol></section>
+<section class="section" id="faq"><h2>8. 자주 묻는 질문</h2><div class="faq"><details class="faq-item"><summary class="faq-q">Q. 항공화물 C/W는 무엇인가요?</summary><div class="faq-a">C/W는 Chargeable Weight의 약자로 항공운임을 계산할 때 적용하는 과금중량입니다. 일반적으로 실제중량과 부피중량을 비교해 더 큰 값을 사용합니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 부피중량은 어떻게 계산하나요?</summary><div class="faq-a">일반 국제 항공화물은 가로×세로×높이(cm)로 총 부피를 구한 뒤 6,000으로 나누는 방식이 널리 사용됩니다. 여러 포장이면 각 포장의 부피를 합산합니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 실제중량 100kg, 부피중량 160kg이면 운임은 몇 kg 기준인가요?</summary><div class="faq-a">일반적인 경우 더 큰 값인 160kg이 Chargeable Weight가 되어 160kg을 기준으로 중량운임을 계산합니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 부피중량을 줄이면 항공운임도 바로 줄어드나요?</summary><div class="faq-a">C/W가 부피중량 때문에 결정되는 화물이라면 포장 부피를 줄여 C/W가 낮아질 때 운임 절감 효과가 날 수 있습니다. 다만 최저요금, Weight Break, 특수화물 요금과 할증료도 함께 확인해야 합니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 실제 C/W보다 높은 중량을 적용하는 것이 더 저렴할 수도 있나요?</summary><div class="faq-a">가능합니다. 더 높은 중량구간의 kg당 요율이 충분히 낮아 총 운임이 줄어드는 경우 높은 weight breakpoint를 적용할 수 있습니다. 실제 적용 가능 여부와 구간은 항공사 Tariff와 계약요율을 확인해야 합니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 6000으로 나누는 공식은 모든 국제특송에도 동일한가요?</summary><div class="faq-a">아닙니다. 6,000 기준은 일반 항공화물에서 널리 쓰이는 기준이며 특송사나 특정 계약상품은 별도의 부피중량 환산기준을 사용할 수 있습니다.</div></details></div></section>
+
+<div class="nt-card related-tools-card kb-related-tools-unified"><h2>관련 물류도구</h2><p>포장 규격과 운임 검토에 필요한 계산도구를 함께 활용해보세요.</p><div class="tool-nav"><a href="https://www.kbexpress.kr/cbm-calculator.html">CBM 계산기</a><a href="https://www.kbexpress.kr/hs-code-search.html">HS CODE 조회</a><a href="https://www.kbexpress.kr/dangerous-goods.html">위험물 정보 조회</a><a href="https://www.kbexpress.kr/holiday-calendar.html">전세계 공휴일 조회</a></div></div>
+
+
+<section class="kb-resource-hub" data-kb-auto="v44" aria-label="관련 자료와 물류도구">
+<p class="kb-resource-eyebrow">NEXT STEP</p>
+<h2>이 글과 함께 보면 좋은 자료</h2>
+<div class="kb-resource-tools"><h3>관련 물류도구</h3><div class="kb-resource-grid kb-resource-grid--tools">
+<a class="kb-resource-card kb-resource-card--tool" href="https://www.kbexpress.kr/freight-index.html"><span class="kb-resource-type">TOOL</span><strong>운임지수</strong><span class="kb-resource-desc">해상·항공 운임과 주요 지수를 확인합니다.</span><span class="kb-resource-go">바로 사용하기 →</span></a>
+<a class="kb-resource-card kb-resource-card--tool" href="https://www.kbexpress.kr/cbm-calculator.html"><span class="kb-resource-type">TOOL</span><strong>CBM 계산기</strong><span class="kb-resource-desc">화물 부피와 CBM을 계산합니다.</span><span class="kb-resource-go">바로 사용하기 →</span></a>
+</div></div>
+<div class="kb-resource-related"><h3>함께 읽기</h3><div class="kb-resource-grid kb-resource-grid--posts">
+<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/info/delay.html"><span class="kb-resource-type">물류 정보</span><strong>선박 스케줄이 자주 지연되는 이유, T/T는 왜 계속 달라질까?</strong><span class="kb-resource-desc">선박 스케줄 지연과 T/T 변동 원인을 항만 혼잡·기상·환적·Blank Sailing 중심으로 쉽게 정리했습니다.</span><span class="kb-resource-go">글 보기 →</span></a>
+<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/info/vf.html"><span class="kb-resource-type">물류 정보</span><strong>실시간 선박 위치 확인하는 방법 - AIS·IMO·MMSI·ETA 보는 법</strong><span class="kb-resource-desc">AIS 기반 서비스에서 선박 위치와 IMO·MMSI·ETA를 확인하는 방법을 2026년 기준으로 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
+<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/info/customs%20inspection.html"><span class="kb-resource-type">물류 정보</span><strong>수입 화물검사, 어떤 검사가 있고 왜 걸리는 걸까? (모든 유형 정리)</strong><span class="kb-resource-desc">수입 화물검사의 종류와 선별 이유, X-ray·발췌·분석·검역 등 주요 검사 유형을 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
+</div></div>
+</section>
+
+<section class="cta kb-blog-cta"><h2 data-kb-ui-native="">항공운임은 kg당 요율보다 C/W부터 정확히 봐야 합니다</h2><p data-kb-ui-native="">케이브릿지는 포장 규격과 실제중량을 기준으로 Chargeable Weight를 계산하고, 항공사·Weight Break·스케줄을 함께 비교해 합리적인 운송안을 검토합니다.</p><div class="action-row"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">항공화물 견적 문의</a><a class="btn sub" href="https://www.kbexpress.kr/index.html#services">즉시견적</a><a class="btn sub" href="https://www.kbexpress.kr/blog/index.html?category=info">물류 정보 더보기</a></div></section>
+
+<div aria-label="태그" class="tags"><span class="tag">#항공화물</span><span class="tag">#ChargeableWeight</span><span class="tag">#CW</span><span class="tag">#부피중량</span><span class="tag">#VolumeWeight</span><span class="tag">#GrossWeight</span><span class="tag">#항공운임</span><span class="tag">#항공운임절감</span><span class="tag">#WeightBreak</span><span class="tag">#포워딩</span><span class="tag">#케이브릿지</span></div>
+
+<aside class="refs kb-source-block"><h3>주요 출처 · 2026.10.02 확인</h3><ol>
+<li><a href="https://www.iata.org/en/publications/newsletters/iata-knowledge-hub/air-cargo-tariffs-and-rules-what-you-need-to-know" rel="noopener noreferrer" target="_blank">IATA - Air Cargo Tariffs and Rules</a></li>
+<li><a href="https://www.iata.org/contentassets/e9cb5a72b88f4f68a5cfc572a50b60c9/eacph-22-en-final.pdf" rel="noopener noreferrer" target="_blank">IATA - European Air Cargo Programme Handbook / Volume Weight</a></li>
+<li><a href="https://cargo.koreanair.com/ko/node/393" rel="noopener noreferrer" target="_blank">Korean Air Cargo - 항공화물운임 / Chargeable Weight</a></li>
+<li><a href="https://cargo.koreanair.com/ko/general-conditions-of-carriage-for-international-cargo" rel="noopener noreferrer" target="_blank">Korean Air Cargo - 국제화물 운송 약관</a></li>
+<li><a href="https://www.dhl.com/kr-ko/home/global-forwarding/freight-forwarding-education-center/calculating-chargeable-weights.html" rel="noopener noreferrer" target="_blank">DHL Global Forwarding - Chargeable Weight 계산</a></li>
+<li><a href="https://www.iata.org/en/pressroom/2026-releases/09-29-air-cargo-demand-grows-august/" rel="noopener noreferrer" target="_blank">IATA - Air Cargo Demand Grows 4.4% in August, 2026.09.29</a></li>
+</ol><p class="editor-note"><strong>편집자 주:</strong> 본 글은 일반 국제 항공화물의 대표적인 C/W 산출 구조를 설명합니다. 실제 적용 요율, 최소운임, Weight Break, 반올림·절상, 특수화물·ULD·계약상품의 적용 규칙은 항공사와 노선별 Tariff에 따라 달라질 수 있으므로 실제 부킹 전 최신 견적을 확인하시기 바랍니다.</p></aside>
+</div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_air_cw_1000.webp" type="image/webp" />
+    </item>
 
     <item>
       <title><![CDATA[관세와 통관이란? 과세가격·관세율·수입신고 절차까지 쉽게 정리]]></title>
@@ -663,7 +769,7 @@
 <div class="kb-resource-related"><h3>함께 읽기</h3><div class="kb-resource-grid kb-resource-grid--posts">
 <a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/info/delay.html"><span class="kb-resource-type">물류 정보</span><strong>선박 스케줄이 자주 지연되는 이유, T/T는 왜 계속 달라질까?</strong><span class="kb-resource-desc">선박 스케줄 지연과 T/T 변동 원인을 항만 혼잡·기상·환적·Blank Sailing 중심으로 쉽게 정리했습니다.</span><span class="kb-resource-go">글 보기 →</span></a>
 <a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/info/customs%20inspection.html"><span class="kb-resource-type">물류 정보</span><strong>수입 화물검사, 어떤 검사가 있고 왜 걸리는 걸까? (모든 유형 정리)</strong><span class="kb-resource-desc">수입 화물검사의 종류와 선별 이유, X-ray·발췌·분석·검역 등 주요 검사 유형을 정리합니다.</span><span class="kb-resource-go">글 보기 →</span></a>
-<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/info/ci.html"><span class="kb-resource-type">물류 정보</span><strong>커머셜 인보이스(Commercial Invoice) 작성방법 &amp; 양식 다운로드</strong><span class="kb-resource-desc">커머셜 인보이스의 의미, 필수 작성 항목, 주의사항과 실무용 양식 다운로드를 정리했습니다.</span><span class="kb-resource-go">글 보기 →</span></a>
+<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/info/air-cw.html"><span class="kb-resource-type">물류 정보</span><strong>항공화물 C/W 산출 방법 / Chargeable Weight 계산법과 항공운임 절감 팁</strong><span class="kb-resource-desc">항공화물 실제중량·부피중량 비교로 C/W를 계산하는 방법과 포장·중량단계 활용 운임 절감 팁을 쉽게 정리했습니다.</span><span class="kb-resource-go">글 보기 →</span></a>
 </div></div>
 </section>
 
