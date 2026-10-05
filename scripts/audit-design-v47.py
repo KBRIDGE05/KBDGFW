@@ -15,7 +15,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 POSTS_ROOT = ROOT / "blog" / "posts"
 CSS = ROOT / "assets" / "css" / "pages" / "blog-unified.css"
-VERSION = "20260927-blog-design-v47"
+VERSION = "20261005-related-tools-v1"
 
 errors: list[str] = []
 
@@ -39,6 +39,8 @@ for token in [
     ".kb-table-shell",
     ".kb-source-block",
     ".kb-resource-hub",
+    ".related-tools-card.kb-related-tools-unified .tool-nav",
+    "grid-template-columns: repeat(4, minmax(0, 1fr))",
     "-webkit-text-fill-color:#edf4ff!important",
     "-webkit-text-fill-color:#0f2744!important",
 ]:

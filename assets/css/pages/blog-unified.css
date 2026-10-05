@@ -3134,3 +3134,106 @@ html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,artic
   html body.kb-blog-post.kb-unified-site main#main :is(article.article-shell,article.article) :is(section.cta,.kb-blog-cta) p *{font-size:13.75px!important}
 }
 /* END V47 FINAL CASCADE LOCK */
+
+/* V47.1 — Related logistics tools layout fix (2026-10-05)
+   Scoped to blog article related-tools cards only. */
+body.kb-blog-post .related-tools-card.kb-related-tools-unified {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin: 42px 0 0;
+  padding: 24px;
+  border: 1px solid #d8e2ef;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fbfdff 0%, #f5f9fe 100%);
+  box-shadow: 0 8px 24px rgba(17, 43, 82, .05);
+  overflow: visible;
+}
+body.kb-blog-post .related-tools-card.kb-related-tools-unified > h2 {
+  margin: 0;
+  padding: 0;
+  color: #172b49;
+  font-size: 22px;
+  font-weight: 850;
+  line-height: 1.4;
+  letter-spacing: -.025em;
+}
+body.kb-blog-post .related-tools-card.kb-related-tools-unified > p {
+  margin: 8px 0 0;
+  padding: 0;
+  color: #667890;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+body.kb-blog-post .related-tools-card.kb-related-tools-unified .tool-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  margin: 18px 0 0;
+  padding: 0;
+}
+body.kb-blog-post .related-tools-card.kb-related-tools-unified .tool-nav a {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border: 1px solid #d8e3ef;
+  border-radius: 10px;
+  background: #fff;
+  color: #203653;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  box-shadow: 0 4px 12px rgba(18, 40, 74, .03);
+  transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+@media (hover:hover) and (pointer:fine) {
+  body.kb-blog-post .related-tools-card.kb-related-tools-unified .tool-nav a:hover {
+    transform: translateY(-2px);
+    border-color: #aabde2;
+    background: #f3f7ff;
+    color: #2454c4;
+    box-shadow: 0 10px 20px rgba(17, 43, 82, .07);
+  }
+}
+body.kb-blog-post .related-tools-card.kb-related-tools-unified .tool-nav a:focus-visible {
+  outline: 3px solid rgba(43, 92, 219, .18);
+  outline-offset: 2px;
+  border-color: #8fa9dc;
+}
+@media (max-width: 900px) {
+  body.kb-blog-post .related-tools-card.kb-related-tools-unified .tool-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  body.kb-blog-post .related-tools-card.kb-related-tools-unified {
+    margin-top: 34px;
+    padding: 18px;
+    border-radius: 12px;
+  }
+  body.kb-blog-post .related-tools-card.kb-related-tools-unified > h2 {
+    font-size: 20px;
+  }
+  body.kb-blog-post .related-tools-card.kb-related-tools-unified .tool-nav {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 15px;
+  }
+  body.kb-blog-post .related-tools-card.kb-related-tools-unified .tool-nav a {
+    min-height: 44px;
+    padding: 9px 11px;
+    font-size: 12.5px;
+  }
+}
+/* END V47.1 RELATED TOOLS FIX */
