@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-12T01:16:06+09:00",
+    "generated_at": "2026-10-13T00:50:17+09:00",
     "timezone": "Asia/Seoul",
     "source_status": {
       "scfi": {
@@ -9,7 +9,7 @@
       },
       "kcci": {
         "ok": true,
-        "message": "2026-10-06 4,629 (kcci_grid)"
+        "message": "2026-10-12 4,654 (kcci_grid)"
       },
       "korean_air": {
         "ok": true,
@@ -169,6 +169,10 @@
       {
         "date": "2026-10-06",
         "value": 4629
+      },
+      {
+        "date": "2026-10-12",
+        "value": 4654
       }
     ],
     "routes": [
@@ -177,140 +181,140 @@
         "code": "KCCI",
         "route": "종합지수",
         "weight": "100%",
-        "current": 4629,
-        "previous": 4678,
-        "change": -49,
-        "change_pct": -1.05
+        "current": 4654,
+        "previous": 4629,
+        "change": 25,
+        "change_pct": 0.54
       },
       {
         "group": "Mainlane",
         "code": "KUWI",
         "route": "미주 서안",
         "weight": "15%",
-        "current": 8194,
-        "previous": 8000,
-        "change": 194,
-        "change_pct": 2.43
+        "current": 8258,
+        "previous": 8194,
+        "change": 64,
+        "change_pct": 0.78
       },
       {
         "group": "Mainlane",
         "code": "KUEI",
         "route": "미주 동안",
         "weight": "10%",
-        "current": 11201,
-        "previous": 11294,
-        "change": -93,
-        "change_pct": -0.82
+        "current": 11609,
+        "previous": 11201,
+        "change": 408,
+        "change_pct": 3.64
       },
       {
         "group": "Mainlane",
         "code": "KNEI",
         "route": "북유럽",
         "weight": "10%",
-        "current": 3555,
-        "previous": 3751,
-        "change": -196,
-        "change_pct": -5.23
+        "current": 3431,
+        "previous": 3555,
+        "change": -124,
+        "change_pct": -3.49
       },
       {
         "group": "Mainlane",
         "code": "KMDI",
         "route": "지중해",
         "weight": "5%",
-        "current": 3806,
-        "previous": 4016,
-        "change": -210,
-        "change_pct": -5.23
+        "current": 3730,
+        "previous": 3806,
+        "change": -76,
+        "change_pct": -2.0
       },
       {
         "group": "Non-Mainlane",
         "code": "KMEI",
         "route": "중동",
         "weight": "5%",
-        "current": 8730,
-        "previous": 8627,
-        "change": 103,
-        "change_pct": 1.19
+        "current": 8885,
+        "previous": 8730,
+        "change": 155,
+        "change_pct": 1.78
       },
       {
         "group": "Non-Mainlane",
         "code": "KAUI",
         "route": "호주",
         "weight": "5%",
-        "current": 4952,
-        "previous": 4885,
-        "change": 67,
-        "change_pct": 1.37
+        "current": 5047,
+        "previous": 4952,
+        "change": 95,
+        "change_pct": 1.92
       },
       {
         "group": "Non-Mainlane",
         "code": "KLEI",
         "route": "중남미 동안",
         "weight": "5%",
-        "current": 7084,
-        "previous": 8063,
-        "change": -979,
-        "change_pct": -12.14
+        "current": 6803,
+        "previous": 7084,
+        "change": -281,
+        "change_pct": -3.97
       },
       {
         "group": "Non-Mainlane",
         "code": "KLWI",
         "route": "중남미 서안",
         "weight": "5%",
-        "current": 5710,
-        "previous": 6211,
-        "change": -501,
-        "change_pct": -8.07
+        "current": 5568,
+        "previous": 5710,
+        "change": -142,
+        "change_pct": -2.49
       },
       {
         "group": "Non-Mainlane",
         "code": "KSAI",
         "route": "남아프리카",
         "weight": "2.5%",
-        "current": 4061,
-        "previous": 3819,
-        "change": 242,
-        "change_pct": 6.34
+        "current": 4119,
+        "previous": 4061,
+        "change": 58,
+        "change_pct": 1.43
       },
       {
         "group": "Non-Mainlane",
         "code": "KWAI",
         "route": "서아프리카",
         "weight": "2.5%",
-        "current": 4648,
-        "previous": 4701,
-        "change": -53,
-        "change_pct": -1.13
+        "current": 4613,
+        "previous": 4648,
+        "change": -35,
+        "change_pct": -0.75
       },
       {
         "group": "Intra Asia",
         "code": "KCI",
         "route": "중국",
         "weight": "15%",
-        "current": 54,
+        "current": 55,
         "previous": 54,
-        "change": 0,
-        "change_pct": 0.0
+        "change": 1,
+        "change_pct": 1.85
       },
       {
         "group": "Intra Asia",
         "code": "KJI",
         "route": "일본",
         "weight": "10%",
-        "current": 233,
-        "previous": 236,
-        "change": -3,
-        "change_pct": -1.27
+        "current": 234,
+        "previous": 233,
+        "change": 1,
+        "change_pct": 0.43
       },
       {
         "group": "Intra Asia",
         "code": "KSEI",
         "route": "동남아",
         "weight": "10%",
-        "current": 1622,
-        "previous": 1391,
-        "change": 231,
-        "change_pct": 16.61
+        "current": 1624,
+        "previous": 1622,
+        "change": 2,
+        "change_pct": 0.12
       }
     ]
   },
