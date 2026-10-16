@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-13T00:50:17+09:00",
+    "generated_at": "2026-10-16T16:04:45+09:00",
     "timezone": "Asia/Seoul",
     "source_status": {
       "scfi": {
@@ -326,7 +326,7 @@
       "korean_air": {
         "name": "대한항공 Cargo",
         "source_url": "https://cargo.koreanair.com/ko/services/Surcharge-Information",
-        "last_checked": "2026-10-15",
+        "last_checked": "2026-10-16",
         "periods": [
           {
             "start": "2026-01-16",
@@ -406,7 +406,7 @@
             "medium": 1360,
             "long": 1450,
             "mops": 3.5341,
-            "status": "current"
+            "status": "expired"
           },
           {
             "start": "2026-10-16",
@@ -415,7 +415,7 @@
             "medium": 1680,
             "long": 1790,
             "mops": 4.0363,
-            "status": "upcoming"
+            "status": "current"
           }
         ],
         "news_url": "https://cargo.koreanair.com/ko/cargo-news",
