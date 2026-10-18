@@ -109,7 +109,7 @@ def main():
                            lambda _:editorial,tmpl,count=1)
         if count!=1:raise SystemExit("본문의 요약 섹션을 찾을 수 없습니다.")
         tmpl=tmpl.replace('<body>',f'<body class="kb-editorialized" data-kb-editorial-kind="{args.editorial_kind}" data-kb-editorial-focus="{focus}">',1)
-        tmpl=tmpl.replace('</head>','<link href="../../../assets/css/pages/blog-editorial.css?v=20261018-editorial-r1" rel="stylesheet"/></head>',1)
+        tmpl=tmpl.replace('</head>','<link href="../../../assets/css/pages/blog-editorial.css?v=20261018-editorial-r4" rel="stylesheet"/></head>',1)
     out=ROOT/"blog"/"posts"/args.category/f"{args.slug}.html"
     legacy_map=ROOT/"scripts"/"legacy-url-map.json"
     if legacy_map.exists():

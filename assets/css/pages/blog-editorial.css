@@ -468,15 +468,7 @@ html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-jump span 
   text-decoration-color: #2055b0!important;
 }
 
-/* One clean heading per section: no overlapping top, left or bottom rules. */
-html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) {
-  margin: 0 0 43px!important;
-  padding: 0!important;
-  border: 0!important;
-  border-radius: 0!important;
-  background: transparent!important;
-  box-shadow: none!important;
-}
+/* One clean heading per section; outer section rhythm is defined once in r4 below. */
 html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) > h2 {
   margin: 0 0 17px!important;
   padding: 0!important;
@@ -635,34 +627,58 @@ html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.ar
   html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-index { display: inline!important; font-size: 12px!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead h2 { font-size: 23px!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-answer { font-size: 15.5px!important; }
-  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) { margin-bottom: 35px!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) > h2 { font-size: 22px!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized :is(.quick-summary,.summary,.pipe-summary) { padding: 18px 17px!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(div.checklist,.pipe-check-grid) { grid-template-columns: 1fr!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table :is(th,td) { padding: 12px!important; font-size: 13.5px!important; }
 }
 
-/* Editorial layout r3: one vertical rhythm for all published articles.
-   The previous cascade mixed section bottom margins, figure negative margins,
-   and a top-only KEY TAKEAWAYS margin. Keep content order exactly as authored. */
+/* Editorial layout r3: shared spacing for all published articles.
+   r4 correction: the earlier generic > :not() rule was less specific than
+   the r2 section margin and therefore left 43px of unintended trailing space.
+   A real section boundary now owns its TOP gap, rule and heading inset. */
 html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :not(script):not(style) {
-  margin-block-start: 0!important;
-  margin-block-end: 0!important;
+  margin: 0!important;
 }
 html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :not(script):not(style) + :not(script):not(style) {
-  margin-block-start: 36px!important;
+  margin-top: 24px!important;
 }
 html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(section.section,section.pipe-section) {
-  padding-block: 0!important;
+  /* Equal or greater specificity than the previous r2 / V47 section rules. */
+  margin: 32px 0 0!important;
+  padding: 23px 0 0!important;
   border: 0!important;
+  border-top: 1px solid #cbd8e8!important;
+  border-radius: 0!important;
   background: transparent!important;
+  box-shadow: none!important;
+}
+/* A final note/table/card must not add another hidden bottom gap before
+   the next chapter's separator. All 340 sections share this rule. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(section.section,section.pipe-section) > :last-child {
+  margin-bottom: 0!important;
 }
 html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > figure:first-child {
-  margin-block-start: 26px!important;
+  margin-top: 26px!important;
+}
+/* Sidebar navigation is not a vertical article step on desktop. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(nav.toc,nav.pipe-toc) {
+  margin: 0!important;
+}
+/* No ghost bottom margins on field note, visual guides or summary cards. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > .kb-editorial-lead {
+  margin: 24px 0 0!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(.quick-summary,.summary,.pipe-summary) {
+  margin: 24px 0 0!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(figure.body-visual,figure.cover,figure.visual,figure.pipe-cover) {
+  margin: 24px 0 0!important;
 }
 
 /* KEY TAKEAWAYS is a quiet recap with matched space above and below. */
 html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-takeaways {
+  margin: 32px 0 0!important;
   padding: 23px 25px!important;
   border: 1px solid #e0e8f2!important;
   border-radius: 10px!important;
@@ -887,7 +903,11 @@ html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.ar
   margin-block: 22px!important;
 }
 @media (max-width: 760px) {
-  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :not(script):not(style) + :not(script):not(style) { margin-block-start: 28px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :not(script):not(style) + :not(script):not(style) { margin-top: 20px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(section.section,section.pipe-section) { margin: 25px 0 0!important; padding: 20px 0 0!important; border-top: 1px solid #cbd8e8!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > .kb-editorial-lead { margin: 20px 0 0!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(.quick-summary,.summary,.pipe-summary,figure.body-visual,figure.cover,figure.visual,figure.pipe-cover) { margin: 20px 0 0!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-takeaways { margin: 25px 0 0!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-takeaways { padding: 20px 18px!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic > .kb-figure-head { gap: 7px 10px!important; padding: 11px 12px!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic .kb-figure-title { flex-basis: 190px!important; font-size: 14px!important; }

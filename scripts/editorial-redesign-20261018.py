@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from html import escape
 
 ROOT = Path(__file__).resolve().parents[1]
-CSS = "../../../assets/css/pages/blog-editorial.css?v=20261018-editorial-r1"
+CSS = "../../../assets/css/pages/blog-editorial.css?v=20261018-editorial-r4"
 
 # kind, kicker, question, reader-first answer, feature section, position
 # position: start | after-overview | stay

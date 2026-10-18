@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Regression checks for every published KBRIDGE editorial article.
 
-Optional: --baseline previous.zip verifies only the shared CSS reference and
-intentional duplicate-source removal differ, with all SEO metadata preserved.
+Optional: --baseline previous.zip verifies only the shared CSS reference differs,
+with every published article and its SEO metadata preserved.
 """
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ from lxml import html
 ROOT = Path(__file__).resolve().parents[1]
 POSTS = ROOT / "blog" / "posts"
 EDITORIAL_CSS = ROOT / "assets" / "css" / "pages" / "blog-editorial.css"
-STYLE_VERSION = "20261018-editorial-r3"
+STYLE_VERSION = "20261018-editorial-r4"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
 KINDS = {
     "briefing", "case", "document", "calculation", "dictionary", "network",
@@ -84,7 +84,20 @@ def audit(baseline: Path | None) -> None:
 
             links = dom.xpath("//link[@href and contains(@href,'blog-editorial.css')]")
             if len(links) != 1 or STYLE_VERSION not in links[0].get("href", ""):
-                errors.append(f"{rel}: missing/duplicate r3 editorial stylesheet")
+                errors.append(f"{rel}: missing/duplicate r4 editorial stylesheet")
+
+            article_sections = dom.xpath(
+                f"//article[{class_xpath('article-shell')} or {class_xpath('article')}]"
+                f"/*[{class_xpath('article-body')} or {class_xpath('body')} or {class_xpath('content')}]"
+                f"/section[{class_xpath('section')} or {class_xpath('pipe-section')}]"
+            )
+            counts["sections"] += len(article_sections)
+            if len(article_sections) < 3:
+                errors.append(f"{rel}: too few main sections: {len(article_sections)}")
+            for section in article_sections:
+                heading = section.xpath("./h2")
+                if len(heading) != 1 or not heading[0].text_content().strip():
+                    errors.append(f"{rel}: a main section lacks its visible H2")
 
             takeaways = dom.xpath(f"//section[{class_xpath('kb-takeaways')}]")
             if len(takeaways) != 1 or not (takeaways[0].xpath("./ol/li") or takeaways[0].xpath("./p")):
@@ -183,14 +196,7 @@ def audit(baseline: Path | None) -> None:
                 except KeyError:
                     errors.append(f"{rel}: not found in baseline archive")
                 else:
-                    restored = source.replace(STYLE_VERSION, "20261018-editorial-r2")
-                    if rel == "blog/posts/news/41news.html":
-                        original = re.sub(r'<p class="news-source">자료:[^<]*</p>', "", original)
-                        original = re.sub(r'<p class="editor-note">자료:[^<]*</p>', "", original)
-                    if rel in LEGACY_CAPTION_PAGES:
-                        original = PLAIN_GRAPHIC_CAPTION_RE.sub(
-                            r"\1<strong>읽는 포인트</strong>\2\3", original
-                        )
+                    restored = source.replace(STYLE_VERSION, "20261018-editorial-r3")
                     # apply_patch may add a terminal newline to files which
                     # originally ended immediately after </html>.
                     if restored.rstrip("\r\n") != original.rstrip("\r\n"):
@@ -200,7 +206,7 @@ def audit(baseline: Path | None) -> None:
         if not css_blocks_balance(css):
             errors.append("editorial CSS contains unbalanced blocks")
         for sentinel in (
-            "Editorial readability r2", "Editorial layout r3", "--kb-ed-paper", "#2458b5",
+            "Editorial readability r2", "Editorial layout r3", "r4 correction", "--kb-ed-paper", "#2458b5",
             "h2::before", "list-style: disc outside!important",
             ".kb-table-shell", ".news-item", ".kb-figure-head",
             ".kb-takeaways", "-webkit-text-fill-color", "@media (max-width: 760px)",
@@ -208,8 +214,24 @@ def audit(baseline: Path | None) -> None:
             if sentinel not in css:
                 errors.append(f"editorial CSS missing expected readability rule: {sentinel}")
 
+        # The previous audit missed a cascade conflict: an r2 !important margin
+        # outweighed r3's generic sibling selector. Lock in explicit rules with
+        # equal section specificity, present after all legacy declarations.
+        section_css = css.split("/* Editorial layout r3:", 1)[-1]
+        for essential in (
+            "margin: 32px 0 0!important;", "padding: 23px 0 0!important;",
+            "border-top: 1px solid #cbd8e8!important;", "margin: 25px 0 0!important;",
+            "padding: 20px 0 0!important;", "margin: 32px 0 0!important;",
+            ".kb-takeaways", ".kb-editorial-lead", "figure.body-visual",
+            "> :last-child", "margin-bottom: 0!important;",
+        ):
+            if essential not in section_css:
+                errors.append(f"editorial CSS spacing/divider contract missing: {essential}")
+
         if counts["articles"] < 44:
             errors.append(f"published articles: expected at least 44, got {counts['articles']}")
+        if counts["sections"] < 340:
+            errors.append(f"main section coverage regression: {counts['sections']} < 340")
         if set(variants) != KINDS:
             errors.append(f"topic types differ: {set(variants) ^ KINDS}")
         if counts["tables"] < 59 or counts["checklists"] < 68:
@@ -222,16 +244,16 @@ def audit(baseline: Path | None) -> None:
                 print(" -", item)
             raise SystemExit(1)
         print("EDITORIAL QA PASS")
-        print(f"- {counts['articles']} posts; {len(variants)} themed layouts")
+        print(f"- {counts['articles']} posts; {counts['sections']} main sections; {len(variants)} themed layouts")
         print(f"- {counts['tables']} tables with complete rows and scroll containers")
         print(f"- {counts['checklists']} preserved checklists")
         print(f"- {counts['takeaways']} KEY TAKEAWAYS; {counts['figures']} VISUAL GUIDE captions")
         print(f"- {counts['news_items']} numbered news entries aligned by one shared layout")
         print(f"- {counts['images']} article images; all files and anchor targets resolve")
         print("- every field-note label, answer and link target verified; no stray markdown/checkbox marks")
-        print("- CSS syntax, readability rules and cache version verified")
+        print("- desktop/mobile section-divider, predictable outer margins and cache version verified")
         if baseline:
-            print("- original content/SEO preserved except source deduplication, 12 caption labels, and CSS version")
+            print("- article text/SEO/structured data unchanged versus r3; only CSS cache URL updated")
     finally:
         if zip_archive:
             zip_archive.close()
