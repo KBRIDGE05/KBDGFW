@@ -1,0 +1,91 @@
+/* KBRIDGE mobile legibility guardrails — after page-specific styles.
+   Keeps dark panels light-on-dark, form surfaces dark-on-light. */
+@media (max-width: 1180px) {
+  html body .mobile-nav { background:#152b4e; color:#fff; -webkit-overflow-scrolling:touch; }
+  html body .mobile-nav > a,
+  html body .mobile-nav .mobile-nav-group > a { color:#f4f8ff!important; font-size:15px; line-height:1.55; opacity:1; }
+  html body .mobile-nav .mobile-nav-group > .mobile-nav-label { color:#d1e1ff!important; font-size:15px!important; font-weight:800; line-height:1.5; opacity:1; }
+  html body .mobile-nav .mobile-nav-group.is-open > .mobile-nav-label { color:#fff!important; }
+  html body .mobile-nav :is(a,button):focus-visible { outline:3px solid #a6c5ff; outline-offset:-3px; }
+  html body .mobile-nav > a span,
+  html body .mobile-nav .mobile-nav-group > a span { color:#c5ddff!important; opacity:1; }
+}
+
+@media (max-width: 760px) {
+  html { -webkit-text-size-adjust:100%; }
+  body { overflow-wrap:break-word; }
+  html body .container { max-width:100%; }
+  html body img,html body video,html body svg { max-width:100%; }
+  html body :is(button,a,input,textarea,select) { -webkit-tap-highlight-color:rgba(43,92,219,.12); }
+  html body .header .header-btn { color:#fff!important; }
+  html body .mobile-nav .mobile-nav-label::after { border-color:#d4e4ff; }
+  html body :is(.btn.primary,.header-btn,.kbix-primary-action) { font-weight:800; }
+  html body :is(.field,.form-field) > label { color:#203754; font-size:14px; font-weight:750; }
+  html body :is(.field,.form-field) :is(input,select,textarea) {
+    min-height:44px; color:#172f4e!important; -webkit-text-fill-color:#172f4e;
+    background:#fff; font-size:16px; line-height:1.45;
+  }
+  html body :is(input,textarea)::placeholder { color:#64758c; opacity:1; }
+  html body :is(.field-help,.form-help) { color:#506985; font-size:13px; }
+  html body dialog { max-width:calc(100vw - 16px); max-height:calc(100dvh - 20px); overflow-y:auto; overscroll-behavior:contain; }
+  html body dialog :is(.dialog-head,.dialog-body,.form-card) { color:#172c49; }
+  html body dialog .dialog-head h2 { color:#12284a!important; font-size:clamp(20px,5.8vw,27px); }
+  html body dialog .dialog-head p { color:#435a77!important; line-height:1.7; }
+  html body dialog .dialog-close { min-width:42px; min-height:42px; color:#243c5c; }
+  html body dialog .form-card p { color:#405777; font-size:14px; line-height:1.7; }
+  html body dialog .form-card :is(h3,legend,label) { color:#1b3151; }
+  html body dialog :is(.quote-summary,.formal-quote-summary) { color:#f6f9ff; }
+  html body dialog :is(.quote-summary,.formal-quote-summary) :is(h3,strong,span,p) { color:inherit; }
+
+  html body .kbix-guide-title h2 { color:#112a4b; line-height:1.35; }
+  html body .kbix-guide-title > p { color:#465e7b; font-size:15px; }
+  html body .kbix-choices { background:#fff; color:#1a304c; }
+  html body .kbix-step-title strong { color:#1a304c; font-size:17px; }
+  html body .kbix-step-title small { color:#506682; font-size:13px; }
+  html body .kbix-choice-foot { color:#576c86; font-size:12px; }
+  html body .kbix-option-grid button { min-height:49px; color:#314f71; font-size:14px; line-height:1.4; }
+  html body .kbix-option-grid button[aria-pressed="true"] { color:#154ca7; background:#e9f1ff; }
+  html body .kbix-recommend { color:#fff; }
+  html body .kbix-recommend-badge { color:#d9e8ff; font-size:12px; }
+  html body .kbix-recommend-number { color:#b9d1f4; font-size:11px; letter-spacing:.12em; }
+  html body .kbix-route { color:#e0ecff; font-size:14px; }
+  html body .kbix-recommend h3 { color:#fff!important; }
+  html body .kbix-recommend > p:not(.kbix-recommend-disclaimer) { color:#dae7fb!important; font-size:15px; }
+  html body .kbix-recommend .kbix-secondary-action { color:#fff!important; }
+  html body .kbix-recommend .kbix-primary-action { color:#092844!important; }
+  html body .kbix-recommend-disclaimer { color:#c4d7f2; font-size:12px; line-height:1.65; }
+
+  html body.kb-blog-post article :is(.article-hero,.hero) :is(h1,h2) { color:#132b4b; opacity:1; }
+  html body.kb-blog-post article :is(.article-hero,.hero) :is(.meta,.article-meta) { color:#506580; font-size:13px; opacity:1; }
+  html body.kb-blog-post :is(.quick-summary,.key-summary,.kb-takeaways) { color:#203b59; }
+  html body.kb-blog-post :is(.quick-summary,.key-summary,.kb-takeaways) :is(p,li,span) { color:#294765; }
+  html body.kb-blog-post :is(.toc,.article-toc) :is(a,li) { color:#244c7c; font-size:14px; line-height:1.7; }
+  html body.kb-blog-post .tags .tag { color:#234d7d; font-size:13px; }
+  html body.kb-blog-post :is(.related-tools-card,.kb-resource-hub) :is(a,p,li) { font-size:14px; line-height:1.65; }
+  html body.kb-blog-post .related-tools-card.kb-related-tools-unified .tool-nav a { color:#1b457e; font-size:14px; }
+  html body.kb-blog-post :is(.refs,.sources,.references,.source-list,.reference-list,.official-sources,.term-references,.citation,.citations,.bibliography,[class*="source"],[class*="reference"]) :is(p,li,a,span,strong,em) { font-size:13px!important; line-height:1.65!important; }
+  html body.kb-blog-post table { max-width:100%; }
+  html body.kb-blog-post table :is(td,th) { font-size:13.5px; line-height:1.6; }
+  html body.kb-blog-post table td { color:#263f5e; }
+  html body.kb-blog-post main :is(.cta,.kb-blog-cta) { color:#fff!important; }
+  html body.kb-blog-post main :is(.cta,.kb-blog-cta) :is(h2,h3,strong) { color:#fff!important; }
+  html body.kb-blog-post main :is(.cta,.kb-blog-cta) > p { color:#ecf5ff!important; }
+  html body.kb-blog-post main :is(.cta,.kb-blog-cta) .btn:not(.sub) { color:#0c2b4c!important; background:#fff!important; }
+  html body.kb-blog-post main :is(.cta,.kb-blog-cta) .btn.sub { color:#fff!important; }
+  html body.kb-blog-post .kb-footer { color:#edf4ff; }
+  html body.kb-blog-post .kb-footer :is(a,p,li,span) { color:#d8e7f6; }
+}
+
+@media (max-width: 420px) {
+  html body .mobile-nav { padding-left:16px; padding-right:16px; }
+  html body .mobile-nav :is(a,.mobile-nav-label) { min-height:48px; }
+  html body dialog { max-width:calc(100vw - 10px); }
+  html body :is(#seaDialog,#expressDialog,#formalDialog) .dialog-body { padding-left:12px; padding-right:12px; }
+  html body :is(#seaDialog,#expressDialog,#formalDialog) .form-grid { grid-template-columns:minmax(0,1fr); }
+  html body.kb-blog-post :is(.toc,.article-toc) :is(a,li) { font-size:13.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto!important; }
+  html body :is(.modal,.dialog,.mobile-nav) { transition:none!important; }
+}

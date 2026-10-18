@@ -1,0 +1,42 @@
+/* KBRIDGE quotation dialog contrast: critical styles are linked statically. */
+body.site-home.kb-unified-site #seaDialog .quote-dialog,
+body.site-home.kb-unified-site #expressDialog .quote-dialog,
+body.site-home.kb-unified-site #formalDialog .quote-dialog{background:#fff!important;color:#17283f!important}
+
+body.site-home.kb-unified-site #seaDialog .dialog-head,
+body.site-home.kb-unified-site #expressDialog .dialog-head,
+body.site-home.kb-unified-site #formalDialog .dialog-head{
+  background:#fff!important;
+  border-bottom:1px solid #dce5f1!important;
+  color:#17283f!important;
+}
+html body.site-home.kb-unified-site #seaDialog .dialog-head h2,
+html body.site-home.kb-unified-site #expressDialog .dialog-head h2,
+html body.site-home.kb-unified-site #formalDialog .dialog-head h2{
+  color:#111d31!important;
+  opacity:1!important;
+  visibility:visible!important;
+  text-shadow:none!important;
+}
+body.site-home.kb-unified-site #formalDialog .dialog-head p{
+  color:#34465f!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+body.site-home.kb-unified-site :is(#seaDialog,#expressDialog,#formalDialog) .dialog-close{
+  color:#1d304e!important;
+  background:#eaf1fa!important;
+  border-color:#cbd8eb!important;
+}
+body.site-home.kb-unified-site :is(#seaDialog,#expressDialog,#formalDialog) .dialog-body,
+body.site-home.kb-unified-site :is(#seaDialog,#expressDialog,#formalDialog) .form-card{
+  background:#fff;
+  color:#17283f!important;
+}
+body.site-home.kb-unified-site :is(#seaDialog,#expressDialog,#formalDialog) .form-card :is(h3,legend,label,strong){color:#17283f}
+body.site-home.kb-unified-site :is(#seaDialog,#expressDialog,#formalDialog) .form-card p{color:#40536f}
+body.site-home.kb-unified-site :is(#seaDialog,#expressDialog,#formalDialog) .form-card :is(input,textarea,select){color:#14243c;background-color:#fff}
+
+/* Purposeful dark panels continue to use their intended light type. */
+body.site-home.kb-unified-site :is(#seaDialog,#formalDialog) :is(.quote-summary,.formal-quote-summary){background-color:#16284a;color:#fff}
+body.site-home.kb-unified-site :is(#seaDialog,#formalDialog) :is(.quote-summary,.formal-quote-summary) :is(h3,strong,span){color:inherit}

@@ -1,0 +1,89 @@
+/* KBRIDGE cargo recommendation guide, with global service finder removed. */
+.kbix-kicker{display:block;color:#2454af;font-size:12px;font-weight:850;letter-spacing:.12em;line-height:1.5}
+.kbix-guide button:focus-visible,.kbix-guide a:focus-visible{outline:3px solid #76a4f5;outline-offset:3px}
+.kbix-guide{position:relative;padding:84px 0 78px;background:linear-gradient(180deg,#f3f7fe 0%,#fff 100%);color:#14213a;overflow:hidden}
+.kbix-guide:before{content:"";position:absolute;pointer-events:none;width:700px;height:430px;right:-270px;top:-110px;border-radius:50%;background:radial-gradient(ellipse,rgba(92,150,249,.12),transparent 68%)}
+.kbix-guide-container{position:relative;z-index:1}
+.kbix-guide-title{max-width:760px;margin:0 auto 30px;text-align:center}
+.kbix-guide-title h2{margin:9px 0 12px;color:#132748;font-size:clamp(27px,3vw,39px);font-weight:900;letter-spacing:-.065em;line-height:1.3;word-break:keep-all}
+.kbix-guide-title h2 em{color:#285cc9;font-style:normal}
+.kbix-guide-title>p{margin:0;color:#516780;font-size:14px;line-height:1.7}
+.kbix-guide-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:18px;align-items:stretch;max-width:1140px;margin:0 auto}
+.kbix-choices,.kbix-recommend{min-width:0;border-radius:22px}
+.kbix-choices{padding:32px 30px;background:#fff;border:1px solid #e0e8f4;box-shadow:0 17px 45px rgba(28,59,112,.07)}
+.kbix-step-title{display:flex;gap:12px;align-items:center}
+.kbix-step-title>span{width:38px;height:38px;display:grid;place-items:center;flex:0 0 38px;border-radius:11px;background:#e7efff;color:#2359ca;font-size:12px;font-weight:900}
+.kbix-step-title strong{display:block;font-size:17px;letter-spacing:-.035em;font-weight:900;color:#1b2e4b}
+.kbix-step-title small{display:block;margin-top:2px;color:#536780;font-size:11px}
+.kbix-second-step{margin-top:30px}
+.kbix-option-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}
+.kbix-option-grid button{display:grid;place-items:center;min-width:0;min-height:49px;padding:9px 10px;border:1px solid #d8e2f1;border-radius:11px;background:#f9fbfe;color:#50627d;text-align:center;font:inherit;font-size:12px;font-weight:800;line-height:1.3;word-break:keep-all;cursor:pointer;transition:background .18s,color .18s,box-shadow .18s,border-color .18s}
+.kbix-option-grid button:hover{border-color:#97b3ef;background:#f1f6ff}
+.kbix-option-grid button[aria-pressed=true]{color:#1951bb;border:1.5px solid #4778e9;background:#edf3ff;box-shadow:0 0 0 2px rgba(48,104,224,.1)}
+.kbix-cargo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kbix-choice-foot{margin-top:24px;padding-top:16px;border-top:1px solid #eef1f7;color:#9aa8ba;font-size:10px;line-height:1.5}
+.kbix-recommend{display:flex;flex-direction:column;padding:33px 35px 29px;color:#fff;background:radial-gradient(circle at 95% -5%,rgba(82,138,237,.43),transparent 55%),linear-gradient(145deg,#172f61,#0d2045);box-shadow:0 24px 52px rgba(13,40,89,.22)}
+.kbix-recommend-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.kbix-recommend-badge{display:inline-block;padding:6px 10px;border:1px solid rgba(167,207,255,.42);border-radius:7px;background:rgba(115,170,255,.14);color:#bcd6ff;font-size:11px;font-weight:850}
+.kbix-recommend-number{color:#8ba8d5;font-size:9px;font-weight:850;letter-spacing:.18em}
+.kbix-route{display:flex;align-items:center;gap:14px;margin-top:31px;color:#bfd4f4;font-size:12px;font-weight:750}
+.kbix-route-line{position:relative;flex:1;height:1px;background:linear-gradient(90deg,#7ba2dd,#54d9d0);min-width:18px}
+.kbix-route-line:after{content:"→";position:absolute;right:-2px;top:50%;transform:translateY(-51%);color:#54d9d0;font-size:16px}
+.kbix-recommend h3{margin:24px 0 9px;color:#fff;font-size:clamp(24px,2.2vw,32px);line-height:1.3;letter-spacing:-.06em;font-weight:900}
+.kbix-recommend>p:not(.kbix-recommend-disclaimer){margin:0;color:#d1ddf2;font-size:13px;line-height:1.85;word-break:keep-all}
+.kbix-recommend-checks{display:flex;flex-wrap:wrap;gap:7px;margin-top:19px}
+.kbix-recommend-checks span{padding:7px 9px;border-radius:7px;background:rgba(255,255,255,.09);color:#c7e3fa;font-size:11px;font-weight:700}
+.kbix-recommend-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:9px;margin-top:auto;padding-top:32px}
+.kbix-recommend-actions button{min-height:50px;border-radius:10px;padding:11px 15px;font:inherit;font-size:12px;font-weight:900;cursor:pointer}
+.kbix-primary-action{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #74cfe4;background:#48c5cc;color:#092844;text-align:left;box-shadow:0 8px 25px rgba(18,184,196,.18)}
+.kbix-primary-action:hover{background:#77e1e5}
+.kbix-primary-action span{font-size:19px}
+.kbix-secondary-action{border:1px solid rgba(192,214,255,.32);background:rgba(255,255,255,.08);color:#e6f0ff}
+.kbix-secondary-action:hover{background:rgba(255,255,255,.17)}
+.kbix-recommend-disclaimer{margin:15px 0 0;color:#8fa9ce;font-size:10px;line-height:1.65}
+.kbix-mini-tools{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:23px auto 0}
+.kbix-mini-tools>span{color:#596d84;font-size:12px;font-weight:850;margin-right:5px}
+.kbix-mini-tools a{padding:7px 13px;border:1px solid #dce6f4;border-radius:999px;background:#fff;color:#385c97;text-decoration:none;font-size:11px;font-weight:800}
+.kbix-mini-tools a:hover{background:#edf4ff;border-color:#a8c3ed}
+
+
+@media(max-width:900px){.kbix-guide{padding:64px 0}.kbix-guide-layout{grid-template-columns:1fr;max-width:650px}.kbix-guide-title{margin-bottom:25px}.kbix-recommend{min-height:370px}}
+@media(max-width:700px){.kbix-guide{padding:55px 0}.kbix-guide-title h2{font-size:clamp(25px,6.8vw,30px);line-height:1.4}.kbix-guide-title>p{font-size:15px;line-height:1.7;color:#465e77}.kbix-choices{padding:24px 19px}.kbix-step-title strong{font-size:17px}.kbix-step-title small{font-size:13px;color:#536780}.kbix-option-grid button{min-height:50px;padding:9px 7px;font-size:14px;line-height:1.35}.kbix-recommend{min-height:350px;padding:27px 22px}.kbix-recommend h3{font-size:27px;color:#fff!important}.kbix-recommend>p:not(.kbix-recommend-disclaimer){font-size:15px;color:#dce8fa!important}.kbix-recommend-checks span{font-size:12px;color:#e5f0ff}.kbix-recommend-actions{grid-template-columns:1fr}.kbix-recommend-actions button{min-height:50px;font-size:14px}.kbix-primary-action{color:#092844!important}.kbix-secondary-action{min-height:44px!important;color:#fff!important}.kbix-mini-tools{justify-content:flex-start}.kbix-mini-tools a{font-size:13px}}
+@media(max-width:375px){.kbix-guide-title h2{font-size:25px}.kbix-option-grid button{font-size:13px}.kbix-recommend h3{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.kbix-option-grid button{transition:none}}
+/* The removed instant-quote block leaves an anchor for existing #services URLs. */
+.kbix-section-anchor{display:block;height:0;scroll-margin-top:76px}
+
+/* Readable light quote headers for dialogs launched from the recommendation. */
+html body.site-home.kb-unified-site #seaDialog .dialog-head,
+html body.site-home.kb-unified-site #expressDialog .dialog-head,
+html body.site-home.kb-unified-site #formalDialog .dialog-head{
+  background:#fff!important;
+  color:#14213a!important;
+  border-bottom:1px solid #dee6f3;
+}
+html body.site-home.kb-unified-site #seaDialog .dialog-head h2,
+html body.site-home.kb-unified-site #expressDialog .dialog-head h2,
+html body.site-home.kb-unified-site #formalDialog .dialog-head h2{
+  color:#14213a!important;
+  text-shadow:none!important;
+}
+html body.site-home.kb-unified-site #formalDialog .dialog-head p{
+  color:#455773!important;
+}
+html body.site-home.kb-unified-site #seaDialog .dialog-close,
+html body.site-home.kb-unified-site #expressDialog .dialog-close,
+html body.site-home.kb-unified-site #formalDialog .dialog-close{
+  color:#1a2f50!important;
+  background:#eef3fb!important;
+  border-color:#d5e1f0!important;
+}
+html body.site-home.kb-unified-site #seaDialog .dialog-body,
+html body.site-home.kb-unified-site #expressDialog .dialog-body,
+html body.site-home.kb-unified-site #formalDialog .dialog-body{color:#182945}
+html body.site-home.kb-unified-site #seaDialog .form-card h3,
+html body.site-home.kb-unified-site #expressDialog .form-card h3,
+html body.site-home.kb-unified-site #formalDialog .form-card h3{color:#14213a}
+html body.site-home.kb-unified-site #seaDialog .form-card p,
+html body.site-home.kb-unified-site #expressDialog .form-card p,
+html body.site-home.kb-unified-site #formalDialog .form-card p{color:#485b77}

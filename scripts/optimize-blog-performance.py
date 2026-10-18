@@ -33,7 +33,10 @@ def attrs(tag: str) -> dict[str, str]:
 def set_attr(tag: str, name: str, value: str) -> str:
     pattern = re.compile(rf"\s+{re.escape(name)}\s*=\s*(?:\"[^\"]*\"|'[^']*'|[^\s>]+)", re.I)
     tag = pattern.sub("", tag)
-    return tag[:-1].rstrip() + f' {name}="{value}">'
+    # Preserve self-closing image tags: old code emitted / decoding="async">.
+    suffix = "/>" if tag.rstrip().endswith("/>") else ">"
+    prefix = tag.rstrip()[:-len(suffix)].rstrip()
+    return f'{prefix} {name}="{value}"{suffix}'
 
 
 def del_attr(tag: str, name: str) -> str:
@@ -70,6 +73,7 @@ def optimize_page(page: Path, *, blog_post: bool) -> bool:
 
     def repl(match: re.Match[str]) -> str:
         tag = match.group(0)
+        tag = re.sub(r"\s*/\s+(?=[A-Za-z][\w-]*\s*=)", " ", tag)
         a = attrs(tag)
         src = a.get("src") or a.get("data-src") or ""
         if not src:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a new KBRIDGE blog post from the V42 category templates."""
+"""Create a KBRIDGE blog post with an optional topic-led editorial layout."""
 from __future__ import annotations
 import argparse
 import html
@@ -11,6 +11,11 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 TEMPLATES=ROOT/"scripts"/"blog-templates"
 CATEGORIES={"info","service","news","insight","glossary"}
+EDITORIAL_KINDS={"analysis","briefing","calculation","case","comparison","compliance",
+                 "dictionary","document","journey","lookup","market","network","process",
+                 "route","systems"}
+DEFAULT_FOCUS={"info":"how","service":"process","news":"ocean",
+               "insight":"impact","glossary":"definition"}
 SEO_TITLE_MAX=40
 SEO_DESCRIPTION_MAX=80
 
@@ -60,6 +65,11 @@ def main():
     ap.add_argument("--seo-description",default="",help="검색용 설명문, 80자 이하")
     ap.add_argument("--keywords",default="KBRIDGE, 국제물류, 수출입")
     ap.add_argument("--date",default=date.today().isoformat())
+    ap.add_argument("--editorial-kind",choices=sorted(EDITORIAL_KINDS),
+                    help="주제별 디자인: BLOG-EDITORIAL-GUIDE.md 참고")
+    ap.add_argument("--reader-question",default="",help="독자가 먼저 해결할 질문")
+    ap.add_argument("--reader-answer",default="",help="질문에 대한 근거 중심의 간결한 답")
+    ap.add_argument("--focus-section",default="",help="글의 우선 섹션 id(예: how, process)")
     ap.add_argument("--force",action="store_true")
     args=ap.parse_args()
     if not slug_ok(args.slug): raise SystemExit("slug는 영문/숫자/점/하이픈/언더스코어만 사용하세요.")
@@ -79,6 +89,27 @@ def main():
         "TAGS_HTML":tags_html(args.keywords),
     }
     for k,v in vals.items(): tmpl=tmpl.replace("{{"+k+"}}",v)
+    if args.editorial_kind:
+        if not args.reader_question.strip() or not args.reader_answer.strip():
+            raise SystemExit("--editorial-kind 사용 시 --reader-question 및 --reader-answer를 입력하세요.")
+        focus=args.focus_section or DEFAULT_FOCUS[args.category]
+        if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]*", focus) or not re.search(r'\bid=["\']'+re.escape(focus)+r'["\']', tmpl):
+            raise SystemExit(f"템플릿에 존재하는 --focus-section id를 지정하세요: {focus}")
+        editorial=(
+            f'<section class="kb-editorial-lead kb-editorial-{args.editorial_kind}" '
+            f'aria-labelledby="kb-editorial-heading">'
+            '<div class="kb-editorial-heading"><span class="kb-editorial-label">FIELD GUIDE</span>'
+            '<span class="kb-editorial-index">K-BRIDGE / FIELD NOTE</span></div>'
+            f'<h2 id="kb-editorial-heading">{html.escape(args.reader_question.strip())}</h2>'
+            f'<p class="kb-editorial-answer">{html.escape(args.reader_answer.strip())}</p>'
+            f'<a class="kb-editorial-jump" href="#{focus}">핵심 부분부터 보기 ↗</a>'
+            '</section>\n'
+        )
+        tmpl,count=re.subn(r'(?=<section\b[^>]*class=["\'](?:quick-summary|summary)["\'])',
+                           lambda _:editorial,tmpl,count=1)
+        if count!=1:raise SystemExit("본문의 요약 섹션을 찾을 수 없습니다.")
+        tmpl=tmpl.replace('<body>',f'<body class="kb-editorialized" data-kb-editorial-kind="{args.editorial_kind}" data-kb-editorial-focus="{focus}">',1)
+        tmpl=tmpl.replace('</head>','<link href="../../../assets/css/pages/blog-editorial.css?v=20261018-editorial-r1" rel="stylesheet"/></head>',1)
     out=ROOT/"blog"/"posts"/args.category/f"{args.slug}.html"
     legacy_map=ROOT/"scripts"/"legacy-url-map.json"
     if legacy_map.exists():

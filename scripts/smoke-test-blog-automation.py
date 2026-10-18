@@ -80,7 +80,7 @@ def main() -> None:
         for category in CATEGORIES:
             slug = f"zz-smoke-{category}"
             primary.append((category, slug))
-            run([
+            command = [
                 sys.executable, "scripts/create-blog-post.py",
                 "--category", category,
                 "--slug", slug,
@@ -88,7 +88,16 @@ def main() -> None:
                 "--summary", f"{category} 신규 글의 공통 디자인과 SEO 자동 적용을 확인하는 회귀 테스트입니다.",
                 "--keywords", f"KBRIDGE, {category}, 자동화검수",
                 "--date", TEST_DATE,
-            ], work)
+            ]
+            if category == "info":
+                # Real publication path for the new topic-led editorial option.
+                command.extend([
+                    "--editorial-kind", "calculation",
+                    "--reader-question", "계산 결과가 달라지는 변수는 무엇인가요?",
+                    "--reader-answer", "측정 단위와 계산 기준을 먼저 확인합니다.",
+                    "--focus-section", "how",
+                ])
+            run(command, work)
 
         # Also simulate a custom HTML upload that did not use the creator.
         # The pipeline must repair | -> /, infer the visible date, and add the
@@ -143,6 +152,8 @@ def main() -> None:
                 "footer": len(soup.select("footer.kb-footer")) == 1,
                 "shared css": len([x for x in soup.find_all("link", href=True) if "blog-unified.css" in x.get("href", "")]) == 1,
                 "site chrome": len([x for x in soup.find_all("script", src=True) if "site-chrome.js" in x.get("src", "")]) == 1,
+                "finder removed": not (work / "assets" / "css" / "quick-finder-v4.css").exists(),
+                "mobile contrast": len([x for x in soup.find_all("link", href=True) if "mobile-readability-v1.css" in x.get("href", "")]) == 1,
                 "body category": bool(soup.body and soup.body.get("data-kb-blog-category") == category),
                 "faq": len(soup.select("#faq .faq-item, section#faq details")) >= 1,
                 "tags": len(soup.select(".tags .tag")) >= 1,
@@ -159,6 +170,14 @@ def main() -> None:
                 "blog index": url in blog_index,
                 "sitemap": url in sitemap_text,
             }
+            if category == "info":
+                editorial = soup.select_one("section.kb-editorial-lead a.kb-editorial-jump")
+                css = [x.get("href", "") for x in soup.find_all("link", href=True) if "blog-editorial.css" in x.get("href", "")]
+                checks.update({
+                    "editorial block": bool(editorial and editorial.get("href") == "#how"),
+                    "editorial theme": bool(soup.body and soup.body.get("data-kb-editorial-kind") == "calculation"),
+                    "editorial css": len(css) == 1 and (path.parent / css[0].split("?", 1)[0]).exists(),
+                })
             failed = [name for name, ok in checks.items() if not ok]
             if failed:
                 raise SystemExit(f"future post contract failed for {category}: {', '.join(failed)}")
@@ -200,7 +219,7 @@ def main() -> None:
         print(f"- generated/tested categories: {len(primary)}")
         print(f"- full-pipeline posts: {len(manifest)}")
         print(f"- RSS boundary posts: {len(manifest2)} / RSS items: {len(rss_urls2)}")
-        print("- header/footer/mobile/CSS/SEO/date/FAQ/tags/sitemap/RSS/list: normal")
+        print("- header/footer/mobile/CSS/SEO/date/FAQ/tags/sitemap/RSS/list/editorial layout: normal")
         print("- second full pipeline run: idempotent")
 
 

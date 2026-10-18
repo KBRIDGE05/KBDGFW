@@ -131,9 +131,14 @@ const init=()=>{
   if(isAdminPreview()){run();return}
   let started=!1;
   const start=()=>{if(started)return;started=!0;run()};
-  document.querySelectorAll('[data-quote-mode="ocean"],[data-quote-mode-open="ocean"],[data-open="seaDialog"]:not([data-quote-mode-open])').forEach(el=>el.addEventListener("click",start,{once:!0,passive:!0}));
-  const idle=()=>{if(!navigator.connection?.saveData&&"visible"===document.visibilityState)start()};
-  "requestIdleCallback"in window?requestIdleCallback(idle,{timeout:5000}):setTimeout(idle,3500);
+  document.querySelectorAll('[data-quote-mode="ocean"],[data-quote-mode-open="ocean"],[data-open="seaDialog"]:not([data-quote-mode-open])').forEach(el=>{
+    el.addEventListener("click",start,{once:!0,passive:!0});
+    // Warm the workbook during intent, not at page idle.
+    if(!navigator.connection?.saveData){
+      el.addEventListener("pointerenter",start,{once:!0,passive:!0});
+      el.addEventListener("focus",start,{once:!0,passive:!0});
+    }
+  });
 };
 
 window.KBridgeOceanFreight={reload:loadPublishedFile,importFile:importPreviewFile,dataUrl:"data/ocean-freight.xlsx",getPeriod:()=>periodMeta.period||window.KBridgeFreightPeriod?.getPeriod?.()||"2026-07",getPeriodLabel:()=>periodMeta.periodLabel||window.KBridgeFreightPeriod?.getLabel?.()||"2026년 7월",getPeriodCompact:()=>periodMeta.compact||window.KBridgeFreightPeriod?.getCompact?.()||"2026.07"};

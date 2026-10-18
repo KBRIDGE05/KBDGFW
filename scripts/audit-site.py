@@ -122,7 +122,21 @@ def audit_local_refs() -> tuple[int, int]:
         if ".git" in page.parts:
             continue
         pages += 1
-        soup = BeautifulSoup(page.read_text("utf-8", errors="ignore"), "html.parser")
+        source = page.read_text("utf-8", errors="ignore")
+        if re.search(r'<img\b[^>]*?/\s+(?:decoding|loading|fetchpriority)\s*=', source, re.I):
+            fail(f"{page.relative_to(ROOT)}: 잘못된 이미지 태그 속성 순서")
+        soup = BeautifulSoup(source, "html.parser")
+        ids = [el.get("id") for el in soup.select("[id]") if el.get("id")]
+        if len(ids) != len(set(ids)):
+            fail(f"{page.relative_to(ROOT)}: 중복 HTML ID")
+        id_set = set(ids)
+        for link in soup.select('a[href^="#"]'):
+            fragment = str(link.get("href", ""))[1:]
+            if fragment and fragment not in id_set and fragment != "kbix-guide":
+                fail(f"{page.relative_to(ROOT)}: 존재하지 않는 내부 앵커 #{fragment}")
+        for trigger in soup.select("[data-open]"):
+            if trigger.get("data-open") not in id_set:
+                fail(f"{page.relative_to(ROOT)}: 존재하지 않는 팝업 대상 {trigger.get('data-open')}")
         for tag, attr in (("img", "src"), ("script", "src"), ("link", "href"), ("a", "href"), ("source", "src"), ("video", "poster")):
             for el in soup.find_all(tag):
                 raw = el.get(attr)
