@@ -339,3 +339,305 @@ body[data-kb-editorial-kind="market"] .section > h2 { color: #146674; border-bot
   body[data-kb-editorial-kind="journey"] .kb-editorial-lead::before { left: 17px; }
   body[data-kb-editorial-kind="case"] .kb-editorial-lead::before { display: none; }
 }
+
+/* Editorial readability r2 (2026-10-18)
+   This intentionally follows the existing 15 topic variants and the shared
+   V47 article styles. All 44 posts keep their text, links and topic identity;
+   decorative rules, low-contrast field notes and fake checkboxes do not. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized {
+  --kb-ed-ink: #172f4d;
+  --kb-ed-muted: #435a75;
+  --kb-ed-accent: #2159ba;
+  --kb-ed-paper: #f5f8fd;
+}
+
+/* Keep 15 editorial topics, expressed through quiet paper tones only. */
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="briefing"] { --kb-ed-paper: #f3f7fd; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="case"] { --kb-ed-paper: #f0f7fa; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="document"] { --kb-ed-paper: #f7f9fc; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="calculation"] { --kb-ed-paper: #f1f7ff; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="dictionary"] { --kb-ed-paper: #f7f9fe; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="network"] { --kb-ed-paper: #f0f8fc; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="route"] { --kb-ed-paper: #f0f8f9; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="process"] { --kb-ed-paper: #f3f9f5; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="journey"] { --kb-ed-paper: #faf8f1; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="comparison"] { --kb-ed-paper: #f3f7fb; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="compliance"] { --kb-ed-paper: #faf8f3; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="lookup"] { --kb-ed-paper: #f0f8fb; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="systems"] { --kb-ed-paper: #f2f7fc; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="analysis"] { --kb-ed-paper: #f6f8fb; }
+html body.kb-blog-post.kb-unified-site[data-kb-editorial-kind="market"] { --kb-ed-paper: #f1f8fa; }
+
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead {
+  position: relative!important;
+  margin: 28px 0 30px!important;
+  padding: clamp(23px, 3.8vw, 35px)!important;
+  border: 1px solid #dce5f0!important;
+  border-radius: 12px!important;
+  background: var(--kb-ed-paper)!important;
+  background-image: none!important;
+  box-shadow: none!important;
+  color: #172f4d!important;
+  -webkit-text-fill-color: #172f4d!important;
+  font-family: "Pretendard", "Noto Sans KR", "Noto Sans CJK KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif!important;
+  letter-spacing: -.015em!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead::before,
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead::after {
+  content: none!important;
+  display: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead :is(.kb-editorial-heading,.kb-editorial-label,.kb-editorial-index,h2,.kb-editorial-answer,.kb-editorial-jump) {
+  font-family: inherit!important;
+  font-style: normal!important;
+  opacity: 1!important;
+  text-shadow: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-heading {
+  display: flex!important;
+  flex-wrap: wrap!important;
+  align-items: center!important;
+  gap: 9px 14px!important;
+  margin: 0 0 18px!important;
+  padding: 0!important;
+  border: 0!important;
+  font-size: 13px!important;
+  line-height: 1.55!important;
+  letter-spacing: 0!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-label {
+  display: inline-flex!important;
+  align-items: center!important;
+  min-height: 34px!important;
+  padding: 6px 12px!important;
+  border: 0!important;
+  border-radius: 6px!important;
+  background: #2458b5!important;
+  color: #fff!important;
+  -webkit-text-fill-color: #fff!important;
+  font-size: 13px!important;
+  font-weight: 800!important;
+  line-height: 1.5!important;
+  letter-spacing: -.01em!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-index {
+  color: #536985!important;
+  -webkit-text-fill-color: #536985!important;
+  font-size: 11.5px!important;
+  font-weight: 650!important;
+  letter-spacing: .025em!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead h2 {
+  margin: 0 0 15px!important;
+  padding: 0!important;
+  border: 0!important;
+  color: #142e4d!important;
+  -webkit-text-fill-color: #142e4d!important;
+  font-size: clamp(23px, 3.1vw, 32px)!important;
+  font-weight: 850!important;
+  line-height: 1.46!important;
+  letter-spacing: -.037em!important;
+  word-break: keep-all!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead h2::before,
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead h2::after {
+  content: none!important;
+  display: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-answer {
+  display: block!important;
+  max-width: 74ch!important;
+  margin: 0 0 18px!important;
+  padding: 0!important;
+  border: 0!important;
+  border-radius: 0!important;
+  background: transparent!important;
+  color: #405671!important;
+  -webkit-text-fill-color: #405671!important;
+  font-size: 16px!important;
+  font-weight: 500!important;
+  line-height: 1.8!important;
+  letter-spacing: -.01em!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-jump,
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-jump span {
+  color: #2055b0!important;
+  -webkit-text-fill-color: #2055b0!important;
+  font-size: 14px!important;
+  font-weight: 750!important;
+  text-decoration-color: #2055b0!important;
+}
+
+/* One clean heading per section: no overlapping top, left or bottom rules. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) {
+  margin: 0 0 43px!important;
+  padding: 0!important;
+  border: 0!important;
+  border-radius: 0!important;
+  background: transparent!important;
+  box-shadow: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) > h2 {
+  margin: 0 0 17px!important;
+  padding: 0!important;
+  border: 0!important;
+  color: #182f4b!important;
+  -webkit-text-fill-color: #182f4b!important;
+  font-family: inherit!important;
+  font-size: 25px!important;
+  font-weight: 850!important;
+  line-height: 1.48!important;
+  letter-spacing: -.035em!important;
+  scroll-margin-top: 95px;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) > h2::before,
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) > h2::after {
+  content: none!important;
+  display: none!important;
+  width: 0!important;
+  height: 0!important;
+  background: none!important;
+}
+/* Opening explanation stays plain text; meaningful warnings are still distinct. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body :is(section.section,section.pipe-section) > :is(.kb-section-lead,.lead-answer,.pipe-lead),
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body :is(section.section,section.pipe-section) > h2 + p:not(.warning):not(.warn):not(.note):not(.data-note):not(.pipe-note):not(.editor-note) {
+  margin: 0 0 22px!important;
+  padding: 0!important;
+  border: 0!important;
+  border-radius: 0!important;
+  background: transparent!important;
+  color: #364c65!important;
+  -webkit-text-fill-color: #364c65!important;
+  font-size: 15.5px!important;
+  font-weight: 500!important;
+  line-height: 1.83!important;
+  box-shadow: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .article-body :is(.kb-section-lead,.lead-answer,.pipe-lead) strong,
+html body.kb-blog-post.kb-unified-site.kb-editorialized .article-body :is(section.section,section.pipe-section) > h2 + p strong {
+  color: #1d3551!important;
+  -webkit-text-fill-color: #1d3551!important;
+}
+
+/* Neither the summary nor table of contents needs a decorative top stripe. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized :is(.quick-summary,.summary,.pipe-summary) {
+  border: 1px solid #e3eaf3!important;
+  border-radius: 10px!important;
+  padding: 20px 22px!important;
+  background: #f7f9fc!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized :is(.toc,.pipe-toc) {
+  padding: 18px 20px!important;
+  border: 1px solid #e0e7f0!important;
+  border-radius: 10px!important;
+  background: #f8fafc!important;
+  box-shadow: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized :is(.toc,.pipe-toc) a {
+  color: #265488!important;
+  -webkit-text-fill-color: #265488!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized :is(.toc,.pipe-toc) :is(.toc-title,.pipe-toc-title) {
+  color: #193753!important;
+  -webkit-text-fill-color: #193753!important;
+  font-size: 14px!important;
+}
+
+/* Restore semantic bullets for ul; remove generated ticks and bordered tiles. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(ul,ol).checklist {
+  display: block!important;
+  margin: 17px 0 26px!important;
+  padding: 0 0 0 24px!important;
+  list-style: disc outside!important;
+  background: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(ul,ol).checklist > li {
+  display: list-item!important;
+  margin: 0 0 11px!important;
+  padding: 0!important;
+  border: 0!important;
+  border-radius: 0!important;
+  background: transparent!important;
+  box-shadow: none!important;
+  color: #3b5069!important;
+  -webkit-text-fill-color: #3b5069!important;
+  font-size: 15px!important;
+  line-height: 1.77!important;
+  list-style: disc outside!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) ol.checklist,
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) ol.checklist > li {
+  list-style: decimal outside!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized :is(ul,ol).checklist > li::marker { color: #4776b0; }
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.checklist,.pipe-check-grid) li::before,
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.checklist,.pipe-check-grid) > .check::before {
+  content: none!important;
+  display: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(div.checklist,.pipe-check-grid) {
+  display: grid!important;
+  grid-template-columns: repeat(2,minmax(0,1fr))!important;
+  gap: 0 23px!important;
+  padding: 0!important;
+  border: 0!important;
+  background: transparent!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(div.checklist,.pipe-check-grid) > * {
+  margin: 0!important;
+  padding: 13px 0!important;
+  border: 0!important;
+  border-bottom: 1px solid #e8edf3!important;
+  border-radius: 0!important;
+  background: transparent!important;
+  box-shadow: none!important;
+  color: #3b5069!important;
+  -webkit-text-fill-color: #3b5069!important;
+  line-height: 1.72!important;
+}
+
+/* Tables retain every source cell and scroll horizontally on small screens. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-table-shell {
+  max-width: 100%!important;
+  overflow-x: auto!important;
+  border: 1px solid #e0e7ef!important;
+  border-radius: 8px!important;
+  background: #fff!important;
+  box-shadow: none!important;
+  -webkit-overflow-scrolling: touch!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table :is(th,td) {
+  border: 0!important;
+  border-bottom: 1px solid #e6ebf2!important;
+  padding: 13px 15px!important;
+  color: #31465f!important;
+  -webkit-text-fill-color: #31465f!important;
+  font-size: 14px!important;
+  line-height: 1.66!important;
+  vertical-align: top!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table thead th {
+  background: #eaf1fa!important;
+  color: #1b3552!important;
+  -webkit-text-fill-color: #1b3552!important;
+  font-weight: 800!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table tbody tr:nth-child(even) :is(th,td) {
+  background: #f8fafc!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table :is(th,td) strong {
+  color: #183753!important;
+  -webkit-text-fill-color: #183753!important;
+}
+
+@media (max-width: 760px) {
+  html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead { margin: 21px 0 26px!important; padding: 22px 18px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-index { display: inline!important; font-size: 12px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-lead h2 { font-size: 23px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-editorial-answer { font-size: 15.5px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) { margin-bottom: 35px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .article-body > :is(section.section,section.pipe-section) > h2 { font-size: 22px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized :is(.quick-summary,.summary,.pipe-summary) { padding: 18px 17px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(div.checklist,.pipe-check-grid) { grid-template-columns: 1fr!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table :is(th,td) { padding: 12px!important; font-size: 13.5px!important; }
+}
