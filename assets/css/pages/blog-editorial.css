@@ -641,3 +641,259 @@ html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.ar
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(div.checklist,.pipe-check-grid) { grid-template-columns: 1fr!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-table-shell table.kb-content-table :is(th,td) { padding: 12px!important; font-size: 13.5px!important; }
 }
+
+/* Editorial layout r3: one vertical rhythm for all published articles.
+   The previous cascade mixed section bottom margins, figure negative margins,
+   and a top-only KEY TAKEAWAYS margin. Keep content order exactly as authored. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :not(script):not(style) {
+  margin-block-start: 0!important;
+  margin-block-end: 0!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :not(script):not(style) + :not(script):not(style) {
+  margin-block-start: 36px!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(section.section,section.pipe-section) {
+  padding-block: 0!important;
+  border: 0!important;
+  background: transparent!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > figure:first-child {
+  margin-block-start: 26px!important;
+}
+
+/* KEY TAKEAWAYS is a quiet recap with matched space above and below. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-takeaways {
+  padding: 23px 25px!important;
+  border: 1px solid #e0e8f2!important;
+  border-radius: 10px!important;
+  background: #f5f8fc!important;
+  box-shadow: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-takeaways > .kb-takeaways-kicker {
+  margin: 0 0 4px!important;
+  color: #2458b5!important;
+  -webkit-text-fill-color: #2458b5!important;
+  font-size: 11px!important;
+  line-height: 1.5!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-takeaways > h2 {
+  margin: 0 0 15px!important;
+  padding: 0!important;
+  color: #193350!important;
+  -webkit-text-fill-color: #193350!important;
+  font-family: inherit!important;
+  font-size: 20px!important;
+  line-height: 1.5!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-takeaways > p:not(.kb-takeaways-kicker) {
+  margin: 0!important;
+  padding: 0!important;
+  color: #354c67!important;
+  -webkit-text-fill-color: #354c67!important;
+  font-size: 15px!important;
+  line-height: 1.8!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-takeaways > ol {
+  display: grid!important;
+  grid-template-columns: 1fr!important;
+  gap: 6px!important;
+  margin: 0!important;
+  padding: 0!important;
+  list-style: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-takeaways > ol > li {
+  margin: 0!important;
+  padding: 5px 0 5px 34px!important;
+  border: 0!important;
+  color: #354c67!important;
+  -webkit-text-fill-color: #354c67!important;
+  font-size: 14.5px!important;
+  line-height: 1.74!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized .kb-takeaways > ol > li::before {
+  top: 6px!important;
+  color: #255aa8!important;
+  -webkit-text-fill-color: #255aa8!important;
+  font-size: 12px!important;
+  line-height: 1.6!important;
+}
+
+/* All VISUAL GUIDE modules share an aligned heading and one readable caption. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic {
+  padding: 0!important;
+  border: 0!important;
+  border-radius: 0!important;
+  background: #fff!important;
+  overflow: visible!important;
+  box-shadow: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic > .kb-figure-head {
+  display: flex!important;
+  flex-wrap: wrap!important;
+  align-items: center!important;
+  justify-content: flex-start!important;
+  gap: 8px 13px!important;
+  min-height: 0!important;
+  margin: 0!important;
+  padding: 12px 15px!important;
+  border: 0!important;
+  border-radius: 8px 8px 0 0!important;
+  background: #f4f7fb!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic .kb-figure-kicker {
+  flex: 0 0 auto!important;
+  width: auto!important;
+  min-width: 0!important;
+  height: auto!important;
+  min-height: 0!important;
+  margin: 0!important;
+  padding: 5px 9px!important;
+  border: 0!important;
+  border-radius: 5px!important;
+  background: #dfeafa!important;
+  color: #2253a2!important;
+  -webkit-text-fill-color: #2253a2!important;
+  font-family: inherit!important;
+  font-size: 11px!important;
+  font-weight: 800!important;
+  line-height: 1.5!important;
+  letter-spacing: .01em!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic .kb-figure-title {
+  flex: 1 1 230px!important;
+  min-width: 0!important;
+  min-height: 0!important;
+  margin: 0!important;
+  padding: 0!important;
+  color: #1b3552!important;
+  -webkit-text-fill-color: #1b3552!important;
+  font-family: inherit!important;
+  font-size: 15px!important;
+  font-weight: 800!important;
+  line-height: 1.55!important;
+  text-align: left!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic > img {
+  display: block!important;
+  width: 100%!important;
+  max-width: 100%!important;
+  height: auto!important;
+  margin: 0 auto!important;
+  padding: 0!important;
+  object-fit: contain!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic > figcaption {
+  display: block!important;
+  margin: 0!important;
+  padding: 12px 15px!important;
+  border: 0!important;
+  border-radius: 0 0 8px 8px!important;
+  background: #f4f7fb!important;
+  color: #354e6e!important;
+  -webkit-text-fill-color: #354e6e!important;
+  font-family: inherit!important;
+  font-size: 14px!important;
+  line-height: 1.76!important;
+  text-align: left!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic > figcaption > strong {
+  display: inline!important;
+  margin: 0 10px 0 0!important;
+  padding: 0!important;
+  color: #1b477f!important;
+  -webkit-text-fill-color: #1b477f!important;
+  font-family: inherit!important;
+  font-size: inherit!important;
+  font-weight: 850!important;
+  line-height: inherit!important;
+  white-space: nowrap!important;
+}
+
+/* News item numbers and headings now begin on exactly the same text row. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-list > .news-item {
+  display: grid!important;
+  grid-template-columns: 44px minmax(0,1fr)!important;
+  align-items: start!important;
+  gap: 16px!important;
+  margin: 0!important;
+  padding: 21px 0!important;
+  border: 0!important;
+  border-bottom: 1px solid #e5ebf2!important;
+  background: transparent!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item > .news-num {
+  display: block!important;
+  align-self: start!important;
+  margin: 0!important;
+  padding: 0!important;
+  border: 0!important;
+  background: transparent!important;
+  color: #2458b5!important;
+  -webkit-text-fill-color: #2458b5!important;
+  font-family: inherit!important;
+  font-size: 18px!important;
+  font-weight: 850!important;
+  line-height: 1.5!important;
+  text-align: left!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item > div:last-child {
+  min-width: 0!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item > div:last-child > :is(h3,h4) {
+  display: block!important;
+  margin: 0 0 11px!important;
+  padding: 0!important;
+  border: 0!important;
+  background: transparent!important;
+  color: #1c3552!important;
+  -webkit-text-fill-color: #1c3552!important;
+  font-family: inherit!important;
+  font-size: 18px!important;
+  font-weight: 850!important;
+  line-height: 1.5!important;
+  letter-spacing: -.02em!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item > div:last-child > :is(h3,h4)::before,
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item > div:last-child > :is(h3,h4)::after {
+  content: none!important;
+  display: none!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item p {
+  margin: 0!important;
+  padding: 0!important;
+  border: 0!important;
+  background: transparent!important;
+  font-size: 15px!important;
+  line-height: 1.8!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item p strong {
+  display: inline!important;
+  margin: 0!important;
+  padding: 0!important;
+  font-size: inherit!important;
+  line-height: inherit!important;
+}
+/* Balanced internal spacing for tables, figures and practical lists. */
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-table-shell {
+  margin-block: 24px!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(section.section,section.pipe-section) figure.kb-figure--graphic {
+  margin-block: 26px!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(section.section,section.pipe-section) :is(ul.checklist,ol.checklist,div.checklist,.pipe-check-grid) {
+  margin-block: 22px!important;
+}
+html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(section.section,section.pipe-section) .news-list {
+  margin-block: 22px!important;
+}
+@media (max-width: 760px) {
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :not(script):not(style) + :not(script):not(style) { margin-block-start: 28px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .kb-takeaways { padding: 20px 18px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic > .kb-figure-head { gap: 7px 10px!important; padding: 11px 12px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic .kb-figure-title { flex-basis: 190px!important; font-size: 14px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) figure.kb-figure.kb-figure--graphic > figcaption { padding: 11px 12px!important; font-size: 13.5px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-list > .news-item { grid-template-columns: 33px minmax(0,1fr)!important; gap: 10px!important; padding: 17px 0!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item > .news-num { font-size: 16px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item > div:last-child > :is(h3,h4) { font-size: 16px!important; }
+  html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item p { font-size: 14.5px!important; }
+}

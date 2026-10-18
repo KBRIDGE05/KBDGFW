@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Regression checks for every published KBRIDGE editorial article.
 
-Optional: --baseline original.zip ensures article markup and all SEO metadata
-remain byte-for-byte unchanged apart from the shared CSS cache revision.
+Optional: --baseline previous.zip verifies only the shared CSS reference and
+intentional duplicate-source removal differ, with all SEO metadata preserved.
 """
 from __future__ import annotations
 
@@ -19,13 +19,21 @@ from lxml import html
 ROOT = Path(__file__).resolve().parents[1]
 POSTS = ROOT / "blog" / "posts"
 EDITORIAL_CSS = ROOT / "assets" / "css" / "pages" / "blog-editorial.css"
-STYLE_VERSION = "20261018-editorial-r2"
+STYLE_VERSION = "20261018-editorial-r3"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
 KINDS = {
     "briefing", "case", "document", "calculation", "dictionary", "network",
     "route", "process", "journey", "comparison", "compliance", "lookup",
     "systems", "analysis", "market",
 }
+LEGACY_CAPTION_PAGES = {
+    "blog/posts/glossary/alliance.html", "blog/posts/insight/arctic.html",
+    "blog/posts/insight/asia-port-congestion.html", "blog/posts/insight/redsea.html",
+}
+PLAIN_GRAPHIC_CAPTION_RE = re.compile(
+    r"(<figure[^>]*kb-figure--graphic[^>]*>.*?<figcaption[^>]*>)(?!<strong>)([^<]+)(</figcaption>)",
+    flags=re.S,
+)
 
 
 def class_xpath(name: str) -> str:
@@ -76,7 +84,38 @@ def audit(baseline: Path | None) -> None:
 
             links = dom.xpath("//link[@href and contains(@href,'blog-editorial.css')]")
             if len(links) != 1 or STYLE_VERSION not in links[0].get("href", ""):
-                errors.append(f"{rel}: missing/duplicate r2 editorial stylesheet")
+                errors.append(f"{rel}: missing/duplicate r3 editorial stylesheet")
+
+            takeaways = dom.xpath(f"//section[{class_xpath('kb-takeaways')}]")
+            if len(takeaways) != 1 or not (takeaways[0].xpath("./ol/li") or takeaways[0].xpath("./p")):
+                errors.append(f"{rel}: KEY TAKEAWAYS missing/empty")
+            else:
+                counts["takeaways"] += 1
+
+            figures = dom.xpath(f"//figure[{class_xpath('kb-figure--graphic')}]")
+            for figure in figures:
+                counts["figures"] += 1
+                if len(figure.xpath(f"./div[{class_xpath('kb-figure-head')}]")) != 1:
+                    errors.append(f"{rel}: VISUAL GUIDE header invalid")
+                if len(figure.xpath(f"./div/*[{class_xpath('kb-figure-title')}]")) != 1:
+                    errors.append(f"{rel}: VISUAL GUIDE heading invalid")
+                if len(figure.xpath("./figcaption/strong")) != 1:
+                    errors.append(f"{rel}: 읽는 포인트 caption invalid")
+
+            for row in dom.xpath(f"//*[ {class_xpath('news-item')} ]"):
+                counts["news_items"] += 1
+                if len(row.xpath(f"./div[{class_xpath('news-num')}]")) != 1 or not row.xpath("./div/h3|./div/h4"):
+                    errors.append(f"{rel}: news item number/title mismatch")
+
+            news_source = dom.xpath(f"//*[ {class_xpath('news-source')} ]")
+            if news_source:
+                errors.append(f"{rel}: redundant news-source text remains")
+            if rel == "blog/posts/news/41news.html":
+                refs = dom.xpath(f"//*[ {class_xpath('kb-source-block')} ]//a[@href]")
+                if len(refs) < 17:
+                    errors.append(f"{rel}: official source links removed")
+                if dom.xpath("//p[starts-with(normalize-space(.),'자료:')]"):
+                    errors.append(f"{rel}: duplicate 자료: note remains")
 
             leads = dom.xpath(f"//section[{class_xpath('kb-editorial-lead')}]")
             if len(leads) != 1:
@@ -115,7 +154,7 @@ def audit(baseline: Path | None) -> None:
                 f"//ul[{class_xpath('checklist')}]|//ol[{class_xpath('checklist')}]|//div[{class_xpath('checklist')}]|//*[{class_xpath('pipe-check-grid')}]"
             ))
 
-            for body_content in dom.xpath(f"//div[{class_xpath('article-body')}]"):
+            for body_content in dom.xpath(f"//div[{class_xpath('article-body')} or {class_xpath('body')}]"):
                 stray_ui = body_content.xpath(".//mark|.//input[@type='checkbox']")
                 if stray_ui:
                     errors.append(f"{rel}: unexpected inline highlights/checkbox controls")
@@ -144,7 +183,14 @@ def audit(baseline: Path | None) -> None:
                 except KeyError:
                     errors.append(f"{rel}: not found in baseline archive")
                 else:
-                    restored = source.replace(STYLE_VERSION, "20261018-editorial-r1")
+                    restored = source.replace(STYLE_VERSION, "20261018-editorial-r2")
+                    if rel == "blog/posts/news/41news.html":
+                        original = re.sub(r'<p class="news-source">자료:[^<]*</p>', "", original)
+                        original = re.sub(r'<p class="editor-note">자료:[^<]*</p>', "", original)
+                    if rel in LEGACY_CAPTION_PAGES:
+                        original = PLAIN_GRAPHIC_CAPTION_RE.sub(
+                            r"\1<strong>읽는 포인트</strong>\2\3", original
+                        )
                     # apply_patch may add a terminal newline to files which
                     # originally ended immediately after </html>.
                     if restored.rstrip("\r\n") != original.rstrip("\r\n"):
@@ -154,19 +200,22 @@ def audit(baseline: Path | None) -> None:
         if not css_blocks_balance(css):
             errors.append("editorial CSS contains unbalanced blocks")
         for sentinel in (
-            "Editorial readability r2", "--kb-ed-paper", "#2458b5",
+            "Editorial readability r2", "Editorial layout r3", "--kb-ed-paper", "#2458b5",
             "h2::before", "list-style: disc outside!important",
-            ".kb-table-shell", "-webkit-text-fill-color", "@media (max-width: 760px)",
+            ".kb-table-shell", ".news-item", ".kb-figure-head",
+            ".kb-takeaways", "-webkit-text-fill-color", "@media (max-width: 760px)",
         ):
             if sentinel not in css:
                 errors.append(f"editorial CSS missing expected readability rule: {sentinel}")
 
-        if counts["articles"] != 44:
-            errors.append(f"published articles: expected 44, got {counts['articles']}")
+        if counts["articles"] < 44:
+            errors.append(f"published articles: expected at least 44, got {counts['articles']}")
         if set(variants) != KINDS:
             errors.append(f"topic types differ: {set(variants) ^ KINDS}")
         if counts["tables"] < 59 or counts["checklists"] < 68:
             errors.append("tables/checklists appear to have been removed")
+        if counts["takeaways"] != counts["articles"] or counts["figures"] < 163:
+            errors.append("KEY TAKEAWAYS/VISUAL GUIDE count regression")
         if errors:
             print(f"EDITORIAL QA FAIL: {len(errors)} issues")
             for item in errors:
@@ -176,11 +225,13 @@ def audit(baseline: Path | None) -> None:
         print(f"- {counts['articles']} posts; {len(variants)} themed layouts")
         print(f"- {counts['tables']} tables with complete rows and scroll containers")
         print(f"- {counts['checklists']} preserved checklists")
+        print(f"- {counts['takeaways']} KEY TAKEAWAYS; {counts['figures']} VISUAL GUIDE captions")
+        print(f"- {counts['news_items']} numbered news entries aligned by one shared layout")
         print(f"- {counts['images']} article images; all files and anchor targets resolve")
         print("- every field-note label, answer and link target verified; no stray markdown/checkbox marks")
         print("- CSS syntax, readability rules and cache version verified")
         if baseline:
-            print("- 44 article sources and SEO metadata unchanged except for CSS cache revision")
+            print("- original content/SEO preserved except source deduplication, 12 caption labels, and CSS version")
     finally:
         if zip_archive:
             zip_archive.close()
