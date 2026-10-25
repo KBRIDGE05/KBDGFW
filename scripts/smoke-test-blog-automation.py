@@ -117,12 +117,20 @@ def main() -> None:
             '<nav class="toc"><ol><li><a href="#ocean">해상운임</a></li><li><a href="#response">실무 대응</a></li></ol></nav>'
             '<section class="section" id="ocean"><h2>1. 해상운임</h2><p><strong>해상운임 변동을 확인합니다.</strong></p><p>선박과 공급망 정보를 함께 검토합니다.</p></section>'
             '<section class="section" id="response"><h2>2. 실무 대응</h2><p><strong>관세와 스케줄을 함께 확인합니다.</strong></p><p>실제 화물 조건별 검토가 필요합니다.</p></section>'
+            # An uploaded article may contain a hand-inserted v44 hub but no
+            # KBRIDGE_BLOG_SYSTEM_START/END markers. This caused live run #187
+            # to fail (two hubs after automatic enrichment).
+            '<section class="kb-resource-hub" data-kb-auto="v44">'
+            '<h2>기존 관련 물류도구</h2><a class="kb-resource-card" href="../../../safe-rate.html">안전운임 조회</a>'
+            '<a class="kb-resource-card" href="../../../vehicle-spec.html">차량 제원</a></section>'
             '<section class="cta kb-blog-cta"><h2>물류 조건을 확인하세요</h2><p>케이브릿지와 실제 조건을 검토합니다.</p>'
             '<div class="action-row"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 문의</a></div></section>'
             '</div></article></main></body></html>'
         )
         raw_path.write_text(raw_html, encoding="utf-8")
         primary.append(("news", raw_slug))
+        # The original hand-authored links must not disappear during repair.
+        preserved_resource_title = "기존 관련 물류도구"
 
         for cmd in PIPELINE:
             run(cmd, work)
@@ -148,6 +156,12 @@ def main() -> None:
         for category, slug in primary:
             path = work / "blog" / "posts" / category / f"{slug}.html"
             soup = BeautifulSoup(path.read_text("utf-8"), "html.parser")
+            if slug == raw_slug:
+                hub = soup.select_one(".kb-resource-hub[data-kb-auto='v44']")
+                if not hub or preserved_resource_title not in hub.get_text(" ", strip=True):
+                    raise SystemExit("custom uploaded resource hub not preserved")
+                if not any("vehicle-spec.html" in a.get("href", "") for a in hub.select("a")):
+                    raise SystemExit("custom uploaded resource links were lost")
             url = f"https://www.kbexpress.kr/blog/posts/{category}/{slug}.html"
             checks = {
                 "site header": len(soup.select("header.header#top")) == 1,

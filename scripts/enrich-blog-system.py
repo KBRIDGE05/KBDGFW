@@ -22,6 +22,18 @@ CATEGORIES = set(CONFIG["categories"])
 START = "<!-- KBRIDGE_BLOG_SYSTEM_START -->"
 END = "<!-- KBRIDGE_BLOG_SYSTEM_END -->"
 AUTO_RE = re.compile(r"\s*<!-- KBRIDGE_BLOG_SYSTEM_START -->[\s\S]*?<!-- KBRIDGE_BLOG_SYSTEM_END -->\s*", re.I)
+# Legacy uploads sometimes embed a v44 resource hub without the paired auto
+# markers.  Such a hub is a generated component, not an authored section.
+# Remove unmarked copies before inserting the single canonical hub.  The
+# expression is restricted to v44 resource sections; unrelated article
+# sections, authored CTAs, and source content are never touched.
+LEGACY_AUTO_HUB_RE = re.compile(
+    r"\s*<section\b(?=[^>]*\bclass\s*=\s*[\"'][^\"']*\bkb-resource-hub\b)"
+    r"(?=[^>]*\bdata-kb-auto\s*=\s*[\"']v44[\"'])[^>]*>"
+    r"[\s\S]*?</section>\s*",
+    re.I,
+)
+
 CTA_RE = re.compile(r"<section\b[^>]*class=[\"'][^\"']*(?:\bcta\b|kb-blog-cta)[^\"']*[\"'][^>]*>", re.I)
 BODY_RE = re.compile(r"<body\b(?P<attrs>[^>]*)>", re.I)
 SITE = "https://www.kbexpress.kr"
@@ -142,11 +154,23 @@ def main() -> None:
         original = path.read_text("utf-8")
         source = AUTO_RE.sub("\n", original)
         source = add_category_attr(source, current["category"])
-        cta = CTA_RE.search(source)
-        if not cta:
-            continue
-        block = block_html(current, related(current, profiles), tools_for(current))
-        source = source[:cta.start()] + block + source[cta.start():]
+        # Older user-uploaded posts may contain an unmarked resource hub.
+        # Such a hub is authored content; keep its links rather than adding a
+        # second auto hub. This guarantees one hub without erasing links.
+        soup = BeautifulSoup(source, "html.parser")
+        authored_hubs = soup.select("section.kb-resource-hub[data-kb-auto='v44']")
+        if len(authored_hubs) == 1 and len(authored_hubs[0].select(".kb-resource-card")) >= 2:
+            pass  # preserve the existing single, valid resource hub as-is
+        else:
+            # Invalid/duplicate auto-marked modules can be regenerated safely.
+            # These are identified by their v44 automation marker, not by the
+            # names of arbitrary editorial sections.
+            source = LEGACY_AUTO_HUB_RE.sub("\n", source)
+            cta = CTA_RE.search(source)
+            if not cta:
+                continue
+            block = block_html(current, related(current, profiles), tools_for(current))
+            source = source[:cta.start()] + block + source[cta.start():]
         source = source.replace("\r\n", "\n")
         if source != original:
             path.write_text(source, "utf-8", newline="\n")

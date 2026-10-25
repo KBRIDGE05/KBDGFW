@@ -69,8 +69,11 @@ def main():
         if len(soup.select(".kb-takeaways"))!=1: fail(f"{rel}: KEY TAKEAWAYS 개수 이상")
         if len(soup.select("#faq .faq-item, section#faq details"))<1: fail(f"{rel}: FAQ 구조 누락")
         if len(soup.select(".tags .tag"))<1: fail(f"{rel}: 태그 구조 누락")
-        hubs=soup.select(".kb-resource-hub[data-kb-auto='v44']")
-        if len(hubs)!=1: fail(f"{rel}: V42 관련자료 허브 개수 {len(hubs)}")
+        hubs=soup.select(".kb-resource-hub")
+        # Count every resource hub, not just those with the official marker.
+        # Two differently tagged hubs would still be a duplicate UI.
+        if len(hubs)!=1 or hubs[0].get("data-kb-auto")!="v44":
+            fail(f"{rel}: 관련자료 허브는 자동 생성 1개여야 함 (전체 {len(hubs)}개)")
         else:
             resources+=1
             cards=hubs[0].select(".kb-resource-card")
