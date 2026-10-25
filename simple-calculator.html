@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <html lang="ko"><head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S5STD1B5LR"></script>
-  <script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S5STD1B5LR"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -16,14 +16,12 @@
 <meta content="화물 규격과 수량, 중량을 입력하면 CBM, 실중량, 항공·특송 부피중량과 단순 추천 규격을 즉시 계산합니다." name="description"/>
 <link href="https://www.kbexpress.kr/simple-calculator.html" rel="canonical"/><meta content="website" property="og:type"/><meta content="케이브릿지 KBRIDGE" property="og:site_name"/><meta content="ko_KR" property="og:locale"/><meta content="CBM·부피중량 단순계산 - KBRIDGE" property="og:title"/><meta content="화물 규격과 수량으로 CBM, 실중량, 항공·특송 부피중량과 과금중량을 계산합니다." property="og:description"/><meta content="https://www.kbexpress.kr/simple-calculator.html" property="og:url"/><meta content="https://www.kbexpress.kr/assets/og/og-simple-calculator-20260721.png" property="og:image"/><meta content="https://www.kbexpress.kr/assets/og/og-simple-calculator-20260721.png" property="og:image:url"/><meta content="https://www.kbexpress.kr/assets/og/og-simple-calculator-20260721.png" property="og:image:secure_url"/><meta content="image/png" property="og:image:type"/><meta content="1000" property="og:image:width"/><meta content="1000" property="og:image:height"/><meta content="CBM·부피중량 단순계산 - KBRIDGE" property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="CBM·부피중량 단순계산 - KBRIDGE" name="twitter:title"/><meta content="화물 규격과 수량으로 CBM, 실중량, 항공·특송 부피중량과 과금중량을 계산합니다." name="twitter:description"/><meta content="https://www.kbexpress.kr/assets/og/og-simple-calculator-20260721.png" name="twitter:image"/><meta content="CBM·부피중량 단순계산 - KBRIDGE" name="twitter:image:alt"/><meta content="index,follow,max-image-preview:large" name="robots"/><meta content="index,follow,max-image-preview:large" name="naverbot"/><meta content="index,follow,max-image-preview:large" name="yeti"/>
 <meta content="#16284a" name="theme-color"/>
-
-
-
 <link href="assets/css/pages/simple-calculator.css?v=20260720-10" rel="stylesheet"/>
 <link href="assets/css/kbridge-design-system.css?v=20260926-design-v38" rel="stylesheet"/>
-<link rel="preconnect" href="https://kbridge-ai-chat.jin-kim-937.workers.dev" crossorigin/><link rel="dns-prefetch" href="//kbridge-ai-chat.jin-kim-937.workers.dev"/><link href="assets/css/mobile-readability-v1.css?v=20261018-clean-v1" rel="stylesheet"/>
+<link crossorigin="" href="https://kbridge-ai-chat.jin-kim-937.workers.dev" rel="preconnect"/><link href="//kbridge-ai-chat.jin-kim-937.workers.dev" rel="dns-prefetch"/><link href="assets/css/mobile-readability-v1.css?v=20261025-mobile-v15" rel="stylesheet"/>
+<link href="assets/css/pages/kbridge-reference-calc-v4.css?v=20261025-4" rel="stylesheet"/><link rel="stylesheet" href="assets/css/pages/kbridge-tools-unified-v11.css?v=20261025-v11"/>
 </head>
-<body class="site-subpage simple-mode container-planner-mode kb-unified-site" data-build="v24-main-page-exact-match" data-default-tool="simple" id="page-top">
+<body class="kb-tool-unified site-subpage simple-mode container-planner-mode kb-unified-site kb-reference-ui kb-reference-simple-calculator" data-build="v24-main-page-exact-match" data-default-tool="simple" id="page-top">
 <a class="skip-link" href="#plannerWorkspace">본문 바로가기</a>
 <header class="header" id="top">
 <div class="container header-inner">
@@ -102,7 +100,7 @@
 <button hidden="" id="sampleBtn" type="button"></button>
 <button hidden="" id="settingsBtn" type="button"></button>
 </section>
-<section aria-labelledby="simpleTitle" class="simple-calculator-panel" id="simpleCalculatorPanel">
+<section aria-labelledby="simpleTitle" class="simple-calculator-panel kfr-companion-calculator" id="simpleCalculatorPanel">
 <div class="simple-calc-head">
 <div>
 <p class="section-number">SIMPLE CALCULATION</p>
@@ -114,7 +112,7 @@
 </div>
 </div>
 <div class="simple-calc-grid">
-<section class="simple-input-card">
+<section class="simple-input-card kfr-input-block">
 <div class="simple-card-head"><strong>화물 정보</strong><span>규격 mm · 중량 kg</span></div>
 <div aria-hidden="true" class="simple-table-head"><span>품명</span><span>가로 L</span><span>세로 W</span><span>높이 H</span><span>수량</span><span>개당중량</span><span></span></div>
 <div class="simple-rows" id="simpleRows"></div>
@@ -123,7 +121,7 @@
 <button class="secondary-btn" id="simpleResetBtn" type="button">초기화</button>
 </div>
 </section>
-<section aria-live="polite" class="simple-result-card">
+<section aria-live="polite" class="simple-result-card kfr-output-block">
 <div class="simple-card-head"><strong>계산 결과</strong><span>입력값 기준 자동 계산</span></div>
 <div class="simple-summary-grid">
 <div><span>총 품목</span><strong id="simpleSku">1종</strong></div>
@@ -443,6 +441,6 @@
 </form>
 </dialog>
 <input accept=".xlsx,.xls,.pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,application/pdf" hidden="" id="cargoFileInput" type="file"/>
-<script defer="" src="assets/load-planner-app.js?v=20260720-v17"></script><script defer="" src="assets/site-chrome.js?v=20261018-clean-v1"></script>
+<script defer="" src="assets/load-planner-app.js?v=20260720-v17"></script><script defer="" src="assets/site-chrome.js?v=20261025-hover-v14"></script>
 <script defer="" src="assets/enterprise-motion.js?v=20260720-v17"></script>
-<script defer src="assets/kebby-chat.js?v=20260727-chat-v12"></script></body></html>
+</body></html>

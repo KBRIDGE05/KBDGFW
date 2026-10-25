@@ -89,3 +89,6 @@
   html { scroll-behavior:auto!important; }
   html body :is(.modal,.dialog,.mobile-nav) { transition:none!important; }
 }
+
+/* V15: hidden desktop hover menus must not enlarge the mobile document width. */
+@media(max-width:900px){body.kb-blog-post .header .nav-dropdown-menu{display:none!important}}

@@ -1,0 +1,55 @@
+/* K-BRIDGE floating customer actions v14 / expandable left-side hover rail */
+#kb-floating-actions-shell{--kb-fab-blue:#244fce;--kb-fab-dark:#0d2450;--kb-fab-white:#fff;font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif;z-index:2147482000}
+#kb-floating-actions-shell *,#kb-floating-actions-shell *::before,#kb-floating-actions-shell *::after{box-sizing:border-box}
+#kb-floating-actions-shell .kb-float-nav{position:fixed;right:18px;bottom:calc(24px + env(safe-area-inset-bottom, 0px));z-index:2147482000;display:flex;flex-direction:column;align-items:flex-end;gap:11px;pointer-events:none}
+#kb-floating-actions-shell .kb-float-btn{position:relative;display:inline-flex;align-items:center;justify-content:flex-end;gap:0;width:52px;height:52px;min-width:52px;min-height:52px;margin:0;padding:0 13px 0 15px;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:var(--kb-fab-blue);color:#fff!important;box-shadow:0 6px 18px rgba(10,36,93,.24);cursor:pointer;pointer-events:auto;text-align:center;text-decoration:none!important;white-space:nowrap;line-height:1;transition:width .28s cubic-bezier(.25,.8,.25,1),background .18s ease,transform .18s ease,box-shadow .18s ease;will-change:width}
+#kb-floating-actions-shell .kb-float-btn:hover{transform:translateY(-2px);background:#1a41af;box-shadow:0 10px 22px rgba(10,36,93,.28)}
+#kb-floating-actions-shell .kb-float-btn:focus-visible{outline:3px solid #8bbaff;outline-offset:3px}
+#kb-floating-actions-shell .kb-float-btn svg{width:24px;height:24px;flex:0 0 24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#kb-floating-actions-shell .kb-float-chat{width:52px;min-width:52px;height:52px;border-radius:999px;background:#1544c4}
+#kb-floating-actions-shell .kb-float-chat-text{position:absolute;left:17px;right:54px;top:0;bottom:0;display:flex;align-items:center;justify-content:flex-start;font-size:13.5px;font-weight:850;letter-spacing:-.02em;white-space:nowrap;color:#fff;opacity:0;transform:translateX(16px);transition:opacity .18s ease,transform .28s cubic-bezier(.25,.8,.25,1);pointer-events:none}
+#kb-floating-actions-shell .kb-float-top{background:#101e34}
+#kb-floating-actions-shell .kb-float-top:hover{background:#243b60}
+/* Floating labels now live INSIDE the blue pill, instead of an external tooltip. */
+#kb-floating-actions-shell .kb-float-tooltip{position:absolute;left:17px;right:54px;top:0;bottom:0;display:flex;align-items:center;justify-content:flex-start;width:auto;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:#fff!important;box-shadow:none;font-size:13.5px;line-height:1.25;font-weight:850;letter-spacing:-.02em;white-space:nowrap;opacity:0;visibility:visible;transform:translateX(16px);pointer-events:none;transition:opacity .18s ease,transform .28s cubic-bezier(.25,.8,.25,1)}
+#kb-floating-actions-shell .kb-float-btn[data-kb-float="quote"]{--kb-expand-width:155px}
+#kb-floating-actions-shell .kb-float-btn[data-kb-float="chat"]{--kb-expand-width:158px}
+#kb-floating-actions-shell .kb-float-btn[data-kb-float="email"]{--kb-expand-width:172px}
+#kb-floating-actions-shell .kb-float-btn[data-kb-float="top"]{--kb-expand-width:146px}
+@media(hover:hover) and (pointer:fine){
+ #kb-floating-actions-shell .kb-float-btn:hover{width:var(--kb-expand-width)}
+ #kb-floating-actions-shell .kb-float-btn:hover .kb-float-tooltip,#kb-floating-actions-shell .kb-float-btn:hover .kb-float-chat-text{opacity:1;transform:translateX(0)}
+}
+#kb-floating-actions-shell .kb-float-btn:focus-visible{width:var(--kb-expand-width)}
+#kb-floating-actions-shell .kb-float-btn:focus-visible .kb-float-tooltip,#kb-floating-actions-shell .kb-float-btn:focus-visible .kb-float-chat-text{opacity:1;transform:translateX(0)}
+#kb-floating-actions-shell .kb-float-email-panel[hidden]{display:none!important}
+#kb-floating-actions-shell .kb-float-email-panel{position:fixed;z-index:2147482001;right:83px;bottom:calc(76px + env(safe-area-inset-bottom, 0px));width:min(345px,calc(100vw - 102px));padding:18px;border:1px solid #dce5f2;border-radius:20px;background:#fff;color:#18304f;box-shadow:0 18px 50px rgba(12,31,70,.25)}
+#kb-floating-actions-shell .kb-float-email-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+#kb-floating-actions-shell .kb-float-email-head strong{display:block;font-size:17px;font-weight:900;line-height:1.4;color:#172e53}
+#kb-floating-actions-shell .kb-float-email-head p{margin:3px 0 0;color:#7e8ea4;font-size:11px;line-height:1.4}
+#kb-floating-actions-shell [data-kb-float-close]{width:30px;height:30px;display:grid;place-items:center;border:1px solid #dce4ef;border-radius:9px;background:#f7faff;color:#526985;font-size:20px;line-height:1;cursor:pointer}
+#kb-floating-actions-shell .kb-float-email-copy{margin:15px 0 12px;color:#536781;font-size:13px;line-height:1.6}
+#kb-floating-actions-shell .kb-float-email-address{padding:12px 13px;border-radius:11px;background:#f3f7fe;color:#1c468f;font-size:14px;font-weight:850;overflow-wrap:anywhere}
+#kb-floating-actions-shell .kb-float-email-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+#kb-floating-actions-shell .kb-float-email-actions a,#kb-floating-actions-shell .kb-float-email-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border:1px solid #2b5cdb;border-radius:10px;background:#2b5cdb;color:#fff!important;font-size:12px;font-weight:850;text-decoration:none!important;cursor:pointer}
+#kb-floating-actions-shell .kb-float-email-actions button{border-color:#ccdbee;background:#fff;color:#2b4d86!important}
+#kb-floating-actions-shell .kb-float-email-note{margin:12px 0 0;font-size:11px;line-height:1.6;color:#6c7c94}
+/* Replace, rather than duplicate, the original chatbot round launcher on the home page. */
+body.site-home #kb-kebby-root .kb-kebby-launcher{position:absolute!important;width:1px!important;height:1px!important;clip-path:inset(50%)!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important}
+body.site-home #kb-kebby-root .kb-kebby-welcome{display:none!important}
+/* Ensure that a floating panel never conceals the rail on closed state; the panel itself remains functional. */
+@media(max-width:640px){
+ #kb-floating-actions-shell .kb-float-nav{right:11px;bottom:calc(76px + env(safe-area-inset-bottom, 0px));gap:9px}
+ #kb-floating-actions-shell .kb-float-btn{width:46px;height:46px;min-width:46px;min-height:46px;padding:0 12px 0 13px;will-change:auto}
+ #kb-floating-actions-shell .kb-float-btn:focus-visible{width:46px}
+ #kb-floating-actions-shell .kb-float-btn svg{width:21px;height:21px;flex-basis:21px}
+ #kb-floating-actions-shell .kb-float-chat{min-width:46px;width:46px;padding:0 12px 0 13px}
+ #kb-floating-actions-shell .kb-float-chat-text{display:none}
+ #kb-floating-actions-shell .kb-float-tooltip{display:none}
+ #kb-floating-actions-shell .kb-float-email-panel{right:68px;bottom:calc(120px + env(safe-area-inset-bottom, 0px));width:min(325px,calc(100vw - 80px));padding:15px;border-radius:16px}
+ #kb-floating-actions-shell .kb-float-email-actions{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){#kb-floating-actions-shell .kb-float-btn,#kb-floating-actions-shell .kb-float-tooltip,#kb-floating-actions-shell .kb-float-chat-text{transition:none!important}}
+
+/* Replace legacy blog TOP anchors to avoid duplicate floating controls. */
+body:has(#kb-floating-actions-shell) a.floating-top{display:none!important}

@@ -1,0 +1,146 @@
+/* K-BRIDGE Logistics Tools unified v11 — safe-rate visual language.
+   Cosmetic UI only: explicit .kb-tool-unified scope; never applied to safety-rate,
+   blog, common header/footer, rates, application data, business logic or page widths. */
+body.kb-tool-unified{
+  --kbt-ink:#20354f;--kbt-title:#172f50;--kbt-blue:#2476d5;
+  --kbt-blue-strong:#1665c2;--kbt-blue-soft:#edf5ff;--kbt-teal:#158ea5;
+  --kbt-muted:#617892;--kbt-line:#dce6f1;--kbt-line-strong:#c9d9e9;
+  --kbt-paper:#f4f7fb;--kbt-panel:#ffffff;
+  --kbt-shadow:0 9px 28px rgba(18,47,82,.07);
+  color:var(--kbt-ink);background:var(--kbt-paper);
+  font-size:16px;line-height:1.65;
+  -webkit-text-size-adjust:100%;
+}
+/* Shared page hero: same navy/blue palette and readable type as safe-rate.
+   Do not alter global .container, navbar or footer. */
+body.kb-tool-unified main .hero.kb-page-hero,
+body.kb-tool-unified main .tool-hero.kb-page-hero,
+body.kb-tool-unified .hero.kb-page-hero,
+body.kb-tool-unified .tool-hero.kb-page-hero{
+  background:linear-gradient(112deg,#0e2949 0%,#173c69 51%,#235f91 100%)!important;
+  color:white!important;
+}
+body.kb-tool-unified .kb-page-hero :is(.eyebrow,.tool-kicker){color:#b8deff!important;letter-spacing:.11em!important;font-size:12px!important;font-weight:850!important;}
+body.kb-tool-unified .kb-page-hero :is(.eyebrow,.tool-kicker)::before{background:#3ab5ed!important;box-shadow:0 0 0 4px rgba(52,175,235,.15)!important;}
+body.kb-tool-unified .kb-page-hero h1{color:#fff!important;letter-spacing:-.045em!important;line-height:1.25!important;font-weight:850!important;font-size:clamp(30px,3vw,43px)!important;}
+body.kb-tool-unified .kb-page-hero :is(p,.lead,.hero-subtitle){color:#d3e5f7!important;line-height:1.72!important;font-size:clamp(14px,1.25vw,16px)!important;}
+body.kb-tool-unified .kb-page-hero :is(.badges,.tool-badges,.hero-tags) span{color:#e5f4ff!important;border-color:rgba(215,235,255,.24)!important;background:rgba(255,255,255,.09)!important;font-size:12px!important;font-weight:750!important;min-height:29px;}
+/* Compact conventional heroes only. Complex load/analytics heroes retain own layout. */
+body.kb-tool-unified:not(.container-planner-mode) .kb-page-hero:not(.kb-hero-has-panel) :is(.hero-inner,.tool-hero-inner){min-height:0!important;padding-top:49px!important;padding-bottom:47px!important;}
+body.kb-tool-unified:not(.container-planner-mode) .kb-page-hero:not(.kb-hero-has-panel) h1{margin-top:12px!important;margin-bottom:10px!important;}
+/* Main shared workbench canvas — preserve fixed page width from source CSS. */
+body.kb-tool-unified :is(.tool-shell,.kbfx-card){border:1px solid var(--kbt-line)!important;background:#f7faff!important;border-radius:18px!important;box-shadow:var(--kbt-shadow)!important;}
+body.kb-tool-unified :is(.tool-shell-head,.shell-head,.kbfx-head){border-bottom:1px solid var(--kbt-line)!important;background:#fafdff!important;min-height:65px;}
+body.kb-tool-unified :is(.tool-shell-title,.shell-head) strong{color:var(--kbt-title)!important;font-size:17px!important;font-weight:850!important;line-height:1.4!important;}
+body.kb-tool-unified :is(.tool-shell-title,.shell-head) small{font-size:11px!important;letter-spacing:.1em!important;color:#758ca5!important;}
+body.kb-tool-unified :is(.tool-open,.tool-inline-status,.kb-source-date,.kb-tool-badge){border-radius:9px!important;font-size:12px!important;font-weight:800!important;line-height:1.5!important;}
+body.kb-tool-unified .kb-source-strip{background:#edf6fb!important;border-color:#d7e9f4!important;}
+body.kb-tool-unified :is(.kb-source-strip,.kb-source-copy){color:#47627e!important;font-size:13px!important;line-height:1.65!important;}
+/* Interactive white cards; clear section separation / airy legible typography. */
+body.kb-tool-unified :is(.nt-card,.kbfx-card,.panel,.board-metric,.guide-card,.simple-input-card,.simple-result-card){
+  border-color:var(--kbt-line)!important;
+  border-radius:15px!important;
+  box-shadow:0 4px 14px rgba(30,62,97,.035)!important;
+}
+body.kb-tool-unified .tool-shell :is(.nt-card,.panel,.guide-card){background:#fff!important;}
+body.kb-tool-unified .nt-card{margin-bottom:13px!important;}
+body.kb-tool-unified :is(.nt-tool-head,.simple-card-head,.panel-heading,.kbfx-head){
+  border-bottom-color:#e8eef6!important;
+}
+body.kb-tool-unified :is(.nt-tool-head,.simple-card-head,.panel-heading,.kbfx-title) :is(h2,h3),
+body.kb-tool-unified :is(.nt-card,.kbfx-card,.panel,.guide-card) > :is(h2,h3),
+body.kb-tool-unified :is(.nt-card,.panel,.guide-card) :is(.nt-card-title,.panel-title){
+  font-size:19px!important;color:var(--kbt-title)!important;font-weight:850!important;line-height:1.38!important;letter-spacing:-.03em!important;
+}
+body.kb-tool-unified :is(.nt-tool-head,.simple-card-head,.panel-heading,.kbfx-head) p,
+body.kb-tool-unified .nt-card > p,
+body.kb-tool-unified :is(.section-head,.tool-note) p{font-size:14px!important;line-height:1.75!important;color:var(--kbt-muted)!important;}
+body.kb-tool-unified :is(.nt-form,.kbfx-control,.vehicle-filter,.cargo-form,.planner-settings){background:#f6f9fe!important;border-color:#e3edf6!important;border-radius:12px!important;}
+/* Consistent 44px ergonomic form elements, including searchable selectors. */
+body.kb-tool-unified :is(main,.tool-shell,.kbfx-page,.nt-wrap) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="file"]),select,textarea){
+  font-size:14px!important;line-height:1.5!important;
+  color:#243951!important;
+  border-radius:9px!important;border:1px solid #cbd9e8!important;background-color:#fff!important;
+  box-shadow:none!important;
+  min-height:42px;
+  max-width:100%;
+}
+body.kb-tool-unified :is(main,.tool-shell,.kbfx-page,.nt-wrap) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="file"]),select,textarea):focus{border-color:#489eea!important;outline:2px solid rgba(35,123,212,.17)!important;outline-offset:1px!important;}
+body.kb-tool-unified :is(main,.tool-shell,.kbfx-page) :is(input,textarea)::placeholder{color:#8b9bb0!important;opacity:1;}
+body.kb-tool-unified :is(main,.tool-shell,.kbfx-page) :is(label,.nt-field label,.field)>:is(span,small),
+body.kb-tool-unified :is(main,.tool-shell,.kbfx-page) .nt-label{font-size:13px;line-height:1.55;font-weight:740;color:#4c6481;}
+body.kb-tool-unified :is(main,.tool-shell,.kbfx-page) :is(input[type="checkbox"],input[type="radio"]){width:17px;height:17px;accent-color:var(--kbt-blue);flex-shrink:0;}
+/* Blue CTAs and subdued secondary actions; avoid using bare button selectors. */
+body.kb-tool-unified :is(.nt-btn-primary,.primary-btn,.btn-primary,.kbfx-search,.kbfx-btn-primary,.primary-action,.nt-actions .primary,.tool-primary-btn){
+  background:linear-gradient(112deg,#2a8aeb,#1f6dcf)!important;border-color:#2477d6!important;
+  color:#fff!important;box-shadow:0 6px 15px rgba(28,113,214,.16)!important;
+  font-size:14px!important;font-weight:800!important;border-radius:10px!important;
+}
+body.kb-tool-unified :is(.nt-btn,.secondary-btn,.btn-secondary,.ghost-btn,.tool-open){font-size:13px!important;font-weight:760!important;border-radius:9px!important;}
+body.kb-tool-unified :is(.nt-btn-primary,.primary-btn,.btn-primary,.secondary-btn,.nt-btn,.kbfx-search,.kbfx-btn-primary){min-height:40px;}
+body.kb-tool-unified .nt-seg button[aria-selected="true"],body.kb-tool-unified .nt-seg .active,body.kb-tool-unified .tool-mode-btn.active{color:var(--kbt-blue-strong)!important;}
+/* Tables: readable, consistently padded, no overflow into the viewport. */
+body.kb-tool-unified :is(.nt-table-wrap,.cbm-v2-table-wrap,.kbfx-table-wrap,.table-wrap,.result-table-wrap,.vehicle-table-wrap){max-width:100%;overflow-x:auto!important;-webkit-overflow-scrolling:touch;}
+body.kb-tool-unified :is(.nt-card,.tool-shell,.kbfx-page,.panel) table{border-collapse:separate;border-spacing:0;font-size:13px;line-height:1.6;color:#324b68;}
+body.kb-tool-unified :is(.nt-card,.tool-shell,.kbfx-page,.panel) table th{background:#f0f5fb!important;color:#375775!important;font-size:12.5px!important;font-weight:850!important;line-height:1.45!important;padding:11px 10px!important;}
+body.kb-tool-unified :is(.nt-card,.tool-shell,.kbfx-page,.panel) table td{font-size:13px!important;line-height:1.6!important;padding:10px!important;}
+body.kb-tool-unified :is(.nt-card,.tool-shell,.kbfx-page,.panel) table tbody tr:nth-child(even){background:rgba(242,248,255,.45);}
+body.kb-tool-unified :is(.related-tools-card,.kb-related-tools-unified){background:#fbfdff!important;border:1px solid var(--kbt-line)!important;}
+body.kb-tool-unified .kb-related-tools-unified a{font-size:13px!important;font-weight:720!important;min-height:41px;}
+/* Summaries and computed results remain distinct from editable form cards. */
+body.kb-tool-unified :is(.kfr-output-block,.cbm-v2-summary-section,.simple-result-card,.nt-results,.kbfx-meta){background:#f1f7ff!important;border-color:#cfe1f4!important;}
+body.kb-tool-unified .cbm-v2-summary-grid :is(.value,.number,.metric-value),
+body.kb-tool-unified .simple-summary-grid :is(.value,.number,.metric-value){font-weight:900!important;color:#176bc9!important;}
+/* Live dashboard and freight lists have slightly denser card requirements. */
+body.kb-tool-unified .section-head h2{font-weight:850!important;letter-spacing:-.04em!important;color:var(--kbt-title)!important;}
+body.kb-tool-unified .board-metric{background:#fff!important;}
+body.kb-tool-unified :is(.chart-toolbar,.chart-wrap,.freight-card,.kbfx-table-wrap){border-color:var(--kbt-line)!important;border-radius:12px!important;}
+/* Unify special input surfaces without restructuring their functional DOM. */
+body.kb-tool-unified .kbfx-card{background:#fff!important;}
+body.kb-tool-unified .kbfx-title{color:var(--kbt-title)!important;font-size:18px!important;}
+body.kb-tool-unified .kbfx-datebox{color:var(--kbt-title)!important;font-weight:780;}
+body.kb-tool-unified .vehicle-filter{padding:16px!important;}
+body.kb-tool-unified .vehicle-field label{font-size:13px!important;color:#45627f!important;}
+body.kb-tool-unified .nt-field :is(input,select){font-size:14px!important;}
+body.kb-tool-unified :is(.simple-card-head,.panel-heading) h2{font-size:19px!important;}
+/* Mobile: improve typography, 44px tap targets without forcing complex
+   3D charts / freight grids to overflow the screen. */
+@media(max-width:760px){
+ body.kb-tool-unified{font-size:15px!important;line-height:1.7!important;}
+ body.kb-tool-unified:not(.container-planner-mode) .kb-page-hero:not(.kb-hero-has-panel) :is(.hero-inner,.tool-hero-inner){padding-top:35px!important;padding-bottom:36px!important;}
+ body.kb-tool-unified .kb-page-hero h1{font-size:clamp(27px,6.5vw,34px)!important;}
+ body.kb-tool-unified .kb-page-hero :is(p,.lead,.hero-subtitle){font-size:14px!important;}
+ body.kb-tool-unified :is(.tool-shell,.kbfx-card,.nt-card,.panel){border-radius:13px!important;}
+ body.kb-tool-unified :is(.nt-tool-head,.simple-card-head,.panel-heading) :is(h2,h3),body.kb-tool-unified :is(.nt-card,.panel) > :is(h2,h3){font-size:17px!important;}
+ body.kb-tool-unified :is(main,.tool-shell,.kbfx-page) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="file"]),select,textarea){min-height:44px;font-size:15px!important;}
+ body.kb-tool-unified :is(.nt-btn-primary,.primary-btn,.btn-primary,.secondary-btn,.nt-btn,.kbfx-search){min-height:44px!important;font-size:14px!important;}
+ body.kb-tool-unified .kb-related-tools-unified a{min-height:44px;font-size:13px!important;}
+ body.kb-tool-unified .nt-card{margin-bottom:12px!important;}
+ body.kb-tool-unified :is(.tool-shell,.nt-card,.panel,.kbfx-card){min-width:0;max-width:100%;}
+ body.kb-tool-unified :is(.tool-shell,.nt-card,.panel,.kbfx-page) table td{font-size:12.5px!important;}
+}
+@media(prefers-reduced-motion:reduce){body.kb-tool-unified :is(.nt-card,.primary-btn,.nt-btn){transition:none!important}}
+
+/* Visual hierarchy pass: clearer steps and consistent result emphasis. */
+body.kb-tool-unified .tool-shell-head{position:relative;border-top:3px solid #409be9!important;padding-top:14px!important;padding-bottom:14px!important;}
+body.kb-tool-unified .tool-shell-head .tool-shell-title strong{font-size:18px!important;}
+body.kb-tool-unified .tool-shell :is(.nt-card,.panel) > :is(h2,h3),
+body.kb-tool-unified .nt-tool-head :is(h2,h3),
+body.kb-tool-unified .simple-card-head :is(h2,h3){border-left:3px solid #328ce5;padding-left:11px;}
+body.kb-tool-unified .tool-shell :is(.kfr-input-block,.cbm-v2-input-card){border-top:3px solid #7cbbee!important;}
+body.kb-tool-unified .tool-shell :is(.kfr-output-block,.cbm-v2-summary-section){border-top:3px solid #257fdf!important;background:#f0f6ff!important;}
+body.kb-tool-unified :is(.kbfx-card,.vehicle-filter){border-top:3px solid #4e9fe8!important;}
+body.kb-tool-unified :is(.nt-form,.kbfx-control,.vehicle-filter) :is(input,select,textarea){background-color:#fff!important;}
+body.kb-tool-unified .kb-related-tools-unified{background:linear-gradient(135deg,#fff,#f0f7ff)!important;}
+body.kb-tool-unified .kb-related-tools-unified a:hover{border-color:#8ab9ed!important;background:#eef6ff!important;color:#175cae!important;}
+@media(max-width:760px){body.kb-tool-unified .tool-shell-head .tool-shell-title strong{font-size:16px!important;}}
+
+/* Unified tools directory: harmonize former orange / purple / navy tiles. */
+body.kb-tool-unified .tool-grid .tool-card{background:#fff!important;border:1px solid var(--kbt-line)!important;border-top:3px solid #6db1ef!important;border-radius:16px!important;box-shadow:var(--kbt-shadow)!important;transition:box-shadow .17s ease,transform .17s ease!important;}
+body.kb-tool-unified .tool-grid .tool-card:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(33,88,144,.14)!important;border-top-color:#267cda!important;}
+body.kb-tool-unified .tool-grid .tool-card h3{color:var(--kbt-title)!important;font-size:18px!important;font-weight:850!important;letter-spacing:-.03em;}
+body.kb-tool-unified .tool-grid .tool-card p{color:var(--kbt-muted)!important;font-size:14px!important;line-height:1.75!important;}
+body.kb-tool-unified .tool-grid .tool-icon{background:#eaf4ff!important;color:#1d70c5!important;border:1px solid #d2e5fa!important;border-radius:11px!important;}
+body.kb-tool-unified .guide .guide-card{background:#fff!important;border:1px solid var(--kbt-line)!important;border-radius:16px!important;}
+body.kb-tool-unified .guide .guide-card h3{color:var(--kbt-title)!important;font-weight:850!important;font-size:18px!important;}
+@media(max-width:760px){body.kb-tool-unified .tool-grid .tool-card h3{font-size:17px!important;}body.kb-tool-unified .tool-grid .tool-card p{font-size:14px!important;}}

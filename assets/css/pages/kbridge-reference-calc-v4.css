@@ -1,0 +1,153 @@
+/* K-BRIDGE calculator UI V4 – screen-reference calculator treatment.
+   Calculator only. NO changes to site container, global header/footer, hero, nav or formulas. */
+:root{--kfr-blue:#1678df;--kfr-sky:#eff8ff;--kfr-mist:#f6f9fc;--kfr-border:#e1e9f2;--kfr-text:#233950;--kfr-sub:#71839a;--kfr-teal:#087d9e;--kfr-danger:#d55464;}
+body.kb-reference-ui :is(#calculator,.kfr-companion-calculator){color:var(--kfr-text);font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+body.kb-reference-ui :is(#calculator,.kfr-companion-calculator) :is(button,select,input){font-family:inherit;}
+body.kb-reference-ui :is(#calculator,.kfr-companion-calculator) :is(button,select,input):focus-visible{outline:2px solid #78b8fb;outline-offset:2px;}
+/* Safety rate: 1 column, results beneath input, never widen global website. */
+body.page-safe-rate.kb-reference-ui #calculator.kb-safe-grid{display:flex!important;flex-direction:column!important;gap:0!important;padding:0!important;background:#fff!important;grid-template-columns:none!important;overflow:visible!important;}
+body.page-safe-rate.kb-reference-ui #calculator > .kb-safe-form-card{width:100%!important;border:none!important;background:#fff!important;border-radius:0!important;box-shadow:none!important;padding:22px 24px 18px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kb-section-title{margin:0 0 18px!important;padding:0!important;border:0!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kb-section-title h2{font-size:19px!important;font-weight:850!important;letter-spacing:-.05em!important;color:#223753!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kb-section-title p{font-size:12px!important;line-height:1.6!important;color:#8190a3!important;margin-top:5px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-section-label{display:flex;align-items:center;gap:8px;margin:0 0 12px;min-height:22px;color:#273a56;font-size:13px;letter-spacing:-.018em;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-section-label .kfr-step{width:22px;height:22px;border-radius:7px;background:#e7f3ff;color:#147adf;display:inline-grid;place-items:center;font-size:10px;font-weight:900;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-section-label strong{font-weight:850;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-step-note{margin-left:auto;color:#8493a7;font-size:10.5px;font-weight:650;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-gap-top{margin-top:25px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-criteria{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-condition{min-width:0;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-condition .label{display:flex;align-items:center;gap:6px;margin-bottom:6px!important;color:#435875;font-size:12px!important;font-weight:800;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-condition .kfr-condition-state{margin-left:auto;color:#d2776c;font-size:10px;font-weight:800;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-condition .kfr-condition-state.ok{color:#039d83;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-condition .mt-2{margin-top:5px!important;}
+body.page-safe-rate.kb-reference-ui #calculator :is(.kfr-condition,.kfr-address-card,.kfr-surcharge-card) :is(.input,input:not([type="checkbox"]),select){height:42px!important;min-height:42px!important;border-radius:8px!important;border:1px solid #d8e2ee!important;background-color:#fff!important;padding:0 12px!important;color:#2f465f!important;font-size:12px!important;font-weight:600!important;box-shadow:none!important;}
+body.page-safe-rate.kb-reference-ui #calculator :is(.kfr-condition,.kfr-address-card,.kfr-surcharge-card) :is(input,select):disabled{background:#f3f6fa!important;color:#a0afbe!important;cursor:not-allowed;}
+body.page-safe-rate.kb-reference-ui #calculator :is(.kfr-condition,.kfr-address-card,.kfr-surcharge-card) :is(.input,input:not([type="checkbox"]),select):focus{border-color:#63a7f8!important;box-shadow:0 0 0 3px rgba(29,128,236,.10)!important;outline:none!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-prompt{display:flex;align-items:center;gap:8px;margin:12px 0 0;padding:10px 12px;background:#fff4f5;border:1px solid #ffe1e4;border-radius:8px;font-size:11.5px;font-weight:700;color:#cb5868;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-prompt-icon{flex:0 0 18px;width:18px;height:18px;display:grid;place-items:center;background:#f8d5dc;border-radius:50%;font-weight:900;font-size:12px;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-prompt.kfr-ready{background:#f0fbf7;border-color:#d8f0e4;color:#24816b;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-prompt.kfr-ready .kfr-prompt-icon{background:#cff2e1;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-card{padding:15px!important;margin:0!important;background:#fff!important;border:1px solid var(--kfr-border)!important;border-radius:11px!important;box-shadow:none!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-location-header{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;padding:0 0 12px!important;border-bottom:1px solid #edf1f6!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-location-header .font-bold{font-size:13px!important;color:#314764;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-location-header .muted{font-size:11px!important;color:#8897a9!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-location-header .kbadge{display:none!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:13px;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method{min-width:0;border-radius:10px;border:1px solid #e6edf6;padding:14px;background:#f8fbff;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method:nth-child(2){background:#fff;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-method-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#345475;font-size:12px;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-method-badge{width:22px;height:22px;display:inline-grid;place-items:center;border-radius:6px;background:#a9d8ff;color:#23699e;font-size:11px;font-weight:900;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method > .mt-3{margin:0!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method .label{font-size:11px!important;color:#647991!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method #addrSearchBtn{height:42px!important;min-height:42px!important;background:#2087e8!important;border:1px solid #2087e8!important;color:#fff!important;font-weight:800!important;padding:0 16px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method #addrSearchBtn:disabled{background:#afdafa!important;border-color:#afdafa!important;color:#fff!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method .md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method .md\:grid-cols-3 .label{font-size:10px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method #addrHint{font-size:11px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card{padding:16px!important;margin:0!important;border:1px solid #e5ecf4!important;border-radius:12px!important;background:#f6f8fb!important;box-shadow:none!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card > .flex:first-child .font-bold{font-size:13px!important;color:#2b415b!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card > .grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)!important;gap:8px!important;padding:0 0 14px!important;border-bottom:1px solid #e3e9f0!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card .kfr-tabbar-hidden{display:none!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 20px;margin-top:15px;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-group{display:block!important;margin:0!important;min-width:0;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-group > .font-bold{display:block!important;margin:0 0 7px!important;padding:0!important;color:#456783!important;font-weight:850;font-size:11.5px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-group > .grid{display:grid;grid-template-columns:1fr!important;gap:7px!important;margin:0!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card .opt{display:flex!important;min-height:43px!important;margin:0!important;padding:9px 11px!important;gap:10px!important;background:#fff!important;border:1px solid #e3eaf3!important;border-radius:8px!important;box-shadow:none!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card label.opt:has(input:checked){background:#eff8ff!important;border-color:#aad5fc!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card .opt .font-semibold{font-size:11px!important;color:#314860!important;font-weight:700!important;line-height:1.45!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card .opt .muted{font-size:10px!important;line-height:1.4!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card .flexibag-opt{display:flex!important;align-items:center!important;justify-content:space-between!important;flex-wrap:wrap;gap:9px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card .flexibag-opt #s_flexibag{width:180px;min-width:120px;max-width:100%;height:37px!important;min-height:37px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card input.surcharge-check{flex-shrink:0;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card .kfr-surcharge-groups #tab_etc .grid > .opt:has(select){flex-direction:column;align-items:stretch!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-actions{display:flex;justify-content:center;gap:9px;align-items:center;flex-wrap:wrap;margin:18px auto 0!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;border-radius:9px;padding:0 18px;font-size:12px;font-weight:800;border:1px solid #d9e4f0;background:#fff;color:#3f5d7c;line-height:1.2;cursor:pointer;transition:background .16s,transform .16s;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-btn:hover{background:#f5faff;transform:translateY(-1px)}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-btn-primary{background:#2185e5!important;color:#fff!important;border-color:#2185e5!important;min-width:245px;box-shadow:0 5px 13px rgba(33,133,229,.17);}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-btn-primary:hover{background:#116fc8!important;}
+body.page-safe-rate.kb-reference-ui #calculator > .kfr-result-area{position:static!important;top:auto!important;width:100%!important;border:none!important;border-top:1px solid #e6edf5!important;border-radius:0!important;padding:14px 24px 20px!important;background:#fff!important;box-shadow:none!important;margin:0!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-area .rhead{height:auto!important;min-height:32px!important;padding:0!important;margin:0 0 10px!important;border:0!important;background:none!important;color:#233f61!important;font-size:13px!important;display:flex;justify-content:space-between;align-items:center;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-unit{font-size:10px;color:#7b93ab;font-weight:700;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-table-wrap{width:100%;overflow-x:auto;border:1px solid #e5edf6;border-radius:9px;background:#fff;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-rate-table{width:100%;min-width:490px;border-collapse:collapse;table-layout:fixed;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-rate-table th{padding:11px 9px;background:#f4f7fa;border-bottom:1px solid #e4edf6;color:#637a92;font-size:11.5px;text-align:center;font-weight:800;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-rate-table td{padding:17px 9px;text-align:center;color:#39516d;font-size:12px;border-bottom:0;overflow-wrap:anywhere;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-rate-table td:nth-child(-n+3) span{font-weight:750;font-size:12px;color:#476079;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-rate-table .kfr-price-cell .v{font-size:17px!important;color:#116fcf!important;font-weight:900!important;line-height:1.4!important;white-space:nowrap;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-rate-table .kfr-price-cell .s{font-size:10px!important;color:#94a3b4!important;line-height:1.4!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-area .result-v6{display:block!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-details{margin-top:12px;padding:0!important;background:#fff;border:1px solid #e5edf6;border-radius:9px;overflow:hidden;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-details > summary{cursor:pointer;list-style:none;padding:12px 14px;background:#f8fbfe;color:#57708a;font-size:11.5px;font-weight:800;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-details > summary::after{content:'＋';float:right;color:#2076c2;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-details[open] > summary::after{content:'−';}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-details .metaStack{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;padding:12px!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-details .metacard{min-width:0!important;}
+body.page-safe-rate.kb-reference-ui #calculator .kfr-result-details .metacard:last-child{grid-column:1/-1;}
+body.page-safe-rate.kb-reference-ui #calculator > .kfr-downloads{width:calc(100% - 48px);margin:0 24px 14px!important;padding:14px 17px!important;background:#f7faff!important;border:1px solid #e5edf7!important;box-shadow:none!important;border-radius:10px!important;}
+body.page-safe-rate.kb-reference-ui #calculator > .kfr-downloads .btn{border:1px solid #d8e5f3!important;background:#fff!important;border-radius:8px!important;font-size:11px!important;}
+body.page-safe-rate.kb-reference-ui #calculator > .kfr-guide{width:calc(100% - 48px);margin:0 24px 24px!important;padding:17px 19px!important;border:1px solid #e2eaf3!important;border-radius:10px!important;background:#f7f9fb!important;box-shadow:none!important;}
+body.page-safe-rate.kb-reference-ui #calculator > .kfr-guide .guideTitle{font-size:12px!important;font-weight:850!important;color:#29445f!important;}
+body.page-safe-rate.kb-reference-ui #calculator > .kfr-guide .guideList li{font-size:11.5px!important;line-height:1.75!important;color:#75849a!important;}
+/* The same control language across other calculators: not a new shell, navigation or width. */
+body.kb-reference-ui .kfr-companion-calculator{display:flex;flex-direction:column;gap:13px;}
+body.kb-reference-ui .kfr-companion-calculator :is(.nt-card,.simple-input-card,.simple-result-card){border:1px solid #e0e9f4!important;border-radius:12px!important;box-shadow:none!important;background:#fff!important;}
+body.kb-reference-ui .kfr-companion-calculator .kfr-input-block{border-color:#dbe8f5!important;background:#fff!important;}
+body.kb-reference-ui .kfr-companion-calculator .kfr-output-block{background:#f8fbff!important;border-color:#dbe8f5!important;}
+body.kb-reference-ui .kfr-companion-calculator :is(.nt-tool-head,.simple-card-head){border-bottom:1px solid #e9eff6!important;margin-bottom:14px!important;padding-bottom:12px!important;}
+body.kb-reference-ui .kfr-companion-calculator :is(.nt-tool-head h2,.nt-tool-head h3,.simple-card-head h3){color:#243d59!important;letter-spacing:-.035em;}
+body.kb-reference-ui .kfr-companion-calculator :is(input:not([type=checkbox]),select,textarea){border:1px solid #d9e4f0!important;border-radius:8px!important;box-shadow:none!important;}
+body.kb-reference-ui .kfr-companion-calculator :is(input:not([type=checkbox]),select,textarea):focus{border-color:#66a9f1!important;box-shadow:0 0 0 3px rgba(38,132,230,.10)!important;}
+body.kb-reference-ui .kfr-companion-calculator :is(.nt-btn-primary,.primary-btn,.btn-primary,button[type=submit]){background:#2483e3!important;color:white!important;border-radius:9px!important;box-shadow:0 4px 10px rgba(32,123,219,.14)!important;}
+body.kb-reference-ui .kfr-companion-calculator :is(.nt-seg,.nt-results,.cbm-v2-summary-grid,.simple-summary-grid){border-radius:10px!important;}
+body.kb-reference-ui #dutyTool .nt-form,body.kb-reference-ui #lclTool .nt-form{background:#f8fbff!important;border:1px solid #ebf0f6!important;border-radius:11px!important;padding:15px!important;}
+body.kb-reference-ui #cbmTool .cbm-v2-guide{background:#f7faff!important;border-radius:10px!important;}
+body.kb-reference-ui #cbmTool .cbm-v2-table-wrap{border:1px solid #e0e9f4!important;border-radius:10px!important;}
+body.kb-reference-ui #simpleCalculatorPanel .simple-calc-grid{display:flex!important;flex-direction:column!important;gap:13px!important;}
+body.kb-reference-ui #simpleCalculatorPanel .simple-input-card,body.kb-reference-ui #simpleCalculatorPanel .simple-result-card{width:100%!important;min-width:0!important;}
+body.kb-reference-ui #simpleCalculatorPanel .simple-result-card{position:static!important;}
+body.kb-reference-ui #simpleCalculatorPanel .simple-summary-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;}
+@media(max-width:900px){
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-address-grid{grid-template-columns:1fr;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-groups{gap:10px;}
+}
+@media(max-width:680px){
+ body.page-safe-rate.kb-reference-ui #calculator > .kb-safe-form-card{padding:17px 14px 14px!important;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-criteria{grid-template-columns:1fr!important;gap:10px!important;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-address-grid{grid-template-columns:1fr;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method{padding:11px!important;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method .md\:grid-cols-3{grid-template-columns:1fr 1fr!important;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-address-method .md\:grid-cols-3 > div:first-child{grid-column:1/-1;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-groups{grid-template-columns:1fr!important;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-card > .grid{grid-template-columns:1fr!important;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-btn-primary{grid-column:1/-1;grid-row:1;width:100%;min-width:0;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-btn-quiet{padding:0 9px;}
+ body.page-safe-rate.kb-reference-ui #calculator > .kfr-result-area{padding:14px!important;}
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-result-details .metaStack{grid-template-columns:1fr!important;}
+ body.page-safe-rate.kb-reference-ui #calculator > .kfr-downloads,body.page-safe-rate.kb-reference-ui #calculator > .kfr-guide{width:calc(100% - 28px);margin:0 14px 14px!important;}
+ body.kb-reference-ui #simpleCalculatorPanel .simple-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
+
+body.page-safe-rate.kb-reference-ui #calculator .kfr-accessible-label{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;}
+@media(min-width:1101px){
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-groups{grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-areas:'equip route etc' 'equip cond etc'!important;align-items:start;column-gap:12px!important;row-gap:14px!important;}
+ body.page-safe-rate.kb-reference-ui #calculator #tab_equip{grid-area:equip}
+ body.page-safe-rate.kb-reference-ui #calculator #tab_route{grid-area:route}
+ body.page-safe-rate.kb-reference-ui #calculator #tab_cond{grid-area:cond}
+ body.page-safe-rate.kb-reference-ui #calculator #tab_etc{grid-area:etc}
+}
+@media(min-width:681px) and (max-width:1100px){
+ body.page-safe-rate.kb-reference-ui #calculator .kfr-surcharge-groups{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+/* Shipment-volume calculator: compact search-table rhythm, controls below table. */
+body.kb-reference-ui #cbmTool .cbm-v2-input-card .cbm-v2-table-wrap{order:2;}
+body.kb-reference-ui #cbmTool .cbm-v2-input-card .cbm-v2-actions{order:3;display:flex!important;justify-content:center!important;align-items:center!important;padding-top:14px!important;margin:0!important;}
+body.kb-reference-ui #cbmTool .cbm-v2-input-card .cbm-v2-tip{order:4;}
+body.kb-reference-ui #cbmTool .cbm-v2-input-card .cbm-v2-guide{order:5;}
+body.kb-reference-ui #cbmTool .cbm-v2-input-card{display:flex!important;flex-direction:column!important;}
+body.kb-reference-ui #cbmTool .cbm-v2-input-card .cbm-v2-guide{background:#f7f9fc!important;margin-top:14px!important;}
+body.kb-reference-ui #cbmTool .cbm-v2-input-card .cbm-v2-head{order:1;}
+body.kb-reference-ui #cbmTool .cbm-v2-summary-section .cbm-v2-summary-grid{background:#fff;border:1px solid #e3edf7;border-radius:10px;padding:9px!important;}
+body.kb-reference-ui #dutyTool > .kfr-output-block,body.kb-reference-ui #lclTool > .kfr-output-block{border-top:3px solid #80beef!important;}
+body.kb-reference-ui #dutyTool .nt-actions,body.kb-reference-ui #lclTool .nt-actions{justify-content:center!important;}

@@ -1,6 +1,12 @@
 (() => {
   "use strict";
 
+  // Main home only. Prevent opening the AI chat on subpages, including the blog.
+  const kbChatPath = location.pathname;
+  const kbIsHome = kbChatPath === '/' || /^\/index\.html$/i.test(kbChatPath) ||
+    (location.protocol === 'file:' && /\/index\.html$/i.test(kbChatPath) && !/\/blog\//i.test(kbChatPath));
+  if (!kbIsHome) return;
+
   if (window.__KBRIDGE_KEBBY_LOADED__) return;
   window.__KBRIDGE_KEBBY_LOADED__ = true;
 

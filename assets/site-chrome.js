@@ -296,3 +296,16 @@
     boot();
   }
 })();
+
+
+/* V13: site-wide K-BRIDGE contact rail; script path is resolved from site-chrome.js itself. */
+(() => {
+  if (window.__KB_FLOATING_ACTIONS_LOADER_V13__) return;
+  window.__KB_FLOATING_ACTIONS_LOADER_V13__ = true;
+  const source = document.currentScript?.src;
+  if (!source) return;
+  const script = document.createElement('script');
+  script.defer = true;
+  script.src = new URL('kbridge-floating-actions-v13.js?v=20261025-hover-v14', source).href;
+  document.head.appendChild(script);
+})();
