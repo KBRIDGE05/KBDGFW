@@ -50,13 +50,19 @@ def main() -> None:
     for selector in (".mobile-nav", ".kbix-recommend", ".dialog-head", ".kb-blog-post"):
         check(selector in mobile_css, f"모바일 대비 스타일 없음: {selector}")
 
+    # Read the current cache key from the blog shell generator instead of
+    # comparing against a stale pre-V14 version on every page.
+    shell_source = (ROOT / "scripts/enforce-blog-shell.py").read_text("utf-8")
+    match = re.search(r'SITE_CHROME_VERSION\s*=\s*"([^"]+)"', shell_source)
+    check(bool(match), "공통 스크립트 버전 설정 누락")
+    expected_version = f"site-chrome.js?v={match.group(1)}" if match else ""
     linked = 0
     for page in ROOT.rglob("*.html"):
         source = page.read_text("utf-8")
         if "site-chrome.js" not in source:
             continue
         linked += 1
-        check("site-chrome.js?v=20261018-clean-v1" in source, f"구버전 스크립트 참조: {page.relative_to(ROOT)}")
+        check(bool(expected_version and expected_version in source), f"공통 스크립트 버전 불일치: {page.relative_to(ROOT)}")
         check("mobile-readability-v1.css" in source, f"모바일 가독성 CSS 누락: {page.relative_to(ROOT)}")
         if "header-actions" in source:
             check('class="header-link" href="mailto:' not in source, f"헤더 문의 이메일 복귀: {page.relative_to(ROOT)}")

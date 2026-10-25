@@ -8,7 +8,7 @@ const SITE_URL = 'https://www.kbexpress.kr';
 const SITE_HOST = 'www.kbexpress.kr';
 const INDEXNOW_KEY = '736f09a19bf4a21e9a05a8bfe60a60c4';
 const INDEXNOW_ENDPOINT = 'https://searchadvisor.naver.com/indexnow';
-const RSS_LIMIT = 50;
+// RSS publishes every currently public blog post; there is no fixed item limit.
 
 const categories = ['info', 'service', 'news', 'insight', 'glossary'];
 const labels = {
@@ -413,7 +413,7 @@ const toRssDate = date => {
 };
 
 const writeRss = posts => {
-  const items = posts.slice(0, RSS_LIMIT).map(post => `    <item>\n      <title><![CDATA[${cdata(post.title)}]]></title>\n      <link>${xmlEscape(post.url)}</link>\n      <guid isPermaLink="true">${xmlEscape(post.url)}</guid>\n      <pubDate>${xmlEscape(toRssDate(post.date))}</pubDate>\n      <category><![CDATA[${cdata(post.categoryLabel)}]]></category>\n      <description><![CDATA[${cdata(post.content || `<p>${xmlEscape(post.summary)}</p>`) }]]></description>\n      <enclosure url="${xmlEscape(post.thumbnail)}" type="image/webp" />\n    </item>`).join('\n\n');
+  const items = posts.map(post => `    <item>\n      <title><![CDATA[${cdata(post.title)}]]></title>\n      <link>${xmlEscape(post.url)}</link>\n      <guid isPermaLink="true">${xmlEscape(post.url)}</guid>\n      <pubDate>${xmlEscape(toRssDate(post.date))}</pubDate>\n      <category><![CDATA[${cdata(post.categoryLabel)}]]></category>\n      <description><![CDATA[${cdata(post.content || `<p>${xmlEscape(post.summary)}</p>`) }]]></description>\n      <enclosure url="${xmlEscape(post.thumbnail)}" type="image/webp" />\n    </item>`).join('\n\n');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>KBRIDGE 케이브릿지 물류 블로그</title>\n    <link>${SITE_URL}/blog/</link>\n    <description>수출입, 해상·항공운송, 통관, 물류 서비스와 공급망 인사이트를 제공하는 케이브릿지 공식 블로그입니다.</description>\n    <language>ko-KR</language>\n    <copyright>© 2026 KBRIDGE CO., LTD.</copyright>\n    <generator>KBRIDGE Blog SEO Automation</generator>\n    <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />\n    <lastBuildDate>${xmlEscape(toRssDate(posts[0]?.modified || posts[0]?.date || todayKst()))}</lastBuildDate>\n    <ttl>60</ttl>\n${items ? `\n${items}\n` : ''}  </channel>\n</rss>\n`;
   fs.writeFileSync(rssPath, xml, 'utf8');
@@ -496,8 +496,11 @@ const validateOutput = posts => {
     if (!sitemap.includes(xmlEscape(post.url))) throw new Error(`사이트맵 누락: ${post.url}`);
     if (blogIndex && !blogIndex.includes(post.url)) throw new Error(`블로그 정적 목록 누락: ${post.url}`);
   }
-  for (const post of posts.slice(0, RSS_LIMIT)) {
-    if (!rss.includes(xmlEscape(post.url))) throw new Error(`RSS 최신 ${RSS_LIMIT}건 누락: ${post.url}`);
+  // Membership, ordering, uniqueness and count must match every public post.
+  const rssLinks = [...rss.matchAll(/<item>\s*[\s\S]*?<link>([^<]*)<\/link>/g)]
+    .map(match => decodeHtml(match[1]).trim());
+  if (rssLinks.length !== posts.length || rssLinks.some((url, index) => url !== posts[index].url)) {
+    throw new Error(`RSS 공개 글 전체 불일치: 블로그 ${posts.length}건 / RSS ${rssLinks.length}건 (URL·순서 포함)`);
   }
   if (!sitemap.startsWith('<?xml') || !rss.startsWith('<?xml')) throw new Error('XML 파일 헤더가 올바르지 않습니다.');
 };
@@ -522,6 +525,10 @@ if (args.includes('--notify-sitemap')) {
 } else if (args.includes('--notify')) {
   const index = args.indexOf('--notify');
   await notifyIndexNow(urlsFromPaths(args.slice(index + 1)));
+} else if (args.includes('--rss-only')) {
+  // Standalone RSS entry point reuses the canonical post extraction and ordering.
+  // This prevents a second RSS generator from disagreeing on same-day post order.
+  writeRss(readPosts());
 } else {
   const posts = readPosts();
   writeManifest(posts);

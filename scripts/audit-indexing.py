@@ -150,8 +150,8 @@ for url in sorted(expected_urls - actual_urls):
 for url in sorted(actual_urls - expected_urls):
     err(f"sitemap 불필요/비색인 URL: {url}")
 
-# RSS is intentionally a recent-content feed capped at 50 items.
-# The sitemap carries the complete indexable URL set.
+# RSS, manifest and sitemap must consistently cover every public blog post.
+# A feed is not arbitrarily capped at 50 items.
 manifest = ROOT / "assets" / "blog-posts.json"
 manifest_rows: list[dict] = []
 manifest_urls: set[str] = set()
@@ -182,15 +182,15 @@ if RSS.exists():
 else:
     err("rss.xml 누락")
 
-RSS_LIMIT = 50
-expected_rss = [str(row.get("url", "")).strip() for row in manifest_rows[:RSS_LIMIT]]
-if len(rss_order) > RSS_LIMIT:
-    err(f"RSS 항목이 {RSS_LIMIT}개를 초과함: {len(rss_order)}")
-for url in expected_rss:
-    if url not in rss_urls:
-        err(f"RSS 최신 {RSS_LIMIT}건 URL 누락: {url}")
-if rss_order and expected_rss and rss_order != expected_rss:
-    err("RSS 항목 순서가 blog-posts.json 최신순과 일치하지 않음")
+expected_rss = [str(row.get("url", "")).strip() for row in manifest_rows]
+if len(rss_order) != len(expected_rss):
+    err(f"RSS 전체 글 건수 불일치: manifest {len(expected_rss)}건 / RSS {len(rss_order)}건")
+if len(rss_order) != len(rss_urls):
+    err("RSS 중복 URL 존재")
+if rss_order != expected_rss:
+    missing = set(expected_rss) - rss_urls
+    extra = rss_urls - set(expected_rss)
+    err(f"RSS 전체 공개 글 URL·순서 불일치 (누락 {len(missing)}건, 불필요 {len(extra)}건)")
 
 # Internal-link orphan check for indexable pages.
 path_to_file: dict[str, Path] = {}
@@ -267,8 +267,9 @@ if recent not in actual_urls:
     err("39주차 sitemap 누락")
 if recent not in manifest_urls:
     err("39주차 blog-posts.json 누락")
-if recent not in rss_urls:
-    err("39주차 RSS 누락")
+# Older published articles never disappear from RSS as new posts arrive.
+if recent in manifest_urls and recent not in rss_urls:
+    err("39주차 RSS 전체 공개 글 누락")
 
 print("INDEXING QA " + ("PASS" if not errors else "FAIL"))
 print(f"- HTML: {len(html_files)} / indexable: {len(indexable)} / sitemap: {len(actual_urls)}")

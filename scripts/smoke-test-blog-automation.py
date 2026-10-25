@@ -2,8 +2,8 @@
 """Regression smoke test for future KBRIDGE blog posts.
 
 Runs the real blog pipeline inside a temporary copy of the repository, creates
-new posts in every category, pushes total post count beyond 50 to exercise the
-RSS cap, and verifies the final files are idempotent. No network requests are
+new posts in every category, pushes the public post count above 100 to verify
+unlimited RSS membership, and verifies idempotence. No network requests are
 made and the working repository is never modified.
 """
 from __future__ import annotations
@@ -22,7 +22,6 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = ["info", "service", "news", "insight", "glossary"]
 TEST_DATE = "2099-12-31"
-RSS_LIMIT = 50
 
 PIPELINE = [
     [sys.executable, "scripts/enforce-blog-shell.py"],
@@ -139,8 +138,12 @@ def main() -> None:
             for node in rss_tree.findall("./channel/item/link")
             if (node.text or "").strip()
         ]
-        if len(rss_urls) != min(len(manifest), RSS_LIMIT):
-            raise SystemExit(f"RSS item count regression: manifest={len(manifest)}, rss={len(rss_urls)}")
+        expected_rss_urls = [str(row["url"]).strip() for row in manifest]
+        if rss_urls != expected_rss_urls:
+            raise SystemExit(
+                f"RSS order/membership regression: manifest={len(manifest)}, "
+                f"expected={len(expected_rss_urls)}, rss={len(rss_urls)}"
+            )
 
         for category, slug in primary:
             path = work / "blog" / "posts" / category / f"{slug}.html"
@@ -192,35 +195,86 @@ def main() -> None:
         if changed:
             raise SystemExit("pipeline is not idempotent after second run: " + ", ".join(changed[:20]))
 
-        # Lightweight 51st-post boundary check. Extra fixtures only need enough
-        # metadata for build-blog-posts.mjs because the full structural pipeline
-        # was already exercised above in every category.
-        current_count = len(manifest)  # noindex/legacy compatibility files are intentionally excluded
-        extra = max(0, 51 - current_count)
+        # All-post RSS regression: add enough lightweight public fixtures to
+        # exceed 100 articles, plus unpublished/noindex fixtures to exclude.
+        # Real article templates and the full editorial pipeline were checked
+        # for every category above; this stage stress-tests publication and
+        # generator behavior without mutating the source repository.
+        current_count = len(manifest)
+        extra = max(1, 125 - current_count)
+        fixtures = []
         for i in range(extra):
-            p = work / "blog" / "posts" / "news" / f"zz-rss-boundary-{i:02d}.html"
+            p = work / "blog" / "posts" / "news" / f"zz-rss-unlimited-{i:03d}.html"
             p.write_text(
                 '<!doctype html><html lang="ko"><head>'
-                f'<title>RSS 경계 {i:02d} / KBRIDGE</title>'
-                '<meta name="description" content="RSS 50건 경계 테스트">'
+                f'<title>RSS 전체 글 테스트 {i:03d} / KBRIDGE</title>'
+                '<meta name="description" content="공개 글 RSS 전체 등록 검수">'
                 '<meta name="robots" content="index,follow">'
                 '</head><body><main><article><h1>'
-                f'RSS 경계 {i:02d}</h1><p>RSS 50건 경계 테스트</p></article></main></body></html>',
+                f'RSS 전체 글 {i:03d}</h1><p>RSS 항목 수 제한 제거 테스트</p>'
+                '</article></main></body></html>',
                 encoding="utf-8",
             )
+            fixtures.append(p)
+        for name, tag in (
+            ("zz-rss-noindex.html", '<meta name="robots" content="noindex,nofollow">'),
+            ("zz-rss-draft.html", '<meta name="blog-published" content="false">'),
+        ):
+            p = work / "blog" / "posts" / "news" / name
+            p.write_text(
+                '<!doctype html><html lang="ko"><head>' + tag +
+                '</head><body><main><article><h1>미공개 테스트</h1>'
+                '<p>RSS에서 제외되어야 합니다</p></article></main></body></html>',
+                encoding="utf-8",
+            )
+        def inspect_all_rss(label: str) -> tuple[list[dict], list[str]]:
+            rows = json.loads((work / "assets" / "blog-posts.json").read_text("utf-8"))
+            tree = ET.parse(work / "rss.xml")
+            urls = [(node.text or "").strip() for node in tree.findall("./channel/item/link")]
+            expected = [str(row["url"]).strip() for row in rows]
+            if urls != expected or len(urls) != len(set(urls)):
+                raise SystemExit(f"{label}: RSS full membership/order mismatch: manifest={len(expected)} rss={len(urls)}")
+            sitemap = (work / "sitemap.xml").read_text("utf-8")
+            if any(url not in sitemap for url in expected):
+                raise SystemExit(f"{label}: public RSS article missing from sitemap")
+            if any(name in (work / "rss.xml").read_text("utf-8") for name in ('zz-rss-noindex', 'zz-rss-draft')):
+                raise SystemExit(f"{label}: draft/noindex post leaked into RSS")
+            return rows, urls
+
         run(["node", "scripts/build-blog-posts.mjs"], work)
-        manifest2 = json.loads((work / "assets" / "blog-posts.json").read_text("utf-8"))
-        rss_tree2 = ET.parse(work / "rss.xml")
-        rss_urls2 = [(node.text or "").strip() for node in rss_tree2.findall("./channel/item/link") if (node.text or "").strip()]
-        if len(manifest2) <= RSS_LIMIT or len(rss_urls2) != RSS_LIMIT:
-            raise SystemExit(f"RSS 51st-post boundary regression: manifest={len(manifest2)}, rss={len(rss_urls2)}")
+        manifest2, rss_urls2 = inspect_all_rss('125-post case')
+        if len(manifest2) < 125:
+            raise SystemExit(f"RSS scaling regression: only {len(manifest2)} posts generated")
+        oldest_url = str(manifest2[-1]["url"]).strip()
+        if oldest_url not in rss_urls2:
+            raise SystemExit("RSS scaling regression: oldest published post displaced")
+        # Remove one published post: manifest, sitemap and feed must all drop it.
+        victim = fixtures[0]
+        victim_url = f"https://www.kbexpress.kr/blog/posts/news/{victim.name}"
+        victim.unlink()
+        run(["node", "scripts/build-blog-posts.mjs"], work)
+        manifest3, rss_urls3 = inspect_all_rss('deleted-post case')
+        if victim_url in rss_urls3 or any(row["url"] == victim_url for row in manifest3):
+            raise SystemExit("RSS deletion regression: removed public post remains in feed")
+        if victim_url in (work / "sitemap.xml").read_text("utf-8"):
+            raise SystemExit("RSS deletion regression: removed public post remains in sitemap")
+        # Re-running output generation must be deterministic to avoid bot loops.
+        before_build = {rel: hashlib.sha256((work / rel).read_bytes()).hexdigest()
+                        for rel in ('assets/blog-posts.json', 'blog/index.html', 'sitemap.xml', 'rss.xml')}
+        run(["node", "scripts/build-blog-posts.mjs"], work)
+        after_build = {rel: hashlib.sha256((work / rel).read_bytes()).hexdigest()
+                       for rel in before_build}
+        if before_build != after_build:
+            raise SystemExit("RSS automation regression: repeated generation changed outputs")
 
         print("FUTURE BLOG AUTOMATION SMOKE PASS")
         print(f"- generated/tested categories: {len(primary)}")
         print(f"- full-pipeline posts: {len(manifest)}")
-        print(f"- RSS boundary posts: {len(manifest2)} / RSS items: {len(rss_urls2)}")
-        print("- header/footer/mobile/CSS/SEO/date/FAQ/tags/sitemap/RSS/list/editorial layout: normal")
-        print("- second full pipeline run: idempotent")
+        print(f"- scale test: {len(manifest2)} public posts / {len(rss_urls2)} RSS items")
+        print(f"- post deletion: {len(manifest3)} public posts / {len(rss_urls3)} RSS items")
+        print("- noindex/draft excluded; sitemap coverage verified")
+        print("- full pipeline and generator re-runs: idempotent")
+        print("- header/footer/mobile/CSS/SEO/date/FAQ/tags/list/editorial layout: normal")
 
 
 if __name__ == "__main__":

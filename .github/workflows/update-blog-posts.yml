@@ -40,6 +40,7 @@ on:
       - 'assets/css/kbridge-design-system.css'
       - 'assets/site-chrome.js'
       - 'scripts/build-blog-posts.mjs'
+      - 'scripts/build-rss.mjs'
       - '.github/workflows/update-blog-posts.yml'
 
 permissions:

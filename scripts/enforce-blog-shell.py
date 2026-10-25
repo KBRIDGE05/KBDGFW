@@ -15,8 +15,7 @@ POSTS_ROOT = ROOT / "blog" / "posts"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
 DESIGN_VERSION = "20260926-design-v38"
 BLOG_STYLE_VERSION = "20261005-related-tools-v1"
-SCRIPT_VERSION = "20260926-site-chrome-v38"
-SITE_CHROME_VERSION = "20261018-clean-v1"
+SITE_CHROME_VERSION = "20261025-hover-v14"
 
 
 def is_noindex_html(source: str) -> bool:
@@ -68,7 +67,7 @@ CANONICAL_FOOTER = '''<footer aria-label="케이브릿지 푸터" class="kb-foot
 
 SHARED_STYLES = f'''<link href="../../../assets/css/kbridge-design-system.css?v={DESIGN_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-unified.css?v={BLOG_STYLE_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-editorial.css?v=20261018-editorial-r4" rel="stylesheet"/>
 <link href="../../../assets/css/mobile-readability-v1.css?v=20261018-clean-v1" rel="stylesheet"/>'''
-SHARED_SCRIPTS = f'''<script defer src="../../../assets/enterprise-motion.js?v=20260720-v17"></script>\n<script defer src="../../../assets/site-chrome.js?v={SITE_CHROME_VERSION}"></script>\n<script defer src="../../../assets/kebby-chat.js?v={SCRIPT_VERSION}"></script>'''
+SHARED_SCRIPTS = f'''<script defer src="../../../assets/enterprise-motion.js?v=20260720-v17"></script>\n<script defer src="../../../assets/site-chrome.js?v={SITE_CHROME_VERSION}"></script>'''
 
 
 def remove_legacy_menu_script(match: re.Match[str]) -> str:

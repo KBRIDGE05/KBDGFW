@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+import xml.etree.ElementTree as ET
 from urllib.parse import quote, unquote, urlsplit
 
 from bs4 import BeautifulSoup
@@ -42,7 +43,6 @@ def encoded_page_url(page: Path) -> str:
 
 def audit_posts() -> int:
     sitemap = (ROOT / "sitemap.xml").read_text("utf-8")
-    rss = (ROOT / "rss.xml").read_text("utf-8")
     manifest = (ROOT / "assets" / "blog-posts.json").read_text("utf-8")
     blog_index = (ROOT / "blog" / "index.html").read_text("utf-8")
     count = 0
@@ -101,7 +101,7 @@ def audit_posts() -> int:
         if not article_json:
             fail(f"{rel}: 유효한 Article JSON-LD 없음")
 
-        for label, text in (("sitemap", sitemap), ("rss", rss), ("manifest", manifest), ("blog index", blog_index)):
+        for label, text in (("sitemap", sitemap), ("manifest", manifest), ("blog index", blog_index)):
             if url not in text:
                 fail(f"{rel}: {label} 누락")
 
@@ -111,6 +111,23 @@ def audit_posts() -> int:
                 fail(f"{rel}: article image lazy 누락 ({img.get('src')})")
             if img.get("src") and img.get("decoding") != "async":
                 fail(f"{rel}: article image async decoding 누락 ({img.get('src')})")
+
+    # RSS contains every public blog post, matching the manifest exactly.
+    # Compare item count, URL, and order to catch omissions and stale entries.
+    try:
+        rows = json.loads(manifest)
+        if not isinstance(rows, list):
+            raise ValueError("blog-posts.json의 최상위 구조가 배열이 아닙니다")
+        published = [row for row in rows if isinstance(row, dict) and row.get("published", True) and row.get("url")]
+        expected_rss = [str(row["url"]).strip() for row in published]
+        rss_root = ET.parse(ROOT / "rss.xml").getroot()
+        actual_rss = [str(node.text or "").strip() for node in rss_root.findall("./channel/item/link")]
+        if actual_rss != expected_rss:
+            missing = [url for url in expected_rss if url not in actual_rss]
+            extra = [url for url in actual_rss if url not in expected_rss]
+            fail(f"rss 전체 공개 글 불일치 (기대 {len(expected_rss)}건, 실제 {len(actual_rss)}건, 누락 {len(missing)}건, 불필요 {len(extra)}건, 순서 포함)")
+    except (OSError, ET.ParseError, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
+        fail(f"rss/manifest 검사 실패: {exc}")
 
     return count
 
@@ -171,7 +188,8 @@ def main() -> None:
     print(f"- HTML 페이지: {page_count}개")
     print(f"- 블로그 포스팅 SEO: {post_count}개")
     print(f"- 로컬 리소스 참조 검사: {ref_count}개")
-    print("- canonical/robots/Naver/OG/Twitter/Article JSON-LD/sitemap/RSS/manifest: 정상")
+    print("- canonical/robots/Naver/OG/Twitter/Article JSON-LD/sitemap/manifest: 전체 확인")
+    print("- RSS: 전체 공개 글과 건수·순서·URL 일치 (개수 제한 없음)")
     print("- 블로그 이미지 lazy + async decoding: 정상")
 
 
