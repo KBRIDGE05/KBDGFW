@@ -8,8 +8,27 @@
     <copyright>© 2026 KBRIDGE CO., LTD.</copyright>
     <generator>KBRIDGE Blog SEO Automation</generator>
     <atom:link href="https://www.kbexpress.kr/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Tue, 20 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 00:00:00 GMT</lastBuildDate>
     <ttl>60</ttl>
+
+    <item>
+      <title><![CDATA[2026년 43주차 물류뉴스 / 운임·통상]]></title>
+      <link>https://www.kbexpress.kr/blog/posts/news/43news.html</link>
+      <guid isPermaLink="true">https://www.kbexpress.kr/blog/posts/news/43news.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 GMT</pubDate>
+      <category><![CDATA[물류 뉴스]]></category>
+      <description><![CDATA[<div class="article-hero kb-page-hero" data-kb-hero="main"><div class="kb-hero-frame"><div class="hero-top"><div><span class="pill">물류 뉴스</span><span class="pill">2026 WEEK 43</span><span class="pill">한국 수출입</span></div><div class="hero-nav"><a href="https://www.kbexpress.kr/blog/posts/news/43news.html#overview">핵심 지표</a><a href="https://www.kbexpress.kr/blog/posts/news/43news.html#action">실무 대응</a></div></div><h1 data-kb-ui-native="">2026년 43주차 물류뉴스 / 운임·통상</h1><p class="hero-desc" data-kb-ui-native="">10월 19~25일 발표된 해상·항공운임, 한국 수출입, 관세·통상과 글로벌 공급망 변화 중 실제 선적과 통관에 중요한 이슈를 한국 화주 기준으로 정리했습니다.</p><p class="article-meta" data-kb-ui-native="">기준 기간 2026.10.19 - 10.25 · 게시일 2026.10.26</p></div></div>
+<div class="article-body"><figure class="body-visual cover-thumbnail"><img src="https://www.kbexpress.kr/blog/posts/news/assets/images/thumbnail_week43_logistics_news_1000.webp" width="1000" height="1000" sizes="(max-width:820px) calc(100vw - 32px), 790px" alt="2026년 43주차 KBRIDGE 주간 물류뉴스" decoding="async" loading="lazy"></figure>
+<section class="quick-summary"><div class="summary-card"><p class="summary-title">43주차, 한국 화주가 먼저 확인할 세 가지</p>
+<p><strong>첫째, 운임지수는 같은 방향으로 움직이지 않았습니다.</strong> KCCI는 4,646(-0.17%)으로 소폭 하락했지만 WCI는 40피트당 4,585달러(+2%)로 상승했습니다.</p>
+<p><strong>둘째, 10월 1~20일 수출은 616억달러(+105.4%)로 강했습니다.</strong> 그러나 조업일수 보정 일평균 증가율은 +65.9%이므로, 이 수치를 화물 물동량이 두 배가 된 것으로 읽지 않아야 합니다.</p>
+<p><strong>셋째, 규제 변화는 시행단계별로 구분해야 합니다.</strong> EU CBAM 하류재, 중국산 제품 반덤핑, 베트남 VAT 환급, EU 인증 협의를 실제 품목·원산지·거래증빙에 연결해 확인하세요.</p>
+<div class="summary-points"><div class="summary-point">KCCI 4,646 / -0.17%</div><div class="summary-point">WCI $4,585 / +2%</div><div class="summary-point">10월 수출 616억달러 / +105.4%</div><div class="summary-point">반도체 275억달러 / +222.5%</div></div></div></section>
+<figure class="body-visual kb-figure--graphic kb-figure"><div class="kb-figure-head"><span class="kb-figure-kicker">VISUAL GUIDE</span><strong class="kb-figure-title">43주차 핵심 운임·수출입 지표 요약</strong></div><img src="https://www.kbexpress.kr/blog/posts/news/assets/images/visual_01_week43_dashboard.webp" width="1200" height="720" sizes="(max-width:820px) calc(100vw - 32px), 790px" alt="43주차 핵심 운임·수출입 지표 요약" decoding="async" loading="lazy"><figcaption><strong>읽는 포인트</strong>43주차 핵심 운임·수출입 지표 요약</figcaption></figure>
+
+<section class="section" id="overview"><h2>1. 운임지수는 왜 엇갈렸고, 화주는 어떻게 판단해야 할까요?</h2><p class="lead kb-section-lead">종합지수 한 개로 운임을 판단하기 어렵습니다. <strong>출발국·항로·운송계약 조건을 구분</strong>해야 하며, 한국 수출 증가와 글로벌 통상 규제가 실제 운송계획에 미치는 영향을 함께 확인해야 합니다.</p><div class="table-wrap kb-table-shell kb-cols-4"><table class="kb-content-table" data-kb-cols="4"><thead><tr><th>지표</th><th>발표 기준·수치</th><th>변화</th><th>실무 해석</th></tr></thead><tbody><tr><td>KCCI / 한국발</td><td>10/19 · 4,646</td><td>-0.17%</td><td>유럽 +1.28%, 지중해 +2.82%</td></tr><tr><td>SCFI / 상하이발</td><td>10/23 · 3,681.34</td><td>+0.05%</td><td>중국발 현물운임 흐름</td></tr><tr><td>CCFI / 중국 수출</td><td>10/23 · 1,876.27</td><td>-2.4%</td><td>한국항로 약 +4.4%</td></tr><tr><td>Drewry WCI</td><td>10/22 · $4,585/40ft</td><td>+2%</td><td>아시아-유럽·미주 일부 노선 상승</td></tr><tr><td>한국 수출 잠정</td><td>10/1~20 · 616억달러</td><td>+105.4%</td><td>조업일수 보정 +65.9%</td></tr><tr><td>IATA 항공화물</td><td>8월 실적 · CTK +4.4%</td><td>YoY</td><td>발표일 9/29 / 10월 주간 통계 아님</td></tr></tbody></table></div><p>지수는 발표 시점과 적용 항로가 서로 다릅니다. 같은 43주차라고 해서 동일한 화물·항구·선사 견적이 아닙니다.</p></section><section class="section" id="ocean"><h2>2. 해상운임·선복: 한국발과 중국발을 나눠 봅니다</h2><div class="news-list"><article class="news-item"><div class="news-num">01</div><div><h3>한국발 KCCI 4,646, 종합은 보합이지만 유럽·지중해는 상승</h3><p>한국해양진흥공사 10월 19일 KCCI는 4,646으로 전주 4,654보다 0.17% 내렸습니다. 미주 서안은 -0.35%, 동안은 -0.16%였지만 유럽은 +1.28%, 지중해는 +2.82%였습니다.</p><p><strong>실무 포인트:</strong> 유럽향은 FAK·PSS·실제 선사 견적을 다시 확인하고, 중남미 동안처럼 조정폭이 큰 항로는 한 번 더 비교하는 편이 좋습니다.</p></div>]]></description>
+      <enclosure url="https://www.kbexpress.kr/blog/posts/news/assets/images/thumbnail_week43_logistics_news_1000.webp" type="image/webp" />
+    </item>
 
     <item>
       <title><![CDATA[수입화물 진행정보 조회하는 방법 / UNI-PASS에서 통관단계 읽는 법]]></title>
