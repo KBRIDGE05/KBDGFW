@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<title>수입화물 진행정보 조회 방법 / UNI-PASS / KBRIDGE</title>
+<meta name="description" content="UNI-PASS에서 M B/L·H B/L·화물관리번호로 수입화물 진행상태를 조회하고 통관단계를 읽는 방법을 쉽게 정리했습니다.">
+<meta name="keywords" content="수입화물 진행정보, 수입화물 조회, UNI-PASS, 유니패스, 화물관리번호, M B/L, H B/L, 수입통관, 수입신고수리, 반출신고, 해외직구 통관조회, 포워딩, 케이브릿지">
+<meta name="author" content="케이브릿지 주식회사">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="naverbot" content="index,follow">
+<meta name="yeti" content="index,follow">
+<meta name="blog-title" content="수입화물 진행정보 조회 방법 / UNI-PASS">
+<meta name="blog-summary" content="UNI-PASS에서 M B/L·H B/L·화물관리번호로 수입화물 진행상태를 조회하고 통관단계를 읽는 방법을 쉽게 정리했습니다.">
+<meta name="blog-date" content="2026-10-20">
+<meta name="blog-modified" content="2026-10-20">
+<meta name="blog-thumbnail" content="assets/images/thumbnail_import_cargo_1000.webp">
+<meta name="blog-published" content="true">
+<meta name="kbridge:category" content="물류 정보">
+<meta name="kbridge:date" content="2026-10-20">
+<link rel="canonical" href="https://www.kbexpress.kr/blog/posts/info/import-cargo.html">
+<link rel="alternate" type="application/rss+xml" title="KBRIDGE 물류 블로그 RSS" href="https://www.kbexpress.kr/rss.xml">
+<link rel="image_src" href="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_import_cargo_og.jpg">
+<link rel="preload" as="image" href="assets/images/thumbnail_import_cargo_1000.webp" type="image/webp" fetchpriority="high">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="KBRIDGE 물류 블로그">
+<meta property="og:url" content="https://www.kbexpress.kr/blog/posts/info/import-cargo.html">
+<meta property="og:title" content="수입화물 진행정보 조회 방법 / UNI-PASS">
+<meta property="og:description" content="UNI-PASS에서 M B/L·H B/L·화물관리번호로 수입화물 진행상태를 조회하고 통관단계를 읽는 방법을 쉽게 정리했습니다.">
+<meta property="og:image" content="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_import_cargo_og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="수입화물 진행정보 조회하는 방법 / UNI-PASS에서 통관단계 읽는 법">
+<meta property="article:published_time" content="2026-10-20T09:00:00+09:00">
+<meta property="article:modified_time" content="2026-10-20T09:00:00+09:00">
+<meta property="article:section" content="물류 정보">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="수입화물 진행정보 조회 방법 / UNI-PASS">
+<meta name="twitter:description" content="UNI-PASS에서 M B/L·H B/L·화물관리번호로 수입화물 진행상태를 조회하고 통관단계를 읽는 방법을 쉽게 정리했습니다.">
+<meta name="twitter:image" content="https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_import_cargo_og.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.kbexpress.kr/#organization","name":"케이브릿지 주식회사","url":"https://www.kbexpress.kr/"},{"@type":"WebSite","@id":"https://www.kbexpress.kr/#website","name":"KBRIDGE","url":"https://www.kbexpress.kr/","publisher":{"@id":"https://www.kbexpress.kr/#organization"}},{"@type":"ImageObject","@id":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html#primaryimage","url":"https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_import_cargo_og.jpg","contentUrl":"https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_import_cargo_og.jpg","width":1200,"height":630},{"@type":"WebPage","@id":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html#webpage","url":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html","name":"수입화물 진행정보 조회 방법 / UNI-PASS / KBRIDGE","description":"UNI-PASS에서 M B/L·H B/L·화물관리번호로 수입화물 진행상태를 조회하고 통관단계를 읽는 방법을 쉽게 정리했습니다.","datePublished":"2026-10-20T09:00:00+09:00","dateModified":"2026-10-20T09:00:00+09:00","thumbnailUrl":"https://www.kbexpress.kr/blog/posts/info/assets/images/thumbnail_import_cargo_1000.webp","primaryImageOfPage":{"@id":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html#primaryimage"}},{"@type":"BlogPosting","@id":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html#article","url":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html","headline":"수입화물 진행정보 조회하는 방법 / UNI-PASS에서 통관단계 읽는 법","description":"UNI-PASS에서 M B/L·H B/L·화물관리번호로 수입화물 진행상태를 조회하고 통관단계를 읽는 방법을 쉽게 정리했습니다.","datePublished":"2026-10-20T09:00:00+09:00","dateModified":"2026-10-20T09:00:00+09:00","mainEntityOfPage":{"@id":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html#webpage"},"image":{"@id":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html#primaryimage"},"author":{"@id":"https://www.kbexpress.kr/#organization"},"publisher":{"@id":"https://www.kbexpress.kr/#organization"},"articleSection":"물류 정보","keywords":["수입화물 진행정보","수입화물 조회","UNI-PASS","유니패스","화물관리번호","M B/L","H B/L","수입통관","수입신고수리","반출신고","해외직구 통관조회","포워딩","케이브릿지"],"inLanguage":"ko-KR"},{"@type":"BreadcrumbList","@id":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://www.kbexpress.kr/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://www.kbexpress.kr/blog/"},{"@type":"ListItem","position":3,"name":"물류 정보","item":"https://www.kbexpress.kr/blog/index.html?category=info"},{"@type":"ListItem","position":4,"name":"수입화물 진행정보 조회","item":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html"}]},{"@type":"FAQPage","@id":"https://www.kbexpress.kr/blog/posts/info/import-cargo.html#faq","mainEntity":[{"@type":"Question","name":"M B/L과 H B/L 중 어디에 번호를 입력해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"Master 화물은 M B/L 첫 번째 입력칸에, House 화물은 H B/L 두 번째 입력칸에 입력합니다. 해외직구 운송장번호는 House B/L인 경우가 많아 두 번째 칸에서 조회하는 경우가 많습니다."}},{"@type":"Question","name":"‘입항적재화물목록 심사완료’면 화물이 한국에 도착한 건가요?","acceptedAnswer":{"@type":"Answer","text":"적하목록 정보가 세관 심사를 마쳤다는 의미입니다. 실제 선박·항공편 입항, 하선·하기, 보세구역 반입은 이후 단계일 수 있으므로 입항보고와 반입신고까지 함께 확인해야 합니다."}},{"@type":"Question","name":"‘반입신고’가 떴으면 통관이 끝난 건가요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 반입신고는 화물이 터미널이나 보세창고 등 보세구역에 들어왔다는 뜻입니다. 일반 수입화물은 이후 수입신고와 세관 심사, 수입신고수리 단계가 이어질 수 있습니다."}},{"@type":"Question","name":"‘수입신고수리’와 ‘반출신고’는 무엇이 다른가요?","acceptedAnswer":{"@type":"Answer","text":"수입신고수리는 세관의 수입통관 심사가 완료되어 신고가 수리된 상태이고, 반출신고는 화물이 보세구역에서 실제로 나간 상태입니다. 배송 일정은 반출 여부까지 확인하는 것이 좋습니다."}},{"@type":"Question","name":"수입신고수리 후에도 화물이 바로 배송되지 않는 이유는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"보세구역 반출 작업, 터미널 운영시간, 운송차량 배차, 화주 인도조건 등이 남아 있을 수 있습니다. UNI-PASS에서 반출신고를 확인한 뒤 포워더·특송사·국내 운송사에 배송 일정을 확인하세요."}},{"@type":"Question","name":"해외직구 물품도 같은 화면에서 조회할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"가능합니다. 운송장번호인 H B/L로 UNI-PASS에서 조회할 수 있고, 2026년 8월 28일 개설된 관세청 전자상거래 통관포털에서도 본인인증 후 통관 내역과 수입화물 진행정보를 확인할 수 있습니다."}}]}]}</script>
+<link rel="stylesheet" href="../../../assets/css/kbridge-design-system.css?v=20260926-design-v38">
+<link rel="stylesheet" href="../../../assets/css/pages/blog-unified.css?v=20261005-related-tools-v1">
+<link rel="stylesheet" href="../../../assets/css/pages/blog-editorial.css?v=20261018-editorial-r3">
+<link rel="stylesheet" href="../../../assets/css/mobile-readability-v1.css?v=20261018-clean-v1">
+</head>
+<body class="kb-editorialized site-subpage kb-unified-site kb-blog-post" data-kb-blog-category="info" data-kb-editorial-kind="guide" data-kb-editorial-focus="customs">
+<header class="header" id="top"><div class="container header-inner">
+<a aria-label="케이브릿지 메인 화면으로 이동" class="brand" data-brand-action="home" href="../../../index.html" title="케이브릿지 메인 화면으로 이동"><span aria-hidden="true" class="brand-symbol"><svg aria-hidden="true" focusable="false" preserveaspectratio="xMidYMid meet" viewbox="0 0 100 100"><rect fill="#2B5CDB" height="90" rx="20" width="90" x="5" y="5"></rect><path d="M27 22h15v25.5L64 22h20L55.5 51 85 78H64L42 57v21H27z" fill="#FFFFFF"></path></svg></span><span class="brand-copy"><strong>KBRIDGE</strong></span></a>
+<nav aria-label="주요 메뉴" class="nav"><a href="../../../index.html#services">즉시견적</a><a href="../../../quote-comparison.html">견적서 비교</a><a href="../../../warehouse-inquiry.html">창고 문의</a>
+<div class="nav-dropdown"><button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">국내운송</button><div class="nav-dropdown-menu"><small>DOMESTIC TRANSPORT</small><a href="../../../domestic.html">국내운송 안내<span>운송 서비스와 견적 접수</span></a><a href="../../../load-planner.html">차량 배차 시뮬레이터<span>차량 추천·3D 적입 배치</span></a><a href="../../../safe-rate.html#safe-rate-tool">안전운임 조회<span>2026 고시·공식 운임표 확인</span></a><a href="../../../vehicle-spec.html#vehicle-spec-tool">차량 제원 조회<span>톤수·적재함·팔레트 비교</span></a></div></div>
+<a href="../../../freight-index.html">운임지수</a>
+<div class="nav-dropdown tools-nav-dropdown"><button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">물류도구</button><div class="nav-dropdown-menu tools-dropdown-menu"><small>LOGISTICS TOOLS</small><a href="../../../duty-calculator.html">관부가세 계산기<span>해외직구·특송 예상 세액 계산</span></a><a href="../../../customs-exchange-rate.html">관세청 고시환율<span>수입신고 기준환율 확인</span></a><a href="../../../cbm-calculator.html">CBM 계산기<span>박스 규격·수량으로 부피 계산</span></a><a href="../../../holiday-calendar.html">전세계 공휴일 조회<span>국가별 휴무 일정 확인</span></a><a href="../../../hs-code-search.html">HS CODE 조회<span>품명·재질·용도 기준 검색</span></a><a href="../../../incoterms-guide.html">인코텀즈 가이드<span>거래조건별 비용·위험 비교</span></a><a href="../../../lcl-storage.html">LCL 창고료<span>CFS 예상비용 계산</span></a><a href="../../../dangerous-goods.html">위험물 정보 조회<span>UN 번호·Class 정보 확인</span></a><a href="../../../vessel-location.html">실시간 선박 위치<span>MarineTraffic 공식 지도 연결</span></a><a href="../../../terminal-info.html">터미널 정보 조회<span>터미널 코드·작업정보 확인</span></a></div></div>
+<div class="nav-dropdown blog-nav-dropdown active"><button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-toggle" type="button">블로그</button><div class="nav-dropdown-menu blog-dropdown-menu"><small>KBRIDGE BLOG</small><a class="active" href="../../index.html?category=info">물류 정보<span>수출입 실무와 운송 참고 정보</span></a><a href="../../index.html?category=service">물류 서비스<span>케이브릿지 운송·통관 서비스 안내</span></a><a href="../../index.html?category=news">물류 뉴스<span>해상·항공·공급망 주요 소식</span></a><a href="../../index.html?category=insight">물류 인사이트<span>시장 변화와 실무 대응 분석</span></a><a href="../../index.html?category=glossary">물류 용어집<span>수출입 물류 핵심 용어 정리</span></a></div></div></nav>
+<div class="header-actions"><a class="header-link" href="mailto:all@kbridges.co.kr">문의</a><a class="header-btn" href="../../../index.html#services">견적 받기</a></div><button aria-controls="mobileNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn" type="button"><span></span></button>
+</div></header>
+<div aria-hidden="true" aria-label="모바일 메뉴" class="mobile-nav kb-mobile-nav" id="mobileNav"><a href="../../../index.html#services">즉시견적 <span>→</span></a><a href="../../../quote-comparison.html">견적서 비교 <span>→</span></a><a href="../../../warehouse-inquiry.html">창고 문의 <span>→</span></a><div class="mobile-nav-group"><span class="mobile-nav-label">국내운송</span><a href="../../../domestic.html">국내운송 안내 <span>→</span></a><a href="../../../load-planner.html">차량 배차 시뮬레이터 <span>→</span></a><a href="../../../safe-rate.html#safe-rate-tool">안전운임 조회 <span>→</span></a><a href="../../../vehicle-spec.html#vehicle-spec-tool">차량 제원 조회 <span>→</span></a></div><a href="../../../freight-index.html">운임지수 <span>→</span></a><div class="mobile-nav-group"><span class="mobile-nav-label">블로그</span><a href="../../index.html?category=info">물류 정보 <span>→</span></a><a href="../../index.html?category=service">물류 서비스 <span>→</span></a><a href="../../index.html?category=news">물류 뉴스 <span>→</span></a><a href="../../index.html?category=insight">물류 인사이트 <span>→</span></a><a href="../../index.html?category=glossary">물류 용어집 <span>→</span></a></div><a href="../../../index.html#services">견적 받기 <span>→</span></a></div>
+<main class="page-wrap" id="main">
+<div class="breadcrumb"><a href="../../../index.html">홈</a><span>›</span><a href="../../index.html">블로그</a><span>›</span><a href="../../index.html?category=info">물류 정보</a><span>›</span><span>수입화물 진행정보</span></div>
+<article class="article-shell">
+<div class="article-hero kb-page-hero" data-kb-hero="main"><div class="kb-hero-frame">
+<div class="hero-top"><div><span class="pill">물류 정보</span><span class="pill">UNI-PASS</span><span class="pill">수입통관 조회</span></div><div class="hero-nav"><a href="#lookup">조회 방법</a><a href="#status">통관단계</a></div></div>
+<h1 data-kb-ui-native="">수입화물 진행정보 조회하는 방법 / UNI-PASS에서 통관단계 읽는 법</h1>
+<p class="hero-desc" data-kb-ui-native="">“배는 도착했다는데 왜 아직 통관이 안 됐지?” 수입화물은 UNI-PASS에서 B/L 번호나 화물관리번호를 입력하면 입항부터 보세구역 반입, 수입신고, 신고수리, 반출까지 진행상태를 확인할 수 있습니다.</p>
+<p class="article-meta" data-kb-ui-native="">게시일 2026.10.20 · 자료 확인 2026.10.19 · KBRIDGE 물류 정보</p>
+</div></div>
+
+<div class="article-body">
+<figure class="body-visual cover-thumbnail"><img src="assets/images/thumbnail_import_cargo_1000.webp" width="1000" height="1000" sizes="(max-width:820px) calc(100vw - 32px), 790px" alt="수입화물 진행정보 UNI-PASS 조회 방법 썸네일" loading="eager" decoding="async" fetchpriority="high"></figure>
+
+<section class="quick-summary"><div class="summary-card">
+<p class="summary-title">먼저 이것만 기억하세요</p>
+<p><strong>수입화물 진행정보는 UNI-PASS에서 M B/L·H B/L 또는 화물관리번호로 조회</strong>할 수 있습니다. 가장 중요한 것은 화면 상단의 한 줄 상태만 보는 것이 아니라 <strong>처리단계, 처리일시, 장치위치, 수입신고수리와 반출신고 여부를 함께 보는 것</strong>입니다.</p>
+<div class="summary-points">
+<div class="summary-point">조회: M B/L · H B/L · 화물관리번호</div>
+<div class="summary-point">반입신고 = 통관완료 아님</div>
+<div class="summary-point">수입신고수리 = 세관 심사 완료</div>
+<div class="summary-point">반출 이후 국내배송은 별도 조회</div>
+</div></div></section>
+
+<figure class="body-visual kb-figure--graphic"><div class="kb-figure-head"><span class="kb-figure-kicker">VISUAL GUIDE</span><strong class="kb-figure-title">UNI-PASS 수입화물 진행정보 조회 3단계</strong></div><img src="assets/images/visual_01_import_lookup.webp" width="1200" height="720" sizes="(max-width:820px) calc(100vw - 32px), 790px" alt="UNI-PASS 수입화물 진행정보 M B/L H B/L 화물관리번호 조회 3단계" decoding="async" loading="lazy"></figure>
+
+<nav class="toc" aria-label="목차"><p class="toc-title">이 글에서 바로 찾기</p><ol>
+<li><a href="#prepare">조회 전에 준비할 번호</a></li>
+<li><a href="#lookup">UNI-PASS 조회 방법</a></li>
+<li><a href="#status">통관 진행단계 읽는 법</a></li>
+<li><a href="#cases">자주 헷갈리는 상태 해석</a></li>
+<li><a href="#screen">조회 화면에서 꼭 볼 항목</a></li>
+<li><a href="#ecommerce">2026년 해외직구 조회 변화</a></li>
+<li><a href="#check">수입 실무 체크리스트</a></li>
+<li><a href="#faq">자주 묻는 질문</a></li>
+</ol></nav>
+
+<section class="section" id="prepare"><h2>1. 조회 전에 어떤 번호를 준비해야 할까요?</h2>
+<p class="lead"><strong>가장 쉬운 방법은 B/L 번호를 사용하는 것</strong>입니다. 일반 해상·항공 수입화물은 선사·항공사 또는 포워더가 발행한 운송장 번호로 조회하는 경우가 많습니다.</p>
+<div class="table-wrap kb-table-shell kb-cols-4"><table class="kb-content-table" data-kb-cols="4"><thead><tr><th>조회 기준</th><th>누가 주로 사용?</th><th>UNI-PASS 입력 위치</th><th>실무 포인트</th></tr></thead><tbody>
+<tr><td><strong>M B/L</strong></td><td>Master 화물</td><td>M B/L - H B/L 선택 후 첫 번째 칸</td><td>선사·항공사 Master 운송장 기준</td></tr>
+<tr><td><strong>H B/L</strong></td><td>House 화물 / 포워딩 / 특송</td><td>두 번째 칸</td><td>포워더 발행 B/L, 직구 운송장에 많이 사용</td></tr>
+<tr><td><strong>화물관리번호</strong></td><td>세관 화물관리번호를 알고 있을 때</td><td>화물관리번호 선택</td><td>Master 15자리 / House 19자리</td></tr>
+</tbody></table></div>
+<p class="note"><strong>조회가 안 된다면 먼저 연도를 확인하세요.</strong> UNI-PASS 화물진행정보는 B/L 번호와 함께 해당 화물의 입항 연도를 선택해 조회합니다. House 화물인데 첫 번째 Master 칸에만 번호를 넣는 경우도 자주 발생합니다.</p></section>
+
+<section class="section" id="lookup"><h2>2. UNI-PASS에서 수입화물 진행정보 조회하는 방법</h2>
+<ol>
+<li><strong>UNI-PASS에 접속합니다.</strong> 메인 화면의 ‘화물진행정보’를 이용하거나 정보조회 → 통관물류정보 → 수입화물 진행정보 → 수입화물 진행정보 메뉴로 이동합니다.</li>
+<li><strong>조회 방식을 선택합니다.</strong> B/L 번호가 있으면 ‘M B/L - H B/L’, 화물관리번호가 있으면 ‘화물관리번호’를 선택합니다.</li>
+<li><strong>번호와 연도를 입력합니다.</strong> Master B/L은 첫 번째 칸, House B/L은 두 번째 칸에 입력하고 해당 입항 연도를 선택합니다.</li>
+<li><strong>조회 결과에서 최신 처리단계를 확인합니다.</strong> 화면의 ‘통관진행상태’만 보지 말고 아래 처리내역의 최근 일시와 장치위치를 함께 확인합니다.</li>
+</ol>
+<p>관세청 FAQ도 같은 경로와 입력 방식을 안내하고 있습니다. 해외직구 운송장번호는 House B/L인 경우가 많아 <strong>두 번째 H B/L 입력칸</strong>에서 조회하는 방식이 일반적입니다.</p></section>
+
+<figure class="body-visual kb-figure--graphic"><div class="kb-figure-head"><span class="kb-figure-kicker">VISUAL GUIDE</span><strong class="kb-figure-title">입항부터 반출까지 / 통관단계 읽는 법</strong></div><img src="assets/images/visual_02_import_timeline.webp" width="1200" height="720" sizes="(max-width:820px) calc(100vw - 32px), 790px" alt="수입화물 입항 적하목록 하선신고 반입신고 수입신고 수입신고수리 반출신고 진행 단계" decoding="async" loading="lazy"></figure>
+
+<section class="section" id="status"><h2>3. 수입화물 진행단계는 이렇게 읽으면 쉽습니다</h2>
+<p class="lead"><strong>관세청 안내 기준의 일반적인 흐름은 적하목록 → 입항 → 하선·하기 → 반입 → 수입신고 → 수입신고수리 → 반출</strong>입니다. 실제 화물은 보세운송, 검사, 정정 등으로 중간 단계가 추가되거나 순서가 달라질 수 있습니다.</p>
+<div class="table-wrap kb-table-shell kb-cols-3"><table class="kb-content-table" data-kb-cols="3"><thead><tr><th>화면에 보이는 단계</th><th>쉽게 말하면</th><th>아직 남은 일</th></tr></thead><tbody>
+<tr><td><strong>입항적재화물목록 심사완료</strong></td><td>화물정보가 세관 심사를 마침</td><td>실제 입항·하역·반입</td></tr>
+<tr><td><strong>입항보고 수리</strong></td><td>선박·항공편의 입항보고가 처리됨</td><td>하선·하기 및 반입</td></tr>
+<tr><td><strong>하선신고 / 하기신고 수리</strong></td><td>화물을 선박·항공기에서 내리는 절차가 처리됨</td><td>보세구역 반입</td></tr>
+<tr><td><strong>반입신고</strong></td><td>터미널·보세창고에 화물이 들어옴</td><td>수입신고·심사·세금납부 등</td></tr>
+<tr><td><strong>수입신고</strong></td><td>수입신고서가 세관에 제출됨</td><td>심사·검사·요건확인·세액처리</td></tr>
+<tr><td><strong>수입신고수리</strong></td><td>세관의 수입통관 처리가 완료됨</td><td>보세구역 실제 반출</td></tr>
+<tr><td><strong>반출신고</strong></td><td>화물이 보세구역에서 실제로 나감</td><td>국내 배송·납품</td></tr>
+</tbody></table></div></section>
+
+<section class="section" id="cases"><h2>4. 화면에서 자주 헷갈리는 상태는 이렇게 해석하세요</h2>
+<div class="news-list">
+<article class="news-item"><div class="news-num">01</div><div><h3>“입항적하목록 심사완료인데 화물이 안 나왔어요”</h3><p>적하목록 심사는 <strong>화물정보에 대한 세관 심사가 끝난 것</strong>입니다. 실제 선박·항공기 입항과 하선·하기, 터미널 반입까지 완료됐다는 뜻은 아닙니다. 입항보고·하선신고·반입신고가 이어졌는지 확인하세요.</p></div></article>
+<article class="news-item"><div class="news-num">02</div><div><h3>“반입신고가 떴는데 왜 통관 완료가 아니죠?”</h3><p>반입신고는 화물이 <strong>세관의 관리 아래 있는 보세구역에 들어온 상태</strong>입니다. 일반 수입신고 대상이라면 관세사가 수입신고를 제출하고 세관 심사·검사·요건확인·세액처리가 이어질 수 있습니다.</p></div></article>
+<article class="news-item"><div class="news-num">03</div><div><h3>“수입신고수리인데 왜 출고가 안 되나요?”</h3><p>수입신고수리는 세관 통관이 완료됐다는 의미지만 <strong>실제 창고나 터미널에서 화물이 나간 것은 반출신고</strong>로 확인하는 것이 좋습니다. 반출작업·배차·터미널 운영시간 때문에 시간이 더 필요할 수 있습니다.</p></div></article>
+<article class="news-item"><div class="news-num">04</div><div><h3>“반출신고(보세)가 있는데 최종 배송된 건가요?”</h3><p>보세운송을 위해 첫 번째 보세구역에서 반출된 경우일 수 있습니다. 다른 보세창고로 이동한 뒤 다시 반입신고가 나타날 수 있으므로 <strong>장치위치가 어디로 바뀌었는지</strong> 함께 확인하세요.</p></div></article>
+</div></section>
+
+<section class="section" id="screen"><h2>5. 조회 결과에서 꼭 봐야 할 항목</h2>
+<ul class="checklist">
+<li><strong>통관진행상태:</strong> 현재 전체 흐름이 어디까지 왔는지 먼저 확인합니다.</li>
+<li><strong>처리단계와 처리일시:</strong> 가장 최근 이벤트가 언제 발생했는지 봅니다.</li>
+<li><strong>장치위치:</strong> 터미널·보세창고 등 현재 화물이 어느 보세구역에 있는지 확인합니다.</li>
+<li><strong>M B/L / H B/L·화물관리번호:</strong> 내가 조회한 화물이 맞는지 번호를 다시 대조합니다.</li>
+<li><strong>선사·항공사 / 선박·항공편:</strong> 실제 입항편과 선적 정보를 확인합니다.</li>
+<li><strong>신고번호·반출입 관련정보:</strong> 수입신고·보세운송·반출 흐름을 확인할 때 활용합니다.</li>
+</ul>
+<p class="note"><strong>처리일시가 멈춰 있다고 바로 문제가 생긴 것은 아닙니다.</strong> 검사, 서류보완, 요건확인, 세금납부, 터미널 작업, 보세운송 등 실제 업무가 진행 중일 수 있으므로 포워더·관세사와 다음 대기 사유를 확인하는 것이 정확합니다.</p></section>
+
+<figure class="body-visual kb-figure--graphic"><div class="kb-figure-head"><span class="kb-figure-kicker">2026 UPDATE</span><strong class="kb-figure-title">일반 수입화물과 해외직구 / 조회 경로 구분</strong></div><img src="assets/images/visual_03_import_channels.webp" width="1200" height="720" sizes="(max-width:820px) calc(100vw - 32px), 790px" alt="2026 UNI-PASS 일반 수입화물과 전자상거래 통관포털 해외직구 조회 경로 비교" decoding="async" loading="lazy"></figure>
+
+<section class="section" id="ecommerce"><h2>6. 2026년에는 해외직구 조회 경로가 하나 더 생겼습니다</h2>
+<p>관세청은 <strong>2026년 8월 28일부터 전자상거래 통관포털을 개설</strong>했습니다. 개인 해외직구 사용자는 본인인증 후 통관 내역, 수입신고 내역, 거래 내역과 수입화물 진행정보 등을 한곳에서 확인할 수 있습니다.</p>
+<p>기업의 일반 수입화물이나 포워딩 화물은 기존처럼 <strong>UNI-PASS 수입화물 진행정보가 핵심 조회 화면</strong>입니다. 개인 직구는 전자상거래 통관포털이나 모바일관세청을 함께 활용하면 편리합니다.</p>
+<p class="note"><strong>반출 이후 국내 배송은 별도입니다.</strong> 관세청 안내에 따르면 수입화물 진행정보는 세관 통관에 따른 반출신고 이후 택배·국내 배송단계까지 보여주는 화면이 아닙니다. 반출 후에는 특송사·택배사·포워더·국내 운송사의 배송조회를 이용하세요.</p></section>
+
+<section class="section" id="check"><h2>7. 수입화물 진행정보를 볼 때 실무 체크리스트</h2>
+<ul class="checklist">
+<li><strong>B/L 종류 확인:</strong> Master인지 House인지 구분하고 올바른 입력칸에 조회합니다.</li>
+<li><strong>입항 연도 확인:</strong> 연도 선택이 잘못되면 같은 B/L 번호라도 조회되지 않을 수 있습니다.</li>
+<li><strong>한 줄 상태만 보지 않기:</strong> 최신 처리단계·처리일시·장치위치를 함께 봅니다.</li>
+<li><strong>반입과 통관 완료 구분:</strong> 반입신고는 보세구역 도착이지 수입통관 완료가 아닙니다.</li>
+<li><strong>수리와 반출 구분:</strong> 납기 확인은 수입신고수리뿐 아니라 반출신고까지 봅니다.</li>
+<li><strong>보세운송 여부 확인:</strong> 반출 후 다른 보세창고로 이동하는 건이면 다음 반입 위치를 확인합니다.</li>
+<li><strong>진행이 오래 멈추면 사유 확인:</strong> 검사·보완·요건·세액·터미널 작업 여부를 관세사·포워더에게 확인합니다.</li>
+</ul></section>
+
+<section class="kb-takeaways" aria-label="핵심 실무 포인트"><h2>KEY TAKEAWAYS / 이 글에서 기억할 것</h2>
+<p><strong>1. 조회는 M B/L·H B/L·화물관리번호 중 하나로 시작합니다.</strong><br>
+<strong>2. 반입신고는 통관완료가 아니고, 수입신고수리는 세관 심사 완료를 뜻합니다.</strong><br>
+<strong>3. 실제 출고 여부는 반출신고까지 확인하는 것이 좋습니다.</strong><br>
+<strong>4. 반출 이후 국내 배송은 UNI-PASS가 아니라 운송사 조회로 이어집니다.</strong></p></section>
+
+<section class="section" id="faq"><h2>8. 자주 묻는 질문</h2><div class="faq"><details class="faq-item"><summary class="faq-q">Q. M B/L과 H B/L 중 어디에 번호를 입력해야 하나요?</summary><div class="faq-a">Master 화물은 M B/L 첫 번째 입력칸에, House 화물은 H B/L 두 번째 입력칸에 입력합니다. 해외직구 운송장번호는 House B/L인 경우가 많아 두 번째 칸에서 조회하는 경우가 많습니다.</div></details><details class="faq-item"><summary class="faq-q">Q. ‘입항적재화물목록 심사완료’면 화물이 한국에 도착한 건가요?</summary><div class="faq-a">적하목록 정보가 세관 심사를 마쳤다는 의미입니다. 실제 선박·항공편 입항, 하선·하기, 보세구역 반입은 이후 단계일 수 있으므로 입항보고와 반입신고까지 함께 확인해야 합니다.</div></details><details class="faq-item"><summary class="faq-q">Q. ‘반입신고’가 떴으면 통관이 끝난 건가요?</summary><div class="faq-a">아닙니다. 반입신고는 화물이 터미널이나 보세창고 등 보세구역에 들어왔다는 뜻입니다. 일반 수입화물은 이후 수입신고와 세관 심사, 수입신고수리 단계가 이어질 수 있습니다.</div></details><details class="faq-item"><summary class="faq-q">Q. ‘수입신고수리’와 ‘반출신고’는 무엇이 다른가요?</summary><div class="faq-a">수입신고수리는 세관의 수입통관 심사가 완료되어 신고가 수리된 상태이고, 반출신고는 화물이 보세구역에서 실제로 나간 상태입니다. 배송 일정은 반출 여부까지 확인하는 것이 좋습니다.</div></details><details class="faq-item"><summary class="faq-q">Q. 수입신고수리 후에도 화물이 바로 배송되지 않는 이유는 무엇인가요?</summary><div class="faq-a">보세구역 반출 작업, 터미널 운영시간, 운송차량 배차, 화주 인도조건 등이 남아 있을 수 있습니다. UNI-PASS에서 반출신고를 확인한 뒤 포워더·특송사·국내 운송사에 배송 일정을 확인하세요.</div></details><details class="faq-item"><summary class="faq-q">Q. 해외직구 물품도 같은 화면에서 조회할 수 있나요?</summary><div class="faq-a">가능합니다. 운송장번호인 H B/L로 UNI-PASS에서 조회할 수 있고, 2026년 8월 28일 개설된 관세청 전자상거래 통관포털에서도 본인인증 후 통관 내역과 수입화물 진행정보를 확인할 수 있습니다.</div></details></div></section>
+
+<!-- KBRIDGE_BLOG_SYSTEM_START -->
+<section class="kb-resource-hub" data-kb-auto="v44" aria-label="관련 글과 물류도구">
+<p class="kb-resource-eyebrow">NEXT STEP</p><h2>관련 글 · 물류도구</h2>
+<div class="kb-resource-tools"><h3>관련 물류도구</h3><div class="kb-resource-grid kb-resource-grid--tools">
+<a class="kb-resource-card kb-resource-card--tool" href="https://unipass.customs.go.kr/" target="_blank" rel="noopener noreferrer"><span class="kb-resource-type">OFFICIAL</span><strong>UNI-PASS</strong><span class="kb-resource-desc">관세청 수입화물 진행정보 조회</span><span class="kb-resource-go">공식 사이트 열기 →</span></a>
+<a class="kb-resource-card kb-resource-card--tool" href="https://ecos.customs.go.kr/ecp/" target="_blank" rel="noopener noreferrer"><span class="kb-resource-type">OFFICIAL</span><strong>전자상거래 통관포털</strong><span class="kb-resource-desc">개인 해외직구 통관정보 확인</span><span class="kb-resource-go">공식 사이트 열기 →</span></a>
+</div></div>
+<div class="kb-resource-related"><h3>함께 읽기</h3><div class="kb-resource-grid kb-resource-grid--posts">
+<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/info/customs%20inspection.html"><span class="kb-resource-type">물류 정보</span><strong>수입 화물검사 종류와 선별 이유</strong><span class="kb-resource-desc">검사 단계에서 지연되는 이유와 대응</span><span class="kb-resource-go">글 보기 →</span></a>
+<a class="kb-resource-card kb-resource-card--post" href="https://www.kbexpress.kr/blog/posts/glossary/customs.html"><span class="kb-resource-type">물류 용어집</span><strong>관세와 통관이란?</strong><span class="kb-resource-desc">수입신고·관세율·통관 절차 정리</span><span class="kb-resource-go">글 보기 →</span></a>
+</div></div></section>
+<!-- KBRIDGE_BLOG_SYSTEM_END -->
+
+<section class="cta kb-blog-cta"><h2 data-kb-ui-native="">진행상태를 봐도 다음 조치가 헷갈리면 실제 화물 기준으로 확인하세요</h2>
+<p data-kb-ui-native="">KBRIDGE는 B/L·입항정보·통관단계·장치위치와 실제 선사·관세사·터미널 진행상황을 연결해 수입화물의 다음 일정을 확인합니다.</p>
+<div class="action-row"><a class="btn" href="https://www.kbexpress.kr/index.html?quote=formal">수입물류 문의</a><a class="btn sub" href="https://unipass.customs.go.kr/" target="_blank" rel="noopener noreferrer">UNI-PASS 조회</a><a class="btn sub" href="https://www.kbexpress.kr/blog/index.html?category=info">물류 정보 더보기</a></div></section>
+
+<div class="tags" aria-label="태그"><span class="tag">#수입화물진행정보</span><span class="tag">#수입화물조회</span><span class="tag">#UNIPASS</span><span class="tag">#유니패스</span><span class="tag">#화물관리번호</span><span class="tag">#MBL</span><span class="tag">#HBL</span><span class="tag">#수입신고수리</span><span class="tag">#반출신고</span><span class="tag">#수입통관</span><span class="tag">#포워딩</span><span class="tag">#케이브릿지</span></div>
+
+<aside class="refs"><h3>주요 출처 · 2026.10.19 확인</h3><ol>
+<li><a href="https://unipass.customs.go.kr/" target="_blank" rel="noopener noreferrer">관세청 UNI-PASS</a></li>
+<li><a href="https://www.customs.go.kr/download/UNIPASS_FAQ_221031.pdf" target="_blank" rel="noopener noreferrer">관세청 UNI-PASS FAQ / 수입화물진행정보 조회 방법</a></li>
+<li><a href="https://www.customs.go.kr/download/_down/INQUIRY_GUIDE_230725.pdf" target="_blank" rel="noopener noreferrer">관세청 상담사례 안내 / 해외직구 진행사항 조회</a></li>
+<li><a href="https://ecos.customs.go.kr/ecp/usersppt/retrieveNtcnDtlQry.do?ntarId=202608270004" target="_blank" rel="noopener noreferrer">관세청 전자상거래 통관포털 개설 안내 / 2026.08.27</a></li>
+<li><a href="https://ecos.customs.go.kr/ecp/" target="_blank" rel="noopener noreferrer">관세청 전자상거래 통관포털</a></li>
+</ol>
+<p class="editor-note"><strong>편집자 주:</strong> 수입화물 진행정보의 처리단계와 순서는 화물 종류, 보세운송, 검사, 정정, 통관요건 등에 따라 달라질 수 있습니다. 실제 반출·납기 판단은 최신 UNI-PASS 기록과 포워더·관세사·터미널 확인을 함께 사용하는 것이 안전합니다.</p></aside>
+</div></article></main>
+<footer aria-label="케이브릿지 푸터" class="kb-footer"><div class="footer-grid"><div><div class="footer-brand">KBRIDGE</div><p>FCL·LCL 해상운송, 항공운송, 해외특송과 국내운송을 연결하는 종합 물류 서비스입니다.</p></div><div><h4>서비스</h4><ul><li><a href="https://www.kbexpress.kr/index.html#services">해상·항공 견적</a></li><li><a href="https://www.kbexpress.kr/domestic.html">국내운송</a></li><li><a href="https://www.kbexpress.kr/convenience.html">물류도구</a></li></ul></div><div><h4>콘텐츠</h4><ul><li><a href="https://www.kbexpress.kr/blog/">블로그</a></li><li><a href="https://www.kbexpress.kr/blog/index.html?category=insight">물류 인사이트</a></li><li><a href="https://www.kbexpress.kr/blog/index.html?category=info">물류 정보</a></li></ul></div><div><h4>문의</h4><ul><li><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a></li><li>평일 09:00–18:00</li><li><a href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 접수</a></li></ul></div></div><p class="footer-copy">케이브릿지 주식회사 · © 2026 KBRIDGE CO., LTD.</p></footer>
+<a aria-label="최상단으로 이동" class="floating-top" href="#main">TOP</a>
+<script defer src="../../../assets/site-chrome.js?v=20260926-site-chrome-v38"></script>
+<script defer src="../../../assets/enterprise-motion.js?v=20260720-v17"></script>
+<script defer src="../../../assets/kebby-chat.js?v=20260728-chat-v13"></script>
+</body></html>
