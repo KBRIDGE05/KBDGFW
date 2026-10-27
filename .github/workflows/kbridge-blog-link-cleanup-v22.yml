@@ -1,0 +1,121 @@
+name: KBRIDGE One-Time Blog URL Link Cleanup V22
+
+# Upload this file to .github/workflows on main. It automatically performs
+# an exact ten-link-only change, validates, then commits just blog/index.html.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kbridge-blog-link-cleanup-v22.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kbridge-blog-url-cleanup
+  cancel-in-progress: false
+
+jobs:
+  fix-and-verify:
+    if: github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Patch only ten legacy blog category links (fail closed)
+        shell: bash
+        run: |
+          python - <<'PYCODE'
+          from pathlib import Path
+          import difflib
+          import sys
+
+          target = Path('blog/index.html')
+          if not target.is_file():
+              sys.exit('FAIL: blog/index.html not found. No change made.')
+          text = target.read_text('utf-8')
+          original = text
+          categories = ('info', 'service', 'news', 'insight', 'glossary')
+          old_prefix = 'href="../blog/index.html?category='
+          new_prefix = 'href="../blog/?category='
+          for category in categories:
+              old = old_prefix + category + '"'
+              new = new_prefix + category + '"'
+              old_count = text.count(old)
+              new_count = text.count(new)
+              if (old_count, new_count) not in ((2, 0), (0, 2)):
+                  sys.exit(f'FAIL: {category} old/new counts {old_count}/{new_count} unexpected. No change made.')
+          total_old = original.count(old_prefix)
+          total_new = original.count(new_prefix)
+          if (total_old, total_new) == (10, 0):
+              updated = original.replace(old_prefix, new_prefix)
+          elif (total_old, total_new) == (0, 10):
+              updated = original
+              print('Already patched: exactly ten canonical category links.')
+          else:
+              sys.exit(f'FAIL: old={total_old}, new={total_new}. No change made.')
+          if updated != original and updated.replace(new_prefix, old_prefix) != original:
+              sys.exit('FAIL: safety check: content outside category links changed.')
+          if 'href="https://www.kbexpress.kr/blog/" rel="canonical"' not in updated:
+              sys.exit('FAIL: canonical not as expected; abort without writing.')
+          if updated.count(new_prefix) != 10 or updated.count(old_prefix) != 0:
+              sys.exit('FAIL: wrong resulting link counts.')
+          if updated != original:
+              target.write_text(updated, 'utf-8')
+              print('Patched 10 URLs in blog/index.html; all other bytes preserved.')
+          with open('/tmp/kbridge-v22-patch-state', 'w') as f:
+              f.write('changed' if updated != original else 'unchanged')
+          PYCODE
+
+      - name: Check only intended file changed
+        shell: bash
+        run: |
+          git diff --check
+          test "$(git diff --name-only)" = 'blog/index.html' || test -z "$(git diff --name-only)"
+
+      - name: Install existing site audit dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
+
+      - name: Run read-only SEO and structural audits before commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/audit-site.py
+          python scripts/audit-indexing.py
+          python scripts/audit-blog-system.py
+          python scripts/audit-design-v47.py
+          python scripts/audit-legacy-urls.py
+          python scripts/audit-search-discovery.py
+          git diff --check
+          files="$(git diff --name-only)"
+          if test "$(cat /tmp/kbridge-v22-patch-state)" = changed; then
+            test "$files" = 'blog/index.html'
+          else
+            test -z "$files"
+          fi
+
+      - name: Commit only blog/index.html after all checks pass
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test "$(cat /tmp/kbridge-v22-patch-state)" = unchanged; then
+            echo 'No change required: already clean.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- blog/index.html
+          test "$(git diff --cached --name-only)" = 'blog/index.html'
+          git commit -m 'seo: normalize ten blog category navigation links'
+          git push origin HEAD:main
+          echo 'Commit pushed. Check GitHub Pages deployment status separately.'
