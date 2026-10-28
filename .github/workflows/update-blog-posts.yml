@@ -33,6 +33,9 @@ on:
       - 'scripts/legacy-url-map.json'
       - 'assets/blog.js'
       - 'scripts/audit-design-v47.py'
+      - 'scripts/audit-editorial-readability.py'
+      - 'scripts/audit-url-contract.py'
+      - 'scripts/test-blog-filter.cjs'
       - 'scripts/blog-system-config.json'
       - 'scripts/blog-templates/**'
       - 'scripts/create-blog-post.py'
@@ -96,18 +99,21 @@ jobs:
           if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
             git ls-files 'blog/posts/**/*.html' > /tmp/changed-blog-posts.txt
           else
-            git diff --name-status "$BEFORE" "$AFTER" -- 'blog/posts/**/*.html' \
-              | awk '$1 != "D" {print $NF}' > /tmp/changed-blog-posts.txt
-            git diff --name-status "$BEFORE" "$AFTER" -- 'blog/posts/**/*.html' \
-              | awk '$1 == "D" {print $NF}' > /tmp/deleted-blog-posts.txt
+            # --name-only preserves filenames containing spaces (e.g.
+            # blog/posts/info/customs inspection.html).  Using awk '$NF'
+            # previously truncated such paths to just inspection.html.
+            git diff --diff-filter=ACMRT --name-only "$BEFORE" "$AFTER" -- 'blog/posts/**/*.html' \
+              > /tmp/changed-blog-posts.txt
+            git diff --diff-filter=D --name-only "$BEFORE" "$AFTER" -- 'blog/posts/**/*.html' \
+              > /tmp/deleted-blog-posts.txt
           fi
           if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
             git ls-files '*.html' 'blog/**/*.html' > /tmp/changed-site-pages.txt
           else
-            git diff --name-status "$BEFORE" "$AFTER" -- '*.html' 'blog/**/*.html' \
-              | awk '$1 != "D" {print $NF}' > /tmp/changed-site-pages.txt
-            git diff --name-status "$BEFORE" "$AFTER" -- '*.html' 'blog/**/*.html' \
-              | awk '$1 == "D" {print $NF}' > /tmp/deleted-site-pages.txt
+            git diff --diff-filter=ACMRT --name-only "$BEFORE" "$AFTER" -- '*.html' 'blog/**/*.html' \
+              > /tmp/changed-site-pages.txt
+            git diff --diff-filter=D --name-only "$BEFORE" "$AFTER" -- '*.html' 'blog/**/*.html' \
+              > /tmp/deleted-site-pages.txt
           fi
           echo "Changed blog posts:"
           cat /tmp/changed-blog-posts.txt || true
@@ -153,6 +159,15 @@ jobs:
 
       - name: Validate V47 editorial design
         run: python scripts/audit-design-v47.py
+
+      - name: Validate published article readability and editorial contracts
+        run: python scripts/audit-editorial-readability.py
+
+      - name: Validate canonical navigation and URL uniqueness across all HTML
+        run: python scripts/audit-url-contract.py
+
+      - name: Regression test blog category and search navigation (Node VM)
+        run: node scripts/test-blog-filter.cjs
 
       - name: Validate SEO output and local resources
         run: python scripts/audit-site.py
