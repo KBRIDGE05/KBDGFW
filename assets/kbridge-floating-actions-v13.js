@@ -11,14 +11,23 @@
   const isHome = path === '/' || /^\/index\.html$/i.test(path) ||
     (location.protocol === 'file:' && /\/index\.html$/i.test(path) && !/\/blog\//i.test(path));
 
-  const addStyle = () => {
-    if (document.getElementById('kb-floating-actions-style')) return;
-    const css = document.createElement('link');
-    css.id = 'kb-floating-actions-style';
-    css.rel = 'stylesheet';
-    css.href = new URL('css/kbridge-floating-actions-v13.css?v=20261025-hover-v14', assetsRoot).href;
-    document.head.appendChild(css);
-  };
+  // Prevent flash of unstyled floating buttons when this stylesheet is delayed.
+  const addStyle = () => new Promise((resolve) => {
+    let css = document.getElementById('kb-floating-actions-style');
+    if (css?.sheet) { resolve(true); return; }
+    if (!css) {
+      css = document.createElement('link');
+      css.id = 'kb-floating-actions-style';
+      css.rel = 'stylesheet';
+      css.href = new URL('css/kbridge-floating-actions-v13.css?v=20261025-hover-v14', assetsRoot).href;
+      css.addEventListener('load', () => resolve(true), { once: true });
+      css.addEventListener('error', () => resolve(false), { once: true });
+      document.head.appendChild(css);
+    } else {
+      css.addEventListener('load', () => resolve(true), { once: true });
+      css.addEventListener('error', () => resolve(false), { once: true });
+    }
+  });
 
   const icon = {
     quote: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7h8M8 11h2m4 0h2M8 15h2m4 0h2M8 19h8"/></svg>',
@@ -50,11 +59,15 @@
   function start() {
     if (document.getElementById('kb-floating-actions')) return;
     if (!document.body) return;
-    addStyle();
+    const cssReady = addStyle();
     const container = document.createElement('div');
     container.id = 'kb-floating-actions-shell';
+    container.style.display = 'none';
     container.innerHTML = markup;
     document.body.appendChild(container);
+    cssReady.then((loaded) => {
+      if (loaded && container.isConnected) container.style.removeProperty('display');
+    });
     const nav = container.querySelector('#kb-floating-actions');
     const emailPanel = container.querySelector('#kb-floating-email-panel');
     const emailButton = nav.querySelector('[data-kb-float="email"]');

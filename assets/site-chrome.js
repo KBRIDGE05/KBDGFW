@@ -147,12 +147,15 @@
   const base = new URL('../', script.src);
   function initHomeFinder(siteBase) {
     const target = document.querySelector('body.site-home #services.kbix-section-anchor');
-    if (!target || document.getElementById('kbix-guide')) return;
-    const section = document.createElement('section');
-    section.id = 'kbix-guide';
-    section.className = 'kbix-guide';
-    section.setAttribute('aria-labelledby', 'kbix-guide-title');
-    section.innerHTML = `
+    if (!target) return;
+    let section = document.getElementById('kbix-guide');
+    if (section?.dataset.kbixReady === 'true') return;
+    if (!section) {
+      section = document.createElement('section');
+      section.id = 'kbix-guide';
+      section.className = 'kbix-guide';
+      section.setAttribute('aria-labelledby', 'kbix-guide-title');
+      section.innerHTML = `
       <div class="container kbix-guide-container">
         <div class="kbix-guide-title"><span class="kbix-kicker">SMART LOGISTICS GUIDE</span><h2 id="kbix-guide-title">내 화물에 맞는 운송 방법, <em>직접 선택해 보세요</em></h2><p>운송 목적과 화물 형태를 선택하면 적합한 문의 방법과 다음 단계를 안내합니다.</p></div>
         <div class="kbix-guide-layout">
@@ -176,7 +179,9 @@
       </div>`;
     // Retain #services as a lightweight anchor for header links and quote-entry.js.
     // The redundant transport promotion cards are removed from the source HTML.
-    target.after(section);
+      target.after(section);
+    }
+    section.dataset.kbixReady = 'true';
 
     let direction = 'export';
     let cargo = 'fcl';
@@ -237,10 +242,6 @@
   const boot = () => {
     const target = document.querySelector('body.site-home #services.kbix-section-anchor');
     if (!target) return;
-    const style = document.createElement('link');
-    style.rel = 'stylesheet';
-    style.href = new URL('css/interactive-guide.css?v=20261018-clean', script.src).href;
-    document.head.appendChild(style);
     initHomeFinder(base);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
@@ -306,6 +307,6 @@
   if (!source) return;
   const script = document.createElement('script');
   script.defer = true;
-  script.src = new URL('kbridge-floating-actions-v13.js?v=20261025-hover-v14', source).href;
+  script.src = new URL('kbridge-floating-actions-v13.js?v=20261029-r8-first-paint', source).href;
   document.head.appendChild(script);
 })();

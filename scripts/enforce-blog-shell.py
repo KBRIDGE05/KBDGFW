@@ -16,7 +16,7 @@ POSTS_ROOT = ROOT / "blog" / "posts"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
 DESIGN_VERSION = "20260926-design-v38"
 BLOG_STYLE_VERSION = "20261005-related-tools-v1"
-SITE_CHROME_VERSION = "20261025-hover-v14"
+SITE_CHROME_VERSION = "20261029-r8-first-paint"
 
 
 def is_noindex_html(source: str) -> bool:
