@@ -140,6 +140,11 @@ def audit_local_refs() -> tuple[int, int]:
             continue
         pages += 1
         source = page.read_text("utf-8", errors="ignore")
+        # HTML void elements <meta> and <link> must never have closing tags.
+        # This check runs on original markup (BeautifulSoup may silently ignore them).
+        void_closers = re.findall(r"</(?:meta|link)\s*>", source, flags=re.I)
+        if void_closers:
+            fail(f"{page.relative_to(ROOT)}: 불필요한 HTML meta/link 종료 태그 {len(void_closers)}개")
         if re.search(r'<img\b[^>]*?/\s+(?:decoding|loading|fetchpriority)\s*=', source, re.I):
             fail(f"{page.relative_to(ROOT)}: 잘못된 이미지 태그 속성 순서")
         soup = BeautifulSoup(source, "html.parser")
