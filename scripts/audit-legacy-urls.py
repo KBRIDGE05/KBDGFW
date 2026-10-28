@@ -122,7 +122,7 @@ def main() -> None:
                 fail(f"현재 HTML 내부링크가 폐기 URL 사용: {rel} -> {href}")
 
     blog_js = (ROOT / "assets" / "blog.js").read_text("utf-8", errors="ignore")
-    for token in ('initialParams.get("q")', 'url.searchParams.set("q",q)', 'search.value=requestedQuery'):
+    for token in ('initialParams.get("q")', 'state.set("q",q)', 'search.value=requestedQuery'):
         if token not in blog_js:
             fail(f"assets/blog.js 검색 q 호환 로직 누락: {token}")
 

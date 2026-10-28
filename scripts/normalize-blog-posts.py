@@ -342,10 +342,27 @@ def normalize_file(file_path: Path) -> bool:
         next((find_json_value(item, "datePublished") for item in json_values if find_json_value(item, "datePublished")), "") or
         visible_article_date(source) or git_date(file_path, first=True) or "2026-07-18"
     )
+    # Preserve existing modified timestamps even when they were recorded only
+    # inside the generated SEO block. The block is intentionally removed above;
+    # without reading its previous value first, historical posts silently move
+    # backwards in time whenever a workflow normalizes them (real incident:
+    # logisys.html 2026-10-25 -> 2026-09-29).
+    prior_modified = [
+        attr_value(tag, "content")
+        for tag in META_TAG_RE.findall(original)
+        if attr_value(tag, "property").lower() == "article:modified_time"
+        or attr_value(tag, "name").lower() == "blog-modified"
+    ]
+    prior_modified.extend(
+        find_json_value(item, "dateModified") for item in json_candidates(original)
+    )
+    original_explicit_modified = [
+        value for value in [meta.get("article:modified_time", ""), *prior_modified]
+        if re.search(r"20\d{2}-\d{2}-\d{2}", value)
+    ]
     modified_raw = (
-        meta.get("article:modified_time") or
-        next((find_json_value(item, "dateModified") for item in json_values if find_json_value(item, "dateModified")), "") or
-        git_date(file_path) or published_raw
+        max(original_explicit_modified, key=lambda value: (normalize_date(value), value))
+        if original_explicit_modified else git_date(file_path) or published_raw
     )
     published_date = normalize_date(published_raw)
     modified_date = normalize_date(modified_raw, published_date)

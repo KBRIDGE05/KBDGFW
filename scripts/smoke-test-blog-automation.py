@@ -36,6 +36,9 @@ PIPELINE = [
 AUDITS = [
     [sys.executable, "scripts/audit-blog-system.py"],
     [sys.executable, "scripts/audit-design-v47.py"],
+    [sys.executable, "scripts/audit-editorial-readability.py"],
+    [sys.executable, "scripts/audit-url-contract.py"],
+    ["node", "scripts/test-blog-filter.cjs"],
     [sys.executable, "scripts/audit-site.py"],
     [sys.executable, "scripts/audit-indexing.py"],
     [sys.executable, "scripts/audit-legacy-urls.py"],
@@ -74,6 +77,17 @@ def main() -> None:
             ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc"),
         )
 
+        # Snapshot real published article timestamps before generated fixtures.
+        def modified_dates():
+            found = {}
+            for item in sorted((work / 'blog' / 'posts').glob('*/*.html')):
+                source = BeautifulSoup(item.read_text('utf-8'), 'html.parser')
+                mt = source.find('meta', attrs={'property': 'article:modified_time'})
+                if mt and mt.get('content'):
+                    found[item.relative_to(work).as_posix()] = str(mt['content'])
+            return found
+        stable_dates = modified_dates()
+
         # One canonical future post per category verifies every template.
         primary: list[tuple[str, str]] = []
         for category in CATEGORIES:
@@ -110,6 +124,7 @@ def main() -> None:
             '<meta name="description" content="수동 업로드 신규 글 자동 보정 검수">'
             '<meta name="keywords" content="해상운임, 관세, 선박, KBRIDGE"></head><body>'
             '<main class="page-wrap"><article class="article-shell">'
+            '<p class="breadcrumb"><a href="../../index.html?category=news">물류 뉴스</a></p>'
             '<header class="article-hero"><h1>수동 업로드 검수</h1>'
             f'<p class="article-meta">작성 {TEST_DATE} · KBRIDGE 물류 뉴스</p></header>'
             '<div class="article-body"><section class="quick-summary">'
@@ -136,6 +151,11 @@ def main() -> None:
             run(cmd, work)
         for cmd in AUDITS:
             run(cmd, work)
+        after_dates = modified_dates()
+        backdated = [rel for rel, old_date in stable_dates.items()
+                     if after_dates.get(rel, '')[:10] < old_date[:10]]
+        if backdated:
+            raise SystemExit('existing article modified timestamp regressed: '+', '.join(backdated[:8]))
 
         manifest = json.loads((work / "assets" / "blog-posts.json").read_text("utf-8"))
         sitemap_text = (work / "sitemap.xml").read_text("utf-8")
@@ -176,6 +196,7 @@ def main() -> None:
                 "tags": len(soup.select(".tags .tag")) >= 1,
                 "takeaways": len(soup.select(".kb-takeaways")) == 1,
                 "resource hub": len(soup.select(".kb-resource-hub")) == 1,
+                "legacy category cleaned": not any('?category=' in a.get('href','') for a in soup.select('a[href]')),
                 "cta": len(soup.select(".kb-blog-cta, section.cta")) == 1,
                 "canonical": bool(soup.find("link", rel="canonical") and soup.find("link", rel="canonical").get("href") == url),
                 "robots": "index" in meta(soup, name="robots").lower(),
