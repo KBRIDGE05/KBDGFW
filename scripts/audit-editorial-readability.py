@@ -19,7 +19,7 @@ from lxml import html
 ROOT = Path(__file__).resolve().parents[1]
 POSTS = ROOT / "blog" / "posts"
 EDITORIAL_CSS = ROOT / "assets" / "css" / "pages" / "blog-editorial.css"
-STYLE_VERSION = "20261018-editorial-r4"
+STYLE_VERSION = "20261029-layout-r6"
 CATEGORIES = {"info", "service", "news", "insight", "glossary"}
 KINDS = {
     "briefing", "case", "document", "calculation", "dictionary", "network",

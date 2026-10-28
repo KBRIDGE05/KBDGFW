@@ -66,9 +66,9 @@ CANONICAL_MOBILE = '''<div aria-hidden="true" aria-label="모바일 메뉴" clas
 CANONICAL_FOOTER = '''<footer aria-label="케이브릿지 푸터" class="kb-footer"><div class="footer-grid"><div><div class="footer-brand">KBRIDGE</div><p>FCL·LCL 해상운송, 항공운송, 해외특송과 국내운송을 연결하는 종합 물류 서비스입니다.</p></div><div><h4>서비스</h4><ul><li><a href="https://www.kbexpress.kr/index.html#services">해상·항공 견적</a></li><li><a href="https://www.kbexpress.kr/domestic.html">국내운송</a></li><li><a href="https://www.kbexpress.kr/convenience.html">물류도구</a></li></ul></div><div><h4>콘텐츠</h4><ul><li><a href="https://www.kbexpress.kr/blog/">블로그</a></li><li><a href="https://www.kbexpress.kr/blog/#category=insight">물류 인사이트</a></li><li><a href="https://www.kbexpress.kr/blog/#category=info">물류 정보</a></li></ul></div><div><h4>문의</h4><ul><li><a href="mailto:all@kbridges.co.kr">all@kbridges.co.kr</a></li><li>평일 09:00–18:00</li><li><a href="https://www.kbexpress.kr/index.html?quote=formal">정식 견적 접수</a></li></ul></div></div><p class="footer-copy">케이브릿지 주식회사 · © 2026 KBRIDGE CO., LTD.</p></footer>'''
 
 
-SHARED_STYLES = f'''<link href="../../../assets/css/kbridge-design-system.css?v={DESIGN_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-unified.css?v={BLOG_STYLE_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-editorial.css?v=20261018-editorial-r4" rel="stylesheet"/>
+SHARED_STYLES = f'''<link href="../../../assets/css/kbridge-design-system.css?v={DESIGN_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-unified.css?v={BLOG_STYLE_VERSION}" rel="stylesheet"/>\n<link href="../../../assets/css/pages/blog-editorial.css?v=20261029-layout-r6" rel="stylesheet"/>
 <link href="../../../assets/css/mobile-readability-v1.css?v=20261018-clean-v1" rel="stylesheet"/>'''
-SHARED_SCRIPTS = f'''<script defer src="../../../assets/enterprise-motion.js?v=20260720-v17"></script>\n<script defer src="../../../assets/site-chrome.js?v={SITE_CHROME_VERSION}"></script>'''
+SHARED_SCRIPTS = f'''<script defer src="../../../assets/enterprise-motion.js?v=20261029-blog-layout-r6"></script>\n<script defer src="../../../assets/site-chrome.js?v={SITE_CHROME_VERSION}"></script>'''
 
 
 def remove_legacy_menu_script(match: re.Match[str]) -> str:
@@ -165,6 +165,19 @@ def normalize_blog_navigation(source: str, page: Path) -> str:
     return re.sub(r'href=("|\')([^"\']+)\1', replace, source)
 
 
+def ensure_main_anchor(source: str) -> str:
+    """The editorial grid/heading layout requires a consistent main#main anchor.
+
+    Preserve an existing id and all other attributes; only fill a missing id.
+    This runs during the normal publishing automation, so new posts cannot
+    silently opt out of the shared CSS because of an id-less <main> tag.
+    """
+    match = re.search(r"<main\b([^>]*)>", source, flags=re.I | re.S)
+    if match and not re.search(r"\bid\s*=", match.group(1), flags=re.I):
+        return source[:match.start()] + f'<main id="main"{match.group(1)}>' + source[match.end():]
+    return source
+
+
 def normalize_shell(source: str, html_path: Path | None = None) -> str:
     if html_path is not None:
         source = remove_missing_page_styles(source, html_path)
@@ -177,6 +190,7 @@ def normalize_shell(source: str, html_path: Path | None = None) -> str:
     source = re.sub(r"\s*(<!-- KBRIDGE_AUTO_SEO_START -->)", r"\n\1", source, count=1)
     source = SKIP_LINK_RE.sub("", source)
     source = ensure_body_classes(source)
+    source = ensure_main_anchor(source)
     source = ensure_editorial_hooks(source)
 
     main = re.search(r'<main\b', source, re.I)

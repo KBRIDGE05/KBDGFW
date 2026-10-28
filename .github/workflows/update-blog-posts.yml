@@ -162,6 +162,9 @@ jobs:
       - name: Validate published article readability and editorial contracts
         run: python scripts/audit-editorial-readability.py
 
+      - name: Validate all blog article render contracts (including CSS selector targets)
+        run: python scripts/audit-blog-render-contract.py
+
       - name: Validate canonical navigation and URL uniqueness across all HTML
         run: python scripts/audit-url-contract.py
 

@@ -917,3 +917,87 @@ html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.ar
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item > div:last-child > :is(h3,h4) { font-size: 16px!important; }
   html body.kb-blog-post.kb-unified-site.kb-editorialized main#main :is(article.article-shell,article.article) .news-item p { font-size: 14.5px!important; }
 }
+
+
+/* KBRIDGE blog layout contract R6 (2026-10-29)
+   All published articles, not just those matching main#main + editorialized.
+   Preserve coldchain's numbered-row design; neutralize stray heading rules and
+   decorative bars left by older V44/V47 selectors. */
+html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) .news-list > article.news-item {
+  display:grid!important;
+  grid-template-columns:44px minmax(0,1fr)!important;
+  gap:16px!important;
+  align-items:start!important;
+  margin:0!important;
+  padding:21px 0!important;
+  border:0!important;
+  border-bottom:1px solid #e5ebf2!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) .news-list > article.news-item > .news-num {
+  display:block!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  color:#2458b5!important;
+  background:transparent!important;
+  font-family:inherit!important;
+  font-size:18px!important;
+  font-weight:850!important;
+  line-height:1.5!important;
+  text-align:left!important;
+  align-self:start!important;
+}
+html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) .news-list > article.news-item > div:last-child {
+  min-width:0!important;
+}
+html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) .news-list > article.news-item > div:last-child > :is(h3,h4) {
+  display:block!important;
+  margin:0 0 11px!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:#1c3552!important;
+  font-family:inherit!important;
+  font-size:18px!important;
+  font-weight:850!important;
+  line-height:1.5!important;
+  letter-spacing:-.02em!important;
+}
+html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) .news-list > article.news-item > div:last-child > :is(h3,h4)::before,
+html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) .news-list > article.news-item > div:last-child > :is(h3,h4)::after {
+  content:none!important;
+  display:none!important;
+}
+/* Small blue/brown bars from older CSS versions are not part of the coldchain
+   section-title design. Keep the real border-top on each section as a divider. */
+html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(section.section,section.pipe-section) > h2::before,
+html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) :is(.article-body,.body,.content) > :is(section.section,section.pipe-section) > h2::after {
+  content:none!important;
+  display:none!important;
+}
+/* Avoid animation ghosts or cropped invisible rows during intra-site links,
+   browser back navigation, and reading/scrolling a blog article. */
+html.kb-motion-ready body.kb-blog-post main :is(.news-item,.section,.pipe-section,.quick-summary,.summary,.toc,.table-wrap,.kb-table-shell,.kb-editorial-lead).kb-reveal,
+html.kb-motion-ready body.kb-blog-post main :is(.news-item,.section,.pipe-section,.quick-summary,.summary,.toc,.table-wrap,.kb-table-shell,.kb-editorial-lead)[data-kb-motion] {
+  opacity:1!important;
+  transform:none!important;
+  clip-path:none!important;
+  filter:none!important;
+  transition:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+@media(max-width:760px) {
+  html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) .news-list > article.news-item {
+    grid-template-columns:33px minmax(0,1fr)!important;
+    gap:10px!important;
+    padding:17px 0!important;
+  }
+  html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) .news-list > article.news-item > .news-num,
+  html body.kb-blog-post.kb-unified-site main :is(article.article-shell,article.article) .news-list > article.news-item > div:last-child > :is(h3,h4) {
+    font-size:16px!important;
+  }
+}

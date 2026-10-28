@@ -3,6 +3,7 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const isBlogArticle = document.body?.classList.contains("kb-blog-post") ?? false;
 
   const motionSets = [
     {
@@ -50,6 +51,8 @@
   };
 
   const decorateElement = (element, variant, index) => {
+    // Article content must remain stable on direct entry, link clicks and back/forward.
+    if (isBlogArticle && element.closest("main")) return;
     if (element.dataset.kbMotionDecorated === "true") return;
     element.dataset.kbMotionDecorated = "true";
     element.classList.add("kb-reveal");
