@@ -42,6 +42,8 @@ AUDITS = [
     [sys.executable, "scripts/audit-site.py"],
     [sys.executable, "scripts/audit-indexing.py"],
     [sys.executable, "scripts/audit-legacy-urls.py"],
+    [sys.executable, "scripts/audit-functional-links.py"],
+    ["node", "scripts/test-quote-deeplink.cjs"],
 ]
 
 
