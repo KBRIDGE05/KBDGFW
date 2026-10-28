@@ -111,8 +111,8 @@
 <button aria-selected="false" class="tool-mode-btn" id="simpleModeBtn" role="tab" type="button">단순계산</button>
 </div>
 <p class="mode-description" hidden="" id="modeDescription">20FT DRY부터 45FT HIGH CUBE까지 내부 제원·CBM·중량과 실제 배치를 비교해 적합한 규격과 수량을 찾습니다.</p>
-<button hidden="" id="sampleBtn" type="button"></button>
-<button hidden="" id="settingsBtn" type="button"></button>
+<button hidden="" aria-label="화물 예제 불러오기" id="sampleBtn" type="button"></button>
+<button hidden="" aria-label="계산 설정" id="settingsBtn" type="button"></button>
 </section>
 <section aria-labelledby="simpleTitle" class="simple-calculator-panel hidden" id="simpleCalculatorPanel">
 <div class="simple-calc-head">
@@ -222,12 +222,12 @@
 <h2 id="optionTitle">컨테이너 · 적입 옵션</h2>
 </div>
 <div aria-hidden="true" class="route-compat-fields" hidden="">
-<select id="routeDirection"><option value="import">수입</option><option value="export">수출</option><option value="domestic">일반 국내운송</option></select>
-<input id="routeOrigin" type="text" value=""/>
-<input id="routeDestination" type="text" value=""/>
-<input id="routeDestinationDetail" type="text" value=""/>
-<button id="destinationAddressBtn" tabindex="-1" type="button"></button>
-<button id="routeSwapBtn" tabindex="-1" type="button"></button>
+<select aria-label="운송 구분" id="routeDirection"><option value="import">수입</option><option value="export">수출</option><option value="domestic">일반 국내운송</option></select>
+<input aria-label="출발지" id="routeOrigin" type="text" value=""/>
+<input aria-label="도착지" id="routeDestination" type="text" value=""/>
+<input aria-label="도착지 상세주소" id="routeDestinationDetail" type="text" value=""/>
+<button aria-label="도착지 주소 검색" id="destinationAddressBtn" tabindex="-1" type="button"></button>
+<button aria-label="출발지와 도착지 바꾸기" id="routeSwapBtn" tabindex="-1" type="button"></button>
 </div>
 <div class="form-grid">
 <label class="field span-2">
@@ -267,7 +267,7 @@
 </div>
 <div class="range-field">
 <div><span>최소 바닥 지지율</span><strong id="supportValue">60%</strong></div>
-<input id="supportRange" max="100" min="30" step="5" type="range" value="60"/>
+<input aria-label="최소 바닥 지지율" id="supportRange" max="100" min="30" step="5" type="range" value="60"/>
 </div>
 <button class="primary-btn run-btn" id="runBtn" type="button">
 <span id="runButtonLabel">컨테이너 적입 계산 실행</span><small id="runButtonHelp">컨테이너 내부 제원과 실제 박스 배치 기준</small>
@@ -428,7 +428,7 @@
 <div class="cargo-dialog-summary" id="cargoDialogSummary">총 0.000 CBM · 0 kg · 개당 0 kg</div>
 <input id="cargoMaxStack" type="hidden" value="99"/>
 <input id="cargoColor" type="hidden" value="#2f75d6"/>
-<input hidden="" id="cargoNoTop" type="checkbox"/>
+<input hidden="" aria-label="화물 상부 적재 금지" id="cargoNoTop" type="checkbox"/>
 </div>
 <div class="modal-foot">
 <button class="ghost-btn" type="submit" value="cancel">취소</button>
@@ -454,7 +454,7 @@
 </div>
 </form>
 </dialog>
-<input accept=".xlsx,.xls,.pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,application/pdf" hidden="" id="cargoFileInput" type="file"/>
+<input accept=".xlsx,.xls,.pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,application/pdf" hidden="" aria-label="화물 명세 파일 선택" id="cargoFileInput" type="file"/>
 <script defer="" src="assets/load-planner-app.js?v=20260720-v17"></script><script defer="" src="assets/site-chrome.js?v=20261025-hover-v14"></script>
 <script defer="" src="assets/enterprise-motion.js?v=20260720-v17"></script>
 </body></html>

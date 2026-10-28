@@ -55,6 +55,38 @@ def validate_seo(seo_title: str, seo_description: str) -> None:
         )
 
 
+def _meta_attr(tag: str, key: str) -> str:
+    """Read existing meta attributes regardless of their attribute order."""
+    match = re.search(r'\b' + re.escape(key) + r'\s*=\s*(["\'])(.*?)\1', tag, re.I | re.S)
+    return html.unescape(match.group(2)).strip() if match else ''
+
+
+def existing_search_metadata(except_path: Path) -> tuple[dict[str, str], dict[str, str]]:
+    """Prevent new posts from reintroducing Search Advisor title/description duplicates."""
+    titles: dict[str, str] = {}
+    descriptions: dict[str, str] = {}
+    for page in sorted((ROOT / 'blog' / 'posts').glob('*/*.html')):
+        if page == except_path:
+            continue
+        source = page.read_text('utf-8')
+        metas = re.findall(r'<meta\b[^>]*>', source, re.I)
+        if any(_meta_attr(tag, 'name').lower() in {'robots', 'naverbot', 'yeti'}
+               and 'noindex' in _meta_attr(tag, 'content').lower() for tag in metas):
+            continue
+        found = re.search(r'<title\b[^>]*>(.*?)</title>', source, re.I | re.S)
+        if found:
+            title = html.unescape(re.sub(r'\s+', ' ', found.group(1))).strip()
+            if title:
+                titles.setdefault(title.casefold(), page.relative_to(ROOT).as_posix())
+        for tag in metas:
+            if _meta_attr(tag, 'name').lower() == 'description':
+                description = re.sub(r'\s+', ' ', _meta_attr(tag, 'content')).strip()
+                if description:
+                    descriptions.setdefault(description.casefold(), page.relative_to(ROOT).as_posix())
+                break
+    return titles, descriptions
+
+
 def main():
     ap=argparse.ArgumentParser(description="KBRIDGE Blog System V42 post creator")
     ap.add_argument("--category",required=True,choices=sorted(CATEGORIES))
@@ -74,18 +106,45 @@ def main():
     args=ap.parse_args()
     if not slug_ok(args.slug): raise SystemExit("slug는 영문/숫자/점/하이픈/언더스코어만 사용하세요.")
 
+    # Reject invalid dates and SEO collisions BEFORE touching a new file.
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", args.date):
+        raise SystemExit("게시일은 YYYY-MM-DD 형식으로 입력하세요.")
+    try:
+        date.fromisoformat(args.date)
+    except ValueError:
+        raise SystemExit("존재하지 않는 게시일입니다: " + args.date)
+
+    out=ROOT/"blog"/"posts"/args.category/f"{args.slug}.html"
     seo_title=normalize_seo_title(args.seo_title or args.title)
     seo_description=re.sub(r"\s+", " ", (args.seo_description or args.summary).strip())
     validate_seo(seo_title, seo_description)
+    titles, descriptions = existing_search_metadata(out)
+    if seo_title.casefold() in titles:
+        raise SystemExit(f"중복 SEO 제목입니다: {titles[seo_title.casefold()]} — 다른 검색용 제목을 입력하세요.")
+    if seo_description.casefold() in descriptions:
+        if args.seo_description.strip():
+            raise SystemExit(
+                f"중복 SEO 설명문입니다: {descriptions[seo_description.casefold()]} — "
+                "--seo-description에 이 글만의 고유 설명을 입력하세요."
+            )
+        # When the same general-purpose summary is reused, preserve the
+        # author's body summary and make only the search snippet post-specific.
+        prefix=seo_title.removesuffix(" / KBRIDGE").strip() + ": "
+        seo_description=prefix+seo_description[:max(0,SEO_DESCRIPTION_MAX-len(prefix))].rstrip(" ,.;")
+        if seo_description.casefold() in descriptions:
+            raise SystemExit("고유한 SEO 설명문을 만들 수 없습니다. --seo-description을 직접 지정하세요.")
+    validate_seo(seo_title, seo_description)
 
     tmpl=(TEMPLATES/f"{args.category}.html.tmpl").read_text("utf-8")
+    # Escape user-provided text before interpolation into HTML or attributes.
+    # TAGS_HTML alone is intentionally pre-escaped, generated markup.
     vals={
-        "TITLE":args.title,
-        "SUMMARY":args.summary,
-        "SEO_TITLE":seo_title,
-        "SEO_DESCRIPTION":seo_description,
-        "KEYWORDS":args.keywords,
-        "DATE":args.date,
+        "TITLE":html.escape(args.title,quote=True),
+        "SUMMARY":html.escape(args.summary,quote=True),
+        "SEO_TITLE":html.escape(seo_title,quote=True),
+        "SEO_DESCRIPTION":html.escape(seo_description,quote=True),
+        "KEYWORDS":html.escape(args.keywords,quote=True),
+        "DATE":html.escape(args.date,quote=True),
         "TAGS_HTML":tags_html(args.keywords),
     }
     for k,v in vals.items(): tmpl=tmpl.replace("{{"+k+"}}",v)
@@ -110,7 +169,6 @@ def main():
         if count!=1:raise SystemExit("본문의 요약 섹션을 찾을 수 없습니다.")
         tmpl=tmpl.replace('<body>',f'<body class="kb-editorialized" data-kb-editorial-kind="{args.editorial_kind}" data-kb-editorial-focus="{focus}">',1)
         tmpl=tmpl.replace('</head>','<link href="../../../assets/css/pages/blog-editorial.css?v=20261018-editorial-r4" rel="stylesheet"/></head>',1)
-    out=ROOT/"blog"/"posts"/args.category/f"{args.slug}.html"
     legacy_map=ROOT/"scripts"/"legacy-url-map.json"
     if legacy_map.exists():
         legacy_files={str(row.get("file", "")).strip() for row in json.loads(legacy_map.read_text("utf-8"))}
